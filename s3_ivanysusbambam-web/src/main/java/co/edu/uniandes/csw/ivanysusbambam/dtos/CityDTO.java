@@ -21,9 +21,9 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package co.edu.uniandes.csw.watchdogs.dtos;
+package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
-import co.edu.uniandes.csw.watchdogs.entities.CityEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.CityEntity;
 
 /**
  * CityDTO Objeto de transferencia de datos de Cities. Los DTO contienen las

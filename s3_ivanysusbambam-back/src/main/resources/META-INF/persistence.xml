@@ -3,7 +3,7 @@
   <persistence-unit name="IvanysusbambamPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <jta-data-source>java:app/jdbc/IvanysusbambamDB</jta-data-source>
-    <class>co.edu.uniandes.csw.watchdogs.entities.CityEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.CityEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

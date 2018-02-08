@@ -21,12 +21,12 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
  */
-package co.edu.uniandes.csw.watchdogs.resources;
+package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 
-import co.edu.uniandes.csw.watchdogs.dtos.CityDetailDTO;
-import co.edu.uniandes.csw.watchdogs.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.watchdogs.mappers.BusinessLogicExceptionMapper;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.CityDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.ivanysusbambam.mappers.BusinessLogicExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;

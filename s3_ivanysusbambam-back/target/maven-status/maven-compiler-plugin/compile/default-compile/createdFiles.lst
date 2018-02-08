@@ -1,5 +1,5 @@
-co\edu\uniandes\csw\watchdogs\ejb\CityLogic.class
-co\edu\uniandes\csw\watchdogs\entities\BaseEntity.class
-co\edu\uniandes\csw\watchdogs\entities\CityEntity.class
-co\edu\uniandes\csw\watchdogs\exceptions\BusinessLogicException.class
-co\edu\uniandes\csw\watchdogs\persistence\CityPersistence.class
+co\edu\uniandes\csw\ivanysusbambam\ejb\CityLogic.class
+co\edu\uniandes\csw\ivanysusbambam\entities\BaseEntity.class
+co\edu\uniandes\csw\ivanysusbambam\persistence\CityPersistence.class
+co\edu\uniandes\csw\ivanysusbambam\entities\CityEntity.class
+co\edu\uniandes\csw\ivanysusbambam\exceptions\BusinessLogicException.class

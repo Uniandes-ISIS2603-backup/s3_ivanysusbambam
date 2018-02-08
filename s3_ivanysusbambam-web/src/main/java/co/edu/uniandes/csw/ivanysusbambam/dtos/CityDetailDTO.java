@@ -21,8 +21,8 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-package co.edu.uniandes.csw.watchdogs.dtos;
-import co.edu.uniandes.csw.watchdogs.entities.CityEntity;
+package co.edu.uniandes.csw.ivanysusbambam.dtos;
+import co.edu.uniandes.csw.ivanysusbambam.entities.CityEntity;
 
 /**
  * Clase que extiende de {@link CityDTO} para manejar la transformacion entre

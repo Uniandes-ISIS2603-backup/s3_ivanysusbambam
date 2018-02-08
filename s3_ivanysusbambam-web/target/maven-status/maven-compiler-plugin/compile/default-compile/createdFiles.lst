@@ -1,5 +1,5 @@
-co\edu\uniandes\csw\watchdogs\dtos\CityDTO.class
-co\edu\uniandes\csw\watchdogs\resources\CityResource.class
-co\edu\uniandes\csw\watchdogs\resources\RestConfig.class
-co\edu\uniandes\csw\watchdogs\dtos\CityDetailDTO.class
-co\edu\uniandes\csw\watchdogs\mappers\BusinessLogicExceptionMapper.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\CityDetailDTO.class
+co\edu\uniandes\csw\ivanysusbambam\resources\CityResource.class
+co\edu\uniandes\csw\ivanysusbambam\resources\RestConfig.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\CityDTO.class
+co\edu\uniandes\csw\ivanysusbambam\mappers\BusinessLogicExceptionMapper.class
