@@ -1,5 +1,13 @@
-co\edu\uniandes\csw\ivanysusbambam\dtos\CityDetailDTO.class
-co\edu\uniandes\csw\ivanysusbambam\resources\CityResource.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\ClienteDetailDTO.class
 co\edu\uniandes\csw\ivanysusbambam\resources\RestConfig.class
-co\edu\uniandes\csw\ivanysusbambam\dtos\CityDTO.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\CompraDetailDTO.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\ProspectoCompraDetailDTO.class
 co\edu\uniandes\csw\ivanysusbambam\mappers\BusinessLogicExceptionMapper.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\CityDetailDTO.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\VendedorDetailDTO.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\VendedorDTO.class
+co\edu\uniandes\csw\ivanysusbambam\resources\CityResource.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\MedioDePagoDetailDTO.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\ProspectoCompraDTO.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\ClienteDTO.class
+co\edu\uniandes\csw\ivanysusbambam\dtos\CityDTO.class
