@@ -25,5 +25,15 @@ public class VentaDTO extends CompraDTO
  */
     public Integer getIdVenta (){
     return idVenta;
-}    
+}  
+    
+    
+    //---------------------Setters-------------------------
+    /**
+     * Metodo para signar el id de venta que llega por parametro 
+     * @param pId nuevo id de la venta 
+     */
+    public void setId (Integer pId){
+        this.idVenta = pId;
+    }
 }
