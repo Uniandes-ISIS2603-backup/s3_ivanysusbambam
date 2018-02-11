@@ -11,47 +11,94 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  */
 public class CompraDetailDTO extends CompraDTO {
     
-//   protected AutomovilDTO  automovil;
-//   private  VendedorDTO vendedorEncargado;
-//   protected PuntoDeVentaDTO puntoDeVenta;
-//   private ClienteDTO cliente
-//
-//    public CompraDetailDTO()
-//    {
-//        
-//    }
-//           
+    
+    /**
+     * Atributo que representa el automovil de la compra
+     */
+//     private  AutomovilDTO  automovil;
+    /**
+     * Atributo que representa el vendedor encargado de la compra
+     */
+      private  VendedorDTO vendedorEncargado;
+    /**
+     * Atributo que representa el punto de venta de la compra
+     */  
+//    private  PuntoDeVentaDTO puntoDeVenta;
+     /**
+     * Atributo que representa el cliente que le vendio el carro a MiAutomovil
+     */
+      private ClienteDTO cliente;
+              
+    /**
+     * Constructor por defecto
+     */
+
+    public CompraDetailDTO()
+    {
+        
+    }
+//-------------------------------------GETTERS-----------------------------
+//     
+    /**
+     * @return El automovil de la compra
+     */    
 //    public AutomovilDTO getAutomovil() {
 //        return automovil;
 //    }
 //
+    /**
+     * @return El vendedor encargado de la compra
+     */  
+    public VendedorDTO getVendedorEncargado() {
+        return vendedorEncargado;
+    }
+    
+    /**
+     * @return El vendedor punto de venta donde se encuentra la compra
+     */ 
+//    public PuntoDeVentaDTO getPuntoDeVenta() {
+//        return puntoDeVenta;
+//    }
+    
+    
+    /**
+     * @return El cliente que le vendio el automovil a MiAutomovil
+     */ 
+    public ClienteDTO getCliente() {
+        return cliente;
+    }
+ //-------------------------------------SETTERS-----------------------------   
+
+    /**
+     * @param automovil El nuevo automóvil
+     */
 //    public void setAutomovil(AutomovilDTO automovil) {
 //        this.automovil = automovil;
 //    }
 //
-//    public VendedorDTO getVendedorEncargado() {
-//        return vendedorEncargado;
-//    }
+    /**
+     * @param vendedorEncargado El nuevo VendedorEncargado
+     */
+
+    public void setVendedorEncargado(VendedorDTO vendedorEncargado) {
+        this.vendedorEncargado = vendedorEncargado;
+    }
 //
-//    public void setVendedorEncargado(VendedorDTO vendedorEncargado) {
-//        this.vendedorEncargado = vendedorEncargado;
-//    }
-//
-//    public PuntoDeVentaDTO getPuntoDeVenta() {
-//        return puntoDeVenta;
-//    }
-//
+
+    /**
+     * @param puntoDeVenta El nuevo puntoDeVenta
+     */
 //    public void setPuntoDeVenta(PuntoDeVentaDTO puntoDeVenta) {
 //        this.puntoDeVenta = puntoDeVenta;
 //    }
 //
-//    public ClienteDTO getCliente() {
-//        return cliente;
-//    }
-//
-//    public void setCliente(ClienteDTO cliente) {
-//        this.cliente = cliente;
-//    }
+     
+/**
+     * @param cliente El nuevo cliente de la compra
+     */
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
     
     
     
