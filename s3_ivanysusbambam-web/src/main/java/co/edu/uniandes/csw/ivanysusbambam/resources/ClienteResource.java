@@ -34,7 +34,7 @@ public class ClienteResource {
     /**
      * GET /api/clientes: Retorna todos los clientes registrados.
      * 
-     * <pre>Busca y devuelve todas las ciudades que existen en la aplicacion.
+     * <pre>Busca y devuelve todos los clientes que existen en la aplicacion.
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
