@@ -9,19 +9,37 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
 /**
  *
  * @author if.garcia
+ * Versiones:
+ *  10/02/2018
+ *      -Creación de atributos
+ *      -Creación de getters y setters
  */
 public class CalificacionTiendaDTO {
     
+    /**
+     * Identificador del objeto
+     */
     private Long id;
     
+    /**
+     * Nombre del objeto Entity de la calificacion
+     */
     private String name;
     
+    /**
+     * Comentario respectivo a la calificacion
+     */
     private String comentario;
     
+    /**
+     * Puntaje especificado por el usuario para la tienda
+     */
     private int puntaje;
     
-    //private VentaDTO venta;
     
+    /**
+     * 
+     */
     public CalificacionTiendaDTO(){
         
     }
