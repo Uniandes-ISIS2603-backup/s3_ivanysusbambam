@@ -4,26 +4,35 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
+import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 
 /**
  *
  * @author hd.castellanos
  */
-public class VentaDTO extends CompraDTO
+public class VentaDTO 
 {
 
 /**
      * Atributo del Id de la venta 
      */
-    private Integer idVenta;
+    private int idVenta;
+    
+    
+    /**
+     * Constructor por defecto
+     */
+    public VentaDTO() {
+    }
 
+    
 //---------------------GETTERS-------------------------
 
 /**
  * 
  * @return devuelve el id de la venta
  */
-    public Integer getIdVenta (){
+    public int getIdVenta (){
     return idVenta;
 }  
     
@@ -33,7 +42,25 @@ public class VentaDTO extends CompraDTO
      * Metodo para signar el id de venta que llega por parametro 
      * @param pId nuevo id de la venta 
      */
-    public void setId (Integer pId){
+    public void setId (int pId){
         this.idVenta = pId;
+    }
+    
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param pVenta: Es la entidad que se va a convertir a DTO
+     */
+    public VentaDTO(VentaEntity pVenta) {
+       this.idVenta = pVenta.getIdVenta();
+
+    }
+    
+    public VentaEntity toEntity()
+    {
+        VentaEntity entity = new VentaEntity();
+        entity.setId(this.idVenta);
+        return entity;
     }
 }
