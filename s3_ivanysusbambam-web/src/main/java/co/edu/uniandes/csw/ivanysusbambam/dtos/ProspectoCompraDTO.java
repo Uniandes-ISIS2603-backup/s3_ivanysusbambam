@@ -19,20 +19,38 @@ public class ProspectoCompraDTO {
      * Representa el texto escrito por el vendedor con respecto al prospecto.
      */
     private String texto;
+    
+    /**
+     * Representa el identificador único del prospecto de compra.
+     */
+    private int id;
 
+    
+    //---------------------------------------GETTERS----------------------------
     /**
      * @return el texto respectivo.
      */
     public String getTexto() {
         return texto;
     }
+    
+    /**
+     * 
+     * @return identificador del prospecto.
+     */
+    public int getId(){
+        return id;
+    }
 
+    //-------------------------------------------SETTERS---------------------------------
     /**
      * @param texto el texto escrito por el vendedor.
      */
     public void setTexto(String texto) {
         this.texto = texto;
     }
+    
+    //Se omite SET id pues este no debería cambiar.
     
     
 }
