@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 C:\Users\f.velasquez\Documents\NetBeansProjects\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\exceptions\BusinessLogicException.java
 C:\Users\f.velasquez\Documents\NetBeansProjects\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\persistence\CityPersistence.java
 C:\Users\f.velasquez\Documents\NetBeansProjects\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\entities\BaseEntity.java
 C:\Users\f.velasquez\Documents\NetBeansProjects\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\ejb\CityLogic.java
 C:\Users\f.velasquez\Documents\NetBeansProjects\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\entities\CityEntity.java
+=======
+C:\Users\hd.castellanos\Documents\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\entities\BaseEntity.java
+C:\Users\hd.castellanos\Documents\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\ejb\CityLogic.java
+C:\Users\hd.castellanos\Documents\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\entities\CityEntity.java
+C:\Users\hd.castellanos\Documents\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\exceptions\BusinessLogicException.java
+C:\Users\hd.castellanos\Documents\s3_ivanysusbambam\s3_ivanysusbambam-back\src\main\java\co\edu\uniandes\csw\ivanysusbambam\persistence\CityPersistence.java
+>>>>>>> 3d2c134236d6fa852479c407604fb035136bba05
