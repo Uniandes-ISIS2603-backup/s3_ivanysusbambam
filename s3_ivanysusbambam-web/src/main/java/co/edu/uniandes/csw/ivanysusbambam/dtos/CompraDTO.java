@@ -10,18 +10,36 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  * @author j.sierrac
  */
 public class CompraDTO {
+  
+    
+    /**
+     * Atributo que representa el identificador de la compra
+     */
     private String idCompra;
     
     
+      /**
+     * Constructor por defecto
+     */
     public CompraDTO()
     {
         
     }
 
+    //-------------------------------------GETTERS-----------------------------
+    /**
+     * @return El identificador de la compra
+     */
     public String getIdCompra() {
         return idCompra;
     }
 
+    
+    
+      //---------------------------SETTERS-------------------------
+     /**
+     * @param id El nuevo id de la compra
+     */
     public void setIdCompra(String idCompra) {
         this.idCompra = idCompra;
     }
