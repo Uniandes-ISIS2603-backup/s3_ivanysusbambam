@@ -110,14 +110,14 @@ public class CityDTO {
     public String getZipcode() {
         return zipcode;
     }
-
+    
     /**
      * @param zipcode El nuevo zipcode
      */
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
     }
-
+    
     /**
      * Convertir DTO a Entity
      *
