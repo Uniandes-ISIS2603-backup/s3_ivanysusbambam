@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 
-import co.edu.uniandes.csw.ivanysusbambam.dtos.CityDetailDTO;
+
 import co.edu.uniandes.csw.ivanysusbambam.dtos.CompraDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
