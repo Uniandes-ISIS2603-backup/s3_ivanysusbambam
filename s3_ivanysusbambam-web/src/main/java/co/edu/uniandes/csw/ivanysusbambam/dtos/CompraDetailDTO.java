@@ -15,7 +15,7 @@ public class CompraDetailDTO extends CompraDTO {
     /**
      * Atributo que representa el automovil de la compra
      */
-//     private  AutomovilDTO  automovil;
+        private  AutomovilDTO  automovil;
     /**
      * Atributo que representa el vendedor encargado de la compra
      */
@@ -23,7 +23,7 @@ public class CompraDetailDTO extends CompraDTO {
     /**
      * Atributo que representa el punto de venta de la compra
      */  
-//    private  PuntoDeVentaDTO puntoDeVenta;
+        private  PuntoDeVentaDTO puntoDeVenta;
      /**
      * Atributo que representa el cliente que le vendio el carro a MiAutomovil
      */
@@ -35,17 +35,15 @@ public class CompraDetailDTO extends CompraDTO {
 
     public CompraDetailDTO()
     {
-        
     }
 //-------------------------------------GETTERS-----------------------------
 //     
     /**
      * @return El automovil de la compra
      */    
-//    public AutomovilDTO getAutomovil() {
-//        return automovil;
-//    }
-//
+       public AutomovilDTO getAutomovil() {
+       return automovil;
+   }
     /**
      * @return El vendedor encargado de la compra
      */  
@@ -56,9 +54,9 @@ public class CompraDetailDTO extends CompraDTO {
     /**
      * @return El vendedor punto de venta donde se encuentra la compra
      */ 
-//    public PuntoDeVentaDTO getPuntoDeVenta() {
-//        return puntoDeVenta;
-//    }
+    public PuntoDeVentaDTO getPuntoDeVenta() {
+        return puntoDeVenta;
+    }
     
     
     /**
@@ -72,10 +70,10 @@ public class CompraDetailDTO extends CompraDTO {
     /**
      * @param automovil El nuevo automóvil
      */
-//    public void setAutomovil(AutomovilDTO automovil) {
-//        this.automovil = automovil;
-//    }
-//
+    public void setAutomovil(AutomovilDTO automovil) {
+        this.automovil = automovil;
+    }
+
     /**
      * @param vendedorEncargado El nuevo VendedorEncargado
      */
@@ -83,15 +81,15 @@ public class CompraDetailDTO extends CompraDTO {
     public void setVendedorEncargado(VendedorDTO vendedorEncargado) {
         this.vendedorEncargado = vendedorEncargado;
     }
-//
+
 
     /**
      * @param puntoDeVenta El nuevo puntoDeVenta
      */
-//    public void setPuntoDeVenta(PuntoDeVentaDTO puntoDeVenta) {
-//        this.puntoDeVenta = puntoDeVenta;
-//    }
-//
+    public void setPuntoDeVenta(PuntoDeVentaDTO puntoDeVenta) {
+        this.puntoDeVenta = puntoDeVenta;
+    }
+
      
 /**
      * @param cliente El nuevo cliente de la compra

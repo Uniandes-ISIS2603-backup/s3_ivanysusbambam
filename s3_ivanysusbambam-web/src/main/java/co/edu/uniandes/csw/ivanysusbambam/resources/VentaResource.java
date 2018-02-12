@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 
-
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
@@ -21,113 +20,130 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 
 /**
+ * <pre>Clase que implementa el recurso "ventas".
+ * URL: /api/ventas
+ * </pre>
+ * <i>Note que la aplicación (definida en {@link RestConfig}) define la ruta
+ * "/api" y este recurso tiene la ruta "ventas".</i>
+ *
+ * <h2>Anotaciones </h2>
+ * <pre>
+ * Path: indica la dirección después de "api" para acceder al recurso
+ * Produces/Consumes: indica que los servicios definidos en este recurso reciben y devuelven objetos en formato JSON
+ * RequestScoped: Inicia una transacción desde el llamado de cada método (servicio).
+ * </pre>
  *
  * @author hd.castellanos
+ * @version 1.0
  */
 @Path("ventas")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class VentaResource
-{
+public class VentaResource {
 
-     /**
+    /**
      * GET /api/ventas: Retorna todas las ventas registradas.
-     * 
+     *
      * <pre>Busca y devuelve todas las ventas que existen en la aplicacion.
-     * 
+     *
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve todos las ventas de la aplicacion.</code> 
+     * 200 OK Devuelve todos las ventas de la aplicacion.</code>
      * </pre>
-     * 
-     * @return JSONArray  con la información básica de todas las ventas.
+     *
+     * @return JSONArray con la información básica de todas las ventas.
      */
     @GET
-    public List<VentaDTO> getVentas(){
+    public List<VentaDTO> getVentas() {
         return null;
     }
-    
+
     /**
      * GET /api/ventas/(id): Obtiene una venta según su id.
-     * <pre> 
+     * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Devuelve la venta  correspondiente al id.
-     * </code> 
+     * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found No existe una venta con el id dado.
-     * </code> 
+     * </code>
      * </pre>
-     * @param id id de la venta que se busca 
+     *
+     * @param id id de la venta que se busca
      * @return JSON de la venta buscada.
      */
     @Path("{id: \\d+}")
     @GET
-    public VentaDetailDTO getVenta(@PathParam("id")Integer id){
+    public VentaDetailDTO getVenta(@PathParam("id") Integer id) {
         return null;
     }
+
     /**
      * POST /api/ventas: Crea una nueva venta.
-     * <pre> 
+     * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se crea la nueva venta
-     * </code> 
+     * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found No existe una venta con el id dado.
-     * </code> 
+     * </code>
      * </pre>
+     *
      * @param pVenta la nueva venta.
      * @return JSON el la venta recien creado.
      * @throws BusinessLogicException si ya existe el cliente.
      */
     @POST
-    public VentaDetailDTO postVenta(VentaDetailDTO pVenta ) throws BusinessLogicException{
-         return null;
+    public VentaDetailDTO postVenta(VentaDetailDTO pVenta) throws BusinessLogicException {
+        return pVenta;
     }
-    
+
     /**
      * PUT /api/ventas/(id): Actualiza una venta.
-     * <pre> 
+     * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK se actualiza la venta 
-     * </code> 
+     * 200 OK se actualiza la venta
+     * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found No existe una venta  con el id dado.
-     * </code> 
+     * </code>
      * </pre>
+     *
      * @param pVenta venta con la información actualizada.
-     * @param id id de la venta  que se actualizará
+     * @param id id de la venta que se actualizará
      * @return JSON la venta recien actualizado.
      * @throws BusinessLogicException si no existe el cliente con el id dado.
      */
     @Path("{id: \\d+}")
     @PUT
-    public VentaDetailDTO putVenta(@PathParam("id") Integer id, VentaDetailDTO pVenta) throws BusinessLogicException{
+    public VentaDetailDTO putVenta(@PathParam("id") Integer id, VentaDetailDTO pVenta) throws BusinessLogicException {
         return null;
     }
-    
+
     /**
      * DELETE /api/ventas/(id): Elimina una venta.
-     * <pre> 
+     * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se elimina la venta
-     * </code> 
+     * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found No existe una venta con el id dado.
-     * </code> 
+     * </code>
      * </pre>
+     *
      * @param id id de la venta que se eliminará.
      * @return JSON la venta eliminada.
      * @throws BusinessLogicException si no existe el cliente con el id dado.
      */
     @Path("{id: \\d+}")
     @DELETE
-    public VentaDetailDTO deleteVenta(@PathParam("id") Integer id) throws BusinessLogicException{
-      return null;  
+    public VentaDetailDTO deleteVenta(@PathParam("id") Integer id) throws BusinessLogicException {
+        return null;
     }
-    
+
 }
