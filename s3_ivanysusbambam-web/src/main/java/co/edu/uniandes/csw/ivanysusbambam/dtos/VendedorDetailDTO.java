@@ -25,19 +25,19 @@ public class VendedorDetailDTO extends VendedorDTO{
     /**
      * Representa las ventas del vendedor.
      */
-    //Comentado porque aún no existe VentaDTO
+    
     private List<VentaDTO> ventas;
     
     /**
      * Representa las compras del vendedor.
      */
-    //Comentado porque aún no existe CompraDTO
+    
     private List<CompraDTO> compras;
     
     /**
      * Representa el punto de venta en el que trabaja el vendedor.
      */
-    //Comentado porque aún no existe PuntoDeVentaDTO.
+    
     private PuntoDeVentaDTO puntoDeVenta;
     
     //-------------------------GETTERS-------------------------------

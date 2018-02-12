@@ -21,7 +21,7 @@ public class ClienteDTO {
     /**
      * Representa el número de cédula del cliente.
      */
-    private int cedula;
+    private long cedula;
 
     /** 
      * @return el nombre del cliente.
@@ -33,7 +33,7 @@ public class ClienteDTO {
     /**
      * @return la cédula del cliente.
      */
-    public int getCedula() {
+    public long getCedula() {
         return cedula;
     }
 

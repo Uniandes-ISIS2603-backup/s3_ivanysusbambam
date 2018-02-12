@@ -24,14 +24,14 @@ import javax.ws.rs.Produces;
  *
  * @author Felipe Velásquez Montoya
  */
-@Path("clientes/{id:\\d+}/prospectosCompra")
+@Path("clientes/{id:\\d+}/prospectoscompra")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class ProspectoCompraResource {
     
     /**
-     * GET api/clientes/(id)/prospectosCompra Retorna todos los prospectos de 
+     * GET api/clientes/(id)/prospectoscompra Retorna todos los prospectos de 
      * compra de un cliente dado.
      * 
      * <pre>Busca y devuelve todos los prospecros de compra del cliente dado.
@@ -51,7 +51,7 @@ public class ProspectoCompraResource {
     }
     
      /**
-     * GET /api/clientes/(id)/prospectosCompra/(pid): Obtiene un prospecto de compra según su id.
+     * GET /api/clientes/(id)/prospectoscompra/(pid): Obtiene un prospecto de compra según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
@@ -73,7 +73,7 @@ public class ProspectoCompraResource {
     }
     
     /**
-     * PUT /api/clientes/(id)/prospectosCompra/(pid): Obtiene un prospecto de compra según su id.
+     * PUT /api/clientes/(id)/prospectoscompra/(pid): Obtiene un prospecto de compra según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
@@ -95,7 +95,7 @@ public class ProspectoCompraResource {
     }
     
     /**
-     * POST /api/clientes/(id)/prospectosCompra: Crea un nuevo prospecto de compra.
+     * POST /api/clientes/(id)/prospectoscompra: Crea un nuevo prospecto de compra.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
@@ -115,7 +115,7 @@ public class ProspectoCompraResource {
         return null;
     }
     /**
-     * DELETE /api/clientes/(id)/prospectosCompra/(pid):elimina un prospecto de compra según su id.
+     * DELETE /api/clientes/(id)/prospectoscompra/(pid):elimina un prospecto de compra según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
