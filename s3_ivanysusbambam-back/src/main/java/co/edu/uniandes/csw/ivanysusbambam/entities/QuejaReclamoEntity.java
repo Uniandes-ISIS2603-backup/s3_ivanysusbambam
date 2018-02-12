@@ -5,11 +5,14 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
+import java.io.Serializable;
+import javax.persistence.Entity;
 /**
  *
  * @author if.garcia
  */
-public class QuejaReclamoEntity extends BaseEntity{
+@Entity
+public class QuejaReclamoEntity extends BaseEntity implements Serializable{
     
     private String tipo;
     

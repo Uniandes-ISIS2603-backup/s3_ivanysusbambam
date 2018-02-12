@@ -6,10 +6,12 @@
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
+import javax.persistence.Entity;
 /**
  *
  * @author if.garcia
  */
+@Entity
 public class CalificacionTiendaEntity extends BaseEntity implements Serializable{
     
     private String comentario;
