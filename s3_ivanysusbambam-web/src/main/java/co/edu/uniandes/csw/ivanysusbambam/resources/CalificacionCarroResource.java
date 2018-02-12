@@ -9,8 +9,6 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.CalificacionCarroDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.mappers.BusinessLogicExceptionMapper;
-import java.util.ArrayList;
-import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 
@@ -94,6 +92,26 @@ public class CalificacionCarroResource {
      */
     @POST
     public CalificacionCarroDetailDTO postCalificacionCarro(@PathParam("id") Long id, CalificacionCarroDetailDTO calificacionCarro)throws BusinessLogicException{
+        return null;
+    }
+    
+    /**
+     * DELETE /api/ventas/(id)/calificacionCarro
+     * <pre> 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK se eliminó la calificacion del carro.
+     * </code> 
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found no existe la venta id dado.
+     * </code> 
+     * </pre>
+     * @param id id del cliente.
+     * @return JSON el de la calificacion del carro actualizado.
+     * @throws BusinessLogicException si no existe la venta con el id dado.
+     */
+    @DELETE
+    public CalificacionCarroDetailDTO deleteCalificacionCarro(@PathParam("id") Long id) throws BusinessLogicException{
         return null;
     }
     
