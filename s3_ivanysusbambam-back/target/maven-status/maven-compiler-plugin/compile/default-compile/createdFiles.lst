@@ -1,5 +1,0 @@
-co\edu\uniandes\csw\ivanysusbambam\ejb\CityLogic.class
-co\edu\uniandes\csw\ivanysusbambam\entities\BaseEntity.class
-co\edu\uniandes\csw\ivanysusbambam\persistence\CityPersistence.class
-co\edu\uniandes\csw\ivanysusbambam\entities\CityEntity.class
-co\edu\uniandes\csw\ivanysusbambam\exceptions\BusinessLogicException.class
