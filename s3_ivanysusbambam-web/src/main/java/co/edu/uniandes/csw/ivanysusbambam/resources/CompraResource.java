@@ -87,7 +87,7 @@ public class CompraResource {
      */
     @GET
     @Path("{idCompra: \\d+}")
-    public CityDetailDTO getCity(@PathParam("idCompra") String id) {
+    public CompraDetailDTO getCompra(@PathParam("idCompra") String id) {
         return null;
     }
      /**
