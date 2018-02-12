@@ -38,12 +38,16 @@ public class CalificacionTiendaDTO {
     
     
     /**
-     * 
+     * Construye una nueva Calificacion para una tienda
      */
     public CalificacionTiendaDTO(){
         
     }
     
+    /**
+     * Construye una nueva calificacion para una tienda a partir de un objeto Entity
+     * @param calificacionTienda 
+     */
     public CalificacionTiendaDTO(CalificacionTiendaEntity calificacionTienda){
         this.id = calificacionTienda.getId();
         this.name = calificacionTienda.getName();
@@ -52,32 +56,71 @@ public class CalificacionTiendaDTO {
         
     }
     
+    /**
+     * Entrega el identificador unico del objeto
+     * @return 
+     */
     public Long getId(){
         return id;
     }
     
+    /**
+     * Cambia el identificador unico por el Long que entra por parámetro
+     * @param id 
+     */
     public void setId(Long id){
         this.id = id;
     }
+    
+    /**
+     * 
+     * @return 
+     */
     public String getName(){
         return name;
     }
+    /**
+     * 
+     * @param name 
+     */
     public void setName(String name){
         this.name = name;
     }
+    /**
+     * 
+     * @return 
+     */
     public String getComentario(){
         return comentario;
     }
+    /**
+     * 
+     * @param comentario 
+     */
     public void setComentario(String comentario){
         this.comentario = comentario;
     }
+    
+    /**
+     * 
+     * @return 
+     */
     public int getPuntaje(){
         return puntaje;
     }
+    
+    /**
+     * 
+     * @param puntaje 
+     */
     public void setPuntaje(int puntaje){
         this.puntaje = puntaje;
     }
     
+    /**
+     * 
+     * @return 
+     */
     public CalificacionTiendaEntity toEntity(){
         CalificacionTiendaEntity entity = new CalificacionTiendaEntity();
         entity.setId(this.id);
