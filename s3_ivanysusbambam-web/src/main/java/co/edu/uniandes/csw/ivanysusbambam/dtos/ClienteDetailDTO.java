@@ -26,8 +26,7 @@ public class ClienteDetailDTO extends ClienteDTO {
     /**
      * Representa las calificaciones de la tienda hechas por el cliente.
      */
-    //Comentado pues la clase CalificacionTiendaDTO aun no existe.
-    //private List<CalificacionTiendaDTO> calificacionesTienda;
+    private List<CalificacionTiendaDTO> calificacionesTienda;
     
     /**
     * Representa las quejas o reclamos puestas por el cliente.
@@ -38,20 +37,17 @@ public class ClienteDetailDTO extends ClienteDTO {
     /**
      * Representa las compras del cliente.
      */
-     //Comentado pues la clase CompraDTO aún no existe.
-     //private List<CompraDTO> compras;
+    private List<CompraDTO> compras;
     
     /**
      * Representa las ventas del cliente.
      */
-    //Comentado pues la clase VentaDTO aún no existe.
-    //private List<VentaDTO> ventas;
+    private List<VentaDTO> ventas;
     
     /**
      * Representa los medios de pago registrados por el cliente.
      */
-    //Comentado pues la clase MedioDePagoDTO aún no existe.
-    //private List<MedioDePagoDTO>  mediosDePago;
+    private List<MedioDePagoDTO>  mediosDePago;
     
     
     //-----------------------------GETTERS--------------------------------
@@ -67,9 +63,9 @@ public class ClienteDetailDTO extends ClienteDTO {
     /**
      * @return una lista conteniendo todas las calificaciones hechas por el cliente.
      */
-    /*public List<CalificacionTiendaDTO> getCalificacionesTienda(){
+    public List<CalificacionTiendaDTO> getCalificacionesTienda(){
         return calificacionesTienda;
-    }*/
+    }
     
     /**
      * @return una lista conteniendo todas las quejas o reclamos hechas por el cliente.
@@ -81,23 +77,23 @@ public class ClienteDetailDTO extends ClienteDTO {
     /**
      * @return una lista conteniendo todas las compras del cliente.
      */
-    /*public List<CompraDTO> getCompras(){
+    public List<CompraDTO> getCompras(){
         return compras;
-    }*/
+    }
     
     /**
      * @return una lista conteniendo todas las ventas del cliente.
      */
-    /*public List<VentaDTO> getVentas(){
+    public List<VentaDTO> getVentas(){
         return ventas;
-    }*/
+    }
     
     /**
      * @return una lista conteniendo todos los medio de pago registrados por el cliente.
      */
-    /*public List<MedioDePagoDTO> getMediosDePago(){
+    public List<MedioDePagoDTO> getMediosDePago(){
         return mediosDePago;
-    }*/
+    }
     
     //---------------------------ADDERS----------------------------------
     
@@ -115,12 +111,12 @@ public class ClienteDetailDTO extends ClienteDTO {
      * <b>pos</b> se ha añadido la calificacion
      * @param calificacion la calificación que se desea añadir.
      */
-    /*public void addCalificacionTienda(CalificacionTiendaDTO calificacion){
+    public void addCalificacionTienda(CalificacionTiendaDTO calificacion){
         calificacionesTienda.add(calificacion);
-    }*/
+    }
     
     /**
-     * Añade el la queja o reclamo pasada por parametro a las quejas y reclamos del cliente.
+     * Añade la queja o reclamo pasada por parametro a las quejas y reclamos del cliente.
      * <b>pos</b> se ha añadido la queja o reclamo.
      * @param quejaReclamo la queja o reclamo que se desea añadir.
      */
@@ -133,25 +129,25 @@ public class ClienteDetailDTO extends ClienteDTO {
      * <b>pos</b> se ha añadido la compra.
      * @param compra la compra que se desea añadir.
      */
-    /*public void addCompra(CompraDTO compra){
+    public void addCompra(CompraDTO compra){
         compras.add(compra);
-    }*/
+    }
     
     /**
      * Añade la venta pasada por parámetro a las ventas del cliente.
      * <b>pos</b> se ha añadido la venta.
      * @param venta la venta que se desea añadir.
      */
-    /*public void addVenta(VentaDTO venta){
+    public void addVenta(VentaDTO venta){
         ventas.add(venta);
-    }*/
+    }
     
     /**
      * Añade el medio de pago pasado por parámetro a los medio de pago registrados por el cliente.
      * <b>pos</b> se ha añadido el medio de pago.
      * @param medioPago el medio de pago que se desea añadir.
      */
-    /*public void addMedioDePago(MedioDePagoDTO medioPago){
+    public void addMedioDePago(MedioDePagoDTO medioPago){
         mediosDePago.add(medioPago);
-    }*/
+    }
 }

@@ -26,19 +26,19 @@ public class VendedorDetailDTO extends VendedorDTO{
      * Representa las ventas del vendedor.
      */
     //Comentado porque aún no existe VentaDTO
-    //private List<VentaDTO> ventas;
+    private List<VentaDTO> ventas;
     
     /**
      * Representa las compras del vendedor.
      */
     //Comentado porque aún no existe CompraDTO
-    //private List<CompraDTO> compras;
+    private List<CompraDTO> compras;
     
     /**
      * Representa el punto de venta en el que trabaja el vendedor.
      */
     //Comentado porque aún no existe PuntoDeVentaDTO.
-    //private PuntoDeVentaDTO puntoDeVenta;
+    private PuntoDeVentaDTO puntoDeVenta;
     
     //-------------------------GETTERS-------------------------------
     
@@ -53,24 +53,24 @@ public class VendedorDetailDTO extends VendedorDTO{
     /**
      * @return las ventas del vendedor. 
      */
-    /*public List<VentaDTO> getVentas(){
+    public List<VentaDTO> getVentas(){
         return ventas;
-    }*/
+    }
     
     /**
      * @return las compras del vendedor.
      */
-    /*public List<CompraDTO> getCompras(){
-        return compras;s
-    }*/
+    public List<CompraDTO> getCompras(){
+        return compras;
+    }
     
     /**
      * @return el punto de venta del vendedor.
      */
-    /*public PuntoDeVentaDTO getPuntoDeVenta(){
+    public PuntoDeVentaDTO getPuntoDeVenta(){
         return puntoDeVenta;
     }
-    */
+    
     
     //---------------------------SETTERS----------------------------
     
@@ -78,9 +78,9 @@ public class VendedorDetailDTO extends VendedorDTO{
      * Cambia el punto de venta al que pertenece el vendedor.
      * @param puntoDeVenta el punto de venta al que se asignará el vendedor.
      */
-    /*public void setPuntoDeVenta(PuntoDeVentaDTO puntoDeVenta){
+    public void setPuntoDeVenta(PuntoDeVentaDTO puntoDeVenta){
         this.puntoDeVenta = puntoDeVenta;
-    }*/
+    }
     
     //---------------------------ADDERS-----------------------------
     
@@ -98,17 +98,17 @@ public class VendedorDetailDTO extends VendedorDTO{
     * <b>pos: </b> se ha añadido la venta
     * @param venta la venta al vendedor.
     */
-    /*public void addVenta(VentaDTO venta){
+    public void addVenta(VentaDTO venta){
         ventas.add(venta);
-    }*/
+    }
     
     /**
     * Añade una compra al vendedor.
     * <b>pos: </b> se ha añadido la compra.
     * @param compra la compra a a ser añadida.
     */
-    /*public void addCompra(CompraDTO compra){
+    public void addCompra(CompraDTO compra){
         compras.add(compra);
     }
-    */ 
+     
 }
