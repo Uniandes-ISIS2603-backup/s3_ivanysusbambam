@@ -116,7 +116,7 @@ public class ClienteDetailDTO extends ClienteDTO {
     }
     
     /**
-     * Añade el la queja o reclamo pasada por parametro a las quejas y reclamos del cliente.
+     * Añade la queja o reclamo pasada por parametro a las quejas y reclamos del cliente.
      * <b>pos</b> se ha añadido la queja o reclamo.
      * @param quejaReclamo la queja o reclamo que se desea añadir.
      */

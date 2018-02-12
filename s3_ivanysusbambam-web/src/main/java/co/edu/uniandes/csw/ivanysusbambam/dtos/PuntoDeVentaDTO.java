@@ -26,6 +26,7 @@ public class PuntoDeVentaDTO {
     public PuntoDeVentaDTO(){
         
     }
+    
     public PuntoDeVentaDTO(PuntoDeVentaEntity puntoDeVenta){
         this.direccion = puntoDeVenta.getDireccion();
         this.id = puntoDeVenta.getId();
