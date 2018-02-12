@@ -89,7 +89,7 @@ public class ProspectoCompraResource {
      * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
      */
     @PUT
-    @Path("{pid: \\d+")
+    @Path("{pid: \\d+}")
     public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
         return null;
     }
