@@ -31,6 +31,7 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  *      -Añadidos getters y setters.
  * 12/02/2018
  *      -Extendida documentación.
+ *      -Añadidos setters faltantes necesarios para JAXRS.
  * </pre>
  */
 public class ProspectoCompraDTO {
@@ -69,8 +70,16 @@ public class ProspectoCompraDTO {
     public void setTexto(String texto) {
         this.texto = texto;
     }
+
+    /**
+     * 
+     * @param id el id del prospecto.
+     */
+    public void setId(long id) {
+        this.id = id;
+    }
     
-    //Se omite SET id pues este no debería cambiar.
+    
     
     
 }

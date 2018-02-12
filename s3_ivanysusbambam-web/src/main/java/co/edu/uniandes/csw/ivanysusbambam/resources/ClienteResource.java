@@ -9,6 +9,7 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -45,7 +46,9 @@ public class ClienteResource {
      */
     @GET
     public List<ClienteDTO> getClientes(){
-        return null;
+        //List clientes = null;
+        List<ClienteDTO> clientes =  new ArrayList<>();
+        return clientes;
     }
     
     /**
@@ -64,7 +67,7 @@ public class ClienteResource {
      */
     @Path("{id: \\d+}")
     @GET
-    public ClienteDetailDTO getCliente(@PathParam("id")int id){
+    public ClienteDetailDTO getCliente(@PathParam("id")long id){
         return null;
     }
     
@@ -84,8 +87,7 @@ public class ClienteResource {
      * @throws BusinessLogicException si ya existe el cliente.
      */
     @POST
-    public ClienteDTO postCliente(ClienteDetailDTO cliente ) throws BusinessLogicException{
-        
+    public ClienteDetailDTO postCliente(ClienteDTO cliente ) throws BusinessLogicException{
         //Debe retornar el DetailDTO correspondiente al DTO que le entra por param.
         return null;
     }
@@ -108,7 +110,10 @@ public class ClienteResource {
      */
     @Path("{id: \\d+}")
     @PUT
-    public ClienteDetailDTO putCliente(@PathParam("id") int id, ClienteDetailDTO cliente) throws BusinessLogicException{
+    public ClienteDetailDTO putCliente(@PathParam("id") long id, ClienteDetailDTO cliente) throws BusinessLogicException{
+        System.out.println("cliente: " + cliente);
+        System.out.println(cliente.getNombre());
+        System.out.println(cliente.getCedula());
         return cliente;
     }
     
@@ -129,7 +134,7 @@ public class ClienteResource {
      */
     @Path("{id: \\d+}")
     @DELETE
-    public ClienteDetailDTO deleteCliente(@PathParam("id") int id) throws BusinessLogicException{
+    public ClienteDetailDTO deleteCliente(@PathParam("id") long id) throws BusinessLogicException{
       return null;  
     }
 }

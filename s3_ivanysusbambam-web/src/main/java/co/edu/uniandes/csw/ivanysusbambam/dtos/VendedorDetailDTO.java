@@ -44,6 +44,7 @@ import java.util.List;
  *      -Añadidos getters, setters y adders.
  * 12/02/2018:
  *      -Extendida documentación.
+ *      -Añadidos setters faltantes necesarios para JAXRS
  * </pre>
  */
 public class VendedorDetailDTO extends VendedorDTO{
@@ -112,7 +113,33 @@ public class VendedorDetailDTO extends VendedorDTO{
     public void setPuntoDeVenta(PuntoDeVentaDTO puntoDeVenta){
         this.puntoDeVenta = puntoDeVenta;
     }
+
+    /**
+     * 
+     * @param prospectosCompra lista con los prospectos de compra creados por el vendedor.
+     */
+    public void setProspectosCompra(List<ProspectoCompraDTO> prospectosCompra) {
+        this.prospectosCompra = prospectosCompra;
+    }
+
+    /**
+     * 
+     * @param ventas lista con las ventas del vendedor.
+     */
+    public void setVentas(List<VentaDTO> ventas) {
+        this.ventas = ventas;
+    }
+
+    /**
+     * 
+     * @param compras lista con las ventas del vendedor.
+     */
+    public void setCompras(List<CompraDTO> compras) {
+        this.compras = compras;
+    }
     
+    
+        
     //---------------------------ADDERS-----------------------------
     
     /**
@@ -141,5 +168,7 @@ public class VendedorDetailDTO extends VendedorDTO{
     public void addCompra(CompraDTO compra){
         compras.add(compra);
     }
+    
+    
      
 }

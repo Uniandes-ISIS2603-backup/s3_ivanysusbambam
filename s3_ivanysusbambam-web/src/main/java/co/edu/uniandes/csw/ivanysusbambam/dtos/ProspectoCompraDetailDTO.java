@@ -41,6 +41,7 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  *      -Añadidos getters.
  * 12/02/2018
  *      -Extendida documentación.
+ *      -Añadidos setters faltandes necesarios para funcionamiento de JAXRS
  * </pre>
  */
 public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
@@ -86,7 +87,30 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
    
     
     //---------------------------SETTERS-------------------------
-    //Se omiten setters, un cambio en alguno de los atributos correspondería a
-    //un nuevo prospecto de compra, no a la modificación de un prospecto 
-    //existente.
+
+    /**
+     * 
+     * @param cliente cliente interesado en el automóvil.
+     */
+    public void setCliente(ClienteDTO cliente) {
+        this.cliente = cliente;
+    }
+
+    /**
+     * 
+     * @param vendedor vendedor creador del prospecto.
+     */
+    public void setVendedor(VendedorDTO vendedor) {
+        this.vendedor = vendedor;
+    }
+
+    /**
+     * 
+     * @param automovil automóvil en el que se encuentra interesado el cliente.
+     */
+    public void setAutomovil(AutomovilDTO automovil) {
+        this.automovil = automovil;
+    }
+   
+    
 }

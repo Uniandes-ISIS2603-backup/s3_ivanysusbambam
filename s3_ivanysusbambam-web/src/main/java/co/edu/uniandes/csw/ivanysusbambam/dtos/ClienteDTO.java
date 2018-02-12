@@ -45,7 +45,8 @@ public class ClienteDTO {
      * Representa el número de cédula del cliente.
      */
     private long cedula;
-
+    
+    //----------------------GETTERS-----------------------------------------
     /** 
      * @return el nombre del cliente.
      */
@@ -60,6 +61,8 @@ public class ClienteDTO {
         return cedula;
     }
 
+    //---------------------SETTERS---------------------------
+    
     /**
      * @param nombre nuevo nombre del cliente 
      */
@@ -67,8 +70,19 @@ public class ClienteDTO {
         this.nombre = nombre;
     }
     
+    /**
+     * Este método no debería ser llamado por nadie menos JAX.
+     * @param cedula del cliente
+     */
+    public void setCedula(long cedula) {
+        this.cedula = cedula;
+    }
+    
+    
     //Se omite el setCedula pues no tendría sentido que un cliente pudiera 
     //cambiar su número de cédula.
+
+  
     
     
     

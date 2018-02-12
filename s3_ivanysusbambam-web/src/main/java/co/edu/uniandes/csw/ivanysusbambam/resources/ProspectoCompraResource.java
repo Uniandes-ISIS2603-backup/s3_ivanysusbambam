@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ProspectoCompraDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ProspectoCompraDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -46,8 +47,9 @@ public class ProspectoCompraResource {
      * @throws BusinessLogicException si el cliente con el id dado no existe.
      */
     @GET
-    public List<ProspectoCompraDTO> getProspectosCompra(@PathParam("id") int id) throws BusinessLogicException{
-        return null;
+    public List<ProspectoCompraDTO> getProspectosCompra(@PathParam("id") long id) throws BusinessLogicException{
+        List<ProspectoCompraDTO> prospectosCompra = new ArrayList<>();
+        return prospectosCompra;
     }
     
      /**
@@ -68,7 +70,7 @@ public class ProspectoCompraResource {
      */
     @GET
     @Path("{pid: \\d+}")
-    public ProspectoCompraDetailDTO getProspectoCompra(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
+    public ProspectoCompraDetailDTO getProspectoCompra(@PathParam("id") long id, @PathParam("pid") long pid) throws BusinessLogicException{
         return null;
     }
     
@@ -85,13 +87,14 @@ public class ProspectoCompraResource {
      * </pre>
      * @param id id del cliente.
      * @param pid id del prospecto de compra.
+     * @param prospecto prospecto de compra con la nueva información.
      * @return JSON el prospecto de compra actualizado.
      * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
      */
     @PUT
     @Path("{pid: \\d+}")
-    public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
-        return null;
+    public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("id") long id, @PathParam("pid") long pid, ProspectoCompraDetailDTO prospecto) throws BusinessLogicException{
+        return prospecto;
     }
     
     /**
@@ -111,8 +114,8 @@ public class ProspectoCompraResource {
      * @throws BusinessLogicException si no existe el cliente con el id dado.
      */
     @POST
-    public ProspectoCompraDetailDTO postProspectoCompra(@PathParam("id") int id, ProspectoCompraDetailDTO prospecto)throws BusinessLogicException{
-        return null;
+    public ProspectoCompraDetailDTO postProspectoCompra(@PathParam("id") long id, ProspectoCompraDetailDTO prospecto)throws BusinessLogicException{
+        return prospecto;
     }
     /**
      * DELETE /api/clientes/(id)/prospectoscompra/(pid):elimina un prospecto de compra según su id.
@@ -132,7 +135,7 @@ public class ProspectoCompraResource {
      */
     @DELETE
     @Path("{pid: \\d+}")
-    public ProspectoCompraDetailDTO deleteProspectoCompra(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
+    public ProspectoCompraDetailDTO deleteProspectoCompra(@PathParam("id") long id, @PathParam("pid") long pid) throws BusinessLogicException{
         return null;
     }
     

@@ -33,6 +33,7 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  *      -Añadidos getters y setters.
  * 12/02/2018
  *      -Extendida documentación.
+ *      -Añadidos setters faltantes necesarios para JAX-RS
  * </pre>
  */
 public class VendedorDTO {
@@ -45,12 +46,12 @@ public class VendedorDTO {
     /**
      * Representa la cédula del vendedor.
      */
-    private int cedula;
+    private long cedula;
     
     /**
      * Representa el carnet del vendedor.
      */
-    private int carnetVendedor;
+    private long carnetVendedor;
 
     //---------------------GETTERS-------------------------
     
@@ -66,7 +67,7 @@ public class VendedorDTO {
      * 
      * @return la cédula del vendedor.
      */
-    public int getCedula() {
+    public long getCedula() {
         return cedula;
     }
 
@@ -74,7 +75,7 @@ public class VendedorDTO {
      * 
      * @return el carnet del vendedor.
      */
-    public int getCarnetVendedor() {
+    public long getCarnetVendedor() {
         return carnetVendedor;
     }
 
@@ -87,7 +88,21 @@ public class VendedorDTO {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+    
+    /**
+     * Solo para uso de JAXRS
+     * @param cedula número de cédula del vendedor
+     */
+    public void setCedula(long cedula) {
+        this.cedula = cedula;
+    }
+
+    /**
+     * Solo para uso de JAXRS
+     * @param carnetVendedor el número de carnet del vendedor.
+     */
+    public void setCarnetVendedor(long carnetVendedor) {
+        this.carnetVendedor = carnetVendedor;
+    }
        
-    //Se omiten setters de cédula y carnet, pues no debería ser posible que 
-    //una persona cambiara de cédula.
 }
