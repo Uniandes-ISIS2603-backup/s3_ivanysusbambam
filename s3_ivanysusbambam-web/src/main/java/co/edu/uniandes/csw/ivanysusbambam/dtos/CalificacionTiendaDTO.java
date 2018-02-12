@@ -73,28 +73,28 @@ public class CalificacionTiendaDTO {
     }
     
     /**
-     * 
-     * @return 
+     * Retorna el nombre de la entidad correspondiente a la calificacion
+     * @return name
      */
     public String getName(){
         return name;
     }
     /**
-     * 
+     * Asigna un nombre a la entidad correspondiente a la calificacion
      * @param name 
      */
     public void setName(String name){
         this.name = name;
     }
     /**
-     * 
-     * @return 
+     * Retorna el comentario puesto por el cliente al agregar la calificacion
+     * @return comentario
      */
     public String getComentario(){
         return comentario;
     }
     /**
-     * 
+     * Asigna el valor que el cliente haya puesto a la calificacion de la tienda
      * @param comentario 
      */
     public void setComentario(String comentario){
@@ -102,15 +102,15 @@ public class CalificacionTiendaDTO {
     }
     
     /**
-     * 
-     * @return 
+     * Obtiene el puntaje que el cliente haya asignado segun la tienda
+     * @return puntaje
      */
     public int getPuntaje(){
         return puntaje;
     }
     
     /**
-     * 
+     * Asigna el puntaje que el cliente haya puesto a la tienda
      * @param puntaje 
      */
     public void setPuntaje(int puntaje){
@@ -118,8 +118,8 @@ public class CalificacionTiendaDTO {
     }
     
     /**
-     * 
-     * @return 
+     * Convierte el objeto en una entidad 
+     * @return entity
      */
     public CalificacionTiendaEntity toEntity(){
         CalificacionTiendaEntity entity = new CalificacionTiendaEntity();
