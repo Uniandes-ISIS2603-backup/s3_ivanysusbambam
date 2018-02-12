@@ -23,6 +23,7 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
     private List<VentaDTO> ventas;
     
     public void inicializarListas(){
+        //automoviles = new ArrayList<>();
         vendedores = new ArrayList<>();
         compras = new ArrayList<>();
         ventas = new ArrayList<>();
@@ -53,8 +54,8 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
     }
     
     /*
-    public void addAutomovil(AutomovilDTO auto){
-        this.auto = auto;
+    public void addAutomovil(AutomovilDTO nuevoAuto){
+        automoviles.add(nuevoAuto);
     }
     */
 }
