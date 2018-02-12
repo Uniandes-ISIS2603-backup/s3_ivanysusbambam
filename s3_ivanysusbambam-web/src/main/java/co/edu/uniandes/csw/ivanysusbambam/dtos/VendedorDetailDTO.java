@@ -7,13 +7,44 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 import java.util.List;
 
-/**
+/**Objeto de transferencia que contiene información detallada de un vendedor.
+ *Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "nombre": string,
+ *      "cedula": number,
+ *      "carnetVendedor": number,
+ *      "prospectosCompra": JSONarray,
+ *      "ventas" : JSONarray, 
+ *      "compras": JSONarray,
+ *      "puntoDeVenta": JSON
+ *   }
+ * </pre>
+ * Por ejemplo un vendedr se representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "nombre": "Joseph Ortiz",
+ *      "cedula": 1234567890,
+ *      "carnetVendedor" : 1432,
+ *      "prospectosCompra": [{"texto" : "Cliente muy interesado en dodge ram 2008, "id": 153}],
+ *      "ventas": [{"idVenta":1435},{"idVenta":27932}],
+ *      "compras": [{"idCompra: 243}],
+ *      "puntoDeVenta":{"dirección": "carrera 15 # 127", "teléfono":6343421},"nombre": "Mi automóvil unicentro"}
+ * 
+ *   }
  *
+ * </pre>
  * @author Felipe Velásquez Montoya
+ * <pre>
  * Verisones: 
  *  10/02/2018:
- *      -Añadidos atributos 
+ *      -Añadidos atributos. 
  *      -Añadidos getters, setters y adders.
+ * 12/02/2018:
+ *      -Extendida documentación.
+ * </pre>
  */
 public class VendedorDetailDTO extends VendedorDTO{
     

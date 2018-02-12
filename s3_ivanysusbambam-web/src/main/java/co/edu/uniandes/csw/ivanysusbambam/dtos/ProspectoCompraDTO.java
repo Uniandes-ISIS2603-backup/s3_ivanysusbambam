@@ -5,13 +5,33 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
-/**
+/**Objeto de transferencia de un prospecto de compra cliente.<br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "texto": string,
+ *      "id": number
+ *   }
+ * </pre>
+ * Por ejemplo un prospecto de compra representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "texto": "Cliente parece muy interesado en compra de Chevrolet Sail placas abc123.",
+ *      "id": 12431
+ *   }
  *
+ * </pre>
  * @author Felipe Velásquez Montoya
+ * <pre>
  * Versiones: 
  *  10/02/2018:
  *      -Añadido atributo
  *      -Añadidos getters y setters.
+ * 12/02/2018
+ *      -Extendida documentación.
+ * </pre>
  */
 public class ProspectoCompraDTO {
     

@@ -5,14 +5,35 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
-/**
+/**Objeto de transferencia que representa a un vendedor.
+ *Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "nombre": string,
+ *      "cedula": number,
+ *      "carnetVendedor": number
+ *   }
+ * </pre>
+ * Por ejemplo un vendedr se representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "nombre": "Joseph Ortiz",
+ *      "cedula": 1234567890,
+ *      "carnetVendedor" : 1432
+ *   }
  *
+ * </pre>
  * @author Felipe Velásquez Montoya
+ * <pre>
  * Versiones: 
  *  10/02/2018:
  *      -Añadidos atributos.
  *      -Añadidos getters y setters.
- *      
+ * 12/02/2018
+ *      -Extendida documentación.
+ * </pre>
  */
 public class VendedorDTO {
     

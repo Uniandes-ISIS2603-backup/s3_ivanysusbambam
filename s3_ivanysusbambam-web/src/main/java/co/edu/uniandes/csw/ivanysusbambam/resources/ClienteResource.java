@@ -84,8 +84,10 @@ public class ClienteResource {
      * @throws BusinessLogicException si ya existe el cliente.
      */
     @POST
-    public ClienteDetailDTO postCliente(ClienteDetailDTO cliente ) throws BusinessLogicException{
-         return null;
+    public ClienteDTO postCliente(ClienteDetailDTO cliente ) throws BusinessLogicException{
+        
+        //Debe retornar el DetailDTO correspondiente al DTO que le entra por param.
+        return null;
     }
     
     /**
@@ -107,7 +109,7 @@ public class ClienteResource {
     @Path("{id: \\d+}")
     @PUT
     public ClienteDetailDTO putCliente(@PathParam("id") int id, ClienteDetailDTO cliente) throws BusinessLogicException{
-        return null;
+        return cliente;
     }
     
     /**

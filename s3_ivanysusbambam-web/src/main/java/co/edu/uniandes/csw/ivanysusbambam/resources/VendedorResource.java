@@ -85,7 +85,9 @@ public class VendedorResource {
      * @throws BusinessLogicException si ya existía un vendedor con el mismo carnet.
      */
     @POST
-    public VendedorDetailDTO postVendedor(VendedorDetailDTO vendedor) throws BusinessLogicException{
+    public VendedorDTO postVendedor(VendedorDetailDTO vendedor) throws BusinessLogicException{
+        
+        //debe retornar el dDTO correspondiente al DTO.
         return null;
     }
     
@@ -108,7 +110,7 @@ public class VendedorResource {
     @PUT
     @Path("{id: \\d+}")
     public VendedorDetailDTO putVendedor(@PathParam("id") int id, VendedorDetailDTO vendedor) throws BusinessLogicException{
-        return null;
+        return vendedor;
     }
     
     /**
