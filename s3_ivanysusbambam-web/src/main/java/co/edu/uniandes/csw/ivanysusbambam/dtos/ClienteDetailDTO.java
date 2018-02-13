@@ -31,8 +31,8 @@ public class ClienteDetailDTO extends ClienteDTO {
     /**
     * Representa las quejas o reclamos puestas por el cliente.
     */
-    //Comentado pues la clase QuejaReclamoDTO aún no existe.
-    //private List<QuejaReclamoDTO> quejasReclamos;
+    
+    private List<QuejaReclamoDTO> quejasReclamos;
     
     /**
      * Representa las compras del cliente.

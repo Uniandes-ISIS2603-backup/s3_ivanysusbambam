@@ -27,9 +27,9 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
 
      /**
      * Representa el automóvil en el que está interesado el cliente.
-     */
-    //comentado dado que AutomovilDTO no existe aún.
-    //private AutomovilDTO automovil;
+     */    
+    private AutomovilDTO automovil;
+
     
     //-------------------------------------GETTERS-----------------------------
     
@@ -50,9 +50,9 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
      /**
      * @return el automóvil en el que está interesado el cliente.
      */
-    /*public AutomovilDTO getAutomovil(){
+    public AutomovilDTO getAutomovil(){
         return automovil;
-    }*/
+    }
    
     
     //---------------------------SETTERS-------------------------

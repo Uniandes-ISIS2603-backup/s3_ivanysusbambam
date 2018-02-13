@@ -23,7 +23,7 @@ public class ProspectoCompraDTO {
     /**
      * Representa el identificador único del prospecto de compra.
      */
-    private int id;
+    private long id;
 
     
     //---------------------------------------GETTERS----------------------------
@@ -38,7 +38,7 @@ public class ProspectoCompraDTO {
      * 
      * @return identificador del prospecto.
      */
-    public int getId(){
+    public long getId(){
         return id;
     }
 
