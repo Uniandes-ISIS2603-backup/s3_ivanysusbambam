@@ -455,34 +455,34 @@
 						"description": ""
 					},
 					"response": []
+				},
+				{
+					"name": "DELETE prospectocompra",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/13642/prospectoscompra/1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes",
+								"13642",
+								"prospectoscompra",
+								"1234"
+							]
+						},
+						"description": ""
+					},
+					"response": []
 				}
 			]
-		},
-		{
-			"name": "DELETE prospectocompra",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"body": {},
-				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/13642/prospectoscompra/1234",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"s3_ivanysusbambam-web",
-						"api",
-						"clientes",
-						"13642",
-						"prospectoscompra",
-						"1234"
-					]
-				},
-				"description": ""
-			},
-			"response": []
 		}
 	]
 }
