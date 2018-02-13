@@ -1,0 +1,2254 @@
+
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0",
+        "title": "ivanysusbambam-web"
+    },
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "schemes": [
+        "http"
+    ],
+    "paths": {
+        "/automoviles": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/AutomovilDetailDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AutomovilDetailDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/AutomovilDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/automoviles/{id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/AutomovilDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/AutomovilDetailDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/AutomovilDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "headers": {
+                        }
+                    }
+                }
+            }
+        },
+        "/calificacionCarro": {
+            "post": {
+                "description": "POST /api/ventas/(id)/prospectosCompra: Crea una nueva calificación de carro.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se creóla nueva calificacion.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe la venta con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la venta."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionCarroDetailDTO"
+                        },
+                        "description": "la calificacion que se añadira que se añadirá."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionCarroDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "DELETE /api/ventas/(id)/calificacionCarro\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se eliminó la calificacion del carro.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe la venta id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionCarroDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/calificacionCarro/{idCarro}": {
+            "put": {
+                "description": "PUT /api/centas/(idVenta)/CalificacionCarro/(idCarro): Actualiza un prospecto de compra según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se actualizó la calificación del carro.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe el cliente o prospecto de compra con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "idCarro",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "name": "idVenta",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la venta."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionCarroDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/calificacionCarro/{id}": {
+            "get": {
+                "description": "GET api/venta/(id)/calificacionCarro Retorna la calificacion de un carro \n respectivo a una venta.\n \n <pre>Busca y devuelve la calificacion de un carro respectivo a una venta.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve la calificacion de la venta indicada.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador unico de la venta."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionCarroDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/calificacionesTienda": {
+            "get": {
+                "description": "GET api/clientes/(id)/calificacionTienda Retorna todas las calificaciones  \n que un cliente ha puesto a una lista de tiendas\n \n <pre>Busca y devuelve todas las calificaciones que un cliente ha dado.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve todas las calificaciones del cliente.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "identificador unico del cliente."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CalificacionTiendaDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "POST /api/clientes/(id)/calificacionTienda: Crea un nuevo prospecto de compra.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se creó la nueva calificacion.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe el cliente el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionTiendaDetailDTO"
+                        },
+                        "description": "calificacion de la tienda que se añadirá."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionTiendaDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/calificacionesTienda/{pid}": {
+            "get": {
+                "description": "GET /api/clientes/(id)/calificacionesTienda/(pid): Obtiene una calificacion según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se encontró la calificacion.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un un cliente o calificacion con los id dados.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la calificacion."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionTiendaDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PUT /api/clientes/(id)/calificacionesTienda/(pid): Actualiza una calificacion de una tienda según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se actualizó la calificacion.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe el cliente o la calificacion con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la calificacion de la tienda."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionTiendaDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "DELETE /api/clientes/(id)/calificacionesTienda/(pid):elimina una calificacion según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se eliminó la calificacion.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe el cliente o la calificacion con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la calificacion de la tienda."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CalificacionTiendaDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/clientes": {
+            "get": {
+                "description": "GET /api/clientes: Retorna todos los clientes registrados.\n \n <pre>Busca y devuelve todos los clientes que existen en la aplicacion.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve todos los clientes de la aplicacion.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ClienteDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "POST /api/clientes: Crea un nuevo cliente.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se crea el nuevo cliente\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un cliente con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ClienteDTO"
+                        },
+                        "description": "el nuevo cliente."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ClienteDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/clientes/{id}": {
+            "get": {
+                "description": "GET /api/clientes/(id): Obtiene un cliente según su cédula.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve el cliente correspondiente al id.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un cliente con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "cédula del cliente que se busca."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ClienteDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PUT /api/clientes/(id): Actualiza un cliente.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se actualiza el cliente\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un cliente con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "cédula del cliente que se actualizará"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ClienteDetailDTO"
+                        },
+                        "description": "cliente con la información actualizada."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ClienteDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "DELETE /api/clientes/(id): Elimina un cliente.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se elimina el cliente\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un cliente con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "cédula del cliente que se eliminará."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ClienteDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/clientes/{id}/prospectoscompra": {
+            "get": {
+                "description": "GET api/clientes/(id)/prospectoscompra Retorna todos los prospectos de \n compra de un cliente dado.\n \n <pre>Busca y devuelve todos los prospecros de compra del cliente dado.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve todos los prospectos de compra del cliente.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "cédula del cliente."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ProspectoCompraDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "POST /api/clientes/(id)/prospectoscompra: Crea un nuevo prospecto de compra.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se creó el prospecto de compra.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe el cliente el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ProspectoCompraDetailDTO"
+                        },
+                        "description": "el prospecto de compra que se añadirá."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ProspectoCompraDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/clientes/{id}/prospectoscompra/{pid}": {
+            "get": {
+                "description": "GET /api/clientes/(id)/prospectoscompra/(pid): Obtiene un prospecto de compra según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se encontró el prospecto de compra..\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un un cliente o prospecto de compra con los id dados.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del prospecto de compra."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ProspectoCompraDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PUT /api/clientes/(id)/prospectoscompra/(pid): Obtiene un prospecto de compra según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se actualizó el prospecto de compra.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe el cliente o prospecto de compra con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del prospecto de compra."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ProspectoCompraDetailDTO"
+                        },
+                        "description": "prospecto de compra con la nueva información."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ProspectoCompraDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "DELETE /api/clientes/(id)/prospectoscompra/(pid):elimina un prospecto de compra según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se eliminó el prospecto de compra.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe el cliente o prospecto de compra con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del cliente."
+                    },
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id del prospecto de compra."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ProspectoCompraDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/compras": {
+            "get": {
+                "description": "<h1>GET /api/compras : Obtener todas las compras.</h1>\n \n <pre>Busca y devuelve todas las compras que existen en la aplicacion.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve todas las compras de la aplicacion.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/CompraDetailDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "<h1>POST /api/compras : Crear una compra.</h1>\n \n <pre>Cuerpo de petición: JSON {@link CompraDTO}.\n \n Crea una nueva compra con la informacion que se recibe en el cuerpo \n de la petición y se regresa un objeto identico con un id auto-generado \n por la base de datos.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Creó la nueva compra .\n </code>\n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 412 Precodition Failed: Ya existe la compra.\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CompraDetailDTO"
+                        },
+                        "description": "{@link CompraDetailDTO} - La compra que se desea guardar."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CompraDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/compras/{idCompra}": {
+            "get": {
+                "description": "<h1>GET /api/compras/{id} : Obtener compra por id.</h1>\n \n <pre>Busca la compra con el id asociado recibido en la URL y la devuelve.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve la compra correspondiente al id.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe una compra con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "idCompra",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la compra que se esta buscando."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CompraDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "<h1>PUT /api/compras/{id} : Actualizar compra con el id dado.</h1>\n <pre>Cuerpo de petición: JSON {@link CityDetailDTO}.\n \n Actualiza la compra con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Actualiza la compra con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found. No existe una ciudad con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "idCompra",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/CompraDetailDTO"
+                        },
+                        "description": "{@link CompraDetailDTO} La compra que se desea guardar."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/CompraDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "<h1>DELETE /api/compras/{id} : Borrar compra por id.</h1>\n \n <pre>Borra la compra con el id asociado recibido en la URL.\n \n Códigos de respuesta:<br>\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Elimina la ciudad correspondiente al id dado.</code>\n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found. No existe una compra con el id dado.\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "idCompra",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la compra que se desea borrar."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "headers": {
+                        }
+                    }
+                }
+            }
+        },
+        "/marcas": {
+            "get": {
+                "description": "<h1>GET /api/marcas : Obtener todas las marcas.</h1>\n \n <pre>Retorna todas las marcas adscritas al concesionario\n \n Códigos de respuesta:\n <code style=\"color: #2A0A0A; background-color: #B40404;\">\n Retorna correctamente.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/MarcaDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "<h1>POST /api/Marcas : Crea una nueva marca.</h1>\n \n <pre>Cuerpo de petición: JSON {@link MarcaDTO}.\n \n Crea una marca, como la recibida por parámetro\n \n Codigos de respuesta:\n <code style=\"color:#2A0A0A;; background-color: #B40404;\">\n Se creó correctamente la marca\n </code>\n <code style=\"color: :#2A0A0A; background-color: #AEB404;\">\n 412 Precodition Failed: Ya existe la marca\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        },
+                        "description": "{@link MarcaDTO} - La marca que se desea guardar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/marcas/{Nombre}": {
+            "put": {
+                "description": "<h1>PUT /api/marcas/{id} : Actualizar la marca con el nombre dado.</h1>\n <pre>Cuerpo de petición: JSON {@link MarcaDTO}.\n \n Actualiza la marca con el nombre dado por parámetro.\n \n Codigos de respuesta:\n <code style=\"color: #2A0A0A; background-color: #B40404;\">\n Actualiza la marca con el nombre dado por parámetro y la retorna.</code> \n <code style=\"color:#2A0A0A; background-color:#AEB404;\">\n 404 Not Found. No existe una marca con el nombre dado\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Nombre",
+                        "in": "path",
+                        "required": true,
+                        "description": "Nombre de la marca que se quiere actualizar"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        },
+                        "description": "{@link MarcaDTO} La marca que se quiere guardar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/marcas/{nomMarca}": {
+            "delete": {
+                "description": "<h1>DELETE /api/marcas/{id} : Borrar una marca por nombre.</h1>\n \n <pre>Borra la marca con el nombre asociado\n \n Códigos de respuesta:<br>\n <code style=\"color: #2A0A0A; background-color: #B40404;\">\n Elimina correctamente la marca con el nombre asociado.</code>\n <code style=\"color:#2A0A0A; background-color: #AEB404;\">\n 404 Not Found. No existe una marca, con el nombre asociado.\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "nomMarca",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la marca que se desea borrar"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "headers": {
+                        }
+                    }
+                }
+            }
+        },
+        "/marcas/{nombre}": {
+            "get": {
+                "description": "<h1>GET /api/marcas/{nombre} : Buscar marca por nombre.</h1>\n \n <pre>Busca la marca requerida y la retorna\n \n Códigos de respuesta:\n <code style=\"color:#2A0A0A; background-color: #B40404;\">\n Retorna correctamente la marca según su nombre\n </code> \n <code style=\"color: #2A0A0A; background-color: #AEB404;\">\n 404 Not Found No existe la marca que se  busca\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "nombre",
+                        "in": "path",
+                        "required": true,
+                        "description": "Nombre de la marca que se busca"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/modelos": {
+            "get": {
+                "description": "<h1>GET /api/modelos : Obtener los modelos.</h1>\n \n <pre>Retorna todos los modelos adscritos al concesionario\n \n Códigos de respuesta:\n <code style=\"color: #2A0A0A; background-color: #B40404;\">\n Retorna correctamente.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/ModelDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "<h1>POST /api/Modelos : Crea un nuevo modelo.</h1>\n \n <pre>Cuerpo de petición: JSON {@link ModelDTO}.\n \n Crea un modelo, similar al recibido por parámetro\n \n Codigos de respuesta:\n <code style=\"color:#2A0A0A;; background-color: #B40404;\">\n Se creó correctamente el modelo\n </code>\n <code style=\"color: :#2A0A0A; background-color: #AEB404;\">\n 412 Precodition Failed: Ya existe el modelo\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        },
+                        "description": "{@link ModelDTO} - El modelo que se desea guardar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/modelos/{Nombre}": {
+            "put": {
+                "description": "<h1>PUT /api/modelos/{id} : Actualizar el modelo con las especificaciones dadas.</h1>\n <pre>Cuerpo de petición: JSON {@link ModelDTO}.\n \n Actualiza el modelo con las especificaciones dadas por parámetro\n \n Codigos de respuesta:\n <code style=\"color: #2A0A0A; background-color: #B40404;\">\n Actualiza el modelo con las especificaciones dadas por parámetro y lo retorna.</code> \n <code style=\"color:#2A0A0A; background-color:#AEB404;\">\n 404 Not Found. No existe un modelo con el nombre dado por parámetro\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "Nombre",
+                        "in": "path",
+                        "required": true,
+                        "description": "Nombre del modelo que se quiere actualizar"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        },
+                        "description": "{@link ModeloDTO} El modelo que se quiere guardar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/modelos/{nomMarca}": {
+            "delete": {
+                "description": "<h1>DELETE /api/modelos/{id} : Borrar un modelo por la placa.</h1>\n \n <pre>Borra un modelo por la placa asociada\n \n Códigos de respuesta:<br>\n <code style=\"color: #2A0A0A; background-color: #B40404;\">\n Elimina correctamente el modelo con la placa asociada.</code>\n <code style=\"color:#2A0A0A; background-color: #AEB404;\">\n 404 Not Found. No existe un modelo, con la placa asociada.\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "nomMarca",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la placa perteneciente al modelo que se desea borrar"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "headers": {
+                        }
+                    }
+                }
+            }
+        },
+        "/modelos/{spec}": {
+            "get": {
+                "description": "<h1>GET /api/modelos : Obtener los modelos.</h1>\n \n <pre>Retorna todos los modelos adscritos al concesionario, con las especificaciones deseadas\n \n Códigos de respuesta:\n <code style=\"color: #2A0A0A; background-color: #B40404;\">\n Retorna correctamente.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "string",
+                        "name": "nombre",
+                        "in": "path",
+                        "required": true,
+                        "description": "especificacion del modelo que se desea buscar"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/ModelDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/puntoDeVenta": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/PuntoDeVentaDetailDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PuntoDeVentaDetailDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/PuntoDeVentaDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/puntoDeVenta/{id}": {
+            "get": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/PuntoDeVentaDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/PuntoDeVentaDetailDTO"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/PuntoDeVentaDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/PuntoDeVentaDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/quejasreclamos": {
+            "get": {
+                "description": "GET api/quejasReclamos Retorna todos los reclamos\n \n <pre>Busca y devuelve todos los reclamos .\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve todos los reclamos </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/QuejaReclamoDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "POST /api/quejasreclamos: Crea una nueva queja o reclamo.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se creó la nueva calificacion.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QuejaReclamoDetailDTO"
+                        },
+                        "description": "que se añadirá."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuejaReclamoDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/quejasreclamos/{pid}": {
+            "get": {
+                "description": "GET /api/quejasReclamos/(pid): Obtiene una queja/reclamo según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se encontró la queja o reclamo.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un un cliente o calificacion con los id dados.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la queja/reclamo"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuejaReclamoDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PUT /api/quejasReclamos/(pid): Actualiza una queja reclamo según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se actualizó queja o reclamo.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe la queja o reclamo con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la calificacion de la tienda."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/QuejaReclamoDetailDTO"
+                        },
+                        "description": "queja o reclamo con la información actualizada."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuejaReclamoDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "DELETE /api/clientes/quejasReclamos/(pid):elimina una calificacion según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se eliminó la la queja o reclamo.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found no existe la queja con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "pid",
+                        "in": "path",
+                        "required": true,
+                        "description": "id de la queja."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/QuejaReclamoDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/vendedores": {
+            "get": {
+                "description": "GET /api/vendedor: Retorna la información básica de todos los vendedores registrados.\n \n <pre>Busca y devuelve todas las ciudades que existen en la aplicacion.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve todos los vendedores de la aplicacion.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VendedorDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "POST /api/vendedores: Crea un nuevo vendedor\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se obtuvo el vendedor\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found Ya existía un vendedor con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VendedorDTO"
+                        },
+                        "description": "vendedor que se va a añadir."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VendedorDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/vendedores/{id}": {
+            "get": {
+                "description": "GET /api/vendedores/(id): Obtiene un vendedor según su carnet.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se obtuvo el vendedor\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un vendedor con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "carnet del vendedor buscado."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VendedorDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "PUT /api/vendedores/(id): Actualiza la información un vendedor según su carnet.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se actualizó el vendedor.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un vendedor con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "carnet del vendedor buscado."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VendedorDetailDTO"
+                        },
+                        "description": "información actualizada del vendedor."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VendedorDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "DELETE /api/vendedores/(id): Elimina un vendedor según su id.\n <pre> \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK se eliminó el vendedor.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe un vendedor con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "carnet del vendedor buscado."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VendedorDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/ventas": {
+            "get": {
+                "description": "<h1>GET /api/ventas : Obtener todas las ventas.</h1>\n \n <pre>Busca y devuelve todas las ventas que existen en la aplicacion.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve todas las ventas de la aplicacion.</code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/VentaDetailDTO"
+                            }
+                        }
+                    }
+                }
+            },
+            "post": {
+                "description": "<h1>POST /api/ventas : Crear una venta.</h1>\n \n <pre>Cuerpo de petición: JSON {@link VentaDetailDTO}.\n \n Crea una nueva venta con la informacion que se recibe en el cuerpo \n de la petición y se regresa un objeto identico con un id auto-generado \n por la base de datos.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Creó la nueva venta .\n </code>\n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 412 Precodition Failed: Ya existe la venta.\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VentaDetailDTO"
+                        },
+                        "description": "{@link VentaDetailDTO} - La venta que se desea guardar."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VentaDetailDTO"
+                        }
+                    }
+                }
+            }
+        },
+        "/ventas/{id}": {
+            "get": {
+                "description": "<h1>GET /api/ventas/{id} : Obtener una venta por id.</h1>\n \n <pre>Busca la venta con el id asociado recibido en la URL y la devuelve.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Devuelve la venta correspondiente al id.\n </code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found No existe una venta con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la venta que se esta buscando. Este debe ser una cadena de dígitos."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VentaDetailDTO"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "description": "<h1>PUT /api/ventas/{id} : Actualizar venta con el id dado.</h1>\n <pre>Cuerpo de petición: JSON {@link VentaDetailDTO}.\n \n Actualiza la venta con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.\n \n Codigos de respuesta:\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Actualiza la venta con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> \n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found. No existe una venta con el id dado.\n </code> \n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la venta que se desea actualizar.Este debe ser una cadena de dígitos."
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/VentaDetailDTO"
+                        },
+                        "description": "{@link VentaDetailDTO} La venta que se desea guardar."
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "headers": {
+                        },
+                        "schema": {
+                            "$ref": "#/definitions/VentaDetailDTO"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "description": "<h1>DELETE /api/ventas/{id} : Borrar venta por id.</h1>\n \n <pre>Borra la venta con el id asociado recibido en la URL.\n \n Códigos de respuesta:<br>\n <code style=\"color: mediumseagreen; background-color: #eaffe0;\">\n 200 OK Elimina la venta correspondiente al id dado.</code>\n <code style=\"color: #c7254e; background-color: #f9f2f4;\">\n 404 Not Found. No existe una venta con el id dado.\n </code>\n </pre>",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "description": "Identificador de la venta que se desea borrar. Este debe ser una cadena de dígitos."
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "headers": {
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "AutomovilDTO": {
+            "properties": {
+                "anio": {
+                    "type": "integer"
+                },
+                "chasis": {
+                    "type": "integer"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "fechaListado": {
+                    "type": "object"
+                },
+                "placa": {
+                    "type": "string"
+                },
+                "valorListado": {
+                    "type": "number"
+                }
+            }
+        },
+        "AutomovilDetailDTO": {
+            "properties": {
+                "anio": {
+                    "type": "integer"
+                },
+                "chasis": {
+                    "type": "integer"
+                },
+                "color": {
+                    "type": "string"
+                },
+                "fechaListado": {
+                    "type": "object"
+                },
+                "placa": {
+                    "type": "string"
+                },
+                "valorListado": {
+                    "type": "number"
+                }
+            }
+        },
+        "CalificacionCarroDTO": {
+            "properties": {
+                "comentario": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "puntaje": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CalificacionCarroDetailDTO": {
+            "properties": {
+                "comentario": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "puntaje": {
+                    "type": "integer"
+                },
+                "venta": {
+                    "$ref": "#/definitions/VentaDTO"
+                }
+            }
+        },
+        "CalificacionTiendaDTO": {
+            "properties": {
+                "comentario": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "puntaje": {
+                    "type": "integer"
+                }
+            }
+        },
+        "CalificacionTiendaDetailDTO": {
+            "properties": {
+                "cliente": {
+                    "$ref": "#/definitions/ClienteDTO"
+                },
+                "comentario": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "puntaje": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ClienteDTO": {
+            "properties": {
+                "cedula": {
+                    "type": "integer"
+                },
+                "nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "ClienteDetailDTO": {
+            "properties": {
+                "calificacionesTienda": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CalificacionTiendaDTO"
+                    }
+                },
+                "cedula": {
+                    "type": "integer"
+                },
+                "compras": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CompraDTO"
+                    }
+                },
+                "mediosDePago": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/MedioDePagoDTO"
+                    }
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "prospectosCompra": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ProspectoCompraDTO"
+                    }
+                },
+                "ventas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VentaDTO"
+                    }
+                }
+            }
+        },
+        "CompraDTO": {
+            "properties": {
+                "idCompra": {
+                    "type": "string"
+                }
+            }
+        },
+        "CompraDetailDTO": {
+            "properties": {
+                "automovil": {
+                    "$ref": "#/definitions/AutomovilDTO"
+                },
+                "cliente": {
+                    "$ref": "#/definitions/ClienteDTO"
+                },
+                "idCompra": {
+                    "type": "string"
+                },
+                "puntoDeVenta": {
+                    "$ref": "#/definitions/PuntoDeVentaDTO"
+                },
+                "vendedorEncargado": {
+                    "$ref": "#/definitions/VendedorDTO"
+                }
+            }
+        },
+        "MarcaDTO": {
+            "properties": {
+                "modelos": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ModelDTO"
+                    }
+                },
+                "nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "MedioDePagoDTO": {
+            "properties": {
+                "numero": {
+                    "type": "integer"
+                }
+            }
+        },
+        "ModelDTO": {
+            "properties": {
+                "cilindraje": {
+                    "type": "integer"
+                },
+                "numeroPuertas": {
+                    "type": "integer"
+                },
+                "transmision": {
+                    "type": "string"
+                }
+            }
+        },
+        "ProspectoCompraDTO": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "texto": {
+                    "type": "string"
+                }
+            }
+        },
+        "ProspectoCompraDetailDTO": {
+            "properties": {
+                "automovil": {
+                    "$ref": "#/definitions/AutomovilDTO"
+                },
+                "cliente": {
+                    "$ref": "#/definitions/ClienteDTO"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "texto": {
+                    "type": "string"
+                },
+                "vendedor": {
+                    "$ref": "#/definitions/VendedorDTO"
+                }
+            }
+        },
+        "PuntoDeVentaDTO": {
+            "properties": {
+                "direccion": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "telefono": {
+                    "type": "integer"
+                }
+            }
+        },
+        "PuntoDeVentaDetailDTO": {
+            "properties": {
+                "compras": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CompraDTO"
+                    }
+                },
+                "direccion": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "telefono": {
+                    "type": "integer"
+                },
+                "vendedores": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VendedorDTO"
+                    }
+                },
+                "ventas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VentaDTO"
+                    }
+                }
+            }
+        },
+        "QuejaReclamoDTO": {
+            "properties": {
+                "id": {
+                    "type": "integer"
+                },
+                "name": {
+                    "type": "string"
+                },
+                "texto": {
+                    "type": "string"
+                },
+                "tipo": {
+                    "type": "string"
+                }
+            }
+        },
+        "QuejaReclamoDetailDTO": {
+            "properties": {
+                "cliente": {
+                    "$ref": "#/definitions/ClienteDTO"
+                }
+            }
+        },
+        "VendedorDTO": {
+            "properties": {
+                "carnetVendedor": {
+                    "type": "integer"
+                },
+                "cedula": {
+                    "type": "integer"
+                },
+                "nombre": {
+                    "type": "string"
+                }
+            }
+        },
+        "VendedorDetailDTO": {
+            "properties": {
+                "carnetVendedor": {
+                    "type": "integer"
+                },
+                "cedula": {
+                    "type": "integer"
+                },
+                "compras": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/CompraDTO"
+                    }
+                },
+                "nombre": {
+                    "type": "string"
+                },
+                "prospectosCompra": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/ProspectoCompraDTO"
+                    }
+                },
+                "puntoDeVenta": {
+                    "$ref": "#/definitions/PuntoDeVentaDTO"
+                },
+                "ventas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/VentaDTO"
+                    }
+                }
+            }
+        },
+        "VentaDTO": {
+            "properties": {
+                "idVenta": {
+                    "type": "integer"
+                }
+            }
+        },
+        "VentaDetailDTO": {
+            "properties": {
+                "automovil": {
+                    "$ref": "#/definitions/AutomovilDTO"
+                },
+                "calificacionCarro": {
+                    "$ref": "#/definitions/CalificacionCarroDTO"
+                },
+                "cliente": {
+                    "$ref": "#/definitions/ClienteDTO"
+                },
+                "idVenta": {
+                    "type": "integer"
+                },
+                "medioDePago": {
+                    "$ref": "#/definitions/MedioDePagoDTO"
+                },
+                "puntoDeVenta": {
+                    "$ref": "#/definitions/PuntoDeVentaDTO"
+                },
+                "vendedorEncgardo": {
+                    "$ref": "#/definitions/VendedorDTO"
+                }
+            }
+        }
+    }
+}
