@@ -56,7 +56,7 @@ public class CompraDTO {
     
       //---------------------------SETTERS-------------------------
      /**
-     * @param id El nuevo id de la compra
+     * @param idCompra El nuevo id de la compra
      */
     public void setIdCompra(String idCompra) {
         this.idCompra = idCompra;

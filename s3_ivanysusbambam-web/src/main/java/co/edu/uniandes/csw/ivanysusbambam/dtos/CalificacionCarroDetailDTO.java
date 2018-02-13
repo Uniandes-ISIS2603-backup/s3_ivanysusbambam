@@ -17,7 +17,7 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
     private VentaDTO venta;
     /**
      * Asigna una venta a la calificacion
-     * @param venta 
+     * @param venta venta.
      */
     public void setVenta(VentaDTO venta){
         this.venta = venta;

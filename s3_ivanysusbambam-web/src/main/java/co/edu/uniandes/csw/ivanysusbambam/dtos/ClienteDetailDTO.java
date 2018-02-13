@@ -9,7 +9,7 @@ import java.util.List;
 
 /**Objeto de transferencia de datos detallado del cliente. Hereda de ClienteDTO <br>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
- * < Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ *  Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
  * 

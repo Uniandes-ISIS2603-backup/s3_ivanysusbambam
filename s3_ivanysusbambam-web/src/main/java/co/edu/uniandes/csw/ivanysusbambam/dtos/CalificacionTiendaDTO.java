@@ -46,7 +46,7 @@ public class CalificacionTiendaDTO {
     
     /**
      * Construye una nueva calificacion para una tienda a partir de un objeto Entity
-     * @param calificacionTienda 
+     * @param calificacionTienda entity correspondiente.
      */
     public CalificacionTiendaDTO(CalificacionTiendaEntity calificacionTienda){
         this.id = calificacionTienda.getId();
@@ -58,7 +58,7 @@ public class CalificacionTiendaDTO {
     
     /**
      * Entrega el identificador unico del objeto
-     * @return 
+     * @return id
      */
     public Long getId(){
         return id;
@@ -66,7 +66,7 @@ public class CalificacionTiendaDTO {
     
     /**
      * Cambia el identificador unico por el Long que entra por parámetro
-     * @param id 
+     * @param id id
      */
     public void setId(Long id){
         this.id = id;
@@ -74,28 +74,28 @@ public class CalificacionTiendaDTO {
     
     /**
      * Retorna el nombre de la entidad correspondiente a la calificacion
-     * @return name
+     * @return name nombre.
      */
     public String getName(){
         return name;
     }
     /**
      * Asigna un nombre a la entidad correspondiente a la calificacion
-     * @param name 
+     * @param name nombre que será asignado.
      */
     public void setName(String name){
         this.name = name;
     }
     /**
      * Retorna el comentario puesto por el cliente al agregar la calificacion
-     * @return comentario
+     * @return comentario comentario.
      */
     public String getComentario(){
         return comentario;
     }
     /**
      * Asigna el valor que el cliente haya puesto a la calificacion de la tienda
-     * @param comentario 
+     * @param comentario comentario que será asginado.
      */
     public void setComentario(String comentario){
         this.comentario = comentario;
@@ -103,7 +103,7 @@ public class CalificacionTiendaDTO {
     
     /**
      * Obtiene el puntaje que el cliente haya asignado segun la tienda
-     * @return puntaje
+     * @return puntaje puntaje.
      */
     public int getPuntaje(){
         return puntaje;
@@ -111,7 +111,7 @@ public class CalificacionTiendaDTO {
     
     /**
      * Asigna el puntaje que el cliente haya puesto a la tienda
-     * @param puntaje 
+     * @param puntaje puntaje que será asignado.
      */
     public void setPuntaje(int puntaje){
         this.puntaje = puntaje;
@@ -119,7 +119,7 @@ public class CalificacionTiendaDTO {
     
     /**
      * Convierte el objeto en una entidad 
-     * @return entity
+     * @return entity entity que será asignado.
      */
     public CalificacionTiendaEntity toEntity(){
         CalificacionTiendaEntity entity = new CalificacionTiendaEntity();

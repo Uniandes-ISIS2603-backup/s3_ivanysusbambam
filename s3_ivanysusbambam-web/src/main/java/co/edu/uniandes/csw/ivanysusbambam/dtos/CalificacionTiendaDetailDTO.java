@@ -18,7 +18,7 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO{
     
     /**
      * Asigna un cliente respectivo a la clasificacion
-     * @param cliente 
+     * @param cliente  cliente.
      */
     public void setCliente(ClienteDTO cliente){
         this.cliente = cliente;
@@ -26,7 +26,7 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO{
     
     /**
      * Retorna el cliente respectivo a la calificacion
-     * @return cliente
+     * @return cliente cliente.
      */
     public ClienteDTO getCliente(){
         return cliente;

@@ -57,7 +57,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Retorna el id del la calificacion
-     * @return 
+     *@return id id.
      */
     public Long getId(){
         return id;
@@ -65,7 +65,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Cambia el id de la calificacion
-     * @param id 
+     * @param id id
      */
     public void setId(Long id){
         this.id = id;
@@ -73,7 +73,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Retorna el nombre de la entidad de la calificacion
-     * @return name
+     * @return name nombre
      */
     public String getName(){
         return name;
@@ -81,7 +81,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Cambia el nombre de la entidad de la calificacion
-     * @param name 
+     * @param name nombre
      */
     public void setName(String name){
         this.name = name;
@@ -89,7 +89,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Retorna el comentario que acompaña a la calificacion
-     * @return 
+     * @return el comentario comentario.
      */
     public String getComentario(){
         return comentario;
@@ -97,7 +97,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Cambia el comentario de la calificacion
-     * @param comentario 
+     * @param comentario el comentario de la calificación.
      */
     public void setComentario(String comentario){
         this.comentario = comentario;
@@ -105,7 +105,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Retorna el puntaje asignado por el cliente al carro
-     * @return 
+     * @return el puntaje.
      */
     public int getPuntaje(){
         return puntaje;
@@ -113,7 +113,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Cambia el puntaje asignado al carro por el cliente
-     * @param puntaje 
+     * @param puntaje el puntaje asignado.
      */
     public void setPuntaje(int puntaje){
         this.puntaje = puntaje;
@@ -121,7 +121,7 @@ public class CalificacionCarroDTO {
     
     /**
      * Convierte el objeto existente en una entidad
-     * @return entity
+     * @return entity entidad correspondiente.
      */
     public CalificacionCarroEntity toEntity(){
         CalificacionCarroEntity entity = new CalificacionCarroEntity();

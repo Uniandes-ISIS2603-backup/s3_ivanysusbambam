@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
 /**
  *Objeto de transferencia de datos detallado de la compra. Hereda de CompraDTO <br>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
- * < Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
  * 
