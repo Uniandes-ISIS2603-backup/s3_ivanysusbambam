@@ -1,0 +1,107 @@
+{
+	"id": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
+	"name": "collection de ventas resource",
+	"description": "",
+	"order": [
+		"57ea3ac9-08f4-9c6f-d9be-3a022b565d94",
+		"541c9ed7-82e1-b134-cd71-bee9c1dd9d7b",
+		"12d7fa47-0250-0a7c-4644-169f9b2acd6e"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1518496300167,
+	"owner": "3720893",
+	"public": false,
+	"events": [],
+	"variables": [],
+	"auth": null,
+	"requests": [
+		{
+			"id": "12d7fa47-0250-0a7c-4644-169f9b2acd6e",
+			"url": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+			"queryParams": [],
+			"method": "GET",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"data": [],
+			"dataMode": "raw",
+			"events": [],
+			"auth": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"version": 2,
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"idVenta\":\"12345\"\n}"
+		},
+		{
+			"id": "541c9ed7-82e1-b134-cd71-bee9c1dd9d7b",
+			"url": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+			"queryParams": [],
+			"method": "POST",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"data": [],
+			"dataMode": "raw",
+			"events": [],
+			"auth": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"version": 2,
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"idVenta\":\"3124\"\n}"
+		},
+		{
+			"id": "57ea3ac9-08f4-9c6f-d9be-3a022b565d94",
+			"url": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+			"queryParams": [],
+			"method": "DELETE",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"data": [],
+			"dataMode": "raw",
+			"events": [],
+			"auth": null,
+			"pathVariables": {},
+			"pathVariableData": [],
+			"version": 2,
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+			"description": "",
+			"descriptionFormat": "html",
+			"collectionId": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
+			"currentHelper": null,
+			"helperAttributes": null,
+			"rawModeData": "{\n\t\"idVenta\":\"324\"\n}"
+		}
+	]
+}
