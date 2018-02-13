@@ -21,6 +21,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-**/s3_ivanysusbambam-back/target/
-**/s3_ivanysusbambam-web/target/
-**/target/
+/s3_ivanysusbambam-back/target/
+/s3_ivanysusbambam-web/target/
+/target/
+/s3_ivanysusbambam-back/target/maven-archiver/pom.properties
