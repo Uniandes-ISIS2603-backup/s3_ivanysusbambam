@@ -51,7 +51,7 @@ public class CalificacionCarroResource {
     }
     
     /**
-     * PUT /api/centas/(idVenta)/CalificacionCarro/(idCarro): Obtiene un prospecto de compra según su id.
+     * PUT /api/centas/(idVenta)/CalificacionCarro/(idCarro): Actualiza un prospecto de compra según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">

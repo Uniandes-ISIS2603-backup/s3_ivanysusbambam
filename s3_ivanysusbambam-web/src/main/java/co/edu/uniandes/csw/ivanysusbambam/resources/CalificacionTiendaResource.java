@@ -72,67 +72,67 @@ public class CalificacionTiendaResource {
     }
     
     /**
-     * PUT /api/clientes/(id)/calificacionesTienda/(pid): Obtiene una calificacion de una tienda según su id.
+     * PUT /api/clientes/(id)/calificacionesTienda/(pid): Actualiza una calificacion de una tienda según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se actualizó la calificacion.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente o prospecto de compra con el id dado.
+     * 404 Not Found no existe el cliente o la calificacion con el id dado.
      * </code> 
      * </pre>
      * @param id id del cliente.
-     * @param pid id del prospecto de compra.
-     * @return JSON el prospecto de compra actualizado.
+     * @param pid id de la calificacion de la tienda.
+     * @return JSON el la calificacion de tienda actualizada.
      * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
-     *
+     */
     @PUT
     @Path("{pid: \\d+")
-    public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
+    public CalificacionTiendaDetailDTO putCalificacionTienda(@PathParam("id") long id, @PathParam("pid") long pid) throws BusinessLogicException{
         return null;
     }
     
     /**
-     * POST /api/clientes/(id)/prospectosCompra: Crea un nuevo prospecto de compra.
+     * POST /api/clientes/(id)/calificacionTienda: Crea un nuevo prospecto de compra.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK se creó el prospecto de compra.
+     * 200 OK se creó la nueva calificacion.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found no existe el cliente el id dado.
      * </code> 
      * </pre>
      * @param id id del cliente.
-     * @param prospecto el prospecto de compra que se añadirá.
-     * @return JSON el prospecto de compra creado con su id autoasignado.
+     * @param calificacion calificacion de la tienda que se añadirá.
+     * @return JSON la calificacion de la tienda creada con su id autoasignado.
      * @throws BusinessLogicException si no existe el cliente con el id dado.
-     *
+     */
     @POST
-    public ProspectoCompraDetailDTO postProspectoCompra(@PathParam("id") int id, ProspectoCompraDetailDTO prospecto)throws BusinessLogicException{
+    public CalificacionTiendaDetailDTO postCalificacionTienda(@PathParam("id") int id, CalificacionTiendaDetailDTO calificacion)throws BusinessLogicException{
         return null;
     }
     /**
-     * DELETE /api/clientes/(id)/prospectosCompra/(pid):elimina un prospecto de compra según su id.
+     * DELETE /api/clientes/(id)/calificacionesTienda/(pid):elimina una calificacion según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK se eliminó el prospecto de compra.
+     * 200 OK se eliminó la calificacion.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente o prospecto de compra con el id dado.
+     * 404 Not Found no existe el cliente o la calificacion con el id dado.
      * </code> 
      * </pre>
      * @param id id del cliente.
-     * @param pid id del prospecto de compra.
-     * @return JSON el prospecto de compra actualizado.
-     * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
-     *
+     * @param pid id de la calificacion de la tienda.
+     * @return JSON de la calificacion de tienda actualizada.
+     * @throws BusinessLogicException si no existe el cliente con el id dado o la calificacion con el id dado.
+     */
     @DELETE
     @Path("{pid: \\d+}")
-    public ProspectoCompraDetailDTO deleteProspectoCompra(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
+    public CalificacionTiendaDetailDTO deleteCalificacionTienda(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
         return null;
     }
-    */
+    
 }
