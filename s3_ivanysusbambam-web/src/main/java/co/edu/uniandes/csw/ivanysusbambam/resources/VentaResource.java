@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -56,7 +57,7 @@ public class VentaResource {
      */
     @GET
     public List<VentaDTO> getVentas() {
-        return null;
+        return new ArrayList<>();
     }
 
     /**

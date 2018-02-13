@@ -6,7 +6,25 @@
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 /**
+ *Objeto de transferencia de datos del medio de pago.<br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ * 
+ *      "numero": string
+ *      
+ *   }
+ * </pre>
+ * Por ejemplo un medio de pago se representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "numero": "123456"
+ *      
+ *   }
  *
+ * </pre>
  * @author j.sierrac
  */
 public class MedioDePagoDTO 
