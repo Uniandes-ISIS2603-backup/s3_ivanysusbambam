@@ -4,8 +4,26 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
-
-/**
+/**Objeto de transferencia de datos de la compra.<br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ * 
+ *      "idCompra": string
+ *      
+ *   }
+ * </pre>
+ * Por ejemplo una compra se representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "idCompra": "123456"
+ *      
+ *   }
+ *
+ * </pre>
+ *
  *
  * @author j.sierrac
  */

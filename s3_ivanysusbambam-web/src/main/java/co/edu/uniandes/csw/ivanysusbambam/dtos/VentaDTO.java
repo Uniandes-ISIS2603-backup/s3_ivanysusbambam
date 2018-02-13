@@ -58,7 +58,8 @@ public class VentaDTO {
      *
      * @param pId nuevo id de la venta
      */
-    public void setId(int pId) {
+
+    public void setIdVenta(int pId) {
         this.idVenta = pId;
     }
 

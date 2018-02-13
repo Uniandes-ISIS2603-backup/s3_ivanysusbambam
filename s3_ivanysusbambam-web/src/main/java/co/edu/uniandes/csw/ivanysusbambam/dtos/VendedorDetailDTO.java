@@ -7,13 +7,45 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 import java.util.List;
 
-/**
+/**Objeto de transferencia que contiene información detallada de un vendedor.
+ *Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *      "nombre": string,
+ *      "cedula": number,
+ *      "carnetVendedor": number,
+ *      "prospectosCompra": JSONarray,
+ *      "ventas" : JSONarray, 
+ *      "compras": JSONarray,
+ *      "puntoDeVenta": JSON
+ *   }
+ * </pre>
+ * Por ejemplo un vendedr se representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "nombre": "Joseph Ortiz",
+ *      "cedula": 1234567890,
+ *      "carnetVendedor" : 1432,
+ *      "prospectosCompra": [{"texto" : "Cliente muy interesado en dodge ram 2008, "id": 153}],
+ *      "ventas": [{"idVenta":1435},{"idVenta":27932}],
+ *      "compras": [{"idCompra: 243}],
+ *      "puntoDeVenta":{"dirección": "carrera 15 # 127", "teléfono":6343421},"nombre": "Mi automóvil unicentro"}
+ * 
+ *   }
  *
+ * </pre>
  * @author Felipe Velásquez Montoya
+ * <pre>
  * Verisones: 
  *  10/02/2018:
- *      -Añadidos atributos 
+ *      -Añadidos atributos. 
  *      -Añadidos getters, setters y adders.
+ * 12/02/2018:
+ *      -Extendida documentación.
+ *      -Añadidos setters faltantes necesarios para JAXRS
+ * </pre>
  */
 public class VendedorDetailDTO extends VendedorDTO{
     
@@ -81,7 +113,33 @@ public class VendedorDetailDTO extends VendedorDTO{
     public void setPuntoDeVenta(PuntoDeVentaDTO puntoDeVenta){
         this.puntoDeVenta = puntoDeVenta;
     }
+
+    /**
+     * 
+     * @param prospectosCompra lista con los prospectos de compra creados por el vendedor.
+     */
+    public void setProspectosCompra(List<ProspectoCompraDTO> prospectosCompra) {
+        this.prospectosCompra = prospectosCompra;
+    }
+
+    /**
+     * 
+     * @param ventas lista con las ventas del vendedor.
+     */
+    public void setVentas(List<VentaDTO> ventas) {
+        this.ventas = ventas;
+    }
+
+    /**
+     * 
+     * @param compras lista con las ventas del vendedor.
+     */
+    public void setCompras(List<CompraDTO> compras) {
+        this.compras = compras;
+    }
     
+    
+        
     //---------------------------ADDERS-----------------------------
     
     /**
@@ -110,5 +168,7 @@ public class VendedorDetailDTO extends VendedorDTO{
     public void addCompra(CompraDTO compra){
         compras.add(compra);
     }
+    
+    
      
 }

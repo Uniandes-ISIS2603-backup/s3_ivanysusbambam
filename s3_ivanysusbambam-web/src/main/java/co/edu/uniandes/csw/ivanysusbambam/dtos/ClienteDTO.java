@@ -2,14 +2,37 @@
 
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
-/**
+
+/**Objeto de transferencia de datos del cliente.<br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ * 
+ *      "nombre": string,
+ *      "cedula": number
+ *   }
+ * </pre>
+ * Por ejemplo un cliente se representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "nombre": "Felipe Velasquez",
+ *      "cedula": 1016609031
+ *   }
+ *
+ * </pre>
+ *
  *
  * @author Felipe Velásquez Montoya
+ *<pre>
  * Versiones:
  *  10/02/2018
  *      -Creación de atributos
  *      -Creación de getters y setters
- *      
+ * 12/02/2018
+ *      -Extendida documentacion.
+ * </pre> 
  */
 public class ClienteDTO {
     
@@ -23,6 +46,8 @@ public class ClienteDTO {
      */
     private long cedula;
 
+    
+    //----------------------GETTERS-----------------------------------------
     /** 
      * @return el nombre del cliente.
      */
@@ -37,6 +62,8 @@ public class ClienteDTO {
         return cedula;
     }
 
+    //---------------------SETTERS---------------------------
+    
     /**
      * @param nombre nuevo nombre del cliente 
      */
@@ -44,8 +71,19 @@ public class ClienteDTO {
         this.nombre = nombre;
     }
     
+    /**
+     * Este método no debería ser llamado por nadie menos JAX.
+     * @param cedula del cliente
+     */
+    public void setCedula(long cedula) {
+        this.cedula = cedula;
+    }
+    
+    
     //Se omite el setCedula pues no tendría sentido que un cliente pudiera 
     //cambiar su número de cédula.
+
+  
     
     
     

@@ -1,0 +1,488 @@
+{
+	"info": {
+		"name": "Ivanysusbambam - componente cliente, vendedor, servidor",
+		"_postman_id": "c042618c-c218-cd53-e3ba-70a1fb117269",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Cliente",
+			"description": "",
+			"item": [
+				{
+					"name": "GET clientes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "id",
+								"value": "15",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"David\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET cliente",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "id",
+								"value": "15",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\" : \"David\"\n\t\"cedula\" : 1015326745\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1245",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes",
+								"1245"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT cliente",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "id",
+								"value": "15",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Felipe Velasquez\",\n\t\"cedula\": 1016609031,\n\t\"calificacionesTienda\" : [], \n\t\"compras\" : [{\"idCompra\" : 14232}],\n    \"prospectosCompra\": [],\n    \"quejasReclamos\": [],\n    \"ventas\": []\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes",
+								"12345"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST cliente",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "id",
+								"value": "15",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Felipe Velasquez\",\n\t\"cedula\": 1016609031\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE cliente",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "id",
+								"value": "15",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Felipe Velasquez\",\n\t\"cedula\": 1016609031\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vendedor",
+			"description": "",
+			"item": [
+				{
+					"name": "GET vendedores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"vendedores"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET vendedor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/124",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"vendedores",
+								"124"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST vendedor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\" : 1234567890,\n\t\"carnetVendedor\" : 1334\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"vendedores"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT vendedor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\" : 1234567890,\n\t\"carnetVendedor\" : 1334,\n\t\"prospectosCompra\" : [],\n\t\"ventas\" : [],\n\t\"compras\" : [{\"idCompra\" : 1234},{\"idCompra\": 1235}],\n\t\"puntoDeVenta\" : {\"direccion\" : \"calle 19 # 10\", \"telefono\" : 534243, \"nombre\": \"Tu automóvil centro\"}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"vendedores",
+								"12345"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE vendedor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/12345",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"vendedores",
+								"12345"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ProspectoCompra",
+			"description": "",
+			"item": [
+				{
+					"name": "GET prospectoscompra",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes",
+								"1234",
+								"prospectoscompra"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "GET prospectocompra",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra/3242",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes",
+								"1234",
+								"prospectoscompra",
+								"3242"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT prospectocompra",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"nombre\": \"juan rulfo\", \"cedula\": 1234 },\n\t\"vendedor\": {\"nombre\" : \"Kafka\", \"cedula\" : 1234, \"carnetVendedor\" : 13512},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra/1234",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes",
+								"1234",
+								"prospectoscompra",
+								"1234"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "POST prospectocompra",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"nombre\": \"juan rulfo\", \"cedula\": 1234 },\n\t\"vendedor\": {\"nombre\" : \"Kafka\", \"cedula\" : 1234, \"carnetVendedor\" : 13512},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"clientes",
+								"1234",
+								"prospectoscompra"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "DELETE prospectocompra",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/13642/prospectoscompra/1234",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"clientes",
+						"13642",
+						"prospectoscompra",
+						"1234"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

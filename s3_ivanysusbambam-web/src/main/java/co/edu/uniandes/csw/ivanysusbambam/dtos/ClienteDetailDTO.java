@@ -7,13 +7,46 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 import java.util.List;
 
-/**
- *
+/**Objeto de transferencia de datos detallado del cliente. Hereda de ClienteDTO <br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * < Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ * 
+ *      "nombre": string,
+ *      "cedula": number,
+ *      "calificacionesTienda" : JSONarray,
+ *      "compras" : JSONarray,
+ *      "prospectosCompra": JSONarray,
+ *      "quejasReclamos": JSONarray,
+ *      "ventas": JSONarray
+ *   }
+ * </pre>
+ * Por ejemplo un cliente se representa así:<br>
+ * 
+ * <pre>
+ * 
+ *   {
+ *      "nombre": "Felipe Velasquez",
+ *      "cedula": 1016609031,
+ *      "calificacionesTienda" : [{"comentario" : "Excelente tienda, recomendada","id": 1, "puntaje": 4.5}], 
+ *      "compras" : [{"idCompra": 4562}],
+ *      "prospectosCompra": [{"texto": "Cliente muy interesado en la compra de Chevrolet Sail", "id": 123}],
+ *      "quejasReclamos": [],
+ *      "ventas": [{"idVenta": 17231}]
+ *   }
+ * </pre>
+ * 
  * @author Felipe Velásquez Montoya
+ * <pre>
  * Versiones: 
  * 10/02/2018
  *      -Creación de atributos.
  *      -Creación de getters y adders.
+ * 12/02/2018
+ *      -Extendida documentación.
+ *      -añadidos setters, necesarios para JAX-RS
+ * </pre>
  */
 public class ClienteDetailDTO extends ClienteDTO {
     
@@ -49,6 +82,10 @@ public class ClienteDetailDTO extends ClienteDTO {
      */
     private List<MedioDePagoDTO>  mediosDePago;
     
+    //-----------------------------CONSTRUCTOR---------------------------
+    public ClienteDetailDTO(){
+        
+    }
     
     //-----------------------------GETTERS--------------------------------
     
@@ -120,9 +157,9 @@ public class ClienteDetailDTO extends ClienteDTO {
      * <b>pos</b> se ha añadido la queja o reclamo.
      * @param quejaReclamo la queja o reclamo que se desea añadir.
      */
-    /*public void addQuejaReclamo(QuejaReclamoDTO quejaReclamo){
+    public void addQuejaReclamo(QuejaReclamoDTO quejaReclamo){
         quejasReclamos.add(quejaReclamo);
-    }*/
+    }
     
     /**
      * Añade la compra pasada por parámetro a las compras del cliente.
@@ -150,4 +187,55 @@ public class ClienteDetailDTO extends ClienteDTO {
     public void addMedioDePago(MedioDePagoDTO medioPago){
         mediosDePago.add(medioPago);
     }
+    
+    //------------------SETTERS---------------------
+
+    /**
+     * 
+     * @param prospectosCompra la lista de prospectos de compra.
+     */
+    public void setProspectosCompra(List<ProspectoCompraDTO> prospectosCompra) {
+        this.prospectosCompra = prospectosCompra;
+    }
+
+    /**
+     * 
+     * @param calificacionesTienda la lista de calificaciones de la tienda.
+     */
+    public void setCalificacionesTienda(List<CalificacionTiendaDTO> calificacionesTienda) {
+        this.calificacionesTienda = calificacionesTienda;
+    }
+
+    /**
+     * 
+     * @param quejasReclamos la lista de quejas y reclamos.
+     */
+    public void setQuejasReclamos(List<QuejaReclamoDTO> quejasReclamos) {
+        this.quejasReclamos = quejasReclamos;
+    }
+
+    /**
+     * 
+     * @param compras la lista de compras.
+     */
+    public void setCompras(List<CompraDTO> compras) {
+        this.compras = compras;
+    }
+
+    /**
+     * 
+     * @param ventas la lista de ventas.
+     */
+    public void setVentas(List<VentaDTO> ventas) {
+        this.ventas = ventas;
+    }
+
+    /**
+     * 
+     * @param mediosDePago la lista de medios de pagos registrados
+     */
+    public void setMediosDePago(List<MedioDePagoDTO> mediosDePago) {
+        this.mediosDePago = mediosDePago;
+    }
+    
 }

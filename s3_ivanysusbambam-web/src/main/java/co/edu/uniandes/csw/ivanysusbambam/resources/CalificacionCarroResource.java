@@ -68,7 +68,7 @@ public class CalificacionCarroResource {
      * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
      */
     @PUT
-    @Path("{idCarro: \\d+")
+    @Path("{idCarro: \\d+}")
     public CalificacionCarroDetailDTO putCalificacionCarro(@PathParam("idVenta") Long idVenta, @PathParam("idCarro") Long id) throws BusinessLogicException{
         return null;
     }

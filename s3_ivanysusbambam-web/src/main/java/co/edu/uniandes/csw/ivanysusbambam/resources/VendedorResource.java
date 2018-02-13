@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -45,7 +46,8 @@ public class VendedorResource {
      */
     @GET
     public List<VendedorDTO> getVendedores(){
-        return null;
+       List<VendedorDTO> vendedores = new ArrayList<>();
+       return vendedores;
     }
     
     /**
@@ -65,7 +67,7 @@ public class VendedorResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public VendedorDetailDTO getVendedor(@PathParam("id") int id)throws BusinessLogicException{
+    public VendedorDetailDTO getVendedor(@PathParam("id") long id)throws BusinessLogicException{
         return null;
     }                   
     
@@ -85,7 +87,9 @@ public class VendedorResource {
      * @throws BusinessLogicException si ya existía un vendedor con el mismo carnet.
      */
     @POST
-    public VendedorDetailDTO postVendedor(VendedorDetailDTO vendedor) throws BusinessLogicException{
+    public VendedorDetailDTO postVendedor(VendedorDTO vendedor) throws BusinessLogicException{
+        
+        //debe retornar el dDTO correspondiente al DTO.
         return null;
     }
     
@@ -107,8 +111,8 @@ public class VendedorResource {
      */
     @PUT
     @Path("{id: \\d+}")
-    public VendedorDetailDTO putVendedor(@PathParam("id") int id, VendedorDetailDTO vendedor) throws BusinessLogicException{
-        return null;
+    public VendedorDetailDTO putVendedor(@PathParam("id") long id, VendedorDetailDTO vendedor) throws BusinessLogicException{
+        return vendedor;
     }
     
     /**
@@ -128,7 +132,7 @@ public class VendedorResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public VendedorDetailDTO deleteVendedor(@PathParam("id") int id) throws BusinessLogicException{
+    public VendedorDetailDTO deleteVendedor(@PathParam("id") long id) throws BusinessLogicException{
         return null;
     }
 }
