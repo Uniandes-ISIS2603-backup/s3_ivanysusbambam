@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.CalificacionCarroDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.ivanysusbambam.mappers.BusinessLogicExceptionMapper;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 
