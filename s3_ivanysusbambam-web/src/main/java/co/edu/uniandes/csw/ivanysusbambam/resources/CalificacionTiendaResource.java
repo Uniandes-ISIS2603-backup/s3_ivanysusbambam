@@ -88,7 +88,7 @@ public class CalificacionTiendaResource {
      * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
      */
     @PUT
-    @Path("{pid: \\d+")
+    @Path("{pid: \\d+}")
     public CalificacionTiendaDetailDTO putCalificacionTienda(@PathParam("id") long id, @PathParam("pid") long pid) throws BusinessLogicException{
         return null;
     }
