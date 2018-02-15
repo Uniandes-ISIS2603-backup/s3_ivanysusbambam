@@ -35,7 +35,7 @@ public class VentaDTO {
     /**
      * Atributo del Id de la venta
      */
-    private int idVenta;
+    private Long idVenta;
 
     /**
      * Constructor por defecto
@@ -48,7 +48,7 @@ public class VentaDTO {
      *
      * @return devuelve el id de la venta
      */
-    public int getIdVenta() {
+    public long getIdVenta() {
         return idVenta;
     }
 
@@ -59,7 +59,7 @@ public class VentaDTO {
      * @param pId nuevo id de la venta
      */
 
-    public void setIdVenta(int pId) {
+    public void setIdVenta(Long pId) {
         this.idVenta = pId;
     }
 
@@ -69,10 +69,10 @@ public class VentaDTO {
      *
      * @param pVenta: Es la entidad que se va a convertir a DTO
      */
-    public VentaDTO(VentaEntity pVenta) {
-        this.idVenta = pVenta.getIdVenta();
-
-    }
+//    public VentaDTO(VentaEntity pVenta) {
+//        this.idVenta = pVenta.getIdVenta();
+//
+//    }
 
     /**
      * Convertir DTO a Entity

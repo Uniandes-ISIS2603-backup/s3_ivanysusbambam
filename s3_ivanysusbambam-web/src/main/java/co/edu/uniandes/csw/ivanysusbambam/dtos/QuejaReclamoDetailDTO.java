@@ -6,19 +6,59 @@
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 /**
+ * Objeto de transferencia que contiene información detallada de una queja o
+ * reclamo. Al serializarse como JSON esta clase implementa el siguiente modelo:
+ * <br>
+ * <pre>
+ *   {
+ *       "id": number,
+ *       "name": string,
+ *      "texto": string,
+ *      "tipo": string,
+ *      "cliente": JSON,
  *
- * @author if.garcia
+ *
+ *   }
+ * </pre> Por ejemplo un prospecto de compra representa así:<br>
+ *
+ * <pre>
+ *
+ *   {
+ *          "id": 12431
+ *          "name": "Proceso de compra"
+ *          "texto": " No quede contento con el proceso de compra, demasiado lento",
+ *          "tipo": "Reclamo",
+ *           "cliente" : {"cedula": 549897, "nombre": "Juan Perez"},
+ *
+ * }
+ *
+ *
+ * </pre>
+ *
+ * @author if.garcia y hd.castellanos  <pre>
+ * Versiones: *
+ * </pre>
  */
-public class QuejaReclamoDetailDTO {
-    
+public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
+
+    /**
+     * Cliente que realizo la queja o el reclamo 
+     */
     private ClienteDTO cliente;
-    
-    public ClienteDTO getCliente(){
+
+    /**
+     * @return el/la cliente/ta que realio la queja o el reclamo  
+     */
+    public ClienteDTO getCliente() {
         return cliente;
     }
+
     
-    public void setCliente(ClienteDTO cliente)
-    {
+    /**
+     * Asigna al clinete que realio la queja o el reclamo el cliente dado por parametro
+     * @param cliente cliente que se va a signar a esta queja o reclamo
+     */
+    public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
 }

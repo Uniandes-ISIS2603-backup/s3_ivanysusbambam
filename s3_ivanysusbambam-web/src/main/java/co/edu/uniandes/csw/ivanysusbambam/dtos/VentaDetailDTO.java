@@ -58,9 +58,9 @@ public class VentaDetailDTO extends VentaDTO {
      * @param entity La entidad de venta a partir de la cual se construye el
      * objeto
      */
-    public VentaDetailDTO(VentaEntity entity) {
-        super(entity);
-    }
+//    public VentaDetailDTO(VentaEntity entity) {
+//        super(entity);
+//    }
 
     /**
      * Transformar un DTO a un Entity
