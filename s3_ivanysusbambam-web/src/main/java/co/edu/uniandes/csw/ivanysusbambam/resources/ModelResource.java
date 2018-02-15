@@ -132,7 +132,7 @@ public class ModelResource {
      */
     @DELETE
     @Path("{nomMarca: \\d+}")
-     public void deleteMarca(@PathParam("nomMarca") String placa) {
+     public void deleteModelo(@PathParam("nomMarca") String placa) {
         //ssssssss
     }
 }

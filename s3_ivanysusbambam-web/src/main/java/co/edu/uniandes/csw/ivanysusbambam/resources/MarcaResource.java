@@ -1,8 +1,4 @@
-package co.edu.uniandes.csw.ivanysusbambam.resources;
 
-
-import co.edu.uniandes.csw.ivanysusbambam.dtos.MarcaDTO;
-import co.edu.uniandes.csw.ivanysusbambam.dtos.ModelDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;

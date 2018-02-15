@@ -39,20 +39,20 @@ public class ModelDTO {
     
     /**
      *
-     * 
+     * @get
      */
     public Integer getNumeroPuertas(){
             return numeroPuertas;
     }
      /**
-     * 
+     * @get
      * 
      */
     public String getTransmision(){
     return transmision;
 }
      /**
-     * 
+     * @get
      * 
      */
     public Integer getCilindraje(){
@@ -62,28 +62,28 @@ public class ModelDTO {
     return centCubicos;
 }
     /**
-     * 
+     * @put
      * 
     **/
     public void putNumeroPuertas(Integer pu){
         numeroPuertas = pu;
     }
      /**
-     * 
+     * @put
      * 
     **/
     public void putTransmision(String nueva){
         transmision = nueva;
     }
       /**
+     * @put
      * 
-     * 
-     **/
+    **/
     public void putCilindraje(Integer  nCil){
         cilindraje = nCil;
     }
       /**
-     * 
+     * @put
      * 
     **/
     public void putCentCubicos(Double nueCent){
