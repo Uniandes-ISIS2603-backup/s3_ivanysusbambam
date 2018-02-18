@@ -106,15 +106,15 @@ public class QuejaReclamoDTO {
      *
      * @return Un Entity con los valores del DTO
      */
-    public QuejaReclamoEntity toEntity(){
-        QuejaReclamoEntity entity = new QuejaReclamoEntity();
-        entity.setId(this.id);
-        entity.setName(this.name);
-        entity.setTexto(this.texto);
-        entity.setTipo(this.tipo);
-        
-        return entity;
-    }
+//    public QuejaReclamoEntity toEntity(){
+//        QuejaReclamoEntity entity = new QuejaReclamoEntity();
+//        entity.setId(this.id);
+//        entity.setName(this.name);
+//        entity.setTexto(this.texto);
+//        entity.setTipo(this.tipo);
+//        
+//        return entity;
+//    }
     
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
