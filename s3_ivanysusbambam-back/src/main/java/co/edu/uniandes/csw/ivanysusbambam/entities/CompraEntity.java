@@ -7,17 +7,21 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+
 
 /**
  *
  * @author j.sierrac
  */
 @Entity
-public class CompraEntity extends BaseEntity implements Serializable {
+public class CompraEntity implements Serializable {
     
      /**
      * Id de la Entity de Compra
      */
+    //Se repitiria por la herencia
+    @Id
     private int idCompra;
 
    
