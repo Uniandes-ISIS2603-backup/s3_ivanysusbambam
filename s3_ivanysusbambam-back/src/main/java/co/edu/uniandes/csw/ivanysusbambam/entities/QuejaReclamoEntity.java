@@ -9,29 +9,50 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 /**
  *
- * @author if.garcia
+ * @author if.garcia y hd.castellanos
  */
 @Entity
 public class QuejaReclamoEntity extends BaseEntity implements Serializable{
     
+    /**
+     * indica si es queja o reclamo 
+     */
     private String tipo;
     
+    /**
+     * Indica la descripci[on de la queja o el reclamo 
+     */
     private String texto;
-    
-    public String getTipo(){
-        return tipo;
-    } 
-    
-    public String getTexto(){
+
+    /**
+     * @return the tipo
+     */
+    public String getTipo() {
         return tipo;
     }
-    
-    public void setTipo(String tipo){
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-    
-    public void setTexto(String texto){
+
+    /**
+     * @return the texto
+     */
+    public String getTexto() {
+        return texto;
+    }
+
+    /**
+     * @param texto the texto to set
+     */
+    public void setTexto(String texto) {
         this.texto = texto;
     }
+    
+    
+    
     
 }

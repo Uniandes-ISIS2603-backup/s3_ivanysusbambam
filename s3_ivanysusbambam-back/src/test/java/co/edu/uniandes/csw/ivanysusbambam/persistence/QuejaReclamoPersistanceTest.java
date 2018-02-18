@@ -3,19 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.ivanysusbambam.entities;
-
-import java.io.Serializable;
-import javax.persistence.Entity;
+package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 /**
  *
  * @author hd.castellanos
  */
-@Entity
-public class VentaEntity extends BaseEntity implements Serializable
-{
-    
-    
+public class QuejaReclamoPersistanceTest {
     
 }
