@@ -7,7 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 import java.util.List;
 
-/**Representación, para transferencia de Modelo, Hereda de ModeloDTO <br>
+/**Representación, para transferencia de Marca, Hereda de MarcaDTO <br>
  * Se serializalizarse: <br>
  * < Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
@@ -18,37 +18,47 @@ import java.util.List;
  *       "automoviles": JSON Array
  *   }
  * </pre>
- * Un modelo se representa de la siguiente forma:<br>
+ * Una marca se representa de la siguiente forma:<br>
  * 
  * <pre>
  * 
  *   {
- *      "numeroPuertas": 4
- *      "transmision": "mecanica"
- *      "cilindraje":"500cc"
- *      "centimetrosCubicos":"";
+ *      "nombre": "Chevrolet",
+ *      "modelos" : [{"numPuertas": 4}],
  *      "automóviles" :[{"placa":"VEF221"]
  *   }
  * </pre>
  * 
  * @author Joseph Ortíz Moreno
  */
-public class ModelDetail extends ModelDTO {
+public class MarcaDetailDTO  extends MarcaDTO{
     /**
      *  Representa la lista de automóviles pertenecientes a una marca
      */
     private List<AutomovilDTO> automoviles;
-     //-----------------------------------------------------------------------------------------------------------------
+    /**
+     *  Representa la lista de modelos pertenecientes a una marca
+     */
+    private List<ModelDTO> modelos;
+    
+    //-----------------------------------------------------------------------------------------------------------------
     // Métodos Get
     //-----------------------------------------------------------------------------------------------------------------
     /**
-     * Retorna la lista de automoviles pertenecientes a un modelo
+     * Retorna la lista de automoviles pertenecientes a la marca
      * @return Lista con los automoviles
      */
     public List<AutomovilDTO> getAutomoviles(){
         return automoviles;
     }
-     //-----------------------------------------------------------------------------------------------------------------
+    /**
+     * Retorna una lista con los modelos de la marca
+     * @return Lista con los modelos
+     */
+    public List<ModelDTO> getModelos(){
+        return modelos;
+    } 
+    //-----------------------------------------------------------------------------------------------------------------
     // Métodos Add
     //-----------------------------------------------------------------------------------------------------------------
     
@@ -60,7 +70,15 @@ public class ModelDetail extends ModelDTO {
     public void addAutomovil(AutomovilDTO auto){
         automoviles.add(auto);
     }
-      //-----------------------------------------------------------------------------------------------------------------
+        /**
+     *  Agrega el modelo dado por parametro
+     * <b>pos</b> se aniadio el modelo
+     * @param mod Modelo que se quiere agregar.
+     */
+    public void addModel(ModelDTO mod){
+        modelos.add(mod);
+    }
+    //-----------------------------------------------------------------------------------------------------------------
     // Métodos Set
     //-----------------------------------------------------------------------------------------------------------------
     /**
@@ -69,5 +87,12 @@ public class ModelDetail extends ModelDTO {
      */
     public void setAutomoviles(List<AutomovilDTO> listaAuto){
         this.automoviles = listaAuto;
+    }
+    /**
+     * Refresca la lista de modelos
+     * @param models Lista de modelos que se quiere mostrar
+     */
+    public void setModelos(List<ModelDTO> models){
+        this.modelos = models;
     }
 }

@@ -7,16 +7,22 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author a.bravo
  */
+
+@Entity
 public class AutomovilEntity extends BaseEntity implements Serializable{
     private String color;
     private int anio;
     private String placa;
     private int chasis;
+    
+    @OneToOne
     private Calendar fechaListado;
     private double valorListado;
     
