@@ -38,7 +38,7 @@ public class VendedorEntity extends BaseEntity implements Serializable{
     private List<VentaEntity> ventas;
     
     @PodamExclude
-    @OneToMany(mappedBy="vendedoEncargado")
+    @OneToMany(mappedBy="vendedorEncargado")
     private List<CompraEntity> compras;
     
     @PodamExclude
