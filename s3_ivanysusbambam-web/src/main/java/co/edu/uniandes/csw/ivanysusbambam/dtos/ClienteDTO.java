@@ -45,7 +45,14 @@ public class ClienteDTO {
      * Representa el número de cédula del cliente.
      */
     private long cedula;
-
+    
+    //Constructor vacío
+    /**
+     * Constructor por defecto.
+     */
+    public ClienteDTO(){
+        
+    }
     
     //----------------------GETTERS-----------------------------------------
     /** 
@@ -79,10 +86,6 @@ public class ClienteDTO {
         this.cedula = cedula;
     }
     
-    
-    //Se omite el setCedula pues no tendría sentido que un cliente pudiera 
-    //cambiar su número de cédula.
-
   
     
     

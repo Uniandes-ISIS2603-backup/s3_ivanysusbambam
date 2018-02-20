@@ -46,6 +46,14 @@ public class ProspectoCompraDTO {
      */
     private long id;
 
+    //-------------------------------------CONSTRUCTOR-------------------------
+    
+    /**
+     * Constructor por defecto.
+     */
+    public ProspectoCompraDTO(){
+        
+    }
     
     //---------------------------------------GETTERS----------------------------
     /**

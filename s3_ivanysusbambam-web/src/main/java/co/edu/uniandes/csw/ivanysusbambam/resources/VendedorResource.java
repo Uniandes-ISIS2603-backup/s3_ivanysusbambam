@@ -45,9 +45,9 @@ public class VendedorResource {
      * @return JSONArray  con la información básica de todos los vendedores.
      */
     @GET
-    public List<VendedorDTO> getVendedores(){
-       List<VendedorDTO> vendedores = new ArrayList<>();
-       return vendedores;
+    public List<VendedorDetailDTO> getVendedores(){
+       List<VendedorDetailDTO> vendedores = new ArrayList<>();
+       return vendedores;   
     }
     
     /**
