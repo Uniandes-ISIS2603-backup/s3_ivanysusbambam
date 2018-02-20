@@ -16,7 +16,7 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     
     private String direccion;
     
-    private int telefono;
+    private Integer telefono;
     
     private String nombre;
     

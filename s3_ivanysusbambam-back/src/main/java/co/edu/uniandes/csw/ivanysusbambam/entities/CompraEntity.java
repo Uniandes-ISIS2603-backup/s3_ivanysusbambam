@@ -22,14 +22,14 @@ public class CompraEntity implements Serializable {
      */
     //Se repitiria por la herencia
     @Id
-    private int idCompra;
+    private Integer idCompra;
 
    
     /**
      * Da el id de la Compra
      * @return el id de la compra 
      */
-    public int getIdCompra() {
+    public Integer getIdCompra() {
         return idCompra;
     }
 /**

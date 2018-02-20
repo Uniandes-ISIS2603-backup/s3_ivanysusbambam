@@ -20,9 +20,9 @@ import javax.persistence.TemporalType;
 @Entity
 public class AutomovilEntity extends BaseEntity implements Serializable{
     private String color;
-    private int anio;
+    private Integer anio;
     private String placa;
-    private int chasis;
+    private Integer chasis;
     
     @Temporal(TemporalType.DATE)
     private Calendar fechaListado;

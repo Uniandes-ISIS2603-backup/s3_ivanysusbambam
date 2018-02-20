@@ -16,7 +16,7 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
   
     private String comentario;
 
-    private int puntaje;
+    private Integer puntaje;
     
     public String getComentario() {
         return comentario;

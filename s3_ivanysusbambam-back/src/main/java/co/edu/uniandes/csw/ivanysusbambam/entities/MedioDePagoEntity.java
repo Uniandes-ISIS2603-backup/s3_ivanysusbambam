@@ -21,7 +21,7 @@ public class MedioDePagoEntity implements Serializable
      */
    
     @Id
-    private int numero;
+    private Integer numero;
 /**
  * Da el numero del medio de pago
  * @return numero
