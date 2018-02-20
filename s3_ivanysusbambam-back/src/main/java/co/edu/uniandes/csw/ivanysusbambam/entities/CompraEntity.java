@@ -28,6 +28,7 @@ public class CompraEntity implements Serializable {
     @Id
     private Integer idCompra;
 
+
     
     /**
      * El automovil de la compra

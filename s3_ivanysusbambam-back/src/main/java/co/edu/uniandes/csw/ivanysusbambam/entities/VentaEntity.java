@@ -136,6 +136,6 @@ public class VentaEntity extends BaseEntity implements Serializable {
     public void setAutomovil(AutomovilEntity automovil) {
         this.automovil = automovil;
     }
-    
 
+    
 }
