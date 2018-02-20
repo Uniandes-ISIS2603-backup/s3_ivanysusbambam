@@ -71,6 +71,15 @@ public class VendedorDetailDTO extends VendedorDTO{
      */
     
     private PuntoDeVentaDTO puntoDeVenta;
+
+    //-------------------------CONSTRUCTOR--------------------------
+    
+    /**
+     * Constructor por defecto.
+     */
+    public VendedorDetailDTO(){
+        
+    }
     
     //-------------------------GETTERS-------------------------------
     

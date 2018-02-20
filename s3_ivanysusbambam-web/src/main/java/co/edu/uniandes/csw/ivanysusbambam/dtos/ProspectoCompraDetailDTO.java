@@ -60,7 +60,16 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
      * Representa el automóvil en el que está interesado el cliente.
      */    
     private AutomovilDTO automovil;
-
+    
+    
+    //-------------------------------------CONSTRUCTOR-------------------------
+    
+    /**
+     * Constructor por defecto.
+     */
+    public ProspectoCompraDetailDTO(){
+        
+    }
     
     //-------------------------------------GETTERS-----------------------------
     
