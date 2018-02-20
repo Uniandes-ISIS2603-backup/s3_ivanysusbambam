@@ -10,6 +10,7 @@ import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -23,6 +24,7 @@ import javax.persistence.TypedQuery;
  *          -Creación de la clase y métodos de busqueda, creación, actualización y eliminación´básicos.
  * </pre>
  */
+@Stateless
 public class VendedorPersistence {
     
     private final static Logger LOGGER = Logger.getLogger(VendedorPersistence.class.getName());
