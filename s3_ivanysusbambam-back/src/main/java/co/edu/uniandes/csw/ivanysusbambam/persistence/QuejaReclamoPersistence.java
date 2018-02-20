@@ -19,9 +19,9 @@ import javax.persistence.TypedQuery;
  * @author hd.castellanos
  */
 @Stateless
-public class QuejaReclamoPersistance {
+public class QuejaReclamoPersistence {
  
-    private static final Logger LOGGER = Logger.getLogger(QuejaReclamoPersistance.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(QuejaReclamoPersistence.class.getName());
 
     @PersistenceContext(unitName = "IvanysusbambamPU")
     protected EntityManager em;
@@ -59,6 +59,18 @@ public class QuejaReclamoPersistance {
         return em.find(QuejaReclamoEntity.class, id);
     }
 
+       /**
+     * Encuentra una serie de QuejaReclamoEntity según el tipo de QuejaReclamo.
+     * @param tipo  el tipo que se busca
+     * @return lista de QuejaReclamoEntity con el tipo dado por parámetro.
+     */
+    public List<QuejaReclamoEntity> findByType(String tipo){
+        LOGGER.log(Level.INFO, "Buscando QuejasReclamos con tipo: ", tipo);
+        TypedQuery tq  = em.createQuery("select u from QuejaReclamoEntity u where u.tipo = :tipo", QuejaReclamoEntity.class);
+        if(tq.getResultList().isEmpty()) return null;
+        else return tq.getResultList();
+    }
+    
     /**
      * busca y actualiza la entidad de la queja o reclamo  dada por parametro 
      * @param entity queja o reclamo  con la informacion que se desea actualizar

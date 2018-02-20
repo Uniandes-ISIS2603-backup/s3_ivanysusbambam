@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 /**
  *
  * @author if.garcia y hd.castellanos
@@ -23,6 +24,12 @@ public class QuejaReclamoEntity extends BaseEntity implements Serializable{
      * Indica la descripci[on de la queja o el reclamo 
      */
     private String texto;
+    
+    @ManyToOne
+    /**
+     * Atributo del cliente asociado a esta QuejaReclamo 
+     */
+    private ClienteEntity cliente; 
 
     /**
      * @return the tipo
@@ -50,6 +57,20 @@ public class QuejaReclamoEntity extends BaseEntity implements Serializable{
      */
     public void setTexto(String texto) {
         this.texto = texto;
+    }
+
+    /**
+     * @return the cliente
+     */
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    /**
+     * @param cliente the cliente to set
+     */
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
     }
     
     

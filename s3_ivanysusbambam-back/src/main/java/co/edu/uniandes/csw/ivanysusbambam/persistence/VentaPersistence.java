@@ -19,9 +19,9 @@ import javax.persistence.TypedQuery;
  * @author hd.castellanos
  */
 @Stateless
-public class VentaPersistance {
+public class VentaPersistence {
 
-    private static final Logger LOGGER = Logger.getLogger(VentaPersistance.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(VentaPersistence.class.getName());
 
     @PersistenceContext(unitName = "IvanysusbambamPU")
     protected EntityManager em;
