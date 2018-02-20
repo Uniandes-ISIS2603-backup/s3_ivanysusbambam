@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.Calendar;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -22,8 +24,9 @@ public class AutomovilEntity extends BaseEntity implements Serializable{
     private String placa;
     private int chasis;
     
-    @OneToOne
+    @Temporal(TemporalType.DATE)
     private Calendar fechaListado;
+    
     private double valorListado;
     
     public String getColor(){

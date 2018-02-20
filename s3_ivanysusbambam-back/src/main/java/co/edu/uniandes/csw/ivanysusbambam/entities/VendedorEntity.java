@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -27,15 +28,20 @@ public class VendedorEntity extends BaseEntity implements Serializable{
     
     private Long cedula;
     
+    
+    @PodamExclude
     @OneToMany(mappedBy="vendedor",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
     
+    @PodamExclude
     @OneToMany(mappedBy="vendedor")
     private List<VentaEntity> ventas;
     
+    @PodamExclude
     @OneToMany(mappedBy="vendedor")
     private List<CompraEntity> compras;
     
+    @PodamExclude
     @ManyToOne
     private PuntoDeVentaEntity puntoDeVenta;
 
