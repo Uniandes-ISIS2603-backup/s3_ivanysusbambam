@@ -9,7 +9,9 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -22,30 +24,40 @@ import javax.persistence.OneToMany;
  */
 
 @Entity
-public class ClienteEntity extends BaseEntity implements Serializable{
+public class ClienteEntity implements Serializable{
     
+    @Id
+    private Long cedula;
+    
+    private String nombre;
+    
+    @PodamExclude
     @OneToMany(mappedBy="cliente",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
     
+    @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<CalificacionTiendaEntity> calificacionesTienda;
     
+    @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<QuejaReclamoEntity> quejasReclamos;
     
+    @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<CompraEntity> compras;
     
+    @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<VentaEntity> ventas;
     
     @OneToMany(mappedBy = "cliente")
     private List<MedioDePagoEntity> mediosDePago;
 
+    
     public List<ProspectoCompraEntity> getProspectosCompra() {
         return prospectosCompra;
     }
-
     public List<CalificacionTiendaEntity> getCalificacionesTienda() {
         return calificacionesTienda;
     }
@@ -65,22 +77,23 @@ public class ClienteEntity extends BaseEntity implements Serializable{
     public List<MedioDePagoEntity> getMediosDePago() {
         return mediosDePago;
     }
+
     
     
     public String getNombre(){
-        return super.getName();
+        return nombre;
     }
     
     public Long getCedula(){
-        return super.getId();
+        return cedula;
     }
     
     public void setNombre(String nombre){
-        super.setName(nombre);
+        this.nombre = nombre;
     }
     
     public void setCedula(Long cedula){
-        super.setId(cedula);
+        this.cedula = cedula;
     }
 
     public void setProspectosCompra(List<ProspectoCompraEntity> prospectosCompra) {
@@ -106,6 +119,21 @@ public class ClienteEntity extends BaseEntity implements Serializable{
     public void setMediosDePago(List<MedioDePagoEntity> mediosDePago) {
         this.mediosDePago = mediosDePago;
     }
-    
-    
+  
+    public boolean equals(ClienteEntity obj) {
+        
+        if (obj.getCedula() != null && this.getCedula() != null) {
+            return this.getCedula().equals(obj.cedula);
+        }
+        
+        return super.equals(obj);
+    }
+
+    @Override
+    public int hashCode() {
+        if (this.cedula != null) {
+            return this.cedula.hashCode();
+        }
+        return super.hashCode();
+    }
 }

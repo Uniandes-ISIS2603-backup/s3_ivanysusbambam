@@ -6,6 +6,7 @@
     <class>co.edu.uniandes.csw.ivanysusbambam.entities.CityEntity</class>
     <class>co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity</class>
     <class>co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity</class>
     <properties>
       <property name="eclipselink.logging.level" value="FINE"/>
       <property name="eclipselink.ddl-generation" value="create-or-extend-tables"/>

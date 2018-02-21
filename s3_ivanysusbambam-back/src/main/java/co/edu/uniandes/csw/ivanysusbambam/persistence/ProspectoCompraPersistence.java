@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -24,6 +25,7 @@ import javax.persistence.TypedQuery;
  *          -Creada clase y métodos find, create, update y delete básicos.
  * </pre>
  */
+@Stateless
 public class ProspectoCompraPersistence {
     
     private static final Logger LOGGER =  Logger.getLogger(ProspectoCompraPersistence.class.getName());
@@ -65,11 +67,12 @@ public class ProspectoCompraPersistence {
     
     /**
      * Elimina un ProspectoCompraEntity pasado por parámetro.
-     * @param pe ProspectoCompraEntity que se desea eliminar.
+     * @param id  id del ProspectoCompraEntity que se desea eliminar.
      * @return ProspectoCompraEntity recién eliminado.
      */
-    public ProspectoCompraEntity delete (ProspectoCompraEntity pe){
-        LOGGER.log(Level.INFO, "Eliminando prospectoCompra con id: ", pe.getId());
+    public ProspectoCompraEntity delete (Long id){
+        LOGGER.log(Level.INFO, "Eliminando prospectoCompra con id: ", id);
+        ProspectoCompraEntity pe = find(id);
         em.remove(pe);
         return pe;
     }
@@ -93,7 +96,7 @@ public class ProspectoCompraPersistence {
         LOGGER.log(Level.INFO, "Buscando Prospectos de compra relacionados con el vendedor: ", ve.getId());
         
         TypedQuery tq = em.createQuery("select v from ProspectoCompraEntity v where v.vendedor = :ve", ProspectoCompraEntity.class);
-        
+        tq.setParameter("ve",ve);
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
     }
@@ -104,9 +107,10 @@ public class ProspectoCompraPersistence {
      * @return Lista con los ProspectoCompraEntity pertenecientes al ClienteEntity dado por parámetro.
      */
     public List<ProspectoCompraEntity> findByCliente(ClienteEntity ce){
-        LOGGER.log(Level.INFO, "Buscando prospectos de compra relacionados con el cliente: ", ce.getId());
+        LOGGER.log(Level.INFO, "Buscando prospectos de compra relacionados con el cliente: ", ce.getCedula());
         
         TypedQuery tq = em.createQuery("select v from ProspectoCompraEntity v where v.cliente = :ce", ProspectoCompraEntity.class);
+        tq.setParameter("ce",ce);
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
     }

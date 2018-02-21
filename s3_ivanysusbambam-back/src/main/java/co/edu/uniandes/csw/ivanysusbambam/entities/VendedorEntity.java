@@ -28,7 +28,6 @@ public class VendedorEntity extends BaseEntity implements Serializable{
     
     private Long cedula;
     
-    
     @PodamExclude
     @OneToMany(mappedBy="vendedor",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
@@ -60,8 +59,7 @@ public class VendedorEntity extends BaseEntity implements Serializable{
     public void setPuntoDeVenta(PuntoDeVentaEntity puntoDeVenta) {
         this.puntoDeVenta = puntoDeVenta;
     }
-    
-    
+        
     
     /**
      * 

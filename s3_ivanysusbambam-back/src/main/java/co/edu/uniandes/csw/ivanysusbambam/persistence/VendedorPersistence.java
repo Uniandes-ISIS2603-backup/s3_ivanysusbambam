@@ -5,6 +5,7 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.List;
@@ -43,36 +44,43 @@ public class VendedorPersistence {
         LOGGER.info("Creado nuevo vendedor");
         return ve;
     }
-    
+   /* 
     /**
      * Encuentra todos los VendedorEntity persistidos.
      * @return lista con todos los VendedorEntity persistidos.
      */
-    public List<VendedorEntity> findAll(){
+    /*public List<VendedorEntity> findAll(){
         LOGGER.info("Consultando todos los vendedores");
         TypedQuery tq = em.createQuery("select u from VendedorEntity u", VendedorEntity.class);
         return tq.getResultList();
-    }
+    }*/
     
     /**
      * Actualiza la información de un VendedorEntity dado
      * @param ve el VendedorEntity que con la información actualizada.
      * @return el VendedorEntity que con la información actualizada.
      */
-    public VendedorEntity update(VendedorEntity ve){
+    /*public VendedorEntity update(VendedorEntity ve){
         LOGGER.log(Level.INFO, "actualizando la informaci\u00f3n del vendedor con carnet: {0}", ve.getId());
         return em.merge(ve);
-    }
+    }*/
     
     /**
      * Elimina el VendedorEntity pasado por parámetro.
-     * @param ve VendedorEntity que se eliminará.
+     * @param id id del vendedor que se eliminará.
      * @return VendedorEntity recién eliminado.
      */
-    public VendedorEntity delete(VendedorEntity ve){
-        LOGGER.log(Level.INFO, "eliminando al vendedor con carnet: {0}", ve.getId());
+    public VendedorEntity delete(Long id){
+        LOGGER.log(Level.INFO, "eliminando al vendedor con carnet: {0}", id);
+        VendedorEntity ve = find(id);
         em.remove(ve);
         return ve;
+    }
+    
+    public List<VendedorEntity> findAll(){
+        LOGGER.info("Recuperando todos los vendedores");
+        TypedQuery tp = em.createQuery("select v from VendedorEntity v", VendedorEntity.class);
+        return tp.getResultList();
     }
     
     /**
@@ -88,16 +96,14 @@ public class VendedorPersistence {
     /**
      * Encuentra un VendedorEntity según la cédula del vendedor.
      * @param cedula cédula del vendedor.
-     * @return el vendedor correspondiente a ese id o null si no existe.
-     * @throws BusinessLogicException si hay más de un vendedor registrado con la misma cédula
+     * @return una lista con vendedor correspondiente a ese id o null si no existe.
      */
-    public VendedorEntity findByCedula(Long cedula) throws BusinessLogicException{
+    public List<VendedorEntity> findByCedula(Long cedula){
         LOGGER.log(Level.INFO, "buscando vendedor con cedula: ", cedula);
         TypedQuery tq = em.createQuery("select v from VendedorEntity v where v.cedula = :cedula", VendedorEntity.class);
-        
-        if(tq.getResultList().size()>1)throw new BusinessLogicException("Existe más de un vendedor registrado con la misma cédula");
-        else if(tq.getResultList().isEmpty()) return null;
-        else return (VendedorEntity) tq.getResultList().get(0);
+        tq.setParameter("cedula", cedula);
+        if(tq.getResultList().isEmpty()) return null;
+        else return tq.getResultList();
     }
     
     /**
@@ -108,9 +114,18 @@ public class VendedorPersistence {
     public List<VendedorEntity> findByName(String name){
         LOGGER.log(Level.INFO, "buscando vendedores con nombre: ", name);
         TypedQuery tq = em.createQuery("select v from VendedorEntity v where v.name = :name", VendedorEntity.class);
-        
+        tq.setParameter("name", name);
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
-    }
+    }  
     
+     /**
+     * Actualiza un VendedorEntity dado.
+     * @param ce VendedorEntity con la información actualizada.
+     * @return VendedorEntity actualizado.
+     */
+    public VendedorEntity update(VendedorEntity ce){
+        LOGGER.log(Level.INFO, "Actualizando vendedor con cédula: ", ce.getId());
+        return em.merge(ce);
+    }
 }

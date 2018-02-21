@@ -24,6 +24,7 @@ SOFTWARE.
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
+import javax.ejb.Stateless;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -39,6 +40,7 @@ import javax.persistence.MappedSuperclass;
  * @author ISIS2603
  */
 @MappedSuperclass
+@Stateless
 public abstract class BaseEntity implements Serializable {
 
     @Id

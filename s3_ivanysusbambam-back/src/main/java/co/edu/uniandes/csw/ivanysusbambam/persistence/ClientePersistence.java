@@ -10,6 +10,7 @@ import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import java.util.List;
 import java.util.logging.Level;
+import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
@@ -22,6 +23,7 @@ import javax.persistence.TypedQuery;
  *          -Creación de la clase y métodos de busqueda, creación, actualización y eliminación´básicos.
  * </pre>
  */
+@Stateless
 public class ClientePersistence {
     
     private static final Logger LOGGER = Logger.getLogger(ClientePersistence.class.getName());
@@ -57,17 +59,18 @@ public class ClientePersistence {
      * @return ClienteEntity actualizado.
      */
     public ClienteEntity update(ClienteEntity ce){
-        LOGGER.log(Level.INFO, "Actualizando cliente con cédula: ", ce.getId());
+        LOGGER.log(Level.INFO, "Actualizando cliente con cédula: ", ce.getCedula());
         return em.merge(ce);
     }
     
     /**
      * Elimina un ClienteEntity pasado por parámetro.
-     * @param ce ClienteEntity que se desea eliminar.
+     * @param id del ClienteEntity que se desea eliminar.
      * @return ClienteEntity recién eliminado.
      */
-    public ClienteEntity delete(ClienteEntity ce){
-        LOGGER.log(Level.INFO, "Eliminando cliente con cédula: ", ce.getId());
+    public ClienteEntity delete(Long id){
+        LOGGER.log(Level.INFO, "Eliminando cliente con cédula: ", id);
+        ClienteEntity ce = find(id);
         em.remove(ce);
         return ce;
     }
@@ -89,7 +92,8 @@ public class ClientePersistence {
      */
     public List<ClienteEntity> findByName(String name){
         LOGGER.log(Level.INFO, "Buscando clientes con nombre: ", name);
-        TypedQuery tq  = em.createQuery("select v from ClienteEntity v where v.name = :name", ClienteEntity.class);
+        TypedQuery tq  = em.createQuery("select v from ClienteEntity v where v.nombre = :nombre", ClienteEntity.class);
+        tq.setParameter("nombre",name);
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
     }

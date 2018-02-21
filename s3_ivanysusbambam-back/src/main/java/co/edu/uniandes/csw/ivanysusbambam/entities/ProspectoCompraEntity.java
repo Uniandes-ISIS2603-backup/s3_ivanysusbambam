@@ -29,8 +29,7 @@ public class ProspectoCompraEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    private String texto;
-    
+    private String texto;    
     @ManyToOne
     private ClienteEntity cliente;
     
@@ -39,7 +38,7 @@ public class ProspectoCompraEntity implements Serializable {
     
     @ManyToOne
     private AutomovilEntity automovil;
-
+    
     public static long getSerialVersionUID() {
         return serialVersionUID;
     }
@@ -63,7 +62,7 @@ public class ProspectoCompraEntity implements Serializable {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-
+    
     public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
@@ -91,17 +90,11 @@ public class ProspectoCompraEntity implements Serializable {
         return hash;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof ProspectoCompraEntity)) {
-            return false;
+    public boolean equals(ProspectoCompraEntity obj) {
+        if (obj.id != null && this.id != null) {
+            return this.id.equals(obj.id);
         }
-        ProspectoCompraEntity other = (ProspectoCompraEntity) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
+        return super.equals(obj);
     }
 
     @Override
