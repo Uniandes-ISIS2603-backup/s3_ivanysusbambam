@@ -5,10 +5,6 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 
-import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
-import javax.enterprise.context.RequestScoped;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.Path;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.CompraDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;

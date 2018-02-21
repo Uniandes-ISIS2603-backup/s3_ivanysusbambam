@@ -23,7 +23,7 @@ import javax.persistence.Query;
 public class MarcaPersistence {
     private static final Logger LOGGER = Logger.getLogger(ModelPersistence.class.getName());
         
-        @PersistenceContext(unitName = "CompanyPU")
+        @PersistenceContext(unitName = "IvanysusbambamPU")
         protected EntityManager em;
         
        public MarcaEntity find(String nom){
