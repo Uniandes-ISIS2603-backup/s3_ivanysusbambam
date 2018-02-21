@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
 /**
@@ -22,6 +24,13 @@ public class MedioDePagoEntity implements Serializable
    
     @Id
     private Integer numero;
+    
+    /**
+     * Define el tipo del medio de pago
+     */
+    @Enumerated(EnumType.STRING)
+    private TipoMedioDePago tipo;
+    
 /**
  * Da el numero del medio de pago
  * @return numero
@@ -37,4 +46,9 @@ public class MedioDePagoEntity implements Serializable
         this.numero = numero;
     }
     
+}
+
+
+enum TipoMedioDePago {
+    PAY_PAL, CREDITO, PSE;
 }

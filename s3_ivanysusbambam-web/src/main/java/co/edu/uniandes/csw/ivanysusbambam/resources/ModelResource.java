@@ -1,6 +1,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ModelDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -46,7 +47,7 @@ public class ModelResource {
      */
     @GET
     public List<ModelDTO> getModelos(){
-        return null;
+        return new ArrayList<>();
     }
      /**
      * GET /api/modelos: Retorna todos los modelos disponibles segun una especificacion
@@ -106,15 +107,15 @@ public class ModelResource {
      * 404 Not Found. No existe un modelo con el nombre dado por parámetro
      * </code> 
      * </pre>
-     * @param Nombre Nombre del modelo que se quiere actualizar
+     * @param Placa Placa del modelo que se quiere actualizar
      * @param Nuevo {@link ModeloDTO} El modelo que se quiere guardar
      * @return JSON {@link MarcaDTO} - El modelo guardado
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error porque no existe un modelo con ese nombre
      */
     @Path("{Nombre: \\d+}")
     @PUT
-    public ModelDTO putModelo(@PathParam("Nombre") String Nombre, ModelDTO Nuevo) throws BusinessLogicException{
-        return null;
+    public ModelDTO putModelo(@PathParam("Placa") String Placa, ModelDTO Nuevo) throws BusinessLogicException{
+        return Nuevo;
     }
           /**
      * <h1>DELETE /api/modelos/{id} : Borrar un modelo por la placa.</h1>
@@ -131,8 +132,8 @@ public class ModelResource {
      * @param placa Identificador de la placa perteneciente al modelo que se desea borrar
      */
     @DELETE
-    @Path("{nomMarca: \\d+}")
-     public void deleteModelo(@PathParam("nomMarca") String placa) {
+    @Path("{Placa: \\d+}")
+     public void deleteModelo(@PathParam("Placa") String placa) {
         //ssssssss
     }
 }

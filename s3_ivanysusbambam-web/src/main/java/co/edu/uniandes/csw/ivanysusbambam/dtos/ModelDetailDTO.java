@@ -5,40 +5,123 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
+import java.util.ArrayList;
 import java.util.List;
 
-/**Representación, para transferencia de Modelo, Hereda de ModeloDTO <br>
- * Se serializalizarse: <br>
- * < Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
- * <pre>
- *   {
- * 
- *      "nombre": string,
- *       "modelos": JSON Array
- *       "automoviles": JSON Array
- *   }
- * </pre>
- * Un modelo se representa de la siguiente forma:<br>
- * 
- * <pre>
- * 
- *   {
- *      "numeroPuertas": 4
- *      "transmision": "mecanica"
- *      "cilindraje":"500cc"
- *      "centimetrosCubicos":"";
- *      "automóviles" :[{"placa":"VEF221"]
- *   }
- * </pre>
- * 
- * @author Joseph Ortíz Moreno
+/**
+ * Clase que extiende de {@link ModelDTO} para manejar las relaciones entre los Model JSON y otros DTOs.
+ * @author Joseph Ortiz Moreno
  */
 public class ModelDetailDTO extends ModelDTO {
     /**
      *  Representa la lista de automóviles pertenecientes a una marca
      */
     private List<AutomovilDTO> automoviles;
-     //-----------------------------------------------------------------------------------------------------------------
+    
+       /**
+     * Representa el numero de puertas del vehículo
+     */
+    private Integer numeroPuertas;
+    /**
+     * Representa la transmisión del vehículo
+     */
+    private String transmision;
+    /**
+     * Representa el cilindraje del vehículo
+     */
+    private Integer cilindraje;
+    /**
+     * Representa los centímetros cúbicos 
+     */
+    private Double centCubicos;
+    
+    public ModelDetailDTO()
+    {
+        super();
+    }
+
+     /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de la cual se construye el DTO
+     */
+    public ModelDetailDTO(ModelEntity entity) {
+        super(entity);
+        if (entity.getCentCubicos()!= null) {
+            this.centCubicos = entity.getCentCubicos();
+        } else {
+            entity.setCentCubicos(null);
+        }
+        if (entity.getCilindraje()!= null) {
+            this.cilindraje = entity.getCilindraje();
+        }else {
+            entity.setCilindraje(null);
+        }
+       if (entity.getNumeroPuertas()!= null) {
+            this.numeroPuertas = entity.getNumeroPuertas();
+        }else {
+            entity.setNumeroPuertas(null);
+        }
+        if (entity.getTransmision()!= null) {
+            this.transmision = entity.getTransmision();
+        }else {
+            entity.setTransmision(null);
+        }
+        //Revisar bien esta parte 
+        if (entity.getAutomoviles()!= null) {
+            automoviles = new ArrayList<>();
+            for (AutomovilEntity entityAuto : entity.getAutomoviles()) {
+                automoviles.add(new AutomovilDTO(entityAuto));
+            }
+        }
+    }
+    
+    
+    /**
+     * Transformar el DTO a una entidad
+     * @return La entidad que representa el libro.
+     */
+    @Override
+    public ModelEntity toEntity() {
+        ModelEntity modl = super.toEntity();
+        
+        if (this.getCentCubicos() != null) {
+            modl.setCentCubicos(this.getCentCubicos());
+        }
+        if (this.getCilindraje()!= null) {
+            modl.setCilindraje(this.getCilindraje());
+        }
+       if (this.getNumeroPuertas() != null) {
+            modl.setNumeroPuertas(this.getNumeroPuertas());
+        }
+       if (this.getTransmision() != null) {
+            modl.setTransmision(this.getTransmision());
+        }
+   
+        if (getAutomoviles()!= null) {
+            List<AutomovilEntity> autosEntity = new ArrayList<>();
+            for (AutomovilDTO dtoAuto : getAutomoviles()) {
+                autosEntity.add(dtoAuto.toEntity());
+            }
+            modl.setAutomoviles(autosEntity);
+        }
+    
+        return modl;
+    }
+      //-----------------------------------------------------------------------------------------------------------------
+    // Métodos Set
+    //-----------------------------------------------------------------------------------------------------------------
+    /**
+     *  Refresca la lista de automoviles
+     * @param listaAuto Nueva lista que se quiere mostrar 
+     */
+    
+    public void setAutomoviles(List<AutomovilDTO> listaAuto){
+        this.automoviles = listaAuto;
+    }
+    //-----------------------------------------------------------------------------------------------------------------
     // Métodos Get
     //-----------------------------------------------------------------------------------------------------------------
     /**
@@ -48,26 +131,6 @@ public class ModelDetailDTO extends ModelDTO {
     public List<AutomovilDTO> getAutomoviles(){
         return automoviles;
     }
-     //-----------------------------------------------------------------------------------------------------------------
-    // Métodos Add
-    //-----------------------------------------------------------------------------------------------------------------
     
-    /**
-     *  Agrega el automovil dado por parametro
-     * <b>pos</b> se aniadio el automovil
-     * @param auto Automovil que se quiere agregar
-     */
-    public void addAutomovil(AutomovilDTO auto){
-        automoviles.add(auto);
-    }
-      //-----------------------------------------------------------------------------------------------------------------
-    // Métodos Set
-    //-----------------------------------------------------------------------------------------------------------------
-    /**
-     *  Refresca la lista de automoviles
-     * @param listaAuto Nueva lista que se quiere mostrar 
-     */
-    public void setAutomoviles(List<AutomovilDTO> listaAuto){
-        this.automoviles = listaAuto;
-    }
+ 
 }
