@@ -5,31 +5,16 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
+import java.util.ArrayList;
 import java.util.List;
 
-/**Representación, para transferencia de Marca, Hereda de MarcaDTO <br>
- * Se serializalizarse: <br>
- * < Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
- * <pre>
- *   {
- * 
- *      "nombre": string,
- *       "modelos": JSON Array
- *       "automoviles": JSON Array
- *   }
- * </pre>
- * Una marca se representa de la siguiente forma:<br>
- * 
- * <pre>
- * 
- *   {
- *      "nombre": "Chevrolet",
- *      "modelos" : [{"numPuertas": 4}],
- *      "automóviles" :[{"placa":"VEF221"]
- *   }
- * </pre>
- * 
- * @author Joseph Ortíz Moreno
+/**
+ * Clase que extiende de {@link MarcaDTO} para manejar las relaciones entre
+ * los Marca JSON y otros DTOs.
+ * @author Joseph Ortiz Moreno
  */
 public class MarcaDetailDTO  extends MarcaDTO{
     /**
@@ -58,26 +43,60 @@ public class MarcaDetailDTO  extends MarcaDTO{
     public List<ModelDTO> getModelos(){
         return modelos;
     } 
-    //-----------------------------------------------------------------------------------------------------------------
-    // Métodos Add
-    //-----------------------------------------------------------------------------------------------------------------
     
-    /**
-     *  Agrega el automovil dado por parametro
-     * <b>pos</b> se aniadio el automovil
-     * @param auto Automovil que se quiere agregar
+      /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de la cual se construye el DTO
      */
-    public void addAutomovil(AutomovilDTO auto){
-        automoviles.add(auto);
+    public MarcaDetailDTO(MarcaEntity entity) {
+        super(entity);
+        if (entity.getNombre()!=null) {
+            this.SetNombre(entity.getNombre());
+        } else {
+            entity.setName(null);
+        }
+        if (entity.getAutomoviles() != null) {
+            automoviles = new ArrayList<>();
+            for (AutomovilEntity entityAutomovil : entity.getAutomoviles()) {
+                automoviles.add(new AutomovilDTO(entityAutomovil));
+            }
+        }
+        if (entity.getModelos() != null) {
+            modelos = new ArrayList<>();
+            for (ModelEntity entityModelo : entity.getModelos()) {
+                modelos.add(new ModelDTO(entityModelo));
+            }
+        }
     }
-        /**
-     *  Agrega el modelo dado por parametro
-     * <b>pos</b> se aniadio el modelo
-     * @param mod Modelo que se quiere agregar.
+    
+     /**
+     * Transformar el DTO a una entidad
+     * @return La entidad que representa el libro.
      */
-    public void addModel(ModelDTO mod){
-        modelos.add(mod);
+    @Override
+    public MarcaEntity toEntity() {
+        MarcaEntity marca = super.toEntity();
+        if (this.getNombre()!=null) {
+            marca.setName(null);
+        }
+        if (getModelos() != null) {
+            List<ModelEntity> modelsEntity = new ArrayList<>();
+            for (ModelDTO dtoModel : getModelos()) {
+                modelsEntity.add(dtoModel.toEntity());
+            }
+            marca.setModelos(modelsEntity);
+        }
+        if (getAutomoviles()!= null) {
+            List<AutomovilEntity> autosEntity = new ArrayList<>();
+            for (AutomovilDTO dtoAuto : automoviles) {
+                autosEntity.add(dtoAuto.toEntity());
+            }
+            marca.setAutomoviles(autosEntity);
+        }
+        return marca;
     }
+    
     //-----------------------------------------------------------------------------------------------------------------
     // Métodos Set
     //-----------------------------------------------------------------------------------------------------------------

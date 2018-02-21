@@ -2,6 +2,7 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MarcaDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ModelDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
@@ -46,7 +47,7 @@ public class MarcaResource {
      */
     @GET
     public List<MarcaDTO> getMarcas(){
-        return null;
+        return new ArrayList<>();
     }
     /**
      * <h1>GET /api/marcas/{nombre} : Buscar marca por nombre.</h1>
@@ -90,7 +91,7 @@ public class MarcaResource {
      */
     @POST
     public ModelDTO postMarca(ModelDTO Nueva) throws BusinessLogicException{
-         return null;
+         return Nueva;
     }
      /**
      * <h1>PUT /api/marcas/{id} : Actualizar la marca con el nombre dado.</h1>
@@ -113,7 +114,7 @@ public class MarcaResource {
     @Path("{Nombre: \\d+}")
     @PUT
     public ModelDTO putModelo(@PathParam("Nombre") String Nombre, ModelDTO Nuevo) throws BusinessLogicException{
-        return null;
+        return Nuevo;
     }
       /**
      * <h1>DELETE /api/marcas/{id} : Borrar una marca por nombre.</h1>

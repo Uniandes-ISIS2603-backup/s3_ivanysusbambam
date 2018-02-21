@@ -1,5 +1,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -27,66 +29,93 @@ public class ModelDTO {
     /**
      * Representa los centímetros cúbicos 
      */
-    private double centCubicos;
-    
+    private Double centCubicos;
+    /**
+     * Método constructor de la clase
+     */
     public ModelDTO()
     {
-        numeroPuertas = null;
-        transmision = null;
-        cilindraje = null;
-        centCubicos = 0.0;
+        
     }
     
     /**
-     *
-     * @get
+     * Método constructor que recibe una entidad de modelo
+     * @param enti Entidad de modelo recibida
      */
+    public ModelDTO(ModelEntity enti)
+    {
+        this.setCentCubicos(enti.getCentCubicos());
+        this.setCilindraje(enti.getCilindraje());
+        this.setNumeroPuertas(enti.getNumeroPuertas());
+        this.setTransmision(enti.getTransmision());
+    }
+    /**
+     * Convierte el DTO en una entity
+     * @return Retorna la entity creada
+     */
+    public ModelEntity toEntity(){
+        ModelEntity nueva = new ModelEntity();
+        nueva.setCentCubicos(this.getCentCubicos());
+        nueva.setCilindraje(this.getCilindraje());
+        nueva.setNumeroPuertas(this.getNumeroPuertas());
+        nueva.setTransmision(this.getTransmision());
+        return nueva;
+    }
+   /**
+    * Retorna el numero de puertas
+    * @return Numero de puertas
+    */
     public Integer getNumeroPuertas(){
             return numeroPuertas;
     }
-     /**
-     * @get
-     * 
-     */
+   /**
+    * Retorna la transmision
+    * @return Tipo de transmision
+    */
     public String getTransmision(){
     return transmision;
 }
-     /**
-     * @get
-     * 
+    /**
+     * Retorna el cilindraje
+     * @return Cilindraje
      */
     public Integer getCilindraje(){
     return cilindraje;
 }
-    public double centCubicos(){
+    
+    /**
+     * Retorna los centimetros Cubicos
+     * @return Centimetros Cubicos
+     */
+    public Double getCentCubicos(){
     return centCubicos;
 }
     /**
-     * @put
-     * 
-    **/
-    public void putNumeroPuertas(Integer pu){
+     *  Actualiza el número de puertas
+     * @param pu Nuevo número de puertas
+     */
+    public void setNumeroPuertas(Integer pu){
         numeroPuertas = pu;
     }
-     /**
-     * @put
-     * 
-    **/
-    public void putTransmision(String nueva){
+    /**
+     * Actualiza la transmisión
+     * @param nueva Nuevo tipo de transmisión
+     */
+    public void setTransmision(String nueva){
         transmision = nueva;
     }
-      /**
-     * @put
-     * 
-    **/
-    public void putCilindraje(Integer  nCil){
+    /**
+     * Actualiza el cilindraje
+     * @param nCil Nuevo cilindraje
+     */
+    public void setCilindraje(Integer  nCil){
         cilindraje = nCil;
     }
-      /**
-     * @put
-     * 
-    **/
-    public void putCentCubicos(Double nueCent){
+    /**
+     * Actualiza los centimetros cubicos
+     * @param nueCent Nuevos Centimetros Cubicos
+     */
+    public void setCentCubicos(Double nueCent){
         centCubicos = nueCent;
     }
 

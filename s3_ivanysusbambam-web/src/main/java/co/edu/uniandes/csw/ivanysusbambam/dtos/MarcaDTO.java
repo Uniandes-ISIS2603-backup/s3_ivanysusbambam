@@ -1,6 +1,8 @@
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
-import java.util.List;
+import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
+
+
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -17,10 +19,27 @@ public class MarcaDTO {
      * Representa el nombre de la marca
      */
     private String nombre;
+
+    public MarcaDTO(){
+        
+    }
     /**
-     * Representa la lista de modelos de la marca
+     * Constructor a partir de la entidad
+     * @param nueva Entidad de la marca
      */
-    private List<ModelDTO> modelos;
+    public MarcaDTO(MarcaEntity nueva){
+        this.nombre = nueva.getNombre();
+    }
+    /**
+     * Método que convierte el DTO en una entidad
+     * @return Entidad creada
+     */
+    public MarcaEntity toEntity() 
+    {
+        MarcaEntity nueva = new MarcaEntity();
+        nueva.setName(this.getNombre());
+        return nueva;
+    }
     /**
      * Retorna el nombre de la marca
      * @return Nombre de la marca
@@ -29,11 +48,11 @@ public class MarcaDTO {
         return nombre;
     }
     /**
-     * Retorna una lista con los modelos de la marca
-     * @return Lista con los modelos de la marca
-      */
-    public List<ModelDTO> getModelos(){
-        return modelos;
+     * Cambia el nombre de la marca
+     * @param nuevo Nuevo nombre de la marca
+     */
+    public void SetNombre(String nuevo){
+        this.nombre = nuevo;
     }
     
 }
