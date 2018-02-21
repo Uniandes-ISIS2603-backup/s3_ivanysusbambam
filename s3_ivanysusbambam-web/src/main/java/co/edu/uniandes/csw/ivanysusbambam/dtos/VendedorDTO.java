@@ -52,6 +52,15 @@ public class VendedorDTO {
      * Representa el carnet del vendedor.
      */
     private long carnetVendedor;
+    
+    //---------------------CONSTRUCTORES---------------------
+    
+    /**
+     * Constructor por defecto.
+     */
+    public VendedorDTO(){
+        
+    }
 
     //---------------------GETTERS-------------------------
     

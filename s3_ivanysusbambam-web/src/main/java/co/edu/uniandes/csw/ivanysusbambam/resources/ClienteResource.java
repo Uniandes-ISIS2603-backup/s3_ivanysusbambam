@@ -45,9 +45,9 @@ public class ClienteResource {
      * @return JSONArray  con la información básica de todos los clientes.
      */
     @GET
-    public List<ClienteDTO> getClientes(){
+    public List<ClienteDetailDTO> getClientes(){
         //List clientes = null;
-        List<ClienteDTO> clientes =  new ArrayList<>();
+        List<ClienteDetailDTO> clientes =  new ArrayList<>();
         return clientes;
     }
     

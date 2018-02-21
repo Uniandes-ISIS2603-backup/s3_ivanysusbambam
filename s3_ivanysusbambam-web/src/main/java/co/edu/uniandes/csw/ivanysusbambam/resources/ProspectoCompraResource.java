@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 
-import co.edu.uniandes.csw.ivanysusbambam.dtos.ProspectoCompraDTO;
+
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ProspectoCompraDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -25,67 +25,64 @@ import javax.ws.rs.Produces;
  *
  * @author Felipe Velásquez Montoya
  */
-@Path("clientes/{id:\\d+}/prospectoscompra")
+@Path("prospectoscompra")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class ProspectoCompraResource {
     
     /**
-     * GET api/clientes/(id)/prospectoscompra Retorna todos los prospectos de 
-     * compra de un cliente dado.
+     * GET api/prospectoscompra Retorna todos los prospectos de 
+     * compra.
      * 
-     * <pre>Busca y devuelve todos los prospecros de compra del cliente dado.
+     * <pre>Busca y devuelve todos los prospectos de compra.
      * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Devuelve todos los prospectos de compra del cliente.</code> 
      * </pre>
      * 
-     * @param id cédula del cliente.
      * @return JSONArray  con la información de todos los prospectos de compra.
      * @throws BusinessLogicException si el cliente con el id dado no existe.
      */
     @GET
-    public List<ProspectoCompraDTO> getProspectosCompra(@PathParam("id") long id) throws BusinessLogicException{
-        List<ProspectoCompraDTO> prospectosCompra = new ArrayList<>();
+    public List<ProspectoCompraDetailDTO> getProspectosCompra() throws BusinessLogicException{
+        List<ProspectoCompraDetailDTO> prospectosCompra = new ArrayList<>();
         return prospectosCompra;
     }
     
      /**
-     * GET /api/clientes/(id)/prospectoscompra/(pid): Obtiene un prospecto de compra según su id.
+     * GET /api/prospectoscompra/(pid): Obtiene un prospecto de compra específico.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se encontró el prospecto de compra..
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found No existe un un cliente o prospecto de compra con los id dados.
+     * 404 Not Found No existe un prospecto de compra con el id dado.
      * </code> 
      * </pre>
-     * @param id id del cliente.
      * @param pid id del prospecto de compra.
      * @return JSON el prospecto de compra buscado.
      * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado..
      */
     @GET
     @Path("{pid: \\d+}")
-    public ProspectoCompraDetailDTO getProspectoCompra(@PathParam("id") long id, @PathParam("pid") long pid) throws BusinessLogicException{
+    public ProspectoCompraDetailDTO getProspectoCompra(@PathParam("pid") long pid) throws BusinessLogicException{
         return null;
     }
     
     /**
-     * PUT /api/clientes/(id)/prospectoscompra/(pid): Obtiene un prospecto de compra según su id.
+     * PUT /api/prospectoscompra/(pid): Obtiene un prospecto de compra según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se actualizó el prospecto de compra.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente o prospecto de compra con el id dado.
+     * 404 Not Found no existe el prospecto de compra con el id dado.
      * </code> 
      * </pre>
-     * @param id id del cliente.
      * @param pid id del prospecto de compra.
      * @param prospecto prospecto de compra con la nueva información.
      * @return JSON el prospecto de compra actualizado.
@@ -93,49 +90,44 @@ public class ProspectoCompraResource {
      */
     @PUT
     @Path("{pid: \\d+}")
-    public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("id") long id, @PathParam("pid") long pid, ProspectoCompraDetailDTO prospecto) throws BusinessLogicException{
+    public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("pid") long pid, ProspectoCompraDetailDTO prospecto) throws BusinessLogicException{
         return prospecto;
     }
     
     /**
-     * POST /api/clientes/(id)/prospectoscompra: Crea un nuevo prospecto de compra.
+     * POST /api/prospectoscompra: Crea un nuevo prospecto de compra.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se creó el prospecto de compra.
      * </code> 
-     * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente el id dado.
-     * </code> 
      * </pre>
-     * @param id id del cliente.
      * @param prospecto el prospecto de compra que se añadirá.
      * @return JSON el prospecto de compra creado con su id autoasignado.
      * @throws BusinessLogicException si no existe el cliente con el id dado.
      */
     @POST
-    public ProspectoCompraDetailDTO postProspectoCompra(@PathParam("id") long id, ProspectoCompraDetailDTO prospecto)throws BusinessLogicException{
+    public ProspectoCompraDetailDTO postProspectoCompra(ProspectoCompraDetailDTO prospecto)throws BusinessLogicException{
         return prospecto;
     }
     /**
-     * DELETE /api/clientes/(id)/prospectoscompra/(pid):elimina un prospecto de compra según su id.
+     * DELETE /api/prospectoscompra/(pid):elimina un prospecto de compra según su id.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se eliminó el prospecto de compra.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente o prospecto de compra con el id dado.
+     * 404 Not Found no existe el prospecto de compra con el id dado.
      * </code> 
      * </pre>
-     * @param id id del cliente.
      * @param pid id del prospecto de compra.
      * @return JSON el prospecto de compra actualizado.
      * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
      */
     @DELETE
     @Path("{pid: \\d+}")
-    public ProspectoCompraDetailDTO deleteProspectoCompra(@PathParam("id") long id, @PathParam("pid") long pid) throws BusinessLogicException{
+    public ProspectoCompraDetailDTO deleteProspectoCompra(@PathParam("pid") long pid) throws BusinessLogicException{
         return null;
     }
     

@@ -345,7 +345,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -354,8 +354,6 @@
 							"path": [
 								"s3_ivanysusbambam-web",
 								"api",
-								"clientes",
-								"1234",
 								"prospectoscompra"
 							]
 						},
@@ -370,7 +368,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra/3242",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/3242",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -379,8 +377,6 @@
 							"path": [
 								"s3_ivanysusbambam-web",
 								"api",
-								"clientes",
-								"1234",
 								"prospectoscompra",
 								"3242"
 							]
@@ -404,7 +400,7 @@
 							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"nombre\": \"juan rulfo\", \"cedula\": 1234 },\n\t\"vendedor\": {\"nombre\" : \"Kafka\", \"cedula\" : 1234, \"carnetVendedor\" : 13512},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra/1234",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1234",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -413,8 +409,6 @@
 							"path": [
 								"s3_ivanysusbambam-web",
 								"api",
-								"clientes",
-								"1234",
 								"prospectoscompra",
 								"1234"
 							]
@@ -438,7 +432,7 @@
 							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"nombre\": \"juan rulfo\", \"cedula\": 1234 },\n\t\"vendedor\": {\"nombre\" : \"Kafka\", \"cedula\" : 1234, \"carnetVendedor\" : 13512},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1234/prospectoscompra",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -447,8 +441,6 @@
 							"path": [
 								"s3_ivanysusbambam-web",
 								"api",
-								"clientes",
-								"1234",
 								"prospectoscompra"
 							]
 						},
@@ -463,7 +455,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/13642/prospectoscompra/1234",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1234",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -472,8 +464,6 @@
 							"path": [
 								"s3_ivanysusbambam-web",
 								"api",
-								"clientes",
-								"13642",
 								"prospectoscompra",
 								"1234"
 							]

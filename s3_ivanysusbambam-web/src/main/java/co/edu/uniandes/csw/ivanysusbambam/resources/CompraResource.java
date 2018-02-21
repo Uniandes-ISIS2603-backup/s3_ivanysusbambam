@@ -96,7 +96,7 @@ public class CompraResource {
     }
      /**
      * <h1>PUT /api/compras/{id} : Actualizar compra con el id dado.</h1>
-     * <pre>Cuerpo de petición: JSON {@link CityDetailDTO}.
+     * <pre>Cuerpo de petición: JSON {@link CompraDetailDTO}.
      * 
      * Actualiza la compra con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
      * 
@@ -104,10 +104,10 @@ public class CompraResource {
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Actualiza la compra con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found. No existe una ciudad con el id dado.
+     * 404 Not Found. No existe una compra con el id dado.
      * </code> 
      * </pre>
-     * @param id Identificador de la ciudad que se desea actualizar.
+     * @param id Identificador de la compra que se desea actualizar.
      * @param compra {@link CompraDetailDTO} La compra que se desea guardar.
      * @return JSON {@link CompraDetailDTO} - La compra guardada.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar la ciudad porque ya existe una con ese nombre.
@@ -124,7 +124,7 @@ public class CompraResource {
      * 
      * Códigos de respuesta:<br>
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Elimina la ciudad correspondiente al id dado.</code>
+     * 200 OK Elimina la compra correspondiente al id dado.</code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found. No existe una compra con el id dado.
      * </code>
