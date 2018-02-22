@@ -31,6 +31,7 @@ public class CompraEntity implements Serializable {
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idCompra;
 
+
     
     /**
      * El automovil de la compra

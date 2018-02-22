@@ -1,0 +1,31 @@
+{
+	"variables": [],
+	"info": {
+		"name": "AutomovilCollection",
+		"_postman_id": "759301c4-dd9b-b18b-e2ef-9172ad486402",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\":\"medellin\",\"zipcode\":\"7890\"}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

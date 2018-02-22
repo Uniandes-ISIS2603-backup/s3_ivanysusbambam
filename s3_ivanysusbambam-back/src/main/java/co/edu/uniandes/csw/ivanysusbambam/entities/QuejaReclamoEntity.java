@@ -76,4 +76,7 @@ public class QuejaReclamoEntity extends BaseEntity implements Serializable{
     
     
     
+    
+    
+    
 }
