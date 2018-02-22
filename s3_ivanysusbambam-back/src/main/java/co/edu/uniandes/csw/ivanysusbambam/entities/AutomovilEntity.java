@@ -7,7 +7,10 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -16,15 +19,19 @@ import javax.persistence.TemporalType;
  *
  * @author a.bravo
  */
-
 @Entity
 public class AutomovilEntity extends BaseEntity implements Serializable{
     private String color;
     private Integer anio;
     private String placa;
-    private Integer chasis;
-    
-    @Temporal(TemporalType.DATE)
+    private int chasis;
+    @OneToMany
+    private List<ProspectoCompraEntity> prospectosCompra;
+    @ManyToOne
+    private PuntoDeVentaEntity puntoDeVenta;
+    @ManyToOne
+    private MarcaEntity marca;
+    @OneToOne
     private Calendar fechaListado;
     
     private double valorListado;
@@ -101,5 +108,21 @@ public class AutomovilEntity extends BaseEntity implements Serializable{
      */
     public void setValorListado(double valorListado){
         this.valorListado = valorListado;
+    }
+    
+    public List<ProspectoCompraEntity> getProspectosCompra() {
+        return prospectosCompra;
+    }
+
+    public void setProspectosCompra(List<ProspectoCompraEntity> prospectosCompra) {
+        this.prospectosCompra = prospectosCompra;
+    }
+
+    public PuntoDeVentaEntity getPuntoDeVenta() {
+        return puntoDeVenta;
+    }
+
+    public void setPuntoDeVenta(PuntoDeVentaEntity puntoDeVenta) {
+        this.puntoDeVenta = puntoDeVenta;
     }
 }
