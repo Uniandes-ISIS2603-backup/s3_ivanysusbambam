@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -24,8 +26,9 @@ public class CompraEntity implements Serializable {
      /**
      * Id de la Entity de Compra
      */
-    //Se repitiria por la herencia
+    
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     private Integer idCompra;
 
     
@@ -46,7 +49,7 @@ public class CompraEntity implements Serializable {
      * Atributo que representa el punto de venta de la compra
      */ 
      @PodamExclude
-    @OneToMany(mappedBy="compras")
+    @ManyToOne
         private  PuntoDeVentaEntity puntoDeVenta;
      /**
      * Atributo que representa el cliente que le vendio el carro a MiAutomovil
