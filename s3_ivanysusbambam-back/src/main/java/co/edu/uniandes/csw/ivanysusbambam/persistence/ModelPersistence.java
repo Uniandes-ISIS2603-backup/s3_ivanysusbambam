@@ -24,7 +24,7 @@ public class ModelPersistence {
     
         private static final Logger LOGGER = Logger.getLogger(ModelPersistence.class.getName());
         
-        @PersistenceContext(unitName = "CompanyPU")
+        @PersistenceContext(unitName = "IvanysusbambamPU")
         protected EntityManager em;
 
         public ModelEntity find(Integer cilin){
