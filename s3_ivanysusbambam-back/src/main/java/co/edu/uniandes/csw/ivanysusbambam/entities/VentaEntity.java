@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
@@ -16,7 +17,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class VentaEntity extends BaseEntity implements Serializable {
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     /**
      * Atributo del cliente asociado a esta venta 
      */
@@ -47,7 +48,7 @@ public class VentaEntity extends BaseEntity implements Serializable {
      */
     private PuntoDeVentaEntity puntoDeVenta;
     
-    @ManyToOne 
+    @ManyToOne (cascade = CascadeType.ALL)
     /**
      * Atributo del automovil asociado a esta venta 
      */

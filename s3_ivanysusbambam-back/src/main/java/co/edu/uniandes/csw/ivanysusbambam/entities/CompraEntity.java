@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -37,7 +38,7 @@ public class CompraEntity implements Serializable {
      * El automovil de la compra
      */
      @PodamExclude
-    @OneToOne(mappedBy="compra")
+    @OneToOne(cascade = CascadeType.ALL)
     private AutomovilEntity automovil;
     
       /**
@@ -56,7 +57,7 @@ public class CompraEntity implements Serializable {
      * Atributo que representa el cliente que le vendio el carro a MiAutomovil
      */
      @PodamExclude
-    @OneToOne(mappedBy="compra")
+    @ManyToOne
       private ClienteEntity cliente;
     
    

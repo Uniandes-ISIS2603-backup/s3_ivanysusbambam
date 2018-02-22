@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -30,6 +33,10 @@ public class MedioDePagoEntity implements Serializable
      */
     @Enumerated(EnumType.STRING)
     private TipoMedioDePago tipo;
+    
+    @ManyToOne
+    
+    private ClienteEntity cliente;
     
 /**
  * Da el numero del medio de pago

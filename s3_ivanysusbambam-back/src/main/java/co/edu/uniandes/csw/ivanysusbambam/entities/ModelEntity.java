@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 
@@ -39,6 +40,10 @@ public class ModelEntity extends BaseEntity implements Serializable {
     @OneToMany(mappedBy = "model")
     
     private List<AutomovilEntity> automoviles = new ArrayList<AutomovilEntity>();
+    
+    @ManyToOne
+    private MarcaEntity marca;
+    
     /**
      * Obtiene el número de puertas
      * @return Numero de puertas

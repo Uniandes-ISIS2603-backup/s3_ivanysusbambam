@@ -29,7 +29,7 @@ public class VendedorEntity extends BaseEntity implements Serializable{
     private Long cedula;
     
     @PodamExclude
-    @OneToMany(mappedBy="vendedor",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="vendedor",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
     
     @PodamExclude

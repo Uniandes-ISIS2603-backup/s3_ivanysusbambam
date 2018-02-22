@@ -27,14 +27,21 @@ public class AutomovilEntity extends BaseEntity implements Serializable{
     private int chasis;
     @OneToMany
     private List<ProspectoCompraEntity> prospectosCompra;
+   
     @ManyToOne
     private PuntoDeVentaEntity puntoDeVenta;
-    @ManyToOne
+   
+    @ManyToOne 
     private MarcaEntity marca;
-    @OneToOne
+    
+    @Temporal(TemporalType.DATE)
     private Calendar fechaListado;
     
-    private double valorListado;
+@ManyToOne
+
+  private  ModelEntity model;
+   
+private double valorListado;
     
     /**
      * @return color del auto

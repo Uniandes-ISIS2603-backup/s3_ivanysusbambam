@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -25,7 +26,7 @@ public class MarcaEntity extends BaseEntity implements Serializable{
      @OneToMany(mappedBy = "marca")
     private  List<AutomovilEntity> automoviles = new ArrayList<AutomovilEntity>();
     
-    @OneToMany(mappedBy = "marca")
+    @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
     private  List<ModelEntity> modelos = new ArrayList<ModelEntity>();
  
     /**

@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -48,10 +49,10 @@ public class ClienteEntity implements Serializable{
     private List<CompraEntity> compras;
     
     @PodamExclude
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<VentaEntity> ventas;
     
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL)
     private List<MedioDePagoEntity> mediosDePago;
 
     
