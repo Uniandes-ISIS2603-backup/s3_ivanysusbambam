@@ -6,10 +6,44 @@
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 /**
+ * Objeto de transferencia que contiene información detallada de una calificacion
+ * de un cliente a un carro comprado.
+ *  Al serializarse como JSON esta clase implementa el siguiente modelo:
+ * <br>
+ * <pre>
+ *   {
+ *       "id": number,
+ *       "name": string,
+ *       "comentario":  string,
+ *       "puntaje": number
  *
- * @author if.garcia
+ *   }
+ * </pre> Por ejemplo un prospecto de compra representa así:<br>
+ *
+ * <pre>
+ *
+ *   {
+ *          ""id": 12345,
+ *          "name": "Chevrolet Optra",
+ *          "comentario": "carro deportivo, elegante y muy bueno en funciones mecanicas",
+ *          "cliente" : {"cedula": 549897, "nombre": "Juan Perez"}
+
+ *
+ *   }
+ * </pre>
+*
+ * @author if.garcia <pre>
+ * Versiones: *
+ * </pre>
  */
 public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO{
+    
+    
+     /**
+     * Constructor por defecto
+     */
+    public CalificacionTiendaDetailDTO() {
+    }
     
     /**
      * Representa el cliente que ha puesto la calificacion

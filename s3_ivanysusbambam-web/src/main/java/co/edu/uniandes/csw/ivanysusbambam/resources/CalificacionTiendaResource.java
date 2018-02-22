@@ -45,7 +45,7 @@ public class CalificacionTiendaResource {
      * @throws BusinessLogicException si el cliente con el id dado no existe.
      */
     @GET
-    public List<CalificacionTiendaDTO> getCalificacionesTienda(@PathParam("id") Long id) throws BusinessLogicException{
+    public List<CalificacionTiendaDetailDTO> getCalificacionesTienda(@PathParam("id") Long id) throws BusinessLogicException{
         return null;
     }
     

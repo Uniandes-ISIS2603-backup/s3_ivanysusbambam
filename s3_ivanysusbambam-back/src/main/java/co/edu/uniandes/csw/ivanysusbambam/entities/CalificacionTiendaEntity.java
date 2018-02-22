@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author if.garcia
@@ -14,9 +16,14 @@ import javax.persistence.Entity;
 @Entity
 public class CalificacionTiendaEntity extends BaseEntity implements Serializable{
     
+    
     private String comentario;
 
     private Integer puntaje;
+   
+    @PodamExclude
+    @ManyToOne
+    private ClienteEntity cliente;
     
     public String getComentario() {
         return comentario;
@@ -24,6 +31,14 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
 
     public int getPuntaje(){
         return puntaje;
+    }
+    
+    public ClienteEntity getCliente(){
+        return cliente;
+    }
+    
+    public void setCliente(ClienteEntity cliente){
+        this.cliente = cliente;
     }
     
     public void setPuntaje(int puntaje){

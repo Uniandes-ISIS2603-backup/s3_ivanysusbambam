@@ -13,9 +13,9 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  *   {
  *       "id": number,
  *       "name": string,
- *      "texto": string,
- *      "tipo": string,
- *      "cliente": JSON,
+ *       "texto": string,
+ *       "tipo": string,
+ *       "cliente": JSON,
  *
  *
  *   }
@@ -28,7 +28,7 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  *          "name": "Proceso de compra"
  *          "texto": " No quede contento con el proceso de compra, demasiado lento",
  *          "tipo": "Reclamo",
- *           "cliente" : {"cedula": 549897, "nombre": "Juan Perez"},
+ *          "cliente" : {"cedula": 549897, "nombre": "Juan Perez"},
  *
  * }
  *
@@ -46,6 +46,12 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
      */
     private ClienteDTO cliente;
 
+     /**
+     * Constructor por defecto
+     */
+    public QuejaReclamoDetailDTO(){
+        
+    }
     /**
      * @return el/la cliente/ta que realio la queja o el reclamo  
      */

@@ -24,7 +24,7 @@ import javax.ws.rs.Produces;
  *
  * @author if.garcia y hd.castellanos
  */
-@Path("clientes/{id:\\d+}/quejasReclamos")
+@Path("quejasReclamos")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
