@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
+import java.util.Calendar;
 
 /**
  * AutomovilDTO Objeto de transferencia de datos de Automoviles. Los DTO contienen las
@@ -44,7 +45,7 @@ public class AutomovilDTO {
     private int anio;
     private String placa;
     private int chasis;
-    private String fechaListado;
+    private Calendar fechaListado;
     private double valorListado;
     
     /**
@@ -94,7 +95,7 @@ public class AutomovilDTO {
     /**
      * @return La fecha de listado del automovil
      */
-    public String getFechaListado(){
+    public Calendar getFechaListado(){
         return fechaListado;
     }
     /**
@@ -131,7 +132,7 @@ public class AutomovilDTO {
     /**
      * @param fechaListado La nueva fecha de listado del automovil
      */
-    public void setFechaListado(String fechaListado){
+    public void setFechaListado(Calendar fechaListado){
         this.fechaListado = fechaListado;
     }
     /**
