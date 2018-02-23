@@ -65,8 +65,9 @@ public class QuejaReclamoPersistence {
      * @return lista de QuejaReclamoEntity con el tipo dado por parámetro.
      */
     public List<QuejaReclamoEntity> findByType(String tipo){
-        LOGGER.log(Level.INFO, "Buscando QuejasReclamos con tipo: ", tipo);
-        TypedQuery tq  = em.createQuery("select u from QuejaReclamoEntity u where u.tipo = :tipo", QuejaReclamoEntity.class);
+        LOGGER.log(Level.INFO, "Buscando quejasReclamos con tipo: ", tipo);
+        TypedQuery tq  = em.createQuery("select v from QuejaReclamoEntity v where v.tipo = :tipo", QuejaReclamoEntity.class);
+        tq.setParameter("tipo",tipo);
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
     }

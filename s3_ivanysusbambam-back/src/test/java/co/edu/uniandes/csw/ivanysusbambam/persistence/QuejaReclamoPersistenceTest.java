@@ -196,7 +196,7 @@ public class QuejaReclamoPersistenceTest {
      *
      */
     @Test
-    public void updateVentaTest() {
+    public void updateQuejaReclamoTest() {
         QuejaReclamoEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         QuejaReclamoEntity newEntity = factory.manufacturePojo(QuejaReclamoEntity.class);
@@ -212,4 +212,21 @@ public class QuejaReclamoPersistenceTest {
         Assert.assertEquals(newEntity.getTipo(), resp.getTipo());
         }
 
+    
+    /**
+     * prueba para probar el metodo find°ByType de quejaReclamoPersistence 
+     * que devuelve una lista de quejas o reclamos del tipo dado por parametro 
+     */
+    @Test
+    public void getByTypeQuejReclamoTest (){
+        QuejaReclamoEntity entity = data.get(0);
+        List<QuejaReclamoEntity> list = quejaReclamoPersistence.findByType(entity.getTipo());
+
+        for (QuejaReclamoEntity ent: list){
+            Assert.assertEquals(entity.getTipo(), ent.getTipo());
+        }
+        
+
+    }
+    
 }
