@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
  * @author if.garcia y hd.castellanos
@@ -25,6 +26,7 @@ public class QuejaReclamoEntity extends BaseEntity implements Serializable{
      */
     private String texto;
     
+    @PodamExclude
     @ManyToOne
     /**
      * Atributo del cliente asociado a esta QuejaReclamo 

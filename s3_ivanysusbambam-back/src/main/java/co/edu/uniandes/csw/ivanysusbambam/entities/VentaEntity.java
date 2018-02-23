@@ -9,6 +9,7 @@ import java.io.Serializable;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -17,37 +18,42 @@ import javax.persistence.ManyToOne;
 @Entity
 public class VentaEntity extends BaseEntity implements Serializable {
 
+    @PodamExclude
     @ManyToOne(cascade = CascadeType.ALL)
     /**
      * Atributo del cliente asociado a esta venta 
      */
     private ClienteEntity cliente;
     
-    
+    @PodamExclude
     @ManyToOne
     /**
      * Atributo del Medio de pago asociado a esta venta 
      */
     private MedioDePagoEntity medioDePago;
     
+    @PodamExclude
     @ManyToOne
     /**
      * Atributo del vendedor asociado a esta venta 
      */
     private VendedorEntity vendedorEncargado;
     
+    @PodamExclude
     @ManyToOne
     /**
      * Atributo de la calificacion del carro asociado a esta venta 
      */
     private CalificacionCarroEntity calificacionCarro;
     
+    @PodamExclude
     @ManyToOne
     /**
      * Atributo del punto de venta asociado a esta venta 
      */
     private PuntoDeVentaEntity puntoDeVenta;
     
+    @PodamExclude
     @ManyToOne (cascade = CascadeType.ALL)
     /**
      * Atributo del automovil asociado a esta venta 

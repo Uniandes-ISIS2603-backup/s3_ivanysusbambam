@@ -31,28 +31,27 @@ import javax.ws.rs.Produces;
 public class QuejaReclamoResource {
 
     /**
-     * GET api/clientes/(id)/quejasReclamos Retorna todas las quejas y reclamos
-     * de un cliente dado.
+     * GET quejasReclamos Retorna todas las quejas y reclamos
+     * 
      *
-     * <pre>Busca y devuelve todos las quejas y reclamos del cliente dado.
+     * <pre>Busca y devuelve todos las quejas y reclamos .
      *
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve todos las quejas y reclamos del cliente.</code>
+     * 200 OK Devuelve todos las quejas y reclamos .</code>
      * </pre>
      *
-     * @param id cédula del cliente.
      * @return JSONArray con la información de todas las quejas y reclamos .
-     * @throws BusinessLogicException si el cliente con el id dado no existe.
+     * @throws BusinessLogicException si no hay quejasReclamos
      */
     @GET
-    public List<QuejaReclamoDTO> getQuejasReclamos(@PathParam("id") long id) throws BusinessLogicException {
+    public List<QuejaReclamoDTO> getQuejasReclamos() throws BusinessLogicException {
         List<QuejaReclamoDTO> quejasReclamos = new ArrayList<>();
         return quejasReclamos;
     }
 
     /**
-     * GET /api/clientes/(id)/quejasReclamos/(pid): Obtiene una queja o reclamo
+     * GET api/quejasReclamos/(pid): Obtiene una queja o reclamo
      * según su id.
      * <pre>
      * Codigos de respuesta:
@@ -60,24 +59,23 @@ public class QuejaReclamoResource {
      * 200 OK se encontró la queja o reclamo.
      * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found No existe  un cliente o queja y relcamo con los id dados.
+     * 404 Not Found No existe  queja y relcamo con los id dados.
      * </code>
      * </pre>
      *
-     * @param id id del cliente.
      * @param pid id de la queja o reclamo .
      * @return JSON la queja o reclamo buscada.
-     * @throws BusinessLogicException si no existe el cliente con el id dado o
+     * @throws BusinessLogicException 
      * la queja o reclamo con el id dado..
      */
     @GET
     @Path("{pid: \\d+}")
-    public QuejaReclamoDetailDTO getQuejaReclamo(@PathParam("id") long id, @PathParam("pid") Long pid) throws BusinessLogicException {
+    public QuejaReclamoDetailDTO getQuejaReclamo( @PathParam("pid") Long pid) throws BusinessLogicException {
         return null;
     }
 
     /**
-     * PUT /api/clientes/(id)/quejasReclamos/(pid): actualiza una queja o
+     * PUT /api/quejasReclamos/(pid): actualiza una queja o
      * reclamo según su id.
      * <pre>
      * Codigos de respuesta:
@@ -85,11 +83,10 @@ public class QuejaReclamoResource {
      * 200 OK se actualizó la queja o el reclamo .
      * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente o la queja o reclamo con el id dado.
+     * 404 Not Found no existe la queja o reclamo con el id dado.
      * </code>
      * </pre>
      *
-     * @param id id del cliente.
      * @param pid id de la queja o reclamo.
      * @param quejaReclamo queja o reclamo con la nueva información.
      * @return JSON la queja o reclamo actualizado.
@@ -98,12 +95,12 @@ public class QuejaReclamoResource {
      */
     @PUT
     @Path("{pid: \\d+}")
-    public QuejaReclamoDetailDTO putProspectoCompra(@PathParam("id") long id, @PathParam("pid") Long pid, QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
+    public QuejaReclamoDetailDTO putProspectoCompra( @PathParam("pid") Long pid, QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
         return quejaReclamo;
     }
 
     /**
-     * POST /api/clientes/(id)/quejasReclamos: Crea una nueva queja o reclamo.
+     * POST /api/quejasReclamos: Crea una nueva queja o reclamo.
      * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
@@ -114,18 +111,17 @@ public class QuejaReclamoResource {
      * </code>
      * </pre>
      *
-     * @param id id del cliente.
      * @param quejaReclamo la queja o reclamo que se añadirá.
      * @return JSON la queja o reclamo creado con su id autoasignado.
      * @throws BusinessLogicException si no existe el cliente con el id dado.
      */
     @POST
-    public QuejaReclamoDetailDTO postQuejaReclamo(@PathParam("id") long id, QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
+    public QuejaReclamoDetailDTO postQuejaReclamo( QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
         return quejaReclamo;
     }
 
     /**
-     * DELETE /api/clientes/(id)/quejasReclamos/(pid):elimina una queja o
+     * DELETE /api/quejasReclamos/(pid):elimina una queja o
      * reclamo según su id.
      * <pre>
      * Codigos de respuesta:
@@ -137,14 +133,13 @@ public class QuejaReclamoResource {
      * </code>
      * </pre>
      *
-     * @param id id del cliente.
      * @param pid id de la queja o reclamo .
      * @throws BusinessLogicException si no existe el cliente con el id dado o
      * la queja o reclamo con el id dado.
      */
     @DELETE
     @Path("{pid: \\d+}")
-    public void deleteQuejaReclamo(@PathParam("id") long id, @PathParam("pid") Long pid) throws BusinessLogicException {
+    public void deleteQuejaReclamo( @PathParam("pid") Long pid) throws BusinessLogicException {
 
     }
 }
