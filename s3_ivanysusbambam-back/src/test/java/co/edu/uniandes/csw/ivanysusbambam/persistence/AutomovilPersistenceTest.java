@@ -197,7 +197,7 @@ public class AutomovilPersistenceTest {
      *
      */
     @Test
-    public void updateQuejaReclamoTest() {
+    public void updateAutomovilTest() {
         AutomovilEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         AutomovilEntity newEntity = factory.manufacturePojo(AutomovilEntity.class);
