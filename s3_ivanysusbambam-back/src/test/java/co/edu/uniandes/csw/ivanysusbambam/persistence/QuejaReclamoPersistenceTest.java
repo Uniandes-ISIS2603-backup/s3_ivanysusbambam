@@ -213,20 +213,6 @@ public class QuejaReclamoPersistenceTest {
         }
 
     
-    /**
-     * prueba para probar el metodo find°ByType de quejaReclamoPersistence 
-     * que devuelve una lista de quejas o reclamos del tipo dado por parametro 
-     */
-    @Test
-    public void getByTypeQuejReclamoTest (){
-        QuejaReclamoEntity entity = data.get(0);
-        List<QuejaReclamoEntity> list = quejaReclamoPersistence.findByType(entity.getTipo());
-
-        for (QuejaReclamoEntity ent: list){
-            Assert.assertEquals(entity.getTipo(), ent.getTipo());
-        }
-        
-
-    }
+    
     
 }

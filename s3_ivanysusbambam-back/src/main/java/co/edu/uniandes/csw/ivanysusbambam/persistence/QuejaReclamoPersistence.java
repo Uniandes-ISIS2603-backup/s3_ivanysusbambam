@@ -64,7 +64,7 @@ public class QuejaReclamoPersistence {
      * @param tipo  el tipo que se busca
      * @return lista de QuejaReclamoEntity con el tipo dado por parámetro.
      */
-    public List<QuejaReclamoEntity> findByType(String tipo){
+    public List<QuejaReclamoEntity> findByType(tiposDeQueja tipo){
         LOGGER.log(Level.INFO, "Buscando quejasReclamos con tipo: ", tipo);
         TypedQuery tq  = em.createQuery("select v from QuejaReclamoEntity v where v.tipo = :tipo", QuejaReclamoEntity.class);
         tq.setParameter("tipo",tipo);
@@ -92,5 +92,8 @@ public class QuejaReclamoPersistence {
         QuejaReclamoEntity entity = em.find(QuejaReclamoEntity.class, id);
         em.remove(entity);
     }
+   public enum tiposDeQueja {
+    ESTADO_VEHICULO, PROBLEMA_TRANSACCION, DEMORA_ENTREGA;
+}
     
 }

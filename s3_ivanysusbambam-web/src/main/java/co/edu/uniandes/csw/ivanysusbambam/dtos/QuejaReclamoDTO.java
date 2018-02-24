@@ -31,7 +31,7 @@ public class QuejaReclamoDTO {
    /**
     * Indica si es queja o reclamo
     */
-    private String tipo;
+    private tiposDeQueja tipo;
     
    /**
     * Constructor por defecto
@@ -58,7 +58,7 @@ public class QuejaReclamoDTO {
     /**
      * @return el tipo , si es queja o es reclamo  
      */
-    public String getTipo(){
+    public tiposDeQueja getTipo(){
         return tipo;
     }
     
@@ -97,7 +97,7 @@ public class QuejaReclamoDTO {
      * asigna el tipo dado por parametro a la queja o al reclamo 
      * @param tipo puede ser Queja o reclamo , y lo asigna a esta queja o reclamo 
      */
-    public void setTipo(String tipo){
+    public void setTipo(tiposDeQueja tipo){
         this.tipo = tipo;
     }
     
@@ -126,4 +126,8 @@ public class QuejaReclamoDTO {
 //        this.idVenta = pVenta.getIdVenta();
 //
 //    }
+    
+   public enum tiposDeQueja {
+    ESTADO_VEHICULO, PROBLEMA_TRANSACCION, DEMORA_ENTREGA;
+}
 }

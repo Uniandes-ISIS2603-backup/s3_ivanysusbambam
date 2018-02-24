@@ -7,6 +7,8 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -16,10 +18,12 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class QuejaReclamoEntity extends BaseEntity implements Serializable{
     
+    
+    @Enumerated(EnumType.STRING)
     /**
      * indica si es queja o reclamo 
      */
-    private String tipo;
+    private tiposDeQueja tipo;
     
     /**
      * Indica la descripci[on de la queja o el reclamo 
@@ -33,19 +37,7 @@ public class QuejaReclamoEntity extends BaseEntity implements Serializable{
      */
     private ClienteEntity cliente; 
 
-    /**
-     * @return the tipo
-     */
-    public String getTipo() {
-        return tipo;
-    }
-
-    /**
-     * @param tipo the tipo to set
-     */
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
+    
 
     /**
      * @return the texto
@@ -75,7 +67,23 @@ public class QuejaReclamoEntity extends BaseEntity implements Serializable{
         this.cliente = cliente;
     }
     
-    
+    enum tiposDeQueja {
+    ESTADO_VEHICULO, PROBLEMA_TRANSACCION, DEMORA_ENTREGA;
+}
+
+    /**
+     * @return the tipo
+     */
+    public tiposDeQueja getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param tipo the tipo to set
+     */
+    public void setTipo(tiposDeQueja tipo) {
+        this.tipo = tipo;
+    }
     
     
     
