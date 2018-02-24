@@ -21,45 +21,76 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class AutomovilPersistence {
-    private static final Logger LOGGER = Logger.getLogger(AutomovilPersistence.class.getName());
-
+     private static final Logger LOGGER = Logger.getLogger(AutomovilPersistence.class.getName());
+    
     @PersistenceContext(unitName = "IvanysusbambamPU")
     protected EntityManager em;
     
-    public AutomovilEntity find(Long id) {
-        LOGGER.log(Level.INFO, "Consultando automovil con id={0}", id);
+     /**
+     * Persiste un AutomovilEntity
+     * @param auto AutomovilEntity que se desea persistir.
+     * @return  el AutomovilEntity que se persistió.
+     */
+    public AutomovilEntity create(AutomovilEntity auto){
+        LOGGER.info("Creando Automovil");
+        em.persist(auto);
+        LOGGER.info("Creado Automovil");
+        return auto;
+    }
+
+    /**
+     * Encuentra todos los AutomovilEntity persistidos.
+     * @return lista con todos los AutomovilEntity persistidos.
+     */
+    public List<AutomovilEntity> findAll(){
+        LOGGER.info("Consultando todos los automoviles");
+        TypedQuery tq = em.createQuery("select v from AutomovilEntity v", AutomovilEntity.class);
+        return tq.getResultList();
+    }
+
+
+   /**
+     * Actualiza un AutomovilEntity dado.
+     * @param auto AutomovilEntity con la información actualizada.
+     * @return AutomovilEntity actualizado.
+     */
+    public AutomovilEntity update(AutomovilEntity auto){
+        LOGGER.log(Level.INFO, "Actualizando automovil con placa: ", auto.getPlaca());
+        return em.merge(auto);
+    }
+
+    /**
+     * Elimina un AutomovilEntity pasado por parámetro.
+     * @param id del AutomovilEntity que se desea eliminar.
+     * @return AutomovilEntity recién eliminado.
+     */
+    public AutomovilEntity delete(Long id){
+        LOGGER.log(Level.INFO, "Eliminando automovil con id: ", id);
+        AutomovilEntity auto = find(id);
+        em.remove(auto);
+        return auto;
+    }
+    
+      /**
+     * Encuentra un AutomovilEntity según el id del automovil.
+     * @param id  del automovil que se busca.
+     * @return AutomovilEntity dueño del dada o null si no existe un AutomovilEntity con ese id.
+     */
+    public AutomovilEntity find(Long id){
+        LOGGER.log(Level.INFO, "Buscando automovil con id: ", id);
         return em.find(AutomovilEntity.class, id);
     }
-
-    public AutomovilEntity findByName(String placa) {
-        LOGGER.log(Level.INFO, "Consultando automovil con placa= ", placa);
-        TypedQuery<AutomovilEntity> q
-                = em.createQuery("select u from AutomovilEntity u where u.placa = :placa", AutomovilEntity.class);
-        q = q.setParameter("placa", placa);
-        return q.getSingleResult();
-    }
-
-    public List<AutomovilEntity> findAll() {
-        LOGGER.info("Consultando todos los automoviles");
-        Query q = em.createQuery("select u from AutomovilEntity u");
-        return q.getResultList();
-    }
-
-    public AutomovilEntity create(AutomovilEntity entity) {
-        LOGGER.info("Creando un automovil nuevo");
-        em.persist(entity);
-        LOGGER.info("Automovil creado");
-        return entity;
-    }
-
-    public AutomovilEntity update(AutomovilEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando automovil con id={0}", entity.getId());
-        return em.merge(entity);
-    }
-
-    public void delete(Long id) {
-        LOGGER.log(Level.INFO, "Borrando automovil con id={0}", id);
-        AutomovilEntity entity = em.find(AutomovilEntity.class, id);
-        em.remove(entity);
+    
+     /**
+     * Encuentra una serie de AutomovilEntity según el color del cliente.
+     * @param color  el color que se busca
+     * @return lista de AutomovilEntity con el color dado por parámetro.
+     */
+    public List<AutomovilEntity> findByColor(String color){
+        LOGGER.log(Level.INFO, "Buscando automoviles con color: ", color);
+        TypedQuery tq  = em.createQuery("select v from AutomovilEntity v where v.color = :color", AutomovilEntity.class);
+        tq.setParameter("color",color);
+        if(tq.getResultList().isEmpty()) return null;
+        else return tq.getResultList();
     }
 }

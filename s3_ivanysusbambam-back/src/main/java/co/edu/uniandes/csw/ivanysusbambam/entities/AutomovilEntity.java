@@ -8,115 +8,161 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
  * @author a.bravo
  */
 @Entity
-public class AutomovilEntity extends BaseEntity implements Serializable{
+public class AutomovilEntity extends BaseEntity implements Serializable {
+
+    /**
+     * color del automovil
+     */
     private String color;
+    /**
+     * anio del automovil
+     */
     private Integer anio;
+    /**
+     * Placa del automovil
+     */
     private String placa;
-    private int chasis;
-    @OneToMany
+    /**
+     * chasis del automovil
+     */
+    private Integer chasis;
+    /**
+     * Prospectos de compra del automovil
+     */
+    @PodamExclude
+    @OneToMany(mappedBy = "automovil", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
-   
-    @ManyToOne
+
+    /**
+     * Punto de venta del automovil 
+     */
+    @PodamExclude
+    @ManyToOne (cascade = CascadeType.ALL)
     private PuntoDeVentaEntity puntoDeVenta;
-   
-    @ManyToOne 
+
+    /**
+     * Marca de este automovil 
+     */
+    @PodamExclude
+    @ManyToOne (cascade = CascadeType.ALL)
     private MarcaEntity marca;
-    
+
+    /**
+     * Fecha de listado de este automovil
+     */
     @Temporal(TemporalType.DATE)
     private Calendar fechaListado;
-    
-@ManyToOne
 
-  private  ModelEntity model;
-   
-private double valorListado;
-    
+   /**
+    * modelo de este automovil
+    */
+    @PodamExclude
+    @ManyToOne (cascade = CascadeType.ALL)
+    private ModelEntity model;
+
+    /**
+     * valorListado de este automovil 
+     */
+    private Double valorListado;
+
     /**
      * @return color del auto
      */
-    public String getColor(){
+    public String getColor() {
         return color;
     }
+
     /**
      * @return anio del auto
      */
-    public int getAnio(){
+    public Integer getAnio() {
         return anio;
     }
+
     /**
      * @return placa del auto
      */
-    public String getPlaca(){
+    public String getPlaca() {
         return placa;
     }
+
     /**
      * @return chasis del auto
      */
-    public int getChasis(){
+    public Integer getChasis() {
         return chasis;
     }
+
     /**
      * @return fecha de listado del auto
      */
-    public Calendar getFechaListado(){
+    public Calendar getFechaListado() {
         return fechaListado;
     }
+
     /**
      * @return valor del listado del auto
      */
-    public double getValorListado(){
+    public Double getValorListado() {
         return valorListado;
     }
-    
+
     /**
      * @param color color a setear
      */
-    public void setColor(String color){
+    public void setColor(String color) {
         this.color = color;
     }
+
     /**
      * @param anio anio a setear
      */
-    public void setAnio(int anio){
+    public void setAnio(Integer anio) {
         this.anio = anio;
     }
+
     /**
      * @param placa placa a setear
      */
-    public void setPlaca(String placa){
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
+
     /**
      * @param chasis chasis a setear
      */
-    public void setChasis(int chasis){
+    public void setChasis(Integer chasis) {
         this.chasis = chasis;
     }
+
     /**
      * @param fechaListado fecha del listado a setear
      */
-    public void setFechaListado(Calendar fechaListado){
+    public void setFechaListado(Calendar fechaListado) {
         this.fechaListado = fechaListado;
     }
+
     /**
      * @param valorListado valor del listado a setear
      */
-    public void setValorListado(double valorListado){
+    public void setValorListado(Double valorListado) {
         this.valorListado = valorListado;
     }
-    
+
     public List<ProspectoCompraEntity> getProspectosCompra() {
         return prospectosCompra;
     }
@@ -131,5 +177,35 @@ private double valorListado;
 
     public void setPuntoDeVenta(PuntoDeVentaEntity puntoDeVenta) {
         this.puntoDeVenta = puntoDeVenta;
+    }
+
+
+
+    /**
+     * @return the marca
+     */
+    public MarcaEntity getMarca() {
+        return marca;
+    }
+
+    /**
+     * @param marca the marca to set
+     */
+    public void setMarca(MarcaEntity marca) {
+        this.marca = marca;
+    }
+
+    /**
+     * @return the model
+     */
+    public ModelEntity getModel() {
+        return model;
+    }
+
+    /**
+     * @param model the model to set
+     */
+    public void setModel(ModelEntity model) {
+        this.model = model;
     }
 }

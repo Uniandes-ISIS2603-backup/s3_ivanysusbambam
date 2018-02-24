@@ -9,10 +9,10 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import java.util.Calendar;
 
 /**
- * AutomovilDTO Objeto de transferencia de datos de Automoviles. Los DTO contienen las
- * represnetaciones de los JSON que se transfieren entre el cliente y el
- * servidor.
- * 
+ * AutomovilDTO Objeto de transferencia de datos de Automoviles. Los DTO
+ * contienen las represnetaciones de los JSON que se transfieren entre el
+ * cliente y el servidor.
+ *
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
@@ -23,11 +23,10 @@ import java.util.Calendar;
  *      "fechaListado": string,
  *      "valorListado": double
  *   }
- * </pre>
- * Por ejemplo un automovil se representa asi:<br>
- * 
+ * </pre> Por ejemplo un automovil se representa asi:<br>
+ *
  * <pre>
- * 
+ *
  *   {
  *      "color": "azul",
  *      "anio": 2001,
@@ -38,28 +37,49 @@ import java.util.Calendar;
  *   }
  *
  * </pre>
+ *
  * @author a.bravo
  */
 public class AutomovilDTO {
+
+    /**
+     * Color del automovil
+     */
     private String color;
-    private int anio;
+    /**
+     * Anio del automovil
+     */
+    private Integer anio;
+    /**
+     * placa del automovil
+     */
     private String placa;
-    private int chasis;
+    /**
+     * Chasis del automovil
+     */
+    private Integer chasis;
+    /**
+     * FechaListado del automovil
+     */
     private Calendar fechaListado;
-    private double valorListado;
-    
+    /**
+     * Valor listado del automovil
+     */
+    private Double valorListado;
+
     /**
      * Constructor por defecto
      */
-    public AutomovilDTO(){
+    public AutomovilDTO() {
     }
+
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
      * la entidad que viene de argumento.
      *
      * @param auto: Es la entidad que se va a convertir a DTO
      */
-    public AutomovilDTO(AutomovilEntity auto){
+    public AutomovilDTO(AutomovilEntity auto) {
         this.color = auto.getColor();
         this.anio = auto.getAnio();
         this.placa = auto.getPlaca();
@@ -67,82 +87,92 @@ public class AutomovilDTO {
         this.fechaListado = auto.getFechaListado();
         this.valorListado = auto.getValorListado();
     }
-    
+
     /**
      * @return El ID de la ciudad
      */
-    public String getColor(){
+    public String getColor() {
         return color;
     }
+
     /**
      * @return El anio del automovil
      */
-    public int getAnio(){
+    public Integer getAnio() {
         return anio;
     }
+
     /**
      * @return La placa del automovil
      */
-    public String getPlaca(){
+    public String getPlaca() {
         return placa;
     }
+
     /**
      * @return El chasis del automovil
      */
-    public int getChasis(){
+    public Integer getChasis() {
         return chasis;
     }
+
     /**
      * @return La fecha de listado del automovil
      */
-    public Calendar getFechaListado(){
+    public Calendar getFechaListado() {
         return fechaListado;
     }
+
     /**
      * @return El valor del listado del automovil
      */
-    public double getValorListado(){
+    public Double getValorListado() {
         return valorListado;
     }
-    
+
     /**
      * @param color El nuevo color del automovil
      */
-    public void setColor(String color){
+    public void setColor(String color) {
         this.color = color;
     }
+
     /**
      * @param anio El nuevo anio del automovil
      */
-    public void setAnio(int anio){
+    public void setAnio(Integer anio) {
         this.anio = anio;
     }
+
     /**
      * @param placa La nueva placa del automovil
      */
-    public void setPlaca(String placa){
+    public void setPlaca(String placa) {
         this.placa = placa;
     }
+
     /**
      * @param chasis El nuevo chasis del automovil
      */
-    public void setChasis(int chasis){
+    public void setChasis(Integer chasis) {
         this.chasis = chasis;
     }
+
     /**
      * @param fechaListado La nueva fecha de listado del automovil
      */
-    public void setFechaListado(Calendar fechaListado){
+    public void setFechaListado(Calendar fechaListado) {
         this.fechaListado = fechaListado;
     }
+
     /**
      * @param valorListado El nuevo valor de listado del automovil
      */
-    public void setValorListado(double valorListado){
+    public void setValorListado(Double valorListado) {
         this.valorListado = valorListado;
     }
-    
-    public AutomovilEntity toEntity(){
+
+    public AutomovilEntity toEntity() {
         AutomovilEntity entity = new AutomovilEntity();
         entity.setColor(this.color);
         entity.setAnio(this.anio);
