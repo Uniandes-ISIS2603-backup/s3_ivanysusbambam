@@ -6,6 +6,9 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -36,6 +39,10 @@ private EntityManager em;
     
  @Inject
  UserTransaction utx;  
+    /**
+     *Lista de compras 
+     */
+    private List<CompraEntity> data = new ArrayList<CompraEntity>();
 
   /**
      *
@@ -70,6 +77,44 @@ private EntityManager em;
         }
     }
     
+    /**
+     * Configuracion inicial de la prueba.
+     *
+     *
+     */
+    @Before
+    public void setUp() {
+        try {
+            utx.begin();
+            em.joinTransaction();
+            clearData();
+            insertData();
+            utx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            try {
+                utx.rollback();
+            } catch (Exception e1) {
+                e1.printStackTrace();
+            }
+        }
+    }
+    
+     /**
+     * Inserta los datos iniciales para el correcto funcionamiento de las
+     * pruebas.
+     *
+     *
+     */
+    private void insertData() {
+        PodamFactory factory = new PodamFactoryImpl();
+        for (int i = 0; i < 3; i++) {
+            CompraEntity entity = factory.manufacturePojo(CompraEntity.class);
+
+            em.persist(entity);
+            data.add(entity);
+        }
+    }
      /**
      * Limpia las tablas que están implicadas en la prueba.
      *
@@ -98,5 +143,71 @@ private EntityManager em;
 
        
     }
+     /**
+     * Prueba para consultar la lista de Ventas.
+     *
+     *
+     */
+    @Test
+    public void getComprasTest() {
+        
+        List<CompraEntity> list = compraPersistence.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for (CompraEntity ent : list) {
+            boolean found = false;
+            for (CompraEntity entity : data) {
+                if (ent.getIdCompra().equals(entity.getIdCompra())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+     /**
+     * Prueba para consultar una Compra.
+     *
+     *
+     */
+    @Test
+    public void getCompraTest() {
+        CompraEntity entity = data.get(0);
+        CompraEntity newEntity = compraPersistence.find(entity.getIdCompra());
+        Assert.assertNotNull(newEntity);
+   
+
+    }
+    
+    /**
+     * Prueba para eliminar una Venta.
+     *
+     *
+     */
+    @Test
+    public void deleteVentaTest() {
+        CompraEntity entity = data.get(0);
+        compraPersistence.delete(entity.getIdCompra());
+        CompraEntity deleted = em.find(CompraEntity.class, entity.getIdCompra());
+        Assert.assertNull(deleted);
+    }
+    
+    /**
+     * Prueba para actualizar una Venta.
+     *
+     *
+     */
+    @Test
+    public void updateVentaTest() {
+        CompraEntity entity = data.get(0);
+        PodamFactory factory = new PodamFactoryImpl();
+        CompraEntity newEntity = factory.manufacturePojo(CompraEntity.class);
+
+        newEntity.setIdCompra(entity.getIdCompra());
+
+        compraPersistence.update(newEntity);
+
+       CompraEntity resp = em.find(CompraEntity.class, entity.getIdCompra());
+
+     
+        }
     
 }
