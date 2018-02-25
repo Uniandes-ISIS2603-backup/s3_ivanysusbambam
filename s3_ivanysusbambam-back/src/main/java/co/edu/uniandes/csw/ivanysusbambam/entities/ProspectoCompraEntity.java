@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -30,12 +31,15 @@ public class ProspectoCompraEntity implements Serializable {
     private Long id;
 
     private String texto;    
+    @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
     
+    @PodamExclude
     @ManyToOne
     private VendedorEntity vendedor;
     
+    @PodamExclude
     @ManyToOne
     private AutomovilEntity automovil;
     

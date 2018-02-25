@@ -128,7 +128,7 @@ public class ProspectoCompraPersistenceTest {
     }
     }
     @Test
-    public void updateVendedor(){
+    public void updateProspectoCompraTest(){
         ProspectoCompraEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         ProspectoCompraEntity newEntity = factory.manufacturePojo(ProspectoCompraEntity.class);

@@ -33,7 +33,7 @@ public class ClienteEntity implements Serializable{
     private String nombre;
     
     @PodamExclude
-    @OneToMany(mappedBy="cliente",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy="cliente",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
     
     @PodamExclude
@@ -75,7 +75,7 @@ public class ClienteEntity implements Serializable{
         return ventas;
     }
 
-    public List<MedioDePagoEntity> getMediosDePago() {
+   public List<MedioDePagoEntity> getMediosDePago() {
         return mediosDePago;
     }
 
