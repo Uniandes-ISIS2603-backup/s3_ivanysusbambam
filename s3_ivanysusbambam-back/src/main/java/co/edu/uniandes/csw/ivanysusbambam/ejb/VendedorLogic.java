@@ -81,7 +81,7 @@ public class VendedorLogic {
      * Consulta todos los vendedores en la base de datos.
      * @return una lista con todos los vendedores en la base de datos.
      */
-    public List<VendedorEntity> findAllVendedor(){
+    public List<VendedorEntity> findAllVendedores(){
         LOG.info("Recuperando todos los vendedores");
         return persistence.findAll();
     }

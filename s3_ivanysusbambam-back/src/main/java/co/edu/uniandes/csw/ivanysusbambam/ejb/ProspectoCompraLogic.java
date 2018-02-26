@@ -72,13 +72,13 @@ public class ProspectoCompraLogic {
      */
     public ProspectoCompraEntity updateProspectoCompra(ProspectoCompraEntity pc) throws BusinessLogicException{
         if(pc == null) throw new BusinessLogicException("El prospecto de compra no debe ser null");
-        if(pc.getId()<=0) throw new BusinessLogicException("El id del prospecto de compra ");
+        if(pc.getId() == null || pc.getId()<=0) throw new BusinessLogicException("El id del prospecto de compra ");
         ProspectoCompraEntity pco = persistence.find(pc.getId());
         
         if(pco == null) throw new BusinessLogicException("El prospecto de compra no existe");
-        if(!pco.getAutomovil().equals(pc.getAutomovil())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
-        if(!pco.getCliente().equals(pc.getCliente())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
-        if(!pco.getVendedor().equals(pc.getVendedor())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+        if(pc.getAutomovil() == null || !pco.getAutomovil().equals(pc.getAutomovil())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+        if(pc.getCliente() == null || !pco.getCliente().equals(pc.getCliente())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+        if(pc.getVendedor() == null || !pco.getVendedor().equals(pc.getVendedor())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
        
         return persistence.update(pc);
     }
@@ -89,12 +89,12 @@ public class ProspectoCompraLogic {
      * @return el prospecto de compra eliminado.
      * @throws BusinessLogicException si pc == null o si el prospecto de compra no existe en la BD.
      */
-    public ProspectoCompraEntity deleteProspectoCompra(ProspectoCompraEntity pc) throws BusinessLogicException{
+    public ProspectoCompraEntity deleteProspectoCompra(Long  pc) throws BusinessLogicException{
         
         if(pc == null) throw new BusinessLogicException("El prospecto de compra que se quiere eliminar no debe ser null");
        
-        if(persistence.find(pc.getId())==null) throw new BusinessLogicException("El prospecto que se busca eliminar no existe");
-        return persistence.delete(pc.getId());
+        if(persistence.find(pc)==null) throw new BusinessLogicException("El prospecto que se busca eliminar no existe");
+        return persistence.delete(pc);
     }
 
     /**
