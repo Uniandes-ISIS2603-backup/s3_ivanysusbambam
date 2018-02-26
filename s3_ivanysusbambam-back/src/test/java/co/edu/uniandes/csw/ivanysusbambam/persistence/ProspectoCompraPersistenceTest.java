@@ -105,7 +105,7 @@ public class ProspectoCompraPersistenceTest {
     }
     
     @Test
-    public void getProspectosComoraTest(){
+    public void getProspectosCompraTest(){
         
         List<ProspectoCompraEntity>lista = pcPersistence.findAll();
         

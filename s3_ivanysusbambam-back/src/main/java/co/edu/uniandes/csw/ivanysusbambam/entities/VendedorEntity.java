@@ -124,4 +124,8 @@ public class VendedorEntity extends BaseEntity implements Serializable{
     public PuntoDeVentaEntity getPuntoDeVenta() {
         return puntoDeVenta;
     }
+
+    public Long darCedula() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
