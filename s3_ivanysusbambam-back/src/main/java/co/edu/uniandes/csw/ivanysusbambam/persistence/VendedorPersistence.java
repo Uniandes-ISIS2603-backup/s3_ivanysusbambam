@@ -96,7 +96,7 @@ public class VendedorPersistence {
     /**
      * Encuentra un VendedorEntity según la cédula del vendedor.
      * @param cedula cédula del vendedor.
-     * @return una lista con vendedor correspondiente a ese id o null si no existe.
+     * @return una lista con vendedor correspondiente a esa cédula o null si no existe.
      */
     public List<VendedorEntity> findByCedula(Long cedula){
         LOGGER.log(Level.INFO, "buscando vendedor con cedula: ", cedula);
