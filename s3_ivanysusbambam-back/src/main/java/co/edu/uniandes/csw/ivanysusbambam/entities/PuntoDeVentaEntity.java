@@ -50,13 +50,6 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
         return telefono;
     }
     
-    public List<VendedorEntity> getVendedores(){
-        return vendedores;
-    }
-    
-    public List<CompraEntity> getCompras(){
-        return compras;
-    }
     public void setTelefono(int telefono){
         this.telefono = telefono;
     }
@@ -67,6 +60,20 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
         this.nombre = nombre;
     }
 
+    /**
+     * @return the vendedores
+     */
+    public List<VendedorEntity> getVendedores(){
+        return vendedores;
+    }
+    
+     /**
+     * @return the compras
+     */
+    public List<CompraEntity> getCompras(){
+        return compras;
+    }
+ 
     /**
      * @return the ventas
      */

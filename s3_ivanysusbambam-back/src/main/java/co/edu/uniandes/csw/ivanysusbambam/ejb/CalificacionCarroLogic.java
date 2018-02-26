@@ -21,7 +21,7 @@ import javax.inject.Inject;
 @Stateless
 public class CalificacionCarroLogic {
 
-    private static final Logger LOGGER = Logger.getLogger(CalificacionTiendaLogic.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(CalificacionCarroLogic.class.getName());
 
     @Inject
     CalificacionCarroPersistence persistence;
