@@ -67,7 +67,8 @@ public class CompraPersistence {
      * Borra el objeto que entra por parametro de la base de datos
      * @param entity La entidad a borrar
      */
-    public void delete(CompraEntity entity) {
+    public void delete(int id) {
+         CompraEntity entity = em.find(CompraEntity.class, id);
         em.remove(entity);
     }
 }
