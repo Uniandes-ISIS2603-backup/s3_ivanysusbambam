@@ -125,10 +125,8 @@ private EntityManager em;
         
     }
     
-/**
+    /**
      * Prueba para crear una Compra.
-     *
-     * 
      */
     @Test
     public void createCompraTest() {
@@ -152,7 +150,7 @@ private EntityManager em;
     public void getComprasTest() {
         
         List<CompraEntity> list = compraPersistence.findAll();
-        Assert.assertEquals(data.size(), list.size());
+       Assert.assertEquals(data.size(), list.size());
         for (CompraEntity ent : list) {
             boolean found = false;
             for (CompraEntity entity : data) {
@@ -178,12 +176,12 @@ private EntityManager em;
     }
     
     /**
-     * Prueba para eliminar una Venta.
+     * Prueba para eliminar una compra.
      *
      *
      */
     @Test
-    public void deleteVentaTest() {
+    public void deleteCompraTest() {
         CompraEntity entity = data.get(0);
         compraPersistence.delete(entity.getIdCompra());
         CompraEntity deleted = em.find(CompraEntity.class, entity.getIdCompra());
@@ -191,12 +189,12 @@ private EntityManager em;
     }
     
     /**
-     * Prueba para actualizar una Venta.
+     * Prueba para actualizar una compra.
      *
      *
      */
     @Test
-    public void updateVentaTest() {
+    public void updateCompraTest() {
         CompraEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         CompraEntity newEntity = factory.manufacturePojo(CompraEntity.class);

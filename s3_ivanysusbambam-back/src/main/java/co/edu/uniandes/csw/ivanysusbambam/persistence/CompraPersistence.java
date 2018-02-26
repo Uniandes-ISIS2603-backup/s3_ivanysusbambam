@@ -68,7 +68,7 @@ public class CompraPersistence {
      * @param entity La entidad a borrar
      */
     public void delete(int id) {
-         CompraEntity entity = em.find(CompraEntity.class, id);
+        CompraEntity entity = em.find(CompraEntity.class, id);
         em.remove(entity);
     }
 }
