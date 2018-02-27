@@ -135,5 +135,6 @@ public class PuntoDeVentaLogic {
         return getPuntoDeVenta(id).getAutomoviles();
     }
     
+    //TODO hacer métodos para obtener un auto, vendedor, venta y compra especifico con 2do id como parametro
     
 }

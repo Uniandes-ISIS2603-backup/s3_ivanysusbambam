@@ -18,7 +18,6 @@ import java.util.List;
  *       "name": string,
  *       "direccion": string,
  *       "telefono": number,
- *       "nombre": string,
  *       "automoviles": JSONArray
  *       "vendedores": JSONArray
  *       "compras": JSONArray
@@ -36,7 +35,6 @@ import java.util.List;
  *          "name": "Los ángeles concesionario",
  *          "direccion": "cr 1 # 2 - 33",
  *          "telefono": "724 5874",
- *          "nombre": "Los ángeles concesionario",
  *          "automoviles": {[]}
  *          "vendedores": {[]}
  *          "compras": {[]}
