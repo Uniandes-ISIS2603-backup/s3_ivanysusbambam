@@ -42,7 +42,7 @@ public class ModelLogic {
      */
     public ModelEntity createModel(ModelEntity mdl) throws BusinessLogicException {
 
-        if (persistence.find(mdl.getCilindraje()) != null) {
+        if (persistence.find(mdl.getId()) != null) {
             throw new BusinessLogicException("Ya existe un modelo igual al que se quiere agregar");
         }
         if (mdl.getTransmision() == null) {
@@ -84,7 +84,7 @@ public class ModelLogic {
         if (mdl == null) {
             throw new BusinessLogicException("El modelo que se quiere actualizado no puede ser null");
         }
-        ModelEntity md = persistence.find(mdl.getCilindraje());
+        ModelEntity md = persistence.find(mdl.getId());
         if (md == null) {
             throw new BusinessLogicException("El modelo que se quiere actualizar no existe en la base de datos");
         }
@@ -97,37 +97,34 @@ public class ModelLogic {
     /**
      * Elimina el modelo con cilindraje dado por parametro
      *
-     * @param cil cilindraje del modelo que se quiere eliminar.
+     * @param id  id del modelo que se quiere eliminar.
      * @throws BusinessLogicException si el modelo que se busca eliminar no
      * existe o si el cilindraje dado == null.
      */
-    public void deleteModel(Integer cil) throws BusinessLogicException {
-        LOG.log(Level.INFO, "Intentando aeliminar cliente con cédula: {0}", cil);
-        if (cil == null) {
-            throw new BusinessLogicException("La cédula no puede ser null");
+    public void deleteModel(Long id) throws BusinessLogicException {
+        LOG.log(Level.INFO, "Intentando eliminar modelo con cédula: {0}", id);
+        if (id == null) {
+            throw new BusinessLogicException("El id no puede ser null");
         }
-        ModelEntity mdlo = persistence.find(cil);
+        ModelEntity mdlo = persistence.find(id);
         if (mdlo == null) {
             throw new BusinessLogicException("No existe un modelo con el cilindraje dado.");
         }
-        persistence.delete(cil);
+        persistence.delete(id);
     }
 
     /**
      * Busca un modelo por cilindraje
      *
-     * @param cil cilindraje del modelo que se busca.
+     * @param id cilindraje del modelo que se busca.
      * @return el modelo buscado, null si no existe.
      * @throws BusinessLogicException si cil == null.
      */
-    public ModelEntity findModel(Integer cil) throws BusinessLogicException {
-        if (cil == 0) {
-            throw new BusinessLogicException("El cilindraje no puede ser cero");
+    public ModelEntity findModel(Long id) throws BusinessLogicException {
+        if (id == null) {
+            throw new BusinessLogicException("El id no puede ser null");
         }
-        if (cil == null) {
-            throw new BusinessLogicException("El cilindraje no puede ser null");
-       }
-        return persistence.find(cil);
+        return persistence.find(id);
     }
 
     /**
@@ -163,6 +160,6 @@ public class ModelLogic {
         return persistence.findByPuertas(puertas);
     }
     
-    public
+    
 
 }

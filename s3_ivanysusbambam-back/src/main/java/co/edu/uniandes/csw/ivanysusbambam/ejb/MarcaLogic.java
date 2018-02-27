@@ -40,7 +40,7 @@ public class MarcaLogic {
      */
     public MarcaEntity createMarca(MarcaEntity ne) throws BusinessLogicException {
 
-        if (persistence.find(ne.getNombre()) != null) {
+        if (persistence.find(ne.getId()) != null) {
             throw new BusinessLogicException("Ya existe una marca con el nombre dado");
         }
         if (ne.getNombre() == null) {
@@ -73,7 +73,7 @@ public class MarcaLogic {
         if (ma == null) {
             throw new BusinessLogicException("La marca  a ser actualizado no puede ser null");
         }
-        MarcaEntity mar = persistence.find(ma.getNombre());
+        MarcaEntity mar = persistence.find(ma.getId());
         if (mar == null) {
             throw new BusinessLogicException("No se puede actualizar una marca inexistente");
         }
@@ -83,32 +83,32 @@ public class MarcaLogic {
     /**
      * Elimina la marca correspondiente al nombre dado por parametro.
      *
-     * @param nom nombre de la marca que se quiere eliminar.
+     * @param id el id de la marca que se quiere eliminar.
      * @throws BusinessLogicException si la marca que se busca eliminar no
      * existe o si el id dado por parámetro == null.
      */
-    public void deleteMarca(String nom) throws BusinessLogicException {
-        LOG.log(Level.INFO, "Intentando eliminar marca con nombre: {0}", nom);
-        if (nom == null) {
-            throw new BusinessLogicException("La nombre no puede ser null");
+    public void deleteMarca(Long id) throws BusinessLogicException {
+        LOG.log(Level.INFO, "Intentando eliminar marca con id: {0}", id);
+        if (id == null) {
+            throw new BusinessLogicException("El id no puede ser null");
         }
-        if(persistence.find(nom)==null){
+        if(persistence.find(id)==null){
             throw new BusinessLogicException("La marca no existe en la base de datos");
         }
-        persistence.delete(nom);
+        persistence.delete(id);
     }
 
     /**
      * Busca una marca según su nombre
      *
-     * @param nom nombre de la marca que se busca.
+     * @param id id de la marca que se busca.
      * @return la marca buscada, null si no existe.
      * @throws BusinessLogicException si nom == null o id no está en un formato
      * válido.
      */
-    public MarcaEntity findMarca(String nom) throws BusinessLogicException {
+    public MarcaEntity findMarca(Long id) throws BusinessLogicException {
  
-        return persistence.find(nom);
+        return persistence.find(id);
     }
 
 
