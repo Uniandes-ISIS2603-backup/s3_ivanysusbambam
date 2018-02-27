@@ -20,9 +20,7 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     private String direccion;
     
     private Integer telefono;
-    
-    private String nombre;
-    
+        
     @PodamExclude
     @OneToMany(mappedBy = "puntoDeVenta")
     private List<VendedorEntity> vendedores;
@@ -50,23 +48,24 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
         return telefono;
     }
     
+    public void setTelefono(int telefono){
+        this.telefono = telefono;
+    }
+  
+    /**
+     * @return the vendedores
+     */
     public List<VendedorEntity> getVendedores(){
         return vendedores;
     }
     
+     /**
+     * @return the compras
+     */
     public List<CompraEntity> getCompras(){
         return compras;
     }
-    public void setTelefono(int telefono){
-        this.telefono = telefono;
-    }
-    public String getNombre(){
-        return nombre;
-    }
-    public void setNombre(String nombre){
-        this.nombre = nombre;
-    }
-
+ 
     /**
      * @return the ventas
      */

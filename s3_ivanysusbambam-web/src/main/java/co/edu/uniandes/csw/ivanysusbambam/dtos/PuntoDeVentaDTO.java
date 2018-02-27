@@ -21,7 +21,6 @@ public class PuntoDeVentaDTO {
     
     private int telefono;
     
-    private String nombre;
     
     public PuntoDeVentaDTO(){
         
@@ -31,7 +30,6 @@ public class PuntoDeVentaDTO {
         this.direccion = puntoDeVenta.getDireccion();
         this.id = puntoDeVenta.getId();
         this.name = puntoDeVenta.getName();
-        this.nombre = puntoDeVenta.getNombre();
         this.telefono = puntoDeVenta.getTelefono();
     }
     
@@ -59,19 +57,13 @@ public class PuntoDeVentaDTO {
     public void setTelefono(int telefono){
         this.telefono = telefono;
     }
-    public String getNombre(){
-        return nombre;
-    }
-    public void setNombre(String nombre){
-        this.nombre = nombre;
-    }
+ 
     
     public PuntoDeVentaEntity toEntity(){
         PuntoDeVentaEntity entity = new PuntoDeVentaEntity();
         entity.setDireccion(this.direccion);
         entity.setId(this.id);
         entity.setName(this.name);
-        entity.setNombre(this.nombre);
         entity.setTelefono(this.telefono);
         
         return entity;

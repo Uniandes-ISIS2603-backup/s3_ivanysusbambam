@@ -44,8 +44,8 @@ public class AutomovilPersistence {
      */
     public List<AutomovilEntity> findAll(){
         LOGGER.info("Consultando todos los automoviles");
-        TypedQuery tq = em.createQuery("select v from AutomovilEntity v", AutomovilEntity.class);
-        return tq.getResultList();
+        TypedQuery query = em.createQuery("select u from AutomovilEntity u", AutomovilEntity.class);
+        return query.getResultList();
     }
 
 
@@ -77,7 +77,7 @@ public class AutomovilPersistence {
      * @return AutomovilEntity dueño del dada o null si no existe un AutomovilEntity con ese id.
      */
     public AutomovilEntity find(Long id){
-        LOGGER.log(Level.INFO, "Buscando automovil con id: ", id);
+       LOGGER.log(Level.INFO, "Consultando automovil con id={0}", id);
         return em.find(AutomovilEntity.class, id);
     }
     
@@ -92,5 +92,25 @@ public class AutomovilPersistence {
         tq.setParameter("color",color);
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
+    }
+    
+   /**
+    * Busca un automovil con la placa dada por parametro
+    * @param placa del automovil que se desea buscar 
+    * @return un autimovil si ya existe con la placa dada por parametro 
+    */
+    public AutomovilEntity findByPlate (String placa){
+        LOGGER.log(Level.INFO, "Buscando automovil con placa: ", placa);
+        return em.find(AutomovilEntity.class, placa);
+    }
+    
+    /**
+    * Busca un automovil con el chasisa dada por parametro
+    * @param chasis del automovil que se desea buscar 
+    * @return un autimovil si ya existe con la placa dada por parametro 
+    */
+    public AutomovilEntity findBychasis (Integer chasis){
+        LOGGER.log(Level.INFO, "Buscando automovil con chasis: ", chasis);
+        return em.find(AutomovilEntity.class, chasis);
     }
 }

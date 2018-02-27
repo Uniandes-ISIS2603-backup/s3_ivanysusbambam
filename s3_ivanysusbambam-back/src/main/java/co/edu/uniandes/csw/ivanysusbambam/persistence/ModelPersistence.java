@@ -46,6 +46,14 @@ public class ModelPersistence {
                   return q.getResultList();
         } 
          
+         
+         public ModelEntity findById(Long Id){
+            LOGGER.log(Level.INFO, "Buscando modelo con Id=", Id);
+              TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.Id = :Id", ModelEntity.class);
+                 q = q.setParameter("Id", Id);
+                  return q.getSingleResult(); 
+         }
+         
         public List<ModelEntity> findAll() {
         LOGGER.info("Consultando todos los modelos");
         Query q = em.createQuery("select u from ModelEntity u");

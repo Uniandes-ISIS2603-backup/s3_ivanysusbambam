@@ -133,7 +133,7 @@ public class ProspectoCompraLogic {
         return persistence.findByCliente(ce);
     }
     
-    public List<ProspectoCompraEntity> findProspectoCompraByAutimovil(AutomovilEntity ae) throws BusinessLogicException{
+    public List<ProspectoCompraEntity> findProspectoCompraByAutomovil(AutomovilEntity ae) throws BusinessLogicException{
         if(ae == null || automovilPersistence.find(ae.getId())==null) throw new BusinessLogicException("El automóvil que se busca no se encuentra en la BD.");
         return persistence.findByAutomovil(ae);
     }
