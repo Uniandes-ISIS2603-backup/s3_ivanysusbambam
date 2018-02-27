@@ -47,7 +47,7 @@ public class CalificacionCarroPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
-    @Inject
+    @Inject 
     private CalificacionCarroPersistence calificacionCarroPersistence;
     
     @PersistenceContext
@@ -108,11 +108,8 @@ public class CalificacionCarroPersistenceTest {
         CalificacionCarroEntity cc = new PodamFactoryImpl().manufacturePojo(CalificacionCarroEntity.class);
         CalificacionCarroEntity result = calificacionCarroPersistence.create(cc);
         
-        Assert.assertNotNull(result);
-        
-        CalificacionCarroEntity entity = em.find(CalificacionCarroEntity.class, result.getId());
-        
-        Assert.assertEquals(entity.getName(), result.getName());
+        Assert.assertNotNull(result);      
+        Assert.assertEquals(cc, result);
     }
     
     
@@ -148,11 +145,13 @@ public class CalificacionCarroPersistenceTest {
      */
     @Test
     public void getCalificacionCarroTest() {
-        CalificacionCarroEntity entity = data.get(0);
-        CalificacionCarroEntity newEntity = calificacionCarroPersistence.find(entity.getId());
-        Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getName(), newEntity.getName());
-        Assert.assertEquals(entity.getPuntaje(), newEntity.getPuntaje());
+        CalificacionCarroEntity entity;
+        
+        for(CalificacionCarroEntity cc : data){
+            entity = calificacionCarroPersistence.find(cc.getId());
+            Assert.assertNotNull(entity);
+            Assert.assertTrue(cc.equals(entity));
+        }
     }
     
     /**
@@ -185,6 +184,6 @@ public class CalificacionCarroPersistenceTest {
 
         CalificacionCarroEntity resp = em.find(CalificacionCarroEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 }

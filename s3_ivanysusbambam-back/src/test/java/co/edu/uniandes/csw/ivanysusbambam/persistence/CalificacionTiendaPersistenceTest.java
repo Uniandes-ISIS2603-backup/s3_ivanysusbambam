@@ -47,7 +47,7 @@ public class CalificacionTiendaPersistenceTest {
     }
     
     @Inject
-    CalificacionTiendaPersistence persistence;
+    private CalificacionTiendaPersistence persistence;
     
     
     @PersistenceContext
