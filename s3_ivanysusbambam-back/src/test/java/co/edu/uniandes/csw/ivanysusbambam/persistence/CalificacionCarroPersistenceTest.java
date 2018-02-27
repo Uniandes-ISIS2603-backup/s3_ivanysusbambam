@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionCarroEntity;
-import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -49,8 +48,7 @@ public class CalificacionCarroPersistenceTest {
     }
     
     @Inject
-    CalificacionCarroPersistence persistence;
-    
+    private CalificacionCarroPersistence calificacionCarroPersistence;
     
     @PersistenceContext
     private EntityManager em;
@@ -108,7 +106,7 @@ public class CalificacionCarroPersistenceTest {
     @Test
     public void createCalificacionCarroTest(){
         CalificacionCarroEntity cc = new PodamFactoryImpl().manufacturePojo(CalificacionCarroEntity.class);
-        CalificacionCarroEntity result = persistence.create(cc);
+        CalificacionCarroEntity result = calificacionCarroPersistence.create(cc);
         
         Assert.assertNotNull(result);
         
@@ -131,7 +129,7 @@ public class CalificacionCarroPersistenceTest {
             System.out.println(e.getId());
         }
         
-        List<CalificacionCarroEntity>lista = persistence.findAll();
+        List<CalificacionCarroEntity>lista = calificacionCarroPersistence.findAll();
         
         boolean found;
         for(CalificacionCarroEntity e : lista){
@@ -151,7 +149,7 @@ public class CalificacionCarroPersistenceTest {
     @Test
     public void getCalificacionCarroTest() {
         CalificacionCarroEntity entity = data.get(0);
-        CalificacionCarroEntity newEntity = persistence.find(entity.getId());
+        CalificacionCarroEntity newEntity = calificacionCarroPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getPuntaje(), newEntity.getPuntaje());
@@ -165,7 +163,7 @@ public class CalificacionCarroPersistenceTest {
     @Test
     public void deleteCalificacionCarroTest() {
         CalificacionCarroEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        calificacionCarroPersistence.delete(entity.getId());
         CalificacionCarroEntity deleted = em.find(CalificacionCarroEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -183,7 +181,7 @@ public class CalificacionCarroPersistenceTest {
 
         newEntity.setId(entity.getId());
 
-        persistence.update(newEntity);
+        calificacionCarroPersistence.update(newEntity);
 
         CalificacionCarroEntity resp = em.find(CalificacionCarroEntity.class, entity.getId());
 
