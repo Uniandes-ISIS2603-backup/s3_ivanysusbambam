@@ -69,10 +69,10 @@ public class VentaDTO {
      *
      * @param pVenta: Es la entidad que se va a convertir a DTO
      */
-//    public VentaDTO(VentaEntity pVenta) {
-//        this.idVenta = pVenta.getIdVenta();
-//
-//    }
+    public VentaDTO(VentaEntity pVenta) {
+        this.idVenta = pVenta.getId();
+
+    }
 
     /**
      * Convertir DTO a Entity
