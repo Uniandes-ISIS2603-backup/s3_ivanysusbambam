@@ -32,18 +32,18 @@ public class ModelPersistence {
             return em.find(ModelEntity.class, cilin);
         }
         
-        public ModelEntity findByPuertas(Integer numPuer){
+        public List<ModelEntity> findByPuertas(Integer numPuer){
             LOGGER.log(Level.INFO, "Buscando modelo con número de puertas={0}", numPuer);
                  TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.numeroPuertas = :numPuer", ModelEntity.class);
                  q = q.setParameter("numeroPuertas", numPuer);
-                  return q.getSingleResult();
+                  return q.getResultList();
         }
         
-         public ModelEntity findByTransm(String trans){
+         public List<ModelEntity> findByTransm(String trans){
             LOGGER.log(Level.INFO, "Buscando modelo con transmisión=", trans);
               TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.transmision = :trans", ModelEntity.class);
                  q = q.setParameter("transmision", trans);
-                  return q.getSingleResult();
+                  return q.getResultList();
         } 
          
         public List<ModelEntity> findAll() {

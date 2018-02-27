@@ -47,7 +47,7 @@ public class MarcaPersistence {
         LOGGER.log(Level.INFO, "Actualizando marca con nombre=", entity.getNombre());
         return em.merge(entity);
     }
-        public void delete(Integer nom) {
+        public void delete(String nom) {
         LOGGER.log(Level.INFO, "Borrando marca con nombre=", nom);
         MarcaEntity entity = em.find(MarcaEntity.class, nom);
         em.remove(entity);
