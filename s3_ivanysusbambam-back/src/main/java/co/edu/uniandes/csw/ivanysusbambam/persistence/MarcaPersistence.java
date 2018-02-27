@@ -14,6 +14,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -26,9 +27,16 @@ public class MarcaPersistence {
         @PersistenceContext(unitName = "IvanysusbambamPU")
         protected EntityManager em;
         
-       public MarcaEntity find(String nom){
-            LOGGER.log(Level.INFO, "Buscando marca con nombre", nom);
-            return em.find(MarcaEntity.class, nom);
+       public MarcaEntity find(Long id){
+            LOGGER.log(Level.INFO, "Buscando marca");
+            return em.find(MarcaEntity.class, id);
+        }
+       
+     public List<MarcaEntity> findByNombre(String nom){
+            LOGGER.log(Level.INFO, "Buscando marca con nombre ={0}", nom);
+                 TypedQuery<MarcaEntity> q = em.createQuery("select u from MarcaEntity u where u.nombre = :nom", MarcaEntity.class);
+                 q = q.setParameter("nombre", nom);
+                  return q.getResultList();
         }
        
        public List<MarcaEntity> findAll(){
@@ -47,9 +55,9 @@ public class MarcaPersistence {
         LOGGER.log(Level.INFO, "Actualizando marca con nombre=", entity.getNombre());
         return em.merge(entity);
     }
-        public void delete(String nom) {
-        LOGGER.log(Level.INFO, "Borrando marca con nombre=", nom);
-        MarcaEntity entity = em.find(MarcaEntity.class, nom);
+        public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando marca con id=", id);
+        MarcaEntity entity = em.find(MarcaEntity.class, id);
         em.remove(entity);
     }
 }

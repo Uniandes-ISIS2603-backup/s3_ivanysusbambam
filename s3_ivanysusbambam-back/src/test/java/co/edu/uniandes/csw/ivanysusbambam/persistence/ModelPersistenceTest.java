@@ -107,7 +107,7 @@ public class ModelPersistenceTest {
 
         ModelEntity entity = em.find(ModelEntity.class, result.getId());
 
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
 
     /**
@@ -120,7 +120,7 @@ public class ModelPersistenceTest {
         for (ModelEntity ent : list) {
             boolean found = false;
             for (ModelEntity entity : data) {
-                if (ent.getCilindraje().equals(entity.getCilindraje())) {
+                if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
             }
@@ -129,15 +129,16 @@ public class ModelPersistenceTest {
     }
 
     /**
-     * Prueba para consultar un Modelo segun su cilindraje
+     * Prueba para consultar un Modelo segun su id
      */
     @Test
     public void getModelTest() {
         ModelEntity entity = data.get(0);
-        ModelEntity newEntity = modelPersistence.find(entity.getCilindraje());
+        ModelEntity newEntity = modelPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNumeroPuertas(), newEntity.getNumeroPuertas());
         Assert.assertEquals(entity.getCentCubicos(), newEntity.getCentCubicos());
+        Assert.assertEquals(entity.getCilindraje(), newEntity.getCilindraje());
         Assert.assertEquals(entity.getTransmision(), newEntity.getTransmision());
         Assert.assertEquals(entity.getAutomoviles(), newEntity.getAutomoviles());
     }
@@ -167,13 +168,13 @@ public class ModelPersistenceTest {
     @Test
     public void deleteModelTest() {
         ModelEntity entity = data.get(0);
-        modelPersistence.delete(entity.getCilindraje());
+        modelPersistence.delete(entity.getId());
         ModelEntity deleted = em.find(ModelEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
     /**
-     * Prueba para actualizar un Author.
+     * Prueba para actualizar un Modelo
      */
     @Test
     public void updateModelTest() {
@@ -181,13 +182,13 @@ public class ModelPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         ModelEntity newEntity = factory.manufacturePojo(ModelEntity.class);
 
-        newEntity.setCilindraje(entity.getCilindraje());
+        newEntity.setId(entity.getId());
 
         modelPersistence.update(newEntity);
 
         ModelEntity resp = em.find(ModelEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getCilindraje(),entity.getCilindraje());
+        Assert.assertEquals(newEntity.getId(),entity.getId());
     }
     
     

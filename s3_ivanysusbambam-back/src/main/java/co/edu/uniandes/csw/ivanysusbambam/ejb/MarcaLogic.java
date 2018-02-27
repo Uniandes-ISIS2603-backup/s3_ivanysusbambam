@@ -29,7 +29,7 @@ public class MarcaLogic {
     private AutomovilPersitence persistencea; // TO DO: FALTA LA PERSISTENCIA DEL AUTOMOVIL.
 */
     
-    private static final Logger LOG = Logger.getLogger(ClienteLogic.class.getName());
+    private static final Logger LOG = Logger.getLogger(MarcaLogic.class.getName());
 
     /**
      * Persiste una marca en la base de datos.

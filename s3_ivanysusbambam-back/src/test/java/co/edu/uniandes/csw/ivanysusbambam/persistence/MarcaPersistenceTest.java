@@ -108,7 +108,7 @@ public class MarcaPersistenceTest {
 
         MarcaEntity entity = em.find(MarcaEntity.class, result.getId());
 
-        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
 
     /**
@@ -121,7 +121,7 @@ public class MarcaPersistenceTest {
         for (MarcaEntity ent : list) {
             boolean found = false;
             for (MarcaEntity entity : data) {
-                if (ent.getName().equals(entity.getName())) {
+                if (ent.getId().equals(entity.getId())) {
                     found = true;
                 }
             }
@@ -135,7 +135,7 @@ public class MarcaPersistenceTest {
     @Test
     public void getMarcaTest() {
         MarcaEntity entity = data.get(0);
-        MarcaEntity newEntity = marcaPersistence.find(entity.getNombre());
+        MarcaEntity newEntity = marcaPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
         Assert.assertEquals(entity.getAutomoviles(), newEntity.getAutomoviles());
@@ -147,9 +147,9 @@ public class MarcaPersistenceTest {
      * Prueba para eliminar una Marca
      */
     @Test
-    public void deleteAuthorTest() {
+    public void deleteMarcaTest() {
         MarcaEntity entity = data.get(0);
-        marcaPersistence.delete(entity.getNombre());
+        marcaPersistence.delete(entity.getId());
         MarcaEntity deleted = em.find(MarcaEntity.class, entity.getNombre());
         Assert.assertNull(deleted);
     }
@@ -158,12 +158,12 @@ public class MarcaPersistenceTest {
      * Prueba para actualizar una Marca
      */
     @Test
-    public void updateAuthorTest() {
+    public void updateMarcaTest() {
        MarcaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         MarcaEntity newEntity = factory.manufacturePojo(MarcaEntity.class);
 
-        newEntity.setNombre(entity.getNombre());
+        newEntity.setId(entity.getId());
 
         marcaPersistence.update(newEntity);
 

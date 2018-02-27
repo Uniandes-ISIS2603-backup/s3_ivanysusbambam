@@ -25,9 +25,12 @@ public class ModelLogic {
 
     @Inject
     private ModelPersistence persistence;
+    
+    @Inject
+    private AutomovilLogic automovilLogic;
 
-    private static final Logger LOG = Logger.getLogger(ClienteLogic.class.getName());
-    //FALTA  LA LOGICA DE LOS AUTOMOVILES
+    private static final Logger LOG = Logger.getLogger(ModelLogic.class.getName());
+
 
     /**
      * Persiste un modelo en la base de datos.
@@ -159,5 +162,7 @@ public class ModelLogic {
         //}
         return persistence.findByPuertas(puertas);
     }
+    
+    public
 
 }

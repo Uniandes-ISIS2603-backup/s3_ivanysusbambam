@@ -27,9 +27,9 @@ public class ModelPersistence {
         @PersistenceContext(unitName = "IvanysusbambamPU")
         protected EntityManager em;
 
-        public ModelEntity find(Integer cilin){
-            LOGGER.log(Level.INFO, "Buscando modelo con cilindraje={0}", cilin);
-            return em.find(ModelEntity.class, cilin);
+        public ModelEntity find(Long id){
+            LOGGER.log(Level.INFO, "Buscando modelo con id={0}", id);
+            return em.find(ModelEntity.class, id);
         }
         
         public List<ModelEntity> findByPuertas(Integer numPuer){
@@ -47,11 +47,11 @@ public class ModelPersistence {
         } 
          
          
-         public ModelEntity findById(Long Id){
-            LOGGER.log(Level.INFO, "Buscando modelo con Id=", Id);
-              TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.Id = :Id", ModelEntity.class);
-                 q = q.setParameter("Id", Id);
-                  return q.getSingleResult(); 
+         public List<ModelEntity> findByCilindraje(Integer cil){
+            LOGGER.log(Level.INFO, "Buscando modelo con cilindraje=", cil);
+              TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.cilindraje = :cil", ModelEntity.class);
+                 q = q.setParameter("cilindraje", cil);
+                  return q.getResultList();
          }
          
         public List<ModelEntity> findAll() {
@@ -69,9 +69,9 @@ public class ModelPersistence {
         LOGGER.log(Level.INFO, "Actualizando modelo con cilindraje={0}", entity.getCilindraje());
         return em.merge(entity);
     }
-        public void delete(Integer cilin) {
-        LOGGER.log(Level.INFO, "Borrando modelo con cilindraje ={0}", cilin);
-        ModelEntity entity = em.find(ModelEntity.class, cilin);
+        public void delete(Long id) {
+        LOGGER.log(Level.INFO, "Borrando modelo con id ={0}", id);
+        ModelEntity entity = em.find(ModelEntity.class, id);
         em.remove(entity);
     }
         
