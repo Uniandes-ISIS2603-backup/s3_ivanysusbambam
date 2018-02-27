@@ -150,7 +150,7 @@ public class MarcaPersistenceTest {
     public void deleteMarcaTest() {
         MarcaEntity entity = data.get(0);
         marcaPersistence.delete(entity.getId());
-        MarcaEntity deleted = em.find(MarcaEntity.class, entity.getNombre());
+        MarcaEntity deleted = em.find(MarcaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
@@ -167,7 +167,7 @@ public class MarcaPersistenceTest {
 
         marcaPersistence.update(newEntity);
 
-        MarcaEntity resp = em.find(MarcaEntity.class, entity.getNombre());
+        MarcaEntity resp = em.find(MarcaEntity.class, entity.getId());
 
         Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
     }

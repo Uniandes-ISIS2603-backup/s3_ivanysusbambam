@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -37,7 +38,8 @@ public class ModelEntity extends BaseEntity implements Serializable {
      */
     private Double centCubicos;
     
-    @OneToMany(mappedBy = "model")
+    
+    @OneToMany(mappedBy = "model",cascade = CascadeType.ALL )
     
     private List<AutomovilEntity> automoviles = new ArrayList<AutomovilEntity>();
     
