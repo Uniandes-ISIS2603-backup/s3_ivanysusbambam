@@ -50,6 +50,36 @@ public class MedioDePagoEntity implements Serializable
     public void setNumero(Long numero) {
         this.numero = numero;
     }
+
+    public TipoMedioDePago getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(TipoMedioDePago tipo) {
+        this.tipo = tipo;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+    
+    public boolean validarTipoMedioDePago()
+    {
+      for(TipoMedioDePago tipo: TipoMedioDePago.values())
+      {
+          if(this.tipo.equals(tipo))
+          {
+              return true;
+          }
+      }
+      return false;
+                
+                
+    }
     
 }
 

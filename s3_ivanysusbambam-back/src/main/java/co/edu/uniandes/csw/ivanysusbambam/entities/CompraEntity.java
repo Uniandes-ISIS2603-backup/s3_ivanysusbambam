@@ -75,6 +75,38 @@ public class CompraEntity implements Serializable {
     public void setIdCompra(int idCompra) {
         this.idCompra = idCompra;
     }
+
+    public AutomovilEntity getAutomovil() {
+        return automovil;
+    }
+
+    public void setAutomovil(AutomovilEntity automovil) {
+        this.automovil = automovil;
+    }
+
+    public VendedorEntity getVendedorEncargado() {
+        return vendedorEncargado;
+    }
+
+    public void setVendedorEncargado(VendedorEntity vendedorEncargado) {
+        this.vendedorEncargado = vendedorEncargado;
+    }
+
+    public PuntoDeVentaEntity getPuntoDeVenta() {
+        return puntoDeVenta;
+    }
+
+    public void setPuntoDeVenta(PuntoDeVentaEntity puntoDeVenta) {
+        this.puntoDeVenta = puntoDeVenta;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
     
     
     
