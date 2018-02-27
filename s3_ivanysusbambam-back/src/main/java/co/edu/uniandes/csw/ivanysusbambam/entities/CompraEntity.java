@@ -37,7 +37,7 @@ public class CompraEntity implements Serializable {
     /**
      * El automovil de la compra
      */
-     @PodamExclude
+    @PodamExclude
     @OneToOne(cascade = CascadeType.ALL)
     private AutomovilEntity automovil;
     

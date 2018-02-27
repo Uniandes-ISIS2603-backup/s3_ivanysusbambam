@@ -11,6 +11,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  *
@@ -33,7 +34,7 @@ public class MedioDePagoEntity implements Serializable
     private TipoMedioDePago tipo;
     
     @ManyToOne
-    
+    @PodamExclude
     private ClienteEntity cliente;
     
 /**

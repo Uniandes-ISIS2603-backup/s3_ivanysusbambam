@@ -11,6 +11,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * Clase que representa una marca en la persistencia y permite su serialización
@@ -23,9 +24,11 @@ public class MarcaEntity extends BaseEntity implements Serializable{
      */
     private String nombre;
     
+    @PodamExclude
      @OneToMany(mappedBy = "marca")
-    private  List<AutomovilEntity> automoviles = new ArrayList<AutomovilEntity>();
+     private  List<AutomovilEntity> automoviles = new ArrayList<AutomovilEntity>();
     
+      @PodamExclude
     @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
     private  List<ModelEntity> modelos = new ArrayList<ModelEntity>();
  
