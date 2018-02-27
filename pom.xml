@@ -8,7 +8,10 @@
     <packaging>pom</packaging>
     <name>s3_ivanysusbambam</name>
  
-    <modules></modules>
+    <modules>
+        <module>s3_ivanysusbambam-back</module>
+        <module>s3_ivanysusbambam-web</module>
+    </modules>
     <repositories>
         <repository>
             <id>csw-releases</id>
