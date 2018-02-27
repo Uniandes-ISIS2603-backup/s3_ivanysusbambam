@@ -12,6 +12,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,34 +45,42 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
      * Prospectos de compra del automovil
      */
     @PodamExclude
-    @OneToMany(mappedBy = "automovil", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
 
+    @PodamExclude
+    @OneToMany(mappedBy = "automovil", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<VentaEntity> ventas;
+    
+    @PodamExclude
+    @OneToOne (cascade = CascadeType.ALL)
+    private CompraEntity compra;
+    
     /**
      * Punto de venta del automovil 
      */
     @PodamExclude
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne 
     private PuntoDeVentaEntity puntoDeVenta;
 
     /**
      * Marca de este automovil 
      */
     @PodamExclude
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne 
     private MarcaEntity marca;
 
     /**
      * Fecha de listado de este automovil
      */
-    @Temporal(TemporalType.DATE)
+    @Temporal(TemporalType.DATE )
     private Calendar fechaListado;
 
    /**
     * modelo de este automovil
     */
     @PodamExclude
-    @ManyToOne (cascade = CascadeType.ALL)
+    @ManyToOne 
     private ModelEntity model;
 
     /**
@@ -207,5 +216,33 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
      */
     public void setModel(ModelEntity model) {
         this.model = model;
+    }
+
+    /**
+     * @return the ventas
+     */
+    public List<VentaEntity> getVentas() {
+        return ventas;
+    }
+
+    /**
+     * @param ventas the ventas to set
+     */
+    public void setVentas(List<VentaEntity> ventas) {
+        this.ventas = ventas;
+    }
+
+    /**
+     * @return the compra
+     */
+    public CompraEntity getCompra() {
+        return compra;
+    }
+
+    /**
+     * @param compra the compra to set
+     */
+    public void setCompra(CompraEntity compra) {
+        this.compra = compra;
     }
 }
