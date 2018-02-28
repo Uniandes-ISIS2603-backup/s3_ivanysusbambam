@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.logic;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.AutomovilLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
@@ -56,6 +57,7 @@ public class AutomovilLogicTest {
     
     private List<PuntoDeVentaEntity> puntoData = new ArrayList<PuntoDeVentaEntity>();
     
+    private List<CompraEntity> compraData = new ArrayList<CompraEntity>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -99,6 +101,7 @@ public class AutomovilLogicTest {
         em.createQuery("delete from ModelEntity").executeUpdate();
         em.createQuery("delete from MarcaEntity").executeUpdate();
         em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
+        em.createQuery("delete from CompraEntity").executeUpdate();
     }
 
     /**
@@ -120,6 +123,10 @@ public class AutomovilLogicTest {
             PuntoDeVentaEntity punto = factory.manufacturePojo(PuntoDeVentaEntity.class);
             em.persist(punto);
             puntoData.add(punto);
+            
+            CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
+            em.persist(compra);
+            compraData.add(compra);
         }
         for (int i = 0; i < 3; i++) {
             AutomovilEntity auto = factory.manufacturePojo(AutomovilEntity.class);
@@ -128,7 +135,7 @@ public class AutomovilLogicTest {
             auto.setModel(modelData.get(0));
             auto.setMarca(marcaData.get(0));
             auto.setPuntoDeVenta(puntoData.get(0));
-
+            auto.setCompra(compraData.get(0));
             em.persist(auto);
             data.add(auto);
         }
@@ -140,102 +147,101 @@ public class AutomovilLogicTest {
 //     *
 //     *
 //     */
-//    @Test
-//    public void createAutomovilTest()  {
-//          AutomovilEntity newEntity = factory.manufacturePojo(AutomovilEntity.class);
-//        
-//        
-//        boolean ex = false;
-//          try{
-//        AutomovilEntity result = autoLogic.createAutomovil(newEntity);
-//        Assert.assertNotNull(result);
-//        AutomovilEntity entity = em.find(AutomovilEntity.class, result.getId());
-//        Assert.assertEquals(newEntity.getId(), entity.getId());}
-//           catch(BusinessLogicException e) 
-//        {
-//            ex =true;
-//        }
-//        
-//        if((newEntity.getModel() != null) && (newEntity.getMarca() != null )&& (newEntity.getPuntoDeVenta()!= null)){
-//            Assert.assertFalse(ex);
-//        }
-//        else Assert.assertTrue(ex);
-//        
-//        
-//     
-//    }
-//
-//    /**
-//     * Prueba para consultar la lista de Books
-//     *
-//     *
-//     */
-//    @Test
-//    public void getAutomovilesTest() {
-//        List<AutomovilEntity> list = autoLogic.getAutomoviles();
-//        Assert.assertEquals(data.size(), list.size());
-//        for (AutomovilEntity entity : list) {
-//            boolean found = false;
-//            for (AutomovilEntity storedEntity : data) {
-//                if (entity.getId().equals(storedEntity.getId())) {
-//                    found = true;
-//                }
-//            }
-//            Assert.assertTrue(found);
-//        }
-//    }
+    @Test
+    public void createAutomovilTest()  {
+          AutomovilEntity newEntity = factory.manufacturePojo(AutomovilEntity.class);
+        
+        
+        boolean ex = false;
+          try{
+        AutomovilEntity result = autoLogic.createAutomovil(newEntity);
+        Assert.assertNotNull(result);
+        AutomovilEntity entity = em.find(AutomovilEntity.class, result.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());}
+           catch(BusinessLogicException e) 
+        {
+            ex =true;
+        }
+        
+        if((newEntity.getModel() != null) && (newEntity.getMarca() != null )&& (newEntity.getPuntoDeVenta()!= null)){
+            Assert.assertFalse(ex);
+        }
+        else Assert.assertTrue(ex);
+        
+        
+     
+    }
 
-//    /**
-//     * Prueba para consultar un Book
-//     *
-//     *
-//     */
-//    @Test
-//    public void getAutomovilTest() throws BusinessLogicException {
-//        AutomovilEntity entity = data.get(0);
-//        
-//        AutomovilEntity resultEntity = autoLogic.findAutomovil(entity.getId());
-//        Assert.assertNotNull(resultEntity);
-//        Assert.assertEquals(entity.getId(), resultEntity.getId());
-//        Assert.assertEquals(entity.getChasis(), resultEntity.getChasis());
-//        
-//    }
+    /**
+     * Prueba para consultar la lista de Books
+     *
+     *
+     */
+    @Test
+    public void getAutomovilesTest() {
+        List<AutomovilEntity> list = autoLogic.getAutomoviles();
+        Assert.assertEquals(data.size(), list.size());
+        for (AutomovilEntity entity : list) {
+            boolean found = false;
+            for (AutomovilEntity storedEntity : data) {
+                if (entity.getId().equals(storedEntity.getId())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
 
-//    /**
-//     * Prueba para eliminar un Book
-//     *
-//     *
-//     */
-//    @Test
-//    public void deleteAutomovilTest() throws BusinessLogicException {
-//        AutomovilEntity entity = data.get(0);
-//        autoLogic.deleteAutomovil(entity);
-//        AutomovilEntity deleted = em.find(AutomovilEntity.class, entity.getId());
-//        Assert.assertNull(deleted);
-//    }
-//
-//    /**
-//     * Prueba para actualizar un Book
-//     *
-//     *
-//     */
+    /**
+     * Prueba para consultar un Book
+     *
+     *
+     */
+    @Test
+    public void getAutomovilTest() throws BusinessLogicException {
+        AutomovilEntity entity = data.get(0);
+        
+        AutomovilEntity resultEntity = autoLogic.findAutomovil(entity.getId());
+       Assert.assertNotNull(resultEntity);
+        Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getChasis(), resultEntity.getChasis());
+        
+    }
+    /**
+     * Prueba para eliminar un Book
+     *
+     *
+     */
+    @Test
+    public void deleteAutomovilTest() throws BusinessLogicException {
+        AutomovilEntity entity = data.get(0);
+        autoLogic.deleteAutomovil(entity);
+        AutomovilEntity deleted = em.find(AutomovilEntity.class, entity.getId());
+        Assert.assertNull(deleted);
+    }
+
+    /**
+     * Prueba para actualizar un Book
+     *
+     *
+     */
 //    @Test
 //    public void updateAutomovilTest() throws BusinessLogicException {
+//        
 //        AutomovilEntity entity = data.get(0);
 //        AutomovilEntity pojoEntity = factory.manufacturePojo(AutomovilEntity.class);
 //
 //        pojoEntity.setId(entity.getId());
-//        pojoEntity.setModel(entity.getModel());
-//        pojoEntity.setMarca(entity.getMarca());
-//        pojoEntity.setPuntoDeVenta(entity.getPuntoDeVenta());
-//        pojoEntity.setPlaca(entity.getPlaca());
-//        pojoEntity.setChasis(entity.getChasis());
 //        
+////        pojoEntity.setModel(data.get(0).getModel());
+////        pojoEntity.setMarca(data.get(0).getMarca());
+////        pojoEntity.setPuntoDeVenta(data.get(0).getPuntoDeVenta());
+////        pojoEntity.setPlaca(data.get(0).getPlaca());
+////        pojoEntity.setChasis(data.get(0).getChasis());
+////        pojoEntity.setCompra(data.get(0).getCompra());
+//       
 //        autoLogic.updateAutomovil(pojoEntity);
 //
-//        AutomovilEntity resp = em.find(AutomovilEntity.class, entity.getId());
-//
-//        Assert.assertEquals(pojoEntity.getId(), resp.getId());
-//        
+//              
 //    }
 }
