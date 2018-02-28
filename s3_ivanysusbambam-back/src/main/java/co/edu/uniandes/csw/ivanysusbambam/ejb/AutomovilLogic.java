@@ -53,7 +53,7 @@ public class AutomovilLogic {
             throw new BusinessLogicException("Ninguno de los atributos delautomovil puede ser null");
         }
         // VERIFICA QUE EL FORMATO DE LA PLACA SEA EL ADECUADO, PARA NO VIOLAR LA REGLA DE NEGOCIO
-        if (verificarPlaca(AE.getPlaca())==false) {
+        if (verificarPlaca(AE.getPlaca()) == false) {
             throw new BusinessLogicException("El formato de la placa no es el correcto");
         }
 
@@ -74,7 +74,6 @@ public class AutomovilLogic {
         }
 
         // Verifica la regla de negocio que dice que no puede haber dos automoviles con la misma placa ni con el mismo chasis
-   
         if (persistence.findByPlate(AE.getPlaca()) != null) {
             throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
         }
@@ -126,9 +125,8 @@ public class AutomovilLogic {
             throw new BusinessLogicException("El id del prospecto de compra ");
         }
         AutomovilEntity AEO = persistence.find(AE.getId());
-        
+
         //VERIFICA QUE EL FORMATO DE LA PLACA SEA VÁLIDO
-        
         if (verificarPlaca(AE.getPlaca()) == false) {
             throw new BusinessLogicException("El formato de la placa es inválido");
         }
