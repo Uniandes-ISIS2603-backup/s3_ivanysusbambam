@@ -52,7 +52,7 @@ public class CompraPersistence {
        * @param id El id del objeto que se quiere encontrar en la base de datos
        * @return La compra con el id que entra por parametro
        */
-       public CompraEntity find(int id) {
+       public CompraEntity find(Integer id) {
         return em.find(CompraEntity.class, id);
     }
     /**
@@ -67,7 +67,7 @@ public class CompraPersistence {
      * Borra el objeto que entra por parametro de la base de datos
      * @param entity La entidad a borrar
      */
-    public void delete(int id) {
+    public void delete(Integer id) {
         CompraEntity entity = em.find(CompraEntity.class, id);
         em.remove(entity);
     }

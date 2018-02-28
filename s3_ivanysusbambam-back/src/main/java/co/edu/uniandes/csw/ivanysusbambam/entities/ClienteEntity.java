@@ -52,6 +52,7 @@ public class ClienteEntity implements Serializable{
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<VentaEntity> ventas;
     
+    @PodamExclude
     @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL)
     private List<MedioDePagoEntity> mediosDePago;
 
