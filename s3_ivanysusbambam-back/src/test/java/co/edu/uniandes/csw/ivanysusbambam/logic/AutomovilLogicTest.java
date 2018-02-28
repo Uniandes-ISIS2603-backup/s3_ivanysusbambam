@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.logic;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.AutomovilLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
@@ -56,6 +57,7 @@ public class AutomovilLogicTest {
     
     private List<PuntoDeVentaEntity> puntoData = new ArrayList<PuntoDeVentaEntity>();
     
+    private List<CompraEntity> compraData = new ArrayList<CompraEntity>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -99,6 +101,7 @@ public class AutomovilLogicTest {
         em.createQuery("delete from ModelEntity").executeUpdate();
         em.createQuery("delete from MarcaEntity").executeUpdate();
         em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
+        em.createQuery("delete from CompraEntity").executeUpdate();
     }
 
     /**
@@ -120,6 +123,10 @@ public class AutomovilLogicTest {
             PuntoDeVentaEntity punto = factory.manufacturePojo(PuntoDeVentaEntity.class);
             em.persist(punto);
             puntoData.add(punto);
+            
+            CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
+            em.persist(compra);
+            compraData.add(compra);
         }
         for (int i = 0; i < 3; i++) {
             AutomovilEntity auto = factory.manufacturePojo(AutomovilEntity.class);
@@ -128,7 +135,7 @@ public class AutomovilLogicTest {
             auto.setModel(modelData.get(0));
             auto.setMarca(marcaData.get(0));
             auto.setPuntoDeVenta(puntoData.get(0));
-
+            auto.setCompra(compraData.get(0));
             em.persist(auto);
             data.add(auto);
         }
@@ -212,6 +219,7 @@ public class AutomovilLogicTest {
         Assert.assertNull(deleted);
     }
 
+
     /**
      * Prueba para actualizar un Book
      *
@@ -239,4 +247,5 @@ public class AutomovilLogicTest {
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         
     }
+
 }
