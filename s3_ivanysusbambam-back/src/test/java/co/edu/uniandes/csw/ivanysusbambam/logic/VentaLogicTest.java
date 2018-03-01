@@ -9,6 +9,8 @@ import co.edu.uniandes.csw.ivanysusbambam.ejb.VentaLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionCarroEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
@@ -56,6 +58,9 @@ public class VentaLogicTest {
     private List<VendedorEntity> vendedorData = new ArrayList<VendedorEntity>();
     private List<AutomovilEntity> automovilData = new ArrayList<AutomovilEntity>();
     private List<CalificacionCarroEntity> calificacionData = new ArrayList<CalificacionCarroEntity>();
+    private List<PuntoDeVentaEntity> puntoData = new ArrayList<PuntoDeVentaEntity>();
+    private List<MedioDePagoEntity> medioData = new ArrayList<MedioDePagoEntity>();
+    
     
     
     @Deployment
@@ -101,6 +106,8 @@ public class VentaLogicTest {
         em.createQuery("delete from AutomovilEntity").executeUpdate();
         em.createQuery("delete from VendedorEntity").executeUpdate();
         em.createQuery("delete from CalificacionCarroEntity").executeUpdate();
+        em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
+        em.createQuery("delete from MedioDePagoEntity").executeUpdate();
     }
 
     /**
@@ -126,6 +133,14 @@ public class VentaLogicTest {
             CalificacionCarroEntity calificacion = factory.manufacturePojo(CalificacionCarroEntity.class);
             em.persist(calificacion);
             calificacionData.add(calificacion);
+            
+            PuntoDeVentaEntity Punto = factory.manufacturePojo(PuntoDeVentaEntity.class);
+            em.persist(Punto);
+            puntoData.add(Punto);
+            
+            MedioDePagoEntity medio = factory.manufacturePojo(MedioDePagoEntity.class);
+            em.persist(medio);
+            medioData.add(medio);
         }
         for (int i = 0; i < 3; i++) {
             VentaEntity entity = factory.manufacturePojo(VentaEntity.class);
@@ -133,6 +148,8 @@ public class VentaLogicTest {
             entity.setAutomovil(automovilData.get(0));
             entity.setCalificacionCarro(calificacionData.get(0));
             entity.setVendedorEncargado(vendedorData.get(0));
+            entity.setMedioDePago(medioData.get(0));
+            entity.setPuntoDeVenta(puntoData.get(0));
 
             em.persist(entity);
             data.add(entity);
@@ -162,7 +179,7 @@ public class VentaLogicTest {
             ex =true;
         }
         
-        if((newEntity.getAutomovil() != null) && (newEntity.getCliente() != null )&& (newEntity.getVendedorEncargado()!= null)&& (newEntity.getCalificacionCarro()!= null)){
+        if((newEntity.getAutomovil() != null) && (newEntity.getCliente() != null )&& (newEntity.getVendedorEncargado()!= null)&& (newEntity.getCalificacionCarro()!= null)&& (newEntity.getPuntoDeVenta()!= null)&& (newEntity.getMedioDePago()!= null)){
             Assert.assertFalse(ex);
         }
         else Assert.assertTrue(ex);
@@ -231,13 +248,14 @@ public class VentaLogicTest {
         pojoEntity.setId(entity.getId());
         pojoEntity.setCliente(entity.getCliente());
         pojoEntity.setVendedorEncargado(entity.getVendedorEncargado());
-        pojoEntity.setCalificacionCarro(entity.getCalificacionCarro());
+        
         pojoEntity.setAutomovil(entity.getAutomovil());
+       pojoEntity.setPuntoDeVenta(entity.getPuntoDeVenta());
+        pojoEntity.setMedioDePago(entity.getMedioDePago());
         ventaLogic.updateVenta(pojoEntity);
 
-        VentaEntity resp = em.find(VentaEntity.class, entity.getId());
+        
 
-        //Assert.assertEquals(pojoEntity.getId(), resp.getId());
         
     }    
 }

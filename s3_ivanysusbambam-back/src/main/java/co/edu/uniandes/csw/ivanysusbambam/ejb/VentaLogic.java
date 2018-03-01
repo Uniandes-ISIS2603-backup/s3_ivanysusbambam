@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.ivanysusbambam.persistence.AutomovilPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.CalificacionCarroPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ClientePersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MedioDePagoPersistence;
+import co.edu.uniandes.csw.ivanysusbambam.persistence.PuntoDeVentaPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.VendedorPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.VentaPersistence;
 import java.util.List;
@@ -37,6 +38,13 @@ public class VentaLogic {
 
     @Inject
     private AutomovilPersistence automovilPersistence;
+    
+    @Inject
+    private PuntoDeVentaPersistence puntoPersistence;
+    
+    @Inject
+    private MedioDePagoPersistence medioPersistence;
+    
 
     
 
@@ -76,6 +84,15 @@ public class VentaLogic {
         }
         if (calificacionPersistence.find(VE.getCalificacionCarro().getId()) == null) {
             throw new BusinessLogicException("la clificacionCarro de la venta no existe");
+        }
+        
+        if (puntoPersistence.find(VE.getPuntoDeVenta().getId()) == null){
+       throw new BusinessLogicException("El punto de venta de la venta no existe");
+            
+        }
+        
+        if (medioPersistence.find(VE.getMedioDePago().getNumero()) == null){
+            throw new BusinessLogicException("El medio de pago de esta venta no existe ");
         }
         return persistence.create(VE);
     }
@@ -119,6 +136,13 @@ public class VentaLogic {
         if (VE.getVendedorEncargado()== null || !VEO.getVendedorEncargado().equals(VE.getVendedorEncargado())) {
             throw new BusinessLogicException("Sólo se puede cambiar La calificacionCarro de la venta");
         }
+        if (VE.getPuntoDeVenta() == null || !VEO.getPuntoDeVenta().equals(VE.getPuntoDeVenta())){
+            throw new BusinessLogicException("no se puede actualizar el punto de venta  de la venta");
+        }
+//         if (VE.getMedioDePago()== null || !VEO.getMedioDePago().equals(VE.getMedioDePago())){
+//            throw new BusinessLogicException("no se puede actualizar el medio de pago  de la venta");
+//        }
+        
 
         return persistence.update(VE);
     }

@@ -49,11 +49,11 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     private List<ProspectoCompraEntity> prospectosCompra;
 
     @PodamExclude
-    @OneToMany(mappedBy = "automovil", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<VentaEntity> ventas;
     
     @PodamExclude
-    @OneToOne (cascade = CascadeType.ALL)
+    @OneToOne 
     private CompraEntity compra;
     
     /**
@@ -245,4 +245,10 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     public void setCompra(CompraEntity compra) {
         this.compra = compra;
     }
+    
+    public int compararCompra (CompraEntity compra){
+        if (this.compra.getIdCompra().equals(compra.getIdCompra())) return 0;
+        else return 1;
+    }
+    
 }

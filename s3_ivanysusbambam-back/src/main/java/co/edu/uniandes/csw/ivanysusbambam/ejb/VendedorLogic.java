@@ -52,9 +52,9 @@ public class VendedorLogic {
         String name = ve.getName();
         if(name == null || !esAlfabetica(name)) throw new BusinessLogicException("Para el nombre sólo se aceptan cadenas alfabéticas con vocales con tildes o u con diéresis");
        
-        //Se comentan estas líneas porque PuntoDeVentaPersistence aún no está terminado.
-       //Long idPuntoVenta = ve.getPuntoDeVenta().getId();
-       // if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
+        
+       Long idPuntoVenta = ve.getPuntoDeVenta().getId();
+       if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
        
        if(carnet == null || carnet<= 0) throw new BusinessLogicException("El carnet del vendedor no puede ser negativo ni 0");
        if(persistence.find(carnet) != null) throw new BusinessLogicException("Ya existe un vendedor con el mismo número de carnet");
@@ -143,8 +143,8 @@ public class VendedorLogic {
         if(!(ve.getCedula().equals(veo.getCedula()))) throw new BusinessLogicException("No se puede cambiar la cedula de un vendedor.");
          if(ve.getName()==null)throw new BusinessLogicException("El nombre no puede ser null");
         if(!esAlfabetica(ve.getName())) throw new BusinessLogicException("El nuevo nombre debe ser una cadena alfabética");
-         //Long idPuntoVenta = ve.getPuntoDeVenta().getId();
-       // if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
+        Long idPuntoVenta = ve.getPuntoDeVenta().getId();
+       if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
         return persistence.update(ve);
     }
     
