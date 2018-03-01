@@ -42,7 +42,7 @@ public class CalificacionCarroPersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CalificacionCarroEntity.class.getPackage())
-                .addPackage(CalificacionCarroEntity.class.getPackage())
+                .addPackage(CalificacionCarroPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -78,7 +78,7 @@ public class CalificacionCarroPersistenceTest {
 
     
     private void clearData() {
-        em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from CalificacionCarroEntity").executeUpdate();
     }
     
     private void insertData() {
@@ -121,18 +121,16 @@ public class CalificacionCarroPersistenceTest {
     @Test 
     public void getCalificacionesCarroTest(){
    
-        System.out.println("CALIFICACIONES: ");
-        for(CalificacionCarroEntity e : data){
-            System.out.println(e.getId());
-        }
-        
-        List<CalificacionCarroEntity>lista = calificacionCarroPersistence.findAll();
-        
-        boolean found;
-        for(CalificacionCarroEntity e : lista){
-            found = false;
-            for(CalificacionCarroEntity a : data){
-                if(a.equals(e)) found = true;
+        List<CalificacionCarroEntity> lista = calificacionCarroPersistence.findAll();
+        System.out.println(data.size());
+        System.out.println(lista.size());
+        Assert.assertEquals(data.size(), lista.size());
+        for(CalificacionCarroEntity ent : lista){
+            boolean found  = false;
+            for(CalificacionCarroEntity enti : data){
+                if(ent.getId().equals(enti.getId())){
+                    found = true;
+                }
             }
             Assert.assertTrue(found);
         }

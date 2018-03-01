@@ -41,13 +41,13 @@ public class CalificacionTiendaPersistenceTest {
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
                 .addPackage(CalificacionTiendaEntity.class.getPackage())
-                .addPackage(CalificacionTiendaEntity.class.getPackage())
+                .addPackage(CalificacionTiendaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
     
     @Inject
-    private CalificacionTiendaPersistence persistence;
+    private CalificacionTiendaPersistence calificacionTiendapersistence;
     
     
     @PersistenceContext
@@ -78,7 +78,7 @@ public class CalificacionTiendaPersistenceTest {
 
     
     private void clearData() {
-        em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from CalificacionTiendaEntity").executeUpdate();
     }
     
     private void insertData() {
@@ -106,13 +106,10 @@ public class CalificacionTiendaPersistenceTest {
     @Test
     public void createCalificacionTiendaTest(){
         CalificacionTiendaEntity cc = new PodamFactoryImpl().manufacturePojo(CalificacionTiendaEntity.class);
-        CalificacionTiendaEntity result = persistence.create(cc);
+        CalificacionTiendaEntity result = calificacionTiendapersistence.create(cc);
         
-        Assert.assertNotNull(result);
-        
-        CalificacionTiendaEntity entity = em.find(CalificacionTiendaEntity.class, result.getId());
-        
-        Assert.assertEquals(entity.getName(), result.getName());
+        Assert.assertNotNull(result);        
+        Assert.assertEquals(cc, result);
     }
     
     
@@ -129,7 +126,7 @@ public class CalificacionTiendaPersistenceTest {
             System.out.println(e.getId());
         }
         
-        List<CalificacionTiendaEntity>lista = persistence.findAll();
+        List<CalificacionTiendaEntity>lista = calificacionTiendapersistence.findAll();
         
         boolean found;
         for(CalificacionTiendaEntity e : lista){
@@ -149,7 +146,7 @@ public class CalificacionTiendaPersistenceTest {
     @Test
     public void getCalificacionTiendaTest() {
         CalificacionTiendaEntity entity = data.get(0);
-        CalificacionTiendaEntity newEntity = persistence.find(entity.getId());
+        CalificacionTiendaEntity newEntity = calificacionTiendapersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
         Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getPuntaje(), newEntity.getPuntaje());
@@ -163,7 +160,7 @@ public class CalificacionTiendaPersistenceTest {
     @Test
     public void deleteCalificacionTiendaTest() {
         CalificacionTiendaEntity entity = data.get(0);
-        persistence.delete(entity.getId());
+        calificacionTiendapersistence.delete(entity.getId());
         CalificacionTiendaEntity deleted = em.find(CalificacionTiendaEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
@@ -181,10 +178,9 @@ public class CalificacionTiendaPersistenceTest {
 
         newEntity.setId(entity.getId());
 
-        persistence.update(newEntity);
+        calificacionTiendapersistence.update(newEntity);
 
         CalificacionTiendaEntity resp = em.find(CalificacionTiendaEntity.class, entity.getId());
-
-        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getId(), resp.getId());
     }
 }
