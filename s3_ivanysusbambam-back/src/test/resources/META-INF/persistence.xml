@@ -2,6 +2,20 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
   <persistence-unit name="IvanysusbambamPU" transaction-type="JTA">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionCarroEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.CityEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity</class>
+    <class>co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <shared-cache-mode>NONE</shared-cache-mode>
     <properties>
