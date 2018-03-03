@@ -12,8 +12,6 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ProspectoCompraPersistence;
-import org.jboss.arquillian.junit.Arquillian;
-import org.junit.runner.RunWith;
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -93,45 +91,47 @@ public class ProspectoCompraLogicTest {
 
     private List<ProspectoCompraEntity> data = new ArrayList<>();
 
-    private void insertData() {
-        ClienteEntity ce = factory.manufacturePojo(ClienteEntity.class);
-        ce.setCedula((long) 1);
-        ce.setNombre("a");
-        VendedorEntity ve = factory.manufacturePojo(VendedorEntity.class);
-        ve.setCedula((long) 2);
-        ve.setNombre("b");
+    private List<VendedorEntity> vData = new ArrayList<>();
 
-        AutomovilEntity ae = factory.manufacturePojo(AutomovilEntity.class);
-        em.persist(ce);
-        em.persist(ve);
-        em.persist(ae);
+    private List<ClienteEntity> cData = new ArrayList<>();
+
+    private List<AutomovilEntity> aData = new ArrayList<>();
+
+    private void insertData() {
+
         for (int i = 0; i < 3; i++) {
 
-            System.out.println("INSERTING DATA");
             ProspectoCompraEntity entity = factory.manufacturePojo(ProspectoCompraEntity.class);
+
+            ClienteEntity ce = factory.manufacturePojo(ClienteEntity.class);
+            VendedorEntity ve = factory.manufacturePojo(VendedorEntity.class);
+            AutomovilEntity ae = factory.manufacturePojo(AutomovilEntity.class);
+
+            em.persist(ce);
+            em.persist(ve);
+            em.persist(ae);
 
             entity.setAutomovil(ae);
             entity.setCliente(ce);
             entity.setVendedor(ve);
-            try {
-                System.out.println("TENGO SUEÑO: " + entity.getCliente());
 
-                prospectoCompraLogic.createProspectoCompra(entity);
+            em.persist(entity);
 
-                data.add(entity);
-                System.out.println("DATA INSERTED");
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-            }
+            data.add(entity);
+            vData.add(ve);
+            cData.add(ce);
+            aData.add(ae);
         }
-        System.out.println("DATA SIZE AFT INS: " + data.size());
+
     }
 
     @Test
     public void createProspectoCompraTest() {
         ProspectoCompraEntity newEntity = factory.manufacturePojo(ProspectoCompraEntity.class);
-
-        boolean ex = false;
+        newEntity.setAutomovil(aData.get(0));
+        newEntity.setCliente(cData.get(1));
+        newEntity.setVendedor(vData.get(2));
+        
         try {
             ProspectoCompraEntity result = prospectoCompraLogic.createProspectoCompra(newEntity);
 
@@ -140,13 +140,7 @@ public class ProspectoCompraLogicTest {
             Assert.assertEquals(newEntity.getTexto(), entity.getTexto());
             Assert.assertEquals(newEntity.getId(), entity.getId());
         } catch (BusinessLogicException e) {
-            ex = true;
-        }
-
-        if ((newEntity.getAutomovil() != null) && (newEntity.getCliente() != null) && (newEntity.getVendedor() != null)) {
-            Assert.assertFalse(ex);
-        } else {
-            Assert.assertTrue(ex);
+            Assert.fail();
         }
 
     }
@@ -155,7 +149,6 @@ public class ProspectoCompraLogicTest {
     public void deleteProspectoCompraTest() {
         ProspectoCompraEntity entity = data.get(0);
 
-        boolean ex = false;
         try {
             prospectoCompraLogic.deleteProspectoCompra(entity.getId());
             ProspectoCompraEntity deleted = em.find(ProspectoCompraEntity.class, entity.getId());
@@ -183,7 +176,8 @@ public class ProspectoCompraLogicTest {
     @Test
     public void findProspectoCompraTest() {
         ProspectoCompraEntity entity = data.get(0);
-        boolean ex = false;
+        
+        
         try {
             ProspectoCompraEntity resultEntity = prospectoCompraLogic.findProspectoCompra(entity.getId());
 
@@ -202,8 +196,10 @@ public class ProspectoCompraLogicTest {
         ProspectoCompraEntity pojoEntity = factory.manufacturePojo(ProspectoCompraEntity.class);
 
         pojoEntity.setId(entity.getId());
-
-        boolean ex = false;
+        pojoEntity.setVendedor(entity.getVendedor());
+        pojoEntity.setCliente(entity.getCliente());
+        pojoEntity.setAutomovil(entity.getAutomovil());
+        
         try {
             prospectoCompraLogic.updateProspectoCompra(pojoEntity);
 
@@ -211,13 +207,7 @@ public class ProspectoCompraLogicTest {
             Assert.assertEquals(pojoEntity.getTexto(), resp.getTexto());
             Assert.assertEquals(pojoEntity.getId(), resp.getId());
         } catch (BusinessLogicException e) {
-            ex = true;
-
-        }
-        if ((pojoEntity.getAutomovil() != null) && (pojoEntity.getCliente() != null) && (pojoEntity.getVendedor() != null)) {
-            Assert.assertFalse(ex);
-        } else {
-            Assert.assertTrue(ex);
+            Assert.fail();
         }
     }
 
@@ -244,9 +234,9 @@ public class ProspectoCompraLogicTest {
             Assert.fail();
         }
     }
-    
+
     @Test
-    public void findProspectoDeCompraByVendedor(){
+    public void findProspectoDeCompraByVendedor() {
         ProspectoCompraEntity pe = data.get(0);
         try {
             List<ProspectoCompraEntity> peo = prospectoCompraLogic.findProspectoCompraByVendedor(pe.getVendedor());
@@ -267,9 +257,9 @@ public class ProspectoCompraLogicTest {
             Assert.fail();
         }
     }
-    
+
     @Test
-    public void findProspectoDeCompraByAutomovil(){
+    public void findProspectoDeCompraByAutomovil() {
         ProspectoCompraEntity pe = data.get(0);
         try {
             List<ProspectoCompraEntity> peo = prospectoCompraLogic.findProspectoCompraByAutomovil(pe.getAutomovil());

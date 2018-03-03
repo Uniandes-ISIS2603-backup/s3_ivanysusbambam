@@ -5,9 +5,7 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
-import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
-import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -113,8 +111,8 @@ public class VendedorPersistence {
      */
     public List<VendedorEntity> findByName(String name){
         LOGGER.log(Level.INFO, "buscando vendedores con nombre: ", name);
-        TypedQuery tq = em.createQuery("select v from VendedorEntity v where v.name = :name", VendedorEntity.class);
-        tq.setParameter("name", name);
+        TypedQuery tq = em.createQuery("select v from VendedorEntity v where v.nombre = :nombre", VendedorEntity.class);
+        tq.setParameter("nombre", name);
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
     }  
@@ -125,7 +123,7 @@ public class VendedorPersistence {
      * @return VendedorEntity actualizado.
      */
     public VendedorEntity update(VendedorEntity ce){
-        LOGGER.log(Level.INFO, "Actualizando vendedor con cédula: ", ce.getId());
+        LOGGER.log(Level.INFO, "Actualizando vendedor con cédula: ", ce.getCarnetVendedor());
         return em.merge(ce);
     }
 }
