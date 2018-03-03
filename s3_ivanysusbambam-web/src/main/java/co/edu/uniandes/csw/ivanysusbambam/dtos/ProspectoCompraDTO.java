@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity;
+
 /**Objeto de transferencia de un prospecto de compra cliente.<br>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
@@ -53,6 +55,29 @@ public class ProspectoCompraDTO {
      */
     public ProspectoCompraDTO(){
         
+    }
+    
+    /**
+     * Construye dto a partir de un Entity.
+     * @param pe Entity al partir del cual se construirá dto
+     */
+    public ProspectoCompraDTO(ProspectoCompraEntity pe){
+        if(pe!=null){
+            this.texto = pe.getTexto();
+            this.id = pe.getId();
+        }
+    }
+    
+    /**
+     * Construye y retorna un entity a partir del actual dto.
+     * @return Entity construido con la información del este dto.
+     */
+    public ProspectoCompraEntity toEntity(){
+        ProspectoCompraEntity pe = new ProspectoCompraEntity();
+        
+        pe.setTexto(texto);
+        pe.setId(id);
+        return pe;
     }
     
     //---------------------------------------GETTERS----------------------------
