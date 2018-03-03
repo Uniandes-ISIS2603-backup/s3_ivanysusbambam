@@ -64,8 +64,8 @@ private EntityManager em;
         try {
             utx.begin();
             em.joinTransaction();
-           clearData();
-            insertData();
+//            clearData();
+//            insertData();
             utx.commit();
         } catch (Exception e) {
             e.printStackTrace();
