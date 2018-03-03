@@ -94,7 +94,7 @@ public class ProspectoCompraPersistence {
      * @return lista con los ProspectoCompraEntity pertenecientes al VendedorEntity dado por parámetro.
      */
     public List<ProspectoCompraEntity> findByVendedor(VendedorEntity ve){
-        LOGGER.log(Level.INFO, "Buscando Prospectos de compra relacionados con el vendedor: ", ve.getId());
+        LOGGER.log(Level.INFO, "Buscando Prospectos de compra relacionados con el vendedor: ", ve.getCarnetVendedor());
         
         TypedQuery tq = em.createQuery("select v from ProspectoCompraEntity v where v.vendedor = :ve", ProspectoCompraEntity.class);
         tq.setParameter("ve",ve);

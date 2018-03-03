@@ -44,7 +44,7 @@ public class CompraLogic
         {
             throw new BusinessLogicException("El cliente no esta registrado en el sistema");
         }
-        if(vendedorPersistence.find(compra.getVendedorEncargado().getId())==null)
+        if(vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor())==null)
         {
             throw new BusinessLogicException("El vendedor encargado no es valido"); 
         }

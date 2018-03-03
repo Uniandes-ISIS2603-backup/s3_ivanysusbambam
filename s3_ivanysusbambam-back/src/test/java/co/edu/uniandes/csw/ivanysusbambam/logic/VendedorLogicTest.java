@@ -6,14 +6,17 @@
 package co.edu.uniandes.csw.ivanysusbambam.logic;
 
 import co.edu.uniandes.csw.ivanysusbambam.ejb.VendedorLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.VendedorPersistence;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.Resource;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 import javax.transaction.UserTransaction;
 import org.junit.Assert;
 import org.jboss.arquillian.container.test.api.Deployment;
@@ -59,7 +62,7 @@ public class VendedorLogicTest {
     
     @Inject
     private UserTransaction utx;
-    
+   
     @Before
     public void configTest(){
         try{
@@ -83,49 +86,43 @@ public class VendedorLogicTest {
     }
     
     private List<VendedorEntity> data = new ArrayList<>();
-    
+    private List<PuntoDeVentaEntity> pvData = new ArrayList<>();
     private void insertData() {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             
+            PuntoDeVentaEntity pv = factory.manufacturePojo(PuntoDeVentaEntity.class);
+            em.persist(pv);
             VendedorEntity entity = factory.manufacturePojo(VendedorEntity.class);
-
-            try{
-            entity.setCedula((long)i+1);
-            vendedorLogic.createVendedor(entity);
+            entity.setPuntoDeVenta(pv);
             
+            
+            em.persist(entity);
             data.add(entity);
-            }
-            catch(Exception e){
-                i--;
-                
-                System.out.println(i);
-            }
+            pvData.add(pv);
+            
         }
     }
     
     @Test
     public void createVendedorTest(){
         VendedorEntity newEntity = factory.manufacturePojo(VendedorEntity.class);
+        newEntity.setPuntoDeVenta(pvData.get(0));
+        System.out.println("NOMBRE: " + newEntity.getNombre() + " IDVENDEDOR" + newEntity.getCarnetVendedor());
         
-        boolean ex = false;
         try{
             VendedorEntity result = vendedorLogic.createVendedor(newEntity);
         
         Assert.assertNotNull(result);
-        VendedorEntity entity = em.find(VendedorEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        VendedorEntity entity = em.find(VendedorEntity.class, result.getCarnetVendedor());
+        Assert.assertEquals(newEntity.getCarnetVendedor(), entity.getCarnetVendedor());
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
         Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
         }
         catch(BusinessLogicException e)
         {
-            ex =true;
+           Assert.fail();
         }
-        if(cedulaValida(newEntity.getCedula()) && esAlfabetica(newEntity.getNombre()) && newEntity.getCarnetVendedor()>0){
-            Assert.assertFalse(ex);
-        }
-        else Assert.assertTrue(ex);
         
     }
     
@@ -133,20 +130,15 @@ public class VendedorLogicTest {
     public void deleteVendedorTest(){
         VendedorEntity entity = data.get(0);
         
-        boolean ex = false;
         try{
         vendedorLogic.deleteVendedor(entity.getCarnetVendedor());
-        VendedorEntity deleted = em.find(VendedorEntity.class, entity.getId());
+        VendedorEntity deleted = em.find(VendedorEntity.class, entity.getCarnetVendedor());
         Assert.assertNull(deleted);
         }
         catch(BusinessLogicException e)
         {
-            ex = true;
+            Assert.fail();
         }
-         if(cedulaValida(entity.getCedula()) && esAlfabetica(entity.getNombre()) && entity.getCarnetVendedor()>0){
-            Assert.assertFalse(ex);
-        }
-        else Assert.assertTrue(ex);
     }
     
     
@@ -154,11 +146,12 @@ public class VendedorLogicTest {
     @Test
     public void findAllVendedoresTest(){
         List<VendedorEntity> list = vendedorLogic.findAllVendedores();
+        System.out.println("VENDEDORES: " + list.size());
         Assert.assertEquals(data.size(), list.size());
         for (VendedorEntity entity : list) {
             boolean found = false;
             for (VendedorEntity storedEntity : data) {
-                if (entity.getId().equals(storedEntity.getId())) {
+                if (entity.getCarnetVendedor().equals(storedEntity.getCarnetVendedor())) {
                     found = true;
                 }
             }
@@ -169,22 +162,19 @@ public class VendedorLogicTest {
     @Test
     public void findVendedorTest(){
         VendedorEntity entity = data.get(0);
-        boolean ex = false;
+        
+        
         try{
             VendedorEntity resultEntity = vendedorLogic.findVendedor(entity.getCarnetVendedor());
         
             Assert.assertNotNull(resultEntity);
-            Assert.assertEquals(entity.getId(), resultEntity.getId());
-            Assert.assertEquals(entity.getName(), resultEntity.getName());
+            Assert.assertEquals(entity.getCarnetVendedor(), resultEntity.getCarnetVendedor());
+            Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
             Assert.assertEquals(entity.getCedula(), resultEntity.getCedula());
         }
         catch(BusinessLogicException e){
-               ex = true;
+            Assert.fail();
         }
-         if(cedulaValida(entity.getCedula()) && esAlfabetica(entity.getNombre()) && entity.getCarnetVendedor()>0){
-            Assert.assertFalse(ex);
-        }
-        else Assert.assertTrue(ex);
     }
     
     @Test
@@ -240,54 +230,22 @@ public class VendedorLogicTest {
         VendedorEntity entity = data.get(0);
         VendedorEntity pojoEntity = factory.manufacturePojo(VendedorEntity.class);
 
-        pojoEntity.setId(entity.getId());
+        pojoEntity.setCarnetVendedor(entity.getCarnetVendedor());
+        pojoEntity.setCedula(entity.getCedula());
+        pojoEntity.setPuntoDeVenta(pvData.get(0));
         
-        boolean ex = false;
         try{
         vendedorLogic.updateVendedor(pojoEntity);
 
-        VendedorEntity resp = em.find(VendedorEntity.class, entity.getId());
+        VendedorEntity resp = em.find(VendedorEntity.class, entity.getCarnetVendedor());
 
-        Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        Assert.assertEquals(pojoEntity.getName(), resp.getName());
+        Assert.assertEquals(pojoEntity.getCarnetVendedor(), resp.getCarnetVendedor());
+        Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
         Assert.assertEquals(pojoEntity.getCedula(), resp.getCedula());
         }
         catch(BusinessLogicException e){
-            ex = true;
-            
+            System.out.println("EXCEPCIÓN " + e.getMessage());
+            Assert.fail();
         }
-         if(cedulaValida(pojoEntity.getCedula()) && esAlfabetica(pojoEntity.getNombre()) && pojoEntity.getCarnetVendedor()>0){
-            Assert.assertFalse(ex);
-        }
-        else Assert.assertTrue(ex);
     }
-    
-     /**
-     * Verifica si una cédula es válida, es decir que tenga 10 dígitos o menos, que no sea null, y que no sea negativa o cero. 
-     * @param cedula cedula cuya validez se busca determinar.
-     * @throws BusinessLogicException si la cédula no es válida.
-     */
-    private static boolean cedulaValida(Long cedula){
-        if(cedula == null) return false;
-        if(String.valueOf(cedula).length()>10) return false;
-        if(cedula<= 0) return false;
-        return true;
-    }
-    
-    /**
-     * Verifica si la cadena pasada por parámetro está compuesta de (A..Z) U (a..z) U {á,é,í,ó,ú,ü) 
-     * @param s la cadena que se busca verificar.
-     * @return true si la cadena es alfabética, false de lo contrario.
-     */
-    private static boolean esAlfabetica(String s){
-        char[] arreglo = s.toCharArray();
-        for(char c : arreglo){
-            //se asegura que c es un caracter de la A-Z o de la a-z o espacio o una vocal con tilde o una ü. 
-            if( !((c>=65 && c<= 90) || (c>= 97 && c<=122) || (c == 32) ||(c>=160 && c <=165) || (c==130) || (c==129) )) return false;
-                
-        }
-        return true;
-        
-    }
-      
 }

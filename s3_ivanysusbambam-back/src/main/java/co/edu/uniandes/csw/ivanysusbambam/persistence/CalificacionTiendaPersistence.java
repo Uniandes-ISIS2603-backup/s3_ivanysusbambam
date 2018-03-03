@@ -19,6 +19,7 @@ import javax.persistence.TypedQuery;
  *
  * @author if.garcia
  */
+@Stateless
 public class CalificacionTiendaPersistence {
     
     
@@ -65,7 +66,7 @@ public class CalificacionTiendaPersistence {
      * @return CalificacionTiendaEntity recién eliminado.
      */
     public CalificacionTiendaEntity delete(Long id){
-        LOGGER.log(Level.INFO, "Eliminando calificacion de tienda con cédula: ", id);
+        LOGGER.log(Level.INFO, "Eliminando calificacion de tienda con id: ", id);
         CalificacionTiendaEntity ce = find(id);
         em.remove(ce);
         return ce;

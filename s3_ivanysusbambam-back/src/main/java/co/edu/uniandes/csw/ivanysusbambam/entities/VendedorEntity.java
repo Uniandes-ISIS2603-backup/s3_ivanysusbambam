@@ -5,13 +5,19 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
+import co.edu.uniandes.csw.ivanysusbambam.podam.CedulaStrategy;
+import co.edu.uniandes.csw.ivanysusbambam.podam.NombreStrategy;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -24,8 +30,16 @@ import uk.co.jemos.podam.common.PodamExclude;
  * </pre>
  */
 @Entity
-public class VendedorEntity extends BaseEntity implements Serializable{
+public class VendedorEntity implements Serializable{
     
+    @PodamStrategyValue(NombreStrategy.class)
+    private String nombre;
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long carnetVendedor;
+    
+    @PodamStrategyValue(CedulaStrategy.class)
     private Long cedula;
     
     @PodamExclude
@@ -74,7 +88,7 @@ public class VendedorEntity extends BaseEntity implements Serializable{
      * @return carnet del vendedor
      */
     public Long getCarnetVendedor(){
-        return super.getId();
+        return carnetVendedor;
     }
     
     /**
@@ -82,7 +96,7 @@ public class VendedorEntity extends BaseEntity implements Serializable{
      * @return nombre del vendedor.
      */
     public String getNombre(){
-        return super.getName();
+        return nombre;
     }
 
     /**
@@ -98,7 +112,7 @@ public class VendedorEntity extends BaseEntity implements Serializable{
      * @param name nombre del vendedor.
      */
     public void setNombre(String name){
-        super.setName(name);
+        this.nombre = name;
     }
     
     /**
@@ -106,7 +120,7 @@ public class VendedorEntity extends BaseEntity implements Serializable{
      * @param id carnet del vendedor.
      */
     public void setCarnetVendedor(Long id){
-        super.setId(id);
+        this.carnetVendedor = id;
     }
 
     public List<ProspectoCompraEntity> getProspectosCompra() {
@@ -124,8 +138,21 @@ public class VendedorEntity extends BaseEntity implements Serializable{
     public PuntoDeVentaEntity getPuntoDeVenta() {
         return puntoDeVenta;
     }
+    
+    @Override
+    public boolean equals(Object obj) {
+        if (this.getCarnetVendedor() != null && ((VendedorEntity) obj).getCarnetVendedor() != null) {
+            return this.getCarnetVendedor().equals(((VendedorEntity) obj).getCarnetVendedor());
+        }
+        return super.equals(obj);
+    }
 
-    public Long darCedula() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    @Override
+    public int hashCode() {
+        if (this.getCarnetVendedor() != null) {
+            return this.getCarnetVendedor().hashCode();
+        }
+        return super.hashCode();
+    
     }
 }

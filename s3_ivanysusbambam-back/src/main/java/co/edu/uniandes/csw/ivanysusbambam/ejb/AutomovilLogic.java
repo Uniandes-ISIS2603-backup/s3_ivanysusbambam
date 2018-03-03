@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.ejb;
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.AutomovilPersistence;
+import co.edu.uniandes.csw.ivanysusbambam.persistence.CompraPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MarcaPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ModelPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.PuntoDeVentaPersistence;
@@ -37,6 +38,9 @@ public class AutomovilLogic {
 
     @Inject
     private PuntoDeVentaPersistence puntoPersistence;
+    
+    @Inject
+    private CompraPersistence compraPersistence;
 
     /**
      *
@@ -53,7 +57,7 @@ public class AutomovilLogic {
             throw new BusinessLogicException("Ninguno de los atributos delautomovil puede ser null");
         }
         // VERIFICA QUE EL FORMATO DE LA PLACA SEA EL ADECUADO, PARA NO VIOLAR LA REGLA DE NEGOCIO
-        if (verificarPlaca(AE.getPlaca())==false) {
+        if (verificarPlaca(AE.getPlaca()) == false) {
             throw new BusinessLogicException("El formato de la placa no es el correcto");
         }
 
@@ -73,8 +77,15 @@ public class AutomovilLogic {
             throw new BusinessLogicException("la Marca del automovil no existe");
         }
 
+        
+        if(AE.getId()<=0) throw new BusinessLogicException("El id no debería ser <= 0");
+        if(persistence.find(AE.getId()) != null) throw new BusinessLogicException("El Automovil ya existe en la base de datos");
+        if(puntoPersistence.find(AE.getPuntoDeVenta().getId()) == null) throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos"); 
+        if(modeloPersistence.find(AE.getModel().getId()) == null) throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
+        if(marcaPersistence.find(AE.getMarca().getId()) == null) throw new BusinessLogicException("la Marca del automovil no existe");
+        if (compraPersistence.find(AE.getCompra().getIdCompra()) == null) throw new BusinessLogicException ("No existe un registro de compra de este automovil");
+
         // Verifica la regla de negocio que dice que no puede haber dos automoviles con la misma placa ni con el mismo chasis
-   
         if (persistence.findByPlate(AE.getPlaca()) != null) {
             throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
         }
@@ -119,16 +130,23 @@ public class AutomovilLogic {
      * @throws BusinessLogicException
      */
     public AutomovilEntity updateAutomovil(AutomovilEntity AE) throws BusinessLogicException {
-        if (AE == null) {
-            throw new BusinessLogicException("El prospecto de compra no debe ser null");
-        }
-        if (AE.getId() == null || AE.getId() <= 0) {
-            throw new BusinessLogicException("El id del prospecto de compra ");
-        }
+
+       if(AE == null) throw new BusinessLogicException("El Automovil no debe ser null");
+        if(AE.getId() == null || AE.getId()<=0) throw new BusinessLogicException("El id automovil ");
         AutomovilEntity AEO = persistence.find(AE.getId());
+
         
+        if(AEO == null) throw new BusinessLogicException("El automovil no existe");
+        if(AE.getModel()== null || !AEO.getModel().equals(AE.getModel())) throw new BusinessLogicException("No se puede modificar el modelo");
+        if(AE.getMarca() == null || !AEO.getMarca().equals(AE.getMarca())) throw new BusinessLogicException("No se puede verificar la marca");
+        if(AE.getPuntoDeVenta()== null || !AEO.getPuntoDeVenta().equals(AE.getPuntoDeVenta())) throw new BusinessLogicException("No se puede modificar el punto de venta ");
+       
+        System.out.println("HOLAAAA " + AE.getCompra() + "  ||| " + AEO.getCompra() );
+        if(AE.getCompra() == null ||AEO.compararCompra(AE.getCompra()) != 0 ) throw new BusinessLogicException ("no se puede cambiar la compra ");
+
+        
+
         //VERIFICA QUE EL FORMATO DE LA PLACA SEA VÁLIDO
-        
         if (verificarPlaca(AE.getPlaca()) == false) {
             throw new BusinessLogicException("El formato de la placa es inválido");
         }
@@ -145,6 +163,7 @@ public class AutomovilLogic {
         if (AE.getPuntoDeVenta() == null || !AEO.getPuntoDeVenta().equals(AE.getPuntoDeVenta())) {
             throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
         }
+
 
         if (persistence.findByPlate(AE.getPlaca()) != null) {
             throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");

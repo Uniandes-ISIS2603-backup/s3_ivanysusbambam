@@ -41,6 +41,7 @@ public class VendedorLogic {
      *          -El carnet del vendedor es un entero positivo auto-asignado y único.
      */
     public VendedorEntity createVendedor(VendedorEntity ve)throws BusinessLogicException{
+        if(ve == null) throw new BusinessLogicException("EL VENDEDOR NO PUEDE SER NULL");
         
         Long carnet = ve.getCarnetVendedor();
         LOG.log(Level.INFO, "Revisando si el vendedor: {0}cumple con los requisitos para ser persistido", carnet);
@@ -49,12 +50,12 @@ public class VendedorLogic {
         cedulaValida(id);
         if(persistence.findByCedula(id) != null) throw new BusinessLogicException("Algún vendedor se encuentra registrado con la misma cédula");
         
-        String name = ve.getName();
+        String name = ve.getNombre();
         if(name == null || !esAlfabetica(name)) throw new BusinessLogicException("Para el nombre sólo se aceptan cadenas alfabéticas con vocales con tildes o u con diéresis");
        
-        //Se comentan estas líneas porque PuntoDeVentaPersistence aún no está terminado.
-       //Long idPuntoVenta = ve.getPuntoDeVenta().getId();
-       // if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
+       if(ve.getPuntoDeVenta() == null) throw new BusinessLogicException("El punto de venta no puede ser null");
+       Long idPuntoVenta = ve.getPuntoDeVenta().getId();
+       if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
        
        if(carnet == null || carnet<= 0) throw new BusinessLogicException("El carnet del vendedor no puede ser negativo ni 0");
        if(persistence.find(carnet) != null) throw new BusinessLogicException("Ya existe un vendedor con el mismo número de carnet");
@@ -141,10 +142,10 @@ public class VendedorLogic {
  
         if(veo == null) throw new BusinessLogicException("No existe el vendedor que se busca actualizar.");
         if(!(ve.getCedula().equals(veo.getCedula()))) throw new BusinessLogicException("No se puede cambiar la cedula de un vendedor.");
-         if(ve.getName()==null)throw new BusinessLogicException("El nombre no puede ser null");
-        if(!esAlfabetica(ve.getName())) throw new BusinessLogicException("El nuevo nombre debe ser una cadena alfabética");
-         //Long idPuntoVenta = ve.getPuntoDeVenta().getId();
-       // if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
+         if(ve.getNombre()==null)throw new BusinessLogicException("El nombre no puede ser null");
+        if(!esAlfabetica(ve.getNombre())) throw new BusinessLogicException("El nuevo nombre debe ser una cadena alfabética");
+        Long idPuntoVenta = ve.getPuntoDeVenta().getId();
+       if(idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
         return persistence.update(ve);
     }
     

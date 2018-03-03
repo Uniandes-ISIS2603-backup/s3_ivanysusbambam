@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
+import co.edu.uniandes.csw.ivanysusbambam.podam.CedulaStrategy;
+import co.edu.uniandes.csw.ivanysusbambam.podam.NombreStrategy;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -13,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -28,8 +31,10 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class ClienteEntity implements Serializable{
     
     @Id
+    @PodamStrategyValue(CedulaStrategy.class)
     private Long cedula;
     
+    @PodamStrategyValue(NombreStrategy.class)
     private String nombre;
     
     @PodamExclude
