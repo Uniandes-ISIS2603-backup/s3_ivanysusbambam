@@ -31,14 +31,16 @@ public class MedioDePagoLogic {
     private ClientePersistence clientePersistence;
 
     public MedioDePagoEntity createMedioDePago(MedioDePagoEntity mdp) throws BusinessLogicException {
+        if(mdp.getCliente() == null) {
+            throw new BusinessLogicException("Se intentó crear un medio de pago sin cliente");
+        }
         if (clientePersistence.find(mdp.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente del medio de pago no existe en la base de datos");
         }
         if (!mdp.validarTipoMedioDePago()) {
             throw new BusinessLogicException("El tipo del medio de pago no es valido");
         }
-        persistence.create(mdp);
-        return mdp;
+        return persistence.create(mdp);
     }
 
     public void deleteMedioDePago(Long numero) throws BusinessLogicException {

@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.MedioDePagoLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
@@ -54,7 +55,7 @@ public class MedioDePagoResource
      * @return JSONArray  con la información básica de todos los medios de pago.
      */
     @GET
-    public List<MedioDePagoDTO> getClientes(){
+    public List<MedioDePagoDetailDTO> getMediosDePago(){
         return listEntity2DTO(mdpLogic.findAll());
     }
     /**
@@ -74,18 +75,18 @@ public class MedioDePagoResource
     
     @GET
     @Path("{id: \\d+}")
-    public MedioDePagoDTO getMedioDePago(@PathParam("id")Long numero){
+    public MedioDePagoDetailDTO getMedioDePago(@PathParam("id")Long numero){
         try {
             MedioDePagoEntity entity = mdpLogic.findMedioDePago(numero);
-            return new MedioDePagoDTO(entity);
+            return new MedioDePagoDetailDTO(entity);
         } catch (BusinessLogicException ex) {
             throw new WebApplicationException("El recurso /medios_de_pago/" + numero + "no existe", 404);
         }
     }
    
     @POST
-    public MedioDePagoDTO createMedioDePago(MedioDePagoDTO mdp) throws BusinessLogicException{
-        return new MedioDePagoDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
+    public MedioDePagoDTO createMedioDePago(MedioDePagoDetailDTO mdp) throws BusinessLogicException{
+        return new MedioDePagoDetailDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
     }
      /**
      * <h1>PUT /api/MediosDePago/{id} : Actualizar MediosDePago con el numero dado.</h1>
@@ -107,12 +108,12 @@ public class MedioDePagoResource
      */
     
     @PUT
-    @Path("{idMedioDePago: \\d+}")
-    public MedioDePagoDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDTO mdp)
+    @Path("{numeroMedioDePago: \\d+}")
+    public MedioDePagoDetailDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDetailDTO mdp)
     {
         mdp.setNumero(numeroMedioDePago);
         try {
-            return new MedioDePagoDTO(mdpLogic.updateMedioDePago(mdp.toEntity()));
+            return new MedioDePagoDetailDTO(mdpLogic.updateMedioDePago(mdp.toEntity()));
         } catch (BusinessLogicException ex) {
             throw new WebApplicationException("El recurso /medios_de_pago/" + numeroMedioDePago + "no existe", 404);
         }
@@ -134,8 +135,8 @@ public class MedioDePagoResource
      */
     
     @DELETE
-     @Path("{idMedioDePago: \\d+}")
-    public void deleteMedioDePago(@PathParam("idMedioDePago") Long numeroMedioDePago,MedioDePagoDTO mdp)
+    @Path("{numeroMedioDePago: \\d+}")
+    public void deleteMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago)
     {
         try {
             mdpLogic.deleteMedioDePago(numeroMedioDePago);
@@ -144,10 +145,10 @@ public class MedioDePagoResource
         }
     }
     
-    private List<MedioDePagoDTO> listEntity2DTO(List<MedioDePagoEntity> entityList) {
-        List<MedioDePagoDTO> list = new ArrayList<>();
+    private List<MedioDePagoDetailDTO> listEntity2DTO(List<MedioDePagoEntity> entityList) {
+        List<MedioDePagoDetailDTO> list = new ArrayList<>();
         for (MedioDePagoEntity entity : entityList) {
-            list.add(new MedioDePagoDTO(entity));
+            list.add(new MedioDePagoDetailDTO(entity));
         }
         return list;
     }
