@@ -55,19 +55,18 @@ public class CompraLogic
         compraPersistence.create(compra);
         return compra;
     }
-    public CompraEntity deleteCompra(CompraEntity compra) throws BusinessLogicException
+    public void deleteCompra(Integer idCompra) throws BusinessLogicException
     {
-        if(compraPersistence.find(compra.getIdCompra())==null)
+        if(compraPersistence.find(idCompra)==null)
         {
              throw new BusinessLogicException("No exixte una compra con ese numero");
         }
-        if(compra.getIdCompra()==null)
+        if(idCompra==null)
         {
             throw new BusinessLogicException("No exixte una compra con ese numero");
         }
             
-      compraPersistence.delete(compra.getIdCompra());
-        return compra;
+      compraPersistence.delete(idCompra);
     }
     
     public CompraEntity findCompra(Integer id) throws BusinessLogicException
