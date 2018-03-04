@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.ejb;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
+import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.CalificacionTiendaPersistence;
 import java.util.List;
 import java.util.logging.Level;
@@ -53,31 +54,42 @@ public class CalificacionTiendaLogic {
      *
      * @param entity Objeto de CalificacionTiendaEntity con los datos nuevos
      * @return Objeto de CalificacionTiendaEntity con los datos nuevos y su ID.
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
-    public CalificacionTiendaEntity createCalificacionTienda(CalificacionTiendaEntity entity) {
+    public CalificacionTiendaEntity createCalificacionTienda(CalificacionTiendaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear una calificacion de tienda ");
-        
+        if(persistence.find(entity.getId()) != null) throw new BusinessLogicException("Ya existe una calificacion con ese id");
+        if(entity.getCliente() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
+        if(entity.getPuntaje() < 1.0 || entity.getPuntaje() > 5.0) throw new BusinessLogicException("La calificacion registrada no es valida");
         return persistence.create(entity);
     }
     
     /**
      * Actualiza la información de una instancia de CalificacionTienda.
      *
-     * @param entity Instancia de CalificacionTiendaEntity con los nuevos datos.
+     * @param ct Instancia de CalificacionTiendaEntity con los nuevos datos.
      * @return Instancia de CalificacionTiendaEntity con los datos actualizados.
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
-    public CalificacionTiendaEntity updateCalificacionTienda(CalificacionTiendaEntity entity) {
+    public CalificacionTiendaEntity updateCalificacionTienda(CalificacionTiendaEntity ct) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una calificacion de tienda ");
-        return persistence.update(entity);
+        if(ct == null) throw new BusinessLogicException("La calificación a actualizar no puede ser null");
+        CalificacionTiendaEntity ccB = persistence.find(ct.getId());
+        if(ccB == null) throw new BusinessLogicException("No se puede actualizar una calificacion no registrada");
+        if(ct.getCliente() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
+        if(ct.getPuntaje() < 1 || ct.getPuntaje() > 5) throw new BusinessLogicException("La calificacion registrada no es valida");
+        return persistence.update(ct);
     }
     
     /**
      * Elimina una instancia de CalificacionTienda de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
-    public void deleteCalificacionTienda(Long id) {
+    public void deleteCalificacionTienda(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una calificacion tienda ");
+        if(persistence.find(id) == null) throw new BusinessLogicException("No existe una calificacion con el id dado");        
         persistence.delete(id);
     }
     

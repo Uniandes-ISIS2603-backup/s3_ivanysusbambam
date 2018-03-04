@@ -34,7 +34,7 @@ public class CalificacionCarroDTO {
     /**
      * Representa el puntaje que le da el cliente al carro
      */
-    private int puntaje;
+    private Double puntaje;
     
     /**
      * Crea una nueva calificacion
@@ -107,7 +107,7 @@ public class CalificacionCarroDTO {
      * Retorna el puntaje asignado por el cliente al carro
      * @return el puntaje.
      */
-    public int getPuntaje(){
+    public Double getPuntaje(){
         return puntaje;
     }
     
@@ -115,7 +115,7 @@ public class CalificacionCarroDTO {
      * Cambia el puntaje asignado al carro por el cliente
      * @param puntaje el puntaje asignado.
      */
-    public void setPuntaje(int puntaje){
+    public void setPuntaje(Double puntaje){
         this.puntaje = puntaje;
     }
     

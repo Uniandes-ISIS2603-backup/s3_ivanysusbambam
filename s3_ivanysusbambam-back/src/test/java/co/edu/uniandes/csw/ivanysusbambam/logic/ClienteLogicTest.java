@@ -188,7 +188,7 @@ public class ClienteLogicTest {
         System.out.println("DATASIZE: " + data.size());
         ClienteEntity entity = data.get(0);
         ClienteEntity pojoEntity = factory.manufacturePojo(ClienteEntity.class);
-
+        
         pojoEntity.setCedula(entity.getCedula());
 
         try {

@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
+import co.edu.uniandes.csw.ivanysusbambam.podam.PuntajeStrategy;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
  * @author if.garcia
@@ -19,7 +21,8 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
     
     private String comentario;
 
-    private Integer puntaje;
+    @PodamStrategyValue(PuntajeStrategy.class)
+    private Double puntaje;
    
     @PodamExclude
     @ManyToOne
@@ -29,7 +32,7 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
         return comentario;
     }
 
-    public int getPuntaje(){
+    public Double getPuntaje(){
         return puntaje;
     }
     
@@ -41,7 +44,7 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
         this.cliente = cliente;
     }
     
-    public void setPuntaje(int puntaje){
+    public void setPuntaje(Double puntaje){
         this.puntaje = puntaje;
     }
     public void setComentario(String comentario) {

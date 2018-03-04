@@ -34,7 +34,7 @@ public class CalificacionTiendaDTO {
     /**
      * Puntaje especificado por el usuario para la tienda
      */
-    private int puntaje;
+    private Double puntaje;
     
     
     /**
@@ -105,7 +105,7 @@ public class CalificacionTiendaDTO {
      * Obtiene el puntaje que el cliente haya asignado segun la tienda
      * @return puntaje puntaje.
      */
-    public int getPuntaje(){
+    public Double getPuntaje(){
         return puntaje;
     }
     
@@ -113,7 +113,7 @@ public class CalificacionTiendaDTO {
      * Asigna el puntaje que el cliente haya puesto a la tienda
      * @param puntaje puntaje que será asignado.
      */
-    public void setPuntaje(int puntaje){
+    public void setPuntaje(Double puntaje){
         this.puntaje = puntaje;
     }
     

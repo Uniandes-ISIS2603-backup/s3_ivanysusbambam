@@ -5,16 +5,13 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.logic;
 
-import co.edu.uniandes.csw.ivanysusbambam.ejb.CalificacionCarroLogic;
-import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionCarroEntity;
-import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.CalificacionTiendaLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.ivanysusbambam.persistence.CalificacionCarroPersistence;
+import co.edu.uniandes.csw.ivanysusbambam.persistence.CalificacionTiendaPersistence;
 import java.util.ArrayList;
 import java.util.List;
-
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -34,14 +31,14 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  *
  * @author if.garcia
  */
+
 @RunWith(Arquillian.class)
-public class CalificacionCarroLogicTest {
-    
-    private PodamFactory factory = new PodamFactoryImpl();
+public class CalificacionTiendaLogicTest {
+     private PodamFactory factory = new PodamFactoryImpl();
     
     
     @Inject
-    private CalificacionCarroLogic ccarroLogic;
+    private CalificacionTiendaLogic ctiendaLogic;
     
     @PersistenceContext
     private EntityManager em;
@@ -49,16 +46,16 @@ public class CalificacionCarroLogicTest {
     @Inject 
     private UserTransaction utx;
     
-    private List<CalificacionCarroEntity> data = new ArrayList<CalificacionCarroEntity>();
+    private List<CalificacionTiendaEntity> data = new ArrayList<CalificacionTiendaEntity>();
     
-    private List<VentaEntity> ventaData = new ArrayList<>();
+    private List<ClienteEntity> clienteData = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addPackage(CalificacionCarroEntity.class.getPackage())
-                .addPackage(CalificacionCarroLogic.class.getPackage())
-                .addPackage(CalificacionCarroPersistence.class.getPackage())
+                .addPackage(CalificacionTiendaEntity.class.getPackage())
+                .addPackage(CalificacionTiendaLogic.class.getPackage())
+                .addPackage(CalificacionTiendaPersistence.class.getPackage())
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
@@ -87,8 +84,8 @@ public class CalificacionCarroLogicTest {
     }
     
     private void clearData() {
-        em.createQuery("delete from CalificacionCarroEntity").executeUpdate();
-        em.createQuery("delete from VentaEntity").executeUpdate();
+        em.createQuery("delete from CalificacionTiendaEntity").executeUpdate();
+        em.createQuery("delete from ClienteEntity").executeUpdate();
     }
     
     private void insertData() {
@@ -96,15 +93,15 @@ public class CalificacionCarroLogicTest {
 
         
         for(int i = 0; i < 3; i++ ){
-            VentaEntity ventaEntity = factory.manufacturePojo(VentaEntity.class);
-            em.persist(ventaEntity);
-            ventaData.add(ventaEntity);
-            System.out.println("venta " + ventaEntity.getName());
+            ClienteEntity clienteEntity = factory.manufacturePojo(ClienteEntity.class);
+            em.persist(clienteEntity);
+            clienteData.add(clienteEntity);
+            System.out.println("venta " + clienteEntity.getNombre());
 
         }
         for (int i = 0; i < 3; i++) {
-            CalificacionCarroEntity entity = factory.manufacturePojo(CalificacionCarroEntity.class);
-            entity.setVenta(ventaData.get(i));
+            CalificacionTiendaEntity entity = factory.manufacturePojo(CalificacionTiendaEntity.class);
+            entity.setCliente(clienteData.get(0));
             
             em.persist(entity);
             data.add(entity);
@@ -114,21 +111,22 @@ public class CalificacionCarroLogicTest {
     }
     
     /**
-     * Prueba para crear una CalificacionCarro
+     * Prueba para crear una CalificacionTienda
      *
      *
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
     @Test
-    public void createCalificacionCarroTest() throws BusinessLogicException {
+    public void createCalificacionTiendaTest() throws BusinessLogicException {
         
-        CalificacionCarroEntity newEntity = factory.manufacturePojo(CalificacionCarroEntity.class);
-        newEntity.setVenta(ventaData.get(0));
-        CalificacionCarroEntity result = ccarroLogic.createCalificacionCarro(newEntity);
+        CalificacionTiendaEntity newEntity = factory.manufacturePojo(CalificacionTiendaEntity.class);
+        newEntity.setCliente(clienteData.get(0));
+        CalificacionTiendaEntity result = ctiendaLogic.createCalificacionTienda(newEntity);
         
         Assert.assertNotNull(result);
-        Assert.assertNotNull(result.getVenta());
+        Assert.assertNotNull(result.getCliente());
 
-        CalificacionCarroEntity entity = em.find(CalificacionCarroEntity.class, result.getId());
+        CalificacionTiendaEntity entity = em.find(CalificacionTiendaEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getPuntaje(), entity.getPuntaje());
@@ -136,17 +134,17 @@ public class CalificacionCarroLogicTest {
     }
     
     /**
-     * Prueba para consultar la lista de CalificacionCarro
+     * Prueba para consultar la lista de CalificacionTienda
      *
      *
      */
     @Test
-    public void getCalificacionesCarroTest() {
-        List<CalificacionCarroEntity> list = ccarroLogic.getCalificacionesCarro();
+    public void getCalificacionesTiendaTest() {
+        List<CalificacionTiendaEntity> list = ctiendaLogic.getCalificacionesTienda();
         Assert.assertEquals(data.size(), list.size());
-        for (CalificacionCarroEntity entity : list) {
+        for (CalificacionTiendaEntity entity : list) {
             boolean found = false;
-            for (CalificacionCarroEntity storedEntity : data) {
+            for (CalificacionTiendaEntity storedEntity : data) {
                 if (entity.getId().equals(storedEntity.getId())) {
                     found = true;
                 }
@@ -157,14 +155,14 @@ public class CalificacionCarroLogicTest {
     
     
     /**
-     * Prueba para consultar una CalificacionCarro
+     * Prueba para consultar una CalificacionTienda
      *
      *
      */
     @Test
     public void getCalificacionCarroTest() {
-        CalificacionCarroEntity entity = data.get(0);
-        CalificacionCarroEntity resultEntity = ccarroLogic.getCalificacionCarro(entity.getId());
+        CalificacionTiendaEntity entity = data.get(0);
+        CalificacionTiendaEntity resultEntity = ctiendaLogic.getCalificacionTienda(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
@@ -172,40 +170,40 @@ public class CalificacionCarroLogicTest {
     }
     
     /**
-     * Prueba para eliminar una CalificacionCarro
+     * Prueba para eliminar una CalificacionTienda
      *
      *
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
     @Test
-    public void deleteCalificacionCarroTest() throws BusinessLogicException {
-        CalificacionCarroEntity entity = data.get(0);
-        ccarroLogic.deleteCalificacionTienda(entity.getId());
-        CalificacionCarroEntity deleted = em.find(CalificacionCarroEntity.class, entity.getId());
+    public void deleteCalificacionTiendaTest() throws BusinessLogicException {
+        CalificacionTiendaEntity entity = data.get(0);
+        ctiendaLogic.deleteCalificacionTienda(entity.getId());
+        CalificacionTiendaEntity deleted = em.find(CalificacionTiendaEntity.class, entity.getId());
         Assert.assertNull(deleted);
        
     }
     
     /**
-     * Prueba para actualizar un CalificacionCarro
+     * Prueba para actualizar un CalificacionTienda
      *
      *
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
     @Test
-    public void updateCalificacionCarroTest() throws BusinessLogicException {
-        CalificacionCarroEntity entity = data.get(0);
-        System.out.println("VENTA ENTITY " + entity.getVenta().getName());
-        CalificacionCarroEntity pojoEntity = factory.manufacturePojo(CalificacionCarroEntity.class);
+    public void updateCalificacionTiendaTest() throws BusinessLogicException {
+        CalificacionTiendaEntity entity = data.get(0);
+        CalificacionTiendaEntity pojoEntity = factory.manufacturePojo(CalificacionTiendaEntity.class);
         
         pojoEntity.setId(entity.getId());
-        pojoEntity.setVenta(entity.getVenta());
+        pojoEntity.setCliente(entity.getCliente());
         
-        System.out.println("VENTA ENTITY-2 " + pojoEntity.getVenta().getName());
 
-        System.out.println(ccarroLogic.updateCalificacionCarro(pojoEntity).getVenta().getId());
-        CalificacionCarroEntity resp = em.find(CalificacionCarroEntity.class, entity.getId());
-        System.out.println(resp.getVenta());
+        System.out.println(ctiendaLogic.updateCalificacionTienda(pojoEntity).getCliente().getCedula());
+        CalificacionTiendaEntity resp = em.find(CalificacionTiendaEntity.class, entity.getId());
+        System.out.println(resp.getCliente());
         
-        //Assert.assertNotNull(resp.getVenta());
+        Assert.assertNotNull(resp.getCliente());
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getPuntaje(), resp.getPuntaje());

@@ -5,10 +5,12 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
+import co.edu.uniandes.csw.ivanysusbambam.podam.PuntajeStrategy;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
  * @author if.garcia
@@ -21,14 +23,15 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
     private VentaEntity venta;
     
     private String comentario;
-
-    private Integer puntaje;
+    
+    @PodamStrategyValue(PuntajeStrategy.class)
+    private Double puntaje;
     
     public String getComentario() {
         return comentario;
     }
 
-    public int getPuntaje(){
+    public Double getPuntaje(){
         return puntaje;
     }
     
@@ -36,7 +39,7 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
         return venta;
     }
     
-    public void setPuntaje(int puntaje){
+    public void setPuntaje(Double puntaje){
         this.puntaje = puntaje;
     }
     public void setComentario(String comentario) {
