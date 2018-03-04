@@ -44,8 +44,8 @@ public class AutomovilPersistence {
      */
     public List<AutomovilEntity> findAll(){
         LOGGER.info("Consultando todos los automoviles");
-        TypedQuery query = em.createQuery("select u from AutomovilEntity u", AutomovilEntity.class);
-        return query.getResultList();
+        TypedQuery tq = em.createQuery("select v from AutomovilEntity v", AutomovilEntity.class);
+        return tq.getResultList();
     }
 
 

@@ -77,16 +77,15 @@ public class AutomovilLogic {
             throw new BusinessLogicException("la Marca del automovil no existe");
         }
 
-<<<<<<< HEAD
+
         
         if(AE.getId()<=0) throw new BusinessLogicException("EL id no debería ser <= 0");
         if(persistence.find(AE.getId()) != null) throw new BusinessLogicException("El Automovil ya existe en la base de datos");
         if(puntoPersistence.find(AE.getPuntoDeVenta().getId()) == null) throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos"); 
-        if(modeloPersistence.findById(AE.getModel().getId()) == null) throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
-        if(marcaPersistence.find(AE.getMarca().getName()) == null) throw new BusinessLogicException("la Marca del automovil no existe");
+        if(modeloPersistence.find(AE.getModel().getId()) == null) throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
+        if(marcaPersistence.find(AE.getMarca().getId()) == null) throw new BusinessLogicException("la Marca del automovil no existe");
         if (compraPersistence.find(AE.getCompra().getIdCompra()) == null) throw new BusinessLogicException ("No existe un registro de compra de este automovil");
-=======
->>>>>>> caec534b0b35b68865ad01efcee72357ceab35ae
+
         // Verifica la regla de negocio que dice que no puede haber dos automoviles con la misma placa ni con el mismo chasis
    
         if (persistence.findByPlate(AE.getPlaca()) != null) {
@@ -133,7 +132,7 @@ public class AutomovilLogic {
      * @throws BusinessLogicException
      */
     public AutomovilEntity updateAutomovil(AutomovilEntity AE) throws BusinessLogicException {
-<<<<<<< HEAD
+
        if(AE == null) throw new BusinessLogicException("El Auotmovil no debe ser null");
         if(AE.getId() == null || AE.getId()<=0) throw new BusinessLogicException("El id automovil ");
         AutomovilEntity AEO = persistence.find(AE.getId());
@@ -149,9 +148,9 @@ public class AutomovilLogic {
         
         //VERIFICA QUE EL FORMATO DE LA PLACA SEA VÁLIDO
         
-        if (verificarPlaca(AE.getPlaca()) == false) {
-            throw new BusinessLogicException("El formato de la placa es inválido");
-        }
+//        if (verificarPlaca(AE.getPlaca()) == false) {
+//            throw new BusinessLogicException("El formato de la placa es inválido");
+//        }
         if (AEO == null) {
             throw new BusinessLogicException("El prospecto de compra no existe");
         }
@@ -166,7 +165,7 @@ public class AutomovilLogic {
             throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
         }
 
->>>>>>> caec534b0b35b68865ad01efcee72357ceab35ae
+
         if (persistence.findByPlate(AE.getPlaca()) != null) {
             throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
         }

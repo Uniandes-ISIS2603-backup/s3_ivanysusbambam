@@ -76,6 +76,7 @@ public class AutomovilLogicTest {
      */
     @Before
     public void configTest() {
+        
         try {
             utx.begin();
             clearData();
@@ -136,10 +137,12 @@ public class AutomovilLogicTest {
             auto.setMarca(marcaData.get(0));
             auto.setPuntoDeVenta(puntoData.get(0));
             auto.setCompra(compraData.get(0));
+             
             em.persist(auto);
+            
             data.add(auto);
         }
-        System.out.println ("tamanio" + autoLogic.getAutomoviles().size() );
+        System.out.println ("tamanio" + data.size() );
     }
 
 //    /**
@@ -225,23 +228,23 @@ public class AutomovilLogicTest {
      *
      *
      */
-//    @Test
-//    public void updateAutomovilTest() throws BusinessLogicException {
-//        
-//        AutomovilEntity entity = data.get(0);
-//        AutomovilEntity pojoEntity = factory.manufacturePojo(AutomovilEntity.class);
-//
-//        pojoEntity.setId(entity.getId());
-//        
-////        pojoEntity.setModel(data.get(0).getModel());
-////        pojoEntity.setMarca(data.get(0).getMarca());
-////        pojoEntity.setPuntoDeVenta(data.get(0).getPuntoDeVenta());
-////        pojoEntity.setPlaca(data.get(0).getPlaca());
-////        pojoEntity.setChasis(data.get(0).getChasis());
-////        pojoEntity.setCompra(data.get(0).getCompra());
-//       
-//        autoLogic.updateAutomovil(pojoEntity);
-//
-//              
-//    }
+    @Test
+    public void updateAutomovilTest() throws BusinessLogicException {
+        
+        AutomovilEntity entity = data.get(0);
+        AutomovilEntity pojoEntity = factory.manufacturePojo(AutomovilEntity.class);
+
+       pojoEntity.setId(entity.getId());
+        
+        pojoEntity.setModel(data.get(0).getModel());
+        pojoEntity.setMarca(data.get(0).getMarca());
+        pojoEntity.setPuntoDeVenta(data.get(0).getPuntoDeVenta());
+        pojoEntity.setPlaca(data.get(0).getPlaca());
+        pojoEntity.setChasis(data.get(0).getChasis());
+        pojoEntity.setCompra(data.get(0).getCompra());
+       
+        autoLogic.updateAutomovil(pojoEntity);
+
+              
+   }
 }
