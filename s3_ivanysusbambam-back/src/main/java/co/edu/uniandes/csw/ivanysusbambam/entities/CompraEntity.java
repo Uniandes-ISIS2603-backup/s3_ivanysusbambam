@@ -38,7 +38,7 @@ public class CompraEntity implements Serializable {
      * El automovil de la compra
      */
     @PodamExclude
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne
     private AutomovilEntity automovil;
     
       /**
@@ -72,7 +72,7 @@ public class CompraEntity implements Serializable {
  * Cambia el id de la compra
  * @param idCompra 
  */
-    public void setIdCompra(int idCompra) {
+    public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 
