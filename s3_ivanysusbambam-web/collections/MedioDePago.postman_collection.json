@@ -1,0 +1,336 @@
+{
+	"variables": [],
+	"info": {
+		"name": "MedioDePago",
+		"_postman_id": "408327b7-51a8-c882-f04a-37ec2a391d73",
+		"description": "CRUD para el medio de pago",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "retrieve all 1",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var mediosDePago = JSON.parse(responseBody);",
+							"tests[\"Hay 10 medios de pago\"] = mediosDePago.length === 10;",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PAY_PAL\",\n\t\"cliente\": {\n\t\t\"nombre\": \"\",\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Busca un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "create",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var medioDePago = JSON.parse(responseBody);",
+							"tests[\"El numero del medio de pago corresponde al creado\"] = medioDePago.numero === 11;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PAY_PAL\",\n\t\"cliente\": {\n\t\t\"nombre\": \"\",\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Crea un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "create fallido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 400\"] = responseCode.code === 400;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PAY_PAL\",\n\t\"cliente\": {\n\t\t\"nombre\": \"\",\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Intenta crear un medio de pago que ya existe"
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve all 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var mediosDePago = JSON.parse(responseBody);",
+							"tests[\"Hay 11 medios de pago\"] = mediosDePago.length === 11;",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PAY_PAL\",\n\t\"cliente\": {\n\t\t\"nombre\": \"\",\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Busca un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var medioDePago = JSON.parse(responseBody);",
+							"tests[\"El cliente corresponde\"] = medioDePago.cliente.nombre === \"Ardyth Fontenot\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/11",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PAY_PAL\",\n\t\"cliente\": {\n\t\t\"nombre\": \"\",\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Busca un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"",
+							"var medioDePago = JSON.parse(responseBody);",
+							"tests[\"Se actualizó el tipo\"] = medioDePago.tipo === \"PSE\";"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/11",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PSE\",\n\t\"cliente\": {\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Actualiza un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "update fallido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/13",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PSE\",\n\t\"cliente\": {\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Actualiza un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/11",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Borra un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "delete fallido",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 404\"] = responseCode.code === 404;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/12",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": "Borra un Medio de Pago"
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve all 3",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"var mediosDePago = JSON.parse(responseBody);",
+							"tests[\"Hay 10 medios de pago\"] = mediosDePago.length === 10;",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;"
+						]
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/medios_de_pago/",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"numero\": 11,\n\t\"tipo\": \"PAY_PAL\",\n\t\"cliente\": {\n\t\t\"nombre\": \"\",\n\t\t\"cedula\": 1\n\t}\n}"
+				},
+				"description": "Busca un Medio de Pago"
+			},
+			"response": []
+		}
+	]
+}

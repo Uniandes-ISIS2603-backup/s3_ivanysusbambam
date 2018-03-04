@@ -85,8 +85,12 @@ public class MedioDePagoResource
     }
    
     @POST
-    public MedioDePagoDTO createMedioDePago(MedioDePagoDetailDTO mdp) throws BusinessLogicException{
-        return new MedioDePagoDetailDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
+    public MedioDePagoDTO createMedioDePago(MedioDePagoDetailDTO mdp) {
+        try {
+            return new MedioDePagoDetailDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
+        } catch (BusinessLogicException ex) {
+            throw new WebApplicationException(ex.getMessage(), 400);
+        }
     }
      /**
      * <h1>PUT /api/MediosDePago/{id} : Actualizar MediosDePago con el numero dado.</h1>

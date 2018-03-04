@@ -34,6 +34,9 @@ public class MedioDePagoLogic {
         if(mdp.getCliente() == null) {
             throw new BusinessLogicException("Se intentó crear un medio de pago sin cliente");
         }
+        if(persistence.find(mdp.getNumero()) != null) {
+            throw new BusinessLogicException("Ya existe un medio de pago con dicho número");
+        }
         if (clientePersistence.find(mdp.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente del medio de pago no existe en la base de datos");
         }
