@@ -70,5 +70,6 @@ public class CompraPersistence {
     public void delete(Integer id) {
         CompraEntity entity = em.find(CompraEntity.class, id);
         em.remove(entity);
+    
     }
 }

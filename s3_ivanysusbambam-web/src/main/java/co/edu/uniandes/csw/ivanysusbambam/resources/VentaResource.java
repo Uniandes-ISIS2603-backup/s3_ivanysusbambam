@@ -7,10 +7,13 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.VentaLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * <pre>Clase que implementa el recurso "ventas".
@@ -42,6 +46,9 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class VentaResource {
+
+    @Inject
+    private VentaLogic ventaLogic;
 
     /**
      * <h1>POST /api/ventas : Crear una venta.</h1>
@@ -69,7 +76,7 @@ public class VentaResource {
      */
     @POST
     public VentaDetailDTO createVenta(VentaDetailDTO venta) throws BusinessLogicException {
-        return venta;
+        return new VentaDetailDTO(ventaLogic.createVenta(venta.toEntity()));
     }
 
     /**
@@ -87,7 +94,11 @@ public class VentaResource {
      */
     @GET
     public List<VentaDTO> getVentas() {
-        return new ArrayList<>();
+        List<VentaDTO> ventas = new ArrayList<>();
+        for (VentaEntity ve : ventaLogic.findAllVentas()) {
+            ventas.add(new VentaDetailDTO(ve));
+        }
+        return ventas;
     }
 
     /**
@@ -110,8 +121,14 @@ public class VentaResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public VentaDetailDTO getVenta(@PathParam("id") Long id) {
-        return null;
+    public VentaDetailDTO getVenta(@PathParam("id") Long id) throws BusinessLogicException {
+        VentaEntity venta = ventaLogic.findVenta(id);
+
+        if (venta == null) {
+            throw new WebApplicationException("El recurso Queja reclamo " + id + " no existe");
+        } else {
+            return new VentaDetailDTO(venta);
+        }
     }
 
     /**
@@ -139,7 +156,14 @@ public class VentaResource {
     @PUT
     @Path("{id: \\d+}")
     public VentaDetailDTO updateVenta(@PathParam("id") Long id, VentaDetailDTO venta) throws BusinessLogicException {
-        return venta;
+        VentaEntity Venta = ventaLogic.findVenta(id);
+
+        if (Venta == null) {
+            throw new WebApplicationException("El recurso automovil " + id + " no existe");
+        } else {
+            return new VentaDetailDTO(ventaLogic.updateVenta(Venta));
+        }
+
     }
 
     /**
@@ -160,8 +184,13 @@ public class VentaResource {
      */
     @DELETE
     @Path("{id: \\d+}")
-    public void deleteVenta(@PathParam("id") Long id) {
+    public void deleteVenta(@PathParam("id") Long id) throws BusinessLogicException {
+        VentaEntity venta = ventaLogic.findVenta(id);
 
+        if (venta == null) {
+            throw new WebApplicationException("El recurso venta " + id + " no existe");
+        }
+        ventaLogic.deleteVenta(venta.getId());
     }
 
 }

@@ -6,10 +6,13 @@
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.AutomovilDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.AutomovilLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +21,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  * <pre>Clase que implementa el recurso "automoviles".
@@ -40,6 +44,9 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class AutomovilResource {
+    
+    @Inject
+    private AutomovilLogic autoLogic;
     /**
      * <h1>POST /api/automoviles : Crear una ciudad.</h1>
      * 
@@ -63,7 +70,8 @@ public class AutomovilResource {
      */
     @POST
     public AutomovilDetailDTO createAutomovil(AutomovilDetailDTO auto) throws BusinessLogicException{
-        return auto;
+        return new AutomovilDetailDTO(autoLogic.createAutomovil(auto.toEntity()));
+   
     }
     
     /**
@@ -79,7 +87,11 @@ public class AutomovilResource {
      */
     @GET
     public List<AutomovilDetailDTO> getAutomoviles(){
-        return new ArrayList<>();
+         List<AutomovilDetailDTO> automoviles =  new ArrayList<>();
+        for(AutomovilEntity ae : autoLogic.getAutomoviles()){
+            automoviles.add(new AutomovilDetailDTO(ae));
+        }
+        return automoviles;
     }
     
     /**
@@ -100,8 +112,12 @@ public class AutomovilResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public AutomovilDetailDTO getAutomovil(@PathParam("id") Long id){
-        return null;
+    public AutomovilDetailDTO getAutomovil(@PathParam("id") Long id) throws BusinessLogicException{
+        AutomovilEntity automovil = autoLogic.getAutomovil(id);
+       
+       if(automovil == null) throw new WebApplicationException("El recurso Automovil " + id + " no existe");
+       
+       else return new AutomovilDetailDTO(automovil);
     }
     
     /**
@@ -125,7 +141,12 @@ public class AutomovilResource {
     @PUT
     @Path("{id: \\d+}")
     public AutomovilDetailDTO updateAutomovil(@PathParam("id") Long id, AutomovilDetailDTO auto) throws BusinessLogicException{
-        return auto;
+       AutomovilEntity A = autoLogic.getAutomovil(id);
+        
+        if(A == null) throw new WebApplicationException("El recurso automovil " + id + " no existe");
+        
+        else return new AutomovilDetailDTO(autoLogic.updateAutomovil(A));
+        
     }
     
     /**
@@ -145,6 +166,9 @@ public class AutomovilResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteAutomovil(@PathParam("id") Long id)throws BusinessLogicException{
+        AutomovilEntity automovil = autoLogic.getAutomovil(id);
         
-    }
+        if(automovil == null) throw new WebApplicationException("El recurso automovil " + id + " no existe");
+        autoLogic.deleteAutomovil(automovil);
+   }
 }
