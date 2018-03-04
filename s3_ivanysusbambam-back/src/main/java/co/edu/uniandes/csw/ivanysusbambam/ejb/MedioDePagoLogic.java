@@ -41,15 +41,14 @@ public class MedioDePagoLogic {
         return mdp;
     }
 
-    public MedioDePagoEntity deleteMedioDePago(MedioDePagoEntity mdp) throws BusinessLogicException {
-        if (persistence.find(mdp.getNumero()) == null) {
+    public void deleteMedioDePago(Long numero) throws BusinessLogicException {
+        if (persistence.find(numero) == null) {
             throw new BusinessLogicException("No existe el medio de pago del cliente");
         }
-        persistence.delete(mdp.getNumero());
-        return mdp;
+        persistence.delete(numero);
     }
 
-    public MedioDePagoEntity find(Long numero) throws BusinessLogicException {
+    public MedioDePagoEntity findMedioDePago(Long numero) throws BusinessLogicException {
         if (numero == null) {
             throw new BusinessLogicException("El medio de pago no es valido");
         }
@@ -60,10 +59,10 @@ public class MedioDePagoLogic {
         return mdp;
     }
 
-    public List<MedioDePagoEntity> findAll() throws BusinessLogicException {
+    public List<MedioDePagoEntity> findAll() {
         return persistence.findAll();
     }
-    public MedioDePagoEntity updateCompra(MedioDePagoEntity mdp) throws BusinessLogicException
+    public MedioDePagoEntity updateMedioDePago(MedioDePagoEntity mdp) throws BusinessLogicException
     {
         if(mdp==null)
         {

@@ -145,7 +145,7 @@ public class MedioDePagoLogicTest {
 
     }
     @Test
-    public void findTest()
+    public void getMedioDePagoTest()
     {
           MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
          
@@ -171,6 +171,53 @@ public class MedioDePagoLogicTest {
                 Assert.assertFalse(ex);
             }
             
+    }
+    
+    @Test
+    public void deleteMedioDePagoTest() {
+        MedioDePagoEntity entity = data.get(0);
+        
+        try {
+            mdpl.deleteMedioDePago(entity.getNumero());
+            MedioDePagoEntity deleted = em.find(MedioDePagoEntity.class, entity.getNumero());
+            Assert.assertNull(deleted);
+        } catch (BusinessLogicException e) {
+            Assert.fail();
+        }
+    }
+    
+    @Test
+    public void getMediosDePagoTest() {
+        List<MedioDePagoEntity> list = mdpl.findAll();
+        Assert.assertEquals(data.size(), list.size());
+        for(MedioDePagoEntity entity : list) {
+            boolean found = false;
+            for(MedioDePagoEntity storedEntity : data) {
+                if(entity.getNumero().equals(storedEntity.getNumero())) {
+                    found = true;
+                }
+            }
+            Assert.assertTrue(found);
+        }
+    }
+    
+    @Test
+    public void updateMedioDePagoTest() {
+        MedioDePagoEntity entity = data.get(0);
+        MedioDePagoEntity pojoEntity = factory.manufacturePojo(MedioDePagoEntity.class);
+        
+        pojoEntity.setNumero(entity.getNumero());
+        
+        try {
+            mdpl.updateMedioDePago(pojoEntity);
+            
+            MedioDePagoEntity resp = em.find(MedioDePagoEntity.class, entity.getNumero());
+            Assert.assertEquals(pojoEntity.getNumero(), resp.getNumero());
+            Assert.assertEquals(pojoEntity.getTipo(), resp.getTipo());
+        } catch (BusinessLogicException ex) {
+            Assert.fail();
+        }
+                
     }
 }
 
