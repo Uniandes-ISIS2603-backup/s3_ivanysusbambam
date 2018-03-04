@@ -5,56 +5,80 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
+
 /**
- *Objeto de transferencia de datos detallado de la compra. Hereda de CompraDTO <br>
+ * Objeto de transferencia de datos detallado de la compra. Hereda de CompraDTO
+ * <br>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
  *   {
- * 
+ *
  *      "idCompra": string,
  *      "automovil": JSON,
  *      "cliente" : JSON,
  *      "puntoDeVenta" : JSON,
  *      "vendedorEncargado": JSON
- *     
+ *
  *   }
  * </pre>
+ *
  * @author j.sierrac
  */
 public class CompraDetailDTO extends CompraDTO {
-    
-    
+
     /**
      * Atributo que representa el automovil de la compra
      */
-        private  AutomovilDTO  automovil;
+    private AutomovilDTO automovil;
     /**
      * Atributo que representa el vendedor encargado de la compra
      */
-      private  VendedorDTO vendedorEncargado;
+    private VendedorDTO vendedorEncargado;
     /**
      * Atributo que representa el punto de venta de la compra
-     */  
-        private  PuntoDeVentaDTO puntoDeVenta;
-     /**
+     */
+    private PuntoDeVentaDTO puntoDeVenta;
+    /**
      * Atributo que representa el cliente que le vendio el carro a MiAutomovil
      */
-      private ClienteDTO cliente;
-              
+    private ClienteDTO cliente;
+
     /**
      * Constructor por defecto
      */
-
-    public CompraDetailDTO()
-    {
+    public CompraDetailDTO() {
+        super();
     }
+
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de la cual se construye el DTO
+     */
+    public CompraDetailDTO(CompraEntity entity) {
+        super(entity);
+        if (entity.getAutomovil() != null) {
+            this.automovil = new AutomovilDTO(entity.getAutomovil());
+        }
+        if (entity.getCliente() != null) {
+            this.cliente = new ClienteDTO(entity.getCliente());
+        }
+        if (entity.getPuntoDeVenta() != null) {
+            this.puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
+        }
+        if (entity.getVendedorEncargado() != null) {
+            this.vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
+        }
+    }
+
 //-------------------------------------GETTERS-----------------------------
 //     
-    /**
-     * @return El automovil de la compra
-     */    
-       public AutomovilDTO getAutomovil() {
+/**
+ * @return El automovil de la compra
+ */
+public AutomovilDTO getAutomovil() {
        return automovil;
    }
     /**
@@ -111,6 +135,28 @@ public class CompraDetailDTO extends CompraDTO {
         this.cliente = cliente;
     }
     
+     /**
+     * Transformar el DTO a una entidad
+     * @return La entidad que representa el libro.
+     */
+    @Override
+    public CompraEntity toEntity()
+    {
+        CompraEntity compraE = super.toEntity();
+        if (automovil != null) {
+            compraE.setAutomovil(this.getAutomovil().toEntity());
+        }
+        if (getCliente() != null) {
+           compraE.setCliente(this.getCliente().toEntity());
+        }
+        if (getPuntoDeVenta() != null) {
+           compraE.setPuntoDeVenta(this.puntoDeVenta.toEntity());
+        }
+        if (getVendedorEncargado() != null) {
+            compraE.setVendedorEncargado(vendedorEncargado.toEntity());
+        }
+        return compraE;
+    }
     
     
 }
