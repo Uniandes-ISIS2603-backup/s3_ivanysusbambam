@@ -65,7 +65,7 @@ public class CalificacionCarroPersistence {
      * @return CalificacionCarroEntity recién eliminado.
      */
     public CalificacionCarroEntity delete(Long id){
-        LOGGER.log(Level.INFO, "Eliminando calificacion de carro con cédula: ", id);
+        LOGGER.log(Level.INFO, "Eliminando calificacion de carro con identificacion: ", id);
         CalificacionCarroEntity ce = find(id);
         em.remove(ce);
         return ce;

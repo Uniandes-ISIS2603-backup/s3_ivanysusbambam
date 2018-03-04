@@ -99,9 +99,9 @@ public class VendedorPersistenceTest {
         //VendedorEntity result  = null;
         Assert.assertNotNull(result);
 
-        VendedorEntity entity = em.find(VendedorEntity.class, result.getId());
+        VendedorEntity entity = em.find(VendedorEntity.class, result.getCarnetVendedor());
 
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
     }
     
     @Test
@@ -152,7 +152,7 @@ public class VendedorPersistenceTest {
         boolean found;
         for(VendedorEntity ve : data){
             found = false;
-            for(VendedorEntity vee : vendedorPersistence.findByName(ve.getName())) if (vee.equals(ve)) found = true;
+            for(VendedorEntity vee : vendedorPersistence.findByName(ve.getNombre())) if (vee.equals(ve)) found = true;
             Assert.assertTrue(found);
         }
     }
@@ -163,13 +163,13 @@ public class VendedorPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         VendedorEntity newEntity = factory.manufacturePojo(VendedorEntity.class);
 
-        newEntity.setId(entity.getId());
+        newEntity.setCarnetVendedor(entity.getCarnetVendedor());
 
         vendedorPersistence.update(newEntity);
 
-        VendedorEntity resp = em.find(VendedorEntity.class, entity.getId());
+        VendedorEntity resp = em.find(VendedorEntity.class, entity.getCarnetVendedor());
 
-        Assert.assertEquals(newEntity.getName(), resp.getName());
+        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
         Assert.assertEquals(newEntity.getCedula(), resp.getCedula());
         Assert.assertEquals(newEntity.getCarnetVendedor(), resp.getCarnetVendedor());
     }

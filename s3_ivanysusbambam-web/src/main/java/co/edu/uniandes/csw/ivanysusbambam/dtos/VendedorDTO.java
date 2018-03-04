@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
+
 /**Objeto de transferencia que representa a un vendedor.
  *Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
  * <pre>
@@ -60,6 +62,28 @@ public class VendedorDTO {
      */
     public VendedorDTO(){
         
+    }
+    
+    /**
+     * Construye un DTO según un Entity.
+     * @param ve Entity
+     */
+    public VendedorDTO(VendedorEntity ve){
+        this.nombre = ve.getNombre();
+        this.cedula = ve.getCedula();
+        this.carnetVendedor = ve.getCarnetVendedor();
+    }
+    
+    /**
+     * Construye y retorna un entity según el DTO.
+     * @return Entity.
+     */
+    public VendedorEntity toEntity(){
+        VendedorEntity ve = new VendedorEntity();
+        ve.setNombre(nombre);
+        ve.setCedula(cedula);
+        ve.setCarnetVendedor(carnetVendedor);
+        return ve;
     }
 
     //---------------------GETTERS-------------------------
