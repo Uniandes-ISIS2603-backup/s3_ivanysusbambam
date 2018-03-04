@@ -38,7 +38,7 @@ public class CompraEntity implements Serializable {
      * El automovil de la compra
      */
     @PodamExclude
-    @OneToOne
+    @OneToOne(mappedBy = "compra")
     private AutomovilEntity automovil;
     
       /**
