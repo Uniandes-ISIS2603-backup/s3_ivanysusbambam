@@ -37,8 +37,8 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
  */
 @RunWith(Arquillian.class)
 public class AutomovilLogicTest {
-    
-     private PodamFactory factory = new PodamFactoryImpl();
+
+    private PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
     private AutomovilLogic autoLogic;
@@ -50,14 +50,6 @@ public class AutomovilLogicTest {
     private UserTransaction utx;
 
     private List<AutomovilEntity> data = new ArrayList<AutomovilEntity>();
-
-    private List<ModelEntity> modelData = new ArrayList<ModelEntity>();
-    
-    private List<MarcaEntity> marcaData = new ArrayList<MarcaEntity>();
-    
-    private List<PuntoDeVentaEntity> puntoData = new ArrayList<PuntoDeVentaEntity>();
-    
-    private List<CompraEntity> compraData = new ArrayList<CompraEntity>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -76,6 +68,7 @@ public class AutomovilLogicTest {
      */
     @Before
     public void configTest() {
+
         try {
             utx.begin();
             clearData();
@@ -98,10 +91,6 @@ public class AutomovilLogicTest {
      */
     private void clearData() {
         em.createQuery("delete from AutomovilEntity").executeUpdate();
-        em.createQuery("delete from ModelEntity").executeUpdate();
-        em.createQuery("delete from MarcaEntity").executeUpdate();
-        em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
-        em.createQuery("delete from CompraEntity").executeUpdate();
     }
 
     /**
@@ -111,74 +100,54 @@ public class AutomovilLogicTest {
      *
      */
     private void insertData() {
-        for (int i = 0; i < 3; i++) {
-            ModelEntity model = factory.manufacturePojo(ModelEntity.class);
-            em.persist(model);
-            modelData.add(model);
-            
-            MarcaEntity marca = factory.manufacturePojo(MarcaEntity.class);
-            em.persist(marca);
-            marcaData.add(marca);
-            
-            PuntoDeVentaEntity punto = factory.manufacturePojo(PuntoDeVentaEntity.class);
-            em.persist(punto);
-            puntoData.add(punto);
-            
-            CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
-            em.persist(compra);
-            compraData.add(compra);
-        }
+
         for (int i = 0; i < 3; i++) {
             AutomovilEntity auto = factory.manufacturePojo(AutomovilEntity.class);
-            
-            
-            auto.setModel(modelData.get(0));
-            auto.setMarca(marcaData.get(0));
-            auto.setPuntoDeVenta(puntoData.get(0));
-            auto.setCompra(compraData.get(0));
+
             em.persist(auto);
+
             data.add(auto);
         }
-       System.out.println ("tamanio" + autoLogic.getAutomoviles().size() );
+
+        System.out.println("tamanio" + autoLogic.getAutomoviles().size());
+
     }
+
     /**
-     * Prueba para crear un Book
+     * Prueba para crear un automovil
      *
      *
      */
     @Test
-    public void createAutomovilTest()  {
-          AutomovilEntity newEntity = factory.manufacturePojo(AutomovilEntity.class);
-        
-       
+    public void createAutomovilTest() {
+        AutomovilEntity newEntity = factory.manufacturePojo(AutomovilEntity.class);
+
         boolean ex = false;
-          try{
-        AutomovilEntity result = autoLogic.createAutomovil(newEntity);
-        Assert.assertNotNull(result);
-        AutomovilEntity entity = em.find(AutomovilEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getId(), entity.getId());}
-           catch(BusinessLogicException e) 
-        {
-            ex =true;
+        try {
+            AutomovilEntity result = autoLogic.createAutomovil(newEntity);
+            Assert.assertNotNull(result);
+            AutomovilEntity entity = em.find(AutomovilEntity.class, result.getId());
+            Assert.assertEquals(newEntity.getId(), entity.getId());
+        } catch (BusinessLogicException e) {
+            ex = true;
         }
-        
-       if((newEntity.getModel() != null) && (newEntity.getMarca() != null )&& (newEntity.getPuntoDeVenta()!= null)){
+
+        if ((newEntity.getModel() != null) && (newEntity.getMarca() != null) && (newEntity.getPuntoDeVenta() != null)) {
             Assert.assertFalse(ex);
+        } else {
+            Assert.assertTrue(ex);
         }
-        else Assert.assertTrue(ex);
-        
-        
-     
+
     }
 
     /**
-     * Prueba para consultar la lista de Books
+     * Prueba para consultar la lista de automoviles
      *
      *
      */
-   @Test
-   public void getAutomovilesTest() {
-       List<AutomovilEntity> list = autoLogic.getAutomoviles();
+    @Test
+    public void getAutomovilesTest() {
+        List<AutomovilEntity> list = autoLogic.getAutomoviles();
         Assert.assertEquals(data.size(), list.size());
         for (AutomovilEntity entity : list) {
             boolean found = false;
@@ -190,43 +159,44 @@ public class AutomovilLogicTest {
             Assert.assertTrue(found);
         }
     }
+
     /**
-     * Prueba para consultar un Book
+     * Prueba para consultar un automovil
      *
      *
      */
     @Test
     public void getAutomovilTest() throws BusinessLogicException {
         AutomovilEntity entity = data.get(0);
-        
+
         AutomovilEntity resultEntity = autoLogic.findAutomovil(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getChasis(), resultEntity.getChasis());
-        
+
     }
 
     /**
-     * Prueba para eliminar un Book
+     * Prueba para eliminar un automovil
      *
      *
      */
     @Test
-   public void deleteAutomovilTest() throws BusinessLogicException {
-       AutomovilEntity entity = data.get(0);
-       autoLogic.deleteAutomovil(entity);
-       AutomovilEntity deleted = em.find(AutomovilEntity.class, entity.getId());
+    public void deleteAutomovilTest() throws BusinessLogicException {
+        AutomovilEntity entity = data.get(0);
+        autoLogic.deleteAutomovil(entity);
+        AutomovilEntity deleted = em.find(AutomovilEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
 
-
     /**
-     * Prueba para actualizar un Book
+     * Prueba para actualizar un automovil
      *
-    *
+     *
      */
     @Test
-    public void updateAutomovilTest() throws BusinessLogicException {
+    public void updateAutomovilTest() {
+
         AutomovilEntity entity = data.get(0);
         AutomovilEntity pojoEntity = factory.manufacturePojo(AutomovilEntity.class);
 
@@ -236,16 +206,25 @@ public class AutomovilLogicTest {
         pojoEntity.setPuntoDeVenta(entity.getPuntoDeVenta());
         pojoEntity.setPlaca(entity.getPlaca());
         pojoEntity.setChasis(entity.getChasis());
-        try{
-        autoLogic.updateAutomovil(pojoEntity);
-        }
-        catch(Exception e){
-            
-        }
-        AutomovilEntity resp = em.find(AutomovilEntity.class, entity.getId());
+        boolean ex = false;
 
-        Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        
+        try {
+            autoLogic.updateAutomovil(pojoEntity);
+            System.out.println(pojoEntity.getPlaca());
+            AutomovilEntity resp = em.find(AutomovilEntity.class, entity.getId());
+
+            System.out.println(resp.getPlaca());
+
+        } catch (BusinessLogicException e) {
+            System.out.println(e);
+            ex = true;
+        }
+        if (ex == true) {
+            Assert.assertTrue(ex);
+        } else {
+            Assert.assertFalse(ex);
+        }
+
     }
 
 }
