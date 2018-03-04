@@ -52,7 +52,7 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
     * Constructor por defecto
     */
     public QuejaReclamoDetailDTO(){
-        
+     super();
     }
     
     /**
@@ -62,6 +62,11 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
      */
     public QuejaReclamoDetailDTO(QuejaReclamoEntity entity){
         super(entity);
+        if (entity != null){
+            cliente = new ClienteDTO(entity.getCliente());
+            
+            
+        }
     }
     /**
      * Transformar un DTO a un Entity
@@ -71,6 +76,9 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
     
     public QuejaReclamoEntity toEntity(){
         QuejaReclamoEntity QuejaE = super.toEntity();
+        if (cliente!=  null){
+            QuejaE.setCliente(cliente.toEntity());
+        }
         return QuejaE;
     }
     

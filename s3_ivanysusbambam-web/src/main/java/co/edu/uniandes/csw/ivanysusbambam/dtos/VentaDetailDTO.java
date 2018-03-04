@@ -50,6 +50,7 @@ public class VentaDetailDTO extends VentaDTO {
      * Constructor por defecto
      */
     public VentaDetailDTO() {
+        super();
     }
 
     /**
@@ -60,6 +61,17 @@ public class VentaDetailDTO extends VentaDTO {
      */
     public VentaDetailDTO(VentaEntity entity) {
         super(entity);
+        
+        if (entity != null) {
+            cliente = new ClienteDTO(entity.getCliente());
+            automovil = new AutomovilDTO(entity.getAutomovil());
+            calificacionCarro = new CalificacionCarroDTO(entity.getCalificacionCarro());
+            medioDePago = new MedioDePagoDTO();
+            puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
+            vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
+            
+        }
+        
     }
 
     /**
@@ -70,6 +82,28 @@ public class VentaDetailDTO extends VentaDTO {
     @Override
     public VentaEntity toEntity() {
         VentaEntity VentaE = super.toEntity();
+        if (automovil != null) {
+            VentaE.setAutomovil(automovil.toEntity());
+        }
+        if (calificacionCarro != null) {
+            VentaE.setCalificacionCarro(calificacionCarro.toEntity());
+            
+        }
+        if (cliente != null) {
+            VentaE.setCliente(cliente.toEntity());
+            
+        }
+//        if (medioDePago != null){
+//            VentaE.setMedioDePago(medioDePago.toEntity);
+//        }
+        
+        if (puntoDeVenta != null) {
+            VentaE.setPuntoDeVenta(puntoDeVenta.toEntity());
+        }
+        
+        if (vendedorEncargado != null){
+            VentaE.setVendedorEncargado(vendedorEncargado.toEntity());
+        }
         return VentaE;
     }
 
@@ -118,49 +152,58 @@ public class VentaDetailDTO extends VentaDTO {
 
     //---------------------Setters-------------------------
     /**
-     * asigna al atributo calificacion carro la calificacion recibida por parametro
-     * @param pCalificacion calificacion que se le va a signar a esta venta 
+     * asigna al atributo calificacion carro la calificacion recibida por
+     * parametro
+     *
+     * @param pCalificacion calificacion que se le va a signar a esta venta
      */
     public void setCalificacionCarro(CalificacionCarroDTO pCalificacion) {
         this.calificacionCarro = pCalificacion;
     }
 
     /**
-     * Asigna al atributo punto de venta el punto de venta recibido por parametro
-     * @param pPunto punto de venta que se va a asignar a esta venta 
+     * Asigna al atributo punto de venta el punto de venta recibido por
+     * parametro
+     *
+     * @param pPunto punto de venta que se va a asignar a esta venta
      */
-    public void setPuntoDeVenta(PuntoDeVentaDTO pPunto){
+    public void setPuntoDeVenta(PuntoDeVentaDTO pPunto) {
         this.puntoDeVenta = pPunto;
     }
-    
-   /**
-    * Asigna al atributo medio de pago el medio de pago recibido por parametro 
-    * @param pMedio medio de pago que se va a asignar a esta venta
-    */
-    public void setMedioDePago (MedioDePagoDTO pMedio){
+
+    /**
+     * Asigna al atributo medio de pago el medio de pago recibido por parametro
+     *
+     * @param pMedio medio de pago que se va a asignar a esta venta
+     */
+    public void setMedioDePago(MedioDePagoDTO pMedio) {
         this.medioDePago = pMedio;
     }
-    
+
     /**
      * Asigna al atributo vendedor el vendedor recibido por parametro
-     * @param pVendedor vendedor que se va a asignar a esta venta 
+     *
+     * @param pVendedor vendedor que se va a asignar a esta venta
      */
-    public void setVendedorEncargado (VendedorDTO pVendedor){
+    public void setVendedorEncargado(VendedorDTO pVendedor) {
         this.vendedorEncargado = pVendedor;
     }
-    
+
     /**
      * Asigna al atributo cliente el cliente recibido por parametro
-     * @param pCliente cliente que se va asiganr a esta venta 
+     *
+     * @param pCliente cliente que se va asiganr a esta venta
      */
-    public void setCliente (ClienteDTO pCliente){
+    public void setCliente(ClienteDTO pCliente) {
         this.cliente = pCliente;
     }
+
     /**
      * Asigna al atributo automovil el automovil recibido por parametro
-     * @param pAuto automovil que se va a signar a esta venta  
+     *
+     * @param pAuto automovil que se va a signar a esta venta
      */
-    public void setAutomovil (AutomovilDTO pAuto){
+    public void setAutomovil(AutomovilDTO pAuto) {
         this.automovil = pAuto;
     }
 }
