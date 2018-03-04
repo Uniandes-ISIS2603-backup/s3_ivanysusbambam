@@ -5,37 +5,40 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
-/**Objeto de transferencia que contiene información detallada de un prospecto de compra.
- * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+import co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity;
+
+/**
+ * Objeto de transferencia que contiene información detallada de un prospecto de
+ * compra. Al serializarse como JSON esta clase implementa el siguiente modelo:
+ * <br>
  * <pre>
  *   {
- *       
+ *
  *      "texto": string,
  *      "id": number,
  *      "cliente": JSON,
  *      "vendedor": JSON
  *      "automovil": JSON,
- *      
+ *
  *   }
- * </pre>
- * Por ejemplo un prospecto de compra representa así:<br>
- * 
+ * </pre> Por ejemplo un prospecto de compra representa así:<br>
+ *
  * <pre>
- * 
+ *
  *   {
  *      "texto": "Cliente parece muy interesado en compra de Chevrolet Sail placas abc123.",
  *      "id": 12431,
  *      "cliente" : {"cedula": 104230633, "nombre": "Felipe Velásquez"},
  *      "vendedor": {"carnetVendedor": 1253, "cedula":1016501589, "nombre": "Iván García"},
  *      "automovil": {"color": "rojo", "año": 2014, "placa": "abc123", "chasis": 12334234, "fechaListado": 12/02/18, "valorListado": 29000000)
- *      
- * }  
- * 
+ *
+ * }
+ *
  *
  * </pre>
- * @author Felipe Velásquez Montoya
- * <pre>
- * Versiones: 
+ *
+ * @author Felipe Velásquez Montoya  <pre>
+ * Versiones:
  *  10/02/2018:
  *      -Añadidos atributos.
  *      -Añadidos getters.
@@ -44,42 +47,75 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
  *      -Añadidos setters faltandes necesarios para funcionamiento de JAXRS
  * </pre>
  */
-public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
-    
+public class ProspectoCompraDetailDTO extends ProspectoCompraDTO {
+
     /**
      * Representa el cliente al que pertenece el prospecto de compra.
      */
     private ClienteDTO cliente;
-    
+
     /**
      * Representa el vendedor que creó el propecto de compra.
      */
     private VendedorDTO vendedor;
 
-     /**
+    /**
      * Representa el automóvil en el que está interesado el cliente.
-     */    
+     */
     private AutomovilDTO automovil;
-    
-    
+
     //-------------------------------------CONSTRUCTOR-------------------------
-    
     /**
      * Constructor por defecto.
      */
-    public ProspectoCompraDetailDTO(){
-        
+    public ProspectoCompraDetailDTO() {
+
     }
-    
+
+    /**
+     * Construye un DTO a partir de un entity.
+     *
+     * @param pe Entity a partir del que se construirá el DTO.
+     */
+    public ProspectoCompraDetailDTO(ProspectoCompraEntity pe) {
+        super(pe);
+        if (pe != null) {
+            this.automovil = new AutomovilDTO(pe.getAutomovil());
+            this.cliente = new ClienteDTO(pe.getCliente());
+            this.vendedor = new VendedorDTO(pe.getVendedor());
+        }
+    }
+
+    /**
+     * Construte un entity y lo retorna.
+     *
+     * @return Entity
+     */
+    @Override
+    public ProspectoCompraEntity toEntity() {
+        ProspectoCompraEntity pc = super.toEntity();
+        
+        if (automovil != null) {
+            pc.setAutomovil(automovil.toEntity());
+        }
+        if (cliente != null) {
+            pc.setCliente(cliente.toEntity());
+        }
+        if (vendedor != null) {
+            pc.setVendedor(vendedor.toEntity());
+        }
+
+        return pc;
+    }
+
     //-------------------------------------GETTERS-----------------------------
-    
     /**
      * @return cliente del prospecto.
      */
     public ClienteDTO getCliente() {
         return cliente;
     }
-    
+
     /**
      * @return el vendedor del prospecto.
      */
@@ -87,18 +123,16 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
         return vendedor;
     }
 
-     /**
+    /**
      * @return el automóvil en el que está interesado el cliente.
      */
-    public AutomovilDTO getAutomovil(){
+    public AutomovilDTO getAutomovil() {
         return automovil;
     }
-   
-    
-    //---------------------------SETTERS-------------------------
 
+    //---------------------------SETTERS-------------------------
     /**
-     * 
+     *
      * @param cliente cliente interesado en el automóvil.
      */
     public void setCliente(ClienteDTO cliente) {
@@ -106,7 +140,7 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
     }
 
     /**
-     * 
+     *
      * @param vendedor vendedor creador del prospecto.
      */
     public void setVendedor(VendedorDTO vendedor) {
@@ -114,12 +148,11 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO{
     }
 
     /**
-     * 
+     *
      * @param automovil automóvil en el que se encuentra interesado el cliente.
      */
     public void setAutomovil(AutomovilDTO automovil) {
         this.automovil = automovil;
     }
-   
-    
+
 }
