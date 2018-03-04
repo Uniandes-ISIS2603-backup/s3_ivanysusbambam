@@ -7,10 +7,13 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.VendedorLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -20,6 +23,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -31,6 +35,9 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class VendedorResource {
+    
+    @Inject
+    private VendedorLogic vendedorLogic;
     
     /**
      * GET /api/vendedor: Retorna la información básica de todos los vendedores registrados.
@@ -47,7 +54,11 @@ public class VendedorResource {
     @GET
     public List<VendedorDetailDTO> getVendedores(){
        List<VendedorDetailDTO> vendedores = new ArrayList<>();
-       return vendedores;   
+       for(VendedorEntity v : vendedorLogic.findAllVendedores()){
+           vendedores.add(new VendedorDetailDTO(v));
+       }
+       
+       return vendedores;
     }
     
     /**
@@ -68,7 +79,11 @@ public class VendedorResource {
     @GET
     @Path("{id: \\d+}")
     public VendedorDetailDTO getVendedor(@PathParam("id") long id)throws BusinessLogicException{
-        return null;
+        VendedorEntity ve = vendedorLogic.findVendedor(id);
+        
+        if(ve == null) throw new WebApplicationException("El recurso vendedor " + id + " no existe");
+        
+        return new VendedorDetailDTO(ve);
     }                   
     
     /**
@@ -88,9 +103,7 @@ public class VendedorResource {
      */
     @POST
     public VendedorDetailDTO postVendedor(VendedorDTO vendedor) throws BusinessLogicException{
-        
-        //debe retornar el dDTO correspondiente al DTO.
-        return null;
+        return new VendedorDetailDTO(vendedorLogic.createVendedor(vendedor.toEntity()));
     }
     
     /**
@@ -112,7 +125,11 @@ public class VendedorResource {
     @PUT
     @Path("{id: \\d+}")
     public VendedorDetailDTO putVendedor(@PathParam("id") long id, VendedorDetailDTO vendedor) throws BusinessLogicException{
-        return vendedor;
+        VendedorEntity ve = vendedorLogic.findVendedor(id);
+        
+        if(ve == null) throw new WebApplicationException("El recurso vendedor " + id + " no existe");
+        
+        return new VendedorDetailDTO(vendedorLogic.updateVendedor(ve));
     }
     
     /**
@@ -133,6 +150,10 @@ public class VendedorResource {
     @DELETE
     @Path("{id: \\d+}")
     public VendedorDetailDTO deleteVendedor(@PathParam("id") long id) throws BusinessLogicException{
-        return null;
+        VendedorEntity ve = vendedorLogic.findVendedor(id);
+        
+        if(ve == null) throw new WebApplicationException("El recurso vendedor " + id + " no existe");
+        
+        return new VendedorDetailDTO(vendedorLogic.deleteVendedor(id));
     }
 }
