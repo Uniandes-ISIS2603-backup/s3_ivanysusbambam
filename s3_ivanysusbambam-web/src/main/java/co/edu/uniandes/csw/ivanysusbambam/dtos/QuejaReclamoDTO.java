@@ -31,12 +31,14 @@ public class QuejaReclamoDTO {
    /**
     * Indica si es queja o reclamo
     */
-    private tiposDeQueja tipo;
+    private String tipo;
     
    /**
     * Constructor por defecto
     */
     public QuejaReclamoDTO(){
+        
+        
         
     }
     
@@ -58,7 +60,7 @@ public class QuejaReclamoDTO {
     /**
      * @return el tipo , si es queja o es reclamo  
      */
-    public tiposDeQueja getTipo(){
+    public String getTipo(){
         return tipo;
     }
     
@@ -97,7 +99,7 @@ public class QuejaReclamoDTO {
      * asigna el tipo dado por parametro a la queja o al reclamo 
      * @param tipo puede ser Queja o reclamo , y lo asigna a esta queja o reclamo 
      */
-    public void setTipo(tiposDeQueja tipo){
+    public void setTipo(String tipo){
         this.tipo = tipo;
     }
     
@@ -106,15 +108,16 @@ public class QuejaReclamoDTO {
      *
      * @return Un Entity con los valores del DTO
      */
-//    public QuejaReclamoEntity toEntity(){
-//        QuejaReclamoEntity entity = new QuejaReclamoEntity();
-//        entity.setId(this.id);
-//        entity.setName(this.name);
-//        entity.setTexto(this.texto);
-//        entity.setTipo(this.tipo);
-//        
-//        return entity;
-//    }
+    public QuejaReclamoEntity toEntity(){
+        QuejaReclamoEntity entity = new QuejaReclamoEntity();
+        entity.setId(this.id);
+        entity.setName(this.name);
+        entity.setTexto(this.texto);
+        entity.setTipo(this.tipo);
+        entity.setCliente(entity.getCliente());
+        
+        return entity;
+    }
     
     /**
      * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
@@ -122,12 +125,14 @@ public class QuejaReclamoDTO {
      *
      * @param pQuejaOReclamo: Es la entidad que se va a convertir a DTO
      */
-//    public QuejaReclamoDTO(QuejaReclamoEntity pQuejaOReclamo) {
-//        this.idVenta = pVenta.getIdVenta();
-//
-//    }
+    public QuejaReclamoDTO(QuejaReclamoEntity pQuejaOReclamo) {
+        this.id = pQuejaOReclamo.getId();
+        this.name = pQuejaOReclamo.getName();
+        this.texto = pQuejaOReclamo.getTexto();
+        this.tipo = pQuejaOReclamo.getTipo();
+
+
+    }
     
-   public enum tiposDeQueja {
-    ESTADO_VEHICULO, PROBLEMA_TRANSACCION, DEMORA_ENTREGA;
-}
+   
 }

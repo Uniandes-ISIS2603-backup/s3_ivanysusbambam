@@ -9,6 +9,9 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
@@ -16,14 +19,17 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author if.garcia y hd.castellanos
  */
 @Entity
-public class QuejaReclamoEntity extends BaseEntity implements Serializable{
+public class QuejaReclamoEntity  implements Serializable{
     
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
     
-    @Enumerated(EnumType.STRING)
     /**
      * indica si es queja o reclamo 
      */
-    private tiposDeQueja tipo;
+    private String tipo;
     
     /**
      * Indica la descripci[on de la queja o el reclamo 
@@ -67,22 +73,48 @@ public class QuejaReclamoEntity extends BaseEntity implements Serializable{
         this.cliente = cliente;
     }
     
-    enum tiposDeQueja {
-    ESTADO_VEHICULO, PROBLEMA_TRANSACCION, DEMORA_ENTREGA;
-}
+    
 
     /**
      * @return the tipo
      */
-    public tiposDeQueja getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
     /**
      * @param tipo the tipo to set
      */
-    public void setTipo(tiposDeQueja tipo) {
+    public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    /**
+     * @return the id
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
     
     

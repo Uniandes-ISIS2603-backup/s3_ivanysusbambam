@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
+
 /**
  * Objeto de transferencia que contiene información detallada de una queja o
  * reclamo. Al serializarse como JSON esta clase implementa el siguiente modelo:
@@ -51,6 +53,25 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
     */
     public QuejaReclamoDetailDTO(){
         
+    }
+    
+    /**
+     * Constructor para transformar un Entity a un DTO
+     *
+     * @param entity La entidad de la QuejaReclamo a partir de la cual se construye el objeto
+     */
+    public QuejaReclamoDetailDTO(QuejaReclamoEntity entity){
+        super(entity);
+    }
+    /**
+     * Transformar un DTO a un Entity
+     *
+     * @return  La entidad construida a partir del DTO.
+     */
+    
+    public QuejaReclamoEntity toEntity(){
+        QuejaReclamoEntity QuejaE = super.toEntity();
+        return QuejaE;
     }
     
     

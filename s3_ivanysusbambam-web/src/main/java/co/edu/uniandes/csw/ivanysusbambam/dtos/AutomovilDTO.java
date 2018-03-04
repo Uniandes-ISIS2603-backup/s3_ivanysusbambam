@@ -180,6 +180,7 @@ public class AutomovilDTO {
         entity.setChasis(this.chasis);
         entity.setFechaListado(this.fechaListado);
         entity.setValorListado(this.valorListado);
+        
         return entity;
     }
 }

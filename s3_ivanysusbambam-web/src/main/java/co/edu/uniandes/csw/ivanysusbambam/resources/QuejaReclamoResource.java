@@ -7,10 +7,13 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.QuejaReclamoDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.QuejaReclamoDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.QuejaReclamoLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -30,9 +34,12 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class QuejaReclamoResource {
 
+    @Inject
+    private QuejaReclamoLogic quejaLogic;
+
     /**
      * GET quejasReclamos Retorna todas las quejas y reclamos
-     * 
+     *
      *
      * <pre>Busca y devuelve todos las quejas y reclamos .
      *
@@ -47,12 +54,14 @@ public class QuejaReclamoResource {
     @GET
     public List<QuejaReclamoDTO> getQuejasReclamos() throws BusinessLogicException {
         List<QuejaReclamoDTO> quejasReclamos = new ArrayList<>();
+        for (QuejaReclamoEntity qre : quejaLogic.findAllQuejasReclamos()) {
+            quejasReclamos.add(new QuejaReclamoDetailDTO(qre));
+        }
         return quejasReclamos;
     }
 
     /**
-     * GET api/quejasReclamos/(pid): Obtiene una queja o reclamo
-     * según su id.
+     * GET api/quejasReclamos/(pid): Obtiene una queja o reclamo según su id.
      * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
@@ -65,18 +74,22 @@ public class QuejaReclamoResource {
      *
      * @param pid id de la queja o reclamo .
      * @return JSON la queja o reclamo buscada.
-     * @throws BusinessLogicException 
-     * la queja o reclamo con el id dado..
+     * @throws BusinessLogicException la queja o reclamo con el id dado..
      */
     @GET
     @Path("{pid: \\d+}")
-    public QuejaReclamoDetailDTO getQuejaReclamo( @PathParam("pid") Long pid) throws BusinessLogicException {
-        return null;
+    public QuejaReclamoDetailDTO getQuejaReclamo(@PathParam("pid") Long pid) throws BusinessLogicException {
+        QuejaReclamoEntity queja = quejaLogic.findQuejaReclamo(pid);
+
+        if (queja == null) {
+            throw new WebApplicationException("El recurso Queja reclamo " + pid + " no existe");
+        } else {
+            return new QuejaReclamoDetailDTO(queja);
+        }
     }
 
     /**
-     * PUT /api/quejasReclamos/(pid): actualiza una queja o
-     * reclamo según su id.
+     * PUT /api/quejasReclamos/(pid): actualiza una queja o reclamo según su id.
      * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
@@ -95,8 +108,15 @@ public class QuejaReclamoResource {
      */
     @PUT
     @Path("{pid: \\d+}")
-    public QuejaReclamoDetailDTO putProspectoCompra( @PathParam("pid") Long pid, QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
-        return quejaReclamo;
+    public QuejaReclamoDetailDTO putQuejaReclamo(@PathParam("pid") Long pid, QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
+        QuejaReclamoEntity queja = quejaLogic.findQuejaReclamo(pid);
+
+        if (queja == null) {
+            throw new WebApplicationException("El recurso automovil " + pid + " no existe");
+        } else {
+            return new QuejaReclamoDetailDTO(quejaLogic.updateQuejaReclamo(queja));
+        }
+
     }
 
     /**
@@ -116,13 +136,12 @@ public class QuejaReclamoResource {
      * @throws BusinessLogicException si no existe el cliente con el id dado.
      */
     @POST
-    public QuejaReclamoDetailDTO postQuejaReclamo( QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
-        return quejaReclamo;
+    public QuejaReclamoDetailDTO postQuejaReclamo(QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
+        return new QuejaReclamoDetailDTO(quejaLogic.createQuejaReclamo(quejaReclamo.toEntity()));
     }
 
     /**
-     * DELETE /api/quejasReclamos/(pid):elimina una queja o
-     * reclamo según su id.
+     * DELETE /api/quejasReclamos/(pid):elimina una queja o reclamo según su id.
      * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
@@ -139,7 +158,12 @@ public class QuejaReclamoResource {
      */
     @DELETE
     @Path("{pid: \\d+}")
-    public void deleteQuejaReclamo( @PathParam("pid") Long pid) throws BusinessLogicException {
+    public void deleteQuejaReclamo(@PathParam("pid") Long pid) throws BusinessLogicException {
+        QuejaReclamoEntity queja = quejaLogic.findQuejaReclamo(pid);
 
+        if (queja == null) {
+            throw new WebApplicationException("El recurso queja " + pid + " no existe");
+        }
+        quejaLogic.deleteQuejaReclamo(queja.getId());
     }
 }
