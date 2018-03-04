@@ -154,7 +154,7 @@ public class MedioDePagoLogicTest {
             {
                  entity.setCliente(cliente);
              mdpl.createMedioDePago(entity);
-             MedioDePagoEntity result= mdpl.find(entity.getNumero());
+             MedioDePagoEntity result= mdpl.findMedioDePago(entity.getNumero());
              Assert.assertNotNull(result);
              
             }
