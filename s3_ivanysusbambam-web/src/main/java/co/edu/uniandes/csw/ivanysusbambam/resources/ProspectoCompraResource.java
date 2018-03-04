@@ -7,10 +7,13 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ProspectoCompraDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.ProspectoCompraLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -20,6 +23,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -30,6 +34,9 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class ProspectoCompraResource {
+    
+    @Inject
+    private ProspectoCompraLogic pcLogic;
     
     /**
      * GET api/prospectoscompra Retorna todos los prospectos de 
@@ -48,6 +55,9 @@ public class ProspectoCompraResource {
     @GET
     public List<ProspectoCompraDetailDTO> getProspectosCompra() throws BusinessLogicException{
         List<ProspectoCompraDetailDTO> prospectosCompra = new ArrayList<>();
+        for(ProspectoCompraEntity pc : pcLogic.findAllProspectosCompra()){
+            prospectosCompra.add(new ProspectoCompraDetailDTO(pc));
+        }
         return prospectosCompra;
     }
     
@@ -69,7 +79,9 @@ public class ProspectoCompraResource {
     @GET
     @Path("{pid: \\d+}")
     public ProspectoCompraDetailDTO getProspectoCompra(@PathParam("pid") long pid) throws BusinessLogicException{
-        return null;
+        ProspectoCompraEntity pc = pcLogic.findProspectoCompra(pid);
+        if(pc == null) throw new WebApplicationException("El recurso prospecto de compra " + pid+ " no existe");
+        return new ProspectoCompraDetailDTO(pc);
     }
     
     /**
@@ -91,7 +103,11 @@ public class ProspectoCompraResource {
     @PUT
     @Path("{pid: \\d+}")
     public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("pid") long pid, ProspectoCompraDetailDTO prospecto) throws BusinessLogicException{
-        return prospecto;
+        ProspectoCompraEntity pc = pcLogic.findProspectoCompra(pid);
+        
+        if(pc == null) throw new WebApplicationException("El rescurso prospecto de compra " + pid + " no existe");
+        
+        return new ProspectoCompraDetailDTO(pcLogic.updateProspectoCompra(pc));
     }
     
     /**
@@ -108,7 +124,7 @@ public class ProspectoCompraResource {
      */
     @POST
     public ProspectoCompraDetailDTO postProspectoCompra(ProspectoCompraDetailDTO prospecto)throws BusinessLogicException{
-        return prospecto;
+        return new ProspectoCompraDetailDTO(pcLogic.createProspectoCompra(prospecto.toEntity()));
     }
     /**
      * DELETE /api/prospectoscompra/(pid):elimina un prospecto de compra según su id.
@@ -128,7 +144,11 @@ public class ProspectoCompraResource {
     @DELETE
     @Path("{pid: \\d+}")
     public ProspectoCompraDetailDTO deleteProspectoCompra(@PathParam("pid") long pid) throws BusinessLogicException{
-        return null;
+        ProspectoCompraEntity pc = pcLogic.findProspectoCompra(pid);
+        
+        if(pc == null) throw new WebApplicationException("El recurso prospecto de compra " + pid + " no existe");
+        
+        return new ProspectoCompraDetailDTO(pcLogic.deleteProspectoCompra(pid));
     }
     
 }

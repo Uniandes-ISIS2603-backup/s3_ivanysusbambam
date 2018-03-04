@@ -8,10 +8,13 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.ClienteLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 
 import javax.ws.rs.DELETE;
@@ -21,6 +24,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -31,6 +35,9 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class ClienteResource {
+    
+    @Inject
+    private ClienteLogic clienteLogic;
     
     /**
      * GET /api/clientes: Retorna todos los clientes registrados.
@@ -46,8 +53,11 @@ public class ClienteResource {
      */
     @GET
     public List<ClienteDetailDTO> getClientes(){
-        //List clientes = null;
+        
         List<ClienteDetailDTO> clientes =  new ArrayList<>();
+        for(ClienteEntity ce : clienteLogic.findAllClientes()){
+            clientes.add(new ClienteDetailDTO(ce));
+        }
         return clientes;
     }
     
@@ -67,8 +77,12 @@ public class ClienteResource {
      */
     @Path("{id: \\d+}")
     @GET
-    public ClienteDetailDTO getCliente(@PathParam("id")long id){
-        return null;
+    public ClienteDetailDTO getCliente(@PathParam("id")long id) throws BusinessLogicException{
+       ClienteEntity cliente = clienteLogic.findCliente(id);
+       
+       if(cliente == null) throw new WebApplicationException("El recurso cliente " + id + " no existe");
+       
+       else return new ClienteDetailDTO(cliente);
     }
     
     /**
@@ -88,8 +102,7 @@ public class ClienteResource {
      */
     @POST
     public ClienteDetailDTO postCliente(ClienteDTO cliente ) throws BusinessLogicException{
-        //Debe retornar el DetailDTO correspondiente al DTO que le entra por param.
-        return null;
+        return new ClienteDetailDTO(clienteLogic.createCliente(cliente.toEntity()));
     }
     
     /**
@@ -111,10 +124,12 @@ public class ClienteResource {
     @Path("{id: \\d+}")
     @PUT
     public ClienteDetailDTO putCliente(@PathParam("id") long id, ClienteDetailDTO cliente) throws BusinessLogicException{
-        System.out.println("cliente: " + cliente);
-        System.out.println(cliente.getNombre());
-        System.out.println(cliente.getCedula());
-        return cliente;
+        ClienteEntity c = clienteLogic.findCliente(id);
+        
+        if(c == null) throw new WebApplicationException("El recurso cliente " + id + " no existe");
+        
+        else return new ClienteDetailDTO(clienteLogic.updateCliente(c));
+        
     }
     
     /**
@@ -135,6 +150,10 @@ public class ClienteResource {
     @Path("{id: \\d+}")
     @DELETE
     public ClienteDetailDTO deleteCliente(@PathParam("id") long id) throws BusinessLogicException{
-      return null;  
+        ClienteEntity cliente = clienteLogic.findCliente(id);
+        
+        if(cliente == null) throw new WebApplicationException("El recurso cliente " + id + " no existe");
+        
+        else return new ClienteDetailDTO(clienteLogic.deleteCliente(id));
     }
 }
