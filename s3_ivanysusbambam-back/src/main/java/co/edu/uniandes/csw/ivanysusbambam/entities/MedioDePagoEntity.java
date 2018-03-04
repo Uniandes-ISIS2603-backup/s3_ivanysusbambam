@@ -82,9 +82,10 @@ public class MedioDePagoEntity implements Serializable
                 
     }
     
+    public enum TipoMedioDePago {
+        PAY_PAL, CREDITO, PSE;
+    }
+    
 }
 
 
-enum TipoMedioDePago {
-    PAY_PAL, CREDITO, PSE;
-}

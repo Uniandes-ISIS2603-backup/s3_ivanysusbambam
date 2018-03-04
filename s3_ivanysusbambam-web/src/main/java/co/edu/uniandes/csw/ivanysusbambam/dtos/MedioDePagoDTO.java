@@ -5,6 +5,9 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity.TipoMedioDePago;
+
 /**
  * Objeto de transferencia de datos del medio de pago.<br>
  * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
@@ -37,7 +40,7 @@ public class MedioDePagoDTO {
     /**
      * Atributo que representa el tipo del medio de pago
      */
-    private MediosDePago tipo;
+    private TipoMedioDePago tipo;
 
     /**
      * Constructor por defecto
@@ -45,22 +48,21 @@ public class MedioDePagoDTO {
     public MedioDePagoDTO() {
     }
 
-    /**
-     * Convertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param medioDePago: Es la entidad que se va a convertir a DTO
-     */
-    // public MedioDePagoDTO(MedioDePagoEntity medioDePago) {
-    //     this.numero = medioDePago.ge;
-    // }
-    /**
-     * Enumeracion con los distintos medios de pago
-     */
-    public enum MediosDePago {
-        PAY_PAL, CREDITO, PSE;
+    public MedioDePagoDTO(MedioDePagoEntity entity) {
+        if(entity != null) {
+            this.numero = entity.getNumero();
+            this.tipo = entity.getTipo();
+        }
     }
-
+    
+    public MedioDePagoEntity toEntity() {
+        MedioDePagoEntity entity = new MedioDePagoEntity();
+        entity.setNumero(this.numero);
+        entity.setTipo(this.tipo);
+        
+        return entity;
+    }
+    
     //-----------------------------GETTERS-----------------------------
     /**
      * @return El numero del medio de pago
@@ -82,7 +84,7 @@ public class MedioDePagoDTO {
      *
      * @return tipo del medio de pago
      */
-    public MediosDePago getTipo() {
+    public TipoMedioDePago getTipo() {
         return tipo;
     }
 
@@ -91,18 +93,7 @@ public class MedioDePagoDTO {
      *
      * @param tipo del medio de pago
      */
-    public void setTipo(MediosDePago tipo) {
+    public void setTipo(TipoMedioDePago tipo) {
         this.tipo = tipo;
     }
-
-    
-    /**
-     * Convertir DTO a Entity
-     *
-     * @return Un Entity con los valores del DTO
-     */
-    //  public MedioDePagoEntity toEntity() {
-    //     MedioDePagoEntity entity = new MedioDePago();
-    //       entity.setNumero(this.numero);
-    //   }
 }

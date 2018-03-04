@@ -8,10 +8,15 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.MedioDePagoLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -20,17 +25,21 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
  * @author juliana
  */
-@Path("MediosDePago")
+@Path("medios_de_pago")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
 public class MedioDePagoResource 
-{
+{   
+    
+    @Inject
+    MedioDePagoLogic mdpLogic;
     
     /**
      * GET /api/MediosDePago: Retorna todos los medios de pagos registrados.
@@ -46,9 +55,7 @@ public class MedioDePagoResource
      */
     @GET
     public List<MedioDePagoDTO> getClientes(){
-        //List clientes = null;
-        List<MedioDePagoDTO> medioDePagos =  new ArrayList<>();
-        return medioDePagos;
+        return listEntity2DTO(mdpLogic.findAll());
     }
     /**
      * GET /api/MediosDePago/(id): Obtiene un medio de pago según el id.
@@ -67,28 +74,18 @@ public class MedioDePagoResource
     
     @GET
     @Path("{id: \\d+}")
-    public MedioDePagoDTO getMedioDePago(@PathParam("id")long numero){
-        return null;
+    public MedioDePagoDTO getMedioDePago(@PathParam("id")Long numero){
+        try {
+            MedioDePagoEntity entity = mdpLogic.findMedioDePago(numero);
+            return new MedioDePagoDTO(entity);
+        } catch (BusinessLogicException ex) {
+            throw new WebApplicationException("El recurso /medios_de_pago/" + numero + "no existe", 404);
+        }
     }
-    /**
-     * POST /api/MediosDePago: Crea un nuevo medio de pago.
-     * <pre> 
-     * Codigos de respuesta:
-     * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK se crea el nuevo medio de pago
-     * </code> 
-     * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found No existe un medio de pago con el numero dado.
-     * </code> 
-     * </pre>
-     * @param MedioDePagoDTO {@link CompraDetailDTO} el medio de pago.
-     * @return JSON {@link CompraDetailDTO} el medio de pago recien creado.
-     * @throws BusinessLogicException si ya existe el medio de pago.
-     */
+   
     @POST
-    public MedioDePagoDTO postCliente(MedioDePagoDTO mdp ) throws BusinessLogicException{
-        //Debe retornar el DetailDTO correspondiente al DTO que le entra por param.
-        return null;
+    public MedioDePagoDTO createMedioDePago(MedioDePagoDTO mdp) throws BusinessLogicException{
+        return new MedioDePagoDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
     }
      /**
      * <h1>PUT /api/MediosDePago/{id} : Actualizar MediosDePago con el numero dado.</h1>
@@ -111,9 +108,14 @@ public class MedioDePagoResource
     
     @PUT
     @Path("{idMedioDePago: \\d+}")
-    public MedioDePagoDTO updateMedioDePago(@PathParam("numeroMedioDePago") String numeroMedioDePago, MedioDePagoDTO mdp)
+    public MedioDePagoDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDTO mdp)
     {
-        return mdp;
+        mdp.setNumero(numeroMedioDePago);
+        try {
+            return new MedioDePagoDTO(mdpLogic.updateMedioDePago(mdp.toEntity()));
+        } catch (BusinessLogicException ex) {
+            throw new WebApplicationException("El recurso /medios_de_pago/" + numeroMedioDePago + "no existe", 404);
+        }
     }
     
     /**
@@ -133,11 +135,22 @@ public class MedioDePagoResource
     
     @DELETE
      @Path("{idMedioDePago: \\d+}")
-    public MedioDePagoDTO deleteMedioDePago(@PathParam("idMedioDePago") String numeroMedioDePago,MedioDePagoDTO mdp)
+    public void deleteMedioDePago(@PathParam("idMedioDePago") Long numeroMedioDePago,MedioDePagoDTO mdp)
     {
-        return mdp;
+        try {
+            mdpLogic.deleteMedioDePago(numeroMedioDePago);
+        } catch (BusinessLogicException ex) {
+            throw new WebApplicationException("El recurso /medios_de_pago/" + numeroMedioDePago + "no existe", 404);
+        }
     }
     
+    private List<MedioDePagoDTO> listEntity2DTO(List<MedioDePagoEntity> entityList) {
+        List<MedioDePagoDTO> list = new ArrayList<>();
+        for (MedioDePagoEntity entity : entityList) {
+            list.add(new MedioDePagoDTO(entity));
+        }
+        return list;
+    }
     
     
 }

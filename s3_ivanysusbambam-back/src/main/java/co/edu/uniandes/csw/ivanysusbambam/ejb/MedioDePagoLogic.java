@@ -64,10 +64,7 @@ public class MedioDePagoLogic {
     }
     public MedioDePagoEntity updateMedioDePago(MedioDePagoEntity mdp) throws BusinessLogicException
     {
-        if(mdp==null)
-        {
-            throw new BusinessLogicException("No se pueden actualizar valores nulos");    
-        }
+        
         if(persistence.find(mdp.getNumero())==null)
         {
              throw new BusinessLogicException("El medio de pago no existe en la base de datos"); 
