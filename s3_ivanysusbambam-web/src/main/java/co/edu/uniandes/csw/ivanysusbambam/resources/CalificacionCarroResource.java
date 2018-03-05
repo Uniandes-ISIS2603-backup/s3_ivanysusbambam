@@ -7,7 +7,9 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.CalificacionCarroDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.CalificacionTiendaDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 
@@ -71,7 +73,25 @@ public class CalificacionCarroResource {
     public CalificacionCarroDetailDTO putCalificacionCarro(@PathParam("idVenta") Long idVenta, @PathParam("idCarro") Long id) throws BusinessLogicException{
         return null;
     }
-    
+    /**
+     * GET api/clientes/(id)/calificacionTienda Retorna todas las calificaciones  
+     * que un cliente ha puesto a una lista de tiendas
+     * 
+     * <pre>Busca y devuelve todas las calificaciones que un cliente ha dado.
+     * 
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Devuelve todas las calificaciones del cliente.</code> 
+     * </pre>
+     * 
+     * @param id identificador unico del cliente.
+     * @return JSONArray  con la información de todas las calificaciones del cliente.
+     * @throws BusinessLogicException si el cliente con el id dado no existe.
+     */
+    @GET
+    public List<CalificacionTiendaDetailDTO> getCalificacionesCarro() throws BusinessLogicException{
+        return null;
+    }
     
     /**
      * POST /api/ventas/(id)/prospectosCompra: Crea una nueva calificación de carro.

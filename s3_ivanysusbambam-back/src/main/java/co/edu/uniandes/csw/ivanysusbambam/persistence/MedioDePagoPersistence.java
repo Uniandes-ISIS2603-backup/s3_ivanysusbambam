@@ -35,7 +35,6 @@ public class MedioDePagoPersistence {
         em.persist(entity);
         LOGGER.info("Creando un medio de pago nuevo");
         MedioDePagoEntity created = find(entity.getNumero());
-        LOGGER.info(created.getCliente().getNombre());
         return created;
     }
 
