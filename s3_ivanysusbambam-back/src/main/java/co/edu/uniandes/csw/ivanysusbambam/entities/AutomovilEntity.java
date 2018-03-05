@@ -53,7 +53,7 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     private List<VentaEntity> ventas;
     
     @PodamExclude
-    @OneToOne 
+    @OneToOne (mappedBy = "automovil")
     private CompraEntity compra;
     
     /**
