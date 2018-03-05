@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.VentaLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+
+import co.edu.uniandes.csw.ivanysusbambam.mappers.WebApplicationExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;

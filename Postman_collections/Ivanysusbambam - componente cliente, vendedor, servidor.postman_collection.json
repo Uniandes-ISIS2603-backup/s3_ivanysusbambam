@@ -12,6 +12,20 @@
 			"item": [
 				{
 					"name": "GET clientes",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e8ce9e29-671f-45ec-9c14-824abc83fb0c",
+								"type": "text/javascript",
+								"exec": [
+									"var data= JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"authors count\"] = data.length >= 0;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -48,6 +62,20 @@
 				},
 				{
 					"name": "GET cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "36e33c39-781c-4f76-80f2-b77fa2a7ccbf",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"var data = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [
@@ -85,6 +113,18 @@
 				},
 				{
 					"name": "PUT cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a902776e-50c1-44c9-a201-984ee2140f02",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -100,7 +140,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe Velasquez\",\n\t\"cedula\": 1016609031,\n\t\"calificacionesTienda\" : [], \n\t\"compras\" : [{\"idCompra\" : 14232}],\n    \"prospectosCompra\": [],\n    \"quejasReclamos\": [],\n    \"ventas\": []\n}"
+							"raw": "{\n\t\"nombre\": \"Felipe segundo Velásquez\",\n\t\"cedula\": 1016609031\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345",
@@ -122,6 +162,21 @@
 				},
 				{
 					"name": "POST cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "c3c7ceba-6c2a-422e-aa1e-186c330e2bd3",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"new_id\",data.id);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"console.log(data.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -137,7 +192,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe Velasquez\",\n\t\"cedula\": 1016609031\n}"
+							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\": 1016609031\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes",
@@ -158,6 +213,18 @@
 				},
 				{
 					"name": "DELETE cliente",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "fd728ae5-7b59-4207-80d0-343a03a7dabb",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [
@@ -173,10 +240,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe Velasquez\",\n\t\"cedula\": 1016609031\n}"
+							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1016609031",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -185,7 +252,8 @@
 							"path": [
 								"s3_ivanysusbambam-web",
 								"api",
-								"clientes"
+								"clientes",
+								"1016609031"
 							]
 						},
 						"description": ""
@@ -200,6 +268,20 @@
 			"item": [
 				{
 					"name": "GET vendedores",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "01516bb3-be77-4ea3-b255-c74c303da96d",
+								"type": "text/javascript",
+								"exec": [
+									"var data= JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"authors count\"] = data.length >= 0;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -223,12 +305,26 @@
 				},
 				{
 					"name": "GET vendedor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "74dc5547-d9c5-4313-a47d-bdb89edb491c",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"var data = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/124",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/1261",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -238,7 +334,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"vendedores",
-								"124"
+								"1261"
 							]
 						},
 						"description": ""
@@ -247,6 +343,21 @@
 				},
 				{
 					"name": "POST vendedor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b6f0a807-f108-4b97-a067-06a1cd654668",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"new_id\",data.id);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"console.log(data.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -257,7 +368,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\" : 1234567890,\n\t\"carnetVendedor\" : 1334\n}"
+							"raw": "{\n\t\"nombre\": \"Manuela Beltrán\",\n\t\"cedula\" : 85,\n\t\"carnetVendedor\" : 1261,\n\t\"puntoDeVenta\" : null\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores",
@@ -278,6 +389,18 @@
 				},
 				{
 					"name": "PUT vendedor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "938084df-74aa-457c-a4a3-bd5d72199e49",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -288,7 +411,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\" : 1234567890,\n\t\"carnetVendedor\" : 1334,\n\t\"prospectosCompra\" : [],\n\t\"ventas\" : [],\n\t\"compras\" : [{\"idCompra\" : 1234},{\"idCompra\": 1235}],\n\t\"puntoDeVenta\" : {\"direccion\" : \"calle 19 # 10\", \"telefono\" : 534243, \"nombre\": \"Tu automóvil centro\"}\n}"
+							"raw": "{\n\t\"nombre\": \"Jose Asunción de Silva\",\n\t\"cedula\" : 85,\n\t\"carnetVendedor\" : 1261\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/12345",
@@ -310,12 +433,24 @@
 				},
 				{
 					"name": "DELETE vendedor",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "64b02fed-e553-4c3b-9044-391853976bc4",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/12345",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/1261",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -325,7 +460,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"vendedores",
-								"12345"
+								"1261"
 							]
 						},
 						"description": ""
@@ -340,6 +475,20 @@
 			"item": [
 				{
 					"name": "GET prospectoscompra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d815aceb-938d-4fc0-9715-68ca4b93b609",
+								"type": "text/javascript",
+								"exec": [
+									"var data= JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"tests[\"authors count\"] = data.length >= 0;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -363,6 +512,20 @@
 				},
 				{
 					"name": "GET prospectocompra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "59eb5e37-5696-48a3-9e26-fe03478f832b",
+								"type": "text/javascript",
+								"exec": [
+									"console.log(responseBody);",
+									"var data = JSON.parse(responseBody);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -387,6 +550,18 @@
 				},
 				{
 					"name": "PUT prospectocompra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b74d0f4-f6ab-49c7-92c6-341b4510662d",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -397,10 +572,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"nombre\": \"juan rulfo\", \"cedula\": 1234 },\n\t\"vendedor\": {\"nombre\" : \"Kafka\", \"cedula\" : 1234, \"carnetVendedor\" : 13512},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
+							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002 v 2.\",\n\t\"id\": 123,\n\t\"cliente\": {\"cedula\": 65,\"nombre\": \"Bekki Howood\"},\n\t\"vendedor\": {\"nombre\": \"Manuela Beltrán\", \"cedula\" : 85,\"carnetVendedor\" : 1261},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1234",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -410,7 +585,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"prospectoscompra",
-								"1234"
+								"1"
 							]
 						},
 						"description": ""
@@ -419,6 +594,21 @@
 				},
 				{
 					"name": "POST prospectocompra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a2e33e54-d2bf-438c-979f-33b3198a16b7",
+								"type": "text/javascript",
+								"exec": [
+									"var data = JSON.parse(responseBody);",
+									"postman.setGlobalVariable(\"new_id\",data.id);",
+									"tests[\"Status code is 200\"] = responseCode.code === 200;",
+									"console.log(data.id);"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [
@@ -429,7 +619,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"nombre\": \"juan rulfo\", \"cedula\": 1234 },\n\t\"vendedor\": {\"nombre\" : \"Kafka\", \"cedula\" : 1234, \"carnetVendedor\" : 13512},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
+							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"cedula\": 65,\"nombre\": \"Bekki Howood\"},\n\t\"vendedor\": {\"nombre\": \"Manuela Beltrán\", \"cedula\" : 85,\"carnetVendedor\" : 1261},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra",
@@ -450,12 +640,24 @@
 				},
 				{
 					"name": "DELETE prospectocompra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "cbf04bd9-f609-4d62-ad0e-f4434e117d4a",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
 					"request": {
 						"method": "DELETE",
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1234",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -465,7 +667,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"prospectoscompra",
-								"1234"
+								"1"
 							]
 						},
 						"description": ""

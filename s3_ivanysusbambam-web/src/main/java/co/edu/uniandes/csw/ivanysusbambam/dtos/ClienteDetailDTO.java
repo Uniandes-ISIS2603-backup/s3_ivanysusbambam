@@ -113,14 +113,17 @@ public class ClienteDetailDTO extends ClienteDTO {
 
             if (ce.getQuejasReclamos() != null) {
                 quejasReclamos = new ArrayList<>();
-                //for(QuejaReclamoEntity qr : ce.getQuejasReclamos()) quejasReclamos.add(new QuejaReclamoDTO(qr));
+                for (QuejaReclamoEntity qr : ce.getQuejasReclamos()) {
+                    quejasReclamos.add(new QuejaReclamoDTO(qr));
+                }
 
             }
 
             if (ce.getCompras() != null) {
                 compras = new ArrayList<>();
-                //for(CompraEntity compe : ce.getCompras())
-                // quejasReclamos.add(new CompraDTO(ce));        
+                for (CompraEntity compe : ce.getCompras()) {
+                    compras.add(new CompraDTO(compe));
+                }
             }
 
             if (ce.getVentas() != null) {
@@ -132,8 +135,9 @@ public class ClienteDetailDTO extends ClienteDTO {
 
             if (ce.getMediosDePago() != null) {
                 mediosDePago = new ArrayList<>();
-                //for(MedioDePagoEntity me : ce.getMediosDePago()){
-                //  mediosDePago.add(new MedioDePagoDTO(me));
+                for (MedioDePagoEntity me : ce.getMediosDePago()) {
+                    mediosDePago.add(new MedioDePagoDTO(me));
+                }
             }
         }
     }
@@ -141,55 +145,56 @@ public class ClienteDetailDTO extends ClienteDTO {
     @Override
     public ClienteEntity toEntity() {
         ClienteEntity ce = super.toEntity();
-        
-        if(this.getProspectosCompra() != null){
+
+        if (this.getProspectosCompra() != null) {
             List<ProspectoCompraEntity> list = new ArrayList<>();
-            for(ProspectoCompraDTO pc : prospectosCompra){
+            for (ProspectoCompraDTO pc : prospectosCompra) {
                 list.add(pc.toEntity());
             }
             ce.setProspectosCompra(list);
         }
-        
-        if(this.getCalificacionesTienda() != null){
+
+        if (this.getCalificacionesTienda() != null) {
             List<CalificacionTiendaEntity> list = new ArrayList<>();
-            for(CalificacionTiendaDTO ct : calificacionesTienda){
+            for (CalificacionTiendaDTO ct : calificacionesTienda) {
                 list.add(ct.toEntity());
             }
             ce.setCalificacionesTienda(list);
         }
-        /*
+        
         if(this.getQuejasReclamos() != null){
             List<QuejaReclamoEntity> list = new ArrayList<>();
             for(QuejaReclamoDTO pc : quejasReclamos){
                 list.add(pc.toEntity());
             }
             ce.setQuejasReclamos(list);
-        }*/
+        }
         
-       /*if(this.getCompras() != null){
+        if(this.getCompras() != null){
             List<CompraEntity> list = new ArrayList<>();
             for(CompraDTO ct : compras){
                 list.add(ct.toEntity());
             }
             ce.setCompras(list);
-        }*/
-       
-       if(this.getVentas() != null){
+        }
+        
+        if (this.getVentas() != null) {
             List<VentaEntity> list = new ArrayList<>();
-            for(VentaDTO ct : ventas){
+            for (VentaDTO ct : ventas) {
                 list.add(ct.toEntity());
             }
             ce.setVentas(list);
         }
-       
-       /*if(this.getMediosDePago() != null){
+
+        if(this.getMediosDePago() != null){
             List<MedioDePagoEntity> list = new ArrayList<>();
             for(MedioDePagoDTO ct : mediosDePago){
                 list.add(ct.toEntity());
             }
             ce.setMediosDePago(list);
-        }*/
-       return ce;
+        }
+        
+        return ce;
     }
     //-----------------------------GETTERS--------------------------------
 
@@ -236,10 +241,9 @@ public class ClienteDetailDTO extends ClienteDTO {
     public List<MedioDePagoDTO> getMediosDePago() {
         return mediosDePago;
     }
-    
-    
+
     public List<QuejaReclamoDTO> getQuejasReclamos() {
-      return quejasReclamos;
+        return quejasReclamos;
     }
 
     //---------------------------ADDERS----------------------------------
@@ -355,6 +359,5 @@ public class ClienteDetailDTO extends ClienteDTO {
     public void setMediosDePago(List<MedioDePagoDTO> mediosDePago) {
         this.mediosDePago = mediosDePago;
     }
-
 
 }
