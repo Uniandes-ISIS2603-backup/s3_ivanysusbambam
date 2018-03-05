@@ -5,12 +5,14 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
+import co.edu.uniandes.csw.ivanysusbambam.podam.TelefonoStrategy;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 /**
  *
  * @author if.garcia
@@ -20,6 +22,7 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     
     private String direccion;
     
+    @PodamStrategyValue(TelefonoStrategy.class)
     private Integer telefono;
         
     @PodamExclude
@@ -27,15 +30,15 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     private List<VendedorEntity> vendedores;
     
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta")
+    @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<CompraEntity> compras;
     
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta")
+    @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<VentaEntity> ventas;
     
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta")
+    @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<AutomovilEntity> automoviles;
 
     
@@ -45,11 +48,11 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     public void setDireccion(String direccion){
         this.direccion = direccion;
     }
-    public int getTelefono(){
+    public Integer getTelefono(){
         return telefono;
     }
     
-    public void setTelefono(int telefono){
+    public void setTelefono(Integer telefono){
         this.telefono = telefono;
     }
   

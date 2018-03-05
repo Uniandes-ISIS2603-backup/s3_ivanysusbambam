@@ -19,7 +19,7 @@ public class PuntoDeVentaDTO {
     
     private String direccion;
     
-    private int telefono;
+    private Integer telefono;
     
     
     public PuntoDeVentaDTO(){
@@ -51,7 +51,7 @@ public class PuntoDeVentaDTO {
     public void setDireccion(String direccion){
         this.direccion = direccion;
     }
-    public int getTelefono(){
+    public Integer getTelefono(){
         return telefono;
     }
     public void setTelefono(int telefono){
