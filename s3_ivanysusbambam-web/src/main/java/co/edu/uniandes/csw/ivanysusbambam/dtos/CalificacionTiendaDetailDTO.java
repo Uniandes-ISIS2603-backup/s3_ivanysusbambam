@@ -5,6 +5,8 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
+
 /**
  * Objeto de transferencia que contiene información detallada de una calificacion
  * de un cliente a un carro comprado.
@@ -45,6 +47,10 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO{
     public CalificacionTiendaDetailDTO() {
     }
     
+    public CalificacionTiendaDetailDTO(CalificacionTiendaEntity entity){
+        super(entity);
+        this.setCliente(new ClienteDTO(entity.getCliente()));
+    }
     /**
      * Representa el cliente que ha puesto la calificacion
      */

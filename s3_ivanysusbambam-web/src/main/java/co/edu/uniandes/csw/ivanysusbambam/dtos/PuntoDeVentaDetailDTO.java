@@ -5,6 +5,11 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
 
+import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -62,6 +67,25 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
      */
     public PuntoDeVentaDetailDTO(){
         
+    }
+    
+    public PuntoDeVentaDetailDTO(PuntoDeVentaEntity entity){
+        super(entity);
+        if(entity != null){
+            inicializarListas();
+            for(VentaEntity v : entity.getVentas()){
+                ventas.add(new VentaDTO(v));
+            }
+            for(CompraEntity c: entity.getCompras()){
+                compras.add(new CompraDTO(c));
+            }
+            for(VendedorEntity ve : entity.getVendedores()){
+                vendedores.add(new VendedorDTO(ve));
+            }
+            for(AutomovilEntity at : entity.getAutomoviles()){
+                automoviles.add(new AutomovilDTO(at));
+            }
+        }
     }
     
     public void inicializarListas(){

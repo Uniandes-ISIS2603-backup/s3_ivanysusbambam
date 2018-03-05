@@ -7,9 +7,13 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 import co.edu.uniandes.csw.ivanysusbambam.dtos.CalificacionTiendaDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.CalificacionTiendaDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.CalificacionTiendaLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -18,6 +22,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 
 /**
  *
@@ -29,110 +34,134 @@ import javax.ws.rs.Produces;
 @RequestScoped
 public class CalificacionTiendaResource {
     
-     /**
-     * GET api/clientes/(id)/calificacionTienda Retorna todas las calificaciones  
-     * que un cliente ha puesto a una lista de tiendas
-     * 
-     * <pre>Busca y devuelve todas las calificaciones que un cliente ha dado.
-     * 
-     * Codigos de respuesta:
-     * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve todas las calificaciones del cliente.</code> 
-     * </pre>
-     * 
-     * @param id identificador unico del cliente.
-     * @return JSONArray  con la información de todas las calificaciones del cliente.
-     * @throws BusinessLogicException si el cliente con el id dado no existe.
-     */
-    @GET
-    public List<CalificacionTiendaDetailDTO> getCalificacionesTienda(@PathParam("id") Long id) throws BusinessLogicException{
-        return null;
-    }
+    @Inject
+    CalificacionTiendaLogic ctiendaLogic;
     
-     /**
-     * GET /api/clientes/(id)/calificacionesTienda/(pid): Obtiene una calificacion según su id.
-     * <pre> 
+    /**
+     * GET api/calificacionesTienda Retorna todos las calificaciones de carros
+     * 
+     * <pre>Busca y devuelve todos las calificaciones de Tienda.
+     * 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK se encontró la calificacion.
-     * </code> 
-     * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found No existe un un cliente o calificacion con los id dados.
-     * </code> 
+     * 200 OK Devuelve todos las calificaciones de Tienda del cliente.</code> 
      * </pre>
-     * @param id id del cliente.
-     * @param pid id de la calificacion.
-     * @return JSON la calificacion de tienda buscada.
-     * @throws BusinessLogicException si no existe el cliente con el id dado o la calificacion con el id dado..
+     * 
+     * @return JSONArray  con la información de todos las calificaciones de Tienda.
      */
     @GET
-    @Path("{pid: \\d+}")
-    public CalificacionTiendaDetailDTO getCalificacionTienda(@PathParam("id") Long id, @PathParam("pid") Long pid) throws BusinessLogicException{
-        return null;
+    public List<CalificacionTiendaDetailDTO> getCalificacionesTienda(){
+        List<CalificacionTiendaDetailDTO> pts = new ArrayList<>();
+        for(CalificacionTiendaEntity pv : ctiendaLogic.getCalificacionesTienda()) {
+            pts.add(new CalificacionTiendaDetailDTO(pv));
+        }
+        return pts;
     }
     
     /**
-     * PUT /api/clientes/(id)/calificacionesTienda/(pid): Actualiza una calificacion de una tienda según su id.
-     * <pre> 
+     * <h1>GET /api/calificacionesTienda/{id} : Obtener calificacion de una Tienda por id.</h1>
+     *
+     * <pre>Busca la calificacion de una Tienda con el id asociado recibido en la URL y lo devuelve.
+     *
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK se actualizó la calificacion.
+     * 200 OK Devuelve la calificacion de una Tienda correspondiente al id.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente o la calificacion con el id dado.
+     * 404 Not Found No existe la calificacion de una Tienda con el id dado.
      * </code> 
      * </pre>
-     * @param id id del cliente.
-     * @param pid id de la calificacion de la tienda.
-     * @return JSON el la calificacion de tienda actualizada.
-     * @throws BusinessLogicException si no existe el cliente con el id dado o el prospecto con el id dado.
+     * @param id Identificador de la calificacion de una Tienda que se esta buscando. Este debe ser una cadena de dígitos.
+     * @return JSON {@link PuntoDeVentaDetailDTO} - La calificacion de tienda buscado
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra la calificacion de una tienda.
+     */
+    @GET
+    @Path("{id: \\d+}")
+    public CalificacionTiendaDetailDTO getCalificacionTienda(@PathParam("id") Long id)throws WebApplicationException{
+        CalificacionTiendaEntity cc = ctiendaLogic.getCalificacionTienda(id);
+        if(cc == null) throw new WebApplicationException("El recurso prospecto de compra " + id + " no existe");
+
+        return new CalificacionTiendaDetailDTO(cc);
+    }
+    
+     /**
+     * <h1>PUT /api/calificacionesTienda/{id} : Actualizar una calificacionde Tienda con el id dado.</h1>
+     * <pre>Cuerpo de petición: JSON {@link CalificacionTiendaDetailDTO}.
+     *
+     * Actualiza una calificacion de una tienda con el id recibido en la URL con la información que se recibe en el cuerpo de la petición.
+     *
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Actualiza una calificacion de tienda el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> 
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found. No existe una calificacion de tienda con el id dado.
+     * </code> 
+     * </pre>
+     * @param id Identificador de la calificacion de tienda que se desea actualizar. Este debe ser una cadena de dígitos.
+     * @param calificacion {@link CalificacionTiendaDetailDTO} La calificacionde carro que se desea guardar.
+     * @return JSON {@link CalificacionTiendaDTO} - La calificacion de Tienda guardada.
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
+     * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra una calificacion de Tienda a actualizar.
      */
     @PUT
-    @Path("{pid: \\d+}")
-    public CalificacionTiendaDetailDTO putCalificacionTienda(@PathParam("id") long id, @PathParam("pid") long pid) throws BusinessLogicException{
-        return null;
+    @Path("{idCarro: \\d+}")
+    public CalificacionTiendaDetailDTO putCalificacionCarro(@PathParam("idCarro") Long id, CalificacionTiendaDetailDTO calificacion) throws BusinessLogicException{
+        CalificacionTiendaEntity cc = calificacion.toEntity();
+        cc.setId(id);
+        
+        CalificacionTiendaEntity oldEntity = ctiendaLogic.getCalificacionTienda(id);
+        if (oldEntity == null) {
+            throw new WebApplicationException("El punto de venta no existe", 404);
+        }
+        
+        cc.setCliente(oldEntity.getCliente());
+        return new CalificacionTiendaDetailDTO(ctiendaLogic.updateCalificacionTienda(cc));
     }
     
+    
     /**
-     * POST /api/clientes/(id)/calificacionTienda: Crea un nuevo prospecto de compra.
+     * POST /api/calificacionesTienda: Crea una nueva calificación de carro.
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se creó la nueva calificacion.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente el id dado.
+     * 404 Not Found no existe la calificacion con el id dado.
      * </code> 
      * </pre>
-     * @param id id del cliente.
-     * @param calificacion calificacion de la tienda que se añadirá.
-     * @return JSON la calificacion de la tienda creada con su id autoasignado.
-     * @throws BusinessLogicException si no existe el cliente con el id dado.
+     * @param calificacion la calificacion que se añadira que se añadirá.
+     * @return JSON de la calificacion de carro creada con su id autoasignado.
+     * @throws BusinessLogicException si no existe la venta con el id dado.
      */
     @POST
-    public CalificacionTiendaDetailDTO postCalificacionTienda(@PathParam("id") int id, CalificacionTiendaDetailDTO calificacion)throws BusinessLogicException{
-        return null;
+    public CalificacionTiendaDetailDTO postCalificacionTienda(CalificacionTiendaDetailDTO calificacion)throws BusinessLogicException{
+        return new CalificacionTiendaDetailDTO(ctiendaLogic.createCalificacionTienda(calificacion.toEntity()));
     }
+    
     /**
-     * DELETE /api/clientes/(id)/calificacionesTienda/(pid):elimina una calificacion según su id.
+     * DELETE /api/calificacionTienda/{id} : Borrar una calificacion de Tienda por id
      * <pre> 
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK se eliminó la calificacion.
+     * 200 OK se eliminó la calificacion de la Tienda.
      * </code> 
      * <code style="color: #c7254e; background-color: #f9f2f4;">
-     * 404 Not Found no existe el cliente o la calificacion con el id dado.
+     * 404 Not Found no existe la calificacion con el id dado.
      * </code> 
      * </pre>
-     * @param id id del cliente.
-     * @param pid id de la calificacion de la tienda.
-     * @return JSON de la calificacion de tienda actualizada.
-     * @throws BusinessLogicException si no existe el cliente con el id dado o la calificacion con el id dado.
+     * @param id id de la calificacion.
+     * @return JSON el de la calificacion de la Tienda actualizada.
+     * @throws BusinessLogicException si no existe la calificacion de tienda  con el id dado.
      */
     @DELETE
-    @Path("{pid: \\d+}")
-    public CalificacionTiendaDetailDTO deleteCalificacionTienda(@PathParam("id") int id, @PathParam("pid") int pid) throws BusinessLogicException{
-        return null;
+    @Path("{id: \\d+}")
+    public void deleteCalificacionTienda(@PathParam("id") Long id) throws BusinessLogicException{
+        CalificacionTiendaEntity entity = ctiendaLogic.getCalificacionTienda(id);
+        if (entity == null) {
+            throw new WebApplicationException("El author no existe", 404);
+        }
+        ctiendaLogic.deleteCalificacionTienda(id);
     }
     
 }
