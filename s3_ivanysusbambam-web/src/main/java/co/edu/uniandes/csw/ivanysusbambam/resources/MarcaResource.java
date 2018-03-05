@@ -1,10 +1,16 @@
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MarcaDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.MarcaDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.ModelDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.ModelDetailDTO;
+import co.edu.uniandes.csw.ivanysusbambam.ejb.MarcaLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -29,6 +35,9 @@ import javax.ws.rs.Produces;
 @Consumes("application/json")
 @RequestScoped
 public class MarcaResource {
+    
+    @Inject
+    private MarcaLogic logica;
      /**
      * GET /api/marcas: Retorna todas las marcas disponibles.
      * Retorna la información de las marcas registradas
@@ -47,28 +56,40 @@ public class MarcaResource {
      */
     @GET
     public List<MarcaDTO> getMarcas(){
-        return new ArrayList<>();
+        List<MarcaDTO> marc = new ArrayList<MarcaDTO>();
+        for(MarcaEntity c: logica.findAllMarcas()){
+            marc.add(new MarcaDetailDTO(c));
+        }
+        return marc;
     }
     /**
-     * <h1>GET /api/marcas/{nombre} : Buscar marca por nombre.</h1>
+     * <h1>GET /api/marcas/{nombre} : Buscar marca por Id.</h1>
      * 
      * <pre>Busca la marca requerida y la retorna
      * 
      * Códigos de respuesta:
      * <code style="color:#2A0A0A; background-color: #B40404;">
-     * Retorna correctamente la marca según su nombre
+     * Retorna correctamente la marca según su id
      * </code> 
      * <code style="color: #2A0A0A; background-color: #AEB404;">
      * 404 Not Found No existe la marca que se  busca
      * </code> 
      * </pre>
-     * @param nombr Nombre de la marca que se busca
+     * @param Id Identificador de la marca que se busca
      * @return JSON {@link MarcaDTO} - Representa la marca buscada
      */
-    @Path("{nombre: \\d+}")
+    @Path("{Id: \\d+}")
     @GET
-    public ModelDTO getMarca(@PathParam("nombre")String nombr){
-        return null;
+    public MarcaDetailDTO getMarca(@PathParam("Id")Long id) throws BusinessLogicException{
+        MarcaEntity  mdl = logica.findMarca(id);
+        MarcaDetailDTO nueva = null;
+        if(mdl == null){
+            throw new BusinessLogicException("El resource marca "+id+" no existe");
+        }
+        else
+        {
+            return new MarcaDetailDTO(mdl);
+        }
     }
            /**
      * <h1>POST /api/Marcas : Crea una nueva marca.</h1>
@@ -90,50 +111,60 @@ public class MarcaResource {
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error debido a la existencia de la marca que se deseaba crear.
      */
     @POST
-    public ModelDTO postMarca(ModelDTO Nueva) throws BusinessLogicException{
-         return Nueva;
+    public MarcaDetailDTO postMarca(MarcaDetailDTO Nueva) throws BusinessLogicException{
+         return new MarcaDetailDTO(logica.createMarca(Nueva.toEntity()));
     }
      /**
-     * <h1>PUT /api/marcas/{id} : Actualizar la marca con el nombre dado.</h1>
+     * <h1>PUT /api/marcas/{id} : Actualizar la marca con el id dado.</h1>
      * <pre>Cuerpo de petición: JSON {@link MarcaDTO}.
      * 
-     * Actualiza la marca con el nombre dado por parámetro.
+     * Actualiza la marca con el id dado por parámetro.
      * 
      * Codigos de respuesta:
      * <code style="color: #2A0A0A; background-color: #B40404;">
-     * Actualiza la marca con el nombre dado por parámetro y la retorna.</code> 
+     * 200 OK Actualiza la marca con el id dado por parámetro y la retorna.</code> 
      * <code style="color:#2A0A0A; background-color:#AEB404;">
-     * 404 Not Found. No existe una marca con el nombre dado
+     * 404 Not Found. No existe una marca con el id dado
      * </code> 
      * </pre>
-     * @param Nombre Nombre de la marca que se quiere actualizar
+     * @param id de la marca que se quiere actualizar
      * @param Nuevo {@link MarcaDTO} La marca que se quiere guardar
      * @return JSON {@link MarcaDTO} - La marca guardada
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error porque no existe una marca con ese nombre
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error porque no existe una marca con ese id
      */
-    @Path("{Nombre: \\d+}")
+    @Path("{Id: \\d+}")
     @PUT
-    public ModelDTO putModelo(@PathParam("Nombre") String Nombre, ModelDTO Nuevo) throws BusinessLogicException{
-        return Nuevo;
+    public MarcaDetailDTO putModelo(@PathParam("Id") Long id, MarcaDetailDTO Nuevo) throws BusinessLogicException{
+      MarcaEntity mar = logica.findMarca(id);
+      if(mar == null){
+          throw new BusinessLogicException("El recurso marca" +id+ "no existe");
+      }
+      else{
+          return new MarcaDetailDTO(mar);
+      }
     }
       /**
-     * <h1>DELETE /api/marcas/{id} : Borrar una marca por nombre.</h1>
+     * <h1>DELETE /api/marcas/{id} : Borrar una marca por id.</h1>
      * 
-     * <pre>Borra la marca con el nombre asociado
+     * <pre>Borra la marca con el id asociado
      * 
      * Códigos de respuesta:<br>
      * <code style="color: #2A0A0A; background-color: #B40404;">
-     * Elimina correctamente la marca con el nombre asociado.</code>
+     * Elimina correctamente la marca con el id asociado.</code>
      * <code style="color:#2A0A0A; background-color: #AEB404;">
-     * 404 Not Found. No existe una marca, con el nombre asociado.
+     * 404 Not Found. No existe una marca, con el id asociado.
      * </code>
      * </pre>
      * @param nombr Identificador de la marca que se desea borrar
      */
     @DELETE
-    @Path("{nomMarca: \\d+}")
-     public void deleteMarca(@PathParam("nomMarca") String nombr) {
-        //ssssssss
+    @Path("{Id: \\d+}")
+     public void deleteMarca(@PathParam("Id") Long id) throws BusinessLogicException {
+        MarcaEntity entity = logica.findMarca(id);
+        if (entity == null) {
+            throw new BusinessLogicException("El recurso marca" + id + " no existe.");
+        }
+        logica.deleteMarca(id);
     }
     
 }

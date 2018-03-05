@@ -87,6 +87,7 @@ public class MarcaLogicTest {
      */
     private void clearData() {
         em.createQuery("delete from MarcaEntity").executeUpdate();
+        em.createQuery("delete from AutomovilEntity").executeUpdate();
     }
 
     /**
