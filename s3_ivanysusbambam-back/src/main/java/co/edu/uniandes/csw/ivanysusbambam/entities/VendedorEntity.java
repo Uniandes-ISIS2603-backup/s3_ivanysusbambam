@@ -141,6 +141,8 @@ public class VendedorEntity implements Serializable{
     
     @Override
     public boolean equals(Object obj) {
+        if(obj == null)
+            return false;
         if (this.getCarnetVendedor() != null && ((VendedorEntity) obj).getCarnetVendedor() != null) {
             return this.getCarnetVendedor().equals(((VendedorEntity) obj).getCarnetVendedor());
         }
