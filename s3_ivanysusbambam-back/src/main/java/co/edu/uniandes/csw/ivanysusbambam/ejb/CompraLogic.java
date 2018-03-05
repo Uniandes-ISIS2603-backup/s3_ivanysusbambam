@@ -36,22 +36,22 @@ public class CompraLogic
     
     public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException
     {
-        if (compraPersistence.find(compra.getIdCompra())!=null)
-        {
-            throw new BusinessLogicException("Ya existe una compra con ese id");
-        }
-        if(clientePersistence.find(compra.getCliente().getCedula())==null)
-        {
-            throw new BusinessLogicException("El cliente no esta registrado en el sistema");
-        }
-        if(vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor())==null)
-        {
-            throw new BusinessLogicException("El vendedor encargado no es valido"); 
-        }
-        if(puntoDeVentaPersistence.find(compra.getPuntoDeVenta().getId())==null)
-        {
-             throw new BusinessLogicException("El punto de venta no es valido"); 
-        }
+//        if (compraPersistence.find(compra.getIdCompra())!=null)
+//        {
+//            throw new BusinessLogicException("Ya existe una compra con ese id");
+//        }
+//        if(clientePersistence.find(compra.getCliente().getCedula())==null)
+//        {
+//            throw new BusinessLogicException("El cliente no esta registrado en el sistema");
+//        }
+//        if(vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor())==null)
+//        {
+//            throw new BusinessLogicException("El vendedor encargado no es valido"); 
+//        }
+//        if(puntoDeVentaPersistence.find(compra.getPuntoDeVenta().getId())==null)
+//        {
+//             throw new BusinessLogicException("El punto de venta no es valido"); 
+//        }
         compraPersistence.create(compra);
         return compra;
     }

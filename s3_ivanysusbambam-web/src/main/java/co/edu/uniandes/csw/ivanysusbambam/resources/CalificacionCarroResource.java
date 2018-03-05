@@ -10,7 +10,9 @@ import co.edu.uniandes.csw.ivanysusbambam.dtos.CalificacionCarroDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.CalificacionCarroLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionCarroEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+
 import java.util.ArrayList;
+
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -119,7 +121,6 @@ public class CalificacionCarroResource {
         //cc.setVenta(oldEntity.getVenta());
         return new CalificacionCarroDetailDTO(ccarroLogic.updateCalificacionCarro(cc));
     }
-    
     
     /**
      * POST /api/calificacionesCarro: Crea una nueva calificación de carro.
