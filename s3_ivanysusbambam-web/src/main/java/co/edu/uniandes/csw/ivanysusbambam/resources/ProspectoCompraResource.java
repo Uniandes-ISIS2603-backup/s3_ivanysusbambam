@@ -10,6 +10,8 @@ import co.edu.uniandes.csw.ivanysusbambam.dtos.ProspectoCompraDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.ProspectoCompraLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+
+import co.edu.uniandes.csw.ivanysusbambam.mappers.WebApplicationExceptionMapper;
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
