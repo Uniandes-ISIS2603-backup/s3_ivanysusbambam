@@ -127,10 +127,11 @@ public class ClienteEntity implements Serializable{
         this.mediosDePago = mediosDePago;
     }
   
-    public boolean equals(ClienteEntity obj) {
-        
-        if (obj.getCedula() != null && this.getCedula() != null) {
-            return this.getCedula().equals(obj.cedula);
+    @Override
+    public boolean equals(Object obj) {
+        if( obj == null) return false;
+        if (((ClienteEntity)obj).getCedula() != null && this.getCedula() != null) {
+            return this.getCedula().equals(((ClienteEntity) obj).getCedula());
         }
         
         return super.equals(obj);

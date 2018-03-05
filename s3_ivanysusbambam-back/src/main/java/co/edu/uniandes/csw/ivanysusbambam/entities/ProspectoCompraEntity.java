@@ -93,10 +93,12 @@ public class ProspectoCompraEntity implements Serializable {
         hash += (id != null ? id.hashCode() : 0);
         return hash;
     }
-
-    public boolean equals(ProspectoCompraEntity obj) {
-        if (obj.id != null && this.id != null) {
-            return this.id.equals(obj.id);
+    
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == null) return false;
+        if (((ProspectoCompraEntity)obj).id != null && this.id != null) {
+            return this.id.equals(((ProspectoCompraEntity) obj).id);
         }
         return super.equals(obj);
     }

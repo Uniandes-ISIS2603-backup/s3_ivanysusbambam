@@ -178,10 +178,11 @@ public class VendedorLogic {
      * vendedor o el nuevo nombre es null o no es una cadena alfabetica.
      */
     public VendedorEntity updateVendedor(VendedorEntity ve) throws BusinessLogicException {
-        LOG.log(Level.INFO, "actualizando vendedor con carnet: {0}", ve.getCarnetVendedor());
+        
         if (ve == null) {
             throw new BusinessLogicException("El vendedor no puede ser null");
         }
+        LOG.log(Level.INFO, "actualizando vendedor con carnet: {0}", ve.getCarnetVendedor());
         if (ve.getCarnetVendedor() == null) {
             throw new BusinessLogicException("El carnet no puede ser igual a null");
         }
