@@ -130,7 +130,7 @@ public class ClienteResource {
         
         if(c == null) throw new WebApplicationException("El recurso cliente " + id + " no existe");
         
-        else return new ClienteDetailDTO(clienteLogic.updateCliente(c));
+        else return new ClienteDetailDTO(clienteLogic.updateCliente(cliente.toEntity()));
         
     }
     

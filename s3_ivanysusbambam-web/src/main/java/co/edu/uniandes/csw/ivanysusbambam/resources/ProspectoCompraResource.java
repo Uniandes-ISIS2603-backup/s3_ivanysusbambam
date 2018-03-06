@@ -109,7 +109,7 @@ public class ProspectoCompraResource {
         
         if(pc == null) throw new WebApplicationException("El rescurso prospecto de compra " + pid + " no existe");
         
-        return new ProspectoCompraDetailDTO(pcLogic.updateProspectoCompra(pc));
+        return new ProspectoCompraDetailDTO(pcLogic.updateProspectoCompra(prospecto.toEntity()));
     }
     
     /**

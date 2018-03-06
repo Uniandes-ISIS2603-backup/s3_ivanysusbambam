@@ -129,7 +129,7 @@ public class VendedorResource {
         
         if(ve == null) throw new WebApplicationException("El recurso vendedor " + id + " no existe");
         
-        return new VendedorDetailDTO(vendedorLogic.updateVendedor(ve));
+        return new VendedorDetailDTO(vendedorLogic.updateVendedor(vendedor.toEntity()));
     }
     
     /**
