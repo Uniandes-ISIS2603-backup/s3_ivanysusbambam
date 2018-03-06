@@ -66,7 +66,7 @@ public class VentaDetailDTO extends VentaDTO {
             cliente = new ClienteDTO(entity.getCliente());
             automovil = new AutomovilDTO(entity.getAutomovil());
             calificacionCarro = new CalificacionCarroDTO(entity.getCalificacionCarro());
-            medioDePago = new MedioDePagoDTO();
+            medioDePago = new MedioDePagoDTO(entity.getMedioDePago());
             puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
             vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
             
@@ -93,9 +93,9 @@ public class VentaDetailDTO extends VentaDTO {
             VentaE.setCliente(cliente.toEntity());
             
         }
-//        if (medioDePago != null){
-//            VentaE.setMedioDePago(medioDePago.toEntity);
-//        }
+        if (medioDePago != null){
+            VentaE.setMedioDePago(medioDePago.toEntity());
+        }
         
         if (puntoDeVenta != null) {
             VentaE.setPuntoDeVenta(puntoDeVenta.toEntity());
