@@ -3,8 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package co.edu.uniandes.csw.ivanysusbambam.dtos;
+package co.edu.uniandes.csw.ivanysusbambam.resources;
 
+import co.edu.uniandes.csw.ivanysusbambam.dtos.AutomovilDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.CompraDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.PuntoDeVentaDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDTO;
+import co.edu.uniandes.csw.ivanysusbambam.dtos.VentaDTO;
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
