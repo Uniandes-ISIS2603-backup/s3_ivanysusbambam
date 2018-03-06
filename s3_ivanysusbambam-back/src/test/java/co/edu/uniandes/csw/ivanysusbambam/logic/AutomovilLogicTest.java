@@ -219,11 +219,10 @@ public class AutomovilLogicTest {
             System.out.println(e);
             ex = true;
         }
-        if (ex == true) {
-            Assert.assertTrue(ex);
-        } else {
-            Assert.assertFalse(ex);
-        }
+       if (pojoEntity.getPuntoDeVenta()== null || pojoEntity.getProspectosCompra() == null || pojoEntity.getMarca() == null || pojoEntity.getModel() == null|| pojoEntity.getVentas() == null){
+          Assert.assertTrue(ex);
+       }
+       else Assert.assertFalse(ex);
 
     }
 

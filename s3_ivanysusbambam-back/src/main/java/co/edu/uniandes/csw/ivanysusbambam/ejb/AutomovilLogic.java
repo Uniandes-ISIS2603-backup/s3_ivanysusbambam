@@ -154,7 +154,7 @@ public class AutomovilLogic {
         if(AE.getMarca() == null || !AEO.getMarca().equals(AE.getMarca())) throw new BusinessLogicException("No se puede verificar la marca");
         if(AE.getPuntoDeVenta()== null || !AEO.getPuntoDeVenta().equals(AE.getPuntoDeVenta())) throw new BusinessLogicException("No se puede modificar el punto de venta ");
                
-        System.out.println("HOLAAAA " + AE.getCompra() + "  ||| " + AEO.getCompra() );
+        
         if(AE.getCompra() == null ||AEO.compararCompra(AE.getCompra()) != 0 ) throw new BusinessLogicException ("no se puede cambiar la compra ");
 
         
