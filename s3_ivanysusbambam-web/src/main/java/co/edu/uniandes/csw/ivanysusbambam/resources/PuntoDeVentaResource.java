@@ -107,11 +107,9 @@ public class PuntoDeVentaResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra el punto de venta a actualizar.
      */
     @PUT
-    @Path("{id: \\d+}")
-    public PuntoDeVentaDetailDTO updatePuntoDeVenta(@PathParam("id") Long id, PuntoDeVentaDetailDTO pv) throws BusinessLogicException{
+    public PuntoDeVentaDetailDTO updatePuntoDeVenta(PuntoDeVentaDetailDTO pv) throws BusinessLogicException{
         PuntoDeVentaEntity entity = pv.toEntity();
-        entity.setId(id);
-        PuntoDeVentaEntity oldEntity = puntoDeVentaLogic.getPuntoDeVenta(id);
+        PuntoDeVentaEntity oldEntity = puntoDeVentaLogic.getPuntoDeVenta(pv.getId());
         if (oldEntity == null) {
             throw new WebApplicationException("El punto de venta no existe", 404);
         }
@@ -119,7 +117,7 @@ public class PuntoDeVentaResource {
 //        entity.setCompras(oldEntity.getCompras());
 //        entity.setVendedores(oldEntity.getVendedores());
 //        entity.setAutomoviles(oldEntity.getAutomoviles());
-        return new PuntoDeVentaDetailDTO(puntoDeVentaLogic.updatePuntoDeVenta(id, entity));
+        return new PuntoDeVentaDetailDTO(puntoDeVentaLogic.updatePuntoDeVenta(entity));
     }
     
     /**
