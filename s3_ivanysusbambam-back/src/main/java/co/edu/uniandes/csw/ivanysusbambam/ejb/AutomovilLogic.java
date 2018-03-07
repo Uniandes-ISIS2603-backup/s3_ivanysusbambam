@@ -86,7 +86,7 @@ public class AutomovilLogic {
         if (modeloPersistence.find(AE.getModel().getId()) == null) {
             throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
         }
-        if (marcaPersistence.findByNombre(AE.getMarca().getNombre()) == null) {
+        if (marcaPersistence.findByNombre(AE.getMarca().getName()) == null) {
             throw new BusinessLogicException("la Marca del automovil no existe");
         }
 

@@ -52,7 +52,7 @@ public class MarcaPersistence {
         return entity;
     }
         public MarcaEntity update(MarcaEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando marca con nombre=", entity.getNombre());
+        LOGGER.log(Level.INFO, "Actualizando marca con nombre=", entity.getName());
         return em.merge(entity);
     }
         public void delete(Long id) {

@@ -19,6 +19,16 @@ public class MarcaDTO {
      * Representa el nombre de la marca
      */
     private String nombre;
+    
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public MarcaDTO(){
         
@@ -28,7 +38,7 @@ public class MarcaDTO {
      * @param nueva Entidad de la marca
      */
     public MarcaDTO(MarcaEntity nueva){
-        this.nombre = nueva.getNombre();
+        this.nombre = nueva.getName();
     }
     /**
      * Método que convierte el DTO en una entidad
@@ -38,6 +48,7 @@ public class MarcaDTO {
     {
         MarcaEntity nueva = new MarcaEntity();
         nueva.setName(this.getNombre());
+        nueva.setId(this.getId());
         return nueva;
     }
     /**

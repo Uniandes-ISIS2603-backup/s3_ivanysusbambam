@@ -19,10 +19,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  */
 @Entity
 public class MarcaEntity extends BaseEntity implements Serializable{
-      /**
-     * Representa el nombre de la marca
-     */
-    private String nombre;
+   
     
     @PodamExclude
      @OneToMany(mappedBy = "marca")
@@ -32,13 +29,7 @@ public class MarcaEntity extends BaseEntity implements Serializable{
     @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
     private  List<ModelEntity> modelos = new ArrayList<ModelEntity>();
  
-    /**
-     * Retorna el nombre de la marca
-     * @return Nombre de la marca
-     */
-    public String getNombre(){
-        return nombre;
-    }
+  
     
     public List<AutomovilEntity> getAutomoviles(){
         return automoviles;
@@ -49,10 +40,7 @@ public class MarcaEntity extends BaseEntity implements Serializable{
     }
     
     
-    public void setNombre(String nom)
-    {
-        this.nombre= nom;
-    }
+   
     
     public void setAutomoviles(List<AutomovilEntity> autos){
         this.automoviles = autos;

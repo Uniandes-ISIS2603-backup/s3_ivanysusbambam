@@ -26,6 +26,7 @@ public class MarcaDetailDTO  extends MarcaDTO{
      */
     private List<ModelDTO> modelos;
     
+    private Long id;
     //-----------------------------------------------------------------------------------------------------------------
     // Métodos Get
     //-----------------------------------------------------------------------------------------------------------------
@@ -51,8 +52,8 @@ public class MarcaDetailDTO  extends MarcaDTO{
      */
     public MarcaDetailDTO(MarcaEntity entity) {
         super(entity);
-        if (entity.getNombre()!=null) {
-            this.SetNombre(entity.getNombre());
+        if (entity.getName()!=null) {
+            this.SetNombre(entity.getName());
         } else {
             entity.setName(null);
         }
@@ -78,8 +79,14 @@ public class MarcaDetailDTO  extends MarcaDTO{
     public MarcaEntity toEntity() {
         MarcaEntity marca = super.toEntity();
         if (this.getNombre()!=null) {
-            marca.setName(null);
+            marca.setName(this.getNombre());
         }
+        
+        if(this.getId()!=null)
+        {
+            marca.setId(id);
+        }
+        
         if (getModelos() != null) {
             List<ModelEntity> modelsEntity = new ArrayList<>();
             for (ModelDTO dtoModel : getModelos()) {
@@ -113,5 +120,13 @@ public class MarcaDetailDTO  extends MarcaDTO{
      */
     public void setModelos(List<ModelDTO> models){
         this.modelos = models;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }

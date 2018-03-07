@@ -20,6 +20,8 @@ public class ModelDetailDTO extends ModelDTO {
      */
     private List<AutomovilDTO> automoviles;
     
+    private Long id;
+    
        /**
      * Representa el numero de puertas del vehículo
      */
@@ -68,6 +70,10 @@ public class ModelDetailDTO extends ModelDTO {
             this.transmision = entity.getTransmision();
         }else {
             entity.setTransmision(null);
+        }
+        if(entity.getId()!=null)
+        {
+            this.id = entity.getId();
         }
         //Revisar bien esta parte 
         if (entity.getAutomoviles()!= null) {
@@ -130,6 +136,14 @@ public class ModelDetailDTO extends ModelDTO {
      */
     public List<AutomovilDTO> getAutomoviles(){
         return automoviles;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
     
  

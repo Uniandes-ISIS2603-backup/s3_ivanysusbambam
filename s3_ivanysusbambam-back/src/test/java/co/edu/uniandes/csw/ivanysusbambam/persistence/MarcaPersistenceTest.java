@@ -137,7 +137,7 @@ public class MarcaPersistenceTest {
         MarcaEntity entity = data.get(0);
         MarcaEntity newEntity = marcaPersistence.find(entity.getId());
         Assert.assertNotNull(newEntity);
-        Assert.assertEquals(entity.getNombre(), newEntity.getNombre());
+        Assert.assertEquals(entity.getName(), newEntity.getName());
         Assert.assertEquals(entity.getAutomoviles(), newEntity.getAutomoviles());
         Assert.assertEquals(entity.getModelos(), newEntity.getModelos());
 
@@ -169,7 +169,7 @@ public class MarcaPersistenceTest {
 
         MarcaEntity resp = em.find(MarcaEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getNombre(), resp.getNombre());
+        Assert.assertEquals(newEntity.getName(), resp.getName());
     }
 
 }

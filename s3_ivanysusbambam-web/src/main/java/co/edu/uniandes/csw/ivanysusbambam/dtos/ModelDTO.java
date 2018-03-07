@@ -14,6 +14,15 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
  */
 public class ModelDTO {
     
+    private Long id;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     /**
      * Representa el numero de puertas del vehículo
      */

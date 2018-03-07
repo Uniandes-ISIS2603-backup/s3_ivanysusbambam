@@ -157,7 +157,7 @@ public class MarcaLogicTest {
             resultEntity = marcaLogic.findMarca(entity.getId());
             Assert.assertNotNull(resultEntity);
             Assert.assertEquals(entity.getId(), resultEntity.getId());
-            Assert.assertEquals(entity.getNombre(), resultEntity.getNombre());
+            Assert.assertEquals(entity.getName(), resultEntity.getName());
             Assert.assertEquals(entity.getAutomoviles(), resultEntity.getAutomoviles());
             Assert.assertEquals(entity.getModelos(), resultEntity.getModelos());
         } catch (BusinessLogicException ex) {
@@ -200,7 +200,7 @@ public class MarcaLogicTest {
             MarcaEntity resp = em.find(MarcaEntity.class, entity.getId());
             
             Assert.assertEquals(pojoEntity.getId(), resp.getId());
-            Assert.assertEquals(pojoEntity.getNombre(), resp.getNombre());
+            Assert.assertEquals(pojoEntity.getName(), resp.getName());
             Assert.assertEquals(pojoEntity.getModelos(), resp.getModelos());
              Assert.assertEquals(pojoEntity.getAutomoviles(), resp.getAutomoviles());
         } catch (BusinessLogicException ex) {

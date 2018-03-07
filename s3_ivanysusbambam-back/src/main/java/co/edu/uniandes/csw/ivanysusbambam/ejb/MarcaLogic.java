@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.ejb;
 
-
 import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MarcaPersistence;
@@ -24,11 +23,11 @@ public class MarcaLogic {
 
     @Inject
     private MarcaPersistence persistence;
-    
-   /** @Inject
-    private AutomovilPersitence persistencea; // TO DO: FALTA LA PERSISTENCIA DEL AUTOMOVIL.
-*/
-    
+
+    /**
+     * @Inject private AutomovilPersitence persistencea; // TO DO: FALTA LA
+     * PERSISTENCIA DEL AUTOMOVIL.
+     */
     private static final Logger LOG = Logger.getLogger(MarcaLogic.class.getName());
 
     /**
@@ -36,15 +35,12 @@ public class MarcaLogic {
      *
      * @param ne la marca entity que se busca persistir
      * @return La marca que se persistió
-     * @throws BusinessLogicException Si ya existe una marca con el nombre dado, o si el nombre que se busca es null
+     * @throws BusinessLogicException Si ya existe una marca con el nombre dado,
+     * o si el nombre que se busca es null
      */
     public MarcaEntity createMarca(MarcaEntity ne) throws BusinessLogicException {
-
         if (persistence.find(ne.getId()) != null) {
             throw new BusinessLogicException("Ya existe una marca con el nombre dado");
-        }
-        if (ne.getNombre() == null) {
-            throw new BusinessLogicException("El nombre no puede ser null");
         }
         return persistence.create(ne);
     }
@@ -69,13 +65,10 @@ public class MarcaLogic {
      * existe o si se desea ingresar una marca nula.
      */
     public MarcaEntity updateMarca(MarcaEntity ma) throws BusinessLogicException {
-        LOG.log(Level.INFO, "Actualizando marca con nombre: {0}", ma.getNombre());
-        if (ma == null) {
-            throw new BusinessLogicException("La marca  a ser actualizado no puede ser null");
-        }
+        LOG.log(Level.INFO, "Actualizando marca con nombre: {0}", ma.getName());
         MarcaEntity mar = persistence.find(ma.getId());
         if (mar == null) {
-            throw new BusinessLogicException("No se puede actualizar una marca inexistente");
+            throw new BusinessLogicException("La marca no existe en la base de datos");
         }
         return persistence.update(ma);
     }
@@ -89,10 +82,7 @@ public class MarcaLogic {
      */
     public void deleteMarca(Long id) throws BusinessLogicException {
         LOG.log(Level.INFO, "Intentando eliminar marca con id: {0}", id);
-        if (id == null) {
-            throw new BusinessLogicException("El id no puede ser null");
-        }
-        if(persistence.find(id)==null){
+        if (persistence.find(id) == null) {
             throw new BusinessLogicException("La marca no existe en la base de datos");
         }
         persistence.delete(id);
@@ -107,9 +97,11 @@ public class MarcaLogic {
      * válido.
      */
     public MarcaEntity findMarca(Long id) throws BusinessLogicException {
- 
+
+        if (id == null) {
+            throw new BusinessLogicException("El id buscado no puede ser null");
+        }
         return persistence.find(id);
     }
-
 
 }
