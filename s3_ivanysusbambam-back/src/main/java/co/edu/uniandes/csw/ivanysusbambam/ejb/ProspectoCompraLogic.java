@@ -50,9 +50,10 @@ public class ProspectoCompraLogic {
         
         if(pc.getId()<=0) throw new BusinessLogicException("EL id no debería ser <= 0");
         if(persistence.find(pc.getId()) != null) throw new BusinessLogicException("El prospecto de compra ya existe en la base de datos");
-        if(vendedorPersistence.find(pc.getVendedor().getCarnetVendedor()) == null) throw new BusinessLogicException("El vendedor del prospecto de compra no esta registrado en la base de datos"); 
-        if(clientePersistence.find(pc.getCliente().getCedula()) == null) throw new BusinessLogicException("El cliente del prospecto de compra no está registrado en la base de datos");
-        if(automovilPersistence.find(pc.getAutomovil().getId()) == null) throw new BusinessLogicException("El automóvil del prospecto de compra no existe");
+        if(pc.getVendedor().getCarnetVendedor() == null||vendedorPersistence.find(pc.getVendedor().getCarnetVendedor()) == null) throw new BusinessLogicException("El vendedor del prospecto de compra no esta registrado en la base de datos o es null"); 
+        
+        if(pc.getCliente().getCedula() == null || clientePersistence.find(pc.getCliente().getCedula()) == null) throw new BusinessLogicException("El cliente del prospecto de compra no está registrado en la base de datos o es null");
+        if(pc.getAutomovil().getId() == null || automovilPersistence.find(pc.getAutomovil().getId()) == null) throw new BusinessLogicException("El automóvil del prospecto de compra no existe o es null");
         return persistence.create(pc);
     }
     

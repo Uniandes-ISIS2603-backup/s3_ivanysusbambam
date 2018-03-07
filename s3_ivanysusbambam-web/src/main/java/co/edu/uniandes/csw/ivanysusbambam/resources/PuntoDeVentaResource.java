@@ -169,4 +169,3 @@ public class PuntoDeVentaResource {
         return new PuntoDeVentaDetailDTO(puntoDeVentaLogic.createPuntoDeVenta(pv.toEntity()));
     }
 }
-

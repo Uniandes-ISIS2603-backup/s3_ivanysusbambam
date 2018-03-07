@@ -66,11 +66,13 @@ public class AutomovilLogic {
         if (AE == null) {
             throw new BusinessLogicException("El Automovil no debe ser null");
         }
-        if (AE.getId() == null || AE.getPuntoDeVenta() == null || AE.getMarca() == null || AE.getModel() == null || AE.getCompra() == null) {
+        if (AE.getId() == null )throw new BusinessLogicException("Ninguno de los atributos delautomovil puede ser null");
+        
+             if (AE.getPuntoDeVenta() == null || AE.getMarca() == null || AE.getModel() == null || AE.getCompra() == null) {
             throw new BusinessLogicException("Ninguno de los atributos delautomovil puede ser null");
         }
         // VERIFICA QUE EL FORMATO DE LA PLACA SEA EL ADECUADO, PARA NO VIOLAR LA REGLA DE NEGOCIO
-        if (verificarPlaca(AE.getPlaca()) == false) {
+        if (!verificarPlaca(AE.getPlaca())) {
             throw new BusinessLogicException("El formato de la placa no es el correcto");
         }
 
@@ -154,7 +156,7 @@ public class AutomovilLogic {
         if(AE.getMarca() == null || !AEO.getMarca().equals(AE.getMarca())) throw new BusinessLogicException("No se puede verificar la marca");
         if(AE.getPuntoDeVenta()== null || !AEO.getPuntoDeVenta().equals(AE.getPuntoDeVenta())) throw new BusinessLogicException("No se puede modificar el punto de venta ");
                
-        System.out.println("HOLAAAA " + AE.getCompra() + "  ||| " + AEO.getCompra() );
+        
         if(AE.getCompra() == null ||AEO.compararCompra(AE.getCompra()) != 0 ) throw new BusinessLogicException ("no se puede cambiar la compra ");
 
         
@@ -166,9 +168,7 @@ public class AutomovilLogic {
             throw new BusinessLogicException("El formato de la placa es inválido");
         }
 
-        if (AEO == null) {
-            throw new BusinessLogicException("El automovil  no existe");
-        }
+        
 
         
 
@@ -204,7 +204,7 @@ public class AutomovilLogic {
      * @throws BusinessLogicException si id == null o id no está en un formato
      * válido.
      */
-    public AutomovilEntity findAutomovil(Long id) throws BusinessLogicException {
+    public  AutomovilEntity findAutomovil(Long id) throws BusinessLogicException {
         if (id == null || id <= 0) {
             throw new BusinessLogicException("id no valido");
         }

@@ -89,25 +89,36 @@ public class VendedorDetailDTO extends VendedorDTO {
      */
     public VendedorDetailDTO(VendedorEntity ve) {
         super(ve);
-        if (ve.getProspectosCompra() != null) {
-            for (ProspectoCompraEntity ent : ve.getProspectosCompra()) {
-                prospectosCompra.add(new ProspectoCompraDTO(ent));
+        if (ve != null) {
+            if (ve.getProspectosCompra() != null) {
+                if (prospectosCompra == null) {
+                    prospectosCompra = new ArrayList();
+                }
+                for (ProspectoCompraEntity ent : ve.getProspectosCompra()) {
+                    prospectosCompra.add(new ProspectoCompraDTO(ent));
+                }
             }
-        }
 
-        if (ve.getVentas() != null) {
-            for (VentaEntity ent : ve.getVentas()) {
-                ventas.add(new VentaDTO(ent));
+            if (ve.getVentas() != null) {
+                if (ventas == null) {
+                    ventas = new ArrayList();
+                }
+                for (VentaEntity ent : ve.getVentas()) {
+                    ventas.add(new VentaDTO(ent));
+                }
             }
-        }
 
-        if (ve.getCompras() != null) {
-            for (CompraEntity ent : ve.getCompras()) {
-                compras.add(new CompraDTO(ent));
+            if (ve.getCompras() != null) {
+                if (compras == null) {
+                    compras = new ArrayList();
+                }
+                for (CompraEntity ent : ve.getCompras()) {
+                    compras.add(new CompraDTO(ent));
+                }
             }
-        }
 
-        this.puntoDeVenta = new PuntoDeVentaDTO(ve.getPuntoDeVenta());
+            this.puntoDeVenta = new PuntoDeVentaDTO(ve.getPuntoDeVenta());
+        }
     }
 
     /**

@@ -58,8 +58,10 @@ public class ClienteLogic {
      * @throws BusinessLogicException si el cliente que se buscaba actualizar no existe o si el nombre del cliente actualizado es invalido.
      */
     public ClienteEntity updateCliente(ClienteEntity ce) throws BusinessLogicException{
+         if(ce == null) throw new BusinessLogicException("El cliente a ser actualizado no puede ser null");
+        
         LOG.log(Level.INFO, "Actualizando cliente con cédula: {0}",ce.getCedula());
-        if(ce == null) throw new BusinessLogicException("El cliente a ser actualizado no puede ser null");
+       
         ClienteEntity ceo = persistence.find(ce.getCedula());
         if(ceo == null) throw new BusinessLogicException("No se puede actualizar un cliente inexistente");
         if(ce.getNombre() == null || !VendedorLogic.esAlfabetica(ce.getNombre())) throw new BusinessLogicException("Nombre inválido");

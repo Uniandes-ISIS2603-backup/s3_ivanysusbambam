@@ -48,10 +48,12 @@ public class CalificacionCarroDTO {
      * @param calificacionCarro entity de la calificacion
      */
     public CalificacionCarroDTO(CalificacionCarroEntity calificacionCarro){
-        this.id = calificacionCarro.getId();
+        if(calificacionCarro != null){
+         this.id = calificacionCarro.getId();
         this.name = calificacionCarro.getName();
         this.comentario = calificacionCarro.getComentario();
         this.puntaje = calificacionCarro.getPuntaje();
+        }
         
     }
     

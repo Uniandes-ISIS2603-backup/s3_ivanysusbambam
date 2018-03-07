@@ -45,7 +45,7 @@ import java.util.List;
  *          "compras": {[]}
  *          "ventas": {[]}
  *
- * }
+ *    }
  * </pre>
  *
 /**
