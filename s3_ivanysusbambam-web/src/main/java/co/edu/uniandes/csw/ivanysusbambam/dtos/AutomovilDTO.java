@@ -42,6 +42,10 @@ import java.util.Calendar;
  */
 public class AutomovilDTO {
 
+    private Long id; 
+    
+    private String name;
+    
     /**
      * Color del automovil
      */
@@ -80,12 +84,16 @@ public class AutomovilDTO {
      * @param auto: Es la entidad que se va a convertir a DTO
      */
     public AutomovilDTO(AutomovilEntity auto) {
+      if(auto != null){
         this.color = auto.getColor();
         this.anio = auto.getAnio();
         this.placa = auto.getPlaca();
         this.chasis = auto.getChasis();
         this.fechaListado = auto.getFechaListado();
         this.valorListado = auto.getValorListado();
+        this.id = auto.getId();
+        this.name = auto.getName();
+      }
     }
 
     /**
@@ -180,7 +188,26 @@ public class AutomovilDTO {
         entity.setChasis(this.chasis);
         entity.setFechaListado(this.fechaListado);
         entity.setValorListado(this.valorListado);
+        entity.setId(this.id);
+        entity.setName(this.name);
         
         return entity;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+    
 }

@@ -59,50 +59,52 @@ public class CompraDetailDTO extends CompraDTO {
      */
     public CompraDetailDTO(CompraEntity entity) {
         super(entity);
-        if (entity.getAutomovil() != null) {
-            this.automovil = new AutomovilDTO(entity.getAutomovil());
-        }
-        if (entity.getCliente() != null) {
-            this.cliente = new ClienteDTO(entity.getCliente());
-        }
-        if (entity.getPuntoDeVenta() != null) {
-            this.puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
-        }
-        if (entity.getVendedorEncargado() != null) {
-            this.vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
+        if (entity != null) {
+            if (entity.getAutomovil() != null) {
+                this.automovil = new AutomovilDTO(entity.getAutomovil());
+            }
+            if (entity.getCliente() != null) {
+                this.cliente = new ClienteDTO(entity.getCliente());
+            }
+            if (entity.getPuntoDeVenta() != null) {
+                this.puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
+            }
+            if (entity.getVendedorEncargado() != null) {
+                this.vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
+            }
         }
     }
 
 //-------------------------------------GETTERS-----------------------------
 //     
-/**
- * @return El automovil de la compra
- */
-public AutomovilDTO getAutomovil() {
-       return automovil;
-   }
+    /**
+     * @return El automovil de la compra
+     */
+    public AutomovilDTO getAutomovil() {
+        return automovil;
+    }
+
     /**
      * @return El vendedor encargado de la compra
-     */  
+     */
     public VendedorDTO getVendedorEncargado() {
         return vendedorEncargado;
     }
-    
+
     /**
      * @return El vendedor punto de venta donde se encuentra la compra
-     */ 
+     */
     public PuntoDeVentaDTO getPuntoDeVenta() {
         return puntoDeVenta;
     }
-    
-    
+
     /**
      * @return El cliente que le vendio el automovil a MiAutomovil
-     */ 
+     */
     public ClienteDTO getCliente() {
         return cliente;
     }
- //-------------------------------------SETTERS-----------------------------   
+    //-------------------------------------SETTERS-----------------------------   
 
     /**
      * @param automovil El nuevo automóvil
@@ -114,11 +116,9 @@ public AutomovilDTO getAutomovil() {
     /**
      * @param vendedorEncargado El nuevo VendedorEncargado
      */
-
     public void setVendedorEncargado(VendedorDTO vendedorEncargado) {
         this.vendedorEncargado = vendedorEncargado;
     }
-
 
     /**
      * @param puntoDeVenta El nuevo puntoDeVenta
@@ -127,36 +127,34 @@ public AutomovilDTO getAutomovil() {
         this.puntoDeVenta = puntoDeVenta;
     }
 
-     
-/**
+    /**
      * @param cliente El nuevo cliente de la compra
      */
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
-    
-     /**
+
+    /**
      * Transformar el DTO a una entidad
+     *
      * @return La entidad que representa el libro.
      */
     @Override
-    public CompraEntity toEntity()
-    {
+    public CompraEntity toEntity() {
         CompraEntity compraE = super.toEntity();
         if (automovil != null) {
             compraE.setAutomovil(this.getAutomovil().toEntity());
         }
         if (getCliente() != null) {
-           compraE.setCliente(this.getCliente().toEntity());
+            compraE.setCliente(this.getCliente().toEntity());
         }
         if (getPuntoDeVenta() != null) {
-           compraE.setPuntoDeVenta(this.puntoDeVenta.toEntity());
+            compraE.setPuntoDeVenta(this.puntoDeVenta.toEntity());
         }
         if (getVendedorEncargado() != null) {
             compraE.setVendedorEncargado(vendedorEncargado.toEntity());
         }
         return compraE;
     }
-    
-    
+
 }

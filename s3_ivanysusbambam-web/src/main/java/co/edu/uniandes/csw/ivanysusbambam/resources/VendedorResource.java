@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.VendedorLogic;
+import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
@@ -102,8 +103,12 @@ public class VendedorResource {
      * @throws BusinessLogicException si ya existía un vendedor con el mismo carnet.
      */
     @POST
-    public VendedorDetailDTO postVendedor(VendedorDTO vendedor) throws BusinessLogicException{
-        return new VendedorDetailDTO(vendedorLogic.createVendedor(vendedor.toEntity()));
+    public VendedorDetailDTO postVendedor(VendedorDetailDTO vendedor) throws BusinessLogicException{
+       
+        //Esto lo hago pues por alguna razón en vendedorLogic, se devuelve directamente lo que se envió, es decir, 
+        //el PuntoDeVentaEntity viene incompleto, con sólo el id.
+       VendedorEntity ve = vendedorLogic.createVendedor(vendedor.toEntity());
+       return new VendedorDetailDTO(vendedorLogic.findVendedor(ve.getCarnetVendedor()));
     }
     
     /**

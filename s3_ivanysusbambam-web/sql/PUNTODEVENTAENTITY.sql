@@ -1,10 +1,6 @@
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (1, '07 Lien Terrace', 'Grim', '4222705459');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (2, '76062 Sommers Alley', 'Beilfuss', '9605169874');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (3, '52 Toban Park', 'Carioca', '2308093444');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (4, '506 Gulseth Street', 'Summit', '9841642100');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (5, '80 Starling Avenue', 'La Follette', '6287464121');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (6, '8 Golf View Road', 'Havey', '3807589831');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (7, '673 Oxford Point', 'Morning', '2764581762');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (8, '17822 Rowland Avenue', 'Grasskamp', '3498669681');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (9, '6162 Rockefeller Pass', 'Mendota', '6087034162');
-insert into PUNTODEVENTAENTITY (id, direccion, name, telefono) values (10, '0778 Talmadge Lane', 'Cordelia', '6187891573');
+delete from PuntoDeVentaEntity;
+
+insert into PuntoDeVentaEntity (direccion, telefono, name, id) values ('34743 Crest Line Pass', 1691702, 'Medhurst and Sons', 1);
+insert into PuntoDeVentaEntity (direccion, telefono, name, id) values ('284 Delladonna Lane', 2716848, 'Daugherty-Steuber', 2);
+insert into PuntoDeVentaEntity (direccion, telefono, name, id) values ('1 Hanover Road', 1864401, 'Ankunding, Hills and Kulas', 3);
+

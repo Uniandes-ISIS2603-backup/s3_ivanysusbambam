@@ -58,7 +58,6 @@ public class VentaDTO {
      *
      * @param pId nuevo id de la venta
      */
-
     public void setIdVenta(Long pId) {
         this.idVenta = pId;
     }
@@ -70,7 +69,9 @@ public class VentaDTO {
      * @param pVenta: Es la entidad que se va a convertir a DTO
      */
     public VentaDTO(VentaEntity pVenta) {
-        this.idVenta = pVenta.getId();
+        if (pVenta != null) {
+            this.idVenta = pVenta.getId();
+        }
 
     }
 
@@ -79,7 +80,6 @@ public class VentaDTO {
      *
      * @return Un Entity con los valores del DTO
      */
-
     public VentaEntity toEntity() {
         VentaEntity entity = new VentaEntity();
         entity.setId(this.idVenta);

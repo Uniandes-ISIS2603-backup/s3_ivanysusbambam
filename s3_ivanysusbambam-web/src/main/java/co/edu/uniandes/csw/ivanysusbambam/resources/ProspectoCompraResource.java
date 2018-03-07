@@ -126,7 +126,10 @@ public class ProspectoCompraResource {
      */
     @POST
     public ProspectoCompraDetailDTO postProspectoCompra(ProspectoCompraDetailDTO prospecto)throws BusinessLogicException{
-        return new ProspectoCompraDetailDTO(pcLogic.createProspectoCompra(prospecto.toEntity()));
+        //Por favor vea el comentario en el método POST de Vendedor para entender por qué se hacen dos accesos a la base de datos
+        //en lugar de uno.
+        ProspectoCompraEntity pc = pcLogic.createProspectoCompra(prospecto.toEntity());
+        return new ProspectoCompraDetailDTO(pcLogic.findProspectoCompra(pc.getId()));
     }
     /**
      * DELETE /api/prospectoscompra/(pid):elimina un prospecto de compra según su id.

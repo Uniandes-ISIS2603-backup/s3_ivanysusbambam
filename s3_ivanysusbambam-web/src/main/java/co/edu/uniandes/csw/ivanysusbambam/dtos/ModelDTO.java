@@ -44,10 +44,12 @@ public class ModelDTO {
      */
     public ModelDTO(ModelEntity enti)
     {
+        if(enti != null){
         this.setCentCubicos(enti.getCentCubicos());
         this.setCilindraje(enti.getCilindraje());
         this.setNumeroPuertas(enti.getNumeroPuertas());
         this.setTransmision(enti.getTransmision());
+        }
     }
     /**
      * Convierte el DTO en una entity

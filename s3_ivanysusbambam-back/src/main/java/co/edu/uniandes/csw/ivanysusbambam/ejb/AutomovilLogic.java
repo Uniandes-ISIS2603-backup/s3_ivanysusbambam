@@ -204,7 +204,7 @@ public class AutomovilLogic {
      * @throws BusinessLogicException si id == null o id no está en un formato
      * válido.
      */
-    public AutomovilEntity findAutomovil(Long id) throws BusinessLogicException {
+    public  AutomovilEntity findAutomovil(Long id) throws BusinessLogicException {
         if (id == null || id <= 0) {
             throw new BusinessLogicException("id no valido");
         }

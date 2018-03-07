@@ -94,7 +94,7 @@
 							"raw": "{\n\t\"nombre\" : \"David\"\n\t\"cedula\" : 1015326745\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1245",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -104,7 +104,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"clientes",
-								"1245"
+								"7"
 							]
 						},
 						"description": ""
@@ -140,10 +140,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe segundo Velásquez\",\n\t\"cedula\": 1016609031\n}"
+							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\": 7\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/7",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -153,7 +153,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"clientes",
-								"12345"
+								"7"
 							]
 						},
 						"description": ""
@@ -192,7 +192,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\": 1016609031\n}"
+							"raw": "{\n\t\"nombre\": \"Juan José Rondón\",\n\t\"cedula\": 1016609031\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes",
@@ -243,7 +243,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1016609031",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -253,7 +253,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"clientes",
-								"1016609031"
+								"8"
 							]
 						},
 						"description": ""
@@ -324,7 +324,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/1261",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/2732",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -334,7 +334,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"vendedores",
-								"1261"
+								"2732"
 							]
 						},
 						"description": ""
@@ -368,7 +368,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Manuela Beltrán\",\n\t\"cedula\" : 85,\n\t\"carnetVendedor\" : 1261,\n\t\"puntoDeVenta\" : null\n}"
+							"raw": "{\n    \"carnetVendedor\": 1,\n    \"cedula\": 6672,\n    \"nombre\": \"Ernesto Samper\",\n    \"puntoDeVenta\": {\n    \t\"id\": 1\n    }\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores",
@@ -411,10 +411,10 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Jose Asunción de Silva\",\n\t\"cedula\" : 85,\n\t\"carnetVendedor\" : 1261\n}"
+							"raw": "{\n    \"carnetVendedor\": 5776,\n    \"cedula\": 1007097750,\n    \"nombre\": \"Faciolince\",\n    \"puntoDeVenta\": {\n    \t\"id\": 2\n    }\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/12345",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/5776",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -424,7 +424,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"vendedores",
-								"12345"
+								"5776"
 							]
 						},
 						"description": ""
@@ -450,7 +450,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/1261",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/2732",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -460,7 +460,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"vendedores",
-								"1261"
+								"2732"
 							]
 						},
 						"description": ""
@@ -531,7 +531,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/3242",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/109",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -541,51 +541,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"prospectoscompra",
-								"3242"
-							]
-						},
-						"description": ""
-					},
-					"response": []
-				},
-				{
-					"name": "PUT prospectocompra",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"id": "1b74d0f4-f6ab-49c7-92c6-341b4510662d",
-								"type": "text/javascript",
-								"exec": [
-									"tests[\"Status code is 200\"] = responseCode.code === 200;"
-								]
-							}
-						}
-					],
-					"request": {
-						"method": "PUT",
-						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002 v 2.\",\n\t\"id\": 123,\n\t\"cliente\": {\"cedula\": 65,\"nombre\": \"Bekki Howood\"},\n\t\"vendedor\": {\"nombre\": \"Manuela Beltrán\", \"cedula\" : 85,\"carnetVendedor\" : 1261},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
-						},
-						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8080",
-							"path": [
-								"s3_ivanysusbambam-web",
-								"api",
-								"prospectoscompra",
-								"1"
+								"109"
 							]
 						},
 						"description": ""
@@ -619,7 +575,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"texto\": \"Cliente muy interesado en comprar Nissan frontier 2002.\",\n\t\"id\": 123,\n\t\"cliente\": {\"cedula\": 65,\"nombre\": \"Bekki Howood\"},\n\t\"vendedor\": {\"nombre\": \"Manuela Beltrán\", \"cedula\" : 85,\"carnetVendedor\" : 1261},\n\t\"automovil\": {\"color\": \"rojo\", \"anio\": 2002, \"placa\": \"abc123\",\"chasis\":1234, \"valorListado\": \"20000000\"}\n}"
+							"raw": "{\n\t\"id\": 19,\n    \"texto\": \"Hola, este es el texto del prospecto de compra\",\n    \"automovil\":  { \n    \t\"id\" : 1\n    },\n    \"cliente\": {\n        \"cedula\":7\n    },\n    \"vendedor\": {\n        \"carnetVendedor\": 476,\n        \"cedula\": 9028000433\n    }\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra",
@@ -632,6 +588,50 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"prospectoscompra"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
+					"name": "PUT prospectocompra",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "1b74d0f4-f6ab-49c7-92c6-341b4510662d",
+								"type": "text/javascript",
+								"exec": [
+									"tests[\"Status code is 200\"] = responseCode.code === 200;"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 19,\n    \"texto\": \"Hola, estoy cambiando el texto de este prospecto de compra\",\n    \"automovil\": { \"id\" : 1 },\n    \"cliente\": {\n        \"cedula\": 7\n    },\n    \"vendedor\": {\n        \"carnetVendedor\": 476,\n        \"cedula\": 9028000433\n    }\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/109",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"s3_ivanysusbambam-web",
+								"api",
+								"prospectoscompra",
+								"109"
 							]
 						},
 						"description": ""
@@ -657,7 +657,7 @@
 						"header": [],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/1",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/105",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -667,7 +667,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"prospectoscompra",
-								"1"
+								"105"
 							]
 						},
 						"description": ""

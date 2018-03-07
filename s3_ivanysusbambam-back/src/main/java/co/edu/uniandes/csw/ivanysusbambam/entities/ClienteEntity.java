@@ -19,52 +19,50 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
- * @author Felipe Velásquez Montoya
- * <pre>
- *  Versiones: 
+ * @author Felipe Velásquez Montoya  <pre>
+ *  Versiones:
  *      18/02/2018
  *          -Creada clase, atributos, getters y setters.
  * </pre>
  */
-
 @Entity
-public class ClienteEntity implements Serializable{
-    
+public class ClienteEntity implements Serializable {
+
     @Id
     @PodamStrategyValue(CedulaStrategy.class)
     private Long cedula;
-    
+
     @PodamStrategyValue(NombreStrategy.class)
     private String nombre;
-    
+
     @PodamExclude
-    @OneToMany(mappedBy="cliente",cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<CalificacionTiendaEntity> calificacionesTienda;
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<QuejaReclamoEntity> quejasReclamos;
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "cliente")
     private List<CompraEntity> compras;
-    
+
     @PodamExclude
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<VentaEntity> ventas;
-    
+
     @PodamExclude
-    @OneToMany(mappedBy = "cliente",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<MedioDePagoEntity> mediosDePago;
 
-    
     public List<ProspectoCompraEntity> getProspectosCompra() {
         return prospectosCompra;
     }
+
     public List<CalificacionTiendaEntity> getCalificacionesTienda() {
         return calificacionesTienda;
     }
@@ -81,25 +79,23 @@ public class ClienteEntity implements Serializable{
         return ventas;
     }
 
-   public List<MedioDePagoEntity> getMediosDePago() {
+    public List<MedioDePagoEntity> getMediosDePago() {
         return mediosDePago;
     }
 
-    
-    
-    public String getNombre(){
+    public String getNombre() {
         return nombre;
     }
-    
-    public Long getCedula(){
+
+    public Long getCedula() {
         return cedula;
     }
-    
-    public void setNombre(String nombre){
+
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    public void setCedula(Long cedula){
+
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 
@@ -126,14 +122,19 @@ public class ClienteEntity implements Serializable{
     public void setMediosDePago(List<MedioDePagoEntity> mediosDePago) {
         this.mediosDePago = mediosDePago;
     }
-  
+
     @Override
     public boolean equals(Object obj) {
-        if( obj == null) return false;
-        if (((ClienteEntity)obj).getCedula() != null && this.getCedula() != null) {
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof ClienteEntity)) {
+            return false;
+        }
+        if (((ClienteEntity) obj).getCedula() != null && this.getCedula() != null) {
             return this.getCedula().equals(((ClienteEntity) obj).getCedula());
         }
-        
+
         return super.equals(obj);
     }
 

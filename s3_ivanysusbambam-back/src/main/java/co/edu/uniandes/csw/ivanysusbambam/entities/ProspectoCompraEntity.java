@@ -96,7 +96,10 @@ public class ProspectoCompraEntity implements Serializable {
     
     @Override
     public boolean equals(Object obj) {
-        if(obj == null) return false;
+        if(obj == null)
+            return false;
+        if (!(obj instanceof ProspectoCompraEntity))
+            return false;
         if (((ProspectoCompraEntity)obj).id != null && this.id != null) {
             return this.id.equals(((ProspectoCompraEntity) obj).id);
         }

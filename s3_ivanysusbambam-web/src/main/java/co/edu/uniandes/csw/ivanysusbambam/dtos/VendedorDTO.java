@@ -69,9 +69,11 @@ public class VendedorDTO {
      * @param ve Entity
      */
     public VendedorDTO(VendedorEntity ve){
+      if(ve != null){
         this.nombre = ve.getNombre();
         this.cedula = ve.getCedula();
         this.carnetVendedor = ve.getCarnetVendedor();
+      }
     }
     
     /**

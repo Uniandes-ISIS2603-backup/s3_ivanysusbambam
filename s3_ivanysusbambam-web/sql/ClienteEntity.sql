@@ -1,4 +1,3 @@
-delete from MedioDePagoEntity;
 delete from ClienteEntity;
 
 insert into ClienteEntity (cedula, nombre) values (1, 'Ardyth Fontenot');
