@@ -87,9 +87,9 @@ public class PuntoDeVentaLogic {
      * @return Instancia de PuntoDeVentaEntity con los datos actualizados.
      * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
-    public PuntoDeVentaEntity updatePuntoDeVenta(Long id, PuntoDeVentaEntity entity) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de actualizar un punto de venta con id={0}", id);
-        if(persistence.find(id) == null) throw new BusinessLogicException("El punto de venta ingresado no existe");
+    public PuntoDeVentaEntity updatePuntoDeVenta(PuntoDeVentaEntity entity) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Inicia proceso de actualizar un punto de venta con id={0}", entity.getId());
+        if(persistence.find(entity.getId()) == null) throw new BusinessLogicException("El punto de venta ingresado no existe");
         if(entity.getTelefono() > 9999999 || entity.getTelefono() < 1000000) throw new BusinessLogicException("Numero de telefono inválido");
         return persistence.update(entity);
     }

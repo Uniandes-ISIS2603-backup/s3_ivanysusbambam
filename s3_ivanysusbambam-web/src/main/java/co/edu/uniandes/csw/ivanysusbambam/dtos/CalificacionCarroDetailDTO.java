@@ -49,9 +49,10 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
 
     public CalificacionCarroDetailDTO(CalificacionCarroEntity entity) {
         super(entity);
-        if (entity != null) {
-            this.setVenta(new VentaDTO(entity.getVenta()));
-        }
+//        if (entity != null) {
+//            this.setVenta(new VentaDTO(entity.getVenta()));
+//        }
+        //this.setVenta(new VentaDTO(entity.getVenta()));
     }
 
     /**

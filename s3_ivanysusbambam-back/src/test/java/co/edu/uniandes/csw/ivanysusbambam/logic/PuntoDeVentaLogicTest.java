@@ -181,7 +181,7 @@ public class PuntoDeVentaLogicTest {
 
         pojoEntity.setId(entity.getId());
 
-        puntoVentaLogic.updatePuntoDeVenta(pojoEntity.getId(), pojoEntity);
+        puntoVentaLogic.updatePuntoDeVenta(pojoEntity);
 
         PuntoDeVentaEntity resp = em.find(PuntoDeVentaEntity.class, entity.getId());
 

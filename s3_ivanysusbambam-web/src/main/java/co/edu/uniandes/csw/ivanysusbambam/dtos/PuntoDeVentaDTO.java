@@ -62,8 +62,7 @@ public class PuntoDeVentaDTO {
     public Integer getTelefono() {
         return telefono;
     }
-
-    public void setTelefono(int telefono) {
+    public void setTelefono(Integer telefono){
         this.telefono = telefono;
     }
 

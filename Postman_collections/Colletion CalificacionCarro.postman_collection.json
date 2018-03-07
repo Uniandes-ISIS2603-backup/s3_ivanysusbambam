@@ -1,0 +1,192 @@
+{
+	"info": {
+		"name": "Colletion CalificacionCarro",
+		"_postman_id": "a31f6811-95f5-2499-6647-b7e7806cdd90",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET calificacionCarro",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n          \"id\": 54231,\r\n          \"name\": \"Chevrolet Optra\",\r\n          \"comentario\": \"carro deportivo, elegante y muy bueno en funciones mecanicas\",\r\n          \"puntaje\": 4.5\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesCarro/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesCarro",
+						"3"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "GET all calificacionesCarro",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n          \"id\": 54231,\r\n          \"name\": \"Chevrolet Optra\",\r\n          \"comentario\": \"carro deportivo, elegante y muy bueno en funciones mecanicas\",\r\n          \"puntaje\": 4.5\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesCarro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesCarro"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE CalificacionCarro",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesCarro/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesCarro",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "POST calificacionCarro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\t\t\"id\": 1234,\r\n        \"name\": \"aveo\",\r\n        \"comentario\":  \"bla bla bla\",\r\n        \"puntaje\" : 4.8\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesCarro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesCarro"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT calificacionCarro",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 777,\r\n        \"name\": \"aveo genis\",\r\n        \"comentario\":  \"bla bla bla\",\r\n        \"puntaje\" : 4.8\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesCarro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesCarro"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

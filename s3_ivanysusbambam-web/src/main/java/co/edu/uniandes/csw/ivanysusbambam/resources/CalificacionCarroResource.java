@@ -107,12 +107,10 @@ public class CalificacionCarroResource {
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra una calificacionde carro a actualizar.
      */
     @PUT
-    @Path("{idCarro: \\d+}")
-    public CalificacionCarroDetailDTO putCalificacionCarro(@PathParam("idCarro") Long id, CalificacionCarroDetailDTO calificacion) throws BusinessLogicException{
+    public CalificacionCarroDetailDTO putCalificacionCarro(CalificacionCarroDetailDTO calificacion) throws BusinessLogicException{
         CalificacionCarroEntity cc = calificacion.toEntity();
-        cc.setId(id);
         
-        CalificacionCarroEntity oldEntity = ccarroLogic.getCalificacionCarro(id);
+        CalificacionCarroEntity oldEntity = ccarroLogic.getCalificacionCarro(calificacion.getId());
         if (oldEntity == null) {
             throw new WebApplicationException("El punto de venta no existe", 404);
         }
