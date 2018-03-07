@@ -100,7 +100,6 @@ public class CalificacionCarroResource {
      * 404 Not Found. No existe una calificacionde carro con el id dado.
      * </code> 
      * </pre>
-     * @param id Identificador de la calificacionde carro que se desea actualizar. Este debe ser una cadena de dígitos.
      * @param calificacion {@link CalificacionCarroDetailDTO} La calificacionde carro que se desea guardar.
      * @return JSON {@link CalificacionCarroDTO} - La calificacion de carro guardada.
      * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
@@ -152,7 +151,6 @@ public class CalificacionCarroResource {
      * </code> 
      * </pre>
      * @param id id de la calificacion.
-     * @return JSON el de la calificacion del carro actualizado.
      * @throws BusinessLogicException si no existe la calificacion con el id dado.
      */
     @DELETE

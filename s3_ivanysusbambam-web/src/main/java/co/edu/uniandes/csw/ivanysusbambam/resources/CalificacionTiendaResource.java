@@ -97,19 +97,16 @@ public class CalificacionTiendaResource {
      * 404 Not Found. No existe una calificacion de tienda con el id dado.
      * </code> 
      * </pre>
-     * @param id Identificador de la calificacion de tienda que se desea actualizar. Este debe ser una cadena de dígitos.
      * @param calificacion {@link CalificacionTiendaDetailDTO} La calificacionde carro que se desea guardar.
      * @return JSON {@link CalificacionTiendaDTO} - La calificacion de Tienda guardada.
      * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      * @throws WebApplicationException {@link WebApplicationExceptionMapper} - Error de lógica que se genera cuando no se encuentra una calificacion de Tienda a actualizar.
      */
     @PUT
-    @Path("{idCarro: \\d+}")
-    public CalificacionTiendaDetailDTO putCalificacionCarro(@PathParam("idCarro") Long id, CalificacionTiendaDetailDTO calificacion) throws BusinessLogicException{
+    public CalificacionTiendaDetailDTO putCalificacionCarro(CalificacionTiendaDetailDTO calificacion) throws BusinessLogicException{
         CalificacionTiendaEntity cc = calificacion.toEntity();
-        cc.setId(id);
         
-        CalificacionTiendaEntity oldEntity = ctiendaLogic.getCalificacionTienda(id);
+        CalificacionTiendaEntity oldEntity = ctiendaLogic.getCalificacionTienda(calificacion.getId());
         if (oldEntity == null) {
             throw new WebApplicationException("El punto de venta no existe", 404);
         }

@@ -1,0 +1,192 @@
+{
+	"info": {
+		"name": "Collection CalificacionTienda",
+		"_postman_id": "f3c4b953-316b-78ef-8dcb-2b3adc059fe9",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST calificacion Tienda",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 777,\r\n        \"name\": \"pedro arnulfo\",\r\n        \"comentario\":  \"muy buena atencion\",\r\n        \"puntaje\" : 4.8\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesTienda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesTienda"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT calificacion Tienda",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 1,\r\n        \"name\": \"pedro paramo\",\r\n        \"comentario\":  \"muy buena atencion\",\r\n        \"puntaje\" : 4.8\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesTienda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesTienda"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE calificacion Tienda",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesTienda/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesTienda",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET calificacion tienda con id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 777,\r\n        \"name\": \"pedro arto\",\r\n        \"comentario\":  \"muy mala atencion\",\r\n        \"puntaje\" : 3.2\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesTienda/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesTienda",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "GET calificaciones Tienda",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "id",
+						"value": "15",
+						"disabled": true
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n        \"id\": 777,\r\n        \"name\": \"pedro arto\",\r\n        \"comentario\":  \"muy mala atencion\",\r\n        \"puntaje\" : 3.2\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/calificacionesTienda",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"calificacionesTienda"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

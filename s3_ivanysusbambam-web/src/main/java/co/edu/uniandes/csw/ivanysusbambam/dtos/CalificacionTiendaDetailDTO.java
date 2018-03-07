@@ -25,7 +25,7 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
  * <pre>
  *
  *   {
- *          ""id": 12345,
+ *          "id": 12345,
  *          "name": "Chevrolet Optra",
  *          "comentario": "carro deportivo, elegante y muy bueno en funciones mecanicas",
  *          "cliente" : {"cedula": 549897, "nombre": "Juan Perez"}
@@ -48,7 +48,7 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
 
     public CalificacionTiendaDetailDTO(CalificacionTiendaEntity entity) {
         super(entity);
-        if (entity != null) {
+        if (entity.getCliente() != null) {
             this.setCliente(new ClienteDTO(entity.getCliente()));
         }
     }

@@ -26,7 +26,7 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionCarroEntity;
  * <pre>
  *
  *   {
- *          ""id": 12345,
+ *          "id": 12345,
  *          "name": "Chevrolet Optra",
  *          "comentario": "carro deportivo, elegante y muy bueno en funciones mecanicas",
  *          "puntaje": "4,5"
@@ -49,10 +49,9 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
 
     public CalificacionCarroDetailDTO(CalificacionCarroEntity entity) {
         super(entity);
-//        if (entity != null) {
-//            this.setVenta(new VentaDTO(entity.getVenta()));
-//        }
-        //this.setVenta(new VentaDTO(entity.getVenta()));
+        if (entity.getVenta() != null) {
+            this.setVenta(new VentaDTO(entity.getVenta()));
+        }
     }
 
     /**

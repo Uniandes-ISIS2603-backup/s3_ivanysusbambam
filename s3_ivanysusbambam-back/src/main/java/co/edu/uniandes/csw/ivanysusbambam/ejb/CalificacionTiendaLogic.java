@@ -59,7 +59,7 @@ public class CalificacionTiendaLogic {
     public CalificacionTiendaEntity createCalificacionTienda(CalificacionTiendaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear una calificacion de tienda ");
         if(persistence.find(entity.getId()) != null) throw new BusinessLogicException("Ya existe una calificacion con ese id");
-        if(entity.getCliente() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
+        //if(entity.getCliente() == null) throw new BusinessLogicException("No se puede registrar calificacion de un cliente sin registrar");
         if(entity.getPuntaje() < 1.0 || entity.getPuntaje() > 5.0) throw new BusinessLogicException("La calificacion registrada no es valida");
         return persistence.create(entity);
     }
@@ -76,7 +76,7 @@ public class CalificacionTiendaLogic {
         if(ct == null) throw new BusinessLogicException("La calificación a actualizar no puede ser null");
         CalificacionTiendaEntity ccB = persistence.find(ct.getId());
         if(ccB == null) throw new BusinessLogicException("No se puede actualizar una calificacion no registrada");
-        if(ct.getCliente() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
+        //if(ct.getCliente() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
         if(ct.getPuntaje() < 1 || ct.getPuntaje() > 5) throw new BusinessLogicException("La calificacion registrada no es valida");
         return persistence.update(ct);
     }
