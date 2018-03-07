@@ -8,7 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 
 /**
- * Clase que extiende de {@link VentaDTO} para manejar la transformacion entre
+ * Clase que extiende de {@link Ve  ntaDTO} para manejar la transformacion entre
  * los objetos JSON y las Entidades de la base de datos. Para conocer el
  * contenido de la venta vaya a la documentacion de {@link VentaDTO}
  *
