@@ -1,0 +1,167 @@
+{
+	"info": {
+		"name": "Collection PuntoDeVenta",
+		"_postman_id": "ec77a40c-5a69-75be-bb30-728d309d12da",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "POST punto de venta",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"id\": 12345,\r\n    \"name\": \"Los ángeles concesionario\",\r\n    \"direccion\": \"cr 1 # 2 - 33\",\r\n    \"telefono\": 7777777\r\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/puntosDeVenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"puntosDeVenta"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "GET puntos de venta",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"id\": 12345,\r\n    \"name\": \"Los ángeles concesionario\",\r\n    \"direccion\": \"cr 1 # 2 - 33\",\r\n    \"telefono\": 7777777\r\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/puntosDeVenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"puntosDeVenta"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "GET punto de venta con id",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\r\n    \"id\": 12345,\r\n    \"name\": \"Los ángeles concesionario\",\r\n    \"direccion\": \"cr 1 # 2 - 33\",\r\n    \"telefono\": 7777777\r\n }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/puntosDeVenta/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"puntosDeVenta",
+						"1"
+					]
+				},
+				"description": null
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE punto de venta",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/puntosDeVenta/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"puntosDeVenta",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "PUT puntoDeVenta",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n        \"id\": 2,\n        \"name\": \"Los rosales\",\n        \"telefono\": 7077777\n    }"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/puntosDeVenta",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"puntosDeVenta"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
