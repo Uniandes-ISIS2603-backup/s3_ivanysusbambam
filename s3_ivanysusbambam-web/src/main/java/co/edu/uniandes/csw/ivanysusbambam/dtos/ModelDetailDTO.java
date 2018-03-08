@@ -23,15 +23,14 @@ public class ModelDetailDTO extends ModelDTO {
      */
     private List<AutomovilDTO> automoviles;
 
-    
     private Long id;
-    
-       /**
-=======
 
     /**
->>>>>>> d72aac146e12e938887e2305fd868434aea7ce9a
-     * Representa el numero de puertas del vehículo
+     * =======
+     *
+     * /**
+     * >>>>>>> d72aac146e12e938887e2305fd868434aea7ce9a Representa el numero de
+     * puertas del vehículo
      */
     private Integer numeroPuertas;
     /**
@@ -58,38 +57,39 @@ public class ModelDetailDTO extends ModelDTO {
      */
     public ModelDetailDTO(ModelEntity entity) {
         super(entity);
+        if (entity != null) {
+            if (entity.getCentCubicos() != null) {
+                this.centCubicos = entity.getCentCubicos();
+            } else {
+                entity.setCentCubicos(null);
+            }
+            if (entity.getCilindraje() != null) {
+                this.cilindraje = entity.getCilindraje();
+            } else {
+                entity.setCilindraje(null);
+            }
+            if (entity.getNumeroPuertas() != null) {
+                this.numeroPuertas = entity.getNumeroPuertas();
+            } else {
+                entity.setNumeroPuertas(null);
+            }
+            if (entity.getTransmision() != null) {
+                this.transmision = entity.getTransmision();
+            } else {
+                entity.setTransmision(null);
+            }
+            if (entity.getId() != null) {
+                this.id = entity.getId();
+            }
+            //Revisar bien esta parte 
+            if (entity.getAutomoviles() != null) {
+                automoviles = new ArrayList<>();
+                for (AutomovilEntity entityAuto : entity.getAutomoviles()) {
+                    automoviles.add(new AutomovilDTO(entityAuto));
 
-        if (entity.getCentCubicos()!= null) {
-            this.centCubicos = entity.getCentCubicos();
-        } else {
-            entity.setCentCubicos(null);
+                }
+            }
         }
-        if (entity.getCilindraje()!= null) {
-            this.cilindraje = entity.getCilindraje();
-        }else {
-            entity.setCilindraje(null);
-        }
-       if (entity.getNumeroPuertas()!= null) {
-            this.numeroPuertas = entity.getNumeroPuertas();
-        }else {
-            entity.setNumeroPuertas(null);
-        }
-        if (entity.getTransmision()!= null) {
-            this.transmision = entity.getTransmision();
-        }else {
-            entity.setTransmision(null);
-        }
-        if(entity.getId()!=null)
-        {
-            this.id = entity.getId();
-        }
-        //Revisar bien esta parte 
-        if (entity.getAutomoviles()!= null) {
-            automoviles = new ArrayList<>();
-            for (AutomovilEntity entityAuto : entity.getAutomoviles()) {
-                automoviles.add(new AutomovilDTO(entityAuto));
-
-            }}
     }
 
     /**
@@ -133,7 +133,6 @@ public class ModelDetailDTO extends ModelDTO {
      *
      * @param listaAuto Nueva lista que se quiere mostrar
      */
-
     public void setAutomoviles(List<AutomovilDTO> listaAuto) {
         this.automoviles = listaAuto;
     }
@@ -150,7 +149,6 @@ public class ModelDetailDTO extends ModelDTO {
         return automoviles;
     }
 
-
     public Long getId() {
         return id;
     }
@@ -158,6 +156,5 @@ public class ModelDetailDTO extends ModelDTO {
     public void setId(Long id) {
         this.id = id;
     }
-    
 
 }

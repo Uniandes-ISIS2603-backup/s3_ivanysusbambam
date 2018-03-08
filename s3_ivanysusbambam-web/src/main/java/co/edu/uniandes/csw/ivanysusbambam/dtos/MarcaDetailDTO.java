@@ -62,32 +62,33 @@ public class MarcaDetailDTO extends MarcaDTO {
      */
     public MarcaDetailDTO(MarcaEntity entity) {
         super(entity);
-
-        if (entity.getName() != null) {
-            this.SetNombre(entity.getName());
-        } else {
-            entity.setName(null);
-        }
-
-        if (entity.getAutomoviles() != null) {
-            automoviles = new ArrayList<>();
-            for (AutomovilEntity entityAutomovil : entity.getAutomoviles()) {
-                automoviles.add(new AutomovilDTO(entityAutomovil));
-            }
-        }
-
         if (entity != null) {
             if (entity.getName() != null) {
                 this.SetNombre(entity.getName());
             } else {
                 entity.setName(null);
             }
-        }
-        if (entity.getModelos()
-                != null) {
-            modelos = new ArrayList<>();
-            for (ModelEntity entityModelo : entity.getModelos()) {
-                modelos.add(new ModelDTO(entityModelo));
+
+            if (entity.getAutomoviles() != null) {
+                automoviles = new ArrayList<>();
+                for (AutomovilEntity entityAutomovil : entity.getAutomoviles()) {
+                    automoviles.add(new AutomovilDTO(entityAutomovil));
+                }
+            }
+
+            if (entity != null) {
+                if (entity.getName() != null) {
+                    this.SetNombre(entity.getName());
+                } else {
+                    entity.setName(null);
+                }
+            }
+            if (entity.getModelos()
+                    != null) {
+                modelos = new ArrayList<>();
+                for (ModelEntity entityModelo : entity.getModelos()) {
+                    modelos.add(new ModelDTO(entityModelo));
+                }
             }
         }
     }

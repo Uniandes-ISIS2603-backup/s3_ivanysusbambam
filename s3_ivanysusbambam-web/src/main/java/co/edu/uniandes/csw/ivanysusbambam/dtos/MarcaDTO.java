@@ -39,7 +39,9 @@ public class MarcaDTO {
      */
 
     public MarcaDTO(MarcaEntity nueva){
-        this.nombre = nueva.getName();
+        if(nueva != null){
+            this.nombre = nueva.getName();
+        }
 
     }
 
