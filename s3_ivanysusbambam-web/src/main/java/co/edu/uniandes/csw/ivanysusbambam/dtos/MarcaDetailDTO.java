@@ -28,7 +28,7 @@ public class MarcaDetailDTO extends MarcaDTO {
      */
     private List<ModelDTO> modelos;
 
-    private Long id;
+    
 
     //-----------------------------------------------------------------------------------------------------------------
     // Métodos Get
@@ -63,11 +63,7 @@ public class MarcaDetailDTO extends MarcaDTO {
     public MarcaDetailDTO(MarcaEntity entity) {
         super(entity);
         if (entity != null) {
-            if (entity.getName() != null) {
-                this.SetNombre(entity.getName());
-            } else {
-                entity.setName(null);
-            }
+            
 
             if (entity.getAutomoviles() != null) {
                 automoviles = new ArrayList<>();
@@ -76,13 +72,7 @@ public class MarcaDetailDTO extends MarcaDTO {
                 }
             }
 
-            if (entity != null) {
-                if (entity.getName() != null) {
-                    this.SetNombre(entity.getName());
-                } else {
-                    entity.setName(null);
-                }
-            }
+       
             if (entity.getModelos()
                     != null) {
                 modelos = new ArrayList<>();
@@ -101,17 +91,10 @@ public class MarcaDetailDTO extends MarcaDTO {
     @Override
     public MarcaEntity toEntity() {
         MarcaEntity marca = super.toEntity();
-        if (this.getNombre() != null) {
-            marca.setName(this.getNombre());
-        }
-
-        if (this.getId() != null) {
-            marca.setId(id);
-        }
-
+        
         if (getModelos() != null) {
             List<ModelEntity> modelsEntity = new ArrayList<>();
-            for (ModelDTO dtoModel : getModelos()) {
+            for (ModelDTO dtoModel : modelos) {
                 modelsEntity.add(dtoModel.toEntity());
             }
             marca.setModelos(modelsEntity);
@@ -147,11 +130,5 @@ public class MarcaDetailDTO extends MarcaDTO {
         this.modelos = models;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 }

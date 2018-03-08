@@ -5,8 +5,10 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
+import co.edu.uniandes.csw.ivanysusbambam.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -17,6 +19,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import uk.co.jemos.podam.common.PodamExclude;
+import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
@@ -73,8 +76,9 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     /**
      * Fecha de listado de este automovil
      */
-    @Temporal(TemporalType.DATE )
-    private Calendar fechaListado;
+    @Temporal(TemporalType.DATE)
+    @PodamStrategyValue(DateStrategy.class)
+    private Date fechaListado;
 
    /**
     * modelo de este automovil
@@ -119,7 +123,7 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     /**
      * @return fecha de listado del auto
      */
-    public Calendar getFechaListado() {
+    public Date getFechaListado() {
         return fechaListado;
     }
 
@@ -161,7 +165,7 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     /**
      * @param fechaListado fecha del listado a setear
      */
-    public void setFechaListado(Calendar fechaListado) {
+    public void setFechaListado(Date fechaListado) {
         this.fechaListado = fechaListado;
     }
 

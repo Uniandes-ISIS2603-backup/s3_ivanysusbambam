@@ -116,8 +116,10 @@ public class MarcaLogicTest {
     public void createMarcaTest() throws BusinessLogicException {
         MarcaEntity newEntity = factory.manufacturePojo(MarcaEntity.class);
         MarcaEntity result = marcaLogic.createMarca(newEntity);
+        
         Assert.assertNotNull(result);
         MarcaEntity entity = em.find(MarcaEntity.class, result.getId());
+        
         Assert.assertEquals(newEntity.getId(), entity.getId());
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getAutomoviles(), entity.getAutomoviles());
@@ -153,6 +155,7 @@ public class MarcaLogicTest {
     public void findMarcaTest() {
         try {
             MarcaEntity entity = data.get(0);
+            
             MarcaEntity resultEntity;
             resultEntity = marcaLogic.findMarca(entity.getId());
             Assert.assertNotNull(resultEntity);

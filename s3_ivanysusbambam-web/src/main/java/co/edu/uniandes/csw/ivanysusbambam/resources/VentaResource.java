@@ -158,13 +158,12 @@ public class VentaResource {
     @PUT
     @Path("{id: \\d+}")
     public VentaDetailDTO updateVenta(@PathParam("id") Long id, VentaDetailDTO venta) throws BusinessLogicException {
-        VentaEntity Venta = ventaLogic.findVenta(id);
-
-        if (Venta == null) {
-            throw new WebApplicationException("El recurso automovil " + id + " no existe");
-        } else {
-            return new VentaDetailDTO(ventaLogic.updateVenta(Venta));
-        }
+        VentaEntity V = ventaLogic.findVenta(id);
+        
+        if(V == null) throw new WebApplicationException("El recurso venta " + id + " no existe");
+        
+        else return new VentaDetailDTO(ventaLogic.updateVenta(venta.toEntity()));
+        
 
     }
 

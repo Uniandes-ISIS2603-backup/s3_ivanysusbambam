@@ -14,6 +14,8 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
 public class ModelDTO {
 
     private Long id;
+    
+    private String name;
 
     public Long getId() {
         return id;
@@ -57,6 +59,8 @@ public class ModelDTO {
             this.setCilindraje(enti.getCilindraje());
             this.setNumeroPuertas(enti.getNumeroPuertas());
             this.setTransmision(enti.getTransmision());
+            this.setId(enti.getId());
+            this.setName(enti.getName());
         }
     }
 
@@ -71,6 +75,8 @@ public class ModelDTO {
         nueva.setCilindraje(this.getCilindraje());
         nueva.setNumeroPuertas(this.getNumeroPuertas());
         nueva.setTransmision(this.getTransmision());
+        nueva.setId(this.getId());
+        nueva.setName(this.getName());
         return nueva;
     }
 
@@ -144,6 +150,20 @@ public class ModelDTO {
      */
     public void setCentCubicos(Double nueCent) {
         centCubicos = nueCent;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
 
 }

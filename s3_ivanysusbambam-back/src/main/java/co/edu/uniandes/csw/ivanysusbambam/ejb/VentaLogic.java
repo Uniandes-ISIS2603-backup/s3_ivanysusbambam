@@ -67,12 +67,8 @@ public class VentaLogic {
             throw new BusinessLogicException("Ninguno de los atributos de la venta puede ser null");
         }
 
-        if (VE.getId() <= 0) {
-            throw new BusinessLogicException("EL id no debería ser <= 0");
-        }
-        if (persistence.find(VE.getId()) != null) {
-            throw new BusinessLogicException("la venta ya existe en la base de datos");
-        }
+        
+        
         if (vendedorPersistence.find(VE.getVendedorEncargado().getCarnetVendedor()) == null) {
             throw new BusinessLogicException("El vendedor de la venta no esta registrado en la base de datos");
         }
@@ -82,9 +78,7 @@ public class VentaLogic {
         if (automovilPersistence.find(VE.getAutomovil().getId()) == null) {
             throw new BusinessLogicException("El automóvil de la venta no existe");
         }
-        if (calificacionPersistence.find(VE.getCalificacionCarro().getId()) == null) {
-            throw new BusinessLogicException("la clificacionCarro de la venta no existe");
-        }
+        
         
         if (puntoPersistence.find(VE.getPuntoDeVenta().getId()) == null){
        throw new BusinessLogicException("El punto de venta de la venta no existe");

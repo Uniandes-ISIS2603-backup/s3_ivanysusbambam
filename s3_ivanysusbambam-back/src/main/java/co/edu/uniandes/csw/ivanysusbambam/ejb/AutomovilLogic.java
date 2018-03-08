@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.ivanysusbambam.persistence.CompraPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MarcaPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ModelPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.PuntoDeVentaPersistence;
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -71,10 +72,7 @@ public class AutomovilLogic {
              if (AE.getPuntoDeVenta() == null || AE.getMarca() == null || AE.getModel() == null || AE.getCompra() == null) {
             throw new BusinessLogicException("Ninguno de los atributos delautomovil puede ser null");
         }
-        // VERIFICA QUE EL FORMATO DE LA PLACA SEA EL ADECUADO, PARA NO VIOLAR LA REGLA DE NEGOCIO
-        if (!verificarPlaca(AE.getPlaca())) {
-            throw new BusinessLogicException("El formato de la placa no es el correcto");
-        }
+    
 
         if (AE.getId() <= 0) {
             throw new BusinessLogicException("El id no debería ser <= 0");
@@ -82,13 +80,21 @@ public class AutomovilLogic {
         if (persistence.find(AE.getId()) != null) {
             throw new BusinessLogicException("El Automovil ya existe en la base de datos");
         }
-        if (puntoPersistence.find(AE.getPuntoDeVenta().getId()) == null) {
+        
+        if (AE.getPuntoDeVenta().getId() == null){
+            throw new BusinessLogicException("el id del punto de venta es null ");
+        }
+        if (AE.getPuntoDeVenta()== null){
+            throw new BusinessLogicException("el punto de venta es nulo");
+        }
+        if (puntoPersistence.find(AE.getPuntoDeVenta().getId()) == null ) {
             throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos");
         }
         if (modeloPersistence.find(AE.getModel().getId()) == null) {
             throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
         }
-        if (marcaPersistence.findByNombre(AE.getMarca().getName()) == null) {
+        
+        if (marcaPersistence.find(AE.getMarca().getId()) == null) {
             throw new BusinessLogicException("la Marca del automovil no existe");
         }
 
@@ -97,16 +103,16 @@ public class AutomovilLogic {
         }
 
         
-       
+       //PREGUNTARLE A RUBBY COMO MANEJAR LA INFORMACION DE LAS PLACAS
         // Verifica la regla de negocio que dice que no puede haber dos automoviles con la misma placa ni con el mismo chasis
-        if (persistence.findByPlate(AE.getPlaca()) != null) {
-            throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
-        }
-
-        if (persistence.findBychasis(AE.getChasis()) != null) {
-            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + AE.getChasis() + "\"");
-
-        }
+//        if (persistence.findByPlate(AE.getPlaca()) != null) {
+//            throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
+//        }
+//
+//        if (persistence.findBychasis(AE.getChasis()) != null) {
+//            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + AE.getChasis() + "\"");
+//
+//        }
 
         // Invoca la persistencia para crear el automovil 
         persistence.create(AE);
@@ -164,21 +170,21 @@ public class AutomovilLogic {
         //VERIFICA QUE EL FORMATO DE LA PLACA SEA VÁLIDO
 
         
-        if (verificarPlaca(AE.getPlaca()) == false) {
-            throw new BusinessLogicException("El formato de la placa es inválido");
-        }
+//        if (verificarPlaca(AE.getPlaca()) == false) {
+//            throw new BusinessLogicException("El formato de la placa es inválido");
+//        }
 
         
 
         
 
 
-        if (persistence.findByPlate(AE.getPlaca()) != null) {
-            throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
-        }
-        if (persistence.findBychasis(AE.getChasis()) != null) {
-            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + AE.getChasis() + "\"");
-        }
+//        if (persistence.findByPlate(AE.getPlaca()) != null) {
+//            throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
+//        }
+//        if (persistence.findBychasis(AE.getChasis()) != null) {
+//            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + AE.getChasis() + "\"");
+//        }
         return persistence.update(AE);
     }
 
@@ -256,20 +262,21 @@ public class AutomovilLogic {
         return persistence.findBychasis(chasis);
     }
 
-    /**
-     * Verifica que la placa contenga el formato valido - Tres letras iniciales,
-     * tres números al final-
-     *
-     * @param pla Placa a la que se le quiere verificar el formato
-     * @return True si la placa es válida
-     */
-    public boolean verificarPlaca(String pla) {
-
-        Boolean rta = false;
-        if (pla.contains("[a-zA-Z]+") && pla.contains("[0-9]+")) {
-            rta = true;
-        }
-        return rta;
-    }
+//    /**
+//     * Verifica que la placa contenga el formato valido - Tres letras iniciales,
+//     * tres números al final-
+//     *
+//     * @param pla Placa a la que se le quiere verificar el formato
+//     * @return True si la placa es válida
+//     */
+//    public boolean verificarPlaca(String pla) {
+//
+//        Boolean rta = false;
+//        
+//        if (pla.contains("[a-zA-Z]+") && pla.contains("[0-9]+")) {
+//            rta = true;
+//        }
+//        return rta;
+//    }
 
 }

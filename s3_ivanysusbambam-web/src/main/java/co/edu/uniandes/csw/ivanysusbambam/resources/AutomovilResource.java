@@ -141,11 +141,11 @@ public class AutomovilResource {
     @PUT
     @Path("{id: \\d+}")
     public AutomovilDetailDTO updateAutomovil(@PathParam("id") Long id, AutomovilDetailDTO auto) throws BusinessLogicException{
-       AutomovilEntity A = autoLogic.getAutomovil(id);
+        AutomovilEntity A = autoLogic.findAutomovil(id);
         
         if(A == null) throw new WebApplicationException("El recurso automovil " + id + " no existe");
         
-        else return new AutomovilDetailDTO(autoLogic.updateAutomovil(A));
+        else return new AutomovilDetailDTO(autoLogic.updateAutomovil(auto.toEntity()));
         
     }
     

@@ -1,27 +1,180 @@
 {
-	"variables": [],
 	"info": {
-		"name": "AutomovilCollection",
-		"_postman_id": "759301c4-dd9b-b18b-e2ef-9172ad486402",
+		"name": "Automovil Collection",
+		"_postman_id": "1b3781eb-2d1d-6592-8210-f2ca9a0d5056",
 		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c258648-f3f3-445b-8218-926f04b40a44",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
 			"request": {
-				"url": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
-				"method": "GET",
+				"method": "DELETE",
 				"header": [
 					{
 						"key": "Content-Type",
-						"value": "application/json",
-						"description": ""
+						"value": "application/json"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\"name\":\"medellin\",\"zipcode\":\"7890\"}"
+					"raw": "{\r\n     \"id\":1, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABC123\",\r\n    \"chasis\":5874,\r\n    \"fechaListado\":\"2018-04-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"marca\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1},\r\n    \"compra\":{\"idCompra\":1}\r\n    \r\n    \r\n    \r\n\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/1",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c258648-f3f3-445b-8218-926f04b40a44",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"id\":2, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABE234\",\r\n    \"chasis\":5875,\r\n    \"fechaListado\":\"2018-05-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1},\r\n    \"marca\":{\"id\":1},\r\n    \"compra\":{\"idCompra\":1}\r\n    \r\n    \r\n    \r\n\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c258648-f3f3-445b-8218-926f04b40a44",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"id\":2, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABE234\",\r\n    \"chasis\":5875,\r\n    \"fechaListado\":\"2018-05-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1},\r\n    \"marca\":{\"id\":1},\r\n    \"compra\":{\"idCompra\":1}\r\n    \r\n    \r\n    \r\n\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "1c258648-f3f3-445b-8218-926f04b40a44",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n \"id\":2, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABE234\",\r\n    \"chasis\":5875,\r\n    \"fechaListado\":\"2018-05-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1},\r\n    \"marca\":{\"id\":1},\r\n    \"compra\":{\"idCompra\":1}\r\n    \r\n    \r\n    \r\n\r\n    \r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles"
+					]
 				},
 				"description": ""
 			},

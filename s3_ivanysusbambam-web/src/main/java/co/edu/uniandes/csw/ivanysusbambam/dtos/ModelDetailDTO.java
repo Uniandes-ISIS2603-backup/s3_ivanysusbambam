@@ -23,7 +23,7 @@ public class ModelDetailDTO extends ModelDTO {
      */
     private List<AutomovilDTO> automoviles;
 
-    private Long id;
+    
 
     /**
      * =======
@@ -78,9 +78,7 @@ public class ModelDetailDTO extends ModelDTO {
             } else {
                 entity.setTransmision(null);
             }
-            if (entity.getId() != null) {
-                this.id = entity.getId();
-            }
+            
             //Revisar bien esta parte 
             if (entity.getAutomoviles() != null) {
                 automoviles = new ArrayList<>();
@@ -149,12 +147,6 @@ public class ModelDetailDTO extends ModelDTO {
         return automoviles;
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    
 
 }
