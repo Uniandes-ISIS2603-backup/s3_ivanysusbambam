@@ -57,7 +57,7 @@ public class VentaLogicTest {
 
     private List<VendedorEntity> vendedorData = new ArrayList<VendedorEntity>();
     private List<AutomovilEntity> automovilData = new ArrayList<AutomovilEntity>();
-    private List<CalificacionCarroEntity> calificacionData = new ArrayList<CalificacionCarroEntity>();
+    
     private List<PuntoDeVentaEntity> puntoData = new ArrayList<PuntoDeVentaEntity>();
     private List<MedioDePagoEntity> medioData = new ArrayList<MedioDePagoEntity>();
     
@@ -105,7 +105,7 @@ public class VentaLogicTest {
         em.createQuery("delete from ClienteEntity").executeUpdate();
         em.createQuery("delete from AutomovilEntity").executeUpdate();
         em.createQuery("delete from VendedorEntity").executeUpdate();
-        em.createQuery("delete from CalificacionCarroEntity").executeUpdate();
+        
         em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
         em.createQuery("delete from MedioDePagoEntity").executeUpdate();
     }
@@ -130,9 +130,7 @@ public class VentaLogicTest {
             em.persist(vendedor);
             vendedorData.add(vendedor);
             
-            CalificacionCarroEntity calificacion = factory.manufacturePojo(CalificacionCarroEntity.class);
-            em.persist(calificacion);
-            calificacionData.add(calificacion);
+            
             
             PuntoDeVentaEntity Punto = factory.manufacturePojo(PuntoDeVentaEntity.class);
             em.persist(Punto);
@@ -146,7 +144,7 @@ public class VentaLogicTest {
             VentaEntity entity = factory.manufacturePojo(VentaEntity.class);
             entity.setCliente(ClienteData.get(0));
             entity.setAutomovil(automovilData.get(0));
-            entity.setCalificacionCarro(calificacionData.get(0));
+            
             entity.setVendedorEncargado(vendedorData.get(0));
             entity.setMedioDePago(medioData.get(0));
             entity.setPuntoDeVenta(puntoData.get(0));
