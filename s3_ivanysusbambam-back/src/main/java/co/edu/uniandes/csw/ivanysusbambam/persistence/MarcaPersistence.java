@@ -32,17 +32,19 @@ public class MarcaPersistence {
             return em.find(MarcaEntity.class, id);
         }
        
-     public List<MarcaEntity> findByNombre(String nom){
+     public List<MarcaEntity> findByName(String nom){
             LOGGER.log(Level.INFO, "Buscando marca con nombre ={0}", nom);
-                 TypedQuery<MarcaEntity> q = em.createQuery("select u from MarcaEntity u where u.nombre = :nom", MarcaEntity.class);
-                 q = q.setParameter("nombre", nom);
-                  return q.getResultList();
+                 TypedQuery<MarcaEntity> q = em.createQuery("select u from MarcaEntity u where u.name = :asd", MarcaEntity.class);
+                 q.setParameter("asd", nom);
+                 if(q.getResultList().isEmpty()) return null;
+                else return q.getResultList();
         }
        
        public List<MarcaEntity> findAll(){
         LOGGER.info("Consultando todas las marcas");
         Query q = em.createQuery("select u from MarcaEntity u");
-        return q.getResultList();
+        if(q.getResultList().isEmpty()) return null;
+        else return q.getResultList();
        }
        
        public MarcaEntity create(MarcaEntity entity) {

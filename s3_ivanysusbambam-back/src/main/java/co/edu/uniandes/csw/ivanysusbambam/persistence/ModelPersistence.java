@@ -35,14 +35,14 @@ public class ModelPersistence {
         public List<ModelEntity> findByPuertas(Integer numPuer){
             LOGGER.log(Level.INFO, "Buscando modelo con número de puertas={0}", numPuer);
                  TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.numeroPuertas = :numPuer", ModelEntity.class);
-                 q = q.setParameter("numeroPuertas", numPuer);
+                 q = q.setParameter("numPuer", numPuer);
                   return q.getResultList();
         }
         
          public List<ModelEntity> findByTransm(String trans){
             LOGGER.log(Level.INFO, "Buscando modelo con transmisión=", trans);
               TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.transmision = :trans", ModelEntity.class);
-                 q = q.setParameter("transmision", trans);
+                 q = q.setParameter("trans", trans);
                   return q.getResultList();
         } 
          
@@ -50,7 +50,7 @@ public class ModelPersistence {
          public List<ModelEntity> findByCilindraje(Integer cil){
             LOGGER.log(Level.INFO, "Buscando modelo con cilindraje=", cil);
               TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.cilindraje = :cil", ModelEntity.class);
-                 q = q.setParameter("cilindraje", cil);
+                 q = q.setParameter("cil", cil);
                   return q.getResultList();
          }
          
@@ -59,14 +59,14 @@ public class ModelPersistence {
         Query q = em.createQuery("select u from ModelEntity u");
         return q.getResultList();
     }
-         public ModelEntity create(ModelEntity entity) {
+        public ModelEntity create(ModelEntity entity) {
         LOGGER.info("Creando un nuevo modelo");
         em.persist(entity);
         LOGGER.info("Modelo creado");
         return entity;
     }
         public ModelEntity update(ModelEntity entity) {
-        LOGGER.log(Level.INFO, "Actualizando modelo con cilindraje={0}", entity.getCilindraje());
+        LOGGER.log(Level.INFO, "Actualizando modelo con id{0}", entity.getId());
         return em.merge(entity);
     }
         public void delete(Long id) {

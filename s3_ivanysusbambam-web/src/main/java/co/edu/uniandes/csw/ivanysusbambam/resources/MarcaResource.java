@@ -88,8 +88,9 @@ public class MarcaResource {
         }
         else
         {
-            return new MarcaDetailDTO(mdl);
+            nueva = new MarcaDetailDTO(mdl);
         }
+        return nueva;
     }
            /**
      * <h1>POST /api/Marcas : Crea una nueva marca.</h1>
@@ -159,12 +160,14 @@ public class MarcaResource {
      */
     @DELETE
     @Path("{Id: \\d+}")
-     public void deleteMarca(@PathParam("Id") Long id) throws BusinessLogicException {
+     public MarcaDetailDTO deleteMarca(@PathParam("Id") Long id) throws BusinessLogicException {
         MarcaEntity entity = logica.findMarca(id);
         if (entity == null) {
             throw new BusinessLogicException("El recurso marca" + id + " no existe.");
         }
+        else{
         logica.deleteMarca(id);
+        return new MarcaDetailDTO(entity);}
     }
     
 }

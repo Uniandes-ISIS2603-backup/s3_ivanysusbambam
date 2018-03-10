@@ -16,9 +16,10 @@ public class MarcaDTO {
     /**
      * Representa el nombre de la marca
      */
-    private String nombre;
+    private String name;
     
     private Long id;
+    
 
     public Long getId() {
         return id;
@@ -40,8 +41,8 @@ public class MarcaDTO {
 
     public MarcaDTO(MarcaEntity nueva){
         if(nueva != null){
-            this.nombre = nueva.getName();
-            this.id = nueva.getId();
+            this.SetName(nueva.getName()); 
+            this.setId(nueva.getId());
         }
 
     }
@@ -53,7 +54,7 @@ public class MarcaDTO {
      */
     public MarcaEntity toEntity() {
         MarcaEntity nueva = new MarcaEntity();
-        nueva.setName(this.getNombre());
+        nueva.setName(this.getName());
         nueva.setId(this.getId());
         return nueva;
     }
@@ -63,8 +64,8 @@ public class MarcaDTO {
      *
      * @return Nombre de la marca
      */
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -72,8 +73,8 @@ public class MarcaDTO {
      *
      * @param nuevo Nuevo nombre de la marca
      */
-    public void SetNombre(String nuevo) {
-        this.nombre = nuevo;
+    public void SetName(String nuevo) {
+        this.name = nuevo;
     }
 
 }
