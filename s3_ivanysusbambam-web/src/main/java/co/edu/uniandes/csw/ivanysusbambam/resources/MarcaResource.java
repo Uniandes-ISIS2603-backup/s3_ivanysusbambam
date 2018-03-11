@@ -134,13 +134,13 @@ public class MarcaResource {
      */
     @Path("{Id: \\d+}")
     @PUT
-    public MarcaDetailDTO putModelo(@PathParam("Id") Long id, MarcaDetailDTO Nuevo) throws BusinessLogicException{
+    public MarcaDetailDTO putMarca(@PathParam("Id") Long id, MarcaDetailDTO Nuevo) throws BusinessLogicException{
       MarcaEntity mar = logica.findMarca(id);
       if(mar == null){
           throw new BusinessLogicException("El recurso marca" +id+ "no existe");
       }
       else{
-          return new MarcaDetailDTO(mar);
+          return new MarcaDetailDTO(logica.updateMarca(mar));
       }
     }
       /**

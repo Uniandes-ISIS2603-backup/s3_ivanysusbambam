@@ -80,7 +80,7 @@ public class ModelResource {
      */
     @Path("{Id: \\d+}")
     @GET
-    public ModelDTO getModelo(@PathParam("Id")Long id) throws BusinessLogicException{
+    public ModelDetailDTO getModelo(@PathParam("Id")Long id) throws BusinessLogicException{
         ModelEntity modelo = logica.findModel(id);
 
         if (modelo == null) {
@@ -109,7 +109,7 @@ public class ModelResource {
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error debido a la existencia del modelo que se deseaba crear.
      */
     @POST
-    public ModelDTO postModelo(ModelDetailDTO Nuevo) throws BusinessLogicException{
+    public ModelDetailDTO postModelo(ModelDetailDTO Nuevo) throws BusinessLogicException{
          return new ModelDetailDTO(logica.createModel(Nuevo.toEntity()));
     }
      /**
@@ -132,13 +132,14 @@ public class ModelResource {
      */
     @Path("{Id: \\d+}")
     @PUT
-    public ModelDTO putModelo(@PathParam("Id") Long id, ModelDTO Nuevo) throws BusinessLogicException{
+    public ModelDetailDTO putModelo(@PathParam("Id") Long id, ModelDTO Nuevo) throws BusinessLogicException{
         ModelEntity modelo = logica.findModel(id);
         if(modelo == null)
         {
             throw new BusinessLogicException("El recurso modelo:" +id+ "no existe");
         }
-        return new ModelDetailDTO(modelo);
+        
+        return new ModelDetailDTO(logica.updateModel(modelo));
     }
           /**
      * <h1>DELETE /api/modelos/{id} : Borrar un modelo por el id.</h1>
