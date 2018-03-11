@@ -1,15 +1,142 @@
 {
 	"info": {
-		"name": "Collection recurso queja y reclamo",
-		"_postman_id": "f8ce2172-8c78-c01f-6232-a102aba3255d",
+		"name": "QuejaReclamo",
+		"_postman_id": "00f523f7-17dc-d948-1a5a-7ad64cbe9f79",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos/123",
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/3",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"id\": 2,\n    \"name\": \"Queja de auto\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos",
+						"3"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"id\": 2,\n    \"name\": \"Queja de auto\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
 			"request": {
 				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"id\": 78,\n    \"name\": \"Queja de atencion\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"id\": 78,\n    \"name\": \"Queja de atencion\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
+			"request": {
+				"method": "GET",
 				"header": [
 					{
 						"key": "Content-Type",
@@ -21,7 +148,7 @@
 					"raw": "{\n\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos/123",
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -30,109 +157,6 @@
 					"path": [
 						"s3_ivanysusbambam-web",
 						"api",
-						"clientes",
-						"12345",
-						"quejasReclamos",
-						"123"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos",
-			"request": {
-				"method": "POST",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n       \"id\": \"854\",\n       \"name\": \"Queja de compra\",\n       \"texto\": \"No estoy satisfecho con el proceso de compra\",\n       \"tipo\": \"Queja\",\n       \"cliente\" : {\"cedula\": 549897, \"nombre\": \"Juan Perez\"}\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"s3_ivanysusbambam-web",
-						"api",
-						"clientes",
-						"12345",
-						"quejasReclamos"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos/123",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Juanito\",\n\t\"cedula\":\"12345\"\n\t\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos/123",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"s3_ivanysusbambam-web",
-						"api",
-						"clientes",
-						"12345",
-						"quejasReclamos",
-						"123"
-					]
-				},
-				"description": ""
-			},
-			"response": []
-		},
-		{
-			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos",
-			"request": {
-				"method": "GET",
-				"header": [
-					{
-						"key": "Content-Type",
-						"value": "application/json"
-					}
-				],
-				"body": {
-					"mode": "raw",
-					"raw": "{\n\t\"nombre\":\"Juanito\",\n\t\"cedula\":\"12345\"\n\t\n}"
-				},
-				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/12345/quejasReclamos",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"s3_ivanysusbambam-web",
-						"api",
-						"clientes",
-						"12345",
 						"quejasReclamos"
 					]
 				},

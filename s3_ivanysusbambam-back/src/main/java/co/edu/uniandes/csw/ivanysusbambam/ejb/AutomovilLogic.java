@@ -190,16 +190,15 @@ public class AutomovilLogic {
 
     /**
      * Elimina un automovil de la persistencia
-     * @param entity entidad que se quiere eliminar
+     * @param id entidad que se quiere eliminar
      * @throws BusinessLogicException si la entidad no es valida
      */
-    public void deleteAutomovil(AutomovilEntity entity) throws BusinessLogicException {
-        if (entity == null) {
-            throw new BusinessLogicException("el automovil no puede ser nulo");
-        }
-        LOGGER.log(Level.INFO, "Inicia proceso de borrar automovil con id={0}", entity.getId());
-        persistence.delete(entity.getId());
-        LOGGER.log(Level.INFO, "Termina proceso de borrar automovil con id={0}", entity.getId());
+    public void deleteAutomovil(Long id) throws BusinessLogicException {
+        LOGGER.log(Level.INFO, "Intentando aeliminar automovil con id: {0}",id);
+        if(id == null) throw new BusinessLogicException("el id no puede ser null");
+        AutomovilEntity AE = persistence.find(id);
+        if(AE == null) throw new BusinessLogicException("No existe un automovil con la cédula dada.");
+         persistence.delete(id);
     }
 
     /**

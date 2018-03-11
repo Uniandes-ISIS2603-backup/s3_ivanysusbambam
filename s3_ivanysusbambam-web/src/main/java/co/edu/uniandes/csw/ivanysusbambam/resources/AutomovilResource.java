@@ -166,9 +166,13 @@ public class AutomovilResource {
     @DELETE
     @Path("{id: \\d+}")
     public void deleteAutomovil(@PathParam("id") Long id)throws BusinessLogicException{
-        AutomovilEntity automovil = autoLogic.getAutomovil(id);
+       AutomovilEntity auto = autoLogic.findAutomovil(id);
+        System.out.println("ENCONTRADO EL AUTOMOVIL: " + auto);
+        if(auto == null){
+            System.out.println("Lanzando excepción");
+            throw new WebApplicationException("El recurso AUTOMOVIL " + id + " no existe");
+        }
         
-        if(automovil == null) throw new WebApplicationException("El recurso automovil " + id + " no existe");
-        autoLogic.deleteAutomovil(automovil);
+        else autoLogic.deleteAutomovil(id);
    }
 }

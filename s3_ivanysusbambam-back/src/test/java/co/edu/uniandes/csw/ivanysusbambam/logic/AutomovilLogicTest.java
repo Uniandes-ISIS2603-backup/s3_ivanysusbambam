@@ -184,7 +184,7 @@ public class AutomovilLogicTest {
     @Test
     public void deleteAutomovilTest() throws BusinessLogicException {
         AutomovilEntity entity = data.get(0);
-        autoLogic.deleteAutomovil(entity);
+        autoLogic.deleteAutomovil(entity.getId());
         AutomovilEntity deleted = em.find(AutomovilEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
