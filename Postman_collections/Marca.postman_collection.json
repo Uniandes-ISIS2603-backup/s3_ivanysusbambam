@@ -1,0 +1,136 @@
+{
+	"info": {
+		"name": "Marca",
+		"_postman_id": "39bd3ca8-9515-4b17-9a37-e11e81ad26f2",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Prueba GET marcas",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"id\":10,\n\t\"transmision\": \"Nuevo modelo\",\n\t\"numeroPuertas\":4,\n\t\"centCubicos\":3500,\n\t\"cilindraje\":3500\n},\n{\n\t\"id\":13,\n\t\"transmision\": \"Modelo dos\",\n\t\"numeroPuertas\":2,\n\t\"centCubicos\":2000,\n\t\"cilindraje\":2000\n},\n{\n\t\"id\":14,\n\t\"transmision\": \"Modelo tres\",\n\t\"numeroPuertas\":4,\n\t\"centCubicos\":4000,\n\t\"cilindraje\":4000\n}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/marcas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"marcas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba POST marcas",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"id\":10,\n\t\"name\": \"Si se pueden crear nuevas marcas\"\n},\n{\n\t\"id\":13,\n\t\"name\": \"Se crea la segunda marca\"\n},\n{\n\t\"id\":14,\n\t\"name\": \"Marca tres\"\n}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/marcas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"marcas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba PUT marcas",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":1,\n\t\"name\": \"Si se pueden cambiar el nombre\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/marcas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"marcas",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba DELETE marcas",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"id\":1,\n\t\"name\": \"Si se pueden cambiar el nombre\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/marcas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"marcas",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
