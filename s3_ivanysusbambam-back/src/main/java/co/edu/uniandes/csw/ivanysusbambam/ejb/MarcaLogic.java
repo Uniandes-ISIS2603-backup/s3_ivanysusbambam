@@ -40,15 +40,10 @@ public class MarcaLogic {
      */
     public MarcaEntity createMarca(MarcaEntity ne) throws BusinessLogicException {
        //no hay que revisar el id porque es la PK
-         if(persistence.findByName(ne.getName())!=null)
-        {
-            throw new BusinessLogicException("Ya existe una marca con el id dado");
-        }
         if (persistence.find(ne.getId()) != null) {
-            throw new BusinessLogicException("Ya existe una marca con el id dado");
+            throw new BusinessLogicException("Ya existe una marca con el nombre dado");
         }
-     
-
+// habria que revisar el nombre , pero este metodo que lo busca devuelve listas 
         return persistence.create(ne);
     }
 
@@ -92,7 +87,7 @@ public class MarcaLogic {
         if (persistence.find(id) == null) {
             throw new BusinessLogicException("La marca no existe en la base de datos");
         }
-       persistence.delete(id);
+        persistence.delete(id);
     }
 
     /**

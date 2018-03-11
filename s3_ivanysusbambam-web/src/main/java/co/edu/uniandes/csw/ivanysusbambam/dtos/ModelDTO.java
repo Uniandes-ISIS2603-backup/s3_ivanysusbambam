@@ -14,9 +14,16 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
 public class ModelDTO {
 
     private Long id;
-
     
+    private String name;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
     /**
      * Representa el numero de puertas del vehículo
      */
@@ -53,6 +60,7 @@ public class ModelDTO {
             this.setNumeroPuertas(enti.getNumeroPuertas());
             this.setTransmision(enti.getTransmision());
             this.setId(enti.getId());
+            this.setName(enti.getName());
         }
     }
 
@@ -68,6 +76,7 @@ public class ModelDTO {
         nueva.setNumeroPuertas(this.getNumeroPuertas());
         nueva.setTransmision(this.getTransmision());
         nueva.setId(this.getId());
+        nueva.setName(this.getName());
         return nueva;
     }
 
@@ -143,15 +152,18 @@ public class ModelDTO {
         centCubicos = nueCent;
     }
 
-
-
-   
-
-    public Long getId() {
-        return id;
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
     }
+
 }

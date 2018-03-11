@@ -27,6 +27,7 @@ public class MarcaDetailDTO extends MarcaDTO {
      * Representa la lista de modelos pertenecientes a una marca
      */
     private List<ModelDTO> modelos;
+
     
 
     //-----------------------------------------------------------------------------------------------------------------
@@ -49,9 +50,9 @@ public class MarcaDetailDTO extends MarcaDTO {
     public List<ModelDTO> getModelos() {
         return modelos;
     }
-    
+
     public MarcaDetailDTO() {
-        
+
     }
 
     /**
@@ -63,19 +64,15 @@ public class MarcaDetailDTO extends MarcaDTO {
         super(entity);
         if (entity != null) {
             
-            if (entity.getId() != null) {
-                this.setId(entity.getId());
-            }
-            if (entity.getName() != null) {
-                this.SetName(entity.getName());
-            }
+
             if (entity.getAutomoviles() != null) {
                 automoviles = new ArrayList<>();
                 for (AutomovilEntity entityAutomovil : entity.getAutomoviles()) {
                     automoviles.add(new AutomovilDTO(entityAutomovil));
                 }
             }
-            
+
+       
             if (entity.getModelos()
                     != null) {
                 modelos = new ArrayList<>();
@@ -94,13 +91,7 @@ public class MarcaDetailDTO extends MarcaDTO {
     @Override
     public MarcaEntity toEntity() {
         MarcaEntity marca = super.toEntity();
-        if(this.getId() != null)
-        {
-            marca.setId(this.getId());
-        }
-        if(this.getName()!=null){
-            marca.setName(this.getName());
-        }
+        
         if (getModelos() != null) {
             List<ModelEntity> modelsEntity = new ArrayList<>();
             for (ModelDTO dtoModel : modelos) {
@@ -138,5 +129,6 @@ public class MarcaDetailDTO extends MarcaDTO {
     public void setModelos(List<ModelDTO> models) {
         this.modelos = models;
     }
+
     
 }

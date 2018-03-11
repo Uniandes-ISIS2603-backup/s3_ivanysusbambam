@@ -23,6 +23,8 @@ public class ModelDetailDTO extends ModelDTO {
      */
     private List<AutomovilDTO> automoviles;
 
+    
+
     /**
      * =======
      *
@@ -55,13 +57,35 @@ public class ModelDetailDTO extends ModelDTO {
      */
     public ModelDetailDTO(ModelEntity entity) {
         super(entity);
+        if (entity != null) {
+            if (entity.getCentCubicos() != null) {
+                this.centCubicos = entity.getCentCubicos();
+            } else {
+                entity.setCentCubicos(null);
+            }
+            if (entity.getCilindraje() != null) {
+                this.cilindraje = entity.getCilindraje();
+            } else {
+                entity.setCilindraje(null);
+            }
+            if (entity.getNumeroPuertas() != null) {
+                this.numeroPuertas = entity.getNumeroPuertas();
+            } else {
+                entity.setNumeroPuertas(null);
+            }
+            if (entity.getTransmision() != null) {
+                this.transmision = entity.getTransmision();
+            } else {
+                entity.setTransmision(null);
+            }
+            
+            //Revisar bien esta parte 
+            if (entity.getAutomoviles() != null) {
+                automoviles = new ArrayList<>();
+                for (AutomovilEntity entityAuto : entity.getAutomoviles()) {
+                    automoviles.add(new AutomovilDTO(entityAuto));
 
-        //Revisar bien esta parte 
-        if (entity.getAutomoviles() != null) {
-            automoviles = new ArrayList<>();
-            for (AutomovilEntity entityAuto : entity.getAutomoviles()) {
-                automoviles.add(new AutomovilDTO(entityAuto));
-
+                }
             }
         }
     }
@@ -73,8 +97,20 @@ public class ModelDetailDTO extends ModelDTO {
      */
     @Override
     public ModelEntity toEntity() {
-        
         ModelEntity modl = super.toEntity();
+
+        if (this.getCentCubicos() != null) {
+            modl.setCentCubicos(this.getCentCubicos());
+        }
+        if (this.getCilindraje() != null) {
+            modl.setCilindraje(this.getCilindraje());
+        }
+        if (this.getNumeroPuertas() != null) {
+            modl.setNumeroPuertas(this.getNumeroPuertas());
+        }
+        if (this.getTransmision() != null) {
+            modl.setTransmision(this.getTransmision());
+        }
 
         if (getAutomoviles() != null) {
             List<AutomovilEntity> autosEntity = new ArrayList<>();
@@ -110,5 +146,7 @@ public class ModelDetailDTO extends ModelDTO {
     public List<AutomovilDTO> getAutomoviles() {
         return automoviles;
     }
+
+    
 
 }
