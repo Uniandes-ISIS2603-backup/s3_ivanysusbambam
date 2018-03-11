@@ -1,0 +1,189 @@
+{
+	"info": {
+		"name": "Collection Compra",
+		"_postman_id": "c29fc833-5dfd-acd4-dd59-854e6e8d2836",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Crear una compra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "da99bf38-6659-4e6d-b055-a86a69a3d151",
+						"type": "text/javascript",
+						"exec": [
+							"var data = JSON.parse(responseBody);",
+							"postman.setGlobalVariable(\"new_id\",data.idCompra);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"console.log(data.id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"idCompra\": \"123456\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/compras",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"compras"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve una compra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f5292715-d33f-41cd-8254-e6a9320dbe2d",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 200;",
+							"",
+							"var data = JSON.parse(responseBody);",
+							"tests[\"el id corresponde\"] = data.idCompra == postman.getGlobalVariable(\"new_id\");"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/compras/{{new_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"compras",
+						"{{new_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Borrar una compra",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1b0c5347-80db-471e-83ef-40d896570455",
+						"type": "text/javascript",
+						"exec": [
+							"tests[\"Status code is 204\"] = responseCode.code === 204;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/compras/{{new_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"compras",
+						"{{new_id}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve All Compras",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f419bc26-a15c-4d4a-a611-7189590fa6bc",
+						"type": "text/javascript",
+						"exec": [
+							"var data= JSON.parse(responseBody);",
+							"tests[\"Status code is 200\"] = responseCode.code === 200;",
+							"tests[\"compras count\"] = data.length = 2;"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"idCompra\": \"123456\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/compras/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"compras",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
