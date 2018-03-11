@@ -63,19 +63,13 @@ public class VentaDetailDTO extends VentaDTO {
         super(entity);
         
         if (entity != null) {
-            if (entity.getCliente()!=null){
-            cliente = new ClienteDTO(entity.getCliente());}
-            if (entity.getAutomovil() != null){
-            automovil = new AutomovilDTO(entity.getAutomovil());}
-            if (entity.getCalificacionCarro()!= null){
-            calificacionCarro = new CalificacionCarroDTO(entity.getCalificacionCarro());}
-            if (entity.getMedioDePago()!= null){
-            medioDePago = new MedioDePagoDTO(entity.getMedioDePago());}
-            if (entity.getPuntoDeVenta()!= null){
-            puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());}
-            if (vendedorEncargado!= null){
+            cliente = new ClienteDTO(entity.getCliente());
+            automovil = new AutomovilDTO(entity.getAutomovil());
+            calificacionCarro = new CalificacionCarroDTO(entity.getCalificacionCarro());
+            medioDePago = new MedioDePagoDTO(entity.getMedioDePago());
+            puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
             vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
-            }
+            
         }
         
     }

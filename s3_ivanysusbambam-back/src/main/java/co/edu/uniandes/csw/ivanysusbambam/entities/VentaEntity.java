@@ -18,52 +18,46 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class VentaEntity extends BaseEntity implements Serializable {
 
-    
+    @PodamExclude
+    @ManyToOne(cascade = CascadeType.ALL)
     /**
      * Atributo del cliente asociado a esta venta 
      */
-    @PodamExclude
-    @ManyToOne
     private ClienteEntity cliente;
     
-    
+    @PodamExclude
+    @ManyToOne
     /**
      * Atributo del Medio de pago asociado a esta venta 
      */
-    @PodamExclude
-    @ManyToOne
     private MedioDePagoEntity medioDePago;
     
-    
+    @PodamExclude
+    @ManyToOne
     /**
      * Atributo del vendedor asociado a esta venta 
      */
-    @PodamExclude
-    @ManyToOne
     private VendedorEntity vendedorEncargado;
     
-    
+    @PodamExclude
+    @ManyToOne
     /**
      * Atributo de la calificacion del carro asociado a esta venta 
      */
-    @PodamExclude
-    @ManyToOne
     private CalificacionCarroEntity calificacionCarro;
     
-    
+    @PodamExclude
+    @ManyToOne
     /**
      * Atributo del punto de venta asociado a esta venta 
      */
-    @PodamExclude
-    @ManyToOne
     private PuntoDeVentaEntity puntoDeVenta;
     
-     
+    @PodamExclude
+    @ManyToOne (cascade = CascadeType.ALL)
     /**
      * Atributo del automovil asociado a esta venta 
      */
-    @PodamExclude
-    @ManyToOne
     private AutomovilEntity automovil;
 
     /**

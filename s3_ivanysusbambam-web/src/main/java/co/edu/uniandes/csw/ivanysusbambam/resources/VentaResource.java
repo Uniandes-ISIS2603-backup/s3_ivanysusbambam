@@ -127,7 +127,7 @@ public class VentaResource {
         VentaEntity venta = ventaLogic.findVenta(id);
 
         if (venta == null) {
-            throw new WebApplicationException("El recurso venta " + id + " no existe");
+            throw new WebApplicationException("El recurso Queja reclamo " + id + " no existe");
         } else {
             return new VentaDetailDTO(venta);
         }

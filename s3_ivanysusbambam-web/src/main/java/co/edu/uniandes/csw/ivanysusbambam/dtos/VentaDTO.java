@@ -36,8 +36,6 @@ public class VentaDTO {
      * Atributo del Id de la venta
      */
     private Long idVenta;
-    
-    private String name ;
 
     /**
      * Constructor por defecto
@@ -62,7 +60,6 @@ public class VentaDTO {
      */
     public void setIdVenta(Long pId) {
         this.idVenta = pId;
-        
     }
 
     /**
@@ -74,7 +71,6 @@ public class VentaDTO {
     public VentaDTO(VentaEntity pVenta) {
         if (pVenta != null) {
             this.idVenta = pVenta.getId();
-            this.name = pVenta.getName();
         }
 
     }
@@ -87,21 +83,6 @@ public class VentaDTO {
     public VentaEntity toEntity() {
         VentaEntity entity = new VentaEntity();
         entity.setId(this.idVenta);
-        entity.setName(this.name);
         return entity;
-    }
-
-    /**
-     * @return the name
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
-     * @param name the name to set
-     */
-    public void setName(String name) {
-        this.name = name;
     }
 }

@@ -52,7 +52,7 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     private List<ProspectoCompraEntity> prospectosCompra;
 
     @PodamExclude
-    @OneToMany(mappedBy = "automovil", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<VentaEntity> ventas;
     
     @PodamExclude
