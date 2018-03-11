@@ -11,11 +11,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase que extiende de {@link ModelDTO} para manejar las relaciones entre los
- * Model JSON y otros DTOs.
+ * Objeto de transferencia de datos detallado de un modelo. Hereda de ModelDTO
+ * <br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
  *
- * @author Joseph Ortiz Moreno
- */
+ *           "numeroPuertas" :Integer,
+ *           "id": Integer, 
+ *           "cilindraje": Integer,
+ *           "centCubicos":Double,
+ *           "transmision":String,
+ *           "automoviles":JSONArray
+ *   }
+ * </pre> Por ejemplo un modelo se representa así:<br>
+ *
+ * <pre>
+*   {
+ *
+ *           "numeroPuertas" :4,
+ *           "id": 1, 
+ *           "cilindraje": 2000,
+ *           "centCubicos":2000,
+ *           "transmision":"mecanica",
+ *           "automoviles":[{"color": "azul","anio": 2001,"placa": "XYZ123","chasis": 1,"fechaListado": "2018-05-13","valorListado": 5000000]
+ *   }
+ * </pre>
+ *
+ * @author Joseph ortiz Moreno
+*/
 public class ModelDetailDTO extends ModelDTO {
 
     /**

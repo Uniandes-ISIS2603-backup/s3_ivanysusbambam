@@ -1,0 +1,98 @@
+{
+	"info": {
+		"name": "Prueba",
+		"_postman_id": "d92c6853-8453-49e7-9c2e-2fb502915766",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Prueba con Clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:11369/s3_ivanysusbambam-web/modelos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11369",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"modelos"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba con Modelos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:11369/s3_ivanysusbambam-web/modelos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11369",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"modelos"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba con Clientes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:11369/s3_ivanysusbambam-web/clientes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11369",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"clientes"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Prueba con Marcas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:11369/s3_ivanysusbambam-web/marcas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "11369",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"marcas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

@@ -12,10 +12,29 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase que extiende de {@link MarcaDTO} para manejar las relaciones entre los
- * Marca JSON y otros DTOs.
+ * Objeto de transferencia de datos detallado de una marca. Hereda de MarcaDTO
+ * <br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
  *
- * @author Joseph Ortiz Moreno
+ *      "name": string,
+ *      "modelos": JSONarray,
+ *      "automoviles": JSONarray
+ *   }
+ * </pre> Por ejemplo una marca se representa así:<br>
+ *
+ * <pre>
+ *
+ *   {
+ *      "name": "Nueva Audi",
+ *      //SI NO SE PRUEBAN LAS RELACIONES OMITIR ESTA PARTE
+ *      "modelos" : [{"numeroPuertas" :4,"id": 1, "cilindraje": 4500,"centCubicos":2300,"transmision":"automatico"}],
+ *      "automoviles" : [{"color": "azul","anio": 2001,"placa": "XYZ123","chasis": 1,"fechaListado": "2018-05-13","valorListado": 5000000]
+ *   }
+ * </pre>
+ *
+ * @author Joseph ortiz Moreno
  */
 public class MarcaDetailDTO extends MarcaDTO {
 
