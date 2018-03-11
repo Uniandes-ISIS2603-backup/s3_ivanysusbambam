@@ -179,10 +179,7 @@ public class VentaLogicTest {
             ex =true;
         }
         
-        if((newEntity.getAutomovil() != null) && (newEntity.getCliente() != null )&& (newEntity.getVendedorEncargado()!= null)&& (newEntity.getCalificacionCarro()!= null)&& (newEntity.getPuntoDeVenta()!= null)&& (newEntity.getMedioDePago()!= null)){
-            Assert.assertFalse(ex);
-        }
-        else Assert.assertTrue(ex);
+        
         
      
     }

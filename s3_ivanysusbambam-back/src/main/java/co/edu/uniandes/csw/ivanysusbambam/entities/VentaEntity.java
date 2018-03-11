@@ -19,6 +19,9 @@ import uk.co.jemos.podam.common.PodamExclude;
 public class VentaEntity extends BaseEntity implements Serializable {
 
     
+    
+    
+    
     /**
      * Atributo del cliente asociado a esta venta 
      */

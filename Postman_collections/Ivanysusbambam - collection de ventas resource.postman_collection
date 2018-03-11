@@ -1,107 +1,167 @@
 {
-	"id": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
-	"name": "collection de ventas resource",
-	"description": "",
-	"order": [
-		"57ea3ac9-08f4-9c6f-d9be-3a022b565d94",
-		"541c9ed7-82e1-b134-cd71-bee9c1dd9d7b",
-		"12d7fa47-0250-0a7c-4644-169f9b2acd6e"
-	],
-	"folders": [],
-	"folders_order": [],
-	"timestamp": 1518496300167,
-	"owner": "3720893",
-	"public": false,
-	"events": [],
-	"variables": [],
-	"auth": null,
-	"requests": [
+	"info": {
+		"name": "Venta Collection",
+		"_postman_id": "da02b766-d075-1367-a2a4-e7a5f377d07b",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
 		{
-			"id": "12d7fa47-0250-0a7c-4644-169f9b2acd6e",
-			"url": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
-			"queryParams": [],
-			"method": "GET",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"data": [],
-			"dataMode": "raw",
-			"events": [],
-			"auth": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"version": 2,
 			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
-			"description": "",
-			"descriptionFormat": "html",
-			"collectionId": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"idVenta\":\"12345\"\n}"
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"idVenta\":3,\n    \"name\":\"venta4\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"ventas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "541c9ed7-82e1-b134-cd71-bee9c1dd9d7b",
-			"url": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
-			"queryParams": [],
-			"method": "POST",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"data": [],
-			"dataMode": "raw",
-			"events": [],
-			"auth": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"version": 2,
 			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
-			"description": "",
-			"descriptionFormat": "html",
-			"collectionId": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"idVenta\":\"3124\"\n}"
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"idVenta\":3,\n    \"name\":\"venta3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"ventas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		},
 		{
-			"id": "57ea3ac9-08f4-9c6f-d9be-3a022b565d94",
-			"url": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
-			"queryParams": [],
-			"method": "DELETE",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"data": [],
-			"dataMode": "raw",
-			"events": [],
-			"auth": null,
-			"pathVariables": {},
-			"pathVariableData": [],
-			"version": 2,
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas/1",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"ventas",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas/2",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"idVenta\":3,\n    \"name\":\"venta3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"ventas",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
 			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
-			"description": "",
-			"descriptionFormat": "html",
-			"collectionId": "d97d2c3c-27fe-be30-e92e-c2ba9ab992dc",
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"idVenta\":\"324\"\n}"
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": " {\n    \"idVenta\":3,\n    \"name\":\"venta3\"}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/ventas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"ventas"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
