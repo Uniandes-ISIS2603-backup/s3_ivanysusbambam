@@ -61,17 +61,29 @@ public class VentaDetailDTO extends VentaDTO {
      */
     public VentaDetailDTO(VentaEntity entity) {
         super(entity);
-        
+
         if (entity != null) {
-            cliente = new ClienteDTO(entity.getCliente());
-            automovil = new AutomovilDTO(entity.getAutomovil());
-            calificacionCarro = new CalificacionCarroDTO(entity.getCalificacionCarro());
-            medioDePago = new MedioDePagoDTO(entity.getMedioDePago());
-            puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
-            vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
-            
+            if (entity.getCliente() != null) {
+                cliente = new ClienteDTO(entity.getCliente());
+            }
+            if (entity.getAutomovil() != null) {
+                automovil = new AutomovilDTO(entity.getAutomovil());
+            }
+            if (entity.getCalificacionCarro() != null) {
+                calificacionCarro = new CalificacionCarroDTO(entity.getCalificacionCarro());
+            }
+            if (entity.getMedioDePago() != null) {
+                medioDePago = new MedioDePagoDTO(entity.getMedioDePago());
+            }
+            if (entity.getPuntoDeVenta() != null) {
+                puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
+            }
+            if (entity.getVendedorEncargado() != null) {
+                vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
+            }
+
         }
-        
+
     }
 
     /**
@@ -87,21 +99,21 @@ public class VentaDetailDTO extends VentaDTO {
         }
         if (calificacionCarro != null) {
             VentaE.setCalificacionCarro(calificacionCarro.toEntity());
-            
+
         }
         if (cliente != null) {
             VentaE.setCliente(cliente.toEntity());
-            
+
         }
-        if (medioDePago != null){
+        if (medioDePago != null) {
             VentaE.setMedioDePago(medioDePago.toEntity());
         }
-        
+
         if (puntoDeVenta != null) {
             VentaE.setPuntoDeVenta(puntoDeVenta.toEntity());
         }
-        
-        if (vendedorEncargado != null){
+
+        if (vendedorEncargado != null) {
             VentaE.setVendedorEncargado(vendedorEncargado.toEntity());
         }
         return VentaE;

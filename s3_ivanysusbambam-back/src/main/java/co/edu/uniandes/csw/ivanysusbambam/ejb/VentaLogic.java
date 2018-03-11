@@ -27,7 +27,8 @@ import javax.inject.Inject;
  */
 @Stateless
 public class VentaLogic {
-
+private static final Logger LOGGER = Logger.getLogger( VentaLogic.class.getName());
+    
     @Inject
     private VentaPersistence persistence;
     @Inject
@@ -63,7 +64,7 @@ public class VentaLogic {
         if (VE == null) {
             throw new BusinessLogicException("La venta no debe ser null");
         }
-        if (VE.getId() == null || VE.getVendedorEncargado()== null || VE.getCliente() == null || VE.getAutomovil() == null || VE.getCalificacionCarro()== null ) {
+        if (VE.getVendedorEncargado()== null || VE.getCliente() == null || VE.getAutomovil() == null || VE.getCalificacionCarro()== null ) {
             throw new BusinessLogicException("Ninguno de los atributos de la venta puede ser null");
         }
 
@@ -142,23 +143,19 @@ public class VentaLogic {
     }
 
     /**
-     * Elimina un prospecto de compra.
+     * Elimina una venta.
      *
-     * @param VE el prospecto de compra que se busca eliminar de la BD.
-     * @return el prospecto de compra eliminado.
+     * @param id la venta que se busca eliminar de la BD.
      * @throws BusinessLogicException si pc == null o si el prospecto de compra
      * no existe en la BD.
      */
-    public void deleteVenta(Long VE) throws BusinessLogicException {
+    public void deleteVenta(Long id) throws BusinessLogicException {
 
-        if (VE == null) {
-            throw new BusinessLogicException("La venta que se quiere eliminar no debe ser null");
-        }
-
-        if (persistence.find(VE) == null) {
-            throw new BusinessLogicException("La venta que se busca eliminar no existe");
-        }
-       persistence.delete(VE);
+          LOGGER.log(Level.INFO, "Intentando aeliminar venta con id: {0}",id);
+        if(id == null) throw new BusinessLogicException("el id no puede ser null");
+        VentaEntity VE = persistence.find(id);
+        if(VE == null) throw new BusinessLogicException("No existe una venta el id dado.");
+         persistence.delete(id);
     }
 
     /**
