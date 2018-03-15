@@ -1,0 +1,168 @@
+{
+	"info": {
+		"name": "QuejaReclamo",
+		"_postman_id": "00f523f7-17dc-d948-1a5a-7ad64cbe9f79",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/3",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"id\": 2,\n    \"name\": \"Queja de auto\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos",
+						"1"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"id\": 2,\n    \"name\": \"Queja de auto\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos",
+						"2"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n\"id\": 78,\n    \"name\": \"Queja de atencion\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos",
+						"3"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n     \"id\": 4,\n    \"name\": \"Queja de atencion\",\n    \"texto\": \"No estoy satisfecho con la atencion del consecionario.\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"quejasReclamos"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

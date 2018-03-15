@@ -16,6 +16,7 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
  * <pre>
  *   {
  *      "id": number
+ *      "name": String 
  *   }
  * </pre> Por ejemplo una venta se representa asi:<br>
  *
@@ -23,6 +24,7 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
  *
  *   {
  *      "id": 91852,
+ *      "name": ""
  *
  *   }
  *

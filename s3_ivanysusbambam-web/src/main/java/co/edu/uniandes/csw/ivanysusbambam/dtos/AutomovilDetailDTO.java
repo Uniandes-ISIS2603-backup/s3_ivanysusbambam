@@ -16,7 +16,53 @@ import java.util.List;
  * entre los objetos JSON y las Entidades de la base de datos. Para conocer el
  * contenido del automovil vaya a la documentacion de {@link AutomovilDTO}
  *
- * @author a.bravo
+ * 
+ * /**
+ * Objeto de transferencia de datos del automovil.<br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *
+ * "id":Number, 
+  *  "name":String,
+  *  "color":String,
+  *  "anio":Number,
+  *  "placa":String,
+  *  "chasis":Number,
+  *  "fechaListado":Date,
+  *  "valorListado":Number,
+  *  "modelo":ModeloDTO,
+  *  "puntoDeVenta":PuntoDeVentaDTO,
+  *  "marca":MarcaDTO,
+  *  "compra":CompraDTO    
+*}
+ * </pre> Por ejemplo un cliente se representa así:<br>
+ *
+ * <pre>
+ *
+ *   {
+ *"id":2, 
+ *   "name":"",
+ *   "color":"azul",
+ *   "anio":2007,
+ *   "placa":"ABE234",
+ *   "chasis":5875,
+ *   "fechaListado":"2018-05-24",
+ *   "valorListado":505000,
+ *   "modelo":{"id":1},
+ *   "puntoDeVenta":{"id":1},
+ *   "marca":{"id":1},
+ *   "compra":{"idCompra":1}
+ *   
+ *   
+ *   
+*
+ *   
+*}
+ *
+ * </pre>
+ * 
+ * @author a.bravo y hd.castellanos
  */
 public class AutomovilDetailDTO extends AutomovilDTO {
 

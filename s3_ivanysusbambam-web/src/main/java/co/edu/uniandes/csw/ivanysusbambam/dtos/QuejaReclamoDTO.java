@@ -8,6 +8,30 @@ package co.edu.uniandes.csw.ivanysusbambam.dtos;
 import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
 
 /**
+ * Objeto de transferencia de datos de la QuejaReclamo.<br>
+ * Al serializarse como JSON esta clase implementa el siguiente modelo: <br>
+ * <pre>
+ *   {
+ *     "id": number
+ *      "name": string,
+ *      "texto": String,
+ *      "Tipo": String
+ * 
+ *     
+ *   }
+ * </pre> Por ejemplo un cliente se representa así:<br>
+ *
+ * <pre>
+ *
+ *   {
+ *           "id": 1
+ *      "name": Queja de atención,
+ *      "texto": No estoy satisfecho con la atención recibida al momento de visitar concesionario,
+ *      "Tipo": Queja
+ *   }
+ *
+ * </pre>
+/**
  *
  * @author if.garcia y hd.castellanos
  */
