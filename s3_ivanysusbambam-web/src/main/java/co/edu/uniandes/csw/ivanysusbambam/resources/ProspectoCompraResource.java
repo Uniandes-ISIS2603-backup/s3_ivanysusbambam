@@ -119,6 +119,9 @@ public class ProspectoCompraResource {
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK se creó el prospecto de compra.
      * </code> 
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 412 No se cumple alguna de las reglas del negocio, evitando la creacion del prospecto de compra.
+     * </code> 
      * </pre>
      * @param prospecto el prospecto de compra que se añadirá.
      * @return JSON el prospecto de compra creado con su id autoasignado.
