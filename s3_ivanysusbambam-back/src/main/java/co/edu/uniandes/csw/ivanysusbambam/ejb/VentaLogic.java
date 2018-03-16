@@ -31,6 +31,7 @@ private static final Logger LOGGER = Logger.getLogger( VentaLogic.class.getName(
     
     @Inject
     private VentaPersistence persistence;
+    // TODO: Borrar las variables que no se usen
     @Inject
     private VendedorPersistence vendedorPersistence;
 

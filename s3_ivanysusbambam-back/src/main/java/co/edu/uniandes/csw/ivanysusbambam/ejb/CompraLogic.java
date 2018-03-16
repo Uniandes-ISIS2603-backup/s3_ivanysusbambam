@@ -20,22 +20,22 @@ import javax.inject.Inject;
  * @author juliana
  */
 @Stateless
-public class CompraLogic 
-{
+public class CompraLogic {
+
     @Inject
     private CompraPersistence compraPersistence;
-     @Inject
+
+    //TODO: Esta variable no se usa. Borrarla
+    @Inject
     private ClientePersistence clientePersistence;
-      
-   @Inject
+
+    @Inject   //TODO: Esta variable no se usa. Borrarla
     private VendedorPersistence vendedorPersistence;
-            
+    //TODO: Esta variable no se usa. Borrarla   
     @Inject
     private PuntoDeVentaPersistence puntoDeVentaPersistence;
-      
-    
-    public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException
-    {
+
+    public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
 //        if (compraPersistence.find(compra.getIdCompra())!=null)
 //        {
 //            throw new BusinessLogicException("Ya existe una compra con ese id");
@@ -52,51 +52,43 @@ public class CompraLogic
 //        {
 //             throw new BusinessLogicException("El punto de venta no es valido"); 
 //        }
+// TODO: No hay reglas de negocio sobre lso atributos básicos?
         compraPersistence.create(compra);
         return compra;
     }
-    public void deleteCompra(Integer idCompra) throws BusinessLogicException
-    {
-        if(compraPersistence.find(idCompra)==null)
-        {
-             throw new BusinessLogicException("No exixte una compra con ese numero");
-        }
-        if(idCompra==null)
-        {
+
+    public void deleteCompra(Integer idCompra) throws BusinessLogicException {
+        if (compraPersistence.find(idCompra) == null) {
             throw new BusinessLogicException("No exixte una compra con ese numero");
         }
-            
-      compraPersistence.delete(idCompra);
-    }
-    
-    public CompraEntity findCompra(Integer id) throws BusinessLogicException
-    {
-        CompraEntity compra= compraPersistence.find(id);
-        if(compra==null)
-        {
-              throw new BusinessLogicException("No exixte una compra con ese id");    
+        if (idCompra == null) {
+            throw new BusinessLogicException("No exixte una compra con ese numero");
         }
-        return  compra;
+
+        compraPersistence.delete(idCompra);
     }
-    
-    public List<CompraEntity> findAll()
-    {
+
+    public CompraEntity findCompra(Integer id) throws BusinessLogicException {
+        CompraEntity compra = compraPersistence.find(id);
+        if (compra == null) {
+            throw new BusinessLogicException("No exixte una compra con ese id");
+        }
+        return compra;
+    }
+
+    public List<CompraEntity> findAll() {
         return compraPersistence.findAll();
     }
-    
-    public CompraEntity updateCompra(CompraEntity compra) throws BusinessLogicException
-    {
-        if(compra==null)
-        {
-            throw new BusinessLogicException("No se pueden actualizar valores nulos");    
+
+    public CompraEntity updateCompra(CompraEntity compra) throws BusinessLogicException {
+        if (compra == null) {
+            throw new BusinessLogicException("No se pueden actualizar valores nulos");
         }
-        if(compraPersistence.find(compra.getIdCompra())==null)
-        {
-             throw new BusinessLogicException("La compra no existe en la base de datos"); 
+        if (compraPersistence.find(compra.getIdCompra()) == null) {
+            throw new BusinessLogicException("La compra no existe en la base de datos");
         }
-        
+
         return compraPersistence.update(compra);
     }
-    
-    
+
 }

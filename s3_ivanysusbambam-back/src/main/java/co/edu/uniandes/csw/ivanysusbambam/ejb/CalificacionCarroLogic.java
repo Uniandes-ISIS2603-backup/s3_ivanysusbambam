@@ -59,6 +59,8 @@ public class CalificacionCarroLogic {
      */
     public CalificacionCarroEntity createCalificacionCarro(CalificacionCarroEntity cc) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear una calificacion de carro ");
+        // TODO: preguntar si existe una califcacion con el mismo id no tiene sentido, 
+        // porque el cc no tiene id porque aun no se ha creado. Cuando se persista la base de datos le creará un id. 
         if(persistence.find(cc.getId()) != null) throw new BusinessLogicException("Ya existe una calificacion con ese id");
         //if(cc.getVenta() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
         if(cc.getPuntaje() < 1.0 || cc.getPuntaje() > 5.0) throw new BusinessLogicException("La calificacion registrada no es valida");
@@ -96,8 +98,10 @@ public class CalificacionCarroLogic {
         persistence.delete(id);
     }
     
+   //TODO: Para qué es este método ? 
     public VentaEntity getVenta(Long id){
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la venta de la calificacion de carro con id = {0}", id);
+        // TODO: Qué pasa si getCalificacionCarro(id)  es null?
         return getCalificacionCarro(id).getVenta();
     }
 }

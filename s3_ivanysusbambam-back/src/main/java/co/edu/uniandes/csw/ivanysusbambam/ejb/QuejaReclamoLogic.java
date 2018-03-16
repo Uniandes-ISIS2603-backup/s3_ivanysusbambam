@@ -39,6 +39,8 @@ public class QuejaReclamoLogic
      */
     public QuejaReclamoEntity createQuejaReclamo(QuejaReclamoEntity QR) throws BusinessLogicException{
         if(QR == null) throw new BusinessLogicException("La quejaReclamo no debe ser null");
+        
+         //TODO: no hay que revisar el id porque es la PK y no se ha creado
         if(QR.getId() == null || QR.getCliente() == null ) throw new BusinessLogicException("Ninguno de los atributos de la quejaReclamo puede ser null"); 
 
         

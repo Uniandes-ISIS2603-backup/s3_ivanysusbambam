@@ -39,11 +39,11 @@ public class MarcaLogic {
      * o si el nombre que se busca es null
      */
     public MarcaEntity createMarca(MarcaEntity ne) throws BusinessLogicException {
-       //no hay que revisar el id porque es la PK
+       //TODO: no hay que revisar el id porque es la PK
         if (persistence.find(ne.getId()) != null) {
             throw new BusinessLogicException("Ya existe una marca con el nombre dado");
         }
-// habria que revisar el nombre , pero este metodo que lo busca devuelve listas 
+// TODO: habria que revisar el nombre , pero este metodo que lo busca devuelve listas 
         return persistence.create(ne);
     }
 

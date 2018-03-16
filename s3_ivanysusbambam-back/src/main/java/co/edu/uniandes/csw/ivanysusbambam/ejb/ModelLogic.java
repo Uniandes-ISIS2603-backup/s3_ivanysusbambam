@@ -39,7 +39,7 @@ public class ModelLogic {
      * de puertas es inferior a 2.
      */
     public ModelEntity createModel(ModelEntity mdl) throws BusinessLogicException {
-
+ //TODO: no hay que revisar el id porque es la PK y no se ha creado
         if (persistence.find(mdl.getId()) != null) {
             throw new BusinessLogicException("Ya existe un modelo igual al que se quiere agregar");
         }

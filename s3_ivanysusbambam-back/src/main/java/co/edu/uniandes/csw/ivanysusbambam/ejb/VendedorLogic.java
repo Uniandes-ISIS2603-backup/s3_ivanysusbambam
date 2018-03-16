@@ -49,7 +49,7 @@ public class VendedorLogic {
 
         Long carnet = ve.getCarnetVendedor();
         LOG.log(Level.INFO, "Revisando si el vendedor: {0}cumple con los requisitos para ser persistido", carnet);
-
+//TODO: Ojo, no confundir el id con la cédula
         Long id = ve.getCedula();
         cedulaValida(id);
         if (persistence.findByCedula(id) != null) {
@@ -178,7 +178,7 @@ public class VendedorLogic {
      * vendedor o el nuevo nombre es null o no es una cadena alfabetica.
      */
     public VendedorEntity updateVendedor(VendedorEntity ve) throws BusinessLogicException {
-        
+
         if (ve == null) {
             throw new BusinessLogicException("El vendedor no puede ser null");
         }
@@ -227,7 +227,8 @@ public class VendedorLogic {
     }
 
     /**
-     * Verifica que la cadena cadena pasada no tenga un caractér especial (DEL, SOH, NULL, etc...)
+     * Verifica que la cadena cadena pasada no tenga un caractér especial (DEL,
+     * SOH, NULL, etc...)
      *
      * @param s la cadena que se busca verificar.
      * @return false si tiene un caracter especial, true de lo contrario.
@@ -235,7 +236,7 @@ public class VendedorLogic {
     protected static boolean esAlfabetica(String s) {
         char[] arreglo = s.toCharArray();
         for (char c : arreglo) {
-            if ((c>= 0 && c <= 31) || (c == 127)) {
+            if ((c >= 0 && c <= 31) || (c == 127)) {
                 return false;
             }
         }
