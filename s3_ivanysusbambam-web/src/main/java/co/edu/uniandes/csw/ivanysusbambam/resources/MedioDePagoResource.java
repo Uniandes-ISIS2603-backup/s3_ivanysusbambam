@@ -76,6 +76,7 @@ public class MedioDePagoResource
     @GET
     @Path("{id: \\d+}")
     public MedioDePagoDetailDTO getMedioDePago(@PathParam("id")Long numero){
+         //TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
         try {
             MedioDePagoEntity entity = mdpLogic.findMedioDePago(numero);
             return new MedioDePagoDetailDTO(entity);
@@ -86,6 +87,7 @@ public class MedioDePagoResource
    
     @POST
     public MedioDePagoDTO createMedioDePago(MedioDePagoDetailDTO mdp) {
+        //TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
         try {
             return new MedioDePagoDetailDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
         } catch (BusinessLogicException ex) {
@@ -116,6 +118,7 @@ public class MedioDePagoResource
     public MedioDePagoDetailDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDetailDTO mdp)
     {
         mdp.setNumero(numeroMedioDePago);
+        //TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
         try {
             return new MedioDePagoDetailDTO(mdpLogic.updateMedioDePago(mdp.toEntity()));
         } catch (BusinessLogicException ex) {
@@ -141,7 +144,7 @@ public class MedioDePagoResource
     @DELETE
     @Path("{numeroMedioDePago: \\d+}")
     public void deleteMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago)
-    {
+    {//TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
         try {
             mdpLogic.deleteMedioDePago(numeroMedioDePago);
         } catch (BusinessLogicException ex) {

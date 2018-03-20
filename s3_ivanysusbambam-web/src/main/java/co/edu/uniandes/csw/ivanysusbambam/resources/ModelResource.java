@@ -134,6 +134,7 @@ public class ModelResource {
     @PUT
     public ModelDetailDTO putModelo(@PathParam("Id") Long id, ModelDTO Nuevo) throws BusinessLogicException{
         ModelEntity modelo = logica.findModel(id);
+        //TODO si no existe debe disparar WebApplicationException 
         if(modelo == null)
         {
             throw new BusinessLogicException("El recurso modelo:" +id+ "no existe");
@@ -159,6 +160,7 @@ public class ModelResource {
     @Path("{Id: \\d+}")
      public void deleteModelo(@PathParam("Id") Long id) throws BusinessLogicException {
         ModelEntity modelo = logica.findModel(id);
+        //TODO si no existe debe disparar WebApplicationException 
         if(modelo == null)
         {
             throw new BusinessLogicException("El recurso modelo:" +id+ "no existe");

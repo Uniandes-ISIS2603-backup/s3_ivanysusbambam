@@ -117,7 +117,8 @@ public class CompraResource {
     @GET
     @Path("{idCompra: \\d+}")
     public CompraDetailDTO getCompra(@PathParam("idCompra") Integer id) {
-        
+        //TODO: Primero ver si la compra existe y si no existe disparar WebApplicationException
+        //TODO: Revisar el mensaje que habla de editorials
         try {
             CompraEntity entity= compraLogic.findCompra(id);
             return new CompraDetailDTO(entity);
@@ -154,7 +155,7 @@ public class CompraResource {
     @Path("{idCompra: \\d+}")
     public CompraDetailDTO updateCompra(@PathParam("idCompra") Integer idCompra, CompraDetailDTO compra) throws BusinessLogicException {
         
-       
+       //TODO: Esto mismo hay que hacer en el get
             compra.setIdCompra(idCompra);
             CompraEntity entity=compraLogic.findCompra(idCompra);
             if(entity==null)

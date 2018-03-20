@@ -88,6 +88,9 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
         }
     }
     
+    //TODO: Falta el método toEntity
+    
+    
     public void inicializarListas(){
         automoviles = new ArrayList<>();
         vendedores = new ArrayList<>();

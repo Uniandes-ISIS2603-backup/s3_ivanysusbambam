@@ -47,7 +47,7 @@ public class ModelDetailDTO extends ModelDTO {
      */
     private List<AutomovilDTO> automoviles;
 
-    
+    //TODO: Reviosar este conflicto. 
 
     /**
      * =======
@@ -56,6 +56,7 @@ public class ModelDetailDTO extends ModelDTO {
      * >>>>>>> d72aac146e12e938887e2305fd868434aea7ce9a Representa el numero de
      * puertas del vehículo
      */
+    //TODO: Los detailDTO no deben tener atributos básicos además ya están en el ModelDTO
     private Integer numeroPuertas;
     /**
      * Representa la transmisión del vehículo

@@ -48,6 +48,8 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
 
     public CalificacionTiendaDetailDTO(CalificacionTiendaEntity entity) {
         super(entity);
+         // TODO: qué pasa si entity es null
+        //TODO: this.cliente = ....
         if (entity.getCliente() != null) {
             this.setCliente(new ClienteDTO(entity.getCliente()));
         }
@@ -57,6 +59,7 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
      */
     private ClienteDTO cliente;
 
+     //TODO: Falta en metodo toEntity (que debe tener @Override)
     /**
      * Asigna un cliente respectivo a la clasificacion
      *

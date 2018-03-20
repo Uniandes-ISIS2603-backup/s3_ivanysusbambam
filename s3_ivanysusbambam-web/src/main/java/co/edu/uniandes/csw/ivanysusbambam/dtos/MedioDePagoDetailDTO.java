@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package co.edu.uniandes.csw.ivanysusbambam.dtos;
+//TODO: sobra este import
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDTO;
 import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
 /**

@@ -49,10 +49,14 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
 
     public CalificacionCarroDetailDTO(CalificacionCarroEntity entity) {
         super(entity);
+        // TODO: qué pasa si entity es null
+        //TODO: this.venta = ....
         if (entity.getVenta() != null) {
             this.setVenta(new VentaDTO(entity.getVenta()));
         }
     }
+    
+    //TODO: Falta en metodo toEntity (que debe tener @Override)
 
     /**
      * Representa la venta de la cual proviene la calificacion

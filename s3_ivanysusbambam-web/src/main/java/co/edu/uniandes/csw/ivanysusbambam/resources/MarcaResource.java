@@ -75,7 +75,7 @@ public class MarcaResource {
      * 404 Not Found No existe la marca que se  busca
      * </code> 
      * </pre>
-     * @param Id Identificador de la marca que se busca
+     * @param id Identificador de la marca que se busca
      * @return JSON {@link MarcaDTO} - Representa la marca buscada
      */
     @Path("{Id: \\d+}")
@@ -83,6 +83,7 @@ public class MarcaResource {
     public MarcaDetailDTO getMarca(@PathParam("Id")Long id) throws BusinessLogicException{
         MarcaEntity  mdl = logica.findMarca(id);
         MarcaDetailDTO nueva = null;
+        //TODO si no existe debe disparar WebApplicationException
         if(mdl == null){
             throw new BusinessLogicException("El resource marca "+id+" no existe");
         }
@@ -136,6 +137,7 @@ public class MarcaResource {
     @PUT
     public MarcaDetailDTO putMarca(@PathParam("Id") Long id, MarcaDetailDTO Nuevo) throws BusinessLogicException{
       MarcaEntity mar = logica.findMarca(id);
+       //TODO si no existe debe disparar WebApplicationException
       if(mar == null){
           throw new BusinessLogicException("El recurso marca" +id+ "no existe");
       }
@@ -161,6 +163,7 @@ public class MarcaResource {
     @Path("{Id: \\d+}")
      public void deleteMarca(@PathParam("Id") Long id) throws BusinessLogicException {
         MarcaEntity entity = logica.findMarca(id);
+         //TODO si no existe debe disparar WebApplicationException
         if (entity == null) {
             throw new BusinessLogicException("El recurso marca" + id + " no existe.");
         }

@@ -48,11 +48,13 @@ public class VendedorDTO {
     /**
      * Representa la cédula del vendedor.
      */
+    //TODO: debe ser Long y no long. 
     private long cedula;
     
     /**
      * Representa el carnet del vendedor.
      */
+    //TODO: debe ser Long y no long. 
     private long carnetVendedor;
     
     //---------------------CONSTRUCTORES---------------------
