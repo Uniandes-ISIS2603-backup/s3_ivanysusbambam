@@ -25,15 +25,7 @@ public class CompraLogic {
     @Inject
     private CompraPersistence compraPersistence;
 
-    //TODO: Esta variable no se usa. Borrarla
-    @Inject
-    private ClientePersistence clientePersistence;
 
-    @Inject   //TODO: Esta variable no se usa. Borrarla
-    private VendedorPersistence vendedorPersistence;
-    //TODO: Esta variable no se usa. Borrarla   
-    @Inject
-    private PuntoDeVentaPersistence puntoDeVentaPersistence;
 
     public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
 //        if (compraPersistence.find(compra.getIdCompra())!=null)
@@ -52,7 +44,7 @@ public class CompraLogic {
 //        {
 //             throw new BusinessLogicException("El punto de venta no es valido"); 
 //        }
-// TODO: No hay reglas de negocio sobre lso atributos básicos?
+
         compraPersistence.create(compra);
         return compra;
     }

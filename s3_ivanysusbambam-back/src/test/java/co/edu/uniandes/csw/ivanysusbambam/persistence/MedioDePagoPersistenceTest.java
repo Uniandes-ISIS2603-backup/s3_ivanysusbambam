@@ -143,7 +143,7 @@ public class MedioDePagoPersistenceTest {
      *
      */
     @Test
-    public void getMedioDePagoTest() {
+    public void getMediosDePagoTest() {
         
         List<MedioDePagoEntity> list = mdp.findAll();
         Assert.assertEquals(data.size(), list.size());
@@ -157,7 +157,19 @@ public class MedioDePagoPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
+     /**
+     * Prueba para consultar una Compra.
+     *
+     *
+     */
+    @Test
+    public void getMedioDePagoTest() {
+        MedioDePagoEntity entity = data.get(0);
+        MedioDePagoEntity newEntity = mdp.find(entity.getNumero());
+        Assert.assertNotNull(newEntity);
+   
+
+    }
     
     /**
      * Prueba para actualizar un medio de pago.
