@@ -49,10 +49,10 @@ public class VendedorLogic {
 
         Long carnet = ve.getCarnetVendedor();
         LOG.log(Level.INFO, "Revisando si el vendedor: {0}cumple con los requisitos para ser persistido", carnet);
-//TODO: Ojo, no confundir el id con la cédula
-        Long id = ve.getCedula();
-        cedulaValida(id);
-        if (persistence.findByCedula(id) != null) {
+        //TODO: DONE Ojo, no confundir el cedula con la cédula;
+        Long cedula = ve.getCedula();
+        cedulaValida(cedula);
+        if (persistence.findByCedula(cedula) != null) {
             throw new BusinessLogicException("Algún vendedor se encuentra registrado con la misma cédula");
         }
 
@@ -85,8 +85,8 @@ public class VendedorLogic {
      *
      * @param id carnet del vendedor que se quiere borrar
      * @return el vendedor que se borró.
-     * @throws BusinessLogicException si el id que se pasó es null o si el
-     * vendedor no existe.
+     * @throws BusinessLogicException si el cedula que se pasó es null o si el
+ vendedor no existe.
      */
     public VendedorEntity deleteVendedor(Long id) throws BusinessLogicException {
         LOG.log(Level.INFO, "Borrando al vendedor: {0}", id);

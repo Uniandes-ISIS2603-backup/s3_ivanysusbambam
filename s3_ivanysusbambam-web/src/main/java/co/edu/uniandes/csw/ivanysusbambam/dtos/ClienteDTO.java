@@ -43,8 +43,8 @@ public class ClienteDTO {
      * Representa el número de cédula del cliente.
      */
     
-    //TODO: debe ser Long y no long. Pero en el caso de la cédula sería mejor que fuera un String de dígitos
-    private long cedula;
+    //TODO: DONE debe ser Long y no long. Pero en el caso de la cédula sería mejor que fuera un String de dígitos
+    private Long cedula;
 
     //Constructor vacío
     /**
@@ -87,7 +87,7 @@ public class ClienteDTO {
     /**
      * @return la cédula del cliente.
      */
-    public long getCedula() {
+    public Long getCedula() {
         return cedula;
     }
 
@@ -104,7 +104,7 @@ public class ClienteDTO {
      *
      * @param cedula del cliente
      */
-    public void setCedula(long cedula) {
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 

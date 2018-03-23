@@ -45,8 +45,8 @@ public class ProspectoCompraLogic {
      */
     public ProspectoCompraEntity createProspectoCompra(ProspectoCompraEntity pc) throws BusinessLogicException{
         if(pc == null) throw new BusinessLogicException("El prospecto de compra no debe ser null");
-         //TODO: no hay que revisar el id porque es la PK y no se ha creado
-        if(pc.getId() == null || pc.getVendedor() == null || pc.getCliente() == null || pc.getAutomovil() == null) throw new BusinessLogicException("Ninguno de los atributos del prospecto de compra puede ser null"); 
+         //TODO: DONE no hay que revisar el id porque es la PK y no se ha creado
+        if(pc.getVendedor() == null || pc.getCliente() == null || pc.getAutomovil() == null) throw new BusinessLogicException("Ninguno de los atributos del prospecto de compra puede ser null"); 
 
         
         if(pc.getId()<=0) throw new BusinessLogicException("EL id no debería ser <= 0");

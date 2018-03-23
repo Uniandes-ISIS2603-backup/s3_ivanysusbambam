@@ -46,8 +46,8 @@ public class ProspectoCompraDTO {
     /**
      * Representa el identificador único del prospecto de compra.
      */
-    //TODO: debe ser long y no Long (cambiar tambien set/get)
-    private long id;
+    //TODO: DONE debe ser long y no Long (cambiar tambien set/get)
+    private Long id;
 
     //-------------------------------------CONSTRUCTOR-------------------------
     
@@ -93,7 +93,7 @@ public class ProspectoCompraDTO {
      * 
      * @return identificador del prospecto.
      */
-    public long getId(){
+    public Long getId(){
         return id;
     }
 
@@ -109,7 +109,7 @@ public class ProspectoCompraDTO {
      * 
      * @param id el id del prospecto.
      */
-    public void setId(long id) {
+    public void setId(Long id) {
         this.id = id;
     }
     

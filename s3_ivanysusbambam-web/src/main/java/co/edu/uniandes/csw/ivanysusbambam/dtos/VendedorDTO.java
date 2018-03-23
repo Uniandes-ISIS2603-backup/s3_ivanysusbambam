@@ -48,14 +48,14 @@ public class VendedorDTO {
     /**
      * Representa la cédula del vendedor.
      */
-    //TODO: debe ser Long y no long. 
-    private long cedula;
+    //TODO: DONE debe ser Long y no long. 
+    private Long cedula;
     
     /**
      * Representa el carnet del vendedor.
      */
-    //TODO: debe ser Long y no long. 
-    private long carnetVendedor;
+    //TODO: DONE debe ser Long y no long. 
+    private Long carnetVendedor;
     
     //---------------------CONSTRUCTORES---------------------
     
@@ -104,7 +104,7 @@ public class VendedorDTO {
      * 
      * @return la cédula del vendedor.
      */
-    public long getCedula() {
+    public Long getCedula() {
         return cedula;
     }
 
@@ -112,7 +112,7 @@ public class VendedorDTO {
      * 
      * @return el carnet del vendedor.
      */
-    public long getCarnetVendedor() {
+    public Long getCarnetVendedor() {
         return carnetVendedor;
     }
 
@@ -130,7 +130,7 @@ public class VendedorDTO {
      * Solo para uso de JAXRS
      * @param cedula número de cédula del vendedor
      */
-    public void setCedula(long cedula) {
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 
@@ -138,7 +138,7 @@ public class VendedorDTO {
      * Solo para uso de JAXRS
      * @param carnetVendedor el número de carnet del vendedor.
      */
-    public void setCarnetVendedor(long carnetVendedor) {
+    public void setCarnetVendedor(Long carnetVendedor) {
         this.carnetVendedor = carnetVendedor;
     }
        
