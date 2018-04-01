@@ -60,58 +60,67 @@ public class AutomovilLogic {
     /**
      * Crea una nueva entidad del automovil y verifica las reglas de negocio
      *
-     * @param AE entidad de automovil que se quiere crear
+     * @param automovilEntity entidad de automovil que se quiere crear
      * @return la entidad del automovil que se creo
      * @throws BusinessLogicException si no se cumple las reglas de negocio
      * necesarias para crear el automovil
      */
     //TODO: AE no es un buen nombre para el parámetro
-    public AutomovilEntity createAutomovil(AutomovilEntity AE) throws BusinessLogicException {
+    public AutomovilEntity createAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de automovil");
-
-        // TODO: Esto no es una regla de negocio
-        if (AE == null) {
-            throw new BusinessLogicException("El Automovil no debe ser null");
+// TODO: Esto no es una regla de negocio
+// TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
+// TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
+ // TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
+ // TODO: qué pasa si getPuntoDeVenta  es null?
+if (  automovilEntity.getCompra() == null) {
+            throw new BusinessLogicException("La compra es nula");
         }
-        // TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
-        if (AE.getId() == null) {
-            throw new BusinessLogicException("Ninguno de los atributos delautomovil puede ser null");
+ if (  automovilEntity.getCompra().getIdCompra() == null) {
+            throw new BusinessLogicException("el id de la compra es nula");
         }
-
-        if (AE.getPuntoDeVenta() == null || AE.getMarca() == null || AE.getModel() == null || AE.getCompra() == null) {
-            throw new BusinessLogicException("Ninguno de los atributos del automovil puede ser null");
-        }
-        // TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
-
-        if (AE.getId() <= 0) {
-            throw new BusinessLogicException("El id no debería ser <= 0");
-        }
-            // TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
-        if (persistence.find(AE.getId()) != null) {
-            throw new BusinessLogicException("El Automovil ya existe en la base de datos");
-        }
-    // TODO: qué pasa si getPuntoDeVenta  es null?
     
-        if (AE.getPuntoDeVenta().getId() == null) {
+    // verifica que el modelo y su id no sean nulos
+    
+    if (automovilEntity.getModel() == null){
+        throw new BusinessLogicException("El modelo es nulo");
+    }
+    
+    if (automovilEntity.getModel().getId() == null){
+        throw new BusinessLogicException("El id del modelo es nulo");
+    }
+    // revisa que la marca ni su id sean null
+    if (automovilEntity.getMarca() == null){
+        throw new BusinessLogicException("la marca es nulo");
+    }
+    
+    if (automovilEntity.getMarca().getId() == null) {
+            throw new BusinessLogicException("el id de la marca es null ");
+        }
+    // revisa que el punto de venta y su id no sea null
+    if (automovilEntity.getPuntoDeVenta() == null) {
+            throw new BusinessLogicException("el punto de venta es nulo");
+        }   
+    if (automovilEntity.getPuntoDeVenta().getId() == null) {
             throw new BusinessLogicException("el id del punto de venta es null ");
         }
-        if (AE.getPuntoDeVenta() == null) {
-            throw new BusinessLogicException("el punto de venta es nulo");
-        }
+    
+    
+        
 //TODO: qué pasa si getPuntoDeVenta  es null?
-        if (puntoPersistence.find(AE.getPuntoDeVenta().getId()) == null) {
+        if (puntoPersistence.find(automovilEntity.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos");
         }
   //TODO:      qué pasa si getModel  es null?
-        if (modeloPersistence.find(AE.getModel().getId()) == null) {
+        if (modeloPersistence.find(automovilEntity.getModel().getId()) == null) {
             throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
         }
 //TODO:      qué pasa si getMarca  es null?
-        if (marcaPersistence.find(AE.getMarca().getId()) == null) {
-            throw new BusinessLogicException("la Marca del automovil no existe");
+        if (marcaPersistence.find(automovilEntity.getMarca().getId()) == null) {
+            throw new BusinessLogicException("la marca del automovil no esta registrada en la base de datos ");
         }
 //TODO:      qué pasa si getCompra  es null?
-        if (compraPersistence.find(AE.getCompra().getIdCompra()) == null) {
+        if (compraPersistence.find(automovilEntity.getCompra().getIdCompra()) == null) {
             throw new BusinessLogicException("la compra asociada a este automovil no existe ");
         }
 //TODO: Falta hacer esta regla de negocio
@@ -126,9 +135,9 @@ public class AutomovilLogic {
 //
 //        }
         // Invoca la persistencia para crear el automovil 
-        persistence.create(AE);
+        persistence.create(automovilEntity);
         LOGGER.info("Termina proceso de creación de automovil");
-        return AE;
+        return automovilEntity;
     }
 
     /**
@@ -161,32 +170,32 @@ public class AutomovilLogic {
      * Actualiza un automovil que ya existe en la persistencia de automovil, y
      * verifica que se sigan cumpliendo las reglas de negocio
      *
-     * @param AE entidad con la informacion para actualizar
+     * @param automovilEntity entidad con la informacion para actualizar
      * @return la entidad del automovil actualizada
      * @throws BusinessLogicException si se incumple alguna regla de negocio
      */
-    public AutomovilEntity updateAutomovil(AutomovilEntity AE) throws BusinessLogicException {
+    public AutomovilEntity updateAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
 
-        if (AE == null) {
-            throw new BusinessLogicException("El Automovil no debe ser null");
+        if (automovilEntity == null) {
+            throw new BusinessLogicException("El Automovil a actualizar  no debe ser null");
         }
 // TODO: Hay que verificar que el automovil con el id dado exista
-        AutomovilEntity AEO = persistence.find(AE.getId());
+    AutomovilEntity newAutoEntity = persistence.find(automovilEntity.getId());
+    if (newAutoEntity == null){
+         throw new BusinessLogicException("No existe el automovil que se quiere actualizar");}
 // TODO: Revisar los comentarios del create
-        if (AEO == null) {
-            throw new BusinessLogicException("El automovil no existe");
-        }
-        if (AE.getModel() == null || !AEO.getModel().equals(AE.getModel())) {
+       
+        if (automovilEntity.getModel() == null || !newAutoEntity.getModel().equals(automovilEntity.getModel())) {
             throw new BusinessLogicException("No se puede modificar el modelo");
         }
-        if (AE.getMarca() == null || !AEO.getMarca().equals(AE.getMarca())) {
+        if (automovilEntity.getMarca() == null || !newAutoEntity.getMarca().equals(automovilEntity.getMarca())) {
             throw new BusinessLogicException("No se puede verificar la marca");
         }
-        if (AE.getPuntoDeVenta() == null || !AEO.getPuntoDeVenta().equals(AE.getPuntoDeVenta())) {
+        if (automovilEntity.getPuntoDeVenta() == null || !newAutoEntity.getPuntoDeVenta().equals(automovilEntity.getPuntoDeVenta())) {
             throw new BusinessLogicException("No se puede modificar el punto de venta ");
         }
 
-        if (AE.getCompra() == null || AEO.compararCompra(AE.getCompra()) != 0) {
+        if (automovilEntity.getCompra() == null || newAutoEntity.compararCompra(automovilEntity.getCompra()) != 0) {
             throw new BusinessLogicException("no se puede cambiar la compra ");
         }
 
@@ -200,7 +209,7 @@ public class AutomovilLogic {
 //        if (persistence.findBychasis(AE.getChasis()) != null) {
 //            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + AE.getChasis() + "\"");
 //        }
-        return persistence.update(AE);
+        return persistence.update(automovilEntity);
     }
 
     /**
@@ -210,14 +219,14 @@ public class AutomovilLogic {
      * @throws BusinessLogicException si la entidad no es valida
      */
     public void deleteAutomovil(Long id) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Intentando aeliminar automovil con id: {0}", id);
+        LOGGER.log(Level.INFO, "Intentando eliminar automovil con id: {0}", id);
         if (id == null) {
             throw new BusinessLogicException("el id no puede ser null");
         }
      // TODO: Hay que verificar que el automovil con el id dado exista   
-        AutomovilEntity AE = persistence.find(id);
-        if (AE == null) {
-            throw new BusinessLogicException("No existe un automovil con la cédula dada.");
+        AutomovilEntity automovilEntity = persistence.find(id);
+        if (automovilEntity == null) {
+            throw new BusinessLogicException("No existe un automovil con el id dada.");
         }
         persistence.delete(id);
     }

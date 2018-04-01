@@ -41,8 +41,7 @@ public class QuejaReclamoLogic
         if(QR == null) throw new BusinessLogicException("La quejaReclamo no debe ser null");
         
          //TODO: no hay que revisar el id porque es la PK y no se ha creado
-        if(QR.getId() == null || QR.getCliente() == null ) throw new BusinessLogicException("Ninguno de los atributos de la quejaReclamo puede ser null"); 
-
+        
         
         if(QR.getId()<=0) throw new BusinessLogicException("EL id no debería ser <= 0");
         if(persistence.find(QR.getId()) != null) throw new BusinessLogicException("la QuejaReclamo ya existe en la base de datos");
