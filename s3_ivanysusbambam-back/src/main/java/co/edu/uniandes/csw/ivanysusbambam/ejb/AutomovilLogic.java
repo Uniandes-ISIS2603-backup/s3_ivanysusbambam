@@ -68,6 +68,10 @@ public class AutomovilLogic {
     //TODO: AE no es un buen nombre para el parámetro
     public AutomovilEntity createAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de automovil");
+        
+        if (verificarPlaca(automovilEntity.getPlaca()) == false){
+            throw new BusinessLogicException("El formato de a placa del automovil no es valido");
+        }
 // TODO: Esto no es una regla de negocio
 // TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
 // TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
@@ -291,20 +295,32 @@ if (  automovilEntity.getCompra() == null) {
         return persistence.findBychasis(chasis);
     }
 
-//    /**
-//     * Verifica que la placa contenga el formato valido - Tres letras iniciales,
-//     * tres números al final-
-//     *
-//     * @param pla Placa a la que se le quiere verificar el formato
-//     * @return True si la placa es válida
-//     */
-//    public boolean verificarPlaca(String pla) {
-//
-//        Boolean rta = false;
-//        
-//        if (pla.contains("[a-zA-Z]+") && pla.contains("[0-9]+")) {
-//            rta = true;
-//        }
-//        return rta;
-//    }
+    /**
+     * Verifica que la placa contenga el formato valido - Tres letras iniciales,
+     * tres números al final-
+     *
+     * @param pPlaca Placa a la que se le quiere verificar el formato
+     * @return True si la placa es válida
+     */
+    public boolean verificarPlaca(String pPlaca) {
+
+        Boolean rta = true;
+       
+        String placa [] = pPlaca.split("-");
+        char chars [] = placa[0].toCharArray();
+        char chars2[] = placa[1].toCharArray();
+        for (char c : chars){
+            if (!Character.isLetter(c))
+                rta = false;
+        }
+        
+          for (char c : chars2){
+            if (!Character.isDigit(c))
+                rta = false;
+        }
+        
+        
+       
+        return rta;
+    }
 }
