@@ -45,7 +45,7 @@ import java.util.List;
  *   "name":"",
  *   "color":"azul",
  *   "anio":2007,
- *   "placa":"ABE234",
+ *   "placa":"ABE-234",
  *   "chasis":5875,
  *   "fechaListado":"2018-05-24",
  *   "valorListado":505000,

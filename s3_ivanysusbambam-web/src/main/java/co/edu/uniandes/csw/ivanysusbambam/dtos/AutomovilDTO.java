@@ -31,7 +31,7 @@ import java.util.Date;
  *   {
  *      "color": "azul",
  *      "anio": 2001,
- *      "placa": "XYZ123",
+ *      "placa": "XYZ-123",
  *      "chasis": 1,
  *      "fechaListado": "2018-05-13",
  *      "valorListado": 5000000
