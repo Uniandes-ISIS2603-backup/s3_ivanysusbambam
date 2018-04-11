@@ -5,7 +5,10 @@
        
         // Internal modules dependencies       
         'citiesModule',
-        
+        'clienteModule',
+        'vendedorModule',
+        //Módulo del prospecto de compra
+        'pcModule'
 
     ]);
     // Resuelve problemas de las promesas
