@@ -1,7 +1,17 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+(function(ng){
+    
+    var mod = ng.module("pcModule");
+    
+    mod.constant("pcContext", "api/prospectoscompra");
+    
+    mod.controller("pcGetAllCtrl",["$scope","$http", "pcContext", function($scope, $http, pcContext){
+       
+       $http.get(pcContext).then(function(response){
+          $scope.pcRecords = response.data;
+       });
+            
+    }]);
+    
+})(angular.window);
 
 

@@ -1,7 +1,17 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+(function(ng){
+
+    var mod = ng.module("vendedorModule");
+    
+    mod.constant("vendedorContext", "api/vendedores");
+    
+    mod.controller("vendedorGetAll",["$scope","$http","vendedorContext", function($scope, $http, vendedorContext){
+      
+            $http.get(vendedorContext).then(function(response){
+               $scope.vendedores = response.data; 
+            });
+            
+    }]);
+    
+})(angular.view);
 
 

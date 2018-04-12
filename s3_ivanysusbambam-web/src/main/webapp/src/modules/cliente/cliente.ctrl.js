@@ -1,6 +1,6 @@
 (function(ng){
     
-    var mod = ng.module("clienteModule");
+   var mod = ng.module("clienteModule");
     
    mod.constant("clienteContext","api/clientes");
     
