@@ -10,7 +10,13 @@
         //Modulo del vendedor
         'vendedorModule',
         //Módulo del prospecto de compra
-        'pcModule'
+        'pcModule',
+        //Modulo de las quejas/reclamos
+        'quejaReclamoModule',
+        // Modulo de los automoviles,
+        'automovilModule',
+        // Modulo de las ventas,
+        'ventaModule'
 
     ]);
     // Resuelve problemas de las promesas
