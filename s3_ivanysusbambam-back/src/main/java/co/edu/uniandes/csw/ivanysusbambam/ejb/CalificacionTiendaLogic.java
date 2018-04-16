@@ -58,10 +58,9 @@ public class CalificacionTiendaLogic {
      */
     public CalificacionTiendaEntity createCalificacionTienda(CalificacionTiendaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear una calificacion de tienda ");
-           // TODO: preguntar si existe una calificacion con el mismo id no tiene sentido, 
-           // porque el entity no tiene id porque aun no se ha creado. Cuando se persista la base de datos le creará un id. 
-     
-        if(persistence.find(entity.getId()) != null) throw new BusinessLogicException("Ya existe una calificacion con ese id");
+        
+        //Modificado - by Rubby orders
+        //if(persistence.find(entity.getId()) != null) throw new BusinessLogicException("Ya existe una calificacion con ese id");
         //if(entity.getCliente() == null) throw new BusinessLogicException("No se puede registrar calificacion de un cliente sin registrar");
         if(entity.getPuntaje() < 1.0 || entity.getPuntaje() > 5.0) throw new BusinessLogicException("La calificacion registrada no es valida");
         return persistence.create(entity);

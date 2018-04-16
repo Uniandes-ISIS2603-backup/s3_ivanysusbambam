@@ -24,4 +24,5 @@ hs_err_pid*
 /s3_ivanysusbambam-back/target/
 /s3_ivanysusbambam-web/target/
 /target/
+/src/main/webapp/bower_components/
 /s3_ivanysusbambam-back/nbproject/
