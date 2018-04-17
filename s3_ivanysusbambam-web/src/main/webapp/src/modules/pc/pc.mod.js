@@ -9,6 +9,8 @@
             
             $stateProvider.state("administrador.pcGetAll",{
                 
+                
+                url: "/pc/getall",
                 views: {
                         mainView: {
                             templateUrl: basePath + "pc.list.html",
@@ -19,6 +21,7 @@
                 
             }).state("vendedor.pcGetAll",{
                
+               url: "/pc/:vendedor/getall",
                 views: {
                     mainView:{
                         templateUrl: basePath + "pc.list.html",

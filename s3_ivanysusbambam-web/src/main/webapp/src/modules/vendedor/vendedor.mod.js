@@ -7,8 +7,10 @@
             
                     $urlRouterProvider.otherwise("/vendedor");
                     
-                    $stateProvider.state("admin.clienteGetAll",{
+                    $stateProvider.state("admin.vendedorGetAll",{
                         views:{
+                            
+                            url: "/vendedor/getall",
                             mainView:{
                                 templateUrl: basePath + "cliente.list.html",
                                 controller: "clienteGetAllCtrl",

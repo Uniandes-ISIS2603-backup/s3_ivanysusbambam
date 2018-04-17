@@ -11,6 +11,8 @@
         
         $stateProvider.state("admin.clienteGetAll", {
             
+            url: "/cliente/getall",
+            
             views: {
                 mainView:{
                     templateUrl: basePath + "cliente.list.html",
@@ -20,6 +22,8 @@
             }
             
         }).state("vendedor.clienteGetAll",{
+            
+            url: "/cliente/getall",
             
             views:{
                 mainView:{

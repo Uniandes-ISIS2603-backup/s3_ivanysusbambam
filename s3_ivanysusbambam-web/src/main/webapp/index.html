@@ -14,13 +14,17 @@
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
 
 	</head>
-	<body class="cuerpo1">
-		<div id="container" class="container intro-effect-jam3">
-			<!-- Top Navigation -->
-			<div class="codrops-top clearfix">
-				<span class="right"><a><span>Registrarse</span></a></span>
-                        <span class="right2"><a><span>Iniciar Sesión</span></a></span>
-			</div>
+        
+        
+        <!-- Top Navigation -->
+        <!-- Esta barra de navegacion no cambia, la que cambia es el body-->
+        <header class="codrops-top clearfix" style ="position: fixed">
+            <span class="right"><a><span>Registrarse</span></a></span>
+            <span class="right2"><a><span>Iniciar Sesión</span></a></span>
+        </header>
+        <!--Esta vista es la que cambia según en estado-->
+	<div class="cuerpo1" ui-view = "mainView" style = "margin: 0px">
+		<div id="container" class="container intro-effect-jam3" style = "padding: 0px">
 			<header class="header">
 				<div class="bg-img"><img src="resources/este.jpg" alt="Background Image"  style="width:100%"/></div>
 				<div class="title">
@@ -33,7 +37,7 @@
 				</div>
 			</header>
 			<button class="trigger" data-info="Ver más autos"><span>Trigger</span></button>
-			<article class="content">
+			<article class="content" style =" padding: 0px">
 				<div>
 					<p class="TituloCarro">Carros favoritos:</p>
 
@@ -217,5 +221,5 @@
 				trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
 			})();
 		</script>
-	</body>
+	</div>
 </html>
