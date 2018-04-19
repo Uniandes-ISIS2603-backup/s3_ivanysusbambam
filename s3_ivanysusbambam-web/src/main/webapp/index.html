@@ -8,6 +8,18 @@
 		<meta name="description" content="Mi Automóvil" />
 		<meta name="keywords" content="title, header, effect, scroll, inspiration, medium, web design" />
 		<meta name="author" content="Joseph" />
+                
+            
+                <script src="bower_components/angular/angular.js"></script>
+                <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+                <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+                
+                       
+                <script src="src/app.js" type="text/javascript"></script> 
+                <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
+                
+                <script src = "/modules/adminadmin.mod.js" type = "text/javascript"> </script>
+                
 		<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
@@ -19,8 +31,10 @@
         <!-- Top Navigation -->
         <!-- Esta barra de navegacion no cambia, la que cambia es el body-->
         <header class="codrops-top clearfix" style ="position: fixed">
-            <span class="right"><a><span>Registrarse</span></a></span>
-            <span class="right2"><a><span>Iniciar Sesión</span></a></span>
+            <span class="right2"><a><span style = "padding-right: 20px">Registrarse</span></a></span>
+            <span class="right2"><a><span style = "padding-right: 20px">Iniciar Sesión</span></a></span>
+            <span class="right2"><a><span style = "padding-right: 20px">Ver perfil</span></a></span>
+            <span class="right2"><a ui-sref = "admin"><span style = "padding-right: 20px">Herramientas de administrador</span></a></span> 
         </header>
         <!--Esta vista es la que cambia según en estado-->
 	<div class="cuerpo1" ui-view = "mainView" style = "margin: 0px">
@@ -36,7 +50,7 @@
                     <h1>Mi automóvil</h1>
 				</div>
 			</header>
-			<button class="trigger" data-info="Ver más autos"><span>Trigger</span></button>
+			<button class="trigger" data-info="Ver más autos" ui-sref = "listAutos"><span>Trigger</span></button>
 			<article class="content" style =" padding: 0px">
 				<div>
 					<p class="TituloCarro">Carros favoritos:</p>

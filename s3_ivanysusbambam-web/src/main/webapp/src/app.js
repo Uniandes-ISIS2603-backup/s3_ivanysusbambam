@@ -3,7 +3,10 @@
         // External dependencies
         'ui.router',
        
-        // Internal modules dependencies       
+       
+        // Internal modules dependencies   
+        'adminModule',
+        
         'citiesModule',
         //Módulo del cliente
         'clienteModule',
