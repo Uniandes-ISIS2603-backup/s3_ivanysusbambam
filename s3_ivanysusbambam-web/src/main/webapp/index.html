@@ -1,239 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html ng-app = "mainApp">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>Mi Automóvil</title>
-		<meta name="description" content="Mi Automóvil" />
-		<meta name="keywords" content="title, header, effect, scroll, inspiration, medium, web design" />
-		<meta name="author" content="Joseph" />
+	        
+                <title>"Ivan y su bam bam"</title>
                 
+                <link rel="shortcut icon" href="">
+                
+                <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
             
                 <script src="bower_components/angular/angular.js"></script>
                 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
                 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
                 
-                       
-                <script src="src/app.js" type="text/javascript"></script> 
+                 <script src = "src/modules/admin/admin.mod.js" type = "text/javascript"> </script>
+                 <script src = "src/modules/admin/admin.ctrl.js" type = "text/javascript"> </script>
+                
+                 
+                 <script src="src/app.js" type="text/javascript"></script> 
                 <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
                 
-                <script src = "/modules/adminadmin.mod.js" type = "text/javascript"> </script>
                 
-		<link rel="shortcut icon" href="../favicon.ico">
+                
+		<!--<link rel="shortcut icon" href="../favicon.ico">
 		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/component.css" />
-
+-->
 	</head>
         
-        
+        <body> 
         <!-- Top Navigation -->
         <!-- Esta barra de navegacion no cambia, la que cambia es el body-->
-        <header class="codrops-top clearfix" style ="position: fixed">
+        <header class="navbar" style ="position: fixed">
             <span class="right2"><a><span style = "padding-right: 20px">Registrarse</span></a></span>
             <span class="right2"><a><span style = "padding-right: 20px">Iniciar Sesión</span></a></span>
             <span class="right2"><a><span style = "padding-right: 20px">Ver perfil</span></a></span>
-            <span class="right2"><a ui-sref = "admin"><span style = "padding-right: 20px">Herramientas de administrador</span></a></span> 
+            <a ui-sref ="admin"> Herramientas de administrador</a>  
         </header>
         <!--Esta vista es la que cambia según en estado-->
-	<div class="cuerpo1" ui-view = "mainView" style = "margin: 0px">
-		<div id="container" class="container intro-effect-jam3" style = "padding: 0px">
-			<header class="header">
-				<div class="bg-img"><img src="resources/este.jpg" alt="Background Image"  style="width:100%"/></div>
-				<div class="title">
-					<nav class="MenuPrincipal">
-						<a>Opción 1</a>
-						<a>Opción 2</a>
-						<a>Opción 3</a>
-					</nav>
-                    <h1>Mi automóvil</h1>
-				</div>
-			</header>
-			<button class="trigger" data-info="Ver más autos" ui-sref = "listAutos"><span>Trigger</span></button>
-			<article class="content" style =" padding: 0px">
-				<div>
-					<p class="TituloCarro">Carros favoritos:</p>
-
-				</div>
-			</article>
-		</div><!-- /container -->
+        <br><br><br>
+            <div ui-view = "mainView" style = "margin: 0px">
+            </div>
+        </body>
         
-        <div id="st-container" class="st-container">
-	
-			<div class="st-pusher">
-
-
-				<nav class="st-menu st-effect-8" id="menu-8">
-					<h2 class="icon icon-car">Menú</h2>
-					<ul>
-						<li><a class="icon icon-car" href="#">Modelo</a></li>
-						<li><a class="icon icon-car" href="#">Marca</a></li>
-						<li><a class="icon icon-car" href="#">Año</a></li>
-						<li><a class="icon icon-car" href="#">Cilindraje</a></li>
-						<li><a class="icon icon-car" href="#">Precio</a></li>
-					</ul>
-				</nav>
-
-
-				<div class="st-content">
-					<div class="st-content-inner">
-						
-						<header class="codrops-header">
-							<h1>Yo tratando de hacer el menú <span>Sirvió el menú?</span></h1>
-						</header>
-						<div class="main clearfix">
-							<div id="st-trigger-effects" class="column">
-							
-								<button data-effect="st-effect-8">Menú</button>
-
-							
-						</div><!-- /main -->
-					</div><!-- /st-content-inner -->
-				</div><!-- /st-content -->
-			</div><!-- /st-pusher -->
-		</div><!-- /st-container -->
-		<script src="js/classie.js"></script>
-		<script src="js/sidebarEffects.js"></script>
-        
-        
-        
-        
-        
-        
-		<script src="js/classie.js"></script>
-		<script>
-			(function() {
-
-				//  Tomado de http://stackoverflow.com/a/16657946		
-				var ie = (function(){
-					var undef,rv = -1;
-					var ua = window.navigator.userAgent;
-					var msie = ua.indexOf('MSIE ');
-					var trident = ua.indexOf('Trident/');
-
-					if (msie > 0) {
-						
-						rv = parseInt(ua.substring(msie + 5, ua.indexOf('.', msie)), 10);
-					} else if (trident > 0) {
-		
-						var rvNum = ua.indexOf('rv:');
-						rv = parseInt(ua.substring(rvNum + 3, ua.indexOf('.', rvNum)), 10);
-					}
-
-					return ((rv > -1) ? rv : undef);
-				}());
-
-
-6
-				var keys = [32, 37, 38, 39, 40], wheelIter = 0;
-
-				function preventDefault(e) {
-					e = e || window.event;
-					if (e.preventDefault)
-					e.preventDefault();
-					e.returnValue = false;  
-				}
-
-				function keydown(e) {
-					for (var i = keys.length; i--;) {
-						if (e.keyCode === keys[i]) {
-							preventDefault(e);
-							return;
-						}
-					}
-				}
-
-				function touchmove(e) {
-					preventDefault(e);
-				}
-
-				function disable_scroll() {
-					window.onmousewheel = document.onmousewheel = wheel;
-					document.onkeydown = keydown;
-					document.body.ontouchmove = touchmove;
-				}
-
-				function enable_scroll() {
-					window.onmousewheel = document.onmousewheel = document.onkeydown = document.body.ontouchmove = null;  
-				}
-
-				var docElem = window.document.documentElement,
-					scrollVal,
-					isRevealed, 
-					noscroll, 
-					isAnimating,
-					container = document.getElementById( 'container' ),
-					trigger = container.querySelector( 'button.trigger' );
-
-				function scrollY() {
-					return window.pageYOffset || docElem.scrollTop;
-				}
-				
-				function scrollPage() {
-					scrollVal = scrollY();
-					
-					if( noscroll && !ie ) {
-						if( scrollVal < 0 ) return false;
-						// keep it that way
-						window.scrollTo( 0, 0 );
-					}
-
-					if( classie.has( container, 'notrans' ) ) {
-						classie.remove( container, 'notrans' );
-						return false;
-					}
-
-					if( isAnimating ) {
-						return false;
-					}
-					
-					if( scrollVal <= 0 && isRevealed ) {
-						toggle(0);
-					}
-					else if( scrollVal > 0 && !isRevealed ){
-						toggle(1);
-					}
-				}
-
-				function toggle( reveal ) {
-					isAnimating = true;
-					
-					if( reveal ) {
-						classie.add( container, 'modify' );
-					}
-					else {
-						noscroll = true;
-						disable_scroll();
-						classie.remove( container, 'modify' );
-					}
-
-
-					setTimeout( function() {
-						isRevealed = !isRevealed;
-						isAnimating = false;
-						if( reveal ) {
-							noscroll = false;
-							enable_scroll();
-						}
-					}, 600 );
-				}
-
-
-				var pageScroll = scrollY();
-				noscroll = pageScroll === 0;
-				
-				disable_scroll();
-				
-				if( pageScroll ) {
-					isRevealed = true;
-					classie.add( container, 'notrans' );
-					classie.add( container, 'modify' );
-				}
-				
-				window.addEventListener( 'scroll', scrollPage );
-				trigger.addEventListener( 'click', function() { toggle( 'reveal' ); } );
-			})();
-		</script>
-	</div>
 </html>

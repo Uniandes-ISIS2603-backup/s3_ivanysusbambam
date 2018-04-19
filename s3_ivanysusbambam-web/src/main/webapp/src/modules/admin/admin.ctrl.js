@@ -1,9 +1,11 @@
-/*(function(ng){
+(function(ng){
     
-     ng.module("admin");
+     ng.module("adminModule").controller(
+            "adminToolsCtrl", [function(){}])
+    ;
      
     
     
-})(angular.view);*/
+})(window.angular);
 
 

@@ -1,19 +1,24 @@
 (function(ng){
     
-    ng.module("adminModule", ["ui.router"]).config(
-        ["$stateProvider", "$urlRouterProvider", 
-            function($stateProvider, $urlRouterProvider){
+                console.log("LLEGO A MODULE x1 ");
+    var mod = ng.module("adminModule", ["ui.router"]);
+            
+            console.log("ANTES DE CONFIG");
+            
+      mod.config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
                 
-                var basePath="src/modules/admin";
+                var basePath="src/modules/admin/";
                 
-                $urlRouterProvider.otherwise("admin");
+                /*$urlRouterProvider.otherwise("/admin");*/
+                
+                console.log("LLEGO A MODULE");
                 
                 $stateProvider.state("admin", {
                     
-                    url = "/admin",
+                    url : "/admin",
                     views: {
-                        miainView: {
-                            templateUrl : "admin.tools.html",
+                        mainView: {
+                            templateUrl : basePath + "admin.tools.html",
                             controller: "adminToolsCtrl",
                             controllerAs : "ctrl"
                         }
@@ -21,7 +26,11 @@
                               
                 });
                 
+                console.log("ALGUIEN AYUDA");
+                
             }]);
+        
+        console.log("LLEGO A MODULE x2 ");
     
 })(window.angular);
 
