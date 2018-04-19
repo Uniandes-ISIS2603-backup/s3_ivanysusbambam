@@ -17,7 +17,9 @@
                 
                  <script src = "src/modules/admin/admin.mod.js" type = "text/javascript"> </script>
                  <script src = "src/modules/admin/admin.ctrl.js" type = "text/javascript"> </script>
-                
+                 
+             <script src = "src/modules/compra/compra.mod.js" type = "text/javascript"> </script>
+             <script src = "src/modules/compra/compra.ctrl.js" type = "text/javascript"> </script>  
                  
                  <script src="src/app.js" type="text/javascript"></script> 
                 <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
@@ -43,6 +45,8 @@
         <!--Esta vista es la que cambia según en estado-->
         <br><br><br>
             <div ui-view = "mainView" style = "margin: 0px">
+            </div>
+        <div ui-view = "listView" style = "margin: 0px">
             </div>
         </body>
         

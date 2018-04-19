@@ -5,7 +5,9 @@
        'ui.bootstrap',
        
         // Internal modules dependencies   
-        'adminModule'
+        'adminModule', 
+        "compraModule"
+       
         /*
         //Módulo del cliente
         'clienteModule',
