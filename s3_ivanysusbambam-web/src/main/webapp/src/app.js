@@ -5,10 +5,16 @@
        'ui.bootstrap',
        
         // Internal modules dependencies   
+
         'adminModule',
         
         // Modulo de los automoviles,
         'automovilModule'
+
+        // Modulo de las compras 
+        "compraModule"
+       
+
         /*
         //Módulo del cliente
         'clienteModule',
