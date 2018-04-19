@@ -6,28 +6,24 @@
 
 
 (function(ng){
-    
-    ng.module("automovilModule",["ui.router"])
-            .configure(["stateProvider","$urlRouterProvider", function($stateProvider, $urlRouterProvider){
-                    
-                    var basePath = "src/modules/automovil/";
+    var mod = ng.module("automovilModule" , ['ui.router']);
+    mod.config (['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
+            var basePath = 'src/modules/automovil/';
+            $urlRouterProvider.otherwise("/listAutomoviles");
             
-                    $urlRouterProvider.otherwise("/automovil");
-                    
-                    $stateProvider.state("admin.automovilGetAll",{
-                        views:{
-                            mainView:{
-                                templateUrl: basePath + "automovil.list.html",
-                                controller: "automovilGetAllCtrl",
-                                controllerAs: "ctrl"
-                            }
-                           }
+            $stateProvider.state('listAutomoviles', {
+                url: '/automoviles/list',
+                views :{
+                    'mainView':{
+                templateUrl: basePath + 'automovil.list.html',
+                controller: 'automovilGetAllCtrl',
+                controllerAs: 'ctrl'
                     }
-                            
-                   );
-            
-            }]);
+                }
+                    
+                });
+                 }
+        ]);
     
-    
-})(angular.window);
-
+    })(window.angular);
+           

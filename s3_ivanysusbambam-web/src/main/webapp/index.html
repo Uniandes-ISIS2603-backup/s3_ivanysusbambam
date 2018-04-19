@@ -5,7 +5,7 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1"> 
 	        
-                <title>"Ivan y su bam bam"</title>
+                <title>"Ivan y sus bam bam"</title>
                 
                 <link rel="shortcut icon" href="">
                 
@@ -14,10 +14,13 @@
                 <script src="bower_components/angular/angular.js"></script>
                 <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
                 <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
-                
+                <!--administrador-->
                  <script src = "src/modules/admin/admin.mod.js" type = "text/javascript"> </script>
                  <script src = "src/modules/admin/admin.ctrl.js" type = "text/javascript"> </script>
-                
+                <!--automovil-->
+                <script src = "src/modules/automovil/automovil.mod.js" type = "text/javascript"> </script>
+                 <script src = "src/modules/automovil/automovil.ctrl.js" type = "text/javascript"> </script>
+                 
                  
                  <script src="src/app.js" type="text/javascript"></script> 
                 <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
@@ -38,7 +41,9 @@
             <span class="right2"><a><span style = "padding-right: 20px">Registrarse</span></a></span>
             <span class="right2"><a><span style = "padding-right: 20px">Iniciar Sesión</span></a></span>
             <span class="right2"><a><span style = "padding-right: 20px">Ver perfil</span></a></span>
+            <span class="right2"><a ui-sref="listAutomoviles"><span style = "padding-right: 20px">ver más autos</span></a></span>
             <a ui-sref ="admin"> Herramientas de administrador</a>  
+            
         </header>
         <!--Esta vista es la que cambia según en estado-->
         <br><br><br>

@@ -11,12 +11,12 @@
     
     mod.constant("automovilContext", "api/automoviles");
     
-    mod.controller("automovilGetAll",["$scope","$http","ventaContext", function($scope, $http, automovilContext){
+    mod.controller("automovilGetAllCtrl",["$scope","$http","automovilContext", function($scope, $http, automovilContext){
       
-            $http.get(automovilContext).then(function(response){
+            $http.get('data/automoviles.json').then(function(response){
                $scope.automoviles = response.data; 
             });
             
     }]);
     
-})(angular.view);
+})(window.angular);

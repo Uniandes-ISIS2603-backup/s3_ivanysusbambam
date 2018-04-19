@@ -5,7 +5,10 @@
        'ui.bootstrap',
        
         // Internal modules dependencies   
-        'adminModule'
+        'adminModule',
+        
+        // Modulo de los automoviles,
+        'automovilModule'
         /*
         //Módulo del cliente
         'clienteModule',
@@ -15,8 +18,7 @@
         'pcModule',
         //Modulo de las quejas/reclamos
         'quejaReclamoModule',
-        // Modulo de los automoviles,
-        'automovilModule',
+        
         // Modulo de las ventas,
         'ventaModule'
 */

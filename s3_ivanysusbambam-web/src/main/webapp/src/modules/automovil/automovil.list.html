@@ -9,7 +9,8 @@ and open the template in the editor.
 <div class =" container-fluid">
     
     <ul class ="list-group">
-        <li class = "list-group-item" ng-repeat="automovil in automoviles"> <h5>{{automovil.placa}} | {{automovil.marca}} || {{automovil.modelo}}</h5></li>
+        <li class = "list-group-item" ng-repeat="automovil in automoviles"> <h5>{{automovil.id}} | {{automovil.placa}} || {{automovil.valor}}|| <img class="img-responsive" ng-src='{{automovil.imagen}}' alt="{{automovil.placa}}" /></h5></li>
+        
     </ul>
     
 </div>

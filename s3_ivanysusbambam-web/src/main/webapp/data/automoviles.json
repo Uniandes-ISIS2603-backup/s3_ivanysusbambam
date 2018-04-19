@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "placa": "ABC-123",
+        "imagen":"http://automundo.com.co/wp-content/themes/ThemeAutoMundo/img/carros/color/LEXUS-GX-460/exterior/3/PLATA%20METALICO.jpg",
+        "valor":"$12,000"
+    }
+    ,
+    {
+        "id": 2,
+        "placa": "DEF-456",
+        "imagen":"http://www.tufloridarentalcar.com/wp-content/uploads/car-rental-gallery/1460573207_camaroconvertible.jpg",
+        "valor":"$13,000"
+    },
+    {
+        "id": 3,
+        "placa": "GHI-789",
+        "imagen":"https://vignette.wikia.nocookie.net/central/images/d/d4/Carros-de-carreras-imagenes-de-carros-autos-coches-fotos-fondos-de-pantalla-wallpaper-carreras-tunning-7.jpg/revision/latest?cb=20131106005722",
+        "valor":"$14,000"
+    },
+    {
+        "id": 4,
+        "placa": "JKL-101",
+        "imagen":"http://automundo.com.co/wp-content/themes/ThemeAutoMundo/img/carros/color/LEXUS-GX-460/exterior/3/BLANCO.jpg",
+        "valor":"$15,000"
+    }
+]
+ 
