@@ -9,7 +9,7 @@
         'adminModule',
         
         // Modulo de los automoviles,
-        'automovilModule'
+        'automovilModule',
 
         // Modulo de las compras 
         "compraModule"
