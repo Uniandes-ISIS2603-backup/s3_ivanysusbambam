@@ -12,6 +12,10 @@
         <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 
         <link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />
+
         <script src="bower_components/angular/angular.js"></script>
         <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
         <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -44,21 +48,33 @@
     <body> 
         <!-- Top Navigation -->
         <!-- Esta barra de navegacion no cambia, la que cambia es el body-->
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12"> 
-                    <ul class="nav navbar-tabs">
-                        <li role="navigation"> <a class="small">Registrarse</a></li>
-                        <li role="navigation"><a>Iniciar Sesión</a></li>
-                        <li role="navigation"><a>Ver perfil</a></li>
-                        <li role="navigation"> <a ui-sref="listAutomoviles">Ver más autos</a></li>
+        <header class="codrops-top clearfix" style ="position: fixed">
 
-                        <li role="navigation"> <a ui-sref ="admin">Administrador</a>  </li>
-                    </ul>
+            <span class="right2"><a><span style = "padding-right: 20px">Registrarse</span></a></span>
+            <span class="right2"><a><span style = "padding-right: 20px">Iniciar Sesión</span></a></span>
+            <span class="right2"><a><span style = "padding-right: 20px">Ver perfil</span></a></span>
+            <span class="right2"><a ui-sref="listAutomoviles"><span style = "padding-right: 20px">ver más autos</span></a></span>
+
+            <a ui-sref ="admin"> Herramientas de administrador</a>  
+        </header>
+        <div id="container" class="container intro-effect-jam3" style = "padding: 0px">
+
+            <header class="header">
+                <div class="bg-img"><img src="resources/este.jpg" alt="Background Image"  style="width:100%"/></div>  
+                <div class="title">
+                    <nav class="MenuPrincipal">
+                        <a>Opción 1</a>
+                        <a>Opción 2</a>
+                        <a>Opción 3</a>
+                    </nav>
+                    <h1>Mi automóvil</h1>
                 </div>
-            </div>
-        </div>
-        
+            </header>
+           
+        </div><!-- /container -->
+        <!--Esta vista es la que cambia según en estado-->
+        <br><br><br>
+
         <div ui-view = "mainView" style = "margin: 0px">
         </div> <div ui-view = "listView" style = "margin: 0px">
         </div>

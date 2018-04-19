@@ -16,7 +16,7 @@
 
                     url: "/compra/getall",
                     mainView: {
-                        templateUrl: basePath + "admin.tools.html",
+                        templateUrl: "src/modules/admin/admin.tools.html",
                         controller: "adminToolsCtrl",
                         controllerAs: "ctrl"
                     },
