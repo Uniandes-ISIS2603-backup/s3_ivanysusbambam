@@ -12,8 +12,8 @@
         // Modulo de las compras 
         "compraModule",
         "medioDePagoModule",
-        'ventaModule'
-       
+        'ventaModule',
+       'quejaReclamoModule'
 
         /*
         //Módulo del cliente
@@ -23,7 +23,7 @@
         //Módulo del prospecto de compra
         'pcModule',
         //Modulo de las quejas/reclamos
-        'quejaReclamoModule',
+        ,
         
         // Modulo de las ventas,
         'ventaModule'

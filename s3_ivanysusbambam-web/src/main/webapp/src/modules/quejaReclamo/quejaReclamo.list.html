@@ -1,13 +1,33 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
+<div>
+    <div class="row" >
+        <div class="col-md-5">
+            <div class="card" style="margin: 40px">
+                
+                    <div class="card-body">
+                        <div class="table-responsive">   
+                        <table class="table table-dark table-striped " >
+                            <thead>
+                                <tr >
+                                    <th>Id de la queja/reclamo </th>
+                                    <th> cliente</th>
+                                    <th> tipo</th>
+                                    <th> texto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="quejaReclamo in quejasReclamos">
+                                    <td>{{quejaReclamo.id}}</td>
+                                    <td>{{quejaReclamo.cliente}}</td>
+                                    <td>{{quejaReclamo.tipo}}</td>
+                                    <td>{{quejaReclamo.texto}}</td>
 
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class ="container-fluid">
-    <ul class ="list-group">
-        <li class ="list-group-item" ng-repeat="quejaReclamo in quejasReclamos"><h5> {{quejaReclamo.tipo}} || {{quejaReclamo.texto}} || {{quejaReclamo.cliente}} </h5></li>
-    </ul> 
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

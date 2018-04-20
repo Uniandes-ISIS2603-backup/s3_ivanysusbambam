@@ -1,0 +1,28 @@
+[
+    {
+        "id": 1,
+        "cliente": "Juan Perez",
+        "texto":"Texto de prueba para una queja que un cliente realiza al concesionario ",
+        "tipo":"Queja"
+    }
+    ,
+    {
+        "id": 2,
+        "cliente": "Andres Gonzalez",
+        "texto":"Texto de prueba para una queja que un cliente realiza al concesionario ",
+        "tipo":"Queja"
+    },
+    {
+        "id": 3,
+        "cliente": "Diego Lopez",
+        "texto":"texto de prueba para un reclamo que un cliente realiza al concesionario",
+        "tipo":"Reclamo"
+    },
+    {
+        "id": 4,
+        "cliente": "alejandro Real",
+        "texto":"texto de prueba para un reclamo que un cliente realiza al concesionario ",
+        "tipo":"Reclamo"
+    }
+]
+ 
