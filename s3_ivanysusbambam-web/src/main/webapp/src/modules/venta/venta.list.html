@@ -1,15 +1,32 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<alert ng-repeat="alert in alerts" type = "{{alert.type}}" close = "closeAlert()">{{alert.msg}}</alert>
+<div>
+    <div class="row" >
+        <div class="col-md-5">
+            <div class="card" style="margin: 40px">
+                
+                    <div class="card-body">
+                        <div class="table-responsive">   
+                        <table class="table table-dark table-striped " >
+                            <thead>
+                                <tr >
+                                    <th>Id de la venta </th>
+                                    <th> cliente</th>
+                                    <th> Punto de venta</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="venta in ventas">
+                                    <td>{{venta.idVenta}}</td>
+                                    <td>{{venta.cliente}}</td>
+                                    <td>{{venta.puntoDeVenta}}</td>
+                                    
 
-<div class =" container-fluid">
-    
-    <ul class ="list-group">
-        <li class = "list-group-item" ng-repeat="venta in ventas"> <h5>{{venta.idVenta}}</h5></li>
-    </ul>
-    
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

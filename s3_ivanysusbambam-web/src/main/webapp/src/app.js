@@ -11,7 +11,8 @@
 
         // Modulo de las compras 
         "compraModule",
-        "medioDePagoModule"
+        "medioDePagoModule",
+        'ventaModule'
        
 
         /*

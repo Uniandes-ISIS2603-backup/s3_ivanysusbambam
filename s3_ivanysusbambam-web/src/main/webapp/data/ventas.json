@@ -1,0 +1,28 @@
+[
+    {
+        "idVenta": 1,
+        "cliente": "Juan Perez",
+        "automovil":"http://automundo.com.co/wp-content/themes/ThemeAutoMundo/img/carros/color/LEXUS-GX-460/exterior/3/PLATA%20METALICO.jpg",
+        "puntoDeVenta":"Bulevar Niza"
+    }
+    ,
+    {
+        "idVenta": 2,
+        "cliente": "Andres Gonzalez",
+        "automovil":"http://www.tufloridarentalcar.com/wp-content/uploads/car-rental-gallery/1460573207_camaroconvertible.jpg",
+        "puntoDeVenta":"concesionario 170"
+    },
+    {
+        "idVenta": 3,
+        "cliente": "Diego lopez",
+        "automovil":"https://vignette.wikia.nocookie.net/central/images/d/d4/Carros-de-carreras-imagenes-de-carros-autos-coches-fotos-fondos-de-pantalla-wallpaper-carreras-tunning-7.jpg/revision/latest?cb=20131106005722",
+        "puntoDeVenta":"Bulevar Niza"
+    },
+    {
+        "idVenta": 4,
+        "cliente": "Alejandro Real ",
+        "automovil":"http://automundo.com.co/wp-content/themes/ThemeAutoMundo/img/carros/color/LEXUS-GX-460/exterior/3/BLANCO.jpg",
+        "puntoDeVenta":"$Concesionario 170"
+    }
+]
+ 
