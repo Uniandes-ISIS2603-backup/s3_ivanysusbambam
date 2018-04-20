@@ -1,37 +1,25 @@
 (function (ng) {
 
-   var mod =  ng.module("compraModule", ['ui.router']);
- 
- 
+    var mod = ng.module("compraModule", ['ui.router']);
 
-           mod.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
 
+            var basePath = 'src/modules/compra/';
 
-            var basePath = "src/modules/compra/";
+            $urlRouterProvider.otherwise("/compra/getall");
 
-
-
-            $stateProvider.state("admin.compraGetAll", {
+            $stateProvider.state('AdminCompraGetAll', {
+                url: '/compra/getall',
                 views: {
 
-                    url: "/compra/getall",
-                    mainView: {
-                        templateUrl: "src/modules/admin/admin.tools.html",
-                        controller: "adminToolsCtrl",
-                        controllerAs: "ctrl"
-                    },
-                    listView: {
-                        
+                    'mainView': {
                         templateUrl: basePath + "compra.list.html",
-                        controller: "compraGetAllCtrl",
+                        controller: 'compraGetAllCtrl',
                         controllerAs: "ctrl"
                     }
-                    
                 }
             }
-
             );
-
         }]);
 
 

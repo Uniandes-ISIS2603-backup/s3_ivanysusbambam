@@ -2,11 +2,9 @@
     var app = angular.module('mainApp', [
         // External dependencies
         'ui.router',
-       'ui.bootstrap',
+       //'ui.bootstrap',
        
         // Internal modules dependencies   
-
-        'adminModule',
         
         // Modulo de los automoviles,
         'automovilModule',
