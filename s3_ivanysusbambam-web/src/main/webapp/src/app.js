@@ -10,7 +10,8 @@
         'automovilModule',
 
         // Modulo de las compras 
-        "compraModule"
+        "compraModule",
+        "medioDePagoModule"
        
 
         /*
