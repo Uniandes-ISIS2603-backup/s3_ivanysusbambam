@@ -47,6 +47,21 @@
                         controllerAs: "ctrl"
                     }
                 }
+        }).state("editarCliente",{
+            
+            url: "/{clienteId: int}/editar",
+               parent: "listCliente",
+               params: {
+                   clienteId: null
+               },
+               views: {
+                   clienteDetailView: {
+                       templateUrl: basePath+"cliente.editar.html",
+                       controller: "clienteEditarCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+            
         });
     }]);
 

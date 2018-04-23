@@ -1,10 +1,12 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<form name ="clienteForm">
 <div class ="row">
   
     <div class ="col-md-6">
         <div class="card" style="margin: 5px; width: 300px">
             <div class ="card-body">
-                <h5> Nombre: </h5> {{cliente.nombre}}
+                <h5> Nombre: </h5> 
+                <input id="clienteNombre" required ng-model = "nuevoNombre" ng-change="cambioInfo()" ng-value = "cliente.nombre">
             </div>
         </div>
     </div>
@@ -191,12 +193,23 @@
     </div>
     
 </div>
+    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!clienteForm.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
 <div class ="row">
     <div class ="col-md-6">
     <div class ="card" style ="margin: 5px; width:300px">
             <div class ="card-body">
-                <button class = "btn btn-default" ng-click = "subirInfoCliente()" ui-sref ="editarCliente({clienteId: cliente.cedula})"> Editar </button>
+                <button class = "btn btn-default" ng-show= "clienteForm.$valid" ng-click = "editarCliente()"> Guardar cambios </button>
             </div>
     </div>    
     </div>
 </div>
+    
+</form>

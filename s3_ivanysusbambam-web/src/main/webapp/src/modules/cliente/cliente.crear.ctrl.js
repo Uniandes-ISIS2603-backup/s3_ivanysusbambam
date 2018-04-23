@@ -6,7 +6,7 @@
     
     mod.controller("clienteCrearCtrl", ["$scope", "$http", "clienteContext","$rootScope","$state", function($scope, $http, clienteContext, $rootScope, $state){
             
-           // $rootScope.edit = false;
+            //$rootScope.edit = false;
             
             $scope.data = {};
             
@@ -16,6 +16,8 @@
                   $state.go("listCliente", {reload: true}); 
                });  
             };
+            
+            7
     }]);
     
 })(window.angular);
