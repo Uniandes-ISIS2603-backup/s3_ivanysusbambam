@@ -1,0 +1,50 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="container-fluid align-items-center">
+    
+    <br>
+    <div class ="col-md-1"></div>
+    <div class="col-md-11"> <h2>Crear cliente</h2> </div>
+    
+    
+    
+    <div class ="card" style="margin: 40px">
+        <div class ="card-body">
+            
+            <div class ="col-md-6">
+                <form name ="cliente">
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "clienteNombre">Nombres y apellidos:</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="clienteNombre" required ng-model ="data.nombre">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="clienteCedula">Cédula</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="clienteCedula" type ="number" required ng-model = "data.cedula">
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!cliente.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
+                    <div class ="row">
+                        <input ng-show="cliente.$valid" ng-click="crearCliente()" value="Crear" class="btn btn-success"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class ="col-md-1"></div>
+<div class ="col-md-11">
+    <a ui-sref ="listCliente"> Volver </a>
+</div>

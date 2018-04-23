@@ -1,7 +1,49 @@
-<!DOCTYPE html>
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class ="container-fluid">
-    <ul class ="list-group">
-        <li class ="list-group-item" ng-repeat="cliente in clientes"><h5> {{cliente.cedula}} || {{cliente.nombre}} </h5></li>
-    </ul> 
+<div>
+    <br>
+    <div class ="row">
+        <div class ="col-md-1"></div>
+        <div class ="col-md-9">
+            <h2>Consulta de clientes</h2>
+        </div>
+        <div class="col-md-1 align-items-center">
+            <button class = "btn btn-default" ui-sref ="crearCliente"> Crear </button>
+        </div>
+        <div class ="col-md-1"></div>
+    </div>
+    
+    <div class="row" >
+        <div class="col-md-5">
+            <div class="card" style="margin: 40px">
+                
+                    <div class="card-body">
+                        <div class="table-responsive">   
+                        <table class="table table-dark table-striped " >
+                            <thead>
+                                <tr >
+                                    <th> Cédula </th>
+                                    <th> Nombre </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="cliente in clienteRecords">
+                                        <td>{{cliente.cedula}}</td>
+                                        <td>{{cliente.nombre}}</td>
+                                        <td><a ui-sref ="clienteDetail({clienteId: cliente.cedula})">Ver detalles</a></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class ="ool-md-1"></div>
+        <div class ="col-md-6">
+            <div class = "card-body">
+                <div ui-view ="clienteDetailView"><div>
+            </div>
+        </div>
+    </div>
 </div>

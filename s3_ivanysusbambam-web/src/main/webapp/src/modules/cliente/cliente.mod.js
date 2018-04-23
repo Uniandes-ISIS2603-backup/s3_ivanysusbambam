@@ -1,6 +1,6 @@
-(function (ng){
+(function(ng){
 
-    var mod = ng.module("clienteModule",["ui.router"]);
+    var mod = ng.module("clienteModule", ["ui.router"]);
     
     mod.config(["$stateProvider","$urlRouterProvider", function($stateProvider, $urlRouterProvider){
         
@@ -9,32 +9,47 @@
         //TODO - Tal vez el otherwise debería enviar a index?
         $urlRouterProvider.otherwise("/cliente");
         
-        $stateProvider.state("admin.clienteGetAll", {
+        $stateProvider.state("listCliente", {
             
-            url: "/cliente/getall",
+            url: "/cliente/list",
             
             views: {
                 mainView:{
                     templateUrl: basePath + "cliente.list.html",
-                    controller: "clienteGetAllCtrl",
+                    controller: "clienteListCtrl",
                     controllerAs:"ctrl"
                 }
             }
             
-        }).state("vendedor.clienteGetAll",{
-            
-            url: "/cliente/getall",
-            
-            views:{
-                mainView:{
-                    templateUrl: basePath + "cliente.list.html",
-                    controller:"clienteGetAllCtrl",
-                    controllerAs:"ctrl"
+        }).state("clienteDetail",{
+           
+               url: "/{clienteId: int}/detail",
+               parent: "listCliente",
+               params: {
+                   clienteId: null
+               },
+               views: {
+                   clienteDetailView: {
+                       templateUrl: basePath+"cliente.detail.html",
+                       controller: "clienteDetailCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+               
+                
+        }).state("crearCliente",{
+                url: "/cliente/crear",
+
+                views:{
+                    mainView:{
+                        templateUrl: basePath + "cliente.crear.html",
+                        controller: "clienteCrearCtrl",
+                        controllerAs: "ctrl"
+                    }
                 }
-            }
         });
     }]);
 
-})(angular.view);
+})(window.angular);
 
 

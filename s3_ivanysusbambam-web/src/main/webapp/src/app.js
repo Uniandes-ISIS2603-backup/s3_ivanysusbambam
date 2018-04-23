@@ -13,12 +13,12 @@
         "compraModule",
         "medioDePagoModule",
         'ventaModule',
-       'quejaReclamoModule'
+       'quejaReclamoModule',
 
-        /*
+        
         //Módulo del cliente
-        'clienteModule',
-        //Modulo del vendedor
+        'clienteModule'
+        /*//Modulo del vendedor
         'vendedorModule',
         //Módulo del prospecto de compra
         'pcModule',
