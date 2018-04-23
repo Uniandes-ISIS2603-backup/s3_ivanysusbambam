@@ -12,6 +12,8 @@
                                     <th> nombre</th>
                                     <th> tipo</th>
                                     <th> texto</th>
+                                    <th> Detalle</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -20,13 +22,17 @@
                                     <td>{{quejaReclamo.name}}</td>
                                     <td>{{quejaReclamo.tipo}}</td>
                                     <td>{{quejaReclamo.texto}}</td>
+                                    <td><a ui-sref ="quejaReclamoDetail({quejaReclamoId: quejaReclamo.id})">Ver detalles</a></td>
 
                                 </tr>
 
                             </tbody>
                         </table>
                         </div>
+                      <div ui-view ="quejaReclamoDetailView"><div>
+            </div>  
                 </div>
+                
             </div>
         </div>
     </div>
