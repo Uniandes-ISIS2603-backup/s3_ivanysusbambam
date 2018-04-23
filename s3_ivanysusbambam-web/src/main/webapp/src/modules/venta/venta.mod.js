@@ -17,9 +17,20 @@
                         controller: 'ventaGetAllCtrl',
                         controllerAs: "ctrl"
                     }
-                }
-            }
-            );
+                }}).state("ventaDetail",{
+                    url: "/{ventaId: int}/detail ",
+                    parent:"adminVentaGetAll",
+                    params: {
+                        ventaId:null
+                    },
+                    viwes: {
+                        'ventaDetailView': {
+                            templateUrl: basePath + "venta.detail.html",
+                            controller:"ventaDetailCtrl",
+                            controllerAs:"ctrl"
+                        }
+                    }
+            });
         }]);
 
 

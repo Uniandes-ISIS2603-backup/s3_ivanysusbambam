@@ -9,14 +9,14 @@
                             <thead>
                                 <tr >
                                     <th>Id de la venta </th>
-                                    <th> cliente</th>
-                                    <th> Punto de venta</th>
+                                    <th> detalles</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="venta in ventas">
                                     <td>{{venta.name}}</td>
-                                   
+                                     
+                                   <td><a ui-sref ="ventaDetail({ventaId: venta.id})">Ver detalles</a></td>
                                     
 
                                 </tr>
@@ -29,3 +29,4 @@
         </div>
     </div>
 </div>
+<div ui-view= "ventaDetailView"></div>
