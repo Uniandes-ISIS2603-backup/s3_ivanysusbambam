@@ -1,32 +1,36 @@
 (function(ng){
     
-    ng.module("pcModule",["ui.router"]).configure(["$stateProvider","$urlRouterProvider", 
+    ng.module("pcModule",["ui.router"]).config(["$stateProvider","$urlRouterProvider", 
         function($stateProvider, $urlRouterProvider){
             
-            var basePath = "src/modules/pc";
+            var basePath = "src/modules/pc/";
             
             $urlRouterProvider.otherwise("/pc");
             
-            $stateProvider.state("administrador.pcGetAll",{
+            $stateProvider.state("listPc",{
                 
                 
-                url: "/pc/getall",
+                url: "/pc/list",
                 views: {
                         mainView: {
                             templateUrl: basePath + "pc.list.html",
-                            controller = "pcGetAllCtrl",
-                            controllerAs ="ctrl"
+                            controller : "pcListCtrl",
+                            controllerAs :"ctrl"
                         }
                     }
                 
-            }).state("vendedor.pcGetAll",{
-               
-               url: "/pc/:vendedor/getall",
-                views: {
-                    mainView:{
-                        templateUrl: basePath + "pc.list.html",
-                        controller = "pcGetAllOfClienteCtrl",
-                        controllerAs = "ctrl"
+            }).state("pcDetail",{
+                
+                url: "/{pcId:int}/detail",
+                parent: "listPc",
+                params: {
+                    pcId: null
+                },
+                views:{
+                    pcDetailView: {
+                        templateUrl: basePath + "pc.detail.html",
+                        controller: "pcDetailCtrl",
+                        controllerAs: "ctrl"
                     }
                 }
                 
@@ -34,4 +38,4 @@
     }]);
     
     
-})(angular.view);
+})(window.angular);

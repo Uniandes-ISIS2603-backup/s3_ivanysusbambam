@@ -20,9 +20,9 @@
         //Módulo del cliente
         'clienteModule',
         //Modulo del vendedor
-        'vendedorModule'/*,
+        'vendedorModule',
         //Módulo del prospecto de compra
-        'pcModule',
+        'pcModule'/*,
         //Modulo de las quejas/reclamos
         ,
         
