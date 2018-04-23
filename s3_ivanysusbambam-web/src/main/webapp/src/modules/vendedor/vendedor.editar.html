@@ -1,4 +1,5 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<form name ="vendedorForm">
 <div class ="row">
   
     <div class ="col-md-6">
@@ -23,8 +24,8 @@
     <div class =" col-md-6">
         <div class ="card" style ="margin: 5px; width:300px">
             <div class ="card-body">
-                <h5> Nombre: </h5> {{vendedor.nombre}}
-                
+                <h5> Nombre: </h5>
+                <input id="vendedorNombre" required ng-model = "nuevoNombre" ng-change = "cambioInfo()" ng-value = "vendedor.nombre">
             </div>   
         </div>
     </div>
@@ -62,28 +63,7 @@
             <div class ="card-body">
                 <h5> Punto de venta: </h5> 
                 
-                <div class ="table-responsive" style = "font-size: 10px">
-                    
-                    <table class ="table table-dark table-striped">
-                        <thead>
-                            <tr>
-                                <th> Id </th>
-                                <th> Dirección </th>
-                                <th> Nombre </th>
-                                <th> Teléfono </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td> {{vendedor.puntoDeVenta.id}} </td>
-                                <td>{{vendedor.puntoDeVenta.direccion}}</td>
-                                <td>{{vendedor.puntoDeVenta.name}}</td>
-                                <td>{{vendedor.puntoDeVenta.telefono}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                </div>
+                <input type ="number" id="vendedorPV" required ng-model="idPV" ng-change = "cambioInfo()" ng-value = "vendedor.puntoDeVenta.id">
                 
             </div>   
         </div>
@@ -146,12 +126,21 @@
             </div>   
         </div>
     </div>
-    
+    <div class ="col-md-6">
+                       
+        <div ng-if="!vendedorForm.$valid"> 
+            <div class="alert alert-warning" >
+                <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+            </div> 
+        </div> 
+    </div>
     <div class ="col-md-6">
     <div class ="card" style ="margin: 5px; width:300px">
             <div class ="card-body">
-                <button class = "btn btn-default" ng-click = "subirInfoVendedor()" ui-sref ="editarVendedor({vendedorId: vendedor.carnetVendedor})"> Editar </button>
+                <button class = "btn btn-default" ng-show="vendedorForm.$valid" ng-click = "editarVendedor()"> Guardar cambios </button>
             </div>
     </div>  
+    </div>
 </div>
-</div>
+</form>
+

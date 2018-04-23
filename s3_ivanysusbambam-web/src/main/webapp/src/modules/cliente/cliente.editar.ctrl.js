@@ -14,8 +14,9 @@
         console.log($state.params);
         console.log($state.params.clienteId);
         
+        
         $scope.cliente = dataTransfer.get();
-            
+        $scope.nuevoNombre = $scope.cliente.nombre;    
         
         var address = clienteContext + "/" + $state.params.clienteId;
         
