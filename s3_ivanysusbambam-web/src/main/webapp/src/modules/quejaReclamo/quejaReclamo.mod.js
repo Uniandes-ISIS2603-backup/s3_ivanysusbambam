@@ -18,8 +18,19 @@
                         controllerAs: "ctrl"
                     }
                 }
-            }
-            );
+            }).state("quejaReclamoDetail",{
+                    url: "/{quejaReclamoId: int}/detail ",
+                    parent:"adminQuejaReclamoGetAll",
+                    params: {
+                        quejaReclamoId:null
+                    },
+                    viwes: {
+                        'quejaReclamoDetailView': {
+                            templateUrl: basePath + "quejaReclamo.detail.html",
+                            controller:"quejaReclamoDetailCtrl",
+                            controllerAs:"ctrl"
+                        }
+                    }});
         }]);
 
 
