@@ -21,6 +21,19 @@
                     }
                 }
                     
+                }).state("automovilDetail",{
+                    url: "/{automovilId: int}/detail ",
+                    parent:"listAutomoviles",
+                    params: {
+                        automovilId:null
+                    },
+                    viwes: {
+                        'automovilDetailView': {
+                            templateUrl: basePath + "automovil.detail.html",
+                            controller:"automovilDetailCtrl",
+                            controllerAs:"ctrl"
+                        }
+                    }
                 });
                  }
         ]);

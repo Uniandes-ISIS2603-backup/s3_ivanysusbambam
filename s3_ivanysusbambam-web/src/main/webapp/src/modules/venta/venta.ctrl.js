@@ -6,7 +6,7 @@
     
     mod.controller("ventaGetAllCtrl",["$scope","$http","ventaContext", function($scope, $http, ventaContext){
       
-            $http.get("data/ventas.json").then(function(response){
+            $http.get(ventaContext).then(function(response){
                $scope.ventas = response.data; 
             });
             
