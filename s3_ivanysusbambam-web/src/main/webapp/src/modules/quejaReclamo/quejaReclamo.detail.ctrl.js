@@ -12,7 +12,7 @@
 
 
 (function(ng){
-    
+    console.log("FASFHAISHDA");
    var mod = ng.module("quejaReclamoModule");
    
    mod.constant("quejaReclamoContext", "api/quejasReclamos");

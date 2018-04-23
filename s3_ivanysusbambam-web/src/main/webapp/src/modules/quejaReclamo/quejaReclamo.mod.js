@@ -19,13 +19,13 @@
                     }
                 }
             }).state("quejaReclamoDetail",{
-                    url: "/{quejaReclamoId: int}/detail ",
+                    url: "/{quejaReclamoId:int}/detail",
                     parent:"adminQuejaReclamoGetAll",
                     params: {
                         quejaReclamoId:null
                     },
-                    viwes: {
-                        'quejaReclamoDetailView': {
+                    views: {
+                        quejaReclamoDetailView: {
                             templateUrl: basePath + "quejaReclamo.detail.html",
                             controller:"quejaReclamoDetailCtrl",
                             controllerAs:"ctrl"

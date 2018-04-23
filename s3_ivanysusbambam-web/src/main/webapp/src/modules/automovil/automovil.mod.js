@@ -27,7 +27,7 @@
                     params: {
                         automovilId:null
                     },
-                    viwes: {
+                    views: {
                         'automovilDetailView': {
                             templateUrl: basePath + "automovil.detail.html",
                             controller:"automovilDetailCtrl",
