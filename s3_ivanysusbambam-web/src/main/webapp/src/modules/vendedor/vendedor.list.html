@@ -1,10 +1,52 @@
-<!DOCTYPE html>
-<alert ng-repeat="alert in alerts" type = "{{alert.type}}" close = "closeAlert()">{{alert.msg}}</alert>
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 
-<div class =" container-fluid">
+    <br>
+    <div class ="row">
+        <div class ="col-md-1"></div>
+        <div class ="col-md-9">
+            <h2>Consulta de vendedores</h2>
+        </div>
+        <div class="col-md-1 align-items-center">
+            <button class = "btn btn-default" ui-sref ="crearVendedor"> Crear </button>
+        </div>
+        <div class ="col-md-1"></div>
+    </div>
     
-    <ul class ="list-group">
-        <li class = "list-group-item" ng-repeat="vendedor in vendedores"> <h5>{{vendedor.carnetVendedor}} | {{vendedor.nombre}}</h5></li>
-    </ul>
-    
+    <div class="row" >
+        <div class="col-md-5">
+            <div class="card" style="margin: 40px">
+                
+                    <div class="card-body">
+                        <div class="table-responsive" style = "font-size: 12px">   
+                        <table class="table table-dark table-striped " >
+                            <thead>
+                                <tr >
+                                    <th> Carnet Vendedor </th>
+                                    <th> Cédula </th>
+                                    <th> Nombre </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="vendedor in vendedorRecords">
+                                        <td>{{vendedor.carnetVendedor}}</td>
+                                        <td>{{vendedor.cedula}}</td>
+                                        <td>{{vendedor.nombre}}</td>
+                                        <td><a ui-sref ="vendedorDetail({vendedorId: vendedor.carnetVendedor})">Ver detalles</a></td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        </div>
+                </div>
+            </div>
+            
+        </div>
+        <div class ="ool-md-1"></div>
+        <div class ="col-md-6">
+            <div class = "card-body">
+                <div ui-view ="vendedorDetailView"><div>
+            </div>
+        </div>
+    </div>
+    </div>
 </div>

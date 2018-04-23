@@ -4,14 +4,14 @@
     
     mod.constant("vendedorContext", "api/vendedores");
     
-    mod.controller("vendedorGetAll",["$scope","$http","vendedorContext", function($scope, $http, vendedorContext){
+    mod.controller("vendedorListCtrl",["$scope","$http","vendedorContext", function($scope, $http, vendedorContext){
       
             $http.get(vendedorContext).then(function(response){
-               $scope.vendedores = response.data; 
+               $scope.vendedorRecords = response.data; 
             });
             
     }]);
     
-})(angular.view);
+})(window.angular);
 
 

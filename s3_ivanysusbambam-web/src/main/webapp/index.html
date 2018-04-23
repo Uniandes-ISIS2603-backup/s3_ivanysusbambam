@@ -44,6 +44,11 @@
         <script src ="src/modules/cliente/cliente.editar.ctrl.js" type = "text/javascript"></script>
         
        
+        <!--Vendedor-->
+        <script src="src/modules/vendedor/vendedor.mod.js" type ="text/javascript"></script>
+        <script src ="src/modules/vendedor/vendedor.ctrl.js" type ="text/javascript"></script>
+        <script src ="src/modules/vendedor/vendedor.detail.ctrl.js" type ="text/javascript"></script>
+        <script src="src/modules/vendedor/vendedor.crear.ctrl.js" type="text/javascript"></script>
         
         <script src="src/app.js" type="text/javascript"></script> 
         <script src="src/http-interceptor.factory.js" type="text/javascript"></script>
@@ -87,15 +92,15 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" ui-sref="AdminCompraGetAll">Compra</a>
                             <a class="dropdown-item" ui-sref="adminVentaGetAll">Venta</a>
-                            <a class="dropdown-item" href="#">Consulta de prospectos de compra</a>
                             <a class="dropdown-item" href="#">Calificacion carro</a>
                             <a class="dropdown-item" href="#">Calificacion tienda</a>
-                            <a class="dropdown-item" ui-sref="listCliente">Consulta de clientes</a>
                             <a class="dropdown-item" href="#">Marca</a>
                             <a class="dropdown-item" ui-sref="AdminMedioDePagoGetAll">Medio de pago</a>
                             <a class="dropdown-item" href="#">Punto de venta</a>
                             <a class="dropdown-item" ui-sref="adminQuejaReclamoGetAll">Quejas y reclamos</a>
-                            <a class="dropdown-item" href="#">Consulta de vendedores</a>
+                            <a class="dropdown-item" ui-sref="#">Consulta de prospectos de compra</a>
+                            <a class="dropdown-item" ui-sref="listVendedor">Consulta de vendedores</a>
+                            <a class="dropdown-item" ui-sref="listCliente">Consulta de clientes</a>
                         </div>
                     </li>
                 </ul>

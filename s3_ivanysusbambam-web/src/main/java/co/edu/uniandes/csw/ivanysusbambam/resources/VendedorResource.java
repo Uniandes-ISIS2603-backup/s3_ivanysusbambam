@@ -53,10 +53,10 @@ public class VendedorResource {
      * @return JSONArray  con la información básica de todos los vendedores.
      */
     @GET
-    public List<VendedorDetailDTO> getVendedores(){
-       List<VendedorDetailDTO> vendedores = new ArrayList<>();
+    public List<VendedorDTO> getVendedores(){
+       List<VendedorDTO> vendedores = new ArrayList<>();
        for(VendedorEntity v : vendedorLogic.findAllVendedores()){
-           vendedores.add(new VendedorDetailDTO(v));
+           vendedores.add(new VendedorDTO(v));
        }
        
        return vendedores;

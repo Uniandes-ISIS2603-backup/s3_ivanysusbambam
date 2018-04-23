@@ -18,9 +18,9 @@
         
         
         //Módulo del cliente
-        'clienteModule'
-        /*//Modulo del vendedor
-        'vendedorModule',
+        'clienteModule',
+        //Modulo del vendedor
+        'vendedorModule'/*,
         //Módulo del prospecto de compra
         'pcModule',
         //Modulo de las quejas/reclamos
