@@ -13,7 +13,7 @@
     
     mod.controller("automovilGetAllCtrl",["$scope","$http","automovilContext", function($scope, $http, automovilContext){
       
-            $http.get('data/automoviles.json').then(function(response){
+            $http.get(automovilContext).then(function(response){
                $scope.automoviles = response.data; 
             });
             
