@@ -1,0 +1,64 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="container-fluid align-items-center">
+    
+    <br>
+    <div class ="col-md-1"></div>
+    <div class="col-md-11"> <h2>Crear vendedor</h2> </div>
+    
+    
+    
+    <div class ="card" style="margin: 40px">
+        <div class ="card-body">
+            
+            <div class ="col-md-6">
+                <form name ="prospectoCompra">
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "pcTexto">Texto:</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="pcTexto" required ng-model ="data.texto">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="pcIdVendedor">Id del vendedor:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="pcIdVendedor" type ="number" required ng-model = "idVendedor" ng-change="buscarVendedor()">
+                    </div>       
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="pcIdCliente">Id del cliente:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="pcIdCliente" type ="number" required ng-model = "idCliente" ng-change="buscarCliente()">
+                    </div> 
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="pcIdAutomovil">Id del punto de venta</label>
+                    </div>
+                     <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id = "pcIdAutomovil"  type="number" required ng-model = "idAutomovil" ng-change="buscarAutomovil()">
+                        
+                    </div>
+                    
+                    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!prospectoCompra.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
+                    <div class ="row">
+                        <input ng-show="prospectoCompra.$valid" ng-click="crearPc()" value="Crear" class="btn btn-success"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class ="col-md-1"></div>
+<div class ="col-md-11">
+    <a ui-sref ="listPc"> Volver </a>
+</div>
