@@ -23,7 +23,7 @@
                     params: {
                         ventaId:null
                     },
-                    viwes: {
+                    views: {
                         'ventaDetailView': {
                             templateUrl: basePath + "venta.detail.html",
                             controller:"ventaDetailCtrl",
