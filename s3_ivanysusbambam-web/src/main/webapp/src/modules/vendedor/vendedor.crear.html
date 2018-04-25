@@ -26,10 +26,12 @@
                     </div>       
                     
                     <div class =" row" style = "margin: 10px">
-                        <label class ="col-md-6" for ="vendedorPuntoDeVenta">Id del punto de venta</label>
+                        <label class ="col-md-6" for ="vendedorPuntoDeVenta">Punto de venta</label>
                     </div>
                      <div class ="row " style = "margin: 10px" >
-                        <input class ="col-md-12" id = "vendedorPuntoDeVenta"  type="number" required ng-model = "idPV" ng-change="buscarPV()">
+                         <select class ="col-md-12" id = "vendedorPuntoDeVenta"  required ng-model = "data.puntoDeVenta" ng-options="x.id + ' | ' + x.name for x in puntosVenta">
+                            
+                         </select>
                         
                     </div>
                     

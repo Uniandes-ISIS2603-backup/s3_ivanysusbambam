@@ -1,14 +1,12 @@
 {
 	"info": {
 		"name": "Ivanysusbambam - componente cliente, vendedor, servidor",
-		"_postman_id": "c042618c-c218-cd53-e3ba-70a1fb117269",
-		"description": "",
+		"_postman_id": "7e8c3a4e-ac82-8113-7c53-34bb2bed6042",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Cliente",
-			"description": "",
 			"item": [
 				{
 					"name": "GET clientes",
@@ -55,8 +53,7 @@
 								"api",
 								"clientes"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -106,8 +103,7 @@
 								"clientes",
 								"7"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -155,8 +151,7 @@
 								"clientes",
 								"7"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -206,8 +201,7 @@
 								"api",
 								"clientes"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -255,8 +249,7 @@
 								"clientes",
 								"8"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -264,7 +257,6 @@
 		},
 		{
 			"name": "Vendedor",
-			"description": "",
 			"item": [
 				{
 					"name": "GET vendedores",
@@ -285,7 +277,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores",
 							"protocol": "http",
@@ -298,8 +293,7 @@
 								"api",
 								"vendedores"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -322,7 +316,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/2732",
 							"protocol": "http",
@@ -336,8 +333,7 @@
 								"vendedores",
 								"2732"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -382,8 +378,7 @@
 								"api",
 								"vendedores"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -426,8 +421,7 @@
 								"vendedores",
 								"5776"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -448,7 +442,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/2732",
 							"protocol": "http",
@@ -462,8 +459,7 @@
 								"vendedores",
 								"2732"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -471,7 +467,6 @@
 		},
 		{
 			"name": "ProspectoCompra",
-			"description": "",
 			"item": [
 				{
 					"name": "GET prospectoscompra",
@@ -492,7 +487,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra",
 							"protocol": "http",
@@ -505,8 +503,7 @@
 								"api",
 								"prospectoscompra"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -529,7 +526,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/109",
 							"protocol": "http",
@@ -543,8 +543,7 @@
 								"prospectoscompra",
 								"109"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -575,7 +574,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\": 19,\n    \"texto\": \"Hola, este es el texto del prospecto de compra\",\n    \"automovil\":  { \n    \t\"id\" : 1\n    },\n    \"cliente\": {\n        \"cedula\":7\n    },\n    \"vendedor\": {\n        \"carnetVendedor\": 476,\n        \"cedula\": 9028000433\n    }\n}"
+							"raw": "{\n\t\"id\": 9000,\n    \"texto\": \"Hola, este es el texto del prospecto de compra\",\n    \"automovil\":  { \n    \t\"id\" : 1\n    },\n    \"cliente\": {\n        \"cedula\":7\n    },\n    \"vendedor\": {\n        \"carnetVendedor\": 476,\n        \"cedula\": 9028000433\n    }\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra",
@@ -589,8 +588,7 @@
 								"api",
 								"prospectoscompra"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -633,8 +631,7 @@
 								"prospectoscompra",
 								"109"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -655,7 +652,10 @@
 					"request": {
 						"method": "DELETE",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/prospectoscompra/105",
 							"protocol": "http",
@@ -669,8 +669,7 @@
 								"prospectoscompra",
 								"105"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}

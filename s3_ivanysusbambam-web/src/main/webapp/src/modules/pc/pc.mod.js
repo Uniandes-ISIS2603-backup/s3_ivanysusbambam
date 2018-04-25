@@ -34,6 +34,30 @@
                     }
                 }
                 
+            }).state("crearPc",{
+                url: "/pc/crear",
+                
+                views:{
+                    mainView:{
+                        templateUrl: basePath+"pc.crear.html",
+                        controller: "pcCrearCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+            }).state("editarPc",{
+                
+                url: "/(pcId: int)/editar",
+                parent: "listPc",
+                params:{
+                    pcId:null
+                },
+                views:{
+                    pcDetailView:{
+                        templateUrl: basePath + "pc.editar.html",
+                        controller: "pcEditarCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
             });
     }]);
     

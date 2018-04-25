@@ -60,6 +60,18 @@
                            }
                        }
                        
+                   }).state("perfilVendedor",{
+                       url:"/perfilVendedor/{vendedorId:int}",
+                       params:{
+                           vendedorId: null
+                       },
+                       views:{
+                           mainView:{
+                               templateUrl: basePath + "vendedor.detail.html",
+                               controller: "vendedorDetailCtrl",
+                               controllerAs: "ctrl"
+                           }
+                       }
                    });
             
             }]);

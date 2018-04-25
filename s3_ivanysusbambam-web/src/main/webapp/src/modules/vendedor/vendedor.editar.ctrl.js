@@ -8,14 +8,21 @@
      
         $scope.vendedor = dataTransfer.get();
         
+        $scope.puntosVenta = [];
+            
+        $http.get("api/puntosDeVenta").then(function(response){
+               
+            console.log("RESPONSE");
+            console.log(response);
+               
+            $scope.puntosVenta = response.data;
+                
+        });
+        
         var address = vendedorContext + "/" + $state.params.vendedorId;
         
         $scope.nuevoNombre = $scope.vendedor.nombre;
         
-        if($scope.vendedor.puntoDeVenta !== undefined &&
-                $scope.vendedor.puntoDeVenta !== null){
-            $scope.idPV = $scope.vendedor.puntoDeVenta.id;
-        }
         $scope.editarVendedor = function(){
             $http.put(address, $scope.vendedor).then(function(response){
                 
@@ -29,25 +36,9 @@
           console.log($scope.nuevoNombre);  
             
           $scope.vendedor.nombre = $scope.nuevoNombre;
-         
+          $scope.vendedor.puntoDeVenta = $scope.nuevoPv;
           console.log($scope.idPV);
           
-          $http.get("api/puntosDeVenta/"+$scope.idPV).then(function(response){
-                    
-                    console.log("THEN");
-                    
-                    var pvDDto = response.data;
-                    var pc = {
-                        name: pvDDto.name,
-                        id: pvDDto.id,
-                        direccion: pvDDto.direccion,
-                        telefono: pvDDto.telefono  
-                    };
-                    console.log("PC DONE");
-                    console.log(pc);
-                    $scope.vendedor.puntoDeVenta = pc;
-                    console.log(vendedor);
-                });  
           
         };
         

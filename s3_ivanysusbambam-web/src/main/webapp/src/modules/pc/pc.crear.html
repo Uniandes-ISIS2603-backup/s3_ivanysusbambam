@@ -1,0 +1,67 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="container-fluid align-items-center">
+  
+    
+    <br>
+    <div class ="col-md-1"></div>
+    <div class="col-md-11"> <h2>Crear prospecto de compra</h2> </div>
+    
+    
+    
+    <div class ="card" style="margin: 40px">
+        <div class ="card-body">
+            
+            <div class ="col-md-6">
+                <form name ="prospectoCompra">
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "pcTexto">Texto:</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="pcTexto" required ng-model ="data.texto">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="pcIdVendedor">Vendedor:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <select class ="col-md-12" id ="pcIdVendedor" type ="number" required ng-model = "data.vendedor" ng-options= "x.carnetVendedor +' | '+ x.nombre for x in listaVendedores" >
+                        </select>
+                    </div>       
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="pcIdCliente">Cliente</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <select class ="col-md-12" id ="pcIdCliente" type ="number" required ng-model = "data.cliente" ng-options="x.cedula + ' | ' + x.nombre for x in listaClientes">
+                        </select>
+                    </div> 
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="pcIdAutomovil">Automóvil</label>
+                    </div>
+                     <div class ="row " style = "margin: 10px" >
+                        <select class ="col-md-12" id = "pcIdAutomovil"  type="number" required ng-model = "data.automovil" ng-options="x.id + ' | '+ x.chasis + ' | ' + x.name + ' | ' + x.anio + ' | ' + (x.valorListado | currency) for x in listaAutos"> 
+                        </select>
+                    </div>
+                    
+                    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!prospectoCompra.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
+                    <div class ="row">
+                        <input ng-show="prospectoCompra.$valid" ng-click="crearPc()" value="Crear" class="btn btn-success"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+</form>
+
+<div class ="col-md-1"></div>
+<div class ="col-md-11">
+    <a ui-sref ="listPc"> Volver </a>
+</div>

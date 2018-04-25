@@ -9,26 +9,23 @@
             //$rootScope.edit = false;
             
             $scope.data = {};
+            $scope.puntosVenta = [];
             
-            $scope.buscarPV = function(){
-              $http.get("api/puntosDeVenta/"+$scope.idPV).then(function(response){
-                    var pvDDto = response.data;
-                    var pc = {
-                        name: pvDDto.name,
-                        id: pvDDto.id,
-                        direccion: pvDDto.direccion,
-                        telefono: pvDDto.telefono  
-                    };
-                    $scope.data.puntoDeVenta = pc;
-                });  
-            };
+            $http.get("api/puntosDeVenta").then(function(response){
+               
+                console.log("RESPONSE");
+                console.log(response);
+                
+                $scope.puntosVenta = response.data;
+                
+            });
             
             $scope.crearVendedor = function(){
                 
                 //Carnet cualquiera que será reemplazado por el autogenerado
                $scope.data.carnetVendedor = Number.MAX_SAFE_INTEGER;
                $http.post(vendedorContext, $scope.data).then(function(response){
-                  $state.go("listVendedor", {reload: true}); 
+                  $state.go("listVendedor",{}, {reload: true}); 
                });  
             };
             
