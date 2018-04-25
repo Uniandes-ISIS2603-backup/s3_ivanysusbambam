@@ -62,6 +62,19 @@
                    }
                }
             
+        }).state("perfilCliente",{
+            url: "/perfil/{clienteId: int}",
+            
+            params:{
+                clienteId: null
+            },
+            views: {
+                mainView: {
+                        templateUrl: basePath+"cliente.detail.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"
+                    }
+            }
         });
     }]);
 

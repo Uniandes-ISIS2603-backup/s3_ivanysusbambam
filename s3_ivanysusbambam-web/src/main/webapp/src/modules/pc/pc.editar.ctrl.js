@@ -10,7 +10,14 @@
                 
         var address = pcContext + "/" + $state.params.pcId;
         
+        
+        
         $scope.nuevoTexto = $scope.pc.texto;
+        
+        
+        console.log("--------------");
+        console.log($scope.nuevoTexto);
+        console.log("---------------")
         
         $scope.editarProspecto = function(){
             $http.put(address, $scope.pc).then(function(response){
