@@ -9,21 +9,16 @@
             //$rootScope.edit = false;
             
             $scope.data = {};
-            $scope.idPv = null;
+            $scope.puntosVenta = [];
             
-            
-            $scope.buscarPV = function(){
-              $http.get("api/puntosDeVenta/"+$scope.idPV).then(function(response){
-                    var pvDDto = response.data;
-                    var pc = {
-                        name: pvDDto.name,
-                        id: pvDDto.id,
-                        direccion: pvDDto.direccion,
-                        telefono: pvDDto.telefono  
-                    };
-                    $scope.data.puntoDeVenta = pc;
-                });  
-            };
+            $http.get("api/puntosDeVenta").then(function(response){
+               
+                console.log("RESPONSE");
+                console.log(response);
+                
+                $scope.puntosVenta = response.data;
+                
+            });
             
             $scope.crearVendedor = function(){
                 

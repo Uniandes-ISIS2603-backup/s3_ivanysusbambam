@@ -63,8 +63,8 @@
             <div class ="card-body">
                 <h5> Punto de venta: </h5> 
                 
-                <input type ="number" id="vendedorPV" required ng-model="idPV" ng-change = "cambioInfo()" ng-value = "vendedor.puntoDeVenta.id">
-                
+                <select type ="number" id="vendedorPV" required ng-model="nuevoPv" ng-change = "cambioInfo()" ng-init= "vendedor.puntoDeVenta" ng-options="x.id + ' | ' + x.name for x in puntosVenta">
+                </select>
             </div>   
         </div>
     </div>
