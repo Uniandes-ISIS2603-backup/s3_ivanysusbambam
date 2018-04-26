@@ -17,9 +17,26 @@
                         controller: 'compraGetAllCtrl',
                         controllerAs: "ctrl"
                     }
+                    
                 }
             }
-            );
+            ).state('compraDetail', {
+           
+               url: "/{compraId: int}/detail",
+               parent: "AdminCompraGetAll",
+               params: {
+                   compraId: null
+               },
+               views: {
+                   'compraDetailView': {
+                       templateUrl: basePath+"compra.detail.html",
+                       controller: "compraDetailCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+               
+                
+        });
         }]);
 
 
