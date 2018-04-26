@@ -1,0 +1,17 @@
+<div class = "container-fluid" style="padding: 0px; margin: 10px">
+    <div class="well well-lg" >
+        <h2 class="text-center text-light" style="background-color: lightseagreen; padding: 0px; margin: 0px">{{currentPuntoVenta.name}}</h2>
+    </div>
+    <div class="container">
+        <div class="col-sm-8" ng-repeat="auto in currentPuntoVenta.autos">
+            <img class="img-fluid rounded" ng-src="{{auto.imagen}}" alt="{{auto.modelo}}" width="420" height="300" style="margin-left: 75px; margin-top: 15px">
+            <ul class="list-group" style="width: 340px; height: 260px; margin-left: 100px; margin-top: 15px">
+                <li class="list-group-item list-group-item-primary">Año: {{auto.anio}}</li>
+                <li class="list-group-item list-group-item-light">Placa: {{auto.placa}}</li>
+                <li class="list-group-item list-group-item-primary">Fecha listado: {{auto.fechaListado}}</li>
+                <li class="list-group-item list-group-item-light">Modelo: {{auto.modelo}}</li>
+                <li class="list-group-item list-group-item-primary">Marca: {{auto.marca}}</li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -13,8 +13,10 @@
         "compraModule",
         "medioDePagoModule",
         'ventaModule',
-       'quejaReclamoModule',
+        'quejaReclamoModule',
 
+        // Modulo de los puntos de venta
+        'puntoVentaModule',
         
         
         //Módulo del cliente

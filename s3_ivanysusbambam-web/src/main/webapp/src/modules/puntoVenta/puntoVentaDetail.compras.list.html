@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <div class="container">
+  <h2>Compras</h2>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th>ID</th>
+        <th>Costo</th>
+        <th>Serie Auto</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  ng-repeat="compra in currentPuntoVenta.compras">
+        <td>{{compra.id}}</td>
+        <td>{{compra.costo}}</td>
+        <td>{{compra.serieAuto}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+    </body>
+</html>

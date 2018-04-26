@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <div class="container">
+  <h2>Ventas</h2>
+  <table class="table">
+    <thead class="thead-light">
+      <tr>
+        <th>ID</th>
+        <th>Costo</th>
+        <th>Serie Auto</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="venta in currentPuntoVenta.ventas">
+            <td>{{venta.id}}</td>
+            <td>{{venta.costo}}</td>
+            <td>{{venta.serieAuto}}</td>
+        </tr>
+    </tbody>
+  </table>
+</div>
+    </body>
+</html>

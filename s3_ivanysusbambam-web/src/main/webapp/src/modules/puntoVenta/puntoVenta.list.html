@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Puntos de Venta</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcSdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+  <style>
+      .classyClass{
+           background-image: url("https://i.pinimg.com/originals/35/ab/e2/35abe2bad4fd1d7635b4974c7140bd2f.jpg");
+           height: 300px;
+           width: 100%;
+           background-position: center;
+           background-repeat: no-repeat;
+           background-size: cover;
+           text-align: right;
+           
+      }
+    .ironClass {
+        margin-bottom: 30px;
+    }
+    .goldClass {
+        background: #aaa;
+    }
+    .container {
+        position: relative;
+    }
+    .textBeast {
+        margin-left: 600px;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+    .fakeimg {
+        height: 200px;
+        background: #aaa;
+    }
+  </style>
+</head>
+<body ng-app="puntoVentaList">
+   
+<div class="classyClass" style="margin-bottom: 0">
+    <div class="textBeast align-items-center">
+        <h1 class="display-2 text-light">Puntos de Venta</h1>
+    </div>
+</div>
+    <div class="container-fluid" style="background-color: lightgray; padding: 0px">
+  <div class="row">
+    <div class="col-sm-4 col-md-4">
+        <div class="ironClass" ng-repeat="x in puntosDeVenta">
+            <div>
+                <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ x.name }}</h4>
+                <a ui-sref="puntoDeVentaDetail({puntoVentaId: x.id})">
+                    <img class="img-fluid" style="margin-left: 15px; margin-top: 10px;" ng-src="{{x.image}}" alt="{{x.name}}" width="340" height="240">
+                </a>
+                <div class="row" style="margin-left: 15px">
+                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Autos</button>
+                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Ventas</button>
+                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Compras</button>
+                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Vendedores</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      <div class="col-sm-8" style="border-radius: 25px;">
+        <!--<nav class=" navbar navbar-expand-sm bg-dark navbar-dark">
+            <ul class="nav nav-pills nav-justified">
+            <li class="nav-item">
+                <a class="nav-link" ui-sref="" ng-init="button = 2">Autos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" ui-sref="" ng-init="button= 3">Vendedores</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" ui-sref="" ng-init="button = 4">Compras</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" ui-sref="" ng-init="button = 5">Ventas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" ui-sref=""  ng-init="button = 6">Editar</a>
+            </li>
+          </ul><br>
+        </nav>-->
+        <div class="goldClass" ui-view="listAutosView"></div>
+        <div class="goldClass" ui-view="listVentasView"></div>
+        <div class="goldClass" ui-view="listComprasView"></div>
+    </div>
+  </div>
+</div>
+
+<div class="jumbotron text-center">
+    <div class="goldClass" ui-view="listVendedoresView"></div>
+</div>
+    <!--<script>
+    var app = angular.module("puntoVentaList", ["ngRoute"]);
+    app.config(function($routeProvider){
+       $routeProvider.when("/autos",{
+           templateUrl : "src/modules/puntoVenta/puntoVentaDetail.autos.list.html"
+       });
+    });   
+    </script>-->
+</body>
+</html>

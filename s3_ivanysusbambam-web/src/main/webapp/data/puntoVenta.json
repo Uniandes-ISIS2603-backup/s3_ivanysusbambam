@@ -1,0 +1,266 @@
+[{
+        "id": 1,
+        "image": "https://d17nbwpy4av6jl.cloudfront.net/uploads/web/resources/resource55e82553dea70_seliauto-oestecom_nuevo-concesionario-opel-en-majadahonda.jpg",
+        "name": "Los Ángeles",
+        "direccion": "Cr 54 # 27 c - 32",
+        "telefono": 7205049,
+        "autos": [
+            {
+                "id": 214356,
+                "imagen": "https://static.motor.es/fotos-noticias/2014/09/min652x435/cadillac-ats-coupe-2015-presencia-y-potencia-unida-201418219_1.jpg",
+                "color": "rojo",
+                "anio": 2016,
+                "placa": "ASD-123",
+                "chasis": 5875,
+                "fechaListado": "2018-05-24",
+                "valorListado": 505000,
+                "modelo": "CT6",
+                "marca": "Cadillac"
+            },
+            {
+                "id": 896721,
+                "imagen": "https://i.pinimg.com/736x/81/d1/7d/81d17d0d5ac568df0897be939dd80a95--cadillac-records-cool-cars.jpg",
+                "color": "gris",
+                "anio": 2018,
+                "placa": "TJB-123",
+                "chasis": 5777,
+                "fechaListado": "2017-06-25",
+                "valorListado": 505055,
+                "modelo": "Cien",
+                "marca": "Cadillac"
+            },
+            {
+                "id": 898921,
+                "imagen": "https://cdn.topgear.es/sites/navi.axelspringer.es/public/styles/gallery_big/public/media/image/2017/05/bmw-serie-3-edition-luxury-line-purity.jpg?itok=FvbHIUKe",
+                "color": "azul",
+                "anio": 2013,
+                "placa": "RST-888",
+                "chasis": 8875,
+                "fechaListado": "2015-06-25",
+                "valorListado": 585008,
+                "modelo": "Serie 3",
+                "marca": "BMW"
+            },
+            {
+                "id": 456721,
+                "imagen": "https://testcoches.es/wp-content/uploads/2018/03/bmw-m2-black-shadow-1.jpg",
+                "color": "negro",
+                "anio": 2018,
+                "placa": "SST-226",
+                "chasis": 8845,
+                "fechaListado": "2015-05-26",
+                "valorListado": 585004,
+                "modelo": "CS",
+                "marca": "BMW"
+            },
+            {
+                "id": 786721,
+                "imagen": "https://periodismodelmotor.com/wp-content/uploads/2018/03/Bugatti-EB-118-1.jpg",
+                "color": "azul",
+                "anio": 2018,
+                "placa": "RRO-777",
+                "chasis": 7785,
+                "fechaListado": "2017-06-28",
+                "valorListado": 785026,
+                "modelo": "EB 118",
+                "marca": "Bugatti"
+            },
+            {
+                "id": 896721,
+                "imagen": "https://cdn-ds.com/stock/2016-Rolls-Royce-Ghost--Beverly-Hills-CA/seo/VAMP16966-SCA664S51GUX53619/sz_163703/w_750/h_480/image-1.jpg",
+                "color": "blanco",
+                "anio": 2018,
+                "placa": "URT-123",
+                "chasis": 1871,
+                "fechaListado": "2018-04-24",
+                "valorListado": 185077,
+                "modelo": "Ghost",
+                "marca": "Rolls Royce"
+            }
+        ],
+        "vendedores": [
+            {
+                "id": 1,
+                "imagen": "https://zascandileandoporlavida.files.wordpress.com/2013/06/pedro-animado.jpg", 
+                "name": "Julio Jaramillo",
+                "carnet": 123456789,
+                "cedula": 987654321
+                
+            },
+            {
+                "id": 2,
+                "imagen": "https://thumbs.dreamstime.com/b/business-man-cartoon-character-young-handsome-businessman-smart-casual-clothes-holding-smartphone-stock-vector-90851937.jpg", 
+                "name": "Pedro Pedraza",
+                "carnet": 123495867,
+                "cedula": 987615243
+            },
+            {
+                "id": 3,
+                "imagen": "https://thumbs.dreamstime.com/b/african-american-business-woman-cartoon-character-african-american-business-woman-cartoon-character-young-beautiful-smiling-110976443.jpg",
+                "name": "Gabriela Garzón",
+                "carnet": 123486957,
+                "cedula": 987192835
+            }
+        ],
+        "compras": [
+            {
+                "id": 1,
+                "costo": "150 000 000 000",
+                "serieAuto": 896721
+            },
+            {
+                "id": 2,
+                "costo": "180 000 000 000",
+                "serieAuto": 786721
+            },
+            {
+                "id": 3,
+                "costo": "145 000 000 000",
+                "serieAuto": 456721
+            }
+        ],
+        "ventas": [
+            {
+                "id": 1,
+                "costo": "90 000 000",
+                "serieAuto": 896721
+
+            },
+            {
+                "id": 2,
+                "costo": "115 000 000",
+                "serieAuto": 786721
+            },
+            {
+                "id": 3,
+                "costo": "85 000 000",
+                "serieAuto": 456721
+            }]
+    },
+{
+        "id": 2,
+        "image": "https://static.motor.es//fotos-noticias/2016/04/min652x435/maserati-sevilla-concesionario-terry-gallery-201627093_1.jpg",
+        "name": "Florida",
+        "direccion": "Cr 135 # 15 - 32",
+        "telefono": 4200454,
+        "autos": [
+            {
+                "id": 896721,
+                "imagen": "https://i.pinimg.com/736x/81/d1/7d/81d17d0d5ac568df0897be939dd80a95--cadillac-records-cool-cars.jpg",
+                "color": "gris",
+                "anio": 2018,
+                "placa": "TJB-123",
+                "chasis": 5777,
+                "fechaListado": "2017-06-25",
+                "valorListado": 505055,
+                "modelo": "Cien",
+                "marca": "Cadillac"
+            },
+            {
+                "id": 898921,
+                "imagen": "https://cdn.topgear.es/sites/navi.axelspringer.es/public/styles/gallery_big/public/media/image/2017/05/bmw-serie-3-edition-luxury-line-purity.jpg?itok=FvbHIUKe",
+                "color": "azul",
+                "anio": 2013,
+                "placa": "RST-888",
+                "chasis": 8875,
+                "fechaListado": "2015-06-25",
+                "valorListado": 585008,
+                "modelo": "Serie 3",
+                "marca": "BMW"
+            },
+            {
+                "id": 456721,
+                "imagen": "https://testcoches.es/wp-content/uploads/2018/03/bmw-m2-black-shadow-1.jpg",
+                "color": "negro",
+                "anio": 2018,
+                "placa": "SST-226",
+                "chasis": 8845,
+                "fechaListado": "2015-05-26",
+                "valorListado": 585004,
+                "modelo": "CS",
+                "marca": "BMW"
+            },
+            {
+                "id": 896721,
+                "imagen": "https://cdn-ds.com/stock/2016-Rolls-Royce-Ghost--Beverly-Hills-CA/seo/VAMP16966-SCA664S51GUX53619/sz_163703/w_750/h_480/image-1.jpg",
+                "color": "blanco",
+                "anio": 2018,
+                "placa": "URT-123",
+                "chasis": 1871,
+                "fechaListado": "2018-04-24",
+                "valorListado": 185077,
+                "modelo": "Ghost",
+                "marca": "Rolls Royce"
+            },
+            {
+                "id": 786721,
+                "imagen": "https://periodismodelmotor.com/wp-content/uploads/2018/03/Bugatti-EB-118-1.jpg",
+                "color": "azul",
+                "anio": 2018,
+                "placa": "RRO-777",
+                "chasis": 7785,
+                "fechaListado": "2017-06-28",
+                "valorListado": 785026,
+                "modelo": "EB 118",
+                "marca": "Bugatti"
+            }
+        ],
+        "vendedores": [
+            {
+                "id": 1,
+                "imagen": "https://zascandileandoporlavida.files.wordpress.com/2013/06/pedro-animado.jpg", 
+                "name": "Julio Jaramillo",
+                "carnet": 123456789,
+                "cedula": 987654321
+                
+            },
+            {
+                "id": 2,
+                "imagen": "https://thumbs.dreamstime.com/b/business-man-cartoon-character-young-handsome-businessman-smart-casual-clothes-holding-smartphone-stock-vector-90851937.jpg",
+                "name": "Pedro Pedraza",
+                "carnet": 123495867,
+                "cedula": 987615243
+            },
+            {
+                "id": 3,
+                "imagen": "https://thumbs.dreamstime.com/b/african-american-business-woman-cartoon-character-african-american-business-woman-cartoon-character-young-beautiful-smiling-110976443.jpg",                
+                "name": "Guillermo Garzón",
+                "carnet": 123486957,
+                "cedula": 987192835
+            }
+        ],
+        "compras": [
+            {
+                "id": 1,
+                "costo": "150 000 000 000",
+                "serieAuto": 896721
+            },
+            {
+                "id": 2,
+                "costo": "180 000 000 000",
+                "serieAuto": 786721
+            },
+            {
+                "id": 3,
+                "costo": "145 000 000 000",
+                "serieAuto": 456721
+            }
+        ],
+        "ventas": [
+            {
+                "id": 1,
+                "costo": "90 000 000",
+                "serieAuto": 896721
+
+            },
+            {
+                "id": 2,
+                "costo": "115 000 000",
+                "serieAuto": 786721
+            },
+            {
+                "id": 3,
+                "costo": "85 000 000",
+                "serieAuto": 456721
+            }]
+    }]
