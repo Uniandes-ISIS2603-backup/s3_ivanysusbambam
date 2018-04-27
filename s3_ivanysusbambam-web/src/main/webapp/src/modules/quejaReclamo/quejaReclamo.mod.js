@@ -30,7 +30,16 @@
                             controller:"quejaReclamoDetailCtrl",
                             controllerAs:"ctrl"
                         }
-                    }});
+                    }}).state("crearQuejaReclamo",{
+                url: "/quejaReclamo/crear",
+
+                views:{
+                    mainView:{
+                        templateUrl: basePath + "quejaReclamo.crear.html",
+                        controller: "quejaReclamoCrearCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }});
         }]);
 
 

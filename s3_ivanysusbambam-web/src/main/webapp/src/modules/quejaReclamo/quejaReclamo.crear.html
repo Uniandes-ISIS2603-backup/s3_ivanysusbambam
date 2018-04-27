@@ -1,0 +1,68 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="container-fluid align-items-center">
+    
+    <br>
+    <div class ="col-md-1"></div>
+    <div class="col-md-11"> <h2>Crear Queja/Reclamo</h2> </div>
+    
+    
+    
+    <div class ="card" style="margin: 40px">
+        <div class ="card-body">
+            
+            <div class ="col-md-6">
+                <form name ="quejaReclamo">
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "quejaReclamoId">Id:</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="quejaReclamoId" required ng-model ="data.id">
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "quejaReclamoNombre">Nombre:</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="quejaReclamoNombre" required ng-model ="data.name">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="quejaReclamoTipo">Tipo:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="quejaReclamoTipo" required ng-model = "data.tipo">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="quejaReclamoTexto">Texto:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="quejaReclamoTexto" required ng-model = "data.texto">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="quejaReclamoCliente">Cedula Cliente:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="quejaReclamoCliente" required ng-model = "data.cliente.cedula">
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!quejaReclamo.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
+                    <div class ="row">
+                        <input ng-show="quejaReclamo.$valid" ng-click="crearQuejaReclamo()" value="Crear" class="btn btn-success"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class ="col-md-1"></div>
+<div class ="col-md-11">
+    <a ui-sref ="adminQuejaReclamoGetAll"> Volver </a>
+</div>
