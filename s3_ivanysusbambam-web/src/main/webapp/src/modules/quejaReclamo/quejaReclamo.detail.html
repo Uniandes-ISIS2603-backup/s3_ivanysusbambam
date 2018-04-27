@@ -1,21 +1,18 @@
+<h1 id="h1" style="margin:20px" >Detail Queja/Reclamo</h1>
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-
-
-
 <div class ="row">
      <div class ="col-md-6">
         <div class="card" style="margin: 5px; width: 300px">
             <div class ="card-body">
-                <h5> Id: </h5> {{quejaReclamo.id}}
-                <h5> nombre: </h5> {{quejaReclamo.name}}
-                <h5> tipo: </h5> {{quejaReclamo.tipo}}
-                <h5> texto: </h5> {{quejaReclamo.texto}}
-               
-                            
-                
-               
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> id Queja/Reclamo:</div>{{quejaReclamo.id}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Tipo:</div>{{quejaReclamo.tipo}}
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Nombre:  </div> {{quejaReclamo.name}}
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Texto:</div>{{quejaReclamo.texto}}
+              <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Cedula Cliente:</div> {{quejaReclamo.cliente.cedula}}
+            
             </div>
+            
+            
+            
         </div>
     </div>
-    </div>
-     

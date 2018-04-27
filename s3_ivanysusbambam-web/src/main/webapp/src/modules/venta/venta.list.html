@@ -1,32 +1,37 @@
 <div>
+    <h1 id="h1" style="margin:10px" >Consultar ventas</h1>
     <div class="row" >
         <div class="col-md-5">
-            <div class="card" style="margin: 40px">
-                
-                    <div class="card-body">
-                        <div class="table-responsive">   
-                        <table class="table table-dark table-striped " >
-                            <thead>
+            <div class="card" style="margin: 100px">
+
+                <div class="card-body">
+                    <div class="table-responsive">   
+                        <table class="table table-bordered" style="color: #1a237e" >
+                            <thead  class="thead" style="background-color: #1a237e; color: white">
                                 <tr >
-                                    <th>Id de la venta </th>
-                                    <th> detalles</th>
+                                    <th>Id de Venta </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="venta in ventas">
-                                    <td>{{venta.name}}</td>
-                                     
-                                   <td><a ui-sref ="ventaDetail({ventaId: venta.id})">Ver detalles</a></td>
-                                    
+                                <tr ng-repeat="venta in ventas" style="color: black">
+                                    <td>
+                                        <a ui-sref="ventaDetail({ventaId: venta.id})">{{venta.name}}</a>
+                                    </td>
 
                                 </tr>
 
                             </tbody>
                         </table>
-                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div class="col-md-5">
+            <div ui-view = "ventaDetailView" style = "margin: 0px">
+            </div>   
+        </div>
+
+
     </div>
 </div>
-<div ui-view= "ventaDetailView"></div>
