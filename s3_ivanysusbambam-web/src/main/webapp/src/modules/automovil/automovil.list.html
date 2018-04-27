@@ -6,6 +6,9 @@ and open the template in the editor.
 -->
 <div>
     <h1 id="h1" style="margin:10px" >Automoviles</h1>
+    <div class="col-md-1 align-items-center">
+        <button class = "btn btn-default" ui-sref ="crearAutomovil"> Crear </button>
+        </div>
     <div class="row" >
         <div class="col-md-5">
             <div class="card">
@@ -33,7 +36,7 @@ and open the template in the editor.
                                             {{automovil.anio}}
                                         </td>
                                         <td>
-                                            {{automovil.valorListado}}
+                                            {{automovil.valorListado| currency}}
                                             </td>
 
                                 </tr>
