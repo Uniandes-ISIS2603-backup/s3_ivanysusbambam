@@ -8,9 +8,10 @@
                     $urlRouterProvider.otherwise("/vendedor");
                     
                     $stateProvider.state("listVendedor",{
-                        views:{
+                        
                             
-                            url: "/vendedor/list",
+                        url: "/vendedor/list",
+                        views:{
                             mainView:{
                                 templateUrl: basePath + "vendedor.list.html",
                                 controller: "vendedorListCtrl",
