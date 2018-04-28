@@ -30,7 +30,16 @@
                             controllerAs:"ctrl"
                         }
                     }
-            });
+            }).state("crearVenta",{
+                url: "/venta/crear",
+
+                views:{
+                    mainView:{
+                        templateUrl: basePath + "venta.crear.html",
+                        controller: "ventaCrearCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }});
         }]);
 
 

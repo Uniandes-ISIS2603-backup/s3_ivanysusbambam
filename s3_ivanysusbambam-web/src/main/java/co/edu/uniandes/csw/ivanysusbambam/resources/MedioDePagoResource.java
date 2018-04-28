@@ -32,7 +32,7 @@ import javax.ws.rs.WebApplicationException;
  *
  * @author juliana
  */
-@Path("medios_de_pago")
+@Path("mediosDePago")
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped

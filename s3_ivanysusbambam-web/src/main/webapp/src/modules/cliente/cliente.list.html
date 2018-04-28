@@ -1,50 +1,45 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-
-    <br>
-    <div class ="row">
+<br>
+<div class ="row">
         <div class ="col-md-1"></div>
         <div class ="col-md-9">
-            <h2>Consulta de clientes</h2>
+            <h1>Consulta de clientes</h1>
         </div>
         <div class="col-md-1 align-items-center">
             <button class = "btn btn-default" ui-sref ="crearCliente"> Crear </button>
         </div>
         <div class ="col-md-1"></div>
     </div>
-    
+<div>
     <div class="row" >
         <div class="col-md-5">
-            <div class="card" style="margin: 40px">
-                
-                    <div class="card-body">
-                        <div class="table-responsive">   
-                        <table class="table table-dark table-striped " >
-                            <thead>
+            <div class="card" style="margin: 100px">
+
+                <div class="card-body">
+                    <div class="table-responsive">   
+                        <table class="table table-bordered" style="color: #1a237e" >
+                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
                                 <tr >
                                     <th> Cédula </th>
                                     <th> Nombre </th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="cliente in clienteRecords">
-                                        <td>{{cliente.cedula}}</td>
-                                        <td>{{cliente.nombre}}</td>
-                                        <td><a ui-sref ="clienteDetail({clienteId: cliente.cedula})">Ver detalles</a></td>
+                                <tr ng-repeat="cliente in clienteRecords" style="color: black; font-size:12px">
+                                    <td><a ui-sref ="clienteDetail({clienteId: cliente.cedula})">{{cliente.cedula}}</a></td>
+                                    <td>{{cliente.nombre}}</td>
                                 </tr>
-
                             </tbody>
                         </table>
-                        </div>
+                    </div>
                 </div>
             </div>
-            
         </div>
-        <div class ="ool-md-1"></div>
-        <div class ="col-md-6">
-            <div class = "card-body">
-                <div ui-view ="clienteDetailView"><div>
-            </div>
+
+        <div class="col-md-5">
+            <div ui-view = "clienteDetailView" style = "margin: 0px">
+            </div>   
         </div>
-    </div>
     </div>
 </div>
+   

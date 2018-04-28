@@ -4,19 +4,59 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<alert ng-repeat="alert in alerts" type = "{{alert.type}}" close = "closeAlert()">{{alert.msg}}</alert>
+<div>
+    <h1 id="h1" style="margin:10px" >Automoviles</h1>
+    <div class="col-md-1 align-items-center">
+        <button class = "btn btn-default" ui-sref ="crearAutomovil"> Crear </button>
+        </div>
+    <div class="row" >
+        <div class="col-md-5">
+            <div class="card">
 
-<div class =" container-fluid">
-    
-    <ul class ="list-group">
-        <li class = "list-group-item" ng-repeat="automovil in automoviles"> <h5>{{automovil.id}} </h5>
-            <h6>{{automovil.placa}} </h6><h5> {{automovil.chasis}}</h5> 
-        
-        <a ui-sref ="automovilDetail({automovilId: automovil.id})">Ver detalles</a>
-        
-        
-    </ul>
-   
+                <div class="card-body">
+                    <div class="table-responsive">   
+                        <table class="table table-bordered" style="color: #1a237e" >
+                            <thead  class="thead" style="background-color: #1a237e; color: white">
+                                <tr >
+                                    <th>Id Automovil </th>
+                                    <th>Placa</th>
+                                    <th> Año</th>
+                                    <th>Valor Listado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="automovil in automoviles" style="color: black">
+                                    <td>
+                                        <a ui-sref ="automovilDetail({automovilId: automovil.id})"> {{automovil.id}}</a>
+                                    </td>
+                                    <td>
+                                        {{automovil.placa}}
+                                        </td>
+                                        <td>
+                                            {{automovil.anio}}
+                                        </td>
+                                        <td>
+                                            {{automovil.valorListado| currency}}
+                                            </td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5">
+            <div ui-view = "automovilDetailView" style = "margin: 0px">
+            </div>   
+        </div>
+
+
+    </div>
 </div>
 
-<div ui-view ="automovilDetailView"></div> 
+
+
+

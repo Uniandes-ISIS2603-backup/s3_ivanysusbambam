@@ -17,26 +17,60 @@
                         controller: 'compraGetAllCtrl',
                         controllerAs: "ctrl"
                     }
-                    
+
                 }
             }
             ).state('compraDetail', {
-           
-               url: "/{compraId: int}/detail",
-               parent: "AdminCompraGetAll",
-               params: {
-                   compraId: null
-               },
-               views: {
-                   'compraDetailView': {
-                       templateUrl: basePath+"compra.detail.html",
-                       controller: "compraDetailCtrl",
-                       controllerAs: "ctrl"
-                   }
-               }
-               
-                
-        });
+
+                url: "/{idCompra: int}/detail",
+                parent: "AdminCompraGetAll",
+                params: {
+                    idCompra: null
+                },
+                views: {
+                    'compraDetailView': {
+                        templateUrl: basePath + "compra.detail.html",
+                        controller: "compraDetailCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+
+
+            }
+            ).state('compraCreate', {
+
+                url: "/create",
+                parent: "AdminCompraGetAll",
+                params: {
+                    idCompra: null
+                },
+                views: {
+                    'compraDetailView': {
+                        templateUrl: basePath + "compra.crear.html",
+                        controller: "compraCrearCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+
+
+            }
+            ).state('compraDelete', {
+
+                url: "/{idCompra: int}/detail",
+                parent: "AdminCompraGetAll",
+                params: {
+                    idCompra: null
+                },
+                views: {
+                    'compraDetailView': {
+                        templateUrl: basePath + "compra.delete.html",
+                        controller: "compraDeleteCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+
+
+            });
         }]);
 
 

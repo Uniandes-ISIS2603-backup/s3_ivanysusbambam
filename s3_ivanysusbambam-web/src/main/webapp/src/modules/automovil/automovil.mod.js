@@ -34,7 +34,16 @@
                             controllerAs:"ctrl"
                         }
                     }
-                });
+                }).state("crearAutomovil",{
+                url: "/automovil/crear",
+
+                views:{
+                    mainView:{
+                        templateUrl: basePath + "automovil.crear.html",
+                        controller: "automovilCrearCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }});
                  }
         ]);
     

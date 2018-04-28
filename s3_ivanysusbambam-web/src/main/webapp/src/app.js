@@ -25,6 +25,8 @@
         'clienteModule',
         //Modulo del vendedor
         'vendedorModule',
+        'modeloModule',
+        'marcaModule',
         //Módulo del prospecto de compra
         'pcModule'/*,
         //Modulo de las quejas/reclamos

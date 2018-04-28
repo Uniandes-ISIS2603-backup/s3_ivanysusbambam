@@ -1,0 +1,39 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="row">
+  
+    <div class ="col-md-6">
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body">
+                <h5> Nombre: </h5> {{marca.nombre}}
+            </div>
+        </div>
+    </div>
+    
+    <div class ="col-md-6"> 
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body" >
+                <h5> Automoviles: </h5> 
+                <td><a ui-sref ="listAutomoviles">Dar automóviles</a></td>
+            </div>
+        </div>
+    </div>
+    
+    <div class ="col-md-6"> 
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body" >
+                <h5> Modelos: </h5> 
+                <td><a ui-sref ="listModelos">Dar Modelos.</a></td>
+            </div>
+        </div>
+    </div>    
+</div> 
+<div class ="row">
+    <div class ="col-md-6">
+    <div class ="card" style ="margin: 5px; width:300px">
+            <div class ="card-body">
+                                <!--Si no me sirve cambio ui-sref por ng-show-->
+                <button class = "btn btn-default" ng-click = "subirInfoMarca()" ui-sref ="editarMarca({marcaId: marca.id})"> Editar </button>
+            </div>
+    </div>    
+    </div>
+</div>

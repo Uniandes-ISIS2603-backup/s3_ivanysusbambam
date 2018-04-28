@@ -5,43 +5,39 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div>
     <h1 id="h1" style="margin:20px" >Consultar compra</h1>
 
     <div class="row col-12">
 
         <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Automovil:</div>
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Detalles:</div>
             <form class="form-horizontal" action="/action_page.php">
                 <div class="form-group">
-                    <label class="control-label col-sm-12" for="email">Email:</label>
+                    <label class="control-label col-sm-12" for="email">Id de la compra:</label>
                     <div class="col-sm-12">
-                        <p class="form-control-static">jdoaos</p>
+                        <p class="form-control-static">{{compra.idCompra}}</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Año:</label>
+                    <label class="control-label col-md-12" for="pwd">Nombre del cliente:</label>
                     <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
+                        <p class="form-control-static">{{compra.cliente.nombre}}</p>
                     </div>
 
                 </div>
+                
                 <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Placa:</label>
+                    <label class="control-label col-md-12" for="pwd">Punto de venta:</label>
                     <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
+                        <p class="form-control-static">{{compra.puntoDeVenta.name}}</p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Chasis:</label>
+                    <label class="control-label col-md-12" for="pwd">Vendedor encargado:</label>
                     <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Valor:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
+                        <p class="form-control-static">{{compra.vendedorEncargado.nombre}}</p>
                     </div>
                 </div>
 
@@ -54,66 +50,6 @@ and open the template in the editor.
     </div>
 
 
-    <div class="row col-12 " id="carta2"  >
-        <div class="card col-12  " style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Modelo:</div>
-            <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="email">Numero de puertas:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Transmisión:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Cilindraje:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Centimetros cubicos:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Valor:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-
-
-            </form>
-        </div>
-    </div>
-
-    <div class="row col-12" id="carta3">
-
-        <div class="card col-12" style="padding:0px; margin: 10px " >
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Cliente:</div>
-            <form class="form-horizontal" action="/action_page.php">
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="email">Nombre:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd">Cedula:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">someone@example.com</p>
-                    </div>
-                </div>
-
-            </form>
-        </div>
-    </div>
+   
 </div>
 

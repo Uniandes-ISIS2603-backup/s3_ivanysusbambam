@@ -70,11 +70,35 @@
             },
             views: {
                 mainView: {
-                        templateUrl: basePath+"cliente.detail.html",
+                        templateUrl: basePath+"cliente.perfil.html",
                         controller: "clienteDetailCtrl",
                         controllerAs: "ctrl"
                     }
             }
+        }).state("editarPerfilCliente",{
+            
+            url: "/{clienteId: int}/editarperfil",
+               params: {
+                   clienteId: null
+               },
+               views: {
+                   mainView: {
+                       templateUrl: basePath+"cliente.perfil.editar.html",
+                       controller: "clienteEditarPerfilCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+            
+        }).state("registrar",{
+                url: "/cliente/crear",
+
+                views:{
+                    mainView:{
+                        templateUrl: basePath + "cliente.registrar.html",
+                        controller: "clienteRegistrarCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
         });
     }]);
 

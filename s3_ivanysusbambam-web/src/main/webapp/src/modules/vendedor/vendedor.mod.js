@@ -8,9 +8,10 @@
                     $urlRouterProvider.otherwise("/vendedor");
                     
                     $stateProvider.state("listVendedor",{
-                        views:{
+                        
                             
-                            url: "/vendedor/list",
+                        url: "/vendedor/list",
+                        views:{
                             mainView:{
                                 templateUrl: basePath + "vendedor.list.html",
                                 controller: "vendedorListCtrl",
@@ -67,12 +68,26 @@
                        },
                        views:{
                            mainView:{
-                               templateUrl: basePath + "vendedor.detail.html",
+                               templateUrl: basePath + "vendedor.perfil.html",
                                controller: "vendedorDetailCtrl",
                                controllerAs: "ctrl"
                            }
                        }
-                   });
+                   }).state("editarPerfilVendedor",{
+            
+                        url: "/{vendedorId: int}/editarperfilvendedor",
+                        params: {
+                            vendedorId: null
+                        },
+                        views: {
+                            mainView: {
+                                templateUrl: basePath+"vendedor.perfil.editar.html",
+                                controller: "vendedorEditarPerfilCtrl",
+                                controllerAs: "ctrl"
+                            }
+                        }
+            
+        });;
             
             }]);
     

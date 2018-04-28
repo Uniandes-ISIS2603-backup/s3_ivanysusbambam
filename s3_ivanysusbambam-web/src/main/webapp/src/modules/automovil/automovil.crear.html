@@ -1,0 +1,104 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="container-fluid align-items-center">
+    
+    <br>
+    <div class ="col-md-1"></div>
+    <div class="col-md-11"> <h2>Crear Automovil</h2> </div>
+    
+    
+    
+    <div class ="card" style="margin: 40px">
+        <div class ="card-body">
+            
+            <div class ="col-md-6">
+                <form name ="automovil">
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "automovilId">Id:</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="automovilId" required ng-model ="data.id">
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "automovilAnio">Año:</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="automovilAnio" required ng-model ="data.anio">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilColor">Color:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilColor" required ng-model = "data.color">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilPlaca">Placa: (XXX-111)</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilPlaca" required ng-model = "data.placa">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilChasis">Chasis</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilChasis" required ng-model = "data.chasis">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilFecha">Fecha Listado: (Fecha de hoy AAAA-MM-DD)</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilFecha" required ng-model = "data.fechaListado">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilValor">Valor:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilValor" required ng-model = "data.valorListado">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilModelo">Modelo:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilModelo" required ng-model = "data.modelo.id">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilMarca">Marca:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilMarca" required ng-model = "data.marca.id">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilPV">Punto de venta:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilPV" required ng-model = "data.puntoDeVenta.id">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilCompra">Compra:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilCompra" required ng-model = "data.compra.idCompra">
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!automovil.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
+                    <div class ="row">
+                        <input ng-show="automovil.$valid" ng-click="crearAutomovil()" value="Crear" class="btn btn-success"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class ="col-md-1"></div>
+<div class ="col-md-11">
+    <a ui-sref ="listAutomoviles"> Volver </a>
+</div>
