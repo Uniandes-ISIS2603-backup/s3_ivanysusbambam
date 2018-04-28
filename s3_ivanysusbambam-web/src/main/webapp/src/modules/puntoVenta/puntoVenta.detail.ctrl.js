@@ -1,6 +1,6 @@
 (function (ng) {
     var mod = ng.module("puntoVentaModule");
-    mod.constant("puntoVentaContext", "api/puntoVenta");
+    mod.constant("puntoVentaContext", "api/puntosDeVenta");
     mod.controller('puntoVentaDetailCtrl', ['$scope', '$http', 'puntoVentaContext', '$state', '$filter',
         function ($scope, $http, puntoVentaContext, $state, $filter) {
 

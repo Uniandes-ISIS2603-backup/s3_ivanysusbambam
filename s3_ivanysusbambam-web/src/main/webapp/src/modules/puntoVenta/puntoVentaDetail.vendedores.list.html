@@ -6,9 +6,14 @@
        <div class="row" ng-repeat="vendedor in currentPuntoVenta.vendedores">
             <div class="col-sm-4">
                 <img class="img-fluid rounded" ng-src="{{vendedor.imagen}}" alt="{{vendedor.name}}" width="420" height="300" style="margin-left: 15px; margin-top: 25px; margin-bottom: 15px">
-                <h4 class="text-light text-center" style="border-radius: 25px; background-color: #212529; margin-left: 15px">{{vendedor.name}}</h4>
             </div>
-              
+           <div class="col-sm-4" style="margin-top: 75px">
+                <h4 class="text-light text-center" style="border-radius: 25px; background-color: #212529; margin-left: 15px">{{vendedor.name}}</h4>
+                <ul class="list-group" style="width: 340px; height: 260px; margin-left: 20px; margin-top: 35px">
+                    <li class="list-group-item list-group-item-light text-center">Carnet {{vendedor.carnet}}</li>
+                    <li class="list-group-item list-group-item-primary text-center">Cédula: {{vendedor.cedula}}</li>
+                </ul>
+            </div> 
         </div> 
     </div>
 </div>

@@ -1,26 +1,26 @@
 <html>
-    <body>    
+    <body> 
+        <div class="well well-lg" style="align-self: center" >
+            <h2 class="text-center text-light" style="background-color: lightseagreen; padding: 0px; margin: 0px">{{currentPuntoVenta.name}}</h2>
+        </div>
         <div class="container">
-            <div class="well well-lg" style="align-self: center" >
-        <h2 class="text-center text-light" style="background-color: lightseagreen; padding: 0px; margin: 0px">{{currentPuntoVenta.name}}</h2>
-    </div>
-  <h2>Ventas</h2>
-  <table class="table">
-    <thead class="thead-light">
-      <tr>
-        <th>ID</th>
-        <th>Costo</th>
-        <th>Serie Auto</th>
-      </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="venta in currentPuntoVenta.ventas">
-            <td>{{venta.id}}</td>
-            <td>{{venta.costo}}</td>
-            <td>{{venta.serieAuto}}</td>
-        </tr>
-    </tbody>
-  </table>
-</div>
+            <h2>Ventas</h2>
+            <table class="table">
+              <thead class="thead-light">
+                <tr>
+                  <th>ID</th>
+                  <th>Costo</th>
+                  <th>Serie Auto</th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr ng-repeat="venta in currentPuntoVenta.ventas">
+                      <td>{{venta.id}}</td>
+                      <td>{{venta.costo}}</td>
+                      <td>{{venta.serieAuto}}</td>
+                  </tr>
+              </tbody>
+            </table>
+        </div>
     </body>
 </html>

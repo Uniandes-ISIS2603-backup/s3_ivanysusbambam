@@ -18,7 +18,7 @@
                    }
                 }
             }).state('puntoDeVentaDetailAutos',{
-                url: '/{puntoVentaId:int}/detail',
+                url: '/{puntoVentaId:int}/detail/autos',
                 parent: 'adminPuntosVentaGetAll',
                 param: {puntoVentaId: null},
                 views: {
@@ -29,7 +29,7 @@
                     }   
                 }
             }).state('puntoVentaDetailCompras', {
-                url: '/{puntoVentaId:int}/detail',
+                url: '/{puntoVentaId:int}/detail/compras',
                 parent: 'adminPuntosVentaGetAll',
                 param: {puntoVentaId: null},
                 views: {
@@ -40,7 +40,7 @@
                     }
                 }
             }).state('puntoVentaDetailVentas',{
-                url: '/{puntoVentaId:int}/detail',
+                url: '/{puntoVentaId:int}/detail/ventas',
                 parent: 'adminPuntosVentaGetAll',
                 param: {puntoVentaId: null},
                 views: {  
@@ -51,7 +51,7 @@
                     }
                 }
             }).state('puntoVentaDetailVendedores',{
-                url: '/{puntoVentaId:int}/detail',
+                url: '/{puntoVentaId:int}/detail/vendedore',
                 parent: 'adminPuntosVentaGetAll',
                 param: {puntoVentaId: null},
                 views: {
@@ -59,6 +59,27 @@
                         templateUrl: basePath + 'puntoVentaDetail.vendedores.list.html',
                         controller: 'puntoVentaDetailCtrl',
                         controllerAs: 'ctrl'
+                    }
+                }
+            }).state('puntoVentaDetailInformacion',{
+                url: '/{puntoVentaId:int}/detail/informacion',
+                parent: 'adminPuntosVentaGetAll',
+                param: {puntoVentaId: null},
+                views: {
+                    'listInformacionView': {
+                        templateUrl: basePath + 'puntoVentaDetail.informacion.list.html',
+                        controller: 'puntoVentaDetailCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }
+            }).state('puntoVentaCrear',{
+                url: '/puntosVenta/principal/crear',
+                parent: 'adminPuntosVentaGetAll',
+                views: {
+                   mainCrearView: {
+                       templateUrl: basePath + 'puntoVenta.crear.html',
+                       controller: 'puntoVentaCrearCtrl',
+                       controllerAs: 'ctrl'
                     }
                 }
             });

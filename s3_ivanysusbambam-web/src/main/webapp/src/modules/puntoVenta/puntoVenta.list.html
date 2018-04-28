@@ -44,35 +44,37 @@
         <h1 class="display-2 text-light">Puntos de Venta</h1>
     </div>
 </div>
-<div class="container-fluid" style="background-color: lightgray; padding: 0px">
+    <div class="container-fluid" style="background-color: lightgray; padding: 0px">
   <div class="row">
     <div class="col-sm-4 col-md-4">
         <div class="row" style="margin-top: 10px">
-            <div class ="col-md-4" style="height: 48px"></div>
-            <button type="button" class="btn btn-success" style="margin-bottom: 10px">CREAR NUEVO</button>
-            <div class ="col-md-2" style="height: 48px"></div>
+            <div class ="col-md-3" style="height: 48px"></div>
+                <button type="button" class="btn btn-success" ui-sref="puntoVentaCrear" style="margin: 15px"> CREAR NUEVO </button>
+                <button type="button" class="btn btn-success" style="margin: 15px"> EDITAR </button>
+            <div class ="col-md-3" style="height: 48px"></div>
         </div>
         <div class="ironClass" ng-repeat="x in puntosDeVenta">
             <div>
-                <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ x.name }}</h4>
-                <a ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})">
-                    <img class="img-fluid" style="margin-left: 15px; margin-top: 10px;" ng-src="{{x.image}}" alt="{{x.name}}" width="340" height="240">
-                </a>
+                <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ x.name }}</h4>    
+                <img class="img-fluid" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" style="margin:10px;" ng-src="{{x.image}}" alt="{{x.name}}" width="340" height="240">                
                 <div class="row" style="margin-left: 15px">
-                    <a ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})">
-                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Autos</button>
-                    </a>    
-                    <a ui-sref="puntoVentaDetailVentas({puntoVentaId: x.id})">
-                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Ventas</button>
-                    </a>
-                    <a ui-sref="puntoVentaDetailCompras({puntoVentaId: x.id})">                    
-                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Compras</button>
-                    </a>
-                    <a ui-sref="puntoVentaDetailVendedores({puntoVentaId: x.id})">                    
-                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Vendedores</button>
-                    </a>
+                    <button type="button" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Autos</button>
+                    <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailVentas({puntoVentaId: x.id})" style="margin: 5px;">Ventas</button>
+                    <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailCompras({puntoVentaId: x.id})" style="margin: 5px;">Compras</button>
+                    <button type="button" ui-sref="puntoVentaDetailVendedores({puntoVentaId: x.id})"  class="btn btn-info" style="margin: 5px;">Vendedores</button>
+                    <button type="button" ui-sref="puntoVentaDetailInformacion({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Informacion</button>
                 </div>
             </div>
+        </div>
+        <div class="ironClass" ng-repeat="puntoDeVenta in puntosDeVentaBack">
+            <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ puntoDeVenta.name }}</h4>
+            <div class="row" style="margin-left: 15px">
+            <button type="button" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Autos</button>
+            <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailVentas({puntoVentaId: x.id})" style="margin: 5px;">Ventas</button>
+            <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailCompras({puntoVentaId: x.id})" style="margin: 5px;">Compras</button>
+            <button type="button" ui-sref="puntoVentaDetailVendedores({puntoVentaId: x.id})"  class="btn btn-info" style="margin: 5px;">Vendedores</button>
+            <button type="button" ui-sref="puntoVentaDetailInformacion({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Informacion</button>
+        </div>
         </div>
     </div>
       <div class="col-sm-8" style="border-radius: 25px;">
@@ -80,6 +82,8 @@
         <div class="goldClass" ui-view="listVentasView"></div>
         <div class="goldClass" ui-view="listComprasView"></div>
         <div class="goldClass" ui-view="listVendedoresView"></div>
+        <div class="goldClass" ui-view="listInformacionView"></div>
+        <div class="goldClass" ui-view="mainCrearView"></div>
     </div>
   </div>
 </div>
