@@ -37,6 +37,23 @@
                
                 
         }
+                ).state('compraCreate', {
+           
+               url: "/create",
+               parent: "AdminCompraGetAll",
+               params: {
+                   idCompra: null
+               },
+               views: {
+                   'compraDetailView': {
+                       templateUrl: basePath+"compra.crear.html",
+                       controller: "compraCrearCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+               
+                
+        }
                 );
         }]);
 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div>
+    <h1 id="h1" style="margin:20px" >Crear medio de pago</h1>
+
+    <div class="row col-12">
+
+        <div class="card col-12" style="padding:0px; margin: 10px ">
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Ingrese los datos del medio de pago</div>
+            <form class="form-horizontal" action="/action_page.php">
+
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="pwd"  >Cliente:</label>
+                    <div class ="row " style = "margin: 10px" >
+                        <select class ="col-md-12"  type ="number" required ng-model = "data.cliente" ng-options="x.cedula + ' | ' + x.nombre for x in listaClientes">
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="pwd" >Numero:</label>
+                    <div class="col-md-11">
+                        <input type="text" style="height:30px" class="form-control" id="pwd" placeholder="Ingrese el numero del medio de pago" required ng-model = "data.numero">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12">Tipo:</label>
+                    <div class="col-md-11">
+                        <select class="form-control" required ng-model = "data.tipo" id="sel1">
+                            <option>PAY_PAL</option>
+                            <option>CREDITO</option>
+                            <option>PSE</option>
+                        </select>
+                    </div>
+                </div>
+                
+                
+            </form>
+            <div class ="row" style="text-align:center">
+                <div class="container" style="text-align:center">
+                    <input   ng-click="crearMdp()" value="Crear" style="margin-bottom: 20px" class="btn btn-success"/>
+                </div>   
+            </div> 
+
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</div>
+

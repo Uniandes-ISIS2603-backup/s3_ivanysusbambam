@@ -36,6 +36,21 @@
 
 
             }
+            ).state('medioCreate', {
+
+                url: "/create",
+                parent: "AdminMedioDePagoGetAll",
+                views: {
+                    medioDePagoDetailView: {
+                        templateUrl: basePath + "medioDePago.crear.html",
+                         controller: "medioDePagoCrearCtrl",
+                        controllerAs: "ctrl"
+                        
+                    }
+                }
+
+
+            }
             );
         }]);
 
