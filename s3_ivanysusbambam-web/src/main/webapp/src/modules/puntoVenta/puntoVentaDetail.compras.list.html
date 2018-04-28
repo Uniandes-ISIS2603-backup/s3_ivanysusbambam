@@ -1,23 +1,22 @@
-<html>
-    <body>
-        <div class="container">
-  <h2>Compras</h2>
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th>ID</th>
-        <th>Costo</th>
-        <th>Serie Auto</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr  ng-repeat="compra in currentPuntoVenta.compras">
-        <td>{{compra.id}}</td>
-        <td>{{compra.costo}}</td>
-        <td>{{compra.serieAuto}}</td>
-      </tr>
-    </tbody>
-  </table>
+<div class="well well-lg" style="align-self: center" >
+   <h2 class="text-center text-light" style="background-color: lightseagreen; padding: 0px; margin: 0px">{{currentPuntoVenta.name}}</h2>
 </div>
-    </body>
-</html>
+<div class="container">
+    <h2>Compras</h2>
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th>ID</th>
+          <th>Costo</th>
+          <th>Serie Auto</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr  ng-repeat="compra in currentPuntoVenta.compras">
+          <td>{{compra.id}}</td>
+          <td>{{compra.costo}}</td>
+          <td>{{compra.serieAuto}}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>

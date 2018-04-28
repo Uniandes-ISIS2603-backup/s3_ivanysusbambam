@@ -44,61 +44,46 @@
         <h1 class="display-2 text-light">Puntos de Venta</h1>
     </div>
 </div>
-    <div class="container-fluid" style="background-color: lightgray; padding: 0px">
+<div class="container-fluid" style="background-color: lightgray; padding: 0px">
   <div class="row">
     <div class="col-sm-4 col-md-4">
+        <div class="row" style="margin-top: 10px">
+            <div class ="col-md-4" style="height: 48px"></div>
+            <button type="button" class="btn btn-success" style="margin-bottom: 10px">CREAR NUEVO</button>
+            <div class ="col-md-2" style="height: 48px"></div>
+        </div>
         <div class="ironClass" ng-repeat="x in puntosDeVenta">
             <div>
                 <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ x.name }}</h4>
-                <a ui-sref="puntoDeVentaDetail({puntoVentaId: x.id})">
+                <a ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})">
                     <img class="img-fluid" style="margin-left: 15px; margin-top: 10px;" ng-src="{{x.image}}" alt="{{x.name}}" width="340" height="240">
                 </a>
                 <div class="row" style="margin-left: 15px">
-                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Autos</button>
-                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Ventas</button>
-                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Compras</button>
-                    <button type="button" class="btn btn-info" style="margin-right: 5px;">Vendedores</button>
+                    <a ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})">
+                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Autos</button>
+                    </a>    
+                    <a ui-sref="puntoVentaDetailVentas({puntoVentaId: x.id})">
+                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Ventas</button>
+                    </a>
+                    <a ui-sref="puntoVentaDetailCompras({puntoVentaId: x.id})">                    
+                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Compras</button>
+                    </a>
+                    <a ui-sref="puntoVentaDetailVendedores({puntoVentaId: x.id})">                    
+                        <button type="button" class="btn btn-info" style="margin-right: 5px;">Vendedores</button>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
       <div class="col-sm-8" style="border-radius: 25px;">
-        <!--<nav class=" navbar navbar-expand-sm bg-dark navbar-dark">
-            <ul class="nav nav-pills nav-justified">
-            <li class="nav-item">
-                <a class="nav-link" ui-sref="" ng-init="button = 2">Autos</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" ui-sref="" ng-init="button= 3">Vendedores</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" ui-sref="" ng-init="button = 4">Compras</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" ui-sref="" ng-init="button = 5">Ventas</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link active" ui-sref=""  ng-init="button = 6">Editar</a>
-            </li>
-          </ul><br>
-        </nav>-->
         <div class="goldClass" ui-view="listAutosView"></div>
         <div class="goldClass" ui-view="listVentasView"></div>
         <div class="goldClass" ui-view="listComprasView"></div>
+        <div class="goldClass" ui-view="listVendedoresView"></div>
     </div>
   </div>
 </div>
 
-<div class="jumbotron text-center">
-    <div class="goldClass" ui-view="listVendedoresView"></div>
-</div>
-    <!--<script>
-    var app = angular.module("puntoVentaList", ["ngRoute"]);
-    app.config(function($routeProvider){
-       $routeProvider.when("/autos",{
-           templateUrl : "src/modules/puntoVenta/puntoVentaDetail.autos.list.html"
-       });
-    });   
-    </script>-->
+<div class="jumbotron text-center"></div>
 </body>
 </html>
