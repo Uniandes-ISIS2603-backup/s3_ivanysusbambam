@@ -1,157 +1,135 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class ="row">
-  
-    <div class ="col-md-6">
-        <div class="card" style="margin: 5px; width: 300px">
-            <div class ="card-body">
-                <h5> Carnet: </h5> {{vendedor.carnetVendedor}}
-            </div>
-        </div>
-    </div>
-    
-    <div class ="col-md-6"> 
-        <div class="card" style="margin: 5px; width: 300px">
-            <div class ="card-body" >
-                <h5> Cédula: </h5> {{vendedor.cedula}}
-            </div>
-        </div>
-    </div>
-    
-    
-</div>    
-<div class ="row">
-    <div class =" col-md-6">
-        <div class ="card" style ="margin: 5px; width:300px">
-            <div class ="card-body">
-                <h5> Nombre: </h5> {{vendedor.nombre}}
-                
-            </div>   
-        </div>
-    </div>
-   <div class =" col-md-6">
-        <div class ="card" style ="margin: 5px; width:300px">
-            <div class ="card-body">
-                <h5> Compras: </h5> 
-                
-                <div class ="table-responsive">
-                    
-                    <table class ="table table-dark table-striped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat = " compra in vendedor.compras">
-                                <td>{{compra.idCompra}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                </div>
-                
-            </div>   
-        </div>
-    </div>  
-</div>
 
-<div class ="row">
-    
-    <div class =" col-md-6">
-        <div class ="card" style ="margin: 5px; width:300px">
-            <div class ="card-body">
-                <h5> Punto de venta: </h5> 
-                
-                <div class ="table-responsive" style = "font-size: 10px">
-                    
-                    <table class ="table table-dark table-striped">
-                        <thead>
-                            <tr>
-                                <th> Id </th>
-                                <th> Dirección </th>
-                                <th> Nombre </th>
-                                <th> Teléfono </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td> {{vendedor.puntoDeVenta.id}} </td>
-                                <td>{{vendedor.puntoDeVenta.direccion}}</td>
-                                <td>{{vendedor.puntoDeVenta.name}}</td>
-                                <td>{{vendedor.puntoDeVenta.telefono}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                </div>
-                
-            </div>   
-        </div>
-    </div>
-    
-    <div class =" col-md-6">
-        <div class ="card" style ="margin: 5px; width:300px">
-            <div class ="card-body">
-                <h5> Prospectos de compra: </h5> 
-                
-                <div class ="table-responsive">
-                    
-                    <table class ="table table-dark table-striped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>Texto</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat = " pc in vendedor.prospectosCompra">
-                                <td>{{pc.id}}</td>
-                                <td>{{pc.texto}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
-                </div>
-                
-            </div>   
-        </div>
-    </div>
-    
-</div>
+<h3 style="margin:20px" >Consultar vendedor</h3>
 
-<div class="row">
-    
-    <div class =" col-md-6">
-        <div class ="card" style ="margin: 5px; width:300px">
-            <div class ="card-body">
-                <h5> Ventas: </h5> 
-                
-                <div class ="table-responsive">
-                    
-                    <table class ="table table-dark table-striped">
-                        <thead>
-                            <tr>
-                                <th>Id</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat = " venta in venedor.ventas">
-                                <td>{{venta.id}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
+    <div class="row col-12">
+
+        <div class="card col-12" style="padding:0px; margin: 10px ">
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Información básica:</div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12">Carnet:</label>
+                    <div class="col-sm-12">
+                        <p class="form-control-static">{{vendedor.carnetVendedor}}</p>
+                    </div>
                 </div>
-                
-            </div>   
+                <div class="form-group">
+                    <label class="control-label col-md-12">Cedula:</label>
+                    <div class="col-md-10">
+                        <p class="form-control-static">{{vendedor.cedula}}</p>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12">Nombre:</label>
+                    <div class="col-md-10">
+                        <p class="form-control-static">{{vendedor.nombre}}</p>
+                    </div>
+                </div>
+                <div class ="form-group">
+                    <button style = "margin:10px" class = "btn btn-default" ng-click = "subirInfoVendedor()" ui-sref ="editarVendedor({vendedorId: vendedor.carnetVendedor})"> Editar </button>
+                </div>
         </div>
     </div>
-    
-    <div class ="col-md-6">
-    <div class ="card" style ="margin: 5px; width:300px">
-            <div class ="card-body">
-                <button class = "btn btn-default" ng-click = "subirInfoVendedor()" ui-sref ="editarVendedor({vendedorId: vendedor.carnetVendedor})"> Editar </button>
+
+
+    <div class="row col-12 " id="carta2"  >
+        <div class="card col-12  " style="padding:0px; margin: 10px ">
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Compras: </div>
+            <div class="form-group">
+                    <div class="table-responsive">   
+                        <table class="table table-bordered" style="color: #1a237e" >
+                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
+                                <tr >
+                                    <th> Id </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="vendedor in vendedor.compras" style="color: black; font-size:12px">
+                                    <td><a ui-sref = "compraDetail({compraId: compra.id})">{{compra.idCompra}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
             </div>
-    </div>  
-</div>
-</div>
+        </div>
+    </div>
+
+
+    <div class="row col-12">
+        <div class="card col-12" style="padding:0px; margin: 10px ">
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Punto de venta:</div>
+                <div class="form-group">
+                    <label class="control-label col-sm-12">Id:</label>
+                    <div class="col-sm-12">
+                        <p class="form-control-static">{{vendedor.puntoDeVenta.id}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12">Dirección:</label>
+                    <div class="col-md-10">
+                        <p class="form-control-static">{{vendedor.puntoDeVenta.direccion}}</p>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12">Nombre:</label>
+                    <div class="col-md-10">
+                        <p class="form-control-static">{{vendedor.puntoDeVenta.name}}</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12">Teléfono:</label>
+                    <div class="col-md-10">
+                        <p class="form-control-static">{{vendedor.puntoDeVenta.telefono}}</p>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    <div class="row col-12 ">
+        <div class="card col-12  " style="padding:0px; margin: 10px ">
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Prospectos de compra: </div>
+            <div class="form-group">
+                    <div class="table-responsive">   
+                        <table class="table table-bordered" style="color: #1a237e" >
+                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
+                                <tr >
+                                    <th>Id</th>
+                                    <th>Texto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="pc in vendedor.prospectosCompra" style="color: black; font-size:12px">
+                                    <td><a ui-sref ="pcDetail({pcId: pc.id})">{{pc.id}}</a></td>
+                                    <td>{{pc.texto}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row col-12 ">
+        <div class="card col-12  " style="padding:0px; margin: 10px ">
+            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Ventas: </div>
+            <div class="form-group">
+                    <div class="table-responsive">   
+                        <table class="table table-bordered" style="color: #1a237e" >
+                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
+                                <tr >
+                                    <th>Id</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="ventas in vendedor.venta" style="color: black; font-size:12px">
+                                    <td><a ui-sref ="ventaDetail({ventaId: compra.id})">{{venta.id}}</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            </div>
+        </div>
+    </div>
+   
+            
