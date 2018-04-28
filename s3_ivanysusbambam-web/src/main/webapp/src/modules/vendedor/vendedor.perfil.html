@@ -1,6 +1,6 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-
-<h3 style="margin:20px" >Consultar vendedor</h3>
+<br>
+<h3 style="margin:20px" >Perfil de vendedor</h3>
 
     <div class="row col-12">
 
@@ -26,7 +26,7 @@
                     </div>
                 </div>
                 <div class ="form-group">
-                    <button style = "margin:10px" class = "btn btn-default" ng-click = "subirInfoVendedor()" ui-sref ="editarVendedor({vendedorId: vendedor.carnetVendedor})"> Editar </button>
+                    <button style = "margin:10px" class = "btn btn-default" ng-click = "subirInfoVendedor()" ui-sref ="editarPerfilVendedor({vendedorId: vendedor.carnetVendedor})"> Editar </button>
                 </div>
         </div>
     </div>

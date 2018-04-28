@@ -1,5 +1,6 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-
+<br>
+<form name ="vendedorForm">
 <h3 style="margin:20px" >Consultar vendedor</h3>
 
     <div class="row col-12">
@@ -22,12 +23,17 @@
                 <div class="form-group">
                     <label class="control-label col-md-12">Nombre:</label>
                     <div class="col-md-10">
-                        <p class="form-control-static">{{vendedor.nombre}}</p>
+                        <input id="vendedorNombre" required ng-model = "nuevoNombre" ng-change = "cambioInfo()" ng-value = "vendedor.nombre">
                     </div>
                 </div>
-                <div class ="form-group">
-                    <button style = "margin:10px" class = "btn btn-default" ng-click = "subirInfoVendedor()" ui-sref ="editarVendedor({vendedorId: vendedor.carnetVendedor})"> Editar </button>
+                <div class="form-group" style = "margin: 10px">
+                    <button class = "btn btn-default" ng-show="vendedorForm.$valid" ng-click = "editarVendedor()"> Guardar cambios </button>
                 </div>
+                <div class = "form-group" style = "margin: 10px" ng-if="!vendedorForm.$valid"> 
+                    <div class="alert alert-warning" >
+                        <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                    </div> 
+                </div> 
         </div>
     </div>
 
@@ -44,7 +50,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="compra in vendedor.compras" style="color: black; font-size:12px">
+                                <tr ng-repeat="vendedor in vendedor.compras" style="color: black; font-size:12px">
                                     <td><a ui-sref = "compraDetail({compraId: compra.id})">{{compra.idCompra}}</a></td>
                                 </tr>
                             </tbody>
@@ -122,8 +128,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="venta in vendedor.venta" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="ventaDetail({ventaId: venta.id})">{{venta.id}}</a></td>
+                                <tr ng-repeat="ventas in vendedor.venta" style="color: black; font-size:12px">
+                                    <td><a ui-sref ="ventaDetail({ventaId: compra.id})">{{venta.id}}</a></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -131,5 +137,5 @@
             </div>
         </div>
     </div>
-   
-            
+</form>
+
