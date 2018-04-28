@@ -89,6 +89,16 @@
                    }
                }
             
+        }).state("registrar",{
+                url: "/cliente/crear",
+
+                views:{
+                    mainView:{
+                        templateUrl: basePath + "cliente.registrar.html",
+                        controller: "clienteRegistrarCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
         });
     }]);
 

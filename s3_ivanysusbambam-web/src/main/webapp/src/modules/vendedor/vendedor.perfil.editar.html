@@ -1,7 +1,7 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <br>
 <form name ="vendedorForm">
-<h3 style="margin:20px" >Consultar vendedor</h3>
+<h3 style="margin:20px" >Editar perfil de vendedor</h3>
 
     <div class="row col-12">
 
@@ -51,7 +51,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="vendedor in vendedor.compras" style="color: black; font-size:12px">
-                                    <td><a ui-sref = "compraDetail({compraId: compra.id})">{{compra.idCompra}}</a></td>
+                                    <td>{{compra.idCompra}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -106,7 +106,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="pc in vendedor.prospectosCompra" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="pcDetail({pcId: pc.id})">{{pc.id}}</a></td>
+                                    <td>{{pc.id}}</td>
                                     <td>{{pc.texto}}</td>
                                 </tr>
                             </tbody>
@@ -129,7 +129,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="ventas in vendedor.venta" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="ventaDetail({ventaId: compra.id})">{{venta.id}}</a></td>
+                                    <td>{{venta.id}}</td>
                                 </tr>
                             </tbody>
                         </table>
