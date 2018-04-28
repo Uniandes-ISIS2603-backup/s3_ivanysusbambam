@@ -51,7 +51,23 @@
 
 
             }
-            );
+            ).state('medioDePagoDelete', {
+
+                url: "/{numero: int}/detail",
+                parent: "AdminMedioDePagoGetAll",
+                params: {
+                    numero: null
+                },
+                views: {
+                    'medioDePagoDetailView': {
+                        templateUrl: basePath + "medioDePago.detele.html",
+                        controller: "medioDePagoDeleteCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+
+
+            });
         }]);
 
 

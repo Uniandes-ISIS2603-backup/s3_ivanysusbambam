@@ -5,7 +5,8 @@
         <div class="col-md-5" >
             <div class="container" style="text-align:center">
                 <a ui-sref="compraCreate">
-                    <button type="button" class="btn" style="background-color: #1a237e; color: white">Agregar nuevo </button></a>
+                    <button type="button" class="btn" style="background-color: #1a237e; color: white">Agregar nuevo </button>
+                </a>
             </div>
         </div>
     </div>
@@ -28,6 +29,11 @@
                                 <tr ng-repeat="compra in compras" style="color: red">
                                     <td>
                                         <a ui-sref="compraDetail({idCompra: compra.idCompra})">{{compra.idCompra}}</a>
+                                    </td>
+                                    <td id="{{$index}}-actions">
+                                        <a ui-sref="compraDelete({idCompra: compra.idCompra})">
+                                            <button type="button" class="btn btn-danger" style=" color: white">Eliminar</button>
+                                        </a>
                                     </td>
 
                                 </tr>

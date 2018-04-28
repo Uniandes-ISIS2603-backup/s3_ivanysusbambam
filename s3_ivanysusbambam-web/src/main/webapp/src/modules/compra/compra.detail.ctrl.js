@@ -2,7 +2,7 @@
     
     var mod = ng.module("compraModule");
     console.log("hola");
-    mod.constant("compraContext", "./data/compra.json");
+    mod.constant("compraContext", "api/compras");
     mod.controller("compraDetailCtrl", ["$scope", "$http", "compraContext", "$state", "dataTransfer", 
     function($scope, $http, compraContext, $state, dataTransfer){
           console.log("salu2");
