@@ -19,8 +19,26 @@
                     }
                 }
             }
+            ).state('medioDePagoDetail', {
+           
+               url: "/{numero: int}/detail",
+               parent: "AdminMedioDePagoGetAll",
+               params: {
+                   numero: null
+               },
+               views: {
+                   'medioDePagoDetailView': {
+                       templateUrl: basePath+"medioDePago.detail.html",
+                       controller: "medioDePagoDetailCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+               
+                
+        }
+                );
+        }]
             );
-        }]);
 
 
 })(window.angular);

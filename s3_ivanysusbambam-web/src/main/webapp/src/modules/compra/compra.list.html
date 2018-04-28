@@ -12,9 +12,9 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="compra in compras" style="color: black">
+                                <tr ng-repeat="compra in compras" style="color: red">
                                     <td>
-                                        <a ui-sref="compraDetail({compraId: compra.id})">{{compra.id}}</a>
+                                        <a ui-sref="compraDetail({idCompra: compra.idCompra})">{{compra.idCompra}}</a>
                                     </td>
 
                                 </tr>

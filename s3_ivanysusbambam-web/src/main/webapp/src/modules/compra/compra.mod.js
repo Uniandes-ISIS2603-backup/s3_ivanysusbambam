@@ -22,10 +22,10 @@
             }
             ).state('compraDetail', {
            
-               url: "/{compraId: int}/detail",
+               url: "/{idCompra: int}/detail",
                parent: "AdminCompraGetAll",
                params: {
-                   compraId: null
+                   idCompra: null
                },
                views: {
                    'compraDetailView': {
@@ -36,7 +36,8 @@
                }
                
                 
-        });
+        }
+                );
         }]);
 
 
