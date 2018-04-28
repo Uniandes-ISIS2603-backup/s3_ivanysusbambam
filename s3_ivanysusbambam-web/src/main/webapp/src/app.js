@@ -18,6 +18,8 @@
         // Modulo de los puntos de venta
         'puntoVentaModule',
         
+        // Modulo de las calificaciones de carro
+        'calificacionCarroModule',
         
         //Módulo del cliente
         'clienteModule',
