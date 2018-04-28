@@ -3,6 +3,12 @@
         <h2 class="text-center text-light" style="background-color: lightseagreen; padding: 0px; margin: 0px">{{currentPuntoVenta.name}}</h2>
     </div>
     <div class="container">
-        
+       <div class="row" ng-repeat="vendedor in currentPuntoVenta.vendedores">
+            <div class="col-sm-4">
+                <img class="img-fluid rounded" ng-src="{{vendedor.imagen}}" alt="{{vendedor.name}}" width="420" height="300" style="margin-left: 15px; margin-top: 25px; margin-bottom: 15px">
+                <h4 class="text-light text-center" style="border-radius: 25px; background-color: #212529; margin-left: 15px">{{vendedor.name}}</h4>
+            </div>
+              
+        </div> 
     </div>
 </div>
