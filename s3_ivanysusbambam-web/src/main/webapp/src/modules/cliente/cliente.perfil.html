@@ -69,7 +69,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="compra in vendedor.compras" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="compraDetail({compraId: compra.idCompra})">{{compra.idCompra}}</a></td>
+                                    <td>{{compra.idCompra}}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -114,7 +114,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="pc in cliente.prospectosCompra" style="color: black; font-size:12px">
-                                    <td><a ui-sref = "pcDetail({pcId: pc.id})">{{pc.id}}</a></td>
+                                    <td>{{pc.id}}</td>
                                     <td>{{pc.texto}}</td>
                                 </tr>
                             </tbody>
@@ -161,7 +161,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="venta in cliente.ventas" style="color: black; font-size:12px">
-                                    <td><a ui-sref = "ventaDetail({ventaId: venta.idVenta})">{{venta.idVenta}}</a></td>
+                                    <td>{{venta.idVenta}}</td>
                                 </tr>
                             </tbody>
                         </table>
