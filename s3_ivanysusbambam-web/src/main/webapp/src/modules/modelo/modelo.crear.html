@@ -1,0 +1,74 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="container-fluid align-items-center">
+    
+    <br>
+    <div class ="col-md-1"></div>
+    <div class="col-md-11"> <h2>Crear modelo</h2> </div>
+    
+    
+    
+    <div class ="card" style="margin: 40px" ng-app="modeloModule">
+        <div class ="card-body">
+            
+            <div class ="col-md-6" ng-controller="modeloCrearCtrl">
+                <form name ="modelo">
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "referenciaModelo">Referencia</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="modelo.referencia" 
+                               required ng-model ="referencia">
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "numeroPuertas">Numero Puertas</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="modelo.numeroPuertas" 
+                               required ng-model ="numeroPuertas">
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "numeroPuertas">Cilindraje</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="modelo.Cilindraje" 
+                               required ng-model ="cilindraje">
+                    </div>
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="transmision">Transmision</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="modelo.Transmision" 
+                               required ng-model ="transmision">
+                    </div>
+                    
+                    
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automoviles">Automoviles</label>
+                    </div>
+                    <div class ="row">
+                        <input type = "button"  ng-model="#" value="Añadir Autos" class="btn btn-success"/>
+                    </div>  
+                    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!modelo.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
+                    <div class ="row">
+                        <input type ="button" ng-click="crearModelo()" value="Crear" class="btn btn-success"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class ="col-md-1"></div>
+<div class ="col-md-11">
+                                     
+</div>

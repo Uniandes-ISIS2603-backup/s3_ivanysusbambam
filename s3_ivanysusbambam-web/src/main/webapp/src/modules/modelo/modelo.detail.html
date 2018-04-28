@@ -1,0 +1,55 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="row">
+  
+    <div class ="col-md-6">
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body">
+                <h5> Referencia: </h5> {{modelo.referencia}}
+            </div>
+        </div>
+    </div>
+    
+    <div class ="col-md-6">
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body">
+                <h5> Numero Puertas: </h5> {{modelo.numeroPuertas}}
+            </div>
+        </div>
+    </div>
+    
+    <div class ="col-md-6">
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body">
+                <h5> Transmisión: </h5> {{modelo.transmision}}
+            </div>
+        </div>
+    </div>
+    
+    <div class ="col-md-6">
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body">
+                <h5> Cilindraje: </h5> {{modelo.cilindraje}}
+            </div>
+        </div>
+    </div>
+    
+    <div class ="col-md-6"> 
+        <div class="card" style="margin: 5px; width: 300px">
+            <div class ="card-body" >
+                <h5> Automoviles: </h5> 
+                <td><a ui-sref ="listAutomoviles">Dar automóviles</a></td>
+            </div>
+        </div>
+    </div>
+      
+</div> 
+<div class ="row">
+    <div class ="col-md-6">
+    <div class ="card" style ="margin: 5px; width:300px">
+            <div class ="card-body">
+                                <!--Si no me sirve cambio ui-sref por ng-show-->
+                <button class = "btn btn-default" ng-click = "subirInfoModelo()" ng-show ="editarModelo({ModeloId: modelo.id})"> Editar </button>
+            </div>
+    </div>    
+    </div>
+</div>

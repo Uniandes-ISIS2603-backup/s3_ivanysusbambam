@@ -6,7 +6,7 @@
     
     mod.controller("compraGetAllCtrl",["$scope","$http","compraContext", function($scope, $http, compraContext){
       
-            $http.get("data/compra.json").then(function(response){
+            $http.get(compraContext).then(function(response){
                $scope.compras = response.data; 
             });
             
