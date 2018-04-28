@@ -44,7 +44,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="vendedor in vendedor.compras" style="color: black; font-size:12px">
+                                <tr ng-repeat="compra in vendedor.compras" style="color: black; font-size:12px">
                                     <td><a ui-sref = "compraDetail({compraId: compra.id})">{{compra.idCompra}}</a></td>
                                 </tr>
                             </tbody>
@@ -122,8 +122,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="ventas in vendedor.venta" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="ventaDetail({ventaId: compra.id})">{{venta.id}}</a></td>
+                                <tr ng-repeat="venta in vendedor.venta" style="color: black; font-size:12px">
+                                    <td><a ui-sref ="ventaDetail({ventaId: venta.id})">{{venta.id}}</a></td>
                                 </tr>
                             </tbody>
                         </table>
