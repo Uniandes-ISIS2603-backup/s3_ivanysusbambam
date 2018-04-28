@@ -6,10 +6,9 @@
     mod.controller("medioDePagoDetailCtrl", ["$scope", "$http", "medioDePagoContext", "$state", "dataTransfer", 
     function($scope, $http, medioDePagoContext, $state, dataTransfer){
          
-          
+          console.log($state.params.numero);
         if($state.params.numero !== undefined && $state.params.numero !==null){
             var address = medioDePagoContext + "/"+$state.params.numero;
-          
             
             $http.get(address).then(function(response){
                

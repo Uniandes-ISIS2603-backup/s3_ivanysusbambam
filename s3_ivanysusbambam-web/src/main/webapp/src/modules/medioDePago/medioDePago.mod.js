@@ -6,7 +6,7 @@
 
             var basePath = 'src/modules/medioDePago/';
 
-           
+
 
             $stateProvider.state('AdminMedioDePagoGetAll', {
                 url: '/medioDePago/getall',
@@ -20,25 +20,24 @@
                 }
             }
             ).state('medioDePagoDetail', {
-           
-               url: "/{numero: int}/detail",
-               parent: "AdminMedioDePagoGetAll",
-               params: {
-                   numero: null
-               },
-               views: {
-                   'medioDePagoDetailView': {
-                       templateUrl: basePath+"medioDePago.detail.html",
-                       controller: "medioDePagoDetailCtrl",
-                       controllerAs: "ctrl"
-                   }
-               }
-               
-                
-        }
-                );
-        }]
+
+                url: "/{numero: int}/detail",
+                parent: "AdminMedioDePagoGetAll",
+                params: {
+                    numero: null
+                },
+                views: {
+                    'medioDePagoDetailView': {
+                        templateUrl: basePath + "medioDePago.detail.html",
+                        controller: "medioDePagoDetailCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+
+
+            }
             );
+        }]);
 
 
 })(window.angular);
