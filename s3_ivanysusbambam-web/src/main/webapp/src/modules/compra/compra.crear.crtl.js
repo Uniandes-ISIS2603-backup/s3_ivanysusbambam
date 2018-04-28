@@ -13,6 +13,14 @@
      $http.get("api/clientes").then(function(response){
             $scope.listaClientes = response.data;
         });
+           
+     $http.get("api/puntosDeVenta").then(function(response){
+            $scope.listaPv = response.data;
+        });
+           
+     $http.get("api/vendedores").then(function(response){
+            $scope.listaVendedores = response.data;
+        });
         
          $scope.crearCompra = function(){
    

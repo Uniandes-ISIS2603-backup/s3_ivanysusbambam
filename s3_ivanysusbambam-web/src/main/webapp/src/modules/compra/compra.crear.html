@@ -23,6 +23,22 @@ and open the template in the editor.
                     </div>
 
                 </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="pwd"  >Vendedor</label>
+                    <div class ="row " style = "margin: 10px" >
+                        <select class ="col-md-12"  type ="number" required ng-model = "data.vendedorEncargado" ng-options="x.carnetVendedor + ' | ' + x.nombre for x in listaVendedores">
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-12" for="pwd"  >Punto de venta</label>
+                    <div class ="row " style = "margin: 10px" >
+                        <select class ="col-md-12"  type ="number" required ng-model = "data.puntoDeVenta" ng-options="x.id + ' | ' + x.name for x in listaPv">
+                        </select>
+                    </div>
+
+                </div>
                
                 
                 
