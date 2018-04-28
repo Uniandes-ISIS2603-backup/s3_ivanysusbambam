@@ -1,0 +1,48 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+
+<br>
+<div class="row">
+    <div class="col-md-1"></div>
+    <div class="col-md-9">
+        <h2>Consulta de modelos</h2>
+    </div>
+    <div class="col-md-1 align-items-center">
+        <button class="btn btn-default" ui-sref="crearModelo"> Crear </button>
+    </div>
+    <div class="col-md-1"></div>
+
+
+
+    <div class="col-md-5">
+        <div class="card" style="margin: 40px">
+
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" style="color:#1a237e">
+                        <thead class="thead" style="background-color: #1a2372;color:white">
+                            <tr>
+                                <th> Referencia </th>
+                                <th> Detalles </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="modelo in darModelos" style="color:black">
+                                <td>{{modelo.referencia}}</td>
+                                <td><a ui-sref="modeloDetail({ ModeloId: modelo.id })">
+                                        Ver detalles</a
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="col-md-5">
+            <div ui-view = "modelDetailView" style = "margin: 0px">
+            </div>   
+        </div>
+    </div>
+</div>

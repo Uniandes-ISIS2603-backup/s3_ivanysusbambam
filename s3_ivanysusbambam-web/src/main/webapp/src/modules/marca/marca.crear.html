@@ -1,0 +1,62 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<div class ="container-fluid align-items-center">
+    
+    <br>
+    <div class ="col-md-1"></div>
+    <div class="col-md-11"> <h2>Crear marca</h2> </div>
+    
+    
+    
+    <div class ="card" style="margin: 40px" ng-app="marcaModule">
+        <div class ="card-body">
+            
+            <div class ="col-md-6" ng-controller="marcaCrearCtrl">
+                <form name ="fMarca">
+                    <div class ="row" style = "margin: 10px">
+                        <label class  = "col-md-6" for = "nombreMarca">Nombre</label>
+                    </div>
+                    <div class ="row" style = "margin: 10px">
+                        <input class = "col-md-12" id ="marca.nombre" 
+                               required ng-model ="data.nombre">
+                    </div>
+                    
+                    
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="autos">Crear Automoviles</label>
+                    </div>
+                    <div class ="row">
+                        <!-- porque como es con $Scope entonces utilizo ng-model-->
+                        <input type ="button"  ui-sref="#" value="Añadir Autos" class="btn btn-success"/>
+                    </div>
+                    
+                    <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="modelos">Crear Modelos</label>
+                    </div>
+                    <div class ="row">
+                        <!-- porque como es con $Scope entonces utilizo ng-model-->
+                        <input type ="button" ui-sref="crearModelos" value="Añadir Modelos" class="btn btn-success"/>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                       
+                            <div ng-if="!fMarca.$valid">
+
+                                <div class="alert alert-warning" >
+                                    <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                </div> 
+                            </div> 
+                    </div>
+                    <div class ="row">
+                        <input type="button" ng-show="fMarca.$valid" ng-click="crearMarca()" value="Crear" class="btn btn-success"/>
+                    </div>   
+                </form>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+<div class ="col-md-1"></div>
+<div class ="col-md-11">
+    <a ui-sref ="listMarca"> Volver </a>
+</div>

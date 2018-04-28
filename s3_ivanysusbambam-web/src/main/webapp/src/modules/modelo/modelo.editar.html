@@ -1,0 +1,43 @@
+<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+<form name="marcaForm">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="card" style="margin: 5px; width: 300px">
+                <div class="card-body">
+                    <h5> Referencia: </h5>
+                    <input id="modeloReferencia" required ng-model="referencia" ng-change="cambioInfo()" ng-value="modelo.referencia">
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="row " style="margin: 10px">
+
+        <div ng-if="!marcaForm.$valid">
+
+            <div class="alert alert-warning">
+                <strong>Atención!</strong>
+                <p>Debe llenar todos los campos</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card" style="margin: 5px; width:300px">
+                <div class="card-body">
+                    <button class="btn btn-default" ng-show="marcaForm.$valid" ng-click="editarMarca()"> Guardar cambios </button>
+                </div>
+                <div class="card-body">
+                    <!--Me falta asociarlo con el estado crear auto-->
+                    <button class="btn btn-default" ui-sref="#"> Agregar Autos </button>
+                </div>
+                <div class="card-body">
+                    <!--Me falta asociarlo con el estado crear modelo-->
+                    <button class="btn btn-default" ui-sref="#"> Agregar Modelos </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</form>
