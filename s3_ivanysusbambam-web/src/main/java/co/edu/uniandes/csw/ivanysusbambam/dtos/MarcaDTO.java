@@ -19,6 +19,8 @@ public class MarcaDTO {
     private String name;
     
     private Long id;
+    
+    private String logo;
 
     public Long getId() {
         return id;
@@ -42,6 +44,7 @@ public class MarcaDTO {
         if(nueva != null){
             this.name = nueva.getName();
             this.id = nueva.getId();
+            this.logo = nueva.getLogo();
         }
 
     }
@@ -55,6 +58,7 @@ public class MarcaDTO {
         MarcaEntity nueva = new MarcaEntity();
         nueva.setName(this.getName());
         nueva.setId(this.getId());
+        nueva.setLogo(this.getLogo());
         return nueva;
     }
 
@@ -75,5 +79,14 @@ public class MarcaDTO {
     public void SetName(String nuevo) {
         this.name = nuevo;
     }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+    
 
 }

@@ -29,6 +29,7 @@ public class MarcaEntity extends BaseEntity implements Serializable{
     @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
     private  List<ModelEntity> modelos = new ArrayList<ModelEntity>();
  
+      private String logo;
   
     
     public List<AutomovilEntity> getAutomoviles(){
@@ -49,6 +50,15 @@ public class MarcaEntity extends BaseEntity implements Serializable{
     public void setModelos(List<ModelEntity> mods){
         this.modelos = mods;
     }
+
+    public String getLogo() {
+        return logo;
+    }
+
+    public void setLogo(String logo) {
+        this.logo = logo;
+    }
+    
     
     
    
