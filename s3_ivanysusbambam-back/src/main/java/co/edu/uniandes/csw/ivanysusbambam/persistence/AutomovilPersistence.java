@@ -189,4 +189,40 @@ public class AutomovilPersistence {
         else 
             return autos;
     }
+    
+    //TODO documentar
+    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color){
+    
+        // 0 = 0 porque no deja poner WHERE TRUE
+        String sentencia = "SELECT a FROM AutomovilEntity a JOIN a.model mo JOIN a.marca ma WHERE 0 = 0";
+        if(precioMin != null && precioMax != null){
+            
+            sentencia += " AND a.valorListado >= " + precioMin + " AND " + "a.valorListado <= " + precioMax;
+        }
+        if(anioMin != null && anioMax != null){
+            sentencia += " AND a.anio >= " + anioMin + " AND " + "a.anio <= " + anioMax;
+        }
+        if(marca != null){
+            sentencia += " AND ma.name = '" + marca+"'";
+        }
+        if(modelo != null){
+            sentencia += " AND mo.name = '" + modelo + "'";
+        }
+        if(color != null){
+            sentencia += " AND a.color = '" + color + "'";
+        }
+        
+        LOGGER.log(Level.INFO, "Buscando autom\u00f3viles utilizando la sentencia {0}", sentencia);
+        
+        TypedQuery tq = em.createQuery(sentencia, AutomovilEntity.class);
+        
+        List autos = tq.getResultList();
+        
+        if(autos.isEmpty()){
+            return null;
+        }
+        else{
+            return autos;
+        }
+    }
 }

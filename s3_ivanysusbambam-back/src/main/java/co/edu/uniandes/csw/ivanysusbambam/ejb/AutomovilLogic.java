@@ -380,4 +380,38 @@ if (  automovilEntity.getCompra() == null) {
         else 
             return persistence.findRangoPrecios(precioMin, precioMax);
     }
+    
+    /**
+     * Búsqueda maestra que incluye todos los parámetros disponibles en mi automóvil
+     * @param precioMin cota inferior del rango de precios.
+     * @param precioMax cota superior del rango de precios.
+     * @param anioMin cota inferior del rango de años.
+     * @param anioMax cota superior del rango de años.
+     * @param marca marca buscadas
+     * @param modelo modelo buscado
+     * @param color color buscado
+     * @return lista con todos los automóviles que cumplen los filtros.
+     * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin o si todos los parámetros son null
+     */
+    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color) throws BusinessLogicException{
+        
+        if((precioMax!= null && precioMin==null) ||(precioMin != null && precioMax == null) ){
+          throw new BusinessLogicException("La pareja precioMin/precioMax debe ir junta") ; 
+        }
+        
+        if((anioMin != null && anioMax == null) || (anioMax != null && anioMin == null)){
+            throw new BusinessLogicException("La pareja anioMin/anioMax debe ir junta") ; 
+        }
+        
+        if(precioMin == null && precioMax == null && anioMin == null && anioMax == null && marca == null && modelo == null && color == null){
+            throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
+        }
+        if(precioMax != null && precioMin != null && precioMax<precioMin){
+            throw new BusinessLogicException("El precio máximo debe ser mayor al precio mínimo");
+        }
+        if(anioMax != null && anioMin != null && anioMax<anioMin){
+            throw new BusinessLogicException("El año máximo debe ser mayor al año mínimo");
+        }
+        return persistence.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color);
+    }
 }
