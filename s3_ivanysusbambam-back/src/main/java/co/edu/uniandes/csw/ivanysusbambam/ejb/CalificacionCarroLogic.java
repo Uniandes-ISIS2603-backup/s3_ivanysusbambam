@@ -102,6 +102,7 @@ public class CalificacionCarroLogic {
      * Obtiene la venta de una CalificacionTienda de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
+     * @return 
      * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
     public VentaEntity getVenta(Long id) throws BusinessLogicException{

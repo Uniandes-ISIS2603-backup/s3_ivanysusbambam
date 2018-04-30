@@ -21,6 +21,9 @@
         // Modulo de las calificaciones de carro
         'calificacionCarroModule',
         
+        // Modulo de las calificaciones de tienda
+        'calificacionTiendaModule',
+        
         //Módulo del cliente
         'clienteModule',
         //Modulo del vendedor

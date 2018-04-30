@@ -7,7 +7,6 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import co.edu.uniandes.csw.ivanysusbambam.podam.DateStrategy;
 import java.io.Serializable;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;

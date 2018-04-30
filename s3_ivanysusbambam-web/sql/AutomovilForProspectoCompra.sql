@@ -10,4 +10,4 @@
 
 delete from AutomovilEntity;
 
-insert into AutomovilEntity (color, anio, placa, chasis, valorListado, id, name) values ('Teal', 2005, '425', 894644, 10875263, 1, 'Pontiac');
+insert into AutomovilEntity (color, anio, placa, chasis, valorListado, id, name, model_id, marca_id) values ('Teal', 2005, '425', 894644, 10875263, 1, 'Pontiac', 1, 1);

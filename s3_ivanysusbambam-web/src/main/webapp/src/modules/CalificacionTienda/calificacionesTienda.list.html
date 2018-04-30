@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="row"> 
+            <div class="col-sm-1"></div>
+            <div class="col-sm-4">
+                <div ui-view="mainCrearView" style="margin-left: 25px; margin-top: 64px"></div>
+                <div ui-view="ctDetailView"></div>
+                <div ui-view="ctBackDetailView"></div>
+            </div>
+            <div class="col-sm-6" style="margin: 25px">
+                <div class="row">
+                    <div class="col-sm-2" style="margin-left: 15px"><button type="button" class="btn btn-info" ui-sref="ctCrear" style="margin: 10px">CREAR CALIFICACION</button></div>
+                </div>
+                <div class="table-responsive" style="margin: 25px">   
+                    <table class="table table-bordered" style="color: #1a237e" >
+                        <thead  class="thead" style="background-color: #040505; color: white; font-size: 12px">
+                            <tr >
+                                <th> Identificador </th>
+                                <th> Automóvil </th>
+                                <th> Puntaje </th>
+                                <th> -------- </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="ct in calificacionesTienda" style="color: black; font-size:12px">
+                                <td>{{ct.id}}</td>
+                                <td>{{ct.name}}</td>
+                                <td>{{ct.puntaje}}</td>
+                                <td><a ui-sref="calificacionTiendaDetail({calificacionTiendaId: ct.id})">Detalles</a></td>
+                            </tr>
+                            <tr ng-repeat="ctBack in calificacionesTiendaBack" style="color: black; font-size:12px">
+                                <td>{{ctBack.id}}</td>
+                                <td>{{ctBack.name}}</td>
+                                <td>{{ctBack.puntaje}}</td>
+                                <td><a ui-sref="calificacionTiendaBackDetail({calificacionTiendaBackId: ctBack.id})">Detalles</a></td>
+                            </tr>
+                        </tbody>
+                    </table>   
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
