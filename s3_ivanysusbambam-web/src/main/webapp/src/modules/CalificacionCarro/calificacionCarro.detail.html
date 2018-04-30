@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Detail de una calificacion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div>
+            <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ currentCalificacionCarro.name }}</h4>    
+            <div class="thumbnail" style="margin-top: 10px">
+                <img ng-src="{{currentCalificacionCarro.imagen}}" alt="{{currentCalificacionCarro.name}}" style="width:100%; ">
+                <div class="caption">
+                  <p><strong>Comentario: </strong>{{currentCalificacionCarro.comentario}}</p> 
+                </div>
+            </div>
+            <p><strong>Venta:</strong></p>
+            <p><strong>Identificador: </strong>{{currentCalificacionCarro.venta.id}}</p>
+            <p><strong>Cliente: </strong>{{currentCalificacionCarro.venta.cliente}}</p>
+        </div>
+    </body>
+</html>

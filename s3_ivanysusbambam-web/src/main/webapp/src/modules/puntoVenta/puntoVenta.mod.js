@@ -5,7 +5,6 @@
     mod.config([ '$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
         var basePath = 'src/modules/puntoVenta/';
         
-        //TODO como hacer para poner la página principal de default
         $urlRouterProvider.otherwise("/puntoVenta");
         $stateProvider.state('adminPuntosVentaGetAll', {
               url: '/puntosVenta/principal',
