@@ -45,7 +45,7 @@
                 views: {
                    mainCrearView: {
                        templateUrl: basePath + 'calificacionTienda.crear.html',
-                       controller: 'calificacionCarroTiendaCtrl',
+                       controller: 'calificacionTiendaCrearCtrl',
                        controllerAs: 'ctrl'
                     }
                 }

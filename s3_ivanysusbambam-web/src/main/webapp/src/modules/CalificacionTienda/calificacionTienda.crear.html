@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Detail de una calificacion</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>        
+        <div class = "container-fluid" style="padding: 0px; margin-bottom: 15px; margin-top: 20px">
+            <div class="well well-lg" style="align-self: center" >
+                <h3 class="text-center text-light" style="background-color: #b21f2d; padding: 0px; margin: 0px; height: 40px">Nueva calificacion</h3>
+            </div>
+            <div class="container">
+                <div class="col-sm-4" style="margin-left: 75px; margin-top: 25px">
+                    <div class="container">
+                        <form class="form-horizontal" name="crear">
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label" for = "nombre"><strong>Punto de Venta</strong></label>
+                            <div class="col-sm-10">
+                              <input class="form-control fluid" name="nombre" id="nombre" type="text" style="width: 400px" required ng-model="info.name">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label" for = "comentario"><strong>Comentario</strong></label>
+                            <div class="col-sm-10">
+                              <input class="form-control fluid" name="comentario" id="comentario" type="text" style="width: 400px" required ng-model="info.comentario">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                              <label class="col-sm-2 control-label" for = "puntaje"><strong>Puntaje</strong></label>
+                            <div class="col-sm-10">
+                              <input class="form-control fluid" name="puntaje" id="puntaje" type ="number" style="width: 400px" required ng-model="info.puntaje">
+                            </div>
+                             <div class ="row" style = "margin-top: 10px" >
+                                <div ng-if="!crear.$valid">
+                                    <div class="alert alert-danger" >
+                                        <strong>Atención!</strong><p>!Por favor completa todos los campos!</p>
+                                    </div> 
+                                </div> 
+                            </div>
+                            <div class ="row">
+                                <input ng-show="crear.$valid" ng-click="crearCalificacionTienda()" value="Crear" class="btn btn-info"/>
+                            </div> 
+                          </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+
