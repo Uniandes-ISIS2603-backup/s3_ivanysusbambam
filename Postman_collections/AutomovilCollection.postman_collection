@@ -1,7 +1,7 @@
 {
 	"info": {
 		"name": "Automovil Collection",
-		"_postman_id": "1b3781eb-2d1d-6592-8210-f2ca9a0d5056",
+		"_postman_id": "d148e71e-2e48-7665-db8c-6ffc77892a34",
 		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -45,8 +45,7 @@
 						"automoviles",
 						"1"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -89,8 +88,7 @@
 						"automoviles",
 						"1"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -132,8 +130,7 @@
 						"api",
 						"automoviles"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -174,6 +171,170 @@
 						"s3_ivanysusbambam-web",
 						"api",
 						"automoviles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sort marca",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortmarca?marca=Chevrolet",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"sortmarca"
+					],
+					"query": [
+						{
+							"key": "marca",
+							"value": "Chevrolet",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "sort modelo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortmodelo?modelo=Camaro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"sortmodelo"
+					],
+					"query": [
+						{
+							"key": "modelo",
+							"value": "Camaro",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "sort años",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortanios?anioInicio=1995&anioFin=2007",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"sortanios"
+					],
+					"query": [
+						{
+							"key": "anioInicio",
+							"value": "1995",
+							"equals": true
+						},
+						{
+							"key": "anioFin",
+							"value": "2007",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Sort color",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortcolor?color=Teal",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"sortcolor"
+					],
+					"query": [
+						{
+							"key": "color",
+							"value": "Teal",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "sort precios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortprecios?precioMin=0&precioMax=20000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"sortprecios"
+					],
+					"query": [
+						{
+							"key": "precioMin",
+							"value": "0",
+							"equals": true
+						},
+						{
+							"key": "precioMax",
+							"value": "20000000",
+							"equals": true
+						}
 					]
 				},
 				"description": ""

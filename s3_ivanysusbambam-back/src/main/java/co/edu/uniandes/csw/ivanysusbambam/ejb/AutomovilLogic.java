@@ -12,7 +12,6 @@ import co.edu.uniandes.csw.ivanysusbambam.persistence.CompraPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MarcaPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ModelPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.PuntoDeVentaPersistence;
-import com.sun.javafx.scene.control.skin.VirtualFlow;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -322,5 +321,63 @@ if (  automovilEntity.getCompra() == null) {
         
        
         return rta;
+    }
+    
+    /**
+     * Retorna todos los automóviles de una marca dada.
+     * @param marca que se busca
+     * @return todos los automoviles de la marca dada.
+     * @throws BusinessLogicException si la marca es nula.
+     */
+    public List<AutomovilEntity> findByMarca(String marca)throws BusinessLogicException{
+        if(marca == null)
+            throw new BusinessLogicException("La marca no puede ser nula");
+        else
+            return persistence.findByMarca(marca);
+    }
+    
+    /**
+     * Retorna todos los automóviles de un modelo dado.
+     * @param modelo modelo que se busca
+     * @return lista con todos los automóviles del modelo dado.
+     * @throws BusinessLogicException si el modelo es null.
+     */
+    public List<AutomovilEntity> findByModelo(String modelo) throws BusinessLogicException{
+        if(modelo == null)
+            throw new BusinessLogicException("El modelo no puede ser nulo");
+        else 
+            return persistence.findByModelo(modelo);
+    }
+    
+    /**
+     * Retorna todos los autmóviles en un rango dado.
+     * @param anioInicio año inicial del rango
+     * @param anioFin año final del rango
+     * @return listado de automóviles en el rango de años.
+     * @throws BusinessLogicException si alguno de los años es null o si anioFin<anioInicio
+     */
+    public List<AutomovilEntity> findByRangoAnios(Integer anioInicio, Integer anioFin) throws BusinessLogicException{
+        if(anioInicio == null || anioFin == null) 
+            throw new BusinessLogicException("Ninguno de los años puede ser null");
+        else if (anioFin < anioInicio)
+            throw new BusinessLogicException("El año final debe ser después del año inicial");
+        else 
+            return persistence.findRangoAnios(anioInicio, anioFin);
+    }
+    
+    /**
+     * Retorna todos los autmóviles en un rango dado.
+     * @param precioMin cota inferior del rango
+     * @param precioMax cota superior del rango
+     * @return listado de automóviles en el rango de precios.
+     * @throws BusinessLogicException si alguno de los años es null o si precioMax<anioMin
+     */
+    public List<AutomovilEntity> findByRangoPrecios(Integer precioMin, Integer precioMax) throws BusinessLogicException{
+        if(precioMin == null || precioMax == null) 
+            throw new BusinessLogicException("Ninguno de los años puede ser null");
+        else if (precioMax < precioMin)
+            throw new BusinessLogicException("El año final debe ser después del año inicial");
+        else 
+            return persistence.findRangoPrecios(precioMin, precioMax);
     }
 }
