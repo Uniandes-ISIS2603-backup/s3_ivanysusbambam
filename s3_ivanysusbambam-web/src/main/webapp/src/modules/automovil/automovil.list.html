@@ -4,58 +4,134 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<div>
-    <h1 id="h1" style="margin:10px" >Automoviles</h1>
-    <div class="col-md-1 align-items-center">
-        <button class = "btn btn-default" ui-sref ="crearAutomovil"> Crear </button>
-        </div>
-    <div class="row" >
-        <div class="col-md-5">
+<div class="row">
+    <div class="col-md-3" style="margin: 15px">
+        <div class="container">
             <div class="card">
-
                 <div class="card-body">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white">
-                                <tr >
-                                    <th>Id Automovil </th>
-                                    <th>Placa</th>
-                                    <th> Año</th>
-                                    <th>Valor Listado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="automovil in automoviles" style="color: black">
-                                    <td>
-                                        <a ui-sref ="automovilDetail({automovilId: automovil.id})"> {{automovil.id}}</a>
-                                    </td>
-                                    <td>
-                                        {{automovil.placa}}
-                                        </td>
-                                        <td>
-                                            {{automovil.anio}}
-                                        </td>
-                                        <td>
-                                            {{automovil.valorListado| currency}}
-                                            </td>
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">
+                            Marca:</label>
+                        <select class="form-control" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>   
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Modelo:</label>
+                        <select class="form-control" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Color:</label>
+                        <select class="form-control" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
 
-                                </tr>
+                        </select>
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Año:</label>
+                        <select class="form-control" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
 
-                            </tbody>
-                        </table>
-                    </div>
+                        </select>
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Chasis:</label>
+                        <select class="form-control" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+                    </div> 
+                    <p style="color:#1a237e; 
+                       font-size: 18px ;
+                       line-height: 1.42857143 !important;
+                       font-family: 'Open Sans', sans-serif;">Placa:</p>
+                    <form class="ng-pristine ng-valid">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""> Par  
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" value=""> Impar  
+                        </label>
+
+                    </form>
+                </div>
+            </div>  
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div ui-view="automovilGetAll" style="margin: 0px" >
+        </div>
+    </div>   
+</div>
+
+
+
+
+<h1 id="h1" style="margin:10px">Automoviles</h1>
+<div class="col-md-1 align-items-center">
+    <button class="btn btn-default" ui-sref="crearAutomovil" href="#!/automovil/crear"> Crear </button>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">   
+                    <table class="table table-bordered" style="color: #1a237e">
+                        <thead class="thead" style="background-color: #1a237e; color: white">
+                            <tr>
+                                <th>Id Automovil </th>
+                                <th>Placa</th>
+                                <th> Año</th>
+                                <th>Valor Listado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ngRepeat: automovil in automoviles -->
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-5">
-            <div ui-view = "automovilDetailView" style = "margin: 0px">
-            </div>   
-        </div>
-
-
     </div>
+
+    <div class="col-md-5">
+        <!-- uiView: automovilDetailView --><div ui-view="automovilDetailView" style="margin: 0px" class="ng-scope">
+        </div>   
+    </div>
+
+
 </div>
+
+
+
 
 
 
