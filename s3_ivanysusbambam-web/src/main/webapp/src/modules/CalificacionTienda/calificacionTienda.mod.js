@@ -22,15 +22,36 @@
             parent: 'adminCalificacionesTiendaGetAll',
             params: {calificacionTiendaId: null},
             views: {
-                'ctDetailView': {
+                ctDetailView: {
                     templateUrl: basePath + 'calificacionTienda.detail.html',
                     controller: 'calificacionTiendaDetailCtrl',
                     controllerAs: 'ctrl'
-                }
+                }               
             }
-        });
-    }
-]);    
+        }).state('calificacionTiendaBackDetail',{
+            url: '/{calificacionTiendaBackId: int}/detail',
+            parent: 'adminCalificacionesTiendaGetAll',
+            params: {calificacionTiendaBackId: null},
+            views: {
+                ctBackDetailView: {
+                    templateUrl: basePath + 'calificacionTienda.back.detail.html',
+                    controller: 'calificacionTiendaDetailBackCtrl',
+                    controllerAs: 'ctrl'
+                }               
+            }
+        }).state('ctCrear',{
+                url: '/calificacionTienda/principal/crear',
+                parent: 'adminCalificacionesTiendaGetAll',
+                views: {
+                   mainCrearView: {
+                       templateUrl: basePath + 'calificacionTienda.crear.html',
+                       controller: 'calificacionCarroTiendaCtrl',
+                       controllerAs: 'ctrl'
+                    }
+                }
+            });
+        }
+    ]);    
 })(window.angular);
 
 

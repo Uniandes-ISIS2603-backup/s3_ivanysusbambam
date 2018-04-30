@@ -1,58 +1,34 @@
 [
     {
         "id": 1,
-        "imagen": "https://i.pinimg.com/736x/81/d1/7d/81d17d0d5ac568df0897be939dd80a95--cadillac-records-cool-cars.jpg",
-        "name": "Cadillac - Cien",
-        "comentario": "es un carro fantástico, puede llevarse a gran velocidad sin ningúna difícultad, su calidad sin duda es de tope",
+        "imagen": "https://d17nbwpy4av6jl.cloudfront.net/uploads/web/resources/resource55e82553dea70_seliauto-oestecom_nuevo-concesionario-opel-en-majadahonda.jpg",
+        "name": "Los Ángeles",
+        "comentario": "Su servicio es excelente, siempre son oportunos a la hora de reponer algún daño del auto",
         "puntaje": 4.7,
-        "venta" : { 
-            "id": 1099287,
-            "cliente": "Paco Paqueta"
+        "cliente" : { 
+            "nombre": "Paco Paqueta",
+            "cedula": 10239476
         }
             
     },{
-        
         "id": 2,
-        "imagen": "https://periodismodelmotor.com/wp-content/uploads/2018/03/Bugatti-EB-118-1.jpg",
-        "name": "Bugatti - EB 118",
-        "comentario": "el mejor carro que pude haber comprado, nadie me gana en las carreras y las chicas lo adoran",
-        "puntaje": 5.0,
-        "venta" : { 
-            "id": 1028237,
-            "cliente": "Diego Delgado"
-        }
-    },{
-        
-        "id": 3,
-        "imagen": "https://cdn-ds.com/stock/2016-Rolls-Royce-Ghost--Beverly-Hills-CA/seo/VAMP16966-SCA664S51GUX53619/sz_163703/w_750/h_480/image-1.jpg",
-        "name": "Rolls Royce - Ghost",
-        "comentario": "si quieres un auto elegante, de máxima potencia y seguridad: este es tu auto",
-        "puntaje": 4.5,
-        "venta" : { 
-            "id": 1023324,
-            "cliente": "Ricky Rickon"
-        }
-    },{
-        
-        "id": 4,
-        "imagen": "https://testcoches.es/wp-content/uploads/2018/03/bmw-m2-black-shadow-1.jpg",
-        "name": "BMW - CS",
-        "comentario": "es de los mejores de BMW, extremadamente cómodo para la ciudad y muy lindo",
-        "puntaje": 5.0,
-        "venta" : { 
-            "id": 1077884,
-            "cliente": "Isabella Iñarritu"
-        }
-    },{
-        
-        "id": 5,
-        "imagen": "https://static.motor.es/fotos-noticias/2014/09/min652x435/cadillac-ats-coupe-2015-presencia-y-potencia-unida-201418219_1.jpg",
-        "name": "Cadillac - CT6",
-        "comentario": "Un Cadillac, es un Cadillac",
+        "imagen": "https://static.motor.es//fotos-noticias/2016/04/min652x435/maserati-sevilla-concesionario-terry-gallery-201627093_1.jpg",
+        "name": "Florida",
+        "comentario": "Sería mucho mejor su servicio si tuvieran más vendedores, algunas veces siempre están ocupados y hacen esperar a sus clientes",
         "puntaje": 4.7,
-        "venta" : { 
-            "id": 1022436,
-            "cliente": "Julio Jaramillo"
+        "cliente" : { 
+            "nombre": "Julio Jaramillo",
+            "cedula": 10559472
+        }
+    },{
+        "id": 3,
+        "imagen": "https://3.bp.blogspot.com/-r_EbRsTy9OA/VezhP3xFe8I/AAAAAAAASz8/BxsPJDJgMn8/s1600/dealer.jpg",
+        "name": "Washington",
+        "comentario": "Muy normal, algunos vendedores son gentiles, otros no... para servicios directamente del auto son buenos",
+        "puntaje": 4.7,
+        "cliente" : { 
+            "nombre": "Isabella Izasa",
+            "cedula": 10987474
         }
     }
 ]

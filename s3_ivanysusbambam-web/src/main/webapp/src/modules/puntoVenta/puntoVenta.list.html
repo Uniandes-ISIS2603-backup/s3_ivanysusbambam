@@ -48,14 +48,11 @@
   <div class="row">
     <div class="col-sm-4 col-md-4">
         <div class="row" style="margin-top: 10px">
-            <div class ="col-md-3" style="height: 48px"></div>
-                <button type="button" class="btn btn-success" ui-sref="puntoVentaCrear" style="margin: 15px"> CREAR NUEVO </button>
-                <button type="button" class="btn btn-success" style="margin: 15px"> EDITAR </button>
-            <div class ="col-md-3" style="height: 48px"></div>
+            <div class="col-sm-2" style="margin-left: 15px"><button type="button" class="btn btn-success" ui-sref="puntoVentaCrear" style="margin: 15px"> CREAR NUEVO </button></div>
         </div>
         <div class="ironClass" ng-repeat="x in puntosDeVenta">
             <div>
-                <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ x.name }}</h4>    
+                <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529; height: 30px">{{ x.name }}</h4>    
                 <img class="img-fluid" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" style="margin:10px;" ng-src="{{x.image}}" alt="{{x.name}}" width="340" height="240">                
                 <div class="row" style="margin-left: 15px">
                     <button type="button" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Autos</button>
@@ -67,7 +64,7 @@
             </div>
         </div>
         <div class="ironClass" ng-repeat="puntoDeVenta in puntosDeVentaBack">
-            <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529">{{ puntoDeVenta.name }}</h4>
+            <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529; height: 30px">{{ puntoDeVenta.name }}</h4>
             <div class="row" style="margin-left: 15px">
                 <button type="button" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Autos</button>
                 <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailVentas({puntoVentaId: x.id})" style="margin: 5px;">Ventas</button>
