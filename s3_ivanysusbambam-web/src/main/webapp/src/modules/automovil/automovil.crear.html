@@ -78,7 +78,33 @@
                     <div class ="row " style = "margin: 10px" >
                         <input class ="col-md-12" id ="automovilCompra" required ng-model = "data.compra.idCompra">
                     </div>
+                      <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilImagen">Imagen:</label>
+                    </div>
                     <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilImagen" required ng-model = "data.imagen">
+                    </div>
+                      <div class =" row" style = "margin: 10px">
+                        <label class ="col-md-6" for ="automovilKilometros">Kilometraje:</label>
+                    </div>
+                    <div class ="row " style = "margin: 10px" >
+                        <input class ="col-md-12" id ="automovilKilometros" required ng-model = "data.kilometros">
+                    </div>
+                    <div class ="row " style = "margin: 20px" >
+                        <div class =" row" style = "margin: 20px">
+                        <label class ="col-md-6" for ="automovilTipo">Tipo:</label>
+                    </div>
+                     <div class ="row " style = "margin: 20px" >
+                        <select class ="col-md-12" id = "automovilTipo"  required ng-model = "data.tipo" >
+                            <option value="Camioneta">Camioneta</option>
+                            <option value="4x4">4x4</option>
+                             <option value="Sedan">sedan</option>
+                             <option value="deportivo">deportivo  </option>
+  
+                        </select>
+                    </div>
+                        </div>
+                        
                        
                             <div ng-if="!automovil.$valid">
 
