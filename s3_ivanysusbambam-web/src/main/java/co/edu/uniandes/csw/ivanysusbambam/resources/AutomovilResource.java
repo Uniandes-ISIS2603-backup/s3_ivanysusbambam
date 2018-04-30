@@ -226,6 +226,35 @@ public class AutomovilResource {
         return entityToDTOList(autos);
     }
     
+    /**
+     * <h1>GET /api/automoviles/sortcolor? color = (color): Buscar automóviles de un color</h1>
+     *
+     * Retorna todos los automóviles de un color.
+     *
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Retorna una lista con los automóviles.</code>
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found No hay ningún automóvil del color dado.
+     * </code>
+     *
+     * @param color color que se busca en los automóviles
+     * @return JSONArray {@link AutomovilDetailDTO} - Automóviles del color buscado.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
+     * Error de lógica que se genera si color == nulls
+     */
+    @GET
+    @Path("/sortcolor")
+    public List<AutomovilDetailDTO> getAutomovilColor(@QueryParam("color") String color) throws BusinessLogicException{
+       
+        List<AutomovilEntity> autos = autoLogic.findAutomovilByColor(color);
+        
+        if(autos == null){
+            throw new WebApplicationException("No se encontraron automóviles del color: " + color);
+        }
+        return entityToDTOList(autos);
+    }
+    
     
     /**
      * <h1>PUT /api/automoviles/{id} : Actualizar automovil con el id dado.</h1>
