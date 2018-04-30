@@ -226,6 +226,38 @@ public class AutomovilResource {
         return entityToDTOList(autos);
     }
     
+    
+    /**
+     * <h1>GET /api/automoviles/sortprecios? precioMin= (precioMin) & precioMax= (precioMax) : Buscar automóviles entre un rango
+     * de precios</h1>
+     *
+     * Retorna todos los automóviles en el rango dado.
+     *
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Retorna una lista con los automóviles.</code>
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found No hay ningún automóvil en el rango.
+     * </code>
+     *
+     * @param precioMin cota inferior del rango
+     * @param precioMax cota superior del rango
+     * @return JSONArray {@link AutomovilDetailDTO} - Automóviles en el rango buscado buscado.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
+     * Error de lógica que se genera si se pasa un precio nulo o si precioMax<precioMin
+     */
+    @GET
+    @Path("/sortprecios")
+    public List<AutomovilDetailDTO> getAutomovilRangoPrecios(@QueryParam("precioMin") Integer precioMin, @QueryParam("precioMax") Integer precioMax) throws BusinessLogicException{
+        List<AutomovilEntity> autos = autoLogic.findByRangoPrecios(precioMin, precioMax);
+        
+        if(autos == null){
+            throw new WebApplicationException("No se encontraron automóviles en el rango: [" + precioMin + "," + precioMax +"]");
+        }
+        return entityToDTOList(autos);
+    }
+    
+    
     /**
      * <h1>GET /api/automoviles/sortcolor? color = (color): Buscar automóviles de un color</h1>
      *

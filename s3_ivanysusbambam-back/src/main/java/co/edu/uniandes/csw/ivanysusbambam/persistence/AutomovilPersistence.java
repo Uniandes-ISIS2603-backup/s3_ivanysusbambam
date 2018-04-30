@@ -151,8 +151,8 @@ public class AutomovilPersistence {
     /**
      * Retorna todos los autos cuyo año se encuentra entre el rango de fechas.<br>
      * <b>Pre: </b> anioIni <= anioFin
-     * @param anioIni rango inferior de la búsqueda
-     * @param anioFin rango superior de la búsqueda
+     * @param anioIni cota inferior de la búsqueda
+     * @param anioFin cota  superior de la búsqueda
      * @return  todos los automóviles cuyo año se encuentra en el rango de fechas, null si no hay ninguno.
      */
     public List<AutomovilEntity> findRangoAnios(Integer anioIni, Integer anioFin){
@@ -160,6 +160,27 @@ public class AutomovilPersistence {
         TypedQuery tq = em.createQuery("select a from AutomovilEntity a where a.anio >= :anioI and a.anio <= :anioF", AutomovilEntity.class);
         tq.setParameter("anioI", anioIni);
         tq.setParameter("anioF", anioFin);
+        
+        List autos = tq.getResultList();
+        
+        if(autos.isEmpty())
+            return null;
+        else 
+            return autos;
+    }
+    
+    /**
+     * Retorna todos los autos cuyo precio listado se encuentra en un rango de precios.<br>
+     * <b>Pre: </b> precioMin<= precioMax
+     * @param precioMin cota inferior de la búsqueda
+     * @param precioMax cota superior de la búsqueda
+     * @return  todos los automóviles cuyo precio  en el rango de precios, null si no hay ninguno.
+     */
+    public List<AutomovilEntity> findRangoPrecios(Integer precioMin, Integer precioMax){
+        LOGGER.log(Level.INFO, "buscando automoviles entre los a\u00f1os {0} y {1}", new Object[]{precioMin, precioMax});
+        TypedQuery tq = em.createQuery("select a from AutomovilEntity a where a.valorListado >= :precioI and a.valorListado <= :precioF", AutomovilEntity.class);
+        tq.setParameter("precioI", precioMin);
+        tq.setParameter("precioF", precioMax);
         
         List autos = tq.getResultList();
         

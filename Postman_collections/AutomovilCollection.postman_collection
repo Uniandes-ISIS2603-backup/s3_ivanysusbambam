@@ -304,6 +304,42 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "sort precios",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortprecios?precioMin=0&precioMax=20000000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"sortprecios"
+					],
+					"query": [
+						{
+							"key": "precioMin",
+							"value": "0",
+							"equals": true
+						},
+						{
+							"key": "precioMax",
+							"value": "20000000",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }

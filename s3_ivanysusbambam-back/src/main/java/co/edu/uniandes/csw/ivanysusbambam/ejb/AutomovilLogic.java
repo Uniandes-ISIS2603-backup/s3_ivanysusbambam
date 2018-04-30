@@ -364,4 +364,20 @@ if (  automovilEntity.getCompra() == null) {
         else 
             return persistence.findRangoAnios(anioInicio, anioFin);
     }
+    
+    /**
+     * Retorna todos los autmóviles en un rango dado.
+     * @param precioMin cota inferior del rango
+     * @param precioMax cota superior del rango
+     * @return listado de automóviles en el rango de precios.
+     * @throws BusinessLogicException si alguno de los años es null o si precioMax<anioMin
+     */
+    public List<AutomovilEntity> findByRangoPrecios(Integer precioMin, Integer precioMax) throws BusinessLogicException{
+        if(precioMin == null || precioMax == null) 
+            throw new BusinessLogicException("Ninguno de los años puede ser null");
+        else if (precioMax < precioMin)
+            throw new BusinessLogicException("El año final debe ser después del año inicial");
+        else 
+            return persistence.findRangoPrecios(precioMin, precioMax);
+    }
 }
