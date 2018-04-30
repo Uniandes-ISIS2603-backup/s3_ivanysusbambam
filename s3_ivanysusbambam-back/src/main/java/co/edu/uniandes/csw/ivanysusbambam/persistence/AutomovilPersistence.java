@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
 /**
@@ -112,5 +111,61 @@ public class AutomovilPersistence {
     public AutomovilEntity findBychasis (Integer chasis){
         LOGGER.log(Level.INFO, "Buscando automovil con chasis: ", chasis);
         return em.find(AutomovilEntity.class, chasis);
+    }
+    
+    /**
+     * Retorna todos los automóviles de una marca dada
+     * @param marca marca que se busca
+     * @return lista con todos los automóviles de esa marca o null si no hay ninguno.
+     */
+    public List<AutomovilEntity> findByMarca(String marca){
+       
+        LOGGER.log(Level.INFO, "buscando automóviles de la marca: ", marca);
+        TypedQuery tq = em.createQuery("select a from AutomovilEntity a  JOIN a.marca m where m.name = :marca", AutomovilEntity.class);
+        tq.setParameter("marca", marca);
+        List autos = tq.getResultList();
+        
+        if(autos.isEmpty()) 
+            return null;
+        else
+            return autos;
+    }
+    
+    /**
+     * Retorna todos los automóviles de un modelo dado.
+     * @param modelo modelo que se busca 
+     * @return lista con los autos de ese modelo o null si no hay ninguno.
+     */
+    public List<AutomovilEntity> findByModelo(String modelo){
+        LOGGER.log(Level.INFO, "buscando automóviles modelo: ", modelo);      
+        TypedQuery tq = em.createQuery("select a from AutomovilEntity a JOIN a.model m where m.name = :modelo",AutomovilEntity.class);
+        tq.setParameter("modelo", modelo);
+        List autos = tq.getResultList();
+        
+        if(autos.isEmpty())
+            return null;
+        else 
+            return autos;
+    }
+    
+    /**
+     * Retorna todos los autos cuyo año se encuentra entre el rango de fechas.<br>
+     * <b>Pre: </b> anioIni <= anioFin
+     * @param anioIni rango inferior de la búsqueda
+     * @param anioFin rango superior de la búsqueda
+     * @return  todos los automóviles cuyo año se encuentra en el rango de fechas, null si no hay ninguno.
+     */
+    public List<AutomovilEntity> findRangoAnios(Integer anioIni, Integer anioFin){
+        LOGGER.log(Level.INFO, "buscando automoviles entre los a\u00f1os {0} y {1}", new Object[]{anioIni, anioFin});
+        TypedQuery tq = em.createQuery("select a from AutomovilEntity a where a.anio >= :anioI and a.anio <= :anioF", AutomovilEntity.class);
+        tq.setParameter("anioI", anioIni);
+        tq.setParameter("anioF", anioFin);
+        
+        List autos = tq.getResultList();
+        
+        if(autos.isEmpty())
+            return null;
+        else 
+            return autos;
     }
 }
