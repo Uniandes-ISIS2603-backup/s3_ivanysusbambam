@@ -340,6 +340,67 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "master search",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/search?precioMin=0&precioMax=20000000&color=Teal&modelo=Camaro&marca=Chevrolet&anioMin=1995&anioMax=2010",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"automoviles",
+						"search"
+					],
+					"query": [
+						{
+							"key": "precioMin",
+							"value": "0",
+							"equals": true
+						},
+						{
+							"key": "precioMax",
+							"value": "20000000",
+							"equals": true
+						},
+						{
+							"key": "color",
+							"value": "Teal",
+							"equals": true
+						},
+						{
+							"key": "modelo",
+							"value": "Camaro",
+							"equals": true
+						},
+						{
+							"key": "marca",
+							"value": "Chevrolet",
+							"equals": true
+						},
+						{
+							"key": "anioMin",
+							"value": "1995",
+							"equals": true
+						},
+						{
+							"key": "anioMax",
+							"value": "2010",
+							"equals": true
+						}
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
