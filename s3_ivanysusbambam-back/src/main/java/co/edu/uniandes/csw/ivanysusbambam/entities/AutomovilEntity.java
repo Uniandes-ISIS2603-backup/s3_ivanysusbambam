@@ -91,6 +91,11 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
      * valorListado de este automovil 
      */
     private Double valorListado;
+    
+    /**
+     * Imagen del automovil
+     */
+    private String imagen;
 
     /**
      * @return color del auto
@@ -254,5 +259,15 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
         if (this.compra.getIdCompra().equals(compra.getIdCompra())) return 0;
         else return 1;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
     
 }

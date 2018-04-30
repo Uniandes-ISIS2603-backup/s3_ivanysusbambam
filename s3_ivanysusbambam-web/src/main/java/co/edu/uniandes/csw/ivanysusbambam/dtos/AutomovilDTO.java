@@ -71,6 +71,12 @@ public class AutomovilDTO {
      * Valor listado del automovil
      */
     private Double valorListado;
+    
+    /**
+     * Imagen del automovil
+     */
+    
+    private String imagen ;
 
     /**
      * Constructor por defecto
@@ -94,6 +100,7 @@ public class AutomovilDTO {
         this.valorListado = auto.getValorListado();
         this.id = auto.getId();
         this.name = auto.getName();
+        this.imagen = auto.getImagen();
       }
     }
 
@@ -191,6 +198,7 @@ public class AutomovilDTO {
         entity.setValorListado(this.valorListado);
         entity.setId(this.id);
         entity.setName(this.name);
+        entity.setImagen(this.imagen);
         
         return entity;
     }
@@ -210,5 +218,14 @@ public class AutomovilDTO {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
     
 }
