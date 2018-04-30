@@ -10,6 +10,7 @@
                 $scope.calificacionesCarro = response.data;
                 $scope.currentCalificacionCarro= $filter('filter')($scope.calificacionesCarro, {id: $state.params.calificacionCarroId}, true)[0];
             });
+            
         }
     }]);
 })(window.angular);

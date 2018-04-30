@@ -28,15 +28,21 @@
                                 <td>{{cc.puntaje}}</td>
                                 <td><a ui-sref="calificacionCarroDetail({calificacionCarroId: cc.id})">Detalles</a></td>
                             </tr>
+                            <tr ng-repeat="ccBack in calificacionesCarroBack" style="color: black; font-size:12px">
+                                <td>{{ccBack.id}}</td>
+                                <td>{{ccBack.name}}</td>
+                                <td>{{ccBack.puntaje}}</td>
+                                <td><a ui-sref="calificacionCarroBackDetail({calificacionCarroBackId: ccBack.id})">Detalles</a></td>
+                            </tr>
                         </tbody>
                     </table>   
                 </div>
-                                <div ui-view="mainCrearView"></div> 
-
             </div>
+            <div ui-view="mainCrearView" style="margin-left: 25px; margin-top: 64px"></div> 
             <div class="col-sm-1"></div>
             <div class="col-sm-4" style="margin: 25px">
                 <div ui-view="ccDetailView"></div>
+                <div ui-view="ccBackDetailView"></div>
             </div>
         </div>
     </body>

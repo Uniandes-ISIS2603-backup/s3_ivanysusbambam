@@ -6,6 +6,10 @@
             $http.get("data/calificacionesTienda.json").then(function(response){
                 $scope.calificacionesTienda = response.data;
             });
+            
+            $http.get(calificacionTiendaContext).then(function(response){
+                $scope.calificacionesTiendaBack = response.data;
+            });
         }
     ]);
 })(window.angular);
