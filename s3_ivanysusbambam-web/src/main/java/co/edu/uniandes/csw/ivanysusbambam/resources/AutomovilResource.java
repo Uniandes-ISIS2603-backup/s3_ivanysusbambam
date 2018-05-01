@@ -249,6 +249,7 @@ public class AutomovilResource {
     @GET
     @Path("/sortprecios")
     public List<AutomovilDetailDTO> getAutomovilRangoPrecios(@QueryParam("precioMin") Integer precioMin, @QueryParam("precioMax") Integer precioMax) throws BusinessLogicException{
+        
         List<AutomovilEntity> autos = autoLogic.findByRangoPrecios(precioMin, precioMax);
         
         if(autos == null){
@@ -287,6 +288,43 @@ public class AutomovilResource {
         return entityToDTOList(autos);
     }
     
+    /**
+     * <h1>GET /api/automoviles/search?precioMin = (precioMin)& precioMax = (precioMax) & anioMin = (anioMin) & anioMax = (anioMax) & marca = (marca) & modelo = (modelo) & color = (color)
+     * : Buscar automóviles que cumplen los filtros dados</h1>
+     *
+     * Retorna todos los automóviles que cumplen los filtros.
+     *
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Retorna una lista con los automóviles.</code>
+     * <code style="color: #c7254e; background-color: #f9f2f4;">
+     * 404 Not Found No hay ningún automóvil que cumpla los filtros.
+     * </code>
+     *
+     * @param precioMin cota inferior del precio
+     * @param precioMax cota superior del precio
+     * @param anioMin cota inferior de rango de años
+     * @param anioMax cota superior de rango de años
+     * @param marca marca que se busca
+     * @param modelo modelo que se busca
+     * @param color color que se busca en los automóviles
+     * @
+     * @return JSONArray {@link AutomovilDetailDTO} - Automóviles del color buscado.
+     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
+     * Error de lógica que se genera si todos los parámetros son null o 
+     * si anioMax < anioMin o precioMax < precioMin
+     */
+    @GET
+    @Path("/search")
+    public List<AutomovilDetailDTO> masterSearch(@QueryParam("precioMin") Integer precioMin, @QueryParam("precioMax") Integer precioMax, @QueryParam("anioMin") Integer anioMin, @QueryParam("anioMax") Integer anioMax, @QueryParam("marca")String marca, @QueryParam("modelo") String modelo, @QueryParam("color") String color) throws BusinessLogicException{
+        
+        List<AutomovilEntity> autos = autoLogic.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color);
+        
+        if(autos == null){
+            throw new WebApplicationException("No se encontraron automóviles ");
+        }
+        return entityToDTOList(autos);
+    }
     
     /**
      * <h1>PUT /api/automoviles/{id} : Actualizar automovil con el id dado.</h1>
