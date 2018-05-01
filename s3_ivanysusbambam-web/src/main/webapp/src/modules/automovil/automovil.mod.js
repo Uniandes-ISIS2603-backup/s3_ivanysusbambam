@@ -5,47 +5,63 @@
  */
 
 
-(function(ng){
-    var mod = ng.module("automovilModule" , ['ui.router']);
-    mod.config (['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider){
+(function (ng) {
+    var mod = ng.module("automovilModule", ['ui.router']);
+    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
             var basePath = 'src/modules/automovil/';
             $urlRouterProvider.otherwise("/listAutomoviles");
-            
+
             $stateProvider.state('listAutomoviles', {
                 url: '/automoviles/list',
-                views :{
-                    'mainView':{
-                templateUrl: basePath + 'automovil.list.html',
-                controller: 'automovilGetAllCtrl',
-                controllerAs: 'ctrl'
+                views: {
+                    'mainView': {
+                        templateUrl: basePath + 'automovil.list.html',
+                        controller: 'automovilGetAllCtrl',
+                        controllerAs: 'ctrl'
+                    },
+                    automovilGetAll: {
+                        templateUrl: basePath + 'automovilGetAll.html',
+                        controller: 'automovilGetAllCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
-                    
-                }).state("automovilDetail",{
-                    url: "/{automovilId: int}/detail ",
-                    parent:"listAutomoviles",
-                    params: {
-                        automovilId:null
-                    },
-                    views: {
-                        'automovilDetailView': {
-                            templateUrl: basePath + "automovil.detail.html",
-                            controller:"automovilDetailCtrl",
-                            controllerAs:"ctrl"
-                        }
+
+            }).state("automovilDetail", {
+                url: "/{automovilId: int}/detail ",
+                parent: "listAutomoviles",
+                params: {
+                    automovilId: null
+                },
+                views: {
+                    'automovilDetailView': {
+                        templateUrl: basePath + "automovil.detail.html",
+                        controller: "automovilDetailCtrl",
+                        controllerAs: "ctrl"
                     }
-                }).state("crearAutomovil",{
+                }
+            }).state("automovilGetAll", {
+                url: "/getAll ",
+                parent: "listAutomoviles",
+                
+                views: {
+                    'automovilList': {
+                        templateUrl: basePath + "automovilGetAll.html",
+                        controller: "automovilGetAllCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+            }).state("crearAutomovil", {
                 url: "/automovil/crear",
 
-                views:{
-                    mainView:{
+                views: {
+                    mainView: {
                         templateUrl: basePath + "automovil.crear.html",
                         controller: "automovilCrearCtrl",
                         controllerAs: "ctrl"
                     }
                 }});
-                 }
-        ]);
-    
-    })(window.angular);
+        }
+    ]);
+
+})(window.angular);
            

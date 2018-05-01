@@ -4,58 +4,148 @@ To change this license header, choose License Headers in Project Properties.
 To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
-<div>
-    <h1 id="h1" style="margin:10px" >Automoviles</h1>
-    <div class="col-md-1 align-items-center">
-        <button class = "btn btn-default" ui-sref ="crearAutomovil"> Crear </button>
-        </div>
-    <div class="row" >
-        <div class="col-md-5">
+<div class="row">
+    <div class="col-md-3" >
+        <div class="container">
             <div class="card">
-
                 <div class="card-body">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white">
-                                <tr >
-                                    <th>Id Automovil </th>
-                                    <th>Placa</th>
-                                    <th> Año</th>
-                                    <th>Valor Listado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="automovil in automoviles" style="color: black">
-                                    <td>
-                                        <a ui-sref ="automovilDetail({automovilId: automovil.id})"> {{automovil.id}}</a>
-                                    </td>
-                                    <td>
-                                        {{automovil.placa}}
-                                        </td>
-                                        <td>
-                                            {{automovil.anio}}
-                                        </td>
-                                        <td>
-                                            {{automovil.valorListado| currency}}
-                                            </td>
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">
+                            Marca:</label>
 
-                                </tr>
+                        <select class ="form-control"   required ng-model = "marca" ng-options="x.nombre for x in listaMarcas"></select>
 
-                            </tbody>
-                        </table>
+                    </div>   
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Modelo:</label>
+
+                        <select class ="form-control"   required ng-model = "modelo" ng-options="x.nombre for x in listaMarcas"></select>
+
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Color:</label>
+                        <select class="form-control" required ng-model = "color" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Fecha Maxima:</label>
+                        <select class="form-control"  required ng-model = "fechaMax" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Fecha Minima:</label>
+                        <select class="form-control"  required ng-model = "fechaMin" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
                     </div>
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Precio Maximo:</label>
+                        <select class="form-control"  required ng-model = "precioMax" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Precio Minimo:</label>
+                        <select class="form-control"  required ng-model = "precioMin" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+
+                        <div style="text-align: center; margin:20px">
+                            <a ui-sref="compraDelete({idCompra: compra.idCompra})">
+                                <button type="button" class="btn btn-danger" style=" color: white">Buscar</button>
+                            </a>
+                        </div>  
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+
+        <div ui-view="automovilList" style="margin: 0px" >
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<h1 id="h1" style="margin:10px">Automoviles</h1>
+<div class="col-md-1 align-items-center">
+    <button class="btn btn-default" ui-sref="crearAutomovil" href="#!/automovil/crear"> Crear </button>
+</div>
+<div class="row">
+    <div class="col-md-5">
+        <div class="card">
+
+            <div class="card-body">
+                <div class="table-responsive">   
+                    <table class="table table-bordered" style="color: #1a237e">
+                        <thead class="thead" style="background-color: #1a237e; color: white">
+                            <tr>
+                                <th>Id Automovil </th>
+                                <th>Placa</th>
+                                <th> Año</th>
+                                <th>Valor Listado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- ngRepeat: automovil in automoviles -->
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
-
-        <div class="col-md-5">
-            <div ui-view = "automovilDetailView" style = "margin: 0px">
-            </div>   
-        </div>
-
-
     </div>
-</div>
+
+    <div class="col-md-5">
+        <!-- uiView: automovilDetailView --><div ui-view="automovilDetailView" style="margin: 0px" class="ng-scope">
+        </div>   
+    </div>
+
+
+
+
+
+
 
 
 
