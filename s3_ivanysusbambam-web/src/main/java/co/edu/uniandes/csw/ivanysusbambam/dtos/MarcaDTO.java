@@ -76,7 +76,7 @@ public class MarcaDTO {
      *
      * @param nuevo Nuevo nombre de la marca
      */
-    public void SetName(String nuevo) {
+    public void setName(String nuevo) {
         this.name = nuevo;
     }
 
