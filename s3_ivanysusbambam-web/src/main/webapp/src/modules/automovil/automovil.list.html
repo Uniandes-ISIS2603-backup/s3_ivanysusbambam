@@ -5,7 +5,7 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <div class="row">
-    <div class="col-md-3" style="margin: 15px">
+    <div class="col-md-3" >
         <div class="container">
             <div class="card">
                 <div class="card-body">
@@ -15,31 +15,37 @@ and open the template in the editor.
                                line-height: 1.42857143 !important;
                                font-family: 'Open Sans', sans-serif;">
                             Marca:</label>
-                        <select class="form-control" id="sel1">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
+
+                        <select class ="form-control"   required ng-model = "marca" ng-options="x.nombre for x in listaMarcas"></select>
+
                     </div>   
                     <div class="form-group">
                         <label for="sel1" style="color:#1a237e; 
                                font-size: 18px ;
                                line-height: 1.42857143 !important;
                                font-family: 'Open Sans', sans-serif;">Modelo:</label>
-                        <select class="form-control" id="sel1">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
+
+                        <select class ="form-control"   required ng-model = "modelo" ng-options="x.nombre for x in listaMarcas"></select>
+
                     </div> 
                     <div class="form-group">
                         <label for="sel1" style="color:#1a237e; 
                                font-size: 18px ;
                                line-height: 1.42857143 !important;
                                font-family: 'Open Sans', sans-serif;">Color:</label>
-                        <select class="form-control" id="sel1">
+                        <select class="form-control" required ng-model = "color" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+                    </div> 
+
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Fecha Maxima:</label>
+                        <select class="form-control"  required ng-model = "fechaMax" id="sel1">
                             <option value="1">1</option>
                             <option value="2">2</option>
 
@@ -49,8 +55,19 @@ and open the template in the editor.
                         <label for="sel1" style="color:#1a237e; 
                                font-size: 18px ;
                                line-height: 1.42857143 !important;
-                               font-family: 'Open Sans', sans-serif;">Año:</label>
-                        <select class="form-control" id="sel1">
+                               font-family: 'Open Sans', sans-serif;">Fecha Minima:</label>
+                        <select class="form-control"  required ng-model = "fechaMin" id="sel1">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Precio Maximo:</label>
+                        <select class="form-control"  required ng-model = "precioMax" id="sel1">
                             <option value="1">1</option>
                             <option value="2">2</option>
 
@@ -60,35 +77,32 @@ and open the template in the editor.
                         <label for="sel1" style="color:#1a237e; 
                                font-size: 18px ;
                                line-height: 1.42857143 !important;
-                               font-family: 'Open Sans', sans-serif;">Chasis:</label>
-                        <select class="form-control" id="sel1">
+                               font-family: 'Open Sans', sans-serif;">Precio Minimo:</label>
+                        <select class="form-control"  required ng-model = "precioMin" id="sel1">
                             <option value="1">1</option>
                             <option value="2">2</option>
 
                         </select>
-                    </div> 
-                    <p style="color:#1a237e; 
-                       font-size: 18px ;
-                       line-height: 1.42857143 !important;
-                       font-family: 'Open Sans', sans-serif;">Placa:</p>
-                    <form class="ng-pristine ng-valid">
-                        <label class="checkbox-inline">
-                            <input type="checkbox" value=""> Par  
-                        </label>
-                        <label class="checkbox-inline">
-                            <input type="checkbox" value=""> Impar  
-                        </label>
 
-                    </form>
+                        <div style="text-align: center; margin:20px">
+                            <a ui-sref="compraDelete({idCompra: compra.idCompra})">
+                                <button type="button" class="btn btn-danger" style=" color: white">Buscar</button>
+                            </a>
+                        </div>  
+                    </div>
                 </div>
-            </div>  
+
+            </div>
         </div>
     </div>
-    <div class="col-md-8">
-        <div ui-view="automovilGetAll" style="margin: 0px" >
+    <div class="col-md-9">
+
+        <div ui-view="automovilList" style="margin: 0px" >
         </div>
-    </div>   
+    </div>
 </div>
+
+
 
 
 
@@ -128,7 +142,7 @@ and open the template in the editor.
     </div>
 
 
-</div>
+
 
 
 

@@ -39,6 +39,17 @@
                         controllerAs: "ctrl"
                     }
                 }
+            }).state("automovilGetAll", {
+                url: "/getAll ",
+                parent: "listAutomoviles",
+                
+                views: {
+                    'automovilList': {
+                        templateUrl: basePath + "automovilGetAll.html",
+                        controller: "automovilGetAllCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
             }).state("crearAutomovil", {
                 url: "/automovil/crear",
 
