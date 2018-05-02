@@ -25,35 +25,60 @@ public class CompraLogic {
     @Inject
     private CompraPersistence compraPersistence;
 
+    @Inject
+    private ClientePersistence clientePersistence;
 
+    @Inject
+    private VendedorPersistence vendedorPersistence;
+    
+    @Inject
+    private PuntoDeVentaPersistence puntoDeVentaPersistence;
 
     public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
-//        if (compraPersistence.find(compra.getIdCompra())!=null)
-//        {
-//            throw new BusinessLogicException("Ya existe una compra con ese id");
-//        }
-//        if(clientePersistence.find(compra.getCliente().getCedula())==null)
-//        {
-//            throw new BusinessLogicException("El cliente no esta registrado en el sistema");
-//        }
-//        if(vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor())==null)
-//        {
-//            throw new BusinessLogicException("El vendedor encargado no es valido"); 
-//        }
-//        if(puntoDeVentaPersistence.find(compra.getPuntoDeVenta().getId())==null)
-//        {
-//             throw new BusinessLogicException("El punto de venta no es valido"); 
-//        }
+
+        if (compraPersistence.find(compra.getIdCompra()) != null) {
+            throw new BusinessLogicException("Ya existe una compra con ese id");
+        }
+        if (compra.getCliente() == null) {
+            throw new BusinessLogicException("El cliente no puede ser null");
+        }
+        if (compra.getCliente().getCedula() == null) {
+            throw new BusinessLogicException("La cédula del cliente no puede ser null");
+        }
+        if (clientePersistence.find(compra.getCliente().getCedula()) == null) {
+            throw new BusinessLogicException("El cliente no esta registrado en el sistema");
+        }
+        if (compra.getVendedorEncargado() == null) {
+            throw new BusinessLogicException("El vendedoer no puede ser null");
+        }
+        if (compra.getVendedorEncargado().getCarnetVendedor() == null) {
+            throw new BusinessLogicException("El carnet del vendedor no puede ser null");
+        }
+        if (vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor()) == null) {
+            throw new BusinessLogicException("El vendedor encargado no es valido");
+        }
+        if(compra.getPuntoDeVenta() == null){
+             throw new BusinessLogicException("El punto de venta no puede ser null");
+        }
+        if(compra.getPuntoDeVenta().getId() == null){
+             throw new BusinessLogicException("El id del punto de venta no puede ser null");
+        }
+        if(puntoDeVentaPersistence.find(compra.getPuntoDeVenta().getId())==null)
+       {
+             throw new BusinessLogicException("El punto de venta no es valido"); 
+       }
 
         compraPersistence.create(compra);
         return compra;
     }
 
     public void deleteCompra(Integer idCompra) throws BusinessLogicException {
-        if (compraPersistence.find(idCompra) == null) {
+        
+        
+        if (idCompra == null) {
             throw new BusinessLogicException("No exixte una compra con ese numero");
         }
-        if (idCompra == null) {
+        if (compraPersistence.find(idCompra) == null) {
             throw new BusinessLogicException("No exixte una compra con ese numero");
         }
 
@@ -61,10 +86,13 @@ public class CompraLogic {
     }
 
     public CompraEntity findCompra(Integer id) throws BusinessLogicException {
-        CompraEntity compra = compraPersistence.find(id);
-        if (compra == null) {
-            throw new BusinessLogicException("No exixte una compra con ese id");
+        if(id == null){
+            throw new BusinessLogicException("El id no puede ser null");
         }
+        
+        CompraEntity compra = compraPersistence.find(id);
+        
+        
         return compra;
     }
 

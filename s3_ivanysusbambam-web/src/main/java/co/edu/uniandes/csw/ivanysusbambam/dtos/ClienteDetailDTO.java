@@ -90,7 +90,7 @@ public class ClienteDetailDTO extends ClienteDTO {
 
     //-----------------------------CONSTRUCTOR---------------------------
     public ClienteDetailDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     public ClienteDetailDTO(ClienteEntity ce) {

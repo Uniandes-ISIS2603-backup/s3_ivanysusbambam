@@ -31,7 +31,7 @@ public class MarcaDTO {
     }
 
     public MarcaDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**

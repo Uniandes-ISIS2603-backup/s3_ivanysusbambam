@@ -49,7 +49,6 @@ public class VendedorLogic {
 
         Long carnet = ve.getCarnetVendedor();
         LOG.log(Level.INFO, "Revisando si el vendedor: {0}cumple con los requisitos para ser persistido", carnet);
-        //TODO: DONE Ojo, no confundir el cedula con la cédula;
         Long cedula = ve.getCedula();
         cedulaValida(cedula);
         if (persistence.findByCedula(cedula) != null) {

@@ -45,7 +45,7 @@ public class ModelDTO {
      * Método constructor de la clase
      */
     public ModelDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**

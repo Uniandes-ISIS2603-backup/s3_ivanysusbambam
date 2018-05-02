@@ -18,7 +18,7 @@ import java.util.List;
  *   {
  *
  *           "numeroPuertas" :Integer,
- *           "id": Integer, 
+ *           "id": Integer,
  *           "cilindraje": Integer,
  *           "centCubicos":Double,
  *           "transmision":String,
@@ -27,10 +27,10 @@ import java.util.List;
  * </pre> Por ejemplo un modelo se representa así:<br>
  *
  * <pre>
-*   {
+ *   {
  *
  *           "numeroPuertas" :4,
- *           "id": 1, 
+ *           "id": 1,
  *           "cilindraje": 2000,
  *           "centCubicos":2000,
  *           "transmision":"mecanica",
@@ -39,37 +39,13 @@ import java.util.List;
  * </pre>
  *
  * @author Joseph ortiz Moreno
-*/
+ */
 public class ModelDetailDTO extends ModelDTO {
 
     /**
      * Representa la lista de automóviles pertenecientes a una marca
      */
     private List<AutomovilDTO> automoviles;
-
-    //TODO: Reviosar este conflicto. 
-
-    /**
-     * =======
-     *
-     * /**
-     * >>>>>>> d72aac146e12e938887e2305fd868434aea7ce9a Representa el numero de
-     * puertas del vehículo
-     */
-    //TODO: Los detailDTO no deben tener atributos básicos además ya están en el ModelDTO
-    private Integer numeroPuertas;
-    /**
-     * Representa la transmisión del vehículo
-     */
-    private String transmision;
-    /**
-     * Representa el cilindraje del vehículo
-     */
-    private Integer cilindraje;
-    /**
-     * Representa los centímetros cúbicos
-     */
-    private Double centCubicos;
 
     public ModelDetailDTO() {
         super();
@@ -82,37 +58,16 @@ public class ModelDetailDTO extends ModelDTO {
      */
     public ModelDetailDTO(ModelEntity entity) {
         super(entity);
-        if (entity != null) {
-            if (entity.getCentCubicos() != null) {
-                this.centCubicos = entity.getCentCubicos();
-            } else {
-                entity.setCentCubicos(null);
-            }
-            if (entity.getCilindraje() != null) {
-                this.cilindraje = entity.getCilindraje();
-            } else {
-                entity.setCilindraje(null);
-            }
-            if (entity.getNumeroPuertas() != null) {
-                this.numeroPuertas = entity.getNumeroPuertas();
-            } else {
-                entity.setNumeroPuertas(null);
-            }
-            if (entity.getTransmision() != null) {
-                this.transmision = entity.getTransmision();
-            } else {
-                entity.setTransmision(null);
-            }
-            
-            //Revisar bien esta parte 
-            if (entity.getAutomoviles() != null) {
-                automoviles = new ArrayList<>();
-                for (AutomovilEntity entityAuto : entity.getAutomoviles()) {
-                    automoviles.add(new AutomovilDTO(entityAuto));
 
-                }
+        //Revisar bien esta parte 
+        if (entity.getAutomoviles() != null) {
+            automoviles = new ArrayList<>();
+            for (AutomovilEntity entityAuto : entity.getAutomoviles()) {
+                automoviles.add(new AutomovilDTO(entityAuto));
+
             }
         }
+
     }
 
     /**
@@ -123,19 +78,6 @@ public class ModelDetailDTO extends ModelDTO {
     @Override
     public ModelEntity toEntity() {
         ModelEntity modl = super.toEntity();
-
-        if (this.getCentCubicos() != null) {
-            modl.setCentCubicos(this.getCentCubicos());
-        }
-        if (this.getCilindraje() != null) {
-            modl.setCilindraje(this.getCilindraje());
-        }
-        if (this.getNumeroPuertas() != null) {
-            modl.setNumeroPuertas(this.getNumeroPuertas());
-        }
-        if (this.getTransmision() != null) {
-            modl.setTransmision(this.getTransmision());
-        }
 
         if (getAutomoviles() != null) {
             List<AutomovilEntity> autosEntity = new ArrayList<>();
@@ -171,7 +113,5 @@ public class ModelDetailDTO extends ModelDTO {
     public List<AutomovilDTO> getAutomoviles() {
         return automoviles;
     }
-
-    
 
 }

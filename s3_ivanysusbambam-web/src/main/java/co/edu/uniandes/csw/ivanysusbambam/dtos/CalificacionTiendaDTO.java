@@ -38,7 +38,7 @@ public class CalificacionTiendaDTO {
      * Construye una nueva Calificacion para una tienda
      */
     public CalificacionTiendaDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**

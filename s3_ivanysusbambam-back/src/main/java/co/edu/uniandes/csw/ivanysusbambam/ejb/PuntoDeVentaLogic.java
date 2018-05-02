@@ -74,8 +74,6 @@ public class PuntoDeVentaLogic {
      */
     public PuntoDeVentaEntity createPuntoDeVenta(PuntoDeVentaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear un punto de venta ");
-         //TODO: no hay que revisar el id porque es la PK y no se ha creado
-        //if(persistence.find(entity.getId()) != null) throw new BusinessLogicException("El punto de venta ya existe");
         if(entity.getTelefono() > 9999999 || entity.getTelefono() < 1000000) throw new BusinessLogicException("Numero de telefono inválido");
         return persistence.create(entity);
     }

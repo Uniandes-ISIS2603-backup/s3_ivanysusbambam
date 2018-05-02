@@ -22,8 +22,7 @@ import javax.inject.Inject;
 @Stateless
 public class MedioDePagoLogic {
 
-    private static final Logger LOG = Logger.getLogger(ClienteLogic.class.getName());
-
+    
     @Inject
     private MedioDePagoPersistence persistence;
 
@@ -58,9 +57,6 @@ public class MedioDePagoLogic {
             throw new BusinessLogicException("El medio de pago no es valido");
         }
         MedioDePagoEntity mdp = persistence.find(numero);
-        if (mdp == null) {
-            throw new BusinessLogicException("No existe un medio de pago con ese numero");
-        }
         return mdp;
     }
 

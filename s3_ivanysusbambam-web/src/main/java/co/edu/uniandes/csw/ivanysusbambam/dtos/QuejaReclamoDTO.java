@@ -61,7 +61,7 @@ public class QuejaReclamoDTO {
      * Constructor por defecto
      */
     public QuejaReclamoDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**
