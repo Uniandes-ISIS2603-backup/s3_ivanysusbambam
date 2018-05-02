@@ -19,7 +19,7 @@
                         controller: 'automovilGetAllCtrl',
                         controllerAs: 'ctrl'
                     },
-                    automovilGetAll: {
+                    automovilList: {
                         templateUrl: basePath + 'automovilGetAll.html',
                         controller: 'automovilGetAllCtrl',
                         controllerAs: 'ctrl'
@@ -37,6 +37,22 @@
                         templateUrl: basePath + "automovil.detail.html",
                         controller: "automovilDetailCtrl",
                         controllerAs: "ctrl"
+                    }
+                }
+            }).state("automovilListFiltros", {
+                url: "/automovilListFiltered",
+                 parent: "listAutomoviles",
+               views: {
+                  
+                    'mainView': {
+                        templateUrl: basePath + 'automovil.list.html',
+                        controller: 'automovilGetAllCtrl',
+                        controllerAs: 'ctrl'
+                    },
+                    automovilList: {
+                        templateUrl: basePath + 'automovilGetAll.html',
+                        controller: 'automovilFilteredCtrl',
+                        controllerAs: 'ctrl'
                     }
                 }
             }).state("automovilGetAll", {

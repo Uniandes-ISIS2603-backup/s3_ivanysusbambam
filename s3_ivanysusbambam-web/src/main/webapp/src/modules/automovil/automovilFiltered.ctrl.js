@@ -11,7 +11,7 @@
 
     mod.constant("automovilContext", "api/automoviles/search?");
 
-    mod.controller("automovilGetAllCtrl", ["$scope", "$http", "automovilContext", function ($scope, $http, automovilContext) {
+    mod.controller("automovilFilteredCtrl", ["$scope", "$http", "automovilContext", function ($scope, $http, automovilContext) {
 
 
             $scope.data = {};
@@ -22,7 +22,7 @@
             });
 
 
-
+console.log(automovilContext + "precioMin="+$scope.modelo+"&precioMax="+$scope.precioMax+"&color="+$scope.color+"&modelo="+$scope.modelo+"&marca="+$scope.marca+"&anioMin="+$scope.fechaMin+"&anioMax="+$scope.fechaMax);
 
             $http.get(automovilContext + "precioMin="+$scope.modelo+"&precioMax="+$scope.precioMax+"&color="+$scope.color+"&modelo="+$scope.modelo+"&marca="+$scope.marca+"&anioMin="+$scope.fechaMin+"&anioMax="+$scope.fechaMax).then(function (response) {
                 $scope.automoviles = response.data;
