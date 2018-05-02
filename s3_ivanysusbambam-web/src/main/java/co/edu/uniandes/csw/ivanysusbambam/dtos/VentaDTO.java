@@ -45,6 +45,7 @@ public class VentaDTO {
      * Constructor por defecto
      */
     public VentaDTO() {
+        //Constructor utilizado por JAX
     }
 
 //---------------------GETTERS-------------------------
@@ -76,10 +77,10 @@ public class VentaDTO {
      */
     public VentaDTO(VentaEntity pVenta) {
         if (pVenta != null) {
-            {if (pVenta.getId() != null)
-            this.idVenta = pVenta.getId();}
-            {if (pVenta.getName()!= null)
-                this.name = pVenta.getName();}
+            if (pVenta.getId() != null)
+                this.idVenta = pVenta.getId();
+            if (pVenta.getName()!= null)
+                this.name = pVenta.getName();
         }
 
     }

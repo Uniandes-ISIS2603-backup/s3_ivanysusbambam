@@ -51,7 +51,7 @@ public class ClienteDTO {
      * Constructor por defecto.
      */
     public ClienteDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**

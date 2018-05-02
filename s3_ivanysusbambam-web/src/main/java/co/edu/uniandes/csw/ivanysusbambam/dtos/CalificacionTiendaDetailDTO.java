@@ -44,6 +44,7 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
      * Constructor por defecto
      */
     public CalificacionTiendaDetailDTO() {
+        //Constructor utilizado por JAX
     }
 
     public CalificacionTiendaDetailDTO(CalificacionTiendaEntity entity) {
