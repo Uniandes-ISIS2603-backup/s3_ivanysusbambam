@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 
 
-import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.MedioDePagoLogic;
@@ -14,8 +13,6 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -81,6 +78,7 @@ public class MedioDePagoResource
             MedioDePagoEntity entity = mdpLogic.findMedioDePago(numero);
             return new MedioDePagoDetailDTO(entity);
         } catch (BusinessLogicException ex) {
+            System.out.println(ex.getMessage());
             throw new WebApplicationException("El recurso /medios_de_pago/" + numero + "no existe", 404);
         }
     }
@@ -91,6 +89,7 @@ public class MedioDePagoResource
         try {
             return new MedioDePagoDetailDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
         } catch (BusinessLogicException ex) {
+            System.out.println(ex.getMessage());
             throw new WebApplicationException(ex.getMessage(), 400);
         }
     }
@@ -122,6 +121,7 @@ public class MedioDePagoResource
         try {
             return new MedioDePagoDetailDTO(mdpLogic.updateMedioDePago(mdp.toEntity()));
         } catch (BusinessLogicException ex) {
+            System.out.println(ex.getMessage());
             throw new WebApplicationException("El recurso /medios_de_pago/" + numeroMedioDePago + "no existe", 404);
         }
     }
@@ -148,6 +148,7 @@ public class MedioDePagoResource
         try {
             mdpLogic.deleteMedioDePago(numeroMedioDePago);
         } catch (BusinessLogicException ex) {
+            System.out.println(ex.getMessage());
             throw new WebApplicationException("El recurso /medios_de_pago/" + numeroMedioDePago + "no existe", 404);
         }
     }
