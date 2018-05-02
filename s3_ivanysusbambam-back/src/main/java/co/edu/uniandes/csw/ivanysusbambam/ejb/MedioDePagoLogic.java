@@ -22,8 +22,7 @@ import javax.inject.Inject;
 @Stateless
 public class MedioDePagoLogic {
 
-    private static final Logger LOG = Logger.getLogger(ClienteLogic.class.getName());
-
+    
     @Inject
     private MedioDePagoPersistence persistence;
 
