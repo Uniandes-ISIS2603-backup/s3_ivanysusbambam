@@ -389,6 +389,11 @@ public class AutomovilLogic {
      */
     public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color) throws BusinessLogicException {
 
+        
+        if (precioMin == null && precioMax == null && anioMin == null && anioMax == null && marca == null && modelo == null && color == null) {
+            throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
+        }
+        
         if ((precioMax != null && precioMin == null) || (precioMin != null && precioMax == null)) {
             throw new BusinessLogicException("La pareja precioMin/precioMax debe ir junta");
         }
@@ -397,9 +402,6 @@ public class AutomovilLogic {
             throw new BusinessLogicException("La pareja anioMin/anioMax debe ir junta");
         }
 
-        if (precioMin == null && precioMax == null && anioMin == null && anioMax == null && marca == null && modelo == null && color == null) {
-            throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
-        }
         if (precioMax != null && precioMin != null && precioMax < precioMin) {
             throw new BusinessLogicException("El precio máximo debe ser mayor al precio mínimo");
         }

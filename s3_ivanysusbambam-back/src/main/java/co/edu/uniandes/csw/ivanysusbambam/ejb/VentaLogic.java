@@ -9,7 +9,6 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.AutomovilPersistence;
-import co.edu.uniandes.csw.ivanysusbambam.persistence.CalificacionCarroPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ClientePersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MedioDePagoPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.PuntoDeVentaPersistence;
