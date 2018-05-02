@@ -89,6 +89,9 @@ public class AutomovilDTO {
      * Constructor por defecto
      */
     public AutomovilDTO() {
+        
+        //Método vacío utilizado únicamente por JAX
+        
     }
 
     /**

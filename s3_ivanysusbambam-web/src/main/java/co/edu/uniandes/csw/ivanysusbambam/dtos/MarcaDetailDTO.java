@@ -71,7 +71,7 @@ public class MarcaDetailDTO extends MarcaDTO {
     }
 
     public MarcaDetailDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**

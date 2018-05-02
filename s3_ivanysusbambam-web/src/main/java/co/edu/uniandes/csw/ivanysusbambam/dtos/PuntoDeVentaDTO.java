@@ -22,7 +22,7 @@ public class PuntoDeVentaDTO {
     private Integer telefono;
 
     public PuntoDeVentaDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     public PuntoDeVentaDTO(PuntoDeVentaEntity puntoDeVenta) {

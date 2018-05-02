@@ -63,7 +63,7 @@ public class VendedorDTO {
      * Constructor por defecto.
      */
     public VendedorDTO(){
-        
+        //Constructor utilizado por JAX
     }
     
     /**

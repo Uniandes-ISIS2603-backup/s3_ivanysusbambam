@@ -79,7 +79,7 @@ public class VendedorDetailDTO extends VendedorDTO {
      * Constructor por defecto.
      */
     public VendedorDetailDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**

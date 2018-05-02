@@ -48,6 +48,7 @@ public class MedioDePagoDTO {
      * Constructor por defecto
      */
     public MedioDePagoDTO() {
+        //Constructor utilizado por JAX
     }
 
     public MedioDePagoDTO(MedioDePagoEntity entity) {

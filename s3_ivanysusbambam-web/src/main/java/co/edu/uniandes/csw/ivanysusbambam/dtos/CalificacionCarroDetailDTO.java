@@ -44,7 +44,7 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
      * Constructor por defecto
      */
     public CalificacionCarroDetailDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     public CalificacionCarroDetailDTO(CalificacionCarroEntity entity) {

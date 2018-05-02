@@ -55,7 +55,7 @@ public class ProspectoCompraDTO {
      * Constructor por defecto.
      */
     public ProspectoCompraDTO(){
-        
+        //Constructor utilizado por JAX
     }
     
     /**
