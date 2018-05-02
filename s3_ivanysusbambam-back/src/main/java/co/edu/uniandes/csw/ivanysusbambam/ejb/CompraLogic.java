@@ -73,10 +73,12 @@ public class CompraLogic {
     }
 
     public void deleteCompra(Integer idCompra) throws BusinessLogicException {
-        if (compraPersistence.find(idCompra) == null) {
+        
+        
+        if (idCompra == null) {
             throw new BusinessLogicException("No exixte una compra con ese numero");
         }
-        if (idCompra == null) {
+        if (compraPersistence.find(idCompra) == null) {
             throw new BusinessLogicException("No exixte una compra con ese numero");
         }
 
@@ -84,10 +86,13 @@ public class CompraLogic {
     }
 
     public CompraEntity findCompra(Integer id) throws BusinessLogicException {
-        CompraEntity compra = compraPersistence.find(id);
-        if (compra == null) {
-            throw new BusinessLogicException("No exixte una compra con ese id");
+        if(id == null){
+            throw new BusinessLogicException("El id no puede ser null");
         }
+        
+        CompraEntity compra = compraPersistence.find(id);
+        
+        
         return compra;
     }
 

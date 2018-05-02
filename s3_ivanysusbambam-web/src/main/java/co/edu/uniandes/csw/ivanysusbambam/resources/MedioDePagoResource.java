@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 
-
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MedioDePagoDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.MedioDePagoLogic;
@@ -33,104 +32,100 @@ import javax.ws.rs.WebApplicationException;
 @Produces("application/json")
 @Consumes("application/json")
 @RequestScoped
-public class MedioDePagoResource 
-{   
-    
+public class MedioDePagoResource {
+
     @Inject
     MedioDePagoLogic mdpLogic;
-    
+
     /**
      * GET /api/MediosDePago: Retorna todos los medios de pagos registrados.
-     * 
+     *
      * <pre>Busca y devuelve todos los medios de pago que existen en la aplicacion.
-     * 
+     *
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Devuelve todos los medios de pago de la aplicacion.</code> 
+     * 200 OK Devuelve todos los medios de pago de la aplicacion.</code>
      * </pre>
-     * 
-     * @return JSONArray  con la información básica de todos los medios de pago.
+     *
+     * @return JSONArray con la información básica de todos los medios de pago.
      */
     @GET
-    public List<MedioDePagoDetailDTO> getMediosDePago(){
+    public List<MedioDePagoDetailDTO> getMediosDePago() {
         return listEntity2DTO(mdpLogic.findAll());
     }
+
     /**
      * GET /api/MediosDePago/(id): Obtiene un medio de pago según el id.
-     * <pre> 
+     * <pre>
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Devuelve el medio de pago correspondiente al id.
-     * </code> 
+     * </code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found No existe un cliente con el id dado.
-     * </code> 
+     * </code>
      * </pre>
+     *
      * @param numero de medio de pago que se busca.
      * @return JSON el medio de pago buscado.
+     * @throws BusinessLogicException si número == null
      */
-    
+
     @GET
     @Path("{id: \\d+}")
-    public MedioDePagoDetailDTO getMedioDePago(@PathParam("id")Long numero){
-         //TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
-        try {
-            MedioDePagoEntity entity = mdpLogic.findMedioDePago(numero);
-            return new MedioDePagoDetailDTO(entity);
-        } catch (BusinessLogicException ex) {
-            System.out.println(ex.getMessage());
-            throw new WebApplicationException("El recurso /medios_de_pago/" + numero + "no existe", 404);
+    public MedioDePagoDetailDTO getMedioDePago(@PathParam("id") Long numero) throws BusinessLogicException {
+
+        MedioDePagoEntity entity = mdpLogic.findMedioDePago(numero);
+
+        if (entity == null) {
+            throw new WebApplicationException("El medio de pago de id " + numero + " no existe");
         }
+
+        return new MedioDePagoDetailDTO(entity);
     }
-   
+
     @POST
-    public MedioDePagoDTO createMedioDePago(MedioDePagoDetailDTO mdp) {
-        //TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
-        try {
-            return new MedioDePagoDetailDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
-        } catch (BusinessLogicException ex) {
-            System.out.println(ex.getMessage());
-            throw new WebApplicationException(ex.getMessage(), 400);
-        }
+    public MedioDePagoDTO createMedioDePago(MedioDePagoDetailDTO mdp) throws BusinessLogicException {
+        return new MedioDePagoDetailDTO(mdpLogic.createMedioDePago(mdp.toEntity()));
     }
-     /**
-     * <h1>PUT /api/MediosDePago/{id} : Actualizar MediosDePago con el numero dado.</h1>
+
+    /**
+     * <h1>PUT /api/MediosDePago/{id} : Actualizar MediosDePago con el numero
+     * dado.</h1>
      * <pre>Cuerpo de petición: JSON {@link MedioDePagoDTO}.
-     * 
+     *
      * Actualiza el medio del pago con el id recibido en la URL con la informacion que se recibe en el cuerpo de la petición.
-     * 
+     *
      * Codigos de respuesta:
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
-     * 200 OK Actualiza la compra con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code> 
+     * 200 OK Actualiza el medio de pago con el id dado con la información enviada como parámetro. Retorna un objeto identico.</code>
      * <code style="color: #c7254e; background-color: #f9f2f4;">
      * 404 Not Found. No existe un medio de pago con el id dado.
-     * </code> 
+     * </code>
      * </pre>
-     * @param id Identificador del medio de pago que se desea actualizar.
-     * @param compra {@link MedioDePagoDTO} El medio de pago que se desea actualizat.
-     * @return JSON {@link CompraDetailDTO} - El medio de pago actualizado.
-     * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error de lógica que se genera al no poder actualizar el medio de pago porque ya existe una con ese id.
+     *
+     * @param numeroMedioDePago id del medio de pago que se quiere actualizar
+     * @param mdp medio de pago con la información actualizada.
+     * @return JSON - El medio de pago actualizado.
      */
-    
     @PUT
     @Path("{numeroMedioDePago: \\d+}")
-    public MedioDePagoDetailDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDetailDTO mdp)
-    {
+    public MedioDePagoDetailDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDetailDTO mdp) throws BusinessLogicException{
+        
         mdp.setNumero(numeroMedioDePago);
-        //TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
-        try {
-            return new MedioDePagoDetailDTO(mdpLogic.updateMedioDePago(mdp.toEntity()));
-        } catch (BusinessLogicException ex) {
-            System.out.println(ex.getMessage());
-            throw new WebApplicationException("El recurso /medios_de_pago/" + numeroMedioDePago + "no existe", 404);
+        MedioDePagoEntity nMdp = mdpLogic.updateMedioDePago(mdp.toEntity());
+
+        if (nMdp == null) {
+            throw new BusinessLogicException("no fue posible actualizar el mediod de pago");
         }
+        return new MedioDePagoDetailDTO(nMdp);
     }
-    
+
     /**
      * <h1>DELETE /api/MediosDePago/{id} : Borrar medio de pago por id.</h1>
-     * 
+     *
      * <pre>Borra la el medio de pago con el id asociado recibido en la URL.
-     * 
+     *
      * Códigos de respuesta:<br>
      * <code style="color: mediumseagreen; background-color: #eaffe0;">
      * 200 OK Elimina el medio de pago correspondiente al id dado.</code>
@@ -138,21 +133,20 @@ public class MedioDePagoResource
      * 404 Not Found. No existe un medio de pago con el id dado.
      * </code>
      * </pre>
-     * @param id Identificador de la compra que se desea borrar. 
+     *
+     * @param numeroMedioDePago identificador del medio de pago que se desea eliminar.
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException si re romple alguna regla de negocio
      */
-    
     @DELETE
     @Path("{numeroMedioDePago: \\d+}")
-    public void deleteMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago)
-    {//TODO si no existe debe disparar WebApplicationException pero no hacer este try catch
-        try {
-            mdpLogic.deleteMedioDePago(numeroMedioDePago);
-        } catch (BusinessLogicException ex) {
-            System.out.println(ex.getMessage());
-            throw new WebApplicationException("El recurso /medios_de_pago/" + numeroMedioDePago + "no existe", 404);
-        }
+    public void deleteMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago) throws BusinessLogicException {
+        MedioDePagoEntity ve = mdpLogic.findMedioDePago(numeroMedioDePago);
+        
+        if(ve == null) throw new WebApplicationException("El recurso medio de pago " + numeroMedioDePago + " no existe");
+        
+        mdpLogic.deleteMedioDePago(numeroMedioDePago);
     }
-    
+
     private List<MedioDePagoDetailDTO> listEntity2DTO(List<MedioDePagoEntity> entityList) {
         List<MedioDePagoDetailDTO> list = new ArrayList<>();
         for (MedioDePagoEntity entity : entityList) {
@@ -160,6 +154,5 @@ public class MedioDePagoResource
         }
         return list;
     }
-    
-    
+
 }

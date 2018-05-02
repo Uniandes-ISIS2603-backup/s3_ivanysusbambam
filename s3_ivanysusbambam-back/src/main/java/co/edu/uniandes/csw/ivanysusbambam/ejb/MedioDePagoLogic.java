@@ -57,9 +57,6 @@ public class MedioDePagoLogic {
             throw new BusinessLogicException("El medio de pago no es valido");
         }
         MedioDePagoEntity mdp = persistence.find(numero);
-        if (mdp == null) {
-            throw new BusinessLogicException("No existe un medio de pago con ese numero");
-        }
         return mdp;
     }
 
