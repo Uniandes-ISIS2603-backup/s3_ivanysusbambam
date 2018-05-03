@@ -238,13 +238,15 @@ public class VentaLogicTest {
      *
      */
     @Test
-    public void updateVentaTest() throws BusinessLogicException {
+    public void updateVentaTest() throws BusinessLogicException{
         VentaEntity entity = data.get(0);
         VentaEntity pojoEntity = factory.manufacturePojo(VentaEntity.class);
 
         pojoEntity.setId(entity.getId());
         pojoEntity.setCliente(entity.getCliente());
         pojoEntity.setVendedorEncargado(entity.getVendedorEncargado());
+        
+        System.out.println("MEDIO DE PAGO " + entity.getMedioDePago().getNumero());
         
         pojoEntity.setAutomovil(entity.getAutomovil());
        pojoEntity.setPuntoDeVenta(entity.getPuntoDeVenta());

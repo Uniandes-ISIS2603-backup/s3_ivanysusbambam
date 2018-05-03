@@ -23,7 +23,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 
 /**
  *
- * @author a.bravo
+ * @author h.castellanos
  */
 @Entity
 public class AutomovilEntity extends BaseEntity implements Serializable {

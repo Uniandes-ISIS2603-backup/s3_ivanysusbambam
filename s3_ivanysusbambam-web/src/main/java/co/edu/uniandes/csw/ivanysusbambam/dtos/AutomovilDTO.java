@@ -75,7 +75,6 @@ public class AutomovilDTO {
     /**
      * Imagen del automovil
      */
-    
     private String imagen ;
     /**
      * Tipo del automovil
