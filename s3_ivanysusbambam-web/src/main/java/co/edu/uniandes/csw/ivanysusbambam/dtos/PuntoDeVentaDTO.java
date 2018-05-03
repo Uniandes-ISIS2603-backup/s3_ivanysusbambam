@@ -23,6 +23,8 @@ public class PuntoDeVentaDTO {
     
     private String urlImagen;
 
+    public PuntoDeVentaDTO() {
+        //Constructor utilizado por JAX
     public PuntoDeVentaDTO(){
 
     }

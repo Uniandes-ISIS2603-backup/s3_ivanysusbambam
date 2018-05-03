@@ -41,7 +41,7 @@ public class CompraDTO {
      * Constructor por defecto
      */
     public CompraDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     //-------------------------------------GETTERS-----------------------------

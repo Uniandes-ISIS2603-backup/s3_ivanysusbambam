@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.VendedorDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.VendedorLogic;
-import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;

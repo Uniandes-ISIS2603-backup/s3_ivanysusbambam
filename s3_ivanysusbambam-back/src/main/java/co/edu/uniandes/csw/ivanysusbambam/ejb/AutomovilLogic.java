@@ -67,76 +67,67 @@ public class AutomovilLogic {
     //TODO: AE no es un buen nombre para el parámetro
     public AutomovilEntity createAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de automovil");
-        
-        if (verificarPlaca(automovilEntity.getPlaca()) == false){
+
+        if (verificarPlaca(automovilEntity.getPlaca()) == false) {
             throw new BusinessLogicException("El formato de a placa del automovil no es valido");
         }
-// TODO: Esto no es una regla de negocio
-// TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
-// TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
- // TODO: Esto es una mala pregunta porque el id aun no existe. La base de datos cuando lo persista le pone un valor
- // TODO: qué pasa si getPuntoDeVenta  es null?
-if (  automovilEntity.getCompra() == null) {
+
+        if (automovilEntity.getCompra() == null) {
             throw new BusinessLogicException("La compra es nula");
         }
- if (  automovilEntity.getCompra().getIdCompra() == null) {
+        if (automovilEntity.getCompra().getIdCompra() == null) {
             throw new BusinessLogicException("el id de la compra es nula");
         }
-    
-    // verifica que el modelo y su id no sean nulos
-    
-    if (automovilEntity.getModel() == null){
-        throw new BusinessLogicException("El modelo es nulo");
-    }
-    
-    if (automovilEntity.getModel().getId() == null){
-        throw new BusinessLogicException("El id del modelo es nulo");
-    }
-    // revisa que la marca ni su id sean null
-    if (automovilEntity.getMarca() == null){
-        throw new BusinessLogicException("la marca es nulo");
-    }
-    
-    if (automovilEntity.getMarca().getId() == null) {
+
+        // verifica que el modelo y su id no sean nulos
+        if (automovilEntity.getModel() == null) {
+            throw new BusinessLogicException("El modelo es nulo");
+        }
+
+        if (automovilEntity.getModel().getId() == null) {
+            throw new BusinessLogicException("El id del modelo es nulo");
+        }
+        // revisa que la marca ni su id sean null
+        if (automovilEntity.getMarca() == null) {
+            throw new BusinessLogicException("la marca es nulo");
+        }
+
+        if (automovilEntity.getMarca().getId() == null) {
             throw new BusinessLogicException("el id de la marca es null ");
         }
-    // revisa que el punto de venta y su id no sea null
-    if (automovilEntity.getPuntoDeVenta() == null) {
+        // revisa que el punto de venta y su id no sea null
+        if (automovilEntity.getPuntoDeVenta() == null) {
             throw new BusinessLogicException("el punto de venta es nulo");
-        }   
-    if (automovilEntity.getPuntoDeVenta().getId() == null) {
+        }
+        if (automovilEntity.getPuntoDeVenta().getId() == null) {
             throw new BusinessLogicException("el id del punto de venta es null ");
         }
-    
-    
+
         
-//TODO: qué pasa si getPuntoDeVenta  es null?
         if (puntoPersistence.find(automovilEntity.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos");
         }
-  //TODO:      qué pasa si getModel  es null?
+        
         if (modeloPersistence.find(automovilEntity.getModel().getId()) == null) {
             throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
         }
-//TODO:      qué pasa si getMarca  es null?
+        
         if (marcaPersistence.find(automovilEntity.getMarca().getId()) == null) {
             throw new BusinessLogicException("la marca del automovil no esta registrada en la base de datos ");
         }
-//TODO:      qué pasa si getCompra  es null?
+        
         if (compraPersistence.find(automovilEntity.getCompra().getIdCompra()) == null) {
             throw new BusinessLogicException("la compra asociada a este automovil no existe ");
         }
-//TODO: Falta hacer esta regla de negocio
-        //PREGUNTARLE A RUBBY COMO MANEJAR LA INFORMACION DE LAS PLACAS
-        // Verifica la regla de negocio que dice que no puede haber dos automoviles con la misma placa ni con el mismo chasis
-//        if (persistence.findByPlate(AE.getPlaca()) != null) {
-//            throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
-//        }
-//
-//        if (persistence.findBychasis(AE.getChasis()) != null) {
-//            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + AE.getChasis() + "\"");
-//
-//        }
+
+        if (persistence.findByPlate(automovilEntity.getPlaca()) != null) {
+            throw new BusinessLogicException("Ya existe un automovil con placas \"" + automovilEntity.getPlaca() + "\"");
+        }
+
+        if (persistence.findBychasis(automovilEntity.getChasis()) != null) {
+            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + automovilEntity.getChasis() + "\"");
+        }
+        
         // Invoca la persistencia para crear el automovil 
         persistence.create(automovilEntity);
         LOGGER.info("Termina proceso de creación de automovil");
@@ -183,11 +174,12 @@ if (  automovilEntity.getCompra() == null) {
             throw new BusinessLogicException("El Automovil a actualizar  no debe ser null");
         }
 // TODO: Hay que verificar que el automovil con el id dado exista
-    AutomovilEntity newAutoEntity = persistence.find(automovilEntity.getId());
-    if (newAutoEntity == null){
-         throw new BusinessLogicException("No existe el automovil que se quiere actualizar");}
+        AutomovilEntity newAutoEntity = persistence.find(automovilEntity.getId());
+        if (newAutoEntity == null) {
+            throw new BusinessLogicException("No existe el automovil que se quiere actualizar");
+        }
 // TODO: Revisar los comentarios del create
-       
+
         if (automovilEntity.getModel() == null || !newAutoEntity.getModel().equals(automovilEntity.getModel())) {
             throw new BusinessLogicException("No se puede modificar el modelo");
         }
@@ -201,17 +193,6 @@ if (  automovilEntity.getCompra() == null) {
         if (automovilEntity.getCompra() == null || newAutoEntity.compararCompra(automovilEntity.getCompra()) != 0) {
             throw new BusinessLogicException("no se puede cambiar la compra ");
         }
-
-        //VERIFICA QUE EL FORMATO DE LA PLACA SEA VÁLIDO
-//        if (verificarPlaca(AE.getPlaca()) == false) {
-//            throw new BusinessLogicException("El formato de la placa es inválido");
-//        }
-//        if (persistence.findByPlate(AE.getPlaca()) != null) {
-//            throw new BusinessLogicException("Ya existe un automovil con placas \"" + AE.getPlaca() + "\"");
-//        }
-//        if (persistence.findBychasis(AE.getChasis()) != null) {
-//            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + AE.getChasis() + "\"");
-//        }
         return persistence.update(automovilEntity);
     }
 
@@ -226,7 +207,7 @@ if (  automovilEntity.getCompra() == null) {
         if (id == null) {
             throw new BusinessLogicException("el id no puede ser null");
         }
-     // TODO: Hay que verificar que el automovil con el id dado exista   
+        // TODO: Hay que verificar que el automovil con el id dado exista   
         AutomovilEntity automovilEntity = persistence.find(id);
         if (automovilEntity == null) {
             throw new BusinessLogicException("No existe un automovil con el id dada.");
@@ -304,80 +285,129 @@ if (  automovilEntity.getCompra() == null) {
     public boolean verificarPlaca(String pPlaca) {
 
         Boolean rta = true;
-       
-        String placa [] = pPlaca.split("-");
-        char chars [] = placa[0].toCharArray();
+
+        String placa[] = pPlaca.split("-");
+        char chars[] = placa[0].toCharArray();
         char chars2[] = placa[1].toCharArray();
-        for (char c : chars){
-            if (!Character.isLetter(c))
+        for (char c : chars) {
+            if (!Character.isLetter(c)) {
                 rta = false;
+            }
         }
-        
-          for (char c : chars2){
-            if (!Character.isDigit(c))
+
+        for (char c : chars2) {
+            if (!Character.isDigit(c)) {
                 rta = false;
+            }
         }
-        
-        
-       
+
         return rta;
     }
-    
+
     /**
      * Retorna todos los automóviles de una marca dada.
+     *
      * @param marca que se busca
      * @return todos los automoviles de la marca dada.
      * @throws BusinessLogicException si la marca es nula.
      */
-    public List<AutomovilEntity> findByMarca(String marca)throws BusinessLogicException{
-        if(marca == null)
+    public List<AutomovilEntity> findByMarca(String marca) throws BusinessLogicException {
+        if (marca == null) {
             throw new BusinessLogicException("La marca no puede ser nula");
-        else
+        } else {
             return persistence.findByMarca(marca);
+        }
     }
-    
+
     /**
      * Retorna todos los automóviles de un modelo dado.
+     *
      * @param modelo modelo que se busca
      * @return lista con todos los automóviles del modelo dado.
      * @throws BusinessLogicException si el modelo es null.
      */
-    public List<AutomovilEntity> findByModelo(String modelo) throws BusinessLogicException{
-        if(modelo == null)
+    public List<AutomovilEntity> findByModelo(String modelo) throws BusinessLogicException {
+        if (modelo == null) {
             throw new BusinessLogicException("El modelo no puede ser nulo");
-        else 
+        } else {
             return persistence.findByModelo(modelo);
+        }
     }
-    
+
     /**
      * Retorna todos los autmóviles en un rango dado.
+     *
      * @param anioInicio año inicial del rango
      * @param anioFin año final del rango
      * @return listado de automóviles en el rango de años.
-     * @throws BusinessLogicException si alguno de los años es null o si anioFin<anioInicio
+     * @throws BusinessLogicException si alguno de los años es null o si
+     * anioFin<anioInicio
      */
-    public List<AutomovilEntity> findByRangoAnios(Integer anioInicio, Integer anioFin) throws BusinessLogicException{
-        if(anioInicio == null || anioFin == null) 
+    public List<AutomovilEntity> findByRangoAnios(Integer anioInicio, Integer anioFin) throws BusinessLogicException {
+        if (anioInicio == null || anioFin == null) {
             throw new BusinessLogicException("Ninguno de los años puede ser null");
-        else if (anioFin < anioInicio)
+        } else if (anioFin < anioInicio) {
             throw new BusinessLogicException("El año final debe ser después del año inicial");
-        else 
+        } else {
             return persistence.findRangoAnios(anioInicio, anioFin);
+        }
     }
-    
+
     /**
      * Retorna todos los autmóviles en un rango dado.
+     *
      * @param precioMin cota inferior del rango
      * @param precioMax cota superior del rango
      * @return listado de automóviles en el rango de precios.
-     * @throws BusinessLogicException si alguno de los años es null o si precioMax<anioMin
+     * @throws BusinessLogicException si alguno de los años es null o si
+     * precioMax<anioMin
      */
-    public List<AutomovilEntity> findByRangoPrecios(Integer precioMin, Integer precioMax) throws BusinessLogicException{
-        if(precioMin == null || precioMax == null) 
+    public List<AutomovilEntity> findByRangoPrecios(Integer precioMin, Integer precioMax) throws BusinessLogicException {
+        if (precioMin == null || precioMax == null) {
             throw new BusinessLogicException("Ninguno de los años puede ser null");
-        else if (precioMax < precioMin)
+        } else if (precioMax < precioMin) {
             throw new BusinessLogicException("El año final debe ser después del año inicial");
-        else 
+        } else {
             return persistence.findRangoPrecios(precioMin, precioMax);
+        }
+    }
+
+    /**
+     * Búsqueda maestra que incluye todos los parámetros disponibles en mi
+     * automóvil
+     *
+     * @param precioMin cota inferior del rango de precios.
+     * @param precioMax cota superior del rango de precios.
+     * @param anioMin cota inferior del rango de años.
+     * @param anioMax cota superior del rango de años.
+     * @param marca marca buscadas
+     * @param modelo modelo buscado
+     * @param color color buscado
+     * @return lista con todos los automóviles que cumplen los filtros.
+     * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin o
+     * si todos los parámetros son null
+     */
+    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color) throws BusinessLogicException {
+
+        
+        if (precioMin == null && precioMax == null && anioMin == null && anioMax == null && marca == null && modelo == null && color == null) {
+            throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
+        }
+        
+        if ((precioMax != null && precioMin == null) || (precioMin != null && precioMax == null)) {
+            throw new BusinessLogicException("La pareja precioMin/precioMax debe ir junta");
+        }
+
+        if ((anioMin != null && anioMax == null) || (anioMax != null && anioMin == null)) {
+            throw new BusinessLogicException("La pareja anioMin/anioMax debe ir junta");
+        }
+
+        if (precioMax != null && precioMin != null && precioMax < precioMin) {
+            throw new BusinessLogicException("El precio máximo debe ser mayor al precio mínimo");
+        }
+        if (anioMax != null && anioMin != null && anioMax < anioMin) {
+            throw new BusinessLogicException("El año máximo debe ser mayor al año mínimo");
+        }
+        return persistence.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color);
     }
 }

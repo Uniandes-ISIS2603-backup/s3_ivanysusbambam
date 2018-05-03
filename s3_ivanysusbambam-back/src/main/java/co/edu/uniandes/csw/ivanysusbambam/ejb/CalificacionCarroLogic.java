@@ -59,9 +59,7 @@ public class CalificacionCarroLogic {
      */
     public CalificacionCarroEntity createCalificacionCarro(CalificacionCarroEntity cc) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear una calificacion de carro ");
-        //Modificado - by Rubby orders
-        //if(persistence.find(cc.getId()) != null) throw new BusinessLogicException("Ya existe una calificacion con ese id");
-        //if(cc.getVenta() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
+       
         if(cc.getPuntaje() < 1.0 || cc.getPuntaje() > 5.0) throw new BusinessLogicException("La calificacion registrada no es valida");
         return persistence.create(cc);
     }
@@ -78,7 +76,7 @@ public class CalificacionCarroLogic {
         if(cc == null) throw new BusinessLogicException("La calificación a actualizar no puede ser null");
         CalificacionCarroEntity ccB = persistence.find(cc.getId());
         if(ccB == null) throw new BusinessLogicException("No se puede actualizar una calificacion no registrada");
-        //if(cc.getVenta() == null) throw new BusinessLogicException("No se puede registrar calificacion de un carro no vendido");
+        
         if(cc.getPuntaje() < 1 || cc.getPuntaje() > 5) throw new BusinessLogicException("La calificacion registrada no es valida");
 
         return persistence.update(cc);

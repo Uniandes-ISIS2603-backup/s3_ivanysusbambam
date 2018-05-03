@@ -12,8 +12,6 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -86,14 +84,11 @@ public class CompraResource {
      */
     @GET
     public List<CompraDetailDTO> getCompras() {
-        List<CompraDetailDTO> rpta=new ArrayList<>();
-        for(CompraEntity compra:compraLogic.findAll())
-        {
+        List<CompraDetailDTO> rpta = new ArrayList<>();
+        for (CompraEntity compra : compraLogic.findAll()) {
             rpta.add(new CompraDetailDTO(compra));
         }
-        
-        
-        
+
         return rpta;
     }
 
@@ -113,21 +108,23 @@ public class CompraResource {
      *
      * @param id Identificador de la compra que se esta buscando.
      * @return JSON {@link CityDetailDTO} - La compra buscada
+     * @throws
+     * co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException si
+     * no existe una compra con ese id.
      */
     @GET
     @Path("{idCompra: \\d+}")
-    public CompraDetailDTO getCompra(@PathParam("idCompra") Integer id) {
-        //TODO: Primero ver si la compra existe y si no existe disparar WebApplicationException
-        //TODO: Revisar el mensaje que habla de editorials
-        try {
-            CompraEntity entity= compraLogic.findCompra(id);
-            return new CompraDetailDTO(entity);
-        } catch (BusinessLogicException ex) {
-            throw new WebApplicationException("El recurso /editorials/" + id + " no existe.", 404);
+    public CompraDetailDTO getCompra(@PathParam("idCompra") Integer id) throws BusinessLogicException {
+
+        CompraEntity entity = compraLogic.findCompra(id);
+
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
+
         }
-           
-       
-        
+
+        return new CompraDetailDTO(entity);
+
     }
 
     /**
@@ -154,19 +151,15 @@ public class CompraResource {
     @PUT
     @Path("{idCompra: \\d+}")
     public CompraDetailDTO updateCompra(@PathParam("idCompra") Integer idCompra, CompraDetailDTO compra) throws BusinessLogicException {
-        
-       //TODO: Esto mismo hay que hacer en el get
-            compra.setIdCompra(idCompra);
-            CompraEntity entity=compraLogic.findCompra(idCompra);
-            if(entity==null)
-            {
-                throw new WebApplicationException("El recurso /compras/" + idCompra+ " no existe.", 404);
-            }
-            
-            return new CompraDetailDTO(compraLogic.updateCompra(entity));
-       
-        
-        
+
+        compra.setIdCompra(idCompra);
+        CompraEntity entity = compraLogic.findCompra(idCompra);
+        if (entity == null) {
+            throw new WebApplicationException("El recurso /compras/" + idCompra + " no existe.", 404);
+        }
+
+        return new CompraDetailDTO(compraLogic.updateCompra(entity));
+
     }
 
     /**

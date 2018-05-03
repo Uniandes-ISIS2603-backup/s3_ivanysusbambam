@@ -1,0 +1,95 @@
+#barraPrincipal {
+    style="  margin-bottom: 0;
+    background-color: aqua;
+    z-index: 9999;
+    border: 0;
+    font-size: 18px !important;
+    line-height: 1.42857143 !important;
+
+    border-radius: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+#nombre{
+    margin-left: 2em:
+}
+#abrirMenu{
+    margin-right: 2em;
+}
+#iconomenu{
+    color:aliceblue;
+}
+
+ /* The side navigation menu */
+.sidenav {
+    height: 100%; /* 100% Full-height */
+    width: 0; /* 0 width - change this with JavaScript */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    background-color: whitesmoke; /* Black*/
+    color:black;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 60px; /* Place content 60px from the top */
+    transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* Los links de navegación */
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: dimgray;
+    display: block;
+    transition: 0.3s;
+}
+
+/* Cuando el mouse está encima, cambia de color */
+.sidenav a:hover {
+    color: white;
+    background-color: dimgray;
+    text-decoration:none;
+}
+
+/* Esto es de la equis con la que cierro el menu */
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+/* Esto es lo que tengo que colocar si el main va a cambiar también*/
+#main {
+    transition: margin-left .5s;
+    padding: 20px;
+}
+
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 18px;}
+} 
+#elboton{
+    text-align: center;
+}
+#cerrar:hover,
+#cerrar:active,
+#cerrar:default{
+    background-color: whitesmoke;
+    text-decoration: none;
+    color: darkred;
+}
+.imagen{
+    height: 100vh; 
+    background-image: url(../resources/auto-automobile-blur-769892.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-position: center; 
+    padding-top: 250px;
+    color:azure;
+}
+.boton{
+    color:antiquewhite;
+}

@@ -66,7 +66,7 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
      * Constructor por defecto
      */
     public PuntoDeVentaDetailDTO(){
-        
+        //Constructor utilizado por JAX
     }
     
     public PuntoDeVentaDetailDTO(PuntoDeVentaEntity entity){

@@ -41,7 +41,7 @@ public class CalificacionCarroDTO {
      * Crea una nueva calificacion
      */
     public CalificacionCarroDTO(){
-        
+        //Constructor utilizado por JAX
     }
     
     /**

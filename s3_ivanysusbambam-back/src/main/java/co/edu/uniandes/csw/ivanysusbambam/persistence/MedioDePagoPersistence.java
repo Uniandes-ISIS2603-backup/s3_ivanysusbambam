@@ -79,7 +79,7 @@ public class MedioDePagoPersistence {
     /**
      * Borra el objeto que entra por parametro de la base de datos
      *
-     * @param entity La entidad a borrar
+     * @param id de la entidad a borrar.
      */
     public void delete(Long id) {
         MedioDePagoEntity entity = em.find(MedioDePagoEntity.class, id);

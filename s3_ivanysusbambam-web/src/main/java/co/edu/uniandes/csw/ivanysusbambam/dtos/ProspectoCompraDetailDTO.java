@@ -69,7 +69,7 @@ public class ProspectoCompraDetailDTO extends ProspectoCompraDTO {
      * Constructor por defecto.
      */
     public ProspectoCompraDetailDTO() {
-
+        //Constructor utilizado por JAX
     }
 
     /**
