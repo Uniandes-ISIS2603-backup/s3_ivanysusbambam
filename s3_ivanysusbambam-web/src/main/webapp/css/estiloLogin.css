@@ -1,0 +1,30 @@
+#cartaPerfil {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0,2);
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+    margin-bottom:0px;
+    
+}
+
+#titlePerfil {
+    color: grey;
+    font-size: 18px;
+}
+#elHeader{
+     margin-bottom: 0;
+    background-color: aqua;
+    z-index: 9999;
+    border: 0;
+    font-size: 18px !important;
+    line-height: 1.42857143 !important;
+    color: rgba(0,0,0,0.56);
+
+    border-radius: 0;
+    font-family: 'Open Sans', sans-serif;     margin-bottom: 0;
+}
+
+
+
+
+
