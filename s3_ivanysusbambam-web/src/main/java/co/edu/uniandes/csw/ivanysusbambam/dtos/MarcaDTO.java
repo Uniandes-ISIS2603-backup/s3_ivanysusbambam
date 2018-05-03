@@ -87,6 +87,4 @@ public class MarcaDTO {
     public void setLogo(String logo) {
         this.logo = logo;
     }
-    
-
 }
