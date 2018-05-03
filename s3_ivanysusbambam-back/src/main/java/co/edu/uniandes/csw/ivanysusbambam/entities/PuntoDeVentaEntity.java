@@ -24,7 +24,7 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     private String direccion;
     
     @Lob
-    private String urlImagen;
+    private String imagen;
     
     @PodamStrategyValue(TelefonoStrategy.class)
     private Integer telefono;
@@ -59,15 +59,15 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
         this.telefono = telefono;
     }
     
-    public String getUrlImagen() {
-        return urlImagen;
+    public String getImagen() {
+        return imagen;
     }
 
     /**
-     * @param urlImagen the urlImagen to set
+     * @param pImagen the urlImagen to set
      */
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
+    public void setImagen(String pImagen) {
+        this.imagen = pImagen;
     }
   
     /**

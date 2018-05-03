@@ -21,7 +21,7 @@ public class PuntoDeVentaDTO {
 
     private Integer telefono;
     
-    private String urlImagen;
+    private String imagen;
 
     public PuntoDeVentaDTO() {
         //Constructor utilizado por JAX
@@ -34,7 +34,7 @@ public class PuntoDeVentaDTO {
             this.id = puntoDeVenta.getId();
             this.name = puntoDeVenta.getName();
             this.telefono = puntoDeVenta.getTelefono();
-            this.urlImagen = puntoDeVenta.getUrlImagen();
+            this.imagen = puntoDeVenta.getImagen();
         }
     }
 
@@ -69,12 +69,12 @@ public class PuntoDeVentaDTO {
         this.telefono = telefono;
     }
     
-    public String getUrlImagen() {
-        return urlImagen;
+    public String getImagen() {
+        return imagen;
     }
 
-    public void setUrlImagen(String urlImagen) {
-        this.urlImagen = urlImagen;
+    public void setImagen(String pImagen) {
+        this.imagen = pImagen;
     }
 
     public PuntoDeVentaEntity toEntity() {
@@ -83,7 +83,7 @@ public class PuntoDeVentaDTO {
         entity.setId(this.id);
         entity.setName(this.name);
         entity.setTelefono(this.telefono);
-        entity.setUrlImagen(this.urlImagen);
+        entity.setImagen(this.imagen);
 
         return entity;
     }
