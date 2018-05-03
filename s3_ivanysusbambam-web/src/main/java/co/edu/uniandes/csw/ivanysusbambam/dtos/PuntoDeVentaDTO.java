@@ -25,8 +25,6 @@ public class PuntoDeVentaDTO {
 
     public PuntoDeVentaDTO() {
         //Constructor utilizado por JAX
-    public PuntoDeVentaDTO(){
-
     }
 
     public PuntoDeVentaDTO(PuntoDeVentaEntity puntoDeVenta) {
