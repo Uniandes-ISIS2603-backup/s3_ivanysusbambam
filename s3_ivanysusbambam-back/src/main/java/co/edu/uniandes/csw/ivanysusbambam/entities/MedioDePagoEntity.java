@@ -86,6 +86,9 @@ public class MedioDePagoEntity implements Serializable
         PAY_PAL, CREDITO, PSE;
     }
     
+    public boolean equals(MedioDePagoEntity mdp){
+        return this.numero.equals(mdp.numero);
+    }
 }
 
 

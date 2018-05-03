@@ -135,7 +135,7 @@ public class VentaLogic {
         }
         if (VE.getPuntoDeVenta() == null || !VEO.getPuntoDeVenta().equals(VE.getPuntoDeVenta())) {
             throw new BusinessLogicException("no se puede actualizar el punto de venta  de la venta");
-        }
+        }        
         if (VE.getMedioDePago() == null || !VEO.getMedioDePago().equals(VE.getMedioDePago())) {
             throw new BusinessLogicException("no se puede actualizar el medio de pago  de la venta");
         }
