@@ -63,7 +63,7 @@ public class VentaDetailDTO extends VentaDTO {
         super(entity);
 
         if (entity != null) {
-            if (entity.getCliente() != null) {
+        if (entity.getCliente() != null) {
                 cliente = new ClienteDTO(entity.getCliente());
             }
             if (entity.getAutomovil() != null) {
@@ -82,7 +82,7 @@ public class VentaDetailDTO extends VentaDTO {
                 vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
             }
 
-        }
+       }
 
     }
 

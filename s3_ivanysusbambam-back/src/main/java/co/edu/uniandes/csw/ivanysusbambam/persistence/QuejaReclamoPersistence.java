@@ -88,7 +88,7 @@ public class QuejaReclamoPersistence {
      * @param id id de la queja o reclamo  que se desea eliminar 
      */
     public void delete(Long id) {
-        LOGGER.log(Level.INFO, "Borrando queja o reclamo  con id={0}", id);
+        LOGGER.log(Level.INFO, "Borrando quejaReclamo con id={0}", id);
         QuejaReclamoEntity entity = em.find(QuejaReclamoEntity.class, id);
         em.remove(entity);
     }
