@@ -94,6 +94,9 @@ public class MedioDePagoEntity implements Serializable
     }
     
     public boolean equals(MedioDePagoEntity mdp){
+        if(mdp == null){
+            return false;
+        }
         return this.numero.equals(mdp.numero);
     }
 }
