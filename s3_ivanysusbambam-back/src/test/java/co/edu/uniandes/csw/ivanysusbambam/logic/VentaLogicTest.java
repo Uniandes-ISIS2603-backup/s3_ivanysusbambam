@@ -150,6 +150,9 @@ public class VentaLogicTest {
             entity.setVendedorEncargado(vendedorData.get(0));
             entity.setMedioDePago(medioData.get(0));
             entity.setPuntoDeVenta(puntoData.get(0));
+            
+            Long id = i+2L;
+            entity.setId(id);
 
             em.persist(entity);
             data.add(entity);
@@ -165,15 +168,28 @@ public class VentaLogicTest {
     @Test
     public void createVentaTest()   {
           
-        VentaEntity newEntity = factory.manufacturePojo(VentaEntity.class);
+        VentaEntity newEntity1 = factory.manufacturePojo(VentaEntity.class);
+        VentaEntity newEntity2 = factory.manufacturePojo(VentaEntity.class);
+        VentaEntity newEntity3 = factory.manufacturePojo(VentaEntity.class);
+       Long id1 = 14L;
+       Long id2 = 15L;
+       Long id3 = 16L;
+        newEntity1.setId(id1);
+        newEntity2.setId(id2);
+        newEntity3.setId(id3);
+        newEntity1.setAutomovil(automovilData.get(0));
+        newEntity1.setMedioDePago(medioData.get(0));
+        newEntity1.setPuntoDeVenta(puntoData.get(0));
+        newEntity1.setCliente(ClienteData.get(0));
+        
         
         
         boolean ex = false;
           try{
-        VentaEntity result = ventaLogic.createVenta(newEntity);
+        VentaEntity result = ventaLogic.createVenta(newEntity1);
         Assert.assertNotNull(result);
         VentaEntity entity = em.find(VentaEntity.class, result.getId());
-        Assert.assertEquals(newEntity.getId(), entity.getId());}
+        Assert.assertEquals(newEntity1.getId(), entity.getId());}
            catch(BusinessLogicException e) 
         {
             ex =true;

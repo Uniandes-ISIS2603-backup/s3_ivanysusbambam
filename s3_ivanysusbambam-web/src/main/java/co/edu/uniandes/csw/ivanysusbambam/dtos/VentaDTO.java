@@ -53,7 +53,7 @@ public class VentaDTO {
      *
      * @return devuelve el id de la venta
      */
-    public long getIdVenta() {
+    public Long getIdVenta() {
         return idVenta;
     }
 

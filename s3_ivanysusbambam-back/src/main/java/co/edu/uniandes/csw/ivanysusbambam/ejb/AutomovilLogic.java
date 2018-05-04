@@ -120,13 +120,6 @@ public class AutomovilLogic {
             throw new BusinessLogicException("la compra asociada a este automovil no existe ");
         }
 
-        if (persistence.findByPlate(automovilEntity.getPlaca()) != null) {
-            throw new BusinessLogicException("Ya existe un automovil con placas \"" + automovilEntity.getPlaca() + "\"");
-        }
-
-        if (persistence.findBychasis(automovilEntity.getChasis()) != null) {
-            throw new BusinessLogicException("Ya existe un automovil con chasis \"" + automovilEntity.getChasis() + "\"");
-        }
         
         // Invoca la persistencia para crear el automovil 
         persistence.create(automovilEntity);

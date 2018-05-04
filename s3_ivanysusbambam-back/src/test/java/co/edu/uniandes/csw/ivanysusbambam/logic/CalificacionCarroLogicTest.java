@@ -97,6 +97,8 @@ public class CalificacionCarroLogicTest {
         
         for(int i = 0; i < 3; i++ ){
             VentaEntity ventaEntity = factory.manufacturePojo(VentaEntity.class);
+            Long id = i+2L;
+            ventaEntity.setId(id);
             em.persist(ventaEntity);
             ventaData.add(ventaEntity);
             System.out.println("venta " + ventaEntity.getName());

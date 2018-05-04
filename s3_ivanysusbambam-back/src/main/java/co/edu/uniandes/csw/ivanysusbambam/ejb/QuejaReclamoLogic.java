@@ -76,16 +76,20 @@ public class QuejaReclamoLogic
     
     /**
      * Elimina un prospecto de compra. 
-     * @param Id el prospecto de compra que se busca eliminar de la BD.
+     * @param id el prospecto de compra que se busca eliminar de la BD.
      * @throws BusinessLogicException si pc == null o si el prospecto de compra no existe en la BD.
      */
-    public void deleteQuejaReclamo(Long  Id) throws BusinessLogicException{
+    public void deleteQuejaReclamo(Long  id) throws BusinessLogicException{
         
-       LOGGER.log(Level.INFO, "Intentando aeliminar QuejaReclamo con id: {0}",Id);
-        if(Id == null) throw new BusinessLogicException("el id no puede ser null");
-        QuejaReclamoEntity QRE = persistence.find(Id);
-        if(QRE == null) throw new BusinessLogicException("No existe una QuejaReclamo el id dado.");
-         persistence.delete(Id);
+           LOGGER.log(Level.INFO, "Intentando eliminar quejaReclamo con id: {0}", id);
+        if (id == null) {
+            throw new BusinessLogicException("el id no puede ser null");
+        }
+        QuejaReclamoEntity QRE = persistence.find(id);
+        if (QRE == null) {
+            throw new BusinessLogicException("No existe una quejaReclamo el id dado.");
+        }
+        persistence.delete(id);
     }
 
     /**

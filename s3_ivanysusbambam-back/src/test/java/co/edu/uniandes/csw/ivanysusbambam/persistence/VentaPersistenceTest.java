@@ -111,13 +111,28 @@ public class VentaPersistenceTest {
      *
      */
     private void insertData() {
-        PodamFactory factory = new PodamFactoryImpl();
-        for (int i = 0; i < 3; i++) {
-            VentaEntity entity = factory.manufacturePojo(VentaEntity.class);
+       PodamFactory factory = new PodamFactoryImpl();
+        VentaEntity newEntity1 = factory.manufacturePojo(VentaEntity.class);
+        VentaEntity newEntity2 = factory.manufacturePojo(VentaEntity.class);
+        VentaEntity newEntity3 = factory.manufacturePojo(VentaEntity.class);
+       Long id1 = 11L;
+       Long id2 = 12L;
+       Long id3 = 13L;
+        newEntity1.setId(id1);
+        newEntity2.setId(id2);
+        newEntity3.setId(id3);
 
-            em.persist(entity);
-            data.add(entity);
-        }
+
+
+            em.persist(newEntity1);
+            data.add(newEntity1);
+        
+            em.persist(newEntity2);
+            data.add(newEntity2);
+        
+            em.persist(newEntity3);
+            data.add(newEntity3);
+        
     }
 
     /**
@@ -128,14 +143,22 @@ public class VentaPersistenceTest {
     @Test
     public void createVentaTest() {
         PodamFactory factory = new PodamFactoryImpl();
-        VentaEntity newEntity = factory.manufacturePojo(VentaEntity.class);
-        VentaEntity result = ventaPersistence.create(newEntity);
+        VentaEntity newEntity1 = factory.manufacturePojo(VentaEntity.class);
+        VentaEntity newEntity2 = factory.manufacturePojo(VentaEntity.class);
+        VentaEntity newEntity3 = factory.manufacturePojo(VentaEntity.class);
+       Long id1 = 14L;
+       Long id2 = 15L;
+       Long id3 = 16L;
+        newEntity1.setId(id1);
+        newEntity2.setId(id2);
+        newEntity3.setId(id3);
+        VentaEntity result = ventaPersistence.create(newEntity1);
 
         Assert.assertNotNull(result);
 
         VentaEntity entity = em.find(VentaEntity.class, result.getId());
 
-        Assert.assertEquals(newEntity.getName(), entity.getName());
+        Assert.assertEquals(newEntity1.getName(), entity.getName());
 
     }
 

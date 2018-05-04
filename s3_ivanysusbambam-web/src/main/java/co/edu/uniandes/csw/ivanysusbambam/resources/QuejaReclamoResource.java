@@ -151,17 +151,16 @@ public class QuejaReclamoResource {
      * </code>
      * </pre>
      *
-     * @param pid id de la queja o reclamo .
-     * @throws BusinessLogicException si no existe el cliente con el id dado o
-     * la queja o reclamo con el id dado.
+     * @param id Identificador de la venta que se desea borrar. Este debe ser
+     * una cadena de dígitos.
      */
     @DELETE
-    @Path("{pid: \\d+}")
-    public void deleteQuejaReclamo(@PathParam("pid") Long pid) throws BusinessLogicException {
-        QuejaReclamoEntity queja = quejaLogic.findQuejaReclamo(pid);
+    @Path("{id: \\d+}")
+    public void deleteQuejaReclamo(@PathParam("id") Long id) throws BusinessLogicException {
+        QuejaReclamoEntity queja = quejaLogic.findQuejaReclamo(id);
 
         if (queja == null) {
-            throw new WebApplicationException("El recurso queja " + pid + " no existe");
+            throw new WebApplicationException("El recurso quejaReclamo " + id + " no existe");
         }
         quejaLogic.deleteQuejaReclamo(queja.getId());
     }

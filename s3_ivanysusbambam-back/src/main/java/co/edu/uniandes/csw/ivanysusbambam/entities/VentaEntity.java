@@ -7,7 +7,11 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -15,10 +19,19 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author hd.castellanos
  */
 @Entity
-public class VentaEntity extends BaseEntity implements Serializable {
+public class VentaEntity  implements Serializable {
 
-    
-    
+    /**
+     * Id de la venta
+     */
+      @Id
+     private Long idVenta;
+      /**
+       * Nombre de la venta 
+       */
+    private String name;
+
+  
     
     
     /**
@@ -49,7 +62,7 @@ public class VentaEntity extends BaseEntity implements Serializable {
      * Atributo de la calificacion del carro asociado a esta venta 
      */
     @PodamExclude
-    @ManyToOne
+    @OneToOne
     private CalificacionCarroEntity calificacionCarro;
     
     
@@ -150,6 +163,21 @@ public class VentaEntity extends BaseEntity implements Serializable {
      */
     public void setAutomovil(AutomovilEntity automovil) {
         this.automovil = automovil;
+    }
+      public Long getId() {
+        return idVenta;
+    }
+
+    public void setId(Long id) {
+        this.idVenta = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     
