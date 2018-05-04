@@ -17,6 +17,22 @@
                $scope.automoviles = response.data; 
             });
             
+            $http.get("api/modelos").then(function(response){
+               $scope.modelos = response.data; 
+            });
+            $http.get("api/marcas").then(function(response){
+               $scope.marcas = response.data; 
+            });
+            var anos=[];
+            for(var i=1990;i<2019;i++)
+            {
+                anos.push(i);
+            }
+            $scope.anos=anos;
+            
+           
+            
+            
     }]);
     
 })(window.angular);

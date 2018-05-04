@@ -17,7 +17,7 @@ and open the template in the editor.
                                    font-family: 'Open Sans', sans-serif;">
                                 Marca:</label>
 
-                            <select class ="form-control"   required ng-model = "marca" ng-options="x.nombre for x in listaMarcas"></select>
+                            <select class ="form-control"   required ng-model = "marca" ng-options="x.name for x in marcas"></select>
 
                         </div>   
                         <div class="form-group">
@@ -26,7 +26,7 @@ and open the template in the editor.
                                    line-height: 1.42857143 !important;
                                    font-family: 'Open Sans', sans-serif;">Modelo:</label>
 
-                            <select class ="form-control"   required ng-model = "modelo" ng-options="x.nombre for x in listaMarcas"></select>
+                            <select class ="form-control"   required ng-model = "modelo" ng-options="x.name for x in modelos"></select>
 
                         </div> 
                         <div class="form-group">
@@ -34,59 +34,46 @@ and open the template in the editor.
                                    font-size: 18px ;
                                    line-height: 1.42857143 !important;
                                    font-family: 'Open Sans', sans-serif;">Color:</label>
-                            <select class="form-control" required ng-model = "color" id="sel1">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
 
-                            </select>
+                            <select class ="form-control"   required ng-model = "color" ng-options="x.name for x in modelos"></select>
+
                         </div> 
 
                         <div class="form-group">
                             <label for="sel1" style="color:#1a237e; 
                                    font-size: 18px ;
                                    line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">Fecha Maxima:</label>
-                            <select class="form-control"  required ng-model = "fechaMax" id="sel1">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                                   font-family: 'Open Sans', sans-serif;">Fecha Máxima:</label>
 
-                            </select>
+                            <select class ="form-control"   required ng-model = "fechaMax" ng-options="x for x in anos"></select>
+
                         </div> 
                         <div class="form-group">
                             <label for="sel1" style="color:#1a237e; 
                                    font-size: 18px ;
                                    line-height: 1.42857143 !important;
                                    font-family: 'Open Sans', sans-serif;">Fecha Minima:</label>
-                            <select class="form-control"  required ng-model = "fechaMin" id="sel1">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                            <select class="form-control"  required ng-model = "fechaMin" ng-options="x for x in anos"> </select>
+                               
 
-                            </select>
+                           
                         </div>
                         <div class="form-group">
                             <label for="sel1" style="color:#1a237e; 
                                    font-size: 18px ;
                                    line-height: 1.42857143 !important;
                                    font-family: 'Open Sans', sans-serif;">Precio Maximo:</label>
-                            <select class="form-control"  required ng-model = "precioMax" id="sel1">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-
-                            </select>
+                            <input type="text" class="form-control" required ng-model = "precioMax"  id="usr">
                         </div> 
                         <div class="form-group">
                             <label for="sel1" style="color:#1a237e; 
                                    font-size: 18px ;
                                    line-height: 1.42857143 !important;
                                    font-family: 'Open Sans', sans-serif;">Precio Minimo:</label>
-                            <select class="form-control"  required ng-model = "precioMin" id="sel1">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-
-                            </select>
+                           <input type="text" class="form-control" required ng-model = "precioMin" id="usr">
 
                             <div style="text-align: center; margin:20px">
-                                <a ui-sref="automovilListFiltros">
+                                <a ui-sref="automovilListFiltros({marca:marca, color:color, fechaMin:fechaMin, fechaMax:fechaMax,modelo:modelo,precioMin:precio,precioMax:precioMax})">
                                     <button type="button" class="btn " style=" background-color:  #9ACD32;color: white">Buscar</button>
                                 </a>
                             </div>  
@@ -139,7 +126,7 @@ and open the template in the editor.
         </div>
 
         <div class="col-md-5">
-            <!-- uiView: automovilDetailView --><div ui-view="automovilDetailView" style="margin: 0px" class="ng-scope">
+            <!-- uiView: automovilDetailView --><div ui-view="automovilDetailView({marca:BMW, color:$scope.color, fechaMin:$scope.fechaMin, fechaMax:$scope.fechaMax,modelo:$scope.modelo,precioMin:$scope.precio,precioMax:$scope.precioMax})" style="margin: 0px" class="ng-scope">
             </div>   
         </div>
     </div>

@@ -127,6 +127,11 @@
          <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    
+    <script> 
+        
+   
+    </script>
 
     <style>
              /* Make the image fully responsive */
@@ -249,82 +254,38 @@
                         <!-- Me falta asociar el icono-->
                         <div class="form-group">
                             <label for="filtroMarca">Marca</label>
-                            <select class="form-control">
-                <option>Audi</option>
-                <option>Bentley</option>
-                <option>Chevrolet</option>
-                <option>Dodge</option>
-                <option>Fiat</option>
-                </select>
+                            <select class ="form-control"   required ng-model = "marca" ng-options="x.name for x in marcas"></select>
                         </div>
                     </div>
                     <div class="col-sm-4">
                         <!--<span class="input-group-addon"><i class=""></i></span>-->
                         <label for="filtroMarca">Modelo</label>
-                        <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            </select>
+                      <select class ="form-control"   required ng-model = "color" ng-options="x.name for x in modelos"></select>
                     </div>
 
                     <div class="col-sm-3">
                         <!--<span class="input-group-addon"><i class=""></i></span>-->
                         <label for="filtroMarca">Desde</label>
-                        <select class="form-control">
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-            </select>
+                        <input type="text" class="form-control" required ng-model = "precioMax"  id="usr">
                     </div>
                     
 
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="filtroMarca">Hasta</label>
-                            <select class="form-control">
-        <option>1</option>
-        <option>2</option>
-        <option>3</option>
-        <option>4</option>
-        <option>5</option>
-        </select>
+                          <input type="text" class="form-control" required ng-model = "precioMax"  id="usr">
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="filtroMarca">Año desde</label>
-                            <select class="form-control">
-            <option>2010</option>
-            <option>2011</option>
-            <option>2012</option>
-            <option>2013</option>
-            <option>2014</option>
-            <option>2015</option>
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-            </select>
+                             <select class ="form-control"   required ng-model = "fechaMin" ng-options="x for x in anos"></select>
                         </div>
                     </div>
                     <div class="col-sm-3">
                         <div class="form-group">
                             <label for="filtroMarca">Año hasta</label>
-                            <select class="form-control">
-            <option>2010</option>
-            <option>2011</option>
-            <option>2012</option>
-            <option>2013</option>
-            <option>2014</option>
-            <option>2015</option>
-            <option>2016</option>
-            <option>2017</option>
-            <option>2018</option>
-            </select>
+                       <select class ="form-control"   required ng-model = "fechaMax" ng-options="x for x in anos"></select>
                         </div>
                     </div>
                     
@@ -332,7 +293,9 @@
 
                     </div>
                     <div class="col-sm-4" id="elboton">
-                        <button type="button" class="btn btn-dark" ng-click = "buscarAuto()">Buscar</button>
+                        <a ui-sref="automovilListFiltros({marca:marca, color:color, fechaMin:fechaMin, fechaMax:fechaMax,modelo:modelo,precioMin:precio,precioMax:precioMax})">
+                        <button type="button" class="btn btn-dark" >Buscar</button>
+                        </a>
                     </div>
                     <div class="col-sm-4">
 

@@ -42,6 +42,15 @@
             }).state("automovilListFiltros", {
                 url: "/automovilListFiltered",
                  parent: "listAutomoviles",
+                 params:{
+                  fechaMin:null,
+                  fechaMax:null,
+                  marca:null,
+                  modelo:null,
+                  color:null,
+                  precioMin:null,
+                  precioMax:null
+                 },
                views: {
                   
                     'mainView': {
