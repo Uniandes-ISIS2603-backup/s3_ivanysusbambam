@@ -6,11 +6,14 @@
 package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
 /**
@@ -36,6 +39,10 @@ public class MedioDePagoEntity implements Serializable
     @ManyToOne
     @PodamExclude
     private ClienteEntity cliente;
+    
+     @PodamExclude
+    @OneToMany(mappedBy = "medioDePago", cascade = CascadeType.ALL)
+    private List<VentaEntity> ventas;
     
 /**
  * Da el numero del medio de pago

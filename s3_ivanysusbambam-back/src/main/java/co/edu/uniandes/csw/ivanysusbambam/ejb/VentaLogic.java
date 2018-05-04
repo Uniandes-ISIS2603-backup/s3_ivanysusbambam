@@ -50,22 +50,22 @@ public class VentaLogic {
     /**
      * Crea un prospecto de compra.
      *
-     * @param VE prospecto de compra que se quiere añadir
+     * @param Ve prospecto de compra que se quiere añadir
      * @return el prospecto de compra recién añadido.
      * @throws BusinessLogicException si el id, cliente, vendedor, o automóvil
      * del cliente no existe o es inválido.
      */
     public VentaEntity createVenta(VentaEntity Ve) throws BusinessLogicException {
-        if (Ve == null) {
-            throw new BusinessLogicException("La venta no debe ser null");
-        }
-        if (Ve.getVendedorEncargado() == null || Ve.getCliente() == null || Ve.getAutomovil() == null || Ve.getCalificacionCarro() == null) {
-            throw new BusinessLogicException("Ninguno de los atributos de la venta puede ser null");
-        }
+       
+          
+        
+//        if (Ve.getVendedorEncargado() == null) {
+//            throw new BusinessLogicException("El vendedoer no puede ser null");
+//        }
 
-        if (Ve.getVendedorEncargado().getCarnetVendedor() == null) {
-            throw new BusinessLogicException("El carnet del vendedor no puede ser null");
-        }
+//        if (Ve.getVendedorEncargado().getCarnetVendedor() == null) {
+//            throw new BusinessLogicException("El carnet del vendedor no puede ser null");
+//        }
 
         if (Ve.getCliente().getCedula() == null) {
             throw new BusinessLogicException("La cédula del cliente no puede ser null");
@@ -75,9 +75,9 @@ public class VentaLogic {
             throw new BusinessLogicException("El id del punto de venta no puede ser null");
         }
 
-        if (vendedorPersistence.find(Ve.getVendedorEncargado().getCarnetVendedor()) == null) {
-            throw new BusinessLogicException("El vendedor de la venta no esta registrado en la base de datos");
-        }
+//        if (vendedorPersistence.find(Ve.getVendedorEncargado().getCarnetVendedor()) == null) {
+//            throw new BusinessLogicException("El vendedor de la venta no esta registrado en la base de datos");
+//        }
         if (clientePersistence.find(Ve.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente de la venta no está registrado en la base de datos");
         }
