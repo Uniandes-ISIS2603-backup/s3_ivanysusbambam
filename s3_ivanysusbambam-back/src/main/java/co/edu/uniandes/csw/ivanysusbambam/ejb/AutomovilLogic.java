@@ -12,6 +12,7 @@ import co.edu.uniandes.csw.ivanysusbambam.persistence.CompraPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MarcaPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ModelPersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.PuntoDeVentaPersistence;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -383,12 +384,17 @@ public class AutomovilLogic {
      * @param marca marca buscadas
      * @param modelo modelo buscado
      * @param color color buscado
+     * @param kilometrajeMin cota inferior del rango de kilometraje
+     * @param kilometrajeMax cota superior del rango de kilometraje.
      * @return lista con todos los automóviles que cumplen los filtros.
      * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin o
      * si todos los parámetros son null
      */
-    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color) throws BusinessLogicException {
+    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
 
+        if((kilometrajeMin == null) != (kilometrajeMax==null)){
+             throw new BusinessLogicException("La pareja kilometrajeMin/kilometrajeMax debe ir junta");
+        }
         
         if (precioMin == null && precioMax == null && anioMin == null && anioMax == null && marca == null && modelo == null && color == null) {
             throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
@@ -408,6 +414,20 @@ public class AutomovilLogic {
         if (anioMax != null && anioMin != null && anioMax < anioMin) {
             throw new BusinessLogicException("El año máximo debe ser mayor al año mínimo");
         }
-        return persistence.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color);
+        return persistence.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
+    }
+    
+    public List<AutomovilEntity> listColores(){
+        
+        List<String> lista = persistence.listColores();
+        List<AutomovilEntity> ret = new ArrayList<>();
+        
+        for(String s : lista){
+            AutomovilEntity e = new AutomovilEntity();
+            e.setName(s);
+            ret.add(e);
+        }
+        
+        return ret;
     }
 }
