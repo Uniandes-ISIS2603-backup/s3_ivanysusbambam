@@ -1,5 +1,5 @@
 #barraPrincipal {
-    style="  margin-bottom: 0;
+     margin-bottom: 0;
     background-color: aqua;
     z-index: 9999;
     border: 0;
@@ -7,10 +7,11 @@
     line-height: 1.42857143 !important;
 
     border-radius: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;     margin-bottom: 0;
+
 }
 #nombre{
-    margin-left: 2em:
+    margin-left: 2em;
 }
 #abrirMenu{
     margin-right: 2em;
@@ -89,6 +90,14 @@
     background-position: center; 
     padding-top: 250px;
     color:azure;
+}
+.imagen2{
+    height: 100vh; 
+    background-image: url(../resources/auto-automobile-blur-769892.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+    padding-top: 100px;
 }
 .boton{
     color:antiquewhite;

@@ -10,6 +10,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
@@ -21,6 +22,9 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     
     private String direccion;
+    
+    @Lob
+    private String imagen;
     
     @PodamStrategyValue(TelefonoStrategy.class)
     private Integer telefono;
@@ -40,7 +44,6 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     @PodamExclude
     @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<AutomovilEntity> automoviles;
-
     
     public String getDireccion(){
         return direccion;
@@ -54,6 +57,17 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     
     public void setTelefono(Integer telefono){
         this.telefono = telefono;
+    }
+    
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param pImagen the urlImagen to set
+     */
+    public void setImagen(String pImagen) {
+        this.imagen = pImagen;
     }
   
     /**

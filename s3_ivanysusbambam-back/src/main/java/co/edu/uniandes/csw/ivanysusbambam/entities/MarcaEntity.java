@@ -40,9 +40,6 @@ public class MarcaEntity extends BaseEntity implements Serializable{
         return modelos;
     }
     
-    
-   
-    
     public void setAutomoviles(List<AutomovilEntity> autos){
         this.automoviles = autos;
     }
@@ -57,12 +54,5 @@ public class MarcaEntity extends BaseEntity implements Serializable{
 
     public void setLogo(String logo) {
         this.logo = logo;
-    }
-    
-    
-    
-   
-    
-    
-    
+    }     
 }

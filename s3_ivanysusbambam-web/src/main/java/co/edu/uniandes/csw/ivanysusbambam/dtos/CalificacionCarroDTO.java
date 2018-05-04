@@ -21,6 +21,7 @@ public class CalificacionCarroDTO {
      */
     private Long id;
     
+    
     /**
      * Representa el nombre del objeto
      */
@@ -49,10 +50,10 @@ public class CalificacionCarroDTO {
      */
     public CalificacionCarroDTO(CalificacionCarroEntity calificacionCarro){
         if(calificacionCarro != null){
-         this.id = calificacionCarro.getId();
-        this.name = calificacionCarro.getName();
-        this.comentario = calificacionCarro.getComentario();
-        this.puntaje = calificacionCarro.getPuntaje();
+            this.id = calificacionCarro.getId();
+            this.name = calificacionCarro.getName();
+            this.comentario = calificacionCarro.getComentario();
+            this.puntaje = calificacionCarro.getPuntaje();
         }
         
     }

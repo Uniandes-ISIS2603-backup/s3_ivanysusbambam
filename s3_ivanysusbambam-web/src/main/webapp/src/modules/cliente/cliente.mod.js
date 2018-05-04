@@ -70,9 +70,28 @@
             },
             views: {
                 mainView: {
-                        templateUrl: basePath+"cliente.perfil.html",
+                        templateUrl: basePath+"/Perfil/cliente.perfil.html",
                         controller: "clienteDetailCtrl",
                         controllerAs: "ctrl"
+                    },
+                    perfil:{
+                       templateUrl: basePath+"Perfil/cliente.perfilInicial.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("mediosDePagoCliente",{
+            url: "/perfil/{clienteId: int}/mediosDePago",
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/mediosDePago.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
                     }
             }
         }).state("editarPerfilCliente",{

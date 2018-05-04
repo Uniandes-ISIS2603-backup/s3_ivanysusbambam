@@ -45,6 +45,11 @@ public class ClienteDTO {
     
     //TODO: DONE debe ser Long y no long. Pero en el caso de la cédula sería mejor que fuera un String de dígitos
     private Long cedula;
+    
+    /**
+     * Representa la imagen del cliente
+     */
+    private String imagen;
 
     //Constructor vacío
     /**
@@ -62,6 +67,7 @@ public class ClienteDTO {
         if (ce != null) {
             this.nombre = ce.getNombre();
             this.cedula = ce.getCedula();
+            this.imagen = ce.getImagen();
         }
     }
     
@@ -73,6 +79,7 @@ public class ClienteDTO {
         ClienteEntity ce = new ClienteEntity();
         ce.setNombre(nombre);
         ce.setCedula(cedula);
+        ce.setImagen(imagen);
         return ce;
     }
 
@@ -107,5 +114,14 @@ public class ClienteDTO {
     public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
 
 }
