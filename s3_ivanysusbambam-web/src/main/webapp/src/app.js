@@ -31,7 +31,8 @@
         'modeloModule',
         'marcaModule',
         //Módulo del prospecto de compra
-        'pcModule'
+        'pcModule',
+        'loginModule',
        // 'loginModule'/*,
         //Modulo de las quejas/reclamos
         ,

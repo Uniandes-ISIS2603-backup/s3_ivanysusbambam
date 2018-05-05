@@ -1,50 +1,69 @@
 
-<div class="imagen2">
+<div class="imagen2" >
+    
     <div class="row centered" style="margin:10px">
         <div class="card" id="cartaPerfil" style="width:900px; border-color: black ">
+            
             <div ui-view = "perfil" >
-                 <div class="card-header text-white" id="elHeader" style="background-color: rgba(0, 0, 0, 0.56)">
-        <img  src="http://www.sibrom.com.br/wp-content/uploads/2016/08/13.jpg" alt="John" style="width:30%" />
-    </div>
+                <div class="card-header text-white" id="elHeader" style="background-color: rgba(0, 0, 0, 0.56)">
+                    <img  src="http://www.sibrom.com.br/wp-content/uploads/2016/08/13.jpg" alt="John" style="width:30%" />
+                </div>
 
-    <h1>John Doe</h1>
-    <p id="titlePerfil">CEO & Founder, Example</p>
-    <p>Harvard University</p>
-
-
-    <table class="table table-dark" style="margin-bottom:0px; border-color: black">
-        <thead>
-            <tr>
-            <th><i class="material-icons" style="font-size:30px; margin: 7px">local_grocery_store</i>
-                <p>Ver compras</p>
-            </th>
-            <th>
-                <a ui-sref="mediosDePagoCliente()"> 
-                    <i class="fa fa-credit-card-alt" style="font-size:24px; margin: 7px"> </i>
-                    <p>Ver medios de pago</p>
-                </a>
-            </th>
-            <th><i class="fa fa-automobile" style="font-size:26px; margin: 7px; hover {
-                       color: green;
-                       background-color: dimgray;
-                       text-decoration:none;"></i>
-                   <p>Ver ventas</p></th>
-                <th><i class="fa fa-comment-o" style="font-size:26px; margin: 7px"></i>
-                        <p>Ver Comentarios</p>   </th>
-                    <th> <i class="fa fa-edit" style="font-size:26px;text-align: center"></i>
-                        <p>Quejas y reclamos</p>  </th>
+                <h1>John Doe</h1>
+                <p id="titlePerfil">CEO & Founder, Example</p>
+                <p>Harvard University</p>
 
 
-                    </tr>
-                </thead>
+                <table class="table table-dark" style="margin-bottom:0px; border-color: black">
+                    <thead>
+                        <tr>
+                            <th>
+                                 <a ui-sref="ComprasCliente()"> 
+                                <i class="material-icons" style="font-size:30px; margin: 7px">local_grocery_store</i>
+                                <p>Ver compras</p>
+                                </a>
+                            </th>
+                            <th>
+                                <a ui-sref="mediosDePagoCliente()"> 
+                                    <i class="fa fa-credit-card-alt" style="font-size:24px; margin: 7px"> </i>
+                                    <p>Ver medios de pago</p>
+                                </a>
+                            </th>
+
+                            <th>
+                                <a ui-sref="VentasCliente()"> 
+                                    <i class="fa fa-automobile" style="font-size:26px; margin: 7px; hover {
+                                           color: green;
+                                           background-color: dimgray;
+                                           text-decoration:none;"></i>
+                                       <p>Ver ventas</p>
+                                    </a>
+                                </th>
+                                <th>                       
+                                    <a ui-sref="ComentariosCliente()"> 
+                                        <i class="fa fa-comment-o" style="font-size:26px; margin: 7px"></i>
+                                            <p>Ver Comentarios</p>  
+                                        </a>
+
+                                    </th>
+                                    <th> 
+                                         <a ui-sref="QyRCliente()"> 
+                                        <i class="fa fa-edit" style="font-size:26px;text-align: center"></i>
+                                        <p>Quejas y reclamos</p> 
+                                        </a>
+                                    </th>
 
 
-            </table>
+                                </tr>
+                            </thead>
+
+
+                        </table>
+                    </div>
+                </div>
+
             </div>
         </div>
-
-    </div>
-</div>
 
 
 

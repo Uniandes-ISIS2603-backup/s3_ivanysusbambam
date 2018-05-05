@@ -8,9 +8,11 @@
                                 
     function($scope, $http, $state,$rootScope){
       
+      
+      
     $scope.user = {};
     $scope.data = {};
-        $http.get('../../data/usuarios.json').then(function (response)     {
+        $http.get('api/clientes').then(function (response)     {
                 $scope.users = response.data;
             });
         
