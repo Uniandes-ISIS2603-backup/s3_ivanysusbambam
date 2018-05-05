@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -42,6 +43,9 @@ public class VendedorEntity implements Serializable{
     @PodamStrategyValue(CedulaStrategy.class)
     private Long cedula;
     
+    @Lob
+    private String imagen;
+    
     @PodamExclude
     @OneToMany(mappedBy="vendedor",cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
@@ -57,6 +61,8 @@ public class VendedorEntity implements Serializable{
     @PodamExclude
     @ManyToOne
     private PuntoDeVentaEntity puntoDeVenta;
+    
+    
 
     public void setProspectosCompra(List<ProspectoCompraEntity> prospectosCompra) {
         this.prospectosCompra = prospectosCompra;
@@ -138,6 +144,16 @@ public class VendedorEntity implements Serializable{
     public PuntoDeVentaEntity getPuntoDeVenta() {
         return puntoDeVenta;
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
+    
     
     @Override
     public boolean equals(Object obj) {
