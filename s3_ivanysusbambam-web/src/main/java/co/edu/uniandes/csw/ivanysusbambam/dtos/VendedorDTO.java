@@ -48,15 +48,17 @@ public class VendedorDTO {
     /**
      * Representa la cédula del vendedor.
      */
-    //TODO: DONE debe ser Long y no long. 
     private Long cedula;
     
     /**
      * Representa el carnet del vendedor.
      */
-    //TODO: DONE debe ser Long y no long. 
     private Long carnetVendedor;
     
+    /*
+    *Representa el link a la imagen del vendedor
+    */
+    private String imagen;
     //---------------------CONSTRUCTORES---------------------
     
     /**
@@ -75,6 +77,7 @@ public class VendedorDTO {
         this.nombre = ve.getNombre();
         this.cedula = ve.getCedula();
         this.carnetVendedor = ve.getCarnetVendedor();
+        this.imagen = ve.getImagen();
       }
     }
     
@@ -87,6 +90,7 @@ public class VendedorDTO {
         ve.setNombre(nombre);
         ve.setCedula(cedula);
         ve.setCarnetVendedor(carnetVendedor);
+        ve.setImagen(imagen);
         return ve;
     }
 
@@ -115,6 +119,14 @@ public class VendedorDTO {
     public Long getCarnetVendedor() {
         return carnetVendedor;
     }
+    
+    /**
+     * 
+     * @return el link a la imagen del vendedor
+     */
+    public String getImagen(){
+        return imagen;
+    }
 
     //--------------------------SETTERS---------------------------------
     
@@ -140,6 +152,14 @@ public class VendedorDTO {
      */
     public void setCarnetVendedor(Long carnetVendedor) {
         this.carnetVendedor = carnetVendedor;
+    }
+    
+    /**
+     * Sólo para uso de JAXRS
+     * @param img el link a la imagen
+     */
+    public void setImagen(String img){
+        imagen = img;
     }
        
 }

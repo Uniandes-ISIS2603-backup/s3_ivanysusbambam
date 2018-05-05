@@ -32,13 +32,14 @@
         'marcaModule',
         //Módulo del prospecto de compra
         'pcModule',
-        'loginModule'/*,
+        'loginModule',
+       // 'loginModule'/*,
         //Modulo de las quejas/reclamos
         ,
         
         // Modulo de las ventas,
         'ventaModule'
-*/
+
     ]);
     // Resuelve problemas de las promesas
     app.config(['$qProvider', function ($qProvider) {

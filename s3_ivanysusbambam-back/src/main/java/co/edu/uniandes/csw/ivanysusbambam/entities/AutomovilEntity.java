@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -94,8 +95,16 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     /**
      * Imagen del automovil
      */
+    @Lob
     private String imagen;
-
+/**
+ * Tipo del automovil
+ */
+    private String tipo;
+    /**
+     * Kilometros del automovil
+     */
+    private Double kilometros;
     /**
      * @return color del auto
      */
@@ -266,6 +275,23 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Double getKilometros() {
+        return kilometros;
+    }
+
+    public void setKilometros(Double kilometros) {
+        this.kilometros = kilometros;
+    }
+    
     
     
     

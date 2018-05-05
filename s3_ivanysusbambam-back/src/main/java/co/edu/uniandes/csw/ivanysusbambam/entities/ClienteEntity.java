@@ -12,6 +12,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import org.eclipse.persistence.jpa.config.Cascade;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -58,6 +59,9 @@ public class ClienteEntity implements Serializable {
     @PodamExclude
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
     private List<MedioDePagoEntity> mediosDePago;
+    
+    @Lob
+    private String imagen;
 
     public List<ProspectoCompraEntity> getProspectosCompra() {
         return prospectosCompra;
@@ -145,4 +149,13 @@ public class ClienteEntity implements Serializable {
         }
         return super.hashCode();
     }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+    
 }

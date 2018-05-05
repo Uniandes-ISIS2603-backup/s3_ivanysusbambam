@@ -190,8 +190,21 @@ public class AutomovilPersistence {
             return autos;
     }
     
-    //TODO documentar
-    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color){
+    /**
+     * Búsqueda maestra que incluye todos los parámetros disponibles en mi
+     * automóvil
+     * @param precioMin cota inferior del rango de precios.
+     * @param precioMax cota superior del rango de precios.
+     * @param anioMin cota inferior del rango de años.
+     * @param anioMax cota superior del rango de años.
+     * @param marca marca buscadas
+     * @param modelo modelo buscado
+     * @param color color buscado
+     * @param kilometrajeMin cota inferior del rango de kilometraje
+     * @param kilometrajeMax cota superior del rango de kilometraje.
+     * @return lista con todos los automóviles que cumplen los filtros.
+     */
+    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax){
     
         // 0 = 0 porque no deja poner WHERE TRUE
         String sentencia = "SELECT a FROM AutomovilEntity a JOIN a.model mo JOIN a.marca ma WHERE 0 = 0";
@@ -211,6 +224,9 @@ public class AutomovilPersistence {
         if(color != null){
             sentencia += " AND a.color = '" + color + "'";
         }
+        if(kilometrajeMin != null && kilometrajeMax != null){
+            sentencia += " AND a.kilometraje >= " + kilometrajeMin + " AND a.kilometraje <= " + kilometrajeMax;
+        }
         
         LOGGER.log(Level.INFO, "Buscando autom\u00f3viles utilizando la sentencia {0}", sentencia);
         
@@ -223,6 +239,24 @@ public class AutomovilPersistence {
         }
         else{
             return autos;
+        }
+    }
+    
+    /**
+     * Retorna una lista con todos los colores distintos de los carros en la BD
+     * @return una lista con todos los colores distintos en la BD.
+     */
+    public List<String> listColores(){
+        LOGGER.log(Level.INFO, "buscando todos los colores de autos");
+        TypedQuery tq = em.createQuery("SELECT DISTINCT(a.color) FROM AutomovilEntity a", String.class);
+        
+        List<String> ret = tq.getResultList();
+        
+        if(ret.isEmpty()){
+            return null;
+        }
+        else{
+            return ret;
         }
     }
 }

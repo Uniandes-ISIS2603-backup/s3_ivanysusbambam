@@ -10,10 +10,32 @@
       
     $scope.user = {};
     $scope.data = {};
-        $http.get('../../data/usuarios.json').then(function (response)     {
+        $http.get('data/usuarios.json').then(function (response)     {
                 $scope.users = response.data;
             });
         
+        $rootScope.usuario = false;
+        $rootScope.vendedor = false; 
+        $rootScope.administrador = false;
+        
+        $rootScope.esUsuario = function()
+        {
+            $rootScope.usuario=true;
+            $rootScope.vendedor=false;
+            $rootScope.administrador=false;
+        }
+        $rootScope.esAdministrador = function()
+        {
+            $rootScope.usuario=false;
+            $rootScope.vendedor=false;
+            $rootScope.administrador=true;
+        }
+        $rootScope.esVendedor = function()
+        {
+            $rootScope.usuario=false;
+            $rootScope.vendedor=true;
+            $rootScope.administrador=false;
+        }
         $scope.autenticar = function () {
                 var flag = false;
              $http.post('api/login',$scope.data).then(function(response){
@@ -38,6 +60,7 @@
                     $rootScope.currentUser = $scope.user.name; 
                 }
                 });
+            
             };
         }
     ]);

@@ -1,0 +1,108 @@
+  <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+
+                <br>
+                <h3 style="margin:20px" >Perfil de cliente</h3>
+
+                <div class="row col-12">
+
+                    <div class="card col-12" style="padding:0px; margin: 10px ">
+                        <div class="card-header" style="margin-bottom:20px; color: white; background-color: #1a237e">Información básica:</div>
+                        <div class="form-group">
+                            <label class="control-label col-sm-12">Cédula:</label>
+                            <div class="col-sm-12">
+                                <p class="form-control-static">{{cliente.cedula}}</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-12">Nombre:</label>
+                            <div class="col-md-10">
+                                <p class="form-control-static">{{cliente.nombre}}</p>
+                            </div>
+
+                        </div>
+                        <div class ="form-group">
+                            <button style = "margin:10px" class = "btn btn-default" ng-click = "subirInfoCliente()" ui-sref ="editarPerfilCliente({clienteId: cliente.cedula})"> Editar </button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row col-12" id="carta2"  >
+                    <div class="card col-12" style="padding:0px; margin: 10px ">
+                        <div class="card-header" style="margin-bottom:20px; color: white; background-color: #1a237e">Calificaciones de la tienda:  </div>
+                        <div class="form-group">
+                            <div class="table-responsive">   
+                                <table class="table table-bordered" style="color: #1a237e" >
+                                    <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
+                                        <tr >
+                                        <th> Id </th>
+                                        <th> Puntaje </th>
+                                        <th> Texto </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="ct in cliente.calificacionesTienda" style="color: black; font-size:12px">
+                                        <td>{{ct.id}}</td>
+                                        <td>{{ct.puntaje}}</td>
+                                        <td>{{ct.texto}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="row col-12">
+                    <div class="card col-12" style="padding:0px; margin: 10px ">
+                        <div class="card-header" style="margin-bottom:20px; color: white; background-color: #1a237e">Medios de pago: </div>
+                        <div class="form-group">
+                            <div class="table-responsive">   
+                                <table class="table table-bordered" style="color: #1a237e" >
+                                    <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
+                                        <tr >
+                                        <th>Número</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="mp in cliente.mediosDePago" style="color: black; font-size:12px">
+                                        <td>{{mp.numero}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row col-12">
+                    <div class="card col-12" style="padding:0px; margin: 10px ">
+                        <div class="card-header" style="margin-bottom:20px; color: white; background-color: #1a237e">Prospectos de compra: </div>
+                        <div class="form-group">
+                            <div class="table-responsive">   
+                                <table class="table table-bordered" style="color: #1a237e" >
+                                    <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
+                                        <tr >
+                                        <th>Id</th>
+                                        <th> Texto </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="pc in cliente.prospectosCompra" style="color: black; font-size:12px">
+                                        <td>{{pc.id}}</td>
+                                        <td>{{pc.texto}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                
+
+                

@@ -76,7 +76,14 @@ public class AutomovilDTO {
      * Imagen del automovil
      */
     private String imagen ;
-
+    /**
+     * Tipo del automovil
+     */
+    private String tipo;
+/**
+ * Kilometraje del automovil
+ */
+    private Double kilometros;
     /**
      * Constructor por defecto
      */
@@ -103,6 +110,8 @@ public class AutomovilDTO {
         this.id = auto.getId();
         this.name = auto.getName();
         this.imagen = auto.getImagen();
+        this.kilometros = auto.getKilometros();
+        this.tipo = auto.getTipo();
       }
     }
 
@@ -201,7 +210,8 @@ public class AutomovilDTO {
         entity.setId(this.id);
         entity.setName(this.name);
         entity.setImagen(this.imagen);
-        
+        entity.setKilometros(this.kilometros);
+        entity.setTipo(this.tipo);
         return entity;
     }
 
@@ -228,6 +238,22 @@ public class AutomovilDTO {
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Double getKilometros() {
+        return kilometros;
+    }
+
+    public void setKilometros(Double kilometros) {
+        this.kilometros = kilometros;
+    }
+       
     
 }

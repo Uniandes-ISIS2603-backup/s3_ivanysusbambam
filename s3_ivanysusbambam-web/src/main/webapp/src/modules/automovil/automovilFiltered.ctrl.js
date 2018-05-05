@@ -9,22 +9,38 @@
 
     var mod = ng.module("automovilModule");
 
-    mod.constant("automovilContext", "api/automoviles/search?");
+    mod.constant("newAutomovilContext", "api/automoviles/search?");
 
-    mod.controller("automovilFilteredCtrl", ["$scope", "$http", "automovilContext", function ($scope, $http, automovilContext) {
-
-
-            $scope.data = {};
+    mod.controller("automovilFilteredCtrl", ["$scope", "$http", "newAutomovilContext","$state", function ($scope, $http, newAutomovilContext,$state) {
 
 
-            $http.get("api/marcas").then(function (response) {
-                $scope.listaMarcas = response.data;
-            });
 
 
-console.log(automovilContext + "precioMin="+$scope.modelo+"&precioMax="+$scope.precioMax+"&color="+$scope.color+"&modelo="+$scope.modelo+"&marca="+$scope.marca+"&anioMin="+$scope.fechaMin+"&anioMax="+$scope.fechaMax);
-
-            $http.get(automovilContext + "precioMin="+$scope.modelo+"&precioMax="+$scope.precioMax+"&color="+$scope.color+"&modelo="+$scope.modelo+"&marca="+$scope.marca+"&anioMin="+$scope.fechaMin+"&anioMax="+$scope.fechaMax).then(function (response) {
+            
+            var paramsBusq = "";
+            
+            if($state.params.precioMin !== null && $state.params.precioMax !== null){
+                paramsBusq +=  "precioMin="+$state.params.precioMin+"&precioMax="+$state.params.precioMax+"&";
+            }
+            if($state.params.anioMin!==undefined && $state.params.anioMax!==undefined){
+                paramsBusq+="anioMin="+$state.params.anioMin+"&anioMax"+$state.params.anioMax+"&";
+            }
+             if($state.params.color!==null){
+                paramsBusq+="color="+$state.params.color+"&";
+            }
+             if($state.params.modelo!==null){
+                paramsBusq+="modelo="+$state.params.modelo.name+"&";
+            }
+             if($state.params.marca!==null){
+                paramsBusq+="marca="+$state.params.marca.name+"&";
+            }
+            
+            if(paramsBusq.endsWith('&'))
+            {
+                paramsBusq=paramsBusq.substring(0,paramsBusq.length-1);
+            }
+           
+            $http.get(newAutomovilContext + paramsBusq).then(function (response) {
                 $scope.automoviles = response.data;
             });
 

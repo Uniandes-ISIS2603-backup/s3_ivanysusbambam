@@ -70,9 +70,70 @@
             },
             views: {
                 mainView: {
-                        templateUrl: basePath+"cliente.perfil.html",
+                        templateUrl: basePath+"/Perfil/cliente.perfil.html",
                         controller: "clienteDetailCtrl",
                         controllerAs: "ctrl"
+                    },
+                    perfil:{
+                       templateUrl: basePath+"Perfil/cliente.perfilInicial.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("ComprasCliente",{
+            url: "/perfil/{clienteId: int}/Compras",
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/compras.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("VentasCliente",{
+            url: "/perfil/{clienteId: int}/Ventas",
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/ventas.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("ComentariosCliente",{
+            url: "/perfil/{clienteId: int}/Comentarios",
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/mediosDePago.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("QyRCliente",{
+            url: "/perfil/{clienteId: int}/Quejas",
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/quejas.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
                     }
             }
         }).state("editarPerfilCliente",{
@@ -89,6 +150,20 @@
                    }
                }
             
+        }).state("mediosDePagoCliente",{
+            url: "/perfil/{clienteId: int}/mediosDePago",
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/mediosDePago.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
         }).state("registrar",{
                 url: "/cliente/crear",
 

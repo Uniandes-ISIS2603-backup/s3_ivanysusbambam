@@ -308,7 +308,8 @@ public class AutomovilResource {
      * @param marca marca que se busca
      * @param modelo modelo que se busca
      * @param color color que se busca en los automóviles
-     * @
+     * @param kilometrajeMin cota inferior del kilometraje
+     * @param kilometrajeMax cota superior del kilometraje
      * @return JSONArray {@link AutomovilDetailDTO} - Automóviles del color buscado.
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} -
      * Error de lógica que se genera si todos los parámetros son null o 
@@ -316,15 +317,41 @@ public class AutomovilResource {
      */
     @GET
     @Path("/search")
-    public List<AutomovilDetailDTO> masterSearch(@QueryParam("precioMin") Integer precioMin, @QueryParam("precioMax") Integer precioMax, @QueryParam("anioMin") Integer anioMin, @QueryParam("anioMax") Integer anioMax, @QueryParam("marca")String marca, @QueryParam("modelo") String modelo, @QueryParam("color") String color) throws BusinessLogicException{
+    public List<AutomovilDetailDTO> masterSearch(@QueryParam("precioMin") Integer precioMin, @QueryParam("precioMax") Integer precioMax, @QueryParam("anioMin") Integer anioMin, @QueryParam("anioMax") Integer anioMax, 
+            @QueryParam("marca")String marca, @QueryParam("modelo") String modelo, @QueryParam("color") String color, @QueryParam("kilometrajeMin") Integer kilometrajeMin, @QueryParam("kilometrajeMax") Integer kilometrajeMax) throws BusinessLogicException{
         
-        List<AutomovilEntity> autos = autoLogic.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color);
+        List<AutomovilEntity> autos = autoLogic.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
         
         if(autos == null){
             throw new WebApplicationException("No se encontraron automóviles ");
         }
         return entityToDTOList(autos);
     }
+    
+    
+    /**
+     * <h1>GET /api/automoviles/colores
+     * : Buscar todos los colroes de autos en la BD</h1>
+     *
+     * Retorna todos los automóviles que cumplen los filtros.
+     *
+     * Codigos de respuesta:
+     * <code style="color: mediumseagreen; background-color: #eaffe0;">
+     * 200 OK Retorna una lista con el nombre de todos los colores de los autos en la BD.</code>
+     * @return JSONArray {@link AutomovilDetailDTO} - Automóviles del color buscado.
+     * @throws  BusinessLogicException si no hay automóviles con colores.
+     */
+    @GET
+    @Path("/colores")
+    public List<AutomovilEntity> listColores() throws BusinessLogicException{
+        List<AutomovilEntity> list = autoLogic.listColores();
+        
+        if(list == null){
+            throw new BusinessLogicException("No hay automóviles con colores en la BD");
+        }
+       
+        return list;
+     }
     
     /**
      * <h1>PUT /api/automoviles/{id} : Actualizar automovil con el id dado.</h1>
@@ -389,6 +416,7 @@ public class AutomovilResource {
             autoLogic.deleteAutomovil(id);
         }
     }
+   
 
     /**
      * Convierte una lista de entities a detail DTP

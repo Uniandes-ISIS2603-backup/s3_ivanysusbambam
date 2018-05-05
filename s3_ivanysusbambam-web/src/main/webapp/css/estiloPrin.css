@@ -1,5 +1,5 @@
 #barraPrincipal {
-    style="  margin-bottom: 0;
+     margin-bottom: 0;
     background-color: aqua;
     z-index: 9999;
     border: 0;
@@ -7,10 +7,11 @@
     line-height: 1.42857143 !important;
 
     border-radius: 0;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', sans-serif;     margin-bottom: 0;
+
 }
 #nombre{
-    margin-left: 2em:
+    margin-left: 2em;
 }
 #abrirMenu{
     margin-right: 2em;
@@ -18,7 +19,35 @@
 #iconomenu{
     color:aliceblue;
 }
-
+#cartaCliente{
+    background-color: rgba(169, 169, 169, 0.35);
+    width: 900px;s
+    border-color: rgba(169, 169, 169, 0.35);
+    align-self: center;
+}
+#perCliente{
+        background-color: rgba(169, 169, 169, 0.35);
+        align-content: center;
+}
+#imagenPer{
+    width: 30%:
+}
+#verCompras,#verPagos,#verVentas,#verComs,#verQuejas{
+    color:antiquewhite;
+}
+#verCompras: hover{
+    color:#15601e;
+    text-decoration: none;
+}
+#centr,#perCliente{
+    text-align: center;
+}
+#prin{
+    align-self: center;
+}
+.imagen2{
+    align-content: center;
+}
  /* The side navigation menu */
 .sidenav {
     height: 100%; /* 100% Full-height */
@@ -27,7 +56,7 @@
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: whitesmoke; /* Black*/
+    background-color: rgba(245, 245, 245, 0.36); /* Black*/
     color:black;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
@@ -89,6 +118,14 @@
     background-position: center; 
     padding-top: 250px;
     color:azure;
+}
+.imagen2{
+    height: 100vh; 
+    background-image: url(../resources/auto-automobile-blur-769892.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    
+    padding-top: 100px;
 }
 .boton{
     color:antiquewhite;
