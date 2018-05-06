@@ -117,7 +117,7 @@
             views: {
                
                     perfil:{
-                       templateUrl: basePath+"Perfil/mediosDePago.html",
+                       templateUrl: basePath+"Perfil/comentarios.html",
                         controller: "clienteDetailCtrl",
                         controllerAs: "ctrl"  
                     }
@@ -139,11 +139,12 @@
         }).state("editarPerfilCliente",{
             
             url: "/{clienteId: int}/editarperfil",
+            parent:"perfilCliente",
                params: {
                    clienteId: null
                },
                views: {
-                   mainView: {
+                   perfil: {
                        templateUrl: basePath+"cliente.perfil.editar.html",
                        controller: "clienteEditarPerfilCtrl",
                        controllerAs: "ctrl"

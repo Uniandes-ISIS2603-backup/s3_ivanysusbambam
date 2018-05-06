@@ -1,26 +1,44 @@
-<div class="row col-12">
-    <div class="card col-12" style="padding:0px; margin: 10px ">
-        <div class="card-header" style="margin-bottom:20px; color: white; background-color: #1a237e">Ventas: </div>
-        <div class="form-group">
-            <div class="table-responsive">   
-                <table class="table table-bordered" style="color: #1a237e" >
-                    <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
-                        <tr >
-                            <th>Id</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="venta in cliente.ventas" style="color: black; font-size:12px">
-                            <td>{{venta.idVenta}}</td>
-                        </tr>
-                    </tbody>
-                </table>
-                <div class="col-sm-4" id="elboton">
-                    <a ui-sref="perfilCliente">
-                        <button type="button" class="btn btn-dark" >Regresar</button>
-                    </a>
+
+<div class="row col-12" style="width: 900px">
+    <div class="card col-12"  style="padding:0px; margin: 10px; width:900px; ">
+
+
+        <div class="card-body">
+            <h1 id="Iniciar">Ventas</h1>
+
+            <div class="card col-3" style="width:400px;padding:0px; margin:10px"ng-repeat="auto in automoviles">
+                <a> <img class="card-img-top" src="{{auto.imagen}}" alt="Card image"></a>
+                <div class="card-footer">
+                    <h4 class="card-title" style="color:#1a237e; 
+                        font-size: 20px ;
+                        line-height: 1.42857143 !important;
+                        font-family: 'Open Sans', sans-serif;"> Modelo: {{auto.modelo.name}} </h4>
+                    <h4> {{auto.marca.name}}</h4>
+                    <p class="card-text"> Año: {{auto.anio}}</p>
+                    <p class="card-text">Precio: {{auto.valorListado|currency}}</p>
+                    <div style="text-align: center; margin:20px">
+                        <a ui-sref="automovilDetail({automovilId: auto.id})"class="btn  align-items-center" style=" background-color:  #9ACD32;color: white">Ver Más</a>
+                        <div style="text-align: center; margin:20px">
+                        </div>
+                    </div>
+
+
+
                 </div>
             </div>
+            <div class="col-md-12" id="elboton">
+                <a ui-sref="perfilCliente">
+                    <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Regresar</button>
+                </a>
+            </div>
         </div>
-    </div>
-</div>
+
+
+
+
+
+
+
+
+
+

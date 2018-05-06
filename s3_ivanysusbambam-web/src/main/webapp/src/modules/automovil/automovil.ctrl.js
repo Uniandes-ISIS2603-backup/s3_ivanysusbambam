@@ -20,6 +20,9 @@
             $http.get("api/modelos").then(function(response){
                $scope.modelos = response.data; 
             });
+            $http.get("api/automoviles/colores").then(function(response){
+               $scope.colores = response.data; 
+            });
             $http.get("api/marcas").then(function(response){
                $scope.marcas = response.data; 
             });

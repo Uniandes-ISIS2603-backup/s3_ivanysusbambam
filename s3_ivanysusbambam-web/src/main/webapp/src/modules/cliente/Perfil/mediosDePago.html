@@ -1,28 +1,33 @@
-<div class="container" style="text-align: center">
-    <div class="row col-12">
+
+    <div class="row col-12" style="width: 900px">
         <div class="card col-12"  style="padding:0px; margin: 10px; width:900px; ">
-            <div class="card-header" style="margin-bottom:20px; color: white; background-color: #1a237e">Medios de pago: </div>
-            <div class="form-group">
+           
+           
+            <div class="card-body">
+                <h1 id="Iniciar">Medios de Pago</h1>
                 <div class="table-responsive">   
-                    <table class="table table-bordered" style="color: #1a237e" >
-                        <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
+                    <table class="table table-dark table-striped"  >
+                        <thead  class="thead" style=" color: white; font-size: 12px">
                             <tr >
                                 <th>Número</th>
+                                <th>Tipo</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="mp in cliente.mediosDePago" style="color: black; font-size:12px">
+                            <tr ng-repeat="mp in cliente.mediosDePago" style="color: white; font-size:12px">
                                 <td>{{mp.numero}}</td>
+                                <td>{{mp.tipo}}</td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="col-sm-4" id="elboton">
+                   
+                </div>
+                 <div class="col-md-12" id="elboton">
                         <a ui-sref="perfilCliente">
-                            <button type="button" class="btn btn-dark" >Regresar</button>
+                            <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Regresar</button>
                         </a>
                     </div>
-                </div>
             </div>
         </div>
     </div>
-</div>
+
