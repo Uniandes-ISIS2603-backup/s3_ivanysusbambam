@@ -1,0 +1,72 @@
+<div class="row centered" id="panelBusqueda">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="row">
+            <div class="col-sm-4">
+
+                <div class="form-group">
+                    <label for="filtroTipo">Tipo</label>
+                    <select class="form-control">
+            <option>Camioneta</option>
+            <option>Sedan</option>
+            <option>Pick up</option>
+            </select>
+
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <!-- Me falta asociar el icono-->
+                <div class="form-group">
+                    <label for="filtroMarca">Marca</label>
+                    <select class="form-control" required ng-model="marca" ng-options="x.name for x in marcas"></select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <!--<span class="input-group-addon"><i class=""></i></span>-->
+                <label for="filtroModelo">Modelo</label>
+                <select class="form-control" required ng-model="color" ng-options="x.name for x in modelos"></select>
+            </div>
+
+            <div class="col-sm-3">
+                <!--<span class="input-group-addon"><i class=""></i></span>-->
+                <label for="filtroPrecio">Desde</label>
+                <input type="text" class="form-control" required ng-model="precioMax" id="usr">
+            </div>
+
+
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="filtroPrecioh">Hasta</label>
+                    <input type="text" class="form-control" required ng-model="precioMax" id="usr">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="filtroAnioD">Año desde</label>
+                    <select class="form-control" required ng-model="fechaMin" ng-options="x for x in anos"></select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="filtroAnioH">Año hasta</label>
+                    <select class="form-control" required ng-model="fechaMax" ng-options="x for x in anos"></select>
+                </div>
+            </div>
+
+            <div class="col-sm-4">
+
+            </div>
+            <div class="col-sm-4" id="elboton">
+                <a ui-sref="automovilListFiltros({marca:marca, color:color, fechaMin:fechaMin, fechaMax:fechaMax,modelo:modelo,precioMin:precio,precioMax:precioMax})">
+                        <button type="button" class="btn btn-dark" >Buscar</button>
+                        </a>
+            </div>
+            <div class="col-sm-4">
+
+            </div>
+
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+
+</div>

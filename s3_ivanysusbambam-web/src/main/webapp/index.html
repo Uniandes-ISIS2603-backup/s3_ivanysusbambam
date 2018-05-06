@@ -160,62 +160,76 @@
     <div ui-view="navView" class>
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" id="barraPrincipal" style="background-color: rgba(0, 0, 0, 0.56)">
             <!-- Brand -->
-            <span id="iconomenu" class="glyphicon glyphicon-align-justify" onclick="openNav()">
-                a
+            <div ng-if="administrador || vendedor">
+                <span id="iconomenu" class="fa fa-bars" onclick="openNav()">
             </span>
-            <a id="nombre" class="navbar-brand" href="#">Mi Automovil</a>
-
-            <!-- Esto es el menú de la izquierda -->
-            <div id="mySidenav" class="sidenav" ng-if=administrador>
-                <a id="cerrar" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a class="dropdown-item" ui-sref="AdminCompraGetAll">Compra</a>
-                <a class="dropdown-item" ui-sref="adminVentaGetAll">Venta</a>
-                <a class="dropdown-item" ui-sref="adminCalificacionesCarroGetAll">Calificacion carro</a>
-                <a class="dropdown-item" ui-sref="adminCalificacionesTiendaGetAll">Calificacion tienda</a>
-                <a class="dropdown-item" ui-sref="listMarca">Marca</a>
-                <a class="dropdown-item" ui-sref="listModelo">Modelo</a>
-                <a class="dropdown-item" ui-sref="AdminMedioDePagoGetAll">Medio de pago</a>
-                <a class="dropdown-item" ui-sref="adminPuntosVentaGetAll">Punto de venta</a>
-                <a class="dropdown-item" ui-sref="adminQuejaReclamoGetAll">Quejas y reclamos</a>
-                <a class="dropdown-item" ui-sref="listPc">Consulta de prospectos de compra</a>
-                <a class="dropdown-item" href="" ui-sref="listVendedor">Consulta de vendedores</a>
-                <a class="dropdown-item" ui-sref="listCliente">Consulta de clientes</a>
             </div>
 
-            <div id="mySideNav" class="sidenav" ng-if=vendedor>
-                <a class="dropdown-item" ui-sref="perfilVendedor({vendedorId: 1})">Ver perfil</a>
-                <a class="dropdown-item" ui-sref="listCliente">Consulta clientes</a>
-                <a class="dropdown-item" ui-sref="listPc">Consulta de prospectos de compra</a>
+            <a id="nombre" class="navbar-brand" href="index.html">Mi Automovil</a>
+
+            <!-- Esto es el menú de la izquierda -->
+            <div id="mySidenav" class="sidenav">
+                <a id="cerrar" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <!-- Este es el menú lateral que le saldrá al admin -->
+                <div ng-if="administrador">
+                    <a class="dropdown-item" ui-sref="AdminCompraGetAll">Compras</a>
+                    <a class="dropdown-item" ui-sref="adminVentaGetAll">Ventas</a>
+                    <a class="dropdown-item" ui-sref="adminCalificacionesCarroGetAll">Calificacion carro</a>
+                    <a class="dropdown-item" ui-sref="adminCalificacionesTiendaGetAll">Calificacion tienda</a>
+                    <a class="dropdown-item" ui-sref="listMarca">Marcas</a>
+                    <a class="dropdown-item" ui-sref="listModelo">Modelos</a>
+                    <a class="dropdown-item" ui-sref="AdminMedioDePagoGetAll">Medio de pago</a>
+                    <a class="dropdown-item" ui-sref="adminPuntosVentaGetAll">Puntos de venta</a>
+                    <a class="dropdown-item" ui-sref="adminQuejaReclamoGetAll">Quejas y reclamos</a>
+                    <a class="dropdown-item" ui-sref="listPc">Prospectos de compra</a>
+                    <a class="dropdown-item" ui-sref="listVendedor">Vendedores</a>
+                    <a class="dropdown-item" ui-sref="listCliente">Clientes</a>
+                </div>
+                <!-- Este es el menú lateral que le saldrá al vendedor -->
+                <div ng-if="vendedor">
+                    <a class="dropdown-item" ui-sref="perfilVendedor({vendedorId: 1})">Ver perfil</a>
+                    <a class="dropdown-item" ui-sref="listCliente">Consulta clientes</a>
+                    <a class="dropdown-item" ui-sref="listPc">Prospectos de compra</a>
+                </div>
             </div>
             <!-- Links -->
             <ul class="navbar-nav" data-toggle="collapse" data-target="#demo">
-                <li class="nav-item">
-                    <a class="nav-link" ui-sref="registrar">Registrarse</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" ui-sref="login">Iniciar Sesión</a>
-                </li>
-                <li class="nav-item">
-                    <!-- Se pone como placehoder 1, una vez se impelemente login se cambiará-->
+
+                <!-- Esto aparecerá si no ha iniciado sesión -->
+                <div ng-if="!isAuthenticated()">
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref="registrar">Registrarse</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" ui-sref="login">Iniciar Sesión</a>
+                    </li>
+                </div>
+
+                <li class="nav-item" ng-if="isAuthenticated() && usuario">
                     <a class="nav-link" ui-sref="perfilCliente">Ver perfil</a>
                 </li>
+
+                <li class="nav-item" ng-if="isAuthenticated() && vendedor">
+                    <a class="nav-link" ui-sref="perfilVendedor">Ver perfil</a>
+                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" ui-sref="automovilGetAll">Ver más autos</a>
                 </li>
-
+                <!--
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                         Vendedor
                     </a>
                     <div class="dropdown-menu">
-                        <!-- Se pone como placehoder 1, una vez se impleemente login se cambiará-->
                         <a class="dropdown-item" ui-sref="perfilVendedor({vendedorId: 1})">Ver perfil</a>
                         <a class="dropdown-item" ui-sref="listCliente">Consulta clientes</a>
                         <a class="dropdown-item" ui-sref="listPc">Consulta de prospectos de compra</a>
                     </div>
                 </li>
+                -->
 
-                <!-- Dropdown -->
+                <!-- Dropdown 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
                             Administrador
@@ -235,110 +249,41 @@
                         <a class="dropdown-item" ui-sref="listCliente">Consulta de clientes</a>
                     </div>
                 </li>
+                -->
             </ul>
         </nav>
     </div>
 
 
+    <div id="main">
+        <div id="demo" class="carousel slide" data-ride="carousel">
 
-    <div id="demo" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ul class="carousel-indicators">
+                <li data-target="#demo" data-slide-to="0" class="active"></li>
+                <li data-target="#demo" data-slide-to="1"></li>
+                <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
 
-        <!-- Indicators -->
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-        </ul>
+            <!-- The slideshow -->
+            <div class="imagen">
 
-        <!-- The slideshow -->
-        <div class="imagen">
-
-            <div class="row centered" id="panelBusqueda">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                    <div class="row">
-                        <div class="col-sm-4">
-
-                            <div class="form-group">
-                                <label for="filtroMarca">Tipo</label>
-                                <select class="form-control">
-            <option>Camioneta</option>
-            <option>Sedan</option>
-            <option>Pick up</option>
-            </select>
-
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <!-- Me falta asociar el icono-->
-                            <div class="form-group">
-                                <label for="filtroMarca">Marca</label>
-                                <select class="form-control" required ng-model="marca" ng-options="x.name for x in marcas"></select>
-                            </div>
-                        </div>
-                        <div class="col-sm-4">
-                            <!--<span class="input-group-addon"><i class=""></i></span>-->
-                            <label for="filtroMarca">Modelo</label>
-                            <select class="form-control" required ng-model="color" ng-options="x.name for x in modelos"></select>
-                        </div>
-
-                        <div class="col-sm-3">
-                            <!--<span class="input-group-addon"><i class=""></i></span>-->
-                            <label for="filtroMarca">Desde</label>
-                            <input type="text" class="form-control" required ng-model="precioMax" id="usr">
-                        </div>
-
-
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="filtroMarca">Hasta</label>
-                                <input type="text" class="form-control" required ng-model="precioMax" id="usr">
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="filtroMarca">Año desde</label>
-                                <select class="form-control" required ng-model="fechaMin" ng-options="x for x in anos"></select>
-                            </div>
-                        </div>
-                        <div class="col-sm-3">
-                            <div class="form-group">
-                                <label for="filtroMarca">Año hasta</label>
-                                <select class="form-control" required ng-model="fechaMax" ng-options="x for x in anos"></select>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-4">
-
-                        </div>
-                        <div class="col-sm-4" id="elboton">
-                            <a ui-sref="automovilListFiltros({marca:marca, color:color, fechaMin:fechaMin, fechaMax:fechaMax,modelo:modelo,precioMin:precio,precioMax:precioMax})">
-                        <button type="button" class="btn btn-dark" >Buscar</button>
-                        </a>
-                        </div>
-                        <div class="col-sm-4">
-
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col-sm-4"></div>
+                <!-- Acá va el panel de búsqueda -->
 
             </div>
 
-        </div>
-
-        <!-- Left and right controls -->
-        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+            <!-- Left and right controls -->
+            <a class="carousel-control-prev" href="#demo" data-slide="prev">
                  <span class="carousel-control-prev-icon"></span>
              </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
+            <a class="carousel-control-next" href="#demo" data-slide="next">
                  <span class="carousel-control-next-icon"></span>
              </a>
 
-    </div>
+        </div>
 
-    <div ui-view="mainView"></div>
+        <div ui-view="mainView"></div>
+    </div>
 
 
 </body>
