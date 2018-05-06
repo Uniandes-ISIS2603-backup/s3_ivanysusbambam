@@ -26,7 +26,7 @@
                 paramsBusq+="anioMin="+$state.params.anioMin+"&anioMax"+$state.params.anioMax+"&";
             }
              if($state.params.color!==null){
-                paramsBusq+="color="+$state.params.color+"&";
+                paramsBusq+="color="+$state.params.color.name+"&";
             }
              if($state.params.modelo!==null){
                 paramsBusq+="modelo="+$state.params.modelo.name+"&";
