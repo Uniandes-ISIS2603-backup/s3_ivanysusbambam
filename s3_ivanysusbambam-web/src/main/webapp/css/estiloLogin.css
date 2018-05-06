@@ -17,9 +17,10 @@
 
 }
 
-#cartaLogin {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0,2);
-    max-width: 700px;
+#cartaLogin2 {
+   background-color: rgba(169, 169, 169, 0.35);
+      border-color: rgba(169, 169, 169, 0.35);
+    max-width: 900px;
     margin: auto;
     text-align: center;
     margin-bottom:0px;

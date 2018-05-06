@@ -43,9 +43,26 @@ margin-left: 0px;
     color:antiquewhite;
 }
 #verCompras:hover{
-    color:#15601e;
+    color:#9ACD32;
     text-decoration: none;
 }
+#verPagos:hover{
+    color:#9ACD32;
+    text-decoration: none;
+}
+#verVentas:hover{
+    color:#9ACD32;
+    text-decoration: none;
+}
+#verComs:hover{
+    color:#9ACD32;
+    text-decoration: none;
+}
+#verQuejas:hover{
+    color:#9ACD32;
+    text-decoration: none;
+}
+
 #centr{
     text-align: center;
     background-color: white;
