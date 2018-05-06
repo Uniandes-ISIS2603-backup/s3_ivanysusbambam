@@ -19,28 +19,39 @@
 #iconomenu{
     color:aliceblue;
 }
+#tablaCliente{
+    margin: 0px;
+}
 #cartaCliente{
     background-color: rgba(169, 169, 169, 0.35);
-    width: 900px;s
+    width: 900px;
     border-color: rgba(169, 169, 169, 0.35);
-    align-self: center;
+    margin:0px;
+  
+    
+margin-right:0px;
+margin-left: 0px;
 }
 #perCliente{
         background-color: rgba(169, 169, 169, 0.35);
         align-content: center;
 }
 #imagenPer{
-    width: 30%:
+    width: 30%
 }
 #verCompras,#verPagos,#verVentas,#verComs,#verQuejas{
     color:antiquewhite;
 }
-#verCompras: hover{
+#verCompras:hover{
     color:#15601e;
     text-decoration: none;
 }
-#centr,#perCliente{
+#centr{
     text-align: center;
+    background-color: white;
+}
+#perCliente{
+     text-align: center;
 }
 #prin{
     align-self: center;
@@ -106,7 +117,7 @@
 #cerrar:hover,
 #cerrar:active,
 #cerrar:default{
-    background-color: whitesmoke;
+    background-color: white;
     text-decoration: none;
     color: darkred;
 }
@@ -124,7 +135,7 @@
     background-image: url(../resources/auto-automobile-blur-769892.jpg); 
     background-size: cover; 
     background-repeat: no-repeat; 
-    
+    margin: 0px;
     padding-top: 100px;
 }
 .boton{
