@@ -61,6 +61,16 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
     private ClienteDTO cliente;
 
      //TODO: Falta en metodo toEntity (que debe tener @Override)
+    @Override
+    public CalificacionTiendaEntity toEntity(){
+        CalificacionTiendaEntity ctEntity = super.toEntity();
+        
+        if(cliente != null){
+            ctEntity.setCliente(cliente.toEntity());
+        }
+        
+        return ctEntity;
+    }
     /**
      * Asigna un cliente respectivo a la clasificacion
      *

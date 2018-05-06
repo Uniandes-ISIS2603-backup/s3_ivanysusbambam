@@ -73,23 +73,66 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
         super(entity);
         if(entity != null){
             inicializarListas();
-            for(VentaEntity v : entity.getVentas()){
-                ventas.add(new VentaDTO(v));
+            if(entity.getVentas() != null){
+                for(VentaEntity v : entity.getVentas()){
+                    ventas.add(new VentaDTO(v));
+                }
             }
-            for(CompraEntity c: entity.getCompras()){
-                compras.add(new CompraDTO(c));
+            if(entity.getCompras() != null){
+                for(CompraEntity c: entity.getCompras()){
+                    compras.add(new CompraDTO(c));
+                }   
             }
-            for(VendedorEntity ve : entity.getVendedores()){
-                vendedores.add(new VendedorDTO(ve));
+           
+            if(entity.getVendedores() != null){
+                for(VendedorEntity ve : entity.getVendedores()){
+                    vendedores.add(new VendedorDTO(ve));
+                }
             }
-            for(AutomovilEntity at : entity.getAutomoviles()){
-                automoviles.add(new AutomovilDTO(at));
+            if(entity.getAutomoviles() != null){
+                for(AutomovilEntity at : entity.getAutomoviles()){
+                    automoviles.add(new AutomovilDTO(at));
+                }
             }
         }
     }
     
     //TODO: Falta el método toEntity
-    
+    @Override
+    public PuntoDeVentaEntity toEntity(){
+        PuntoDeVentaEntity pvEntity = super.toEntity();
+        
+        if(automoviles != null){
+            List<AutomovilEntity> autos = new ArrayList<>();
+            for(AutomovilDTO auto: automoviles){
+                autos.add(auto.toEntity());
+            }
+            pvEntity.setAutomoviles(autos);
+        }
+        if(compras != null){
+            List<CompraEntity> cps = new ArrayList<>();
+            for(CompraDTO cp : compras){
+                cps.add(cp.toEntity());
+            }
+            pvEntity.setCompras(cps);
+        }
+        if(ventas != null){
+            List<VentaEntity> vts = new ArrayList<>();
+            for(VentaDTO vt: ventas){
+                vts.add(vt.toEntity());
+            }
+            pvEntity.setVentas(vts);
+        }
+        if(vendedores != null){
+            List<VendedorEntity> vds = new ArrayList<>();
+            for(VendedorDTO vd : vendedores){
+                vds.add(vd.toEntity());
+            }
+            pvEntity.setVendedores(vds);
+        }
+        
+        return pvEntity;
+    }
     
     public void inicializarListas(){
         automoviles = new ArrayList<>();
