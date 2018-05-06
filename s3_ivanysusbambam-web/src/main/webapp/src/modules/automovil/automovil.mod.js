@@ -84,6 +84,15 @@
                         controller: "automovilCrearCtrl",
                         controllerAs: "ctrl"
                     }
+                }}).state("buscarAuto", {
+                url: "/automovil/buscar",
+
+                views: {
+                    mainView: {
+                        templateUrl: basePath + "buscarAuto.html",
+                        controller: "automovilGetAllCtrl",
+                        controllerAs: "ctrl"
+                    }
                 }});
         }
     ]);
