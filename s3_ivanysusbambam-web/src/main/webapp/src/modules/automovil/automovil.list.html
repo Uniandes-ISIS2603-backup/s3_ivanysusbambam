@@ -5,90 +5,92 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 
-    <div class="row" style="margin:70px">
-        <div class="col-md-3"  >
-            <div class="container" >
-                <div class="card">
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label for="sel1" style="color:#1a237e; 
-                                   font-size: 18px ;
-                                   line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">
-                                Marca:</label>
+<div class="row" style="margin:70px">
+    <div class="col-md-3"  >
+        <div class="container" >
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">
+                            Marca:</label>
 
-                            <select class ="form-control"   required ng-model = "marca" ng-options="x.name for x in marcas"></select>
+                        <select class ="form-control"   required ng-model = "marca" ng-options="x.name for x in marcas"></select>
 
-                        </div>   
-                        <div class="form-group">
-                            <label for="sel1" style="color:#1a237e; 
-                                   font-size: 18px ;
-                                   line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">Modelo:</label>
+                    </div>   
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Modelo:</label>
 
-                            <select class ="form-control"   required ng-model = "modelo" ng-options="x.name for x in modelos"></select>
+                        <select class ="form-control"   required ng-model = "modelo" ng-options="x.name for x in modelos"></select>
 
-                        </div> 
-                        <div class="form-group">
-                            <label for="sel1" style="color:#1a237e; 
-                                   font-size: 18px ;
-                                   line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">Color:</label>
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Color:</label>
 
-                            <select class ="form-control"   required ng-model = "color" ng-options="x.name for x in colores"></select>
+                        <select class ="form-control"   required ng-model = "color" ng-options="x.name for x in colores"></select>
 
-                        </div> 
+                    </div> 
 
-                        <div class="form-group">
-                            <label for="sel1" style="color:#1a237e; 
-                                   font-size: 18px ;
-                                   line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">Fecha Máxima:</label>
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Fecha Máxima:</label>
 
-                            <select class ="form-control"   required ng-model = "fechaMax" ng-options="x for x in anos"></select>
+                        <select class ="form-control"   required ng-model = "fechaMax" ng-options="x for x in anos"></select>
 
-                        </div> 
-                        <div class="form-group">
-                            <label for="sel1" style="color:#1a237e; 
-                                   font-size: 18px ;
-                                   line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">Fecha Minima:</label>
-                            <select class="form-control"  required ng-model = "fechaMin" ng-options="x for x in anos"> </select>
-                               
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Fecha Minima:</label>
+                        <select class="form-control"  required ng-model = "fechaMin" ng-options="x for x in anos"> </select>
 
-                           
-                        </div>
-                        <div class="form-group">
-                            <label for="sel1" style="color:#1a237e; 
-                                   font-size: 18px ;
-                                   line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">Precio Maximo:</label>
-                            <input type="text" class="form-control" required ng-model = "precioMax"  id="usr">
-                        </div> 
-                        <div class="form-group">
-                            <label for="sel1" style="color:#1a237e; 
-                                   font-size: 18px ;
-                                   line-height: 1.42857143 !important;
-                                   font-family: 'Open Sans', sans-serif;">Precio Minimo:</label>
-                           <input type="text" class="form-control" required ng-model = "precioMin" id="usr">
 
-                            <div style="text-align: center; margin:20px">
-                                <a ui-sref="automovilListFiltros({marca:marca, color:color, fechaMin:fechaMin, fechaMax:fechaMax,modelo:modelo,precioMin:precio,precioMax:precioMax})">
-                                    <button type="button" class="btn " style=" background-color:  #9ACD32;color: white">Buscar</button>
-                                </a>
-                            </div>  
-                        </div>
+
                     </div>
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Precio Maximo:</label>
+                        <input type="text" class="form-control" required ng-model = "precioMax"  id="usr">
+                    </div> 
+                    <div class="form-group">
+                        <label for="sel1" style="color:#1a237e; 
+                               font-size: 18px ;
+                               line-height: 1.42857143 !important;
+                               font-family: 'Open Sans', sans-serif;">Precio Minimo:</label>
+                        <input type="text" class="form-control" required ng-model = "precioMin" id="usr">
 
+                        <div style="text-align: center; margin:20px">
+                            <a ui-sref="automovilListFiltros({marca:marca, color:color, fechaMin:fechaMin, fechaMax:fechaMax,modelo:modelo,precioMin:precio,precioMax:precioMax})">
+                                <button type="button" class="btn " ng-model="error" style=" background-color:  #9ACD32;color: white">Buscar</button>
+                            </a>
+                        </div>  
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-9">
 
-            <div ui-view="automovilList" style="margin: 0px" >
             </div>
         </div>
     </div>
+    <div class="col-md-9">
+        <div class="alert alert-danger" ng-if="$scope.error">
+            <strong>Danger!</strong> $scope.mensaje
+        </div>
+        <div ui-view="automovilList" style="margin: 0px" >
+        </div>
+    </div>
+</div>
 
 
 

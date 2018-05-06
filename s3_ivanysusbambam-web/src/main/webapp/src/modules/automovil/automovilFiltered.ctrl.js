@@ -42,7 +42,11 @@
            
             $http.get(newAutomovilContext + paramsBusq).then(function (response) {
                 $scope.automoviles = response.data;
-            });
+            },function errorCallback(response){
+             $scope.error=true;
+             $scope.mensaje=response;
+            }) 
+;
 
         }]);
 
