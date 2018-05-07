@@ -73,12 +73,8 @@
                         templateUrl: basePath+"/Perfil/cliente.perfil.html",
                         controller: "clienteDetailCtrl",
                         controllerAs: "ctrl"
-                    },
-                    perfil:{
-                       templateUrl: basePath+"Perfil/cliente.perfilInicial.html",
-                        controller: "clienteDetailCtrl",
-                        controllerAs: "ctrl"  
                     }
+                 
             }
         }).state("ComprasCliente",{
             url: "/perfil/{clienteId: int}/Compras",

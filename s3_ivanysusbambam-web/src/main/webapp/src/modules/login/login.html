@@ -1,51 +1,54 @@
 
 <div class="imagen2">
 
-    <div class="card" id="cartaLogin" >
 
-        <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-        <div class ="container-fluid">
+    <div class="container" style="margin-top: 30px">
+        <div class="card" id="cartaLogin" >
 
-            <br>
+            <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
+            <div class ="container-fluid">
 
-            <h1 id="Iniciar">Iniciar sesión</h1>
-            <div class ="card" style="margin: 40px; text-align: left">
-                <div class ="card-body">
+                <br>
 
-                    <div class ="col-md-12">
-                        <form name ="cliente">
-                            <div class ="row" style = "margin: 10px">
-                                <label class  = "col-md-12" for = "clienteNombre">Nombres y apellidos:</label>
-                            </div>
-                            <div class ="row" style = "margin: 10px">
-                                <input class = "col-md-12" id ="clienteNombre" required ng-model ="data.nombre">
-                            </div>
-                            <div class =" row" style = "margin: 10px">
-                                <label class ="col-md-12" for ="clienteCedula">Cédula:</label>
-                            </div>
-                            <div class ="row " style = "margin: 10px" >
-                                <input class ="col-md-12" id ="clienteCedula" type ="number" required ng-model = "data.cedula">
-                            </div>
-                            <div class ="row " style = "margin: 10px; text-align: center" >
-                                <div class="container col-md-12" style="text-align: center ;margin: 0px">
-                                    <div ng-if="!cliente.$valid">
+                <h1 id="Iniciar">Iniciar sesión</h1>
+                <div class ="card" style="margin: 40px; text-align: left">
+                    <div class ="card-body">
 
-                                        <div class="alert alert-warning " >
-                                            <strong>Atención!</strong><p>Debe llenar todos los campos</p>
-                                        </div> 
-                                    </div> 
+                        <div class ="col-md-12">
+                            <form name ="cliente">
+                                <div class ="row" style = "margin: 10px">
+                                    <label class  = "col-md-12" for = "clienteNombre">Nombres y apellidos:</label>
                                 </div>
-                                <div class ="row">
-                                    <input ng-show="cliente.$valid" ng-click="crearCliente()" value="Crear" class="btn btn-success"/>
-                                </div>   
-                            </div> 
-                        </form>
+                                <div class ="row" style = "margin: 10px">
+                                    <input class = "col-md-12" id ="clienteNombre" required ng-model ="data.nombre">
+                                </div>
+                                <div class =" row" style = "margin: 10px">
+                                    <label class ="col-md-12" for ="clienteCedula">Cédula:</label>
+                                </div>
+                                <div class ="row " style = "margin: 10px" >
+                                    <input class ="col-md-12" id ="clienteCedula" type ="number" required ng-model = "data.cedula">
+                                </div>
+                                <div class ="row " style = "margin: 10px; text-align: center" >
+                                    <div class="container col-md-12" style="text-align: center ;margin: 0px">
+                                        <div ng-if="!cliente.$valid">
+
+                                            <div class="alert alert-warning " >
+                                                <strong>Atención!</strong><p>Debe llenar todos los campos</p>
+                                            </div> 
+                                        </div> 
+                                    </div>
+                                    <div class ="row">
+                                        <input ng-show="cliente.$valid" ng-click="crearCliente()" value="Crear" class="btn btn-success"/>
+                                    </div>   
+                                </div> 
+                            </form>
+                        </div>
                     </div>
                 </div>
+
             </div>
 
         </div>
-
 
     </div>
 </div>
