@@ -65,11 +65,11 @@ public class AutomovilLogic {
      * @throws BusinessLogicException si no se cumple las reglas de negocio
      * necesarias para crear el automovil
      */
-    //TODO: AE no es un buen nombre para el parámetro
+    
     public AutomovilEntity createAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de automovil");
 
-        if (verificarPlaca(automovilEntity.getPlaca()) == false) {
+        if (!verificarPlaca(automovilEntity.getPlaca())) {
             throw new BusinessLogicException("El formato de a placa del automovil no es valido");
         }
 
@@ -167,12 +167,12 @@ public class AutomovilLogic {
         if (automovilEntity == null) {
             throw new BusinessLogicException("El Automovil a actualizar  no debe ser null");
         }
-// TODO: Hay que verificar que el automovil con el id dado exista
+
         AutomovilEntity newAutoEntity = persistence.find(automovilEntity.getId());
         if (newAutoEntity == null) {
             throw new BusinessLogicException("No existe el automovil que se quiere actualizar");
         }
-// TODO: Revisar los comentarios del create
+
 
         if (automovilEntity.getModel() == null || !newAutoEntity.getModel().equals(automovilEntity.getModel())) {
             throw new BusinessLogicException("No se puede modificar el modelo");
@@ -201,7 +201,7 @@ public class AutomovilLogic {
         if (id == null) {
             throw new BusinessLogicException("el id no puede ser null");
         }
-        // TODO: Hay que verificar que el automovil con el id dado exista   
+         
         AutomovilEntity automovilEntity = persistence.find(id);
         if (automovilEntity == null) {
             throw new BusinessLogicException("No existe un automovil con el id dada.");
@@ -280,9 +280,9 @@ public class AutomovilLogic {
 
         Boolean rta = true;
 
-        String placa[] = pPlaca.split("-");
-        char chars[] = placa[0].toCharArray();
-        char chars2[] = placa[1].toCharArray();
+        String []placa = pPlaca.split("-");
+        char[] chars = placa[0].toCharArray();
+        char[] chars2 = placa[1].toCharArray();
         for (char c : chars) {
             if (!Character.isLetter(c)) {
                 rta = false;

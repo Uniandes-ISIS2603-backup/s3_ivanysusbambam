@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import co.edu.uniandes.csw.ivanysusbambam.podam.PuntajeStrategy;
 import java.io.Serializable;
+import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -49,4 +50,29 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
     public void setVenta(VentaEntity venta){
         this.venta = venta;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final CalificacionCarroEntity other = (CalificacionCarroEntity) obj;
+        if (!Objects.equals(this.venta, other.venta)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

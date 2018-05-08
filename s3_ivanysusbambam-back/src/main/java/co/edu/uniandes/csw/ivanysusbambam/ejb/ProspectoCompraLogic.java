@@ -44,17 +44,31 @@ public class ProspectoCompraLogic {
      * @throws BusinessLogicException si el id, cliente, vendedor, o automóvil del cliente no existe o es inválido.
      */
     public ProspectoCompraEntity createProspectoCompra(ProspectoCompraEntity pc) throws BusinessLogicException{
-        if(pc == null) throw new BusinessLogicException("El prospecto de compra no debe ser null");
-         //TODO: DONE no hay que revisar el id porque es la PK y no se ha creado
-        if(pc.getVendedor() == null || pc.getCliente() == null || pc.getAutomovil() == null) throw new BusinessLogicException("Ninguno de los atributos del prospecto de compra puede ser null"); 
+        if(pc == null){
+            throw new BusinessLogicException("El prospecto de compra no debe ser null");
+        }
+        
+        if(pc.getVendedor() == null || pc.getCliente() == null || pc.getAutomovil() == null) {
+            throw new BusinessLogicException("Ninguno de los atributos del prospecto de compra puede ser null");
+        } 
 
         
-        if(pc.getId()<=0) throw new BusinessLogicException("EL id no debería ser <= 0");
-        if(persistence.find(pc.getId()) != null) throw new BusinessLogicException("El prospecto de compra ya existe en la base de datos");
-        if(pc.getVendedor().getCarnetVendedor() == null||vendedorPersistence.find(pc.getVendedor().getCarnetVendedor()) == null) throw new BusinessLogicException("El vendedor del prospecto de compra no esta registrado en la base de datos o es null"); 
+        if(pc.getId()<=0){
+            throw new BusinessLogicException("EL id no debería ser <= 0");
+        }
+        if(persistence.find(pc.getId()) != null){
+            throw new BusinessLogicException("El prospecto de compra ya existe en la base de datos");
+        }
+        if(pc.getVendedor().getCarnetVendedor() == null||vendedorPersistence.find(pc.getVendedor().getCarnetVendedor()) == null){
+            throw new BusinessLogicException("El vendedor del prospecto de compra no esta registrado en la base de datos o es null");
+        } 
         
-        if(pc.getCliente().getCedula() == null || clientePersistence.find(pc.getCliente().getCedula()) == null) throw new BusinessLogicException("El cliente del prospecto de compra no está registrado en la base de datos o es null");
-        if(pc.getAutomovil().getId() == null || automovilPersistence.find(pc.getAutomovil().getId()) == null) throw new BusinessLogicException("El automóvil del prospecto de compra no existe o es null");
+        if(pc.getCliente().getCedula() == null || clientePersistence.find(pc.getCliente().getCedula()) == null) {
+            throw new BusinessLogicException("El cliente del prospecto de compra no está registrado en la base de datos o es null");
+        }
+        if(pc.getAutomovil().getId() == null || automovilPersistence.find(pc.getAutomovil().getId()) == null){
+            throw new BusinessLogicException("El automóvil del prospecto de compra no existe o es null");
+        }
         return persistence.create(pc);
     }
     
@@ -73,14 +87,24 @@ public class ProspectoCompraLogic {
      * @throws BusinessLogicException si pc == null o no existe el prospecto de compra buscado en la BD o se intentó modificar algo distinto al texto del prospecto de compra.
      */
     public ProspectoCompraEntity updateProspectoCompra(ProspectoCompraEntity pc) throws BusinessLogicException{
-        if(pc == null) throw new BusinessLogicException("El prospecto de compra no debe ser null");
-        if(pc.getId() == null || pc.getId()<=0) throw new BusinessLogicException("El id del prospecto de compra ");
+        if(pc == null) {
+            throw new BusinessLogicException("El prospecto de compra no debe ser null");
+        }
+        if(pc.getId() == null || pc.getId()<=0){
+            throw new BusinessLogicException("El id del prospecto de compra ");
+        }
         ProspectoCompraEntity pco = persistence.find(pc.getId());
         
         if(pco == null) throw new BusinessLogicException("El prospecto de compra no existe");
-        if(pc.getAutomovil() == null || !pco.getAutomovil().equals(pc.getAutomovil())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
-        if(pc.getCliente() == null || !pco.getCliente().equals(pc.getCliente())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
-        if(pc.getVendedor() == null || !pco.getVendedor().equals(pc.getVendedor())) throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+        if(pc.getAutomovil() == null || !pco.getAutomovil().equals(pc.getAutomovil())){
+            throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+        }
+        if(pc.getCliente() == null || !pco.getCliente().equals(pc.getCliente())){
+            throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+        }
+        if(pc.getVendedor() == null || !pco.getVendedor().equals(pc.getVendedor())) {
+            throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+        }
        
         return persistence.update(pc);
     }
@@ -93,9 +117,13 @@ public class ProspectoCompraLogic {
      */
     public ProspectoCompraEntity deleteProspectoCompra(Long  pc) throws BusinessLogicException{
         
-        if(pc == null) throw new BusinessLogicException("El prospecto de compra que se quiere eliminar no debe ser null");
+        if(pc == null){
+            throw new BusinessLogicException("El prospecto de compra que se quiere eliminar no debe ser null");
+        }
        
-        if(persistence.find(pc)==null) throw new BusinessLogicException("El prospecto que se busca eliminar no existe");
+        if(persistence.find(pc)==null){
+            throw new BusinessLogicException("El prospecto que se busca eliminar no existe");
+        }
         return persistence.delete(pc);
     }
 
@@ -106,7 +134,9 @@ public class ProspectoCompraLogic {
      * @throws BusinessLogicException si el id pasado por parámetro es null o <= 0
      */
     public ProspectoCompraEntity findProspectoCompra(Long id) throws BusinessLogicException{
-        if(id == null || id<= 0)throw new BusinessLogicException("El id pasado por parámetro es inválido");
+        if(id == null || id<= 0){
+            throw new BusinessLogicException("El id pasado por parámetro es inválido");
+        }
         
         return persistence.find(id);
     }
@@ -119,7 +149,9 @@ public class ProspectoCompraLogic {
      */
     public List<ProspectoCompraEntity> findProspectoCompraByVendedor(VendedorEntity ve) throws BusinessLogicException{
         
-        if(ve == null || vendedorPersistence.find(ve.getCarnetVendedor()) == null) throw new BusinessLogicException("El vendedor con el que está buscando no se encuentra registrado en la BD.");
+        if(ve == null || vendedorPersistence.find(ve.getCarnetVendedor()) == null){
+            throw new BusinessLogicException("El vendedor con el que está buscando no se encuentra registrado en la BD.");
+        }
         
         return persistence.findByVendedor(ve);
     }
@@ -131,12 +163,16 @@ public class ProspectoCompraLogic {
      * @throws BusinessLogicException si ce == null o no se encuentra registrado en le BD.
      */
     public List<ProspectoCompraEntity> findProspectoCompraByCliente(ClienteEntity ce) throws BusinessLogicException{
-        if(ce == null || clientePersistence.find(ce.getCedula()) == null) throw new BusinessLogicException("El cliente que se busca no esta en la BD)");
+        if(ce == null || clientePersistence.find(ce.getCedula()) == null) {
+            throw new BusinessLogicException("El cliente que se busca no esta en la BD)");
+        }
         return persistence.findByCliente(ce);
     }
     
     public List<ProspectoCompraEntity> findProspectoCompraByAutomovil(AutomovilEntity ae) throws BusinessLogicException{
-        if(ae == null || automovilPersistence.find(ae.getId())==null) throw new BusinessLogicException("El automóvil que se busca no se encuentra en la BD.");
+        if(ae == null || automovilPersistence.find(ae.getId())==null){
+            throw new BusinessLogicException("El automóvil que se busca no se encuentra en la BD.");
+        }
         return persistence.findByAutomovil(ae);
     }
 }

@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -23,11 +24,11 @@ public class MarcaEntity extends BaseEntity implements Serializable{
     
     @PodamExclude
      @OneToMany(mappedBy = "marca")
-     private  List<AutomovilEntity> automoviles = new ArrayList<AutomovilEntity>();
+     private  List<AutomovilEntity> automoviles = new ArrayList<>();
     
       @PodamExclude
     @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
-    private  List<ModelEntity> modelos = new ArrayList<ModelEntity>();
+    private  List<ModelEntity> modelos = new ArrayList<>();
  
       private String logo;
   
@@ -55,4 +56,29 @@ public class MarcaEntity extends BaseEntity implements Serializable{
     public void setLogo(String logo) {
         this.logo = logo;
     }     
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final MarcaEntity other = (MarcaEntity) obj;
+        if (!Objects.equals(this.logo, other.logo)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

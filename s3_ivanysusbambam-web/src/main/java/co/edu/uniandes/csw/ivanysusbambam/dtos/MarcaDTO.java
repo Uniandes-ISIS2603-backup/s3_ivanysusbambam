@@ -21,16 +21,7 @@ public class MarcaDTO {
     private Long id;
     
     private String logo;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public MarcaDTO() {
+     public MarcaDTO() {
         //Constructor utilizado por JAX
     }
 
@@ -48,6 +39,16 @@ public class MarcaDTO {
         }
 
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+   
 
     /**
      * Método que convierte el DTO en una entidad

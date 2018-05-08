@@ -77,9 +77,9 @@ public class MedioDePagoEntity implements Serializable
     
     public boolean validarTipoMedioDePago()
     {
-      for(TipoMedioDePago tipo: TipoMedioDePago.values())
+      for(TipoMedioDePago pTipo: TipoMedioDePago.values())
       {
-          if(this.tipo.equals(tipo))
+          if(this.tipo.equals(pTipo))
           {
               return true;
           }
@@ -93,7 +93,8 @@ public class MedioDePagoEntity implements Serializable
         PAY_PAL, CREDITO, PSE;
     }
     
-    public boolean equals(MedioDePagoEntity mdp){
+    
+    public boolean compararMedioDePago(MedioDePagoEntity mdp){
         if(mdp == null){
             return false;
         }

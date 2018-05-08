@@ -100,38 +100,31 @@ public class ClienteDetailDTO extends ClienteDTO {
                 prospectosCompra = new ArrayList<>();
                 for (ProspectoCompraEntity pc : ce.getProspectosCompra()) {
                     prospectosCompra.add(new ProspectoCompraDTO(pc));
-                }
-
-            }
+                }}
 
             if (ce.getCalificacionesTienda() != null) {
                 calificacionesTienda = new ArrayList<>();
                 for (CalificacionTiendaEntity ct : ce.getCalificacionesTienda()) {
                     calificacionesTienda.add(new CalificacionTiendaDTO(ct));
-                }
-            }
+                }}
 
             if (ce.getQuejasReclamos() != null) {
                 quejasReclamos = new ArrayList<>();
                 for (QuejaReclamoEntity qr : ce.getQuejasReclamos()) {
                     quejasReclamos.add(new QuejaReclamoDTO(qr));
-                }
-
-            }
+                }}
 
             if (ce.getCompras() != null) {
                 compras = new ArrayList<>();
                 for (CompraEntity compe : ce.getCompras()) {
                     compras.add(new CompraDTO(compe));
-                }
-            }
+                }}
 
             if (ce.getVentas() != null) {
                 ventas = new ArrayList<>();
                 for (VentaEntity ve : ce.getVentas()) {
                     ventas.add(new VentaDTO(ve));
-                }
-            }
+                }    }
 
             if (ce.getMediosDePago() != null) {
                 mediosDePago = new ArrayList<>();
@@ -213,13 +206,6 @@ public class ClienteDetailDTO extends ClienteDTO {
         return calificacionesTienda;
     }
 
-    /**
-     * @return una lista conteniendo todas las quejas o reclamos hechas por el
-     * cliente.
-     */
-    /*public List<QuejaReclamoDTO> getQuejasReclamos(){
-        return quejasReclamos;
-    }*/
     /**
      * @return una lista conteniendo todas las compras del cliente.
      */

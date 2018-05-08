@@ -93,30 +93,30 @@ public class VentaDetailDTO extends VentaDTO {
      */
     @Override
     public VentaEntity toEntity() {
-        VentaEntity VentaE = super.toEntity();
+        VentaEntity entity = super.toEntity();
         if (automovil != null) {
-            VentaE.setAutomovil(automovil.toEntity());
+            entity.setAutomovil(automovil.toEntity());
         }
         if (calificacionCarro != null) {
-            VentaE.setCalificacionCarro(calificacionCarro.toEntity());
+            entity.setCalificacionCarro(calificacionCarro.toEntity());
 
         }
         if (cliente != null) {
-            VentaE.setCliente(cliente.toEntity());
+            entity.setCliente(cliente.toEntity());
 
         }
         if (medioDePago != null) {
-            VentaE.setMedioDePago(medioDePago.toEntity());
+            entity.setMedioDePago(medioDePago.toEntity());
         }
 
         if (puntoDeVenta != null) {
-            VentaE.setPuntoDeVenta(puntoDeVenta.toEntity());
+            entity.setPuntoDeVenta(puntoDeVenta.toEntity());
         }
 
         if (vendedorEncargado != null) {
-            VentaE.setVendedorEncargado(vendedorEncargado.toEntity());
+            entity.setVendedorEncargado(vendedorEncargado.toEntity());
         }
-        return VentaE;
+        return entity;
     }
 
     //---------------------GETTERS-------------------------

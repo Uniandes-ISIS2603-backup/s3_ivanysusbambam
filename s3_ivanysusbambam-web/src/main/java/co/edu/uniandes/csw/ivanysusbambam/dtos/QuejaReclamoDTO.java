@@ -63,6 +63,21 @@ public class QuejaReclamoDTO {
     public QuejaReclamoDTO() {
         //Constructor utilizado por JAX
     }
+    /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param pQuejaOReclamo: Es la entidad que se va a convertir a DTO
+     */
+    public QuejaReclamoDTO(QuejaReclamoEntity pQuejaOReclamo) {
+        if (pQuejaOReclamo != null) {
+            this.id = pQuejaOReclamo.getId();
+            this.name = pQuejaOReclamo.getName();
+            this.texto = pQuejaOReclamo.getTexto();
+            this.tipo = pQuejaOReclamo.getTipo();
+        }
+
+    }
 
     /**
      * @return el id de la queja o reclamo
@@ -146,20 +161,6 @@ public class QuejaReclamoDTO {
         return entity;
     }
 
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param pQuejaOReclamo: Es la entidad que se va a convertir a DTO
-     */
-    public QuejaReclamoDTO(QuejaReclamoEntity pQuejaOReclamo) {
-        if (pQuejaOReclamo != null) {
-            this.id = pQuejaOReclamo.getId();
-            this.name = pQuejaOReclamo.getName();
-            this.texto = pQuejaOReclamo.getTexto();
-            this.tipo = pQuejaOReclamo.getTipo();
-        }
-
-    }
+    
 
 }

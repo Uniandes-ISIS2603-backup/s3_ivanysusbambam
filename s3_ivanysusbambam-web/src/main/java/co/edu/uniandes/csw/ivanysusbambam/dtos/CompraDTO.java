@@ -44,6 +44,19 @@ public class CompraDTO {
         //Constructor utilizado por JAX
     }
 
+     /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param compra: Es la entidad que se va a convertir a DTO
+     */
+     public CompraDTO(CompraEntity compra) {
+        if(compra!=null)
+        {
+            this.idCompra = compra.getIdCompra();
+           
+        }
+         }
     //-------------------------------------GETTERS-----------------------------
     /**
      * @return El identificador de la compra
@@ -59,21 +72,7 @@ public class CompraDTO {
     public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param compra: Es la entidad que se va a convertir a DTO
-     */
-     public CompraDTO(CompraEntity compra) {
-        if(compra!=null)
-        {
-            this.idCompra = compra.getIdCompra();
-           
-        }
-         
-
-     }
+   
      
       public CompraEntity toEntity()
       {

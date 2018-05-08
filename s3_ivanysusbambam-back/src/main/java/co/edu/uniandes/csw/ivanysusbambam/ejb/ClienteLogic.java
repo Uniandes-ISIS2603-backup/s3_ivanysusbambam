@@ -35,9 +35,15 @@ public class ClienteLogic {
     public ClienteEntity createCliente(ClienteEntity ce) throws BusinessLogicException{
         LOG.log(Level.INFO, "Revisando si el cliente: {0} cumple los requisitos para ser añadido a la base de datos", ce.getCedula());
         VendedorLogic.cedulaValida(ce.getCedula());
-        if(persistence.find(ce.getCedula()) != null) throw new BusinessLogicException("Ya existe un cliente con la cédula dada");
-        if(ce.getNombre() == null) throw new BusinessLogicException("El nombre no puede ser null");
-        if(!VendedorLogic.esAlfabetica(ce.getNombre())) throw new BusinessLogicException("Sólo se aceptan nombres alfabéticos");
+        if(persistence.find(ce.getCedula()) != null){
+            throw new BusinessLogicException("Ya existe un cliente con la cédula dada");
+        }
+        if(ce.getNombre() == null){
+            throw new BusinessLogicException("El nombre no puede ser null");
+        }
+        if(!VendedorLogic.esAlfabetica(ce.getNombre())){
+            throw new BusinessLogicException("Sólo se aceptan nombres alfabéticos");
+        }
         
         return persistence.create(ce);
     }
@@ -58,13 +64,19 @@ public class ClienteLogic {
      * @throws BusinessLogicException si el cliente que se buscaba actualizar no existe o si el nombre del cliente actualizado es invalido.
      */
     public ClienteEntity updateCliente(ClienteEntity ce) throws BusinessLogicException{
-         if(ce == null) throw new BusinessLogicException("El cliente a ser actualizado no puede ser null");
+         if(ce == null){
+             throw new BusinessLogicException("El cliente a ser actualizado no puede ser null");
+         }
         
         LOG.log(Level.INFO, "Actualizando cliente con cédula: {0}",ce.getCedula());
        
         ClienteEntity ceo = persistence.find(ce.getCedula());
-        if(ceo == null) throw new BusinessLogicException("No se puede actualizar un cliente inexistente");
-        if(ce.getNombre() == null || !VendedorLogic.esAlfabetica(ce.getNombre())) throw new BusinessLogicException("Nombre inválido");
+        if(ceo == null){
+            throw new BusinessLogicException("No se puede actualizar un cliente inexistente");
+        }
+        if(ce.getNombre() == null || !VendedorLogic.esAlfabetica(ce.getNombre())){
+            throw new BusinessLogicException("Nombre inválido");
+        }
         return persistence.update(ce);
     }
     
@@ -76,9 +88,13 @@ public class ClienteLogic {
      */
     public ClienteEntity deleteCliente(Long id)throws BusinessLogicException{
         LOG.log(Level.INFO, "Intentando aeliminar cliente con cédula: {0}",id);
-        if(id == null) throw new BusinessLogicException("La cédula no puede ser null");
+        if(id == null){
+            throw new BusinessLogicException("La cédula no puede ser null");
+        }
         ClienteEntity ce = persistence.find(id);
-        if(ce == null) throw new BusinessLogicException("No existe un cliente con la cédula dada.");
+        if(ce == null){
+            throw new BusinessLogicException("No existe un cliente con la cédula dada.");
+        }
         return persistence.delete(id);
     }
     
@@ -100,8 +116,12 @@ public class ClienteLogic {
      * @throws BusinessLogicException Si name == null o si name no s alfabética.
      */
     public List<ClienteEntity> findClienteByName(String name) throws BusinessLogicException{
-        if(name == null) throw new BusinessLogicException("El nombre no puede ser null");
-        if(!VendedorLogic.esAlfabetica(name)) throw new BusinessLogicException("El nombre debe ser alfabético");
+        if(name == null){
+            throw new BusinessLogicException("El nombre no puede ser null");
+        }
+        if(!VendedorLogic.esAlfabetica(name)){
+            throw new BusinessLogicException("El nombre debe ser alfabético");
+        }
         return persistence.findByName(name);
     }
     

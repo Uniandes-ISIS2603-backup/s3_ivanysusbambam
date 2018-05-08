@@ -47,6 +47,21 @@ public class VentaDTO {
     public VentaDTO() {
         //Constructor utilizado por JAX
     }
+     /**
+     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
+     * la entidad que viene de argumento.
+     *
+     * @param pVenta: Es la entidad que se va a convertir a DTO
+     */
+    public VentaDTO(VentaEntity pVenta) {
+        if (pVenta != null) {
+            if (pVenta.getId() != null)
+                this.idVenta = pVenta.getId();
+            if (pVenta.getName()!= null)
+                this.name = pVenta.getName();
+        }
+
+    }
 
 //---------------------GETTERS-------------------------
     /**
@@ -69,21 +84,6 @@ public class VentaDTO {
         
     }
 
-    /**
-     * Conviertir Entity a DTO (Crea un nuevo DTO con los valores que recibe en
-     * la entidad que viene de argumento.
-     *
-     * @param pVenta: Es la entidad que se va a convertir a DTO
-     */
-    public VentaDTO(VentaEntity pVenta) {
-        if (pVenta != null) {
-            if (pVenta.getId() != null)
-                this.idVenta = pVenta.getId();
-            if (pVenta.getName()!= null)
-                this.name = pVenta.getName();
-        }
-
-    }
 
     /**
      * Convertir DTO a Entity

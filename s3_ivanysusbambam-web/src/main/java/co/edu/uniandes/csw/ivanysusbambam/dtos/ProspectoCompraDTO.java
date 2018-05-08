@@ -46,7 +46,7 @@ public class ProspectoCompraDTO {
     /**
      * Representa el identificador único del prospecto de compra.
      */
-    //TODO: DONE debe ser long y no Long (cambiar tambien set/get)
+    
     private Long id;
 
     //-------------------------------------CONSTRUCTOR-------------------------

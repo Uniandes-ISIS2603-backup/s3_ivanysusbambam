@@ -97,7 +97,7 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
         }
     }
     
-    //TODO: Falta el método toEntity
+    
     @Override
     public PuntoDeVentaEntity toEntity(){
         PuntoDeVentaEntity pvEntity = super.toEntity();

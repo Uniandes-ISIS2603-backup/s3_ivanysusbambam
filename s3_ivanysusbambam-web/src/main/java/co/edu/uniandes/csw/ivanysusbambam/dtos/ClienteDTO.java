@@ -43,7 +43,7 @@ public class ClienteDTO {
      * Representa el número de cédula del cliente.
      */
     
-    //TODO: DONE debe ser Long y no long. Pero en el caso de la cédula sería mejor que fuera un String de dígitos
+        
     private Long cedula;
     
     /**

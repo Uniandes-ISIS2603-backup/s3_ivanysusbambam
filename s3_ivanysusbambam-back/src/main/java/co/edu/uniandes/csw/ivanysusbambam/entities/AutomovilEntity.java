@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.ivanysusbambam.podam.DateStrategy;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -264,7 +265,9 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     }
     
     public int compararCompra (CompraEntity compra){
-        if (this.compra.getIdCompra().equals(compra.getIdCompra())) return 0;
+        if (this.compra.getIdCompra().equals(compra.getIdCompra())){
+            return 0;
+        }
         else return 1;
     }
 
@@ -291,6 +294,34 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     public void setKilometros(Double kilometros) {
         this.kilometros = kilometros;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final AutomovilEntity other = (AutomovilEntity) obj;
+        if (!Objects.equals(this.placa, other.placa)) {
+            return false;
+        }
+        if (!Objects.equals(this.chasis, other.chasis)) {
+            return false;
+        }
+        return true;
+    }
+    
     
     
     

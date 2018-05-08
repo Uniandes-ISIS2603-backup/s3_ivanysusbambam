@@ -26,17 +26,23 @@ public class MarcaPersistence {
         
         @PersistenceContext(unitName = "IvanysusbambamPU")
         protected EntityManager em;
+      
+        
         
        public MarcaEntity find(Long id){
             LOGGER.log(Level.INFO, "Buscando marca");
             return em.find(MarcaEntity.class, id);
         }
        
-     public List<MarcaEntity> findByNombre(String nom){
+     public MarcaEntity findByNombre(String nom){
             LOGGER.log(Level.INFO, "Buscando marca con nombre ={0}", nom);
                  TypedQuery<MarcaEntity> q = em.createQuery("select u from MarcaEntity u where u.nombre = :nom", MarcaEntity.class);
                  q = q.setParameter("nombre", nom);
-                  return q.getResultList();
+                 if (q.getResultList().isEmpty()){
+                     return null;
+                 }
+                 else
+                  return q.getSingleResult();
         }
        
        public List<MarcaEntity> findAll(){

@@ -75,11 +75,11 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
      */
     @Override
     public QuejaReclamoEntity toEntity(){
-        QuejaReclamoEntity QuejaE = super.toEntity();
+        QuejaReclamoEntity entity = super.toEntity();
         if (cliente!=  null){
-            QuejaE.setCliente(cliente.toEntity());
+            entity.setCliente(cliente.toEntity());
         }
-        return QuejaE;
+        return entity;
     }
     
     

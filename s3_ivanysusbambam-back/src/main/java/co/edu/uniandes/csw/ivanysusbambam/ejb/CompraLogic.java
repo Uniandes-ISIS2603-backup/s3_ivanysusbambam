@@ -86,14 +86,12 @@ public class CompraLogic {
     }
 
     public CompraEntity findCompra(Integer id) throws BusinessLogicException {
-        if(id == null){
-            throw new BusinessLogicException("El id no puede ser null");
+       CompraEntity compra = compraPersistence.find(id);
+        if(compra == null){
+            throw new BusinessLogicException("la compra no puede ser null");
         }
         
-        CompraEntity compra = compraPersistence.find(id);
-        
-        
-        return compra;
+   return compra;
     }
 
     public List<CompraEntity> findAll() {

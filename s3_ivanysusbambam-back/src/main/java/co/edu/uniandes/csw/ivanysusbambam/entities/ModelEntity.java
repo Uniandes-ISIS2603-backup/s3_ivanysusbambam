@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -41,7 +42,7 @@ public class ModelEntity extends BaseEntity implements Serializable {
     
     @OneToMany(mappedBy = "model",cascade = CascadeType.ALL )
     
-    private List<AutomovilEntity> automoviles = new ArrayList<AutomovilEntity>();
+    private List<AutomovilEntity> automoviles = new ArrayList<>();
     
     @ManyToOne
     private MarcaEntity marca;
@@ -117,7 +118,32 @@ public class ModelEntity extends BaseEntity implements Serializable {
     public void setAutomoviles(List<AutomovilEntity> nuevoAuto) {
         this.automoviles = nuevoAuto;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final ModelEntity other = (ModelEntity) obj;
+        if (!Objects.equals(this.marca, other.marca)) {
+            return false;
+        }
+        return true;
+    }
    
+    
     
     
 }

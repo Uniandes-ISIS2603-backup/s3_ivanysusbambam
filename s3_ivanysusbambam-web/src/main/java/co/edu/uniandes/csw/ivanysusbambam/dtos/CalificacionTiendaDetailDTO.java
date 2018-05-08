@@ -41,6 +41,10 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
 public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
 
     /**
+     * Representa el cliente que ha puesto la calificacion
+     */
+    private ClienteDTO cliente;
+    /**
      * Constructor por defecto
      */
     public CalificacionTiendaDetailDTO() {
@@ -49,18 +53,14 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
 
     public CalificacionTiendaDetailDTO(CalificacionTiendaEntity entity) {
         super(entity);
-         // TODO: qué pasa si entity es null
-        //TODO: this.cliente = ....
-        if (entity.getCliente() != null) {
-            this.setCliente(new ClienteDTO(entity.getCliente()));
+        
+        if (entity != null) {
+            cliente = new ClienteDTO(entity.getCliente());
         }
     }
-    /**
-     * Representa el cliente que ha puesto la calificacion
-     */
-    private ClienteDTO cliente;
+    
 
-     //TODO: Falta en metodo toEntity (que debe tener @Override)
+     
     @Override
     public CalificacionTiendaEntity toEntity(){
         CalificacionTiendaEntity ctEntity = super.toEntity();

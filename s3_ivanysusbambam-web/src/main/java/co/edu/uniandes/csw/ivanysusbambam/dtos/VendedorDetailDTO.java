@@ -98,7 +98,6 @@ public class VendedorDetailDTO extends VendedorDTO {
                     prospectosCompra.add(new ProspectoCompraDTO(ent));
                 }
             }
-
             if (ve.getVentas() != null) {
                 if (ventas == null) {
                     ventas = new ArrayList();
@@ -107,7 +106,6 @@ public class VendedorDetailDTO extends VendedorDTO {
                     ventas.add(new VentaDTO(ent));
                 }
             }
-
             if (ve.getCompras() != null) {
                 if (compras == null) {
                     compras = new ArrayList();
@@ -116,7 +114,6 @@ public class VendedorDetailDTO extends VendedorDTO {
                     compras.add(new CompraDTO(ent));
                 }
             }
-
             this.puntoDeVenta = new PuntoDeVentaDTO(ve.getPuntoDeVenta());
         }
     }

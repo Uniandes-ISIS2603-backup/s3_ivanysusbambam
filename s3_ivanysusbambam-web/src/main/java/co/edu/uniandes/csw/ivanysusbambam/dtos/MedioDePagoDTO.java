@@ -36,8 +36,8 @@ public class MedioDePagoDTO {
      * Atributo que representa el numero del medio de pago
      */
     
-    //TODO debe ser Long y no long (cambiar los set/get también
-    private long numero;
+    
+    private Long numero;
 
     /**
      * Atributo que representa el tipo del medio de pago
@@ -70,7 +70,7 @@ public class MedioDePagoDTO {
     /**
      * @return El numero del medio de pago
      */
-    public long getNumero() {
+    public Long getNumero() {
         return numero;
     }
 
@@ -78,7 +78,7 @@ public class MedioDePagoDTO {
     /**
      * @param numero El nuevo numero del medio de pago
      */
-    public void setNumero(long numero) {
+    public void setNumero(Long numero) {
         this.numero = numero;
     }
 

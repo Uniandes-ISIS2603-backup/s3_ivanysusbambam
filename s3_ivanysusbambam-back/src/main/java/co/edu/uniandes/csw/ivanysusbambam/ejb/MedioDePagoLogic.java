@@ -10,7 +10,7 @@ import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ClientePersistence;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MedioDePagoPersistence;
 import java.util.List;
-import java.util.logging.Logger;
+
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 
@@ -56,8 +56,8 @@ public class MedioDePagoLogic {
         if (numero == null) {
             throw new BusinessLogicException("El medio de pago no es valido");
         }
-        MedioDePagoEntity mdp = persistence.find(numero);
-        return mdp;
+       return  persistence.find(numero);
+        
     }
 
     public List<MedioDePagoEntity> findAll() {

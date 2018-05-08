@@ -60,7 +60,9 @@ public class CalificacionCarroLogic {
     public CalificacionCarroEntity createCalificacionCarro(CalificacionCarroEntity cc) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear una calificacion de carro ");
        
-        if(cc.getPuntaje() < 1.0 || cc.getPuntaje() > 5.0) throw new BusinessLogicException("La calificacion registrada no es valida");
+        if(cc.getPuntaje() < 1.0 || cc.getPuntaje() > 5.0) {
+            throw new BusinessLogicException("La calificacion registrada no es valida");
+        }
         return persistence.create(cc);
     }
 
@@ -73,11 +75,18 @@ public class CalificacionCarroLogic {
      */
     public CalificacionCarroEntity updateCalificacionCarro(CalificacionCarroEntity cc) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar una calificacion de carro ");
-        if(cc == null) throw new BusinessLogicException("La calificación a actualizar no puede ser null");
-        CalificacionCarroEntity ccB = persistence.find(cc.getId());
-        if(ccB == null) throw new BusinessLogicException("No se puede actualizar una calificacion no registrada");
+        if(cc == null){
+            throw new BusinessLogicException("La calificación a actualizar no puede ser null");
+        }
         
-        if(cc.getPuntaje() < 1 || cc.getPuntaje() > 5) throw new BusinessLogicException("La calificacion registrada no es valida");
+        CalificacionCarroEntity ccb = persistence.find(cc.getId());
+        if(ccb == null) {
+            throw new BusinessLogicException("No se puede actualizar una calificacion no registrada");
+        }
+        
+        if(cc.getPuntaje() < 1 || cc.getPuntaje() > 5){
+            throw new BusinessLogicException("La calificacion registrada no es valida");
+        }
 
         return persistence.update(cc);
     }
@@ -90,8 +99,12 @@ public class CalificacionCarroLogic {
      */
     public void deleteCalificacionTienda(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una calificacion de carro ");
-        if(id == null) throw new BusinessLogicException("El id no puede ser null");
-        if(persistence.find(id) == null) throw new BusinessLogicException("No existe una calificacion con el id dado");
+        if(id == null) {
+            throw new BusinessLogicException("El id no puede ser null");
+        }
+        if(persistence.find(id) == null) {
+            throw new BusinessLogicException("No existe una calificacion con el id dado");
+        }
         persistence.delete(id);
     }
     
@@ -105,8 +118,12 @@ public class CalificacionCarroLogic {
      */
     public VentaEntity getVenta(Long id) throws BusinessLogicException{
         LOGGER.log(Level.INFO, "Inicia proceso de consultar la venta de la calificacion de carro con id = {0}", id);
-        if(id == null) throw new BusinessLogicException("El id no puede ser null");
-        if(getCalificacionCarro(id) == null) throw new BusinessLogicException("No se registra una calificación con id = {0}");
+        if(id == null){
+            throw new BusinessLogicException("El id no puede ser null");
+        }
+        if(getCalificacionCarro(id) == null){
+            throw new BusinessLogicException("No se registra una calificación con id = {0}");
+        }
         return getCalificacionCarro(id).getVenta();
     }
 }

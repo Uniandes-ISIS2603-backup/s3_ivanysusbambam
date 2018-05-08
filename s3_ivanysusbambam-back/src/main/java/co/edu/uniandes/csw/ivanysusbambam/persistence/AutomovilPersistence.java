@@ -89,6 +89,7 @@ public class AutomovilPersistence {
         LOGGER.log(Level.INFO, "Buscando automoviles con color: ", color);
         TypedQuery tq  = em.createQuery("select v from AutomovilEntity v where v.color = :color", AutomovilEntity.class);
         tq.setParameter("color",color);
+        
         if(tq.getResultList().isEmpty()) return null;
         else return tq.getResultList();
     }
@@ -99,8 +100,14 @@ public class AutomovilPersistence {
     * @return un autimovil si ya existe con la placa dada por parametro 
     */
     public AutomovilEntity findByPlate (String placa){
-        LOGGER.log(Level.INFO, "Buscando automovil con placa: ", placa);
-        return em.find(AutomovilEntity.class, placa);
+        LOGGER.log(Level.INFO, "Buscando automovil con placa ={0}", placa);
+                 TypedQuery<AutomovilEntity> q = em.createQuery("select u from AutomovilEntity u where u.placa = :placa", AutomovilEntity.class);
+                 q = q.setParameter("placa", placa);
+                 if (q.getResultList().isEmpty()){
+                     return null;
+                 }
+                 else
+                  return q.getSingleResult();
     }
     
     /**
@@ -109,8 +116,14 @@ public class AutomovilPersistence {
     * @return un autimovil si ya existe con la placa dada por parametro 
     */
     public AutomovilEntity findBychasis (Integer chasis){
-        LOGGER.log(Level.INFO, "Buscando automovil con chasis: ", chasis);
-        return em.find(AutomovilEntity.class, chasis);
+         LOGGER.log(Level.INFO, "Buscando automovil con chasis ={0}", chasis);
+                 TypedQuery<AutomovilEntity> q = em.createQuery("select u from AutomovilEntity u where u.chasis = :chasis", AutomovilEntity.class);
+                 q = q.setParameter("chasis", chasis);
+                 if (q.getResultList().isEmpty()){
+                     return null;
+                 }
+                 else
+                  return q.getSingleResult();
     }
     
     /**

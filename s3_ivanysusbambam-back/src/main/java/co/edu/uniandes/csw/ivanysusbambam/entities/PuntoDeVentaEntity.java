@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import co.edu.uniandes.csw.ivanysusbambam.podam.TelefonoStrategy;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -125,4 +126,29 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     public void setAutomoviles(List<AutomovilEntity> automoviles) {
         this.automoviles = automoviles;
     }
+
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final PuntoDeVentaEntity other = (PuntoDeVentaEntity) obj;
+        if (!Objects.equals(this.direccion, other.direccion)) {
+            return false;
+        }
+        return true;
+    }
+    
 }

@@ -33,20 +33,25 @@ public class QuejaReclamoLogic
     
     /**
      * Crea un prospecto de compra.
-     * @param QR prospecto de compra que se quiere añadir 
+     * @param entity prospecto de compra que se quiere añadir 
      * @return el prospecto de compra recién añadido.
      * @throws BusinessLogicException si el id, cliente, vendedor, o automóvil del cliente no existe o es inválido.
      */
-    public QuejaReclamoEntity createQuejaReclamo(QuejaReclamoEntity QR) throws BusinessLogicException{
-        if(QR == null) throw new BusinessLogicException("La quejaReclamo no debe ser null");
+    public QuejaReclamoEntity createQuejaReclamo(QuejaReclamoEntity entity) throws BusinessLogicException{
+        if(entity == null){
+            throw new BusinessLogicException("La quejaReclamo no debe ser null");
+        }
         
-         //TODO: no hay que revisar el id porque es la PK y no se ha creado
-        
-        
-        if(QR.getId()<=0) throw new BusinessLogicException("EL id no debería ser <= 0");
-        if(persistence.find(QR.getId()) != null) throw new BusinessLogicException("la QuejaReclamo ya existe en la base de datos");
-        if(clientePersistence.find(QR.getCliente().getCedula()) == null) throw new BusinessLogicException("El cliente de la quejaReclamo no está registrado en la base de datos");
-        return persistence.create(QR);
+         if(entity.getId()<=0){
+            throw new BusinessLogicException("EL id no debería ser <= 0");
+        }
+        if(persistence.find(entity.getId()) != null) {
+            throw new BusinessLogicException("la QuejaReclamo ya existe en la base de datos");
+        }
+        if(clientePersistence.find(entity.getCliente().getCedula()) == null){
+            throw new BusinessLogicException("El cliente de la quejaReclamo no está registrado en la base de datos");
+        }
+        return persistence.create(entity);
     }
     
     /**
@@ -59,19 +64,27 @@ public class QuejaReclamoLogic
     
     /**
      * Actualiza un prospecto de compra.
-     * @param QR prospecto de compra con la información actualizada.
+     * @param entity prospecto de compra con la información actualizada.
      * @return prospecto de compra actualizado.
      * @throws BusinessLogicException si pc == null o no existe el prospecto de compra buscado en la BD o se intentó modificar algo distinto al texto del prospecto de compra.
      */
-    public QuejaReclamoEntity updateQuejaReclamo(QuejaReclamoEntity QR) throws BusinessLogicException{
-        if(QR == null) throw new BusinessLogicException("La quejaReclamo no debe ser null");
-        if(QR.getId() == null || QR.getId()<=0) throw new BusinessLogicException("El id de la quejaREclamo no es valido ");
-        QuejaReclamoEntity QRO = persistence.find(QR.getId());
+    public QuejaReclamoEntity updateQuejaReclamo(QuejaReclamoEntity entity) throws BusinessLogicException{
+        if(entity == null) {
+            throw new BusinessLogicException("La quejaReclamo no debe ser null");
+        }
+        if(entity.getId() == null || entity.getId()<=0){
+            throw new BusinessLogicException("El id de la quejaREclamo no es valido ");
+        }
+        QuejaReclamoEntity newEntity = persistence.find(entity.getId());
         
-        if(QRO == null) throw new BusinessLogicException("La quejaReclamo no existe");
-        if(QR.getCliente() == null || !QRO.getCliente().equals(QR.getCliente())) throw new BusinessLogicException("Sólo se puede cambiar el texto de la quejaReclamo");
+        if(newEntity == null){
+            throw new BusinessLogicException("La quejaReclamo no existe");
+        }
+        if(entity.getCliente() == null || !newEntity.getCliente().equals(entity.getCliente())){
+            throw new BusinessLogicException("Sólo se puede cambiar el texto de la quejaReclamo");
+        }
         
-        return persistence.update(QR);
+        return persistence.update(entity);
     }
     
     /**
@@ -85,8 +98,8 @@ public class QuejaReclamoLogic
         if (id == null) {
             throw new BusinessLogicException("el id no puede ser null");
         }
-        QuejaReclamoEntity QRE = persistence.find(id);
-        if (QRE == null) {
+        QuejaReclamoEntity entity = persistence.find(id);
+        if (entity == null) {
             throw new BusinessLogicException("No existe una quejaReclamo el id dado.");
         }
         persistence.delete(id);
@@ -99,7 +112,9 @@ public class QuejaReclamoLogic
      * @throws BusinessLogicException si el id pasado por parámetro es null o <= 0
      */
     public QuejaReclamoEntity findQuejaReclamo(Long id) throws BusinessLogicException{
-        if(id == null || id<= 0)throw new BusinessLogicException("El id pasado por parámetro es inválido");
+        if(id == null || id<= 0){
+            throw new BusinessLogicException("El id pasado por parámetro es inválido");
+        }
         
         return persistence.find(id);
     }

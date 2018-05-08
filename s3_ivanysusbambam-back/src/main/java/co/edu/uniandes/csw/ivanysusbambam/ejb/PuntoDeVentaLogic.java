@@ -74,22 +74,27 @@ public class PuntoDeVentaLogic {
      */
     public PuntoDeVentaEntity createPuntoDeVenta(PuntoDeVentaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de crear un punto de venta ");
-        if(entity.getTelefono() > 9999999 || entity.getTelefono() < 1000000) throw new BusinessLogicException("Numero de telefono inválido");
+        if(entity.getTelefono() > 9999999 || entity.getTelefono() < 1000000){
+            throw new BusinessLogicException("Numero de telefono inválido");
+        }
         return persistence.create(entity);
     }
     
     /**
      * Actualiza la información de una instancia de PuntoDeVenta.
      *
-     * @param id identificador del punto de venta a actualizar
      * @param entity Instancia de PuntoDeVentaEntity con los nuevos datos.
      * @return Instancia de PuntoDeVentaEntity con los datos actualizados.
      * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
     public PuntoDeVentaEntity updatePuntoDeVenta(PuntoDeVentaEntity entity) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de actualizar un punto de venta con id={0}", entity.getId());
-        if(persistence.find(entity.getId()) == null) throw new BusinessLogicException("El punto de venta ingresado no existe");
-        if(entity.getTelefono() > 9999999 || entity.getTelefono() < 1000000) throw new BusinessLogicException("Numero de telefono inválido");
+        if(persistence.find(entity.getId()) == null) {
+            throw new BusinessLogicException("El punto de venta ingresado no existe");
+        }
+        if(entity.getTelefono() > 9999999 || entity.getTelefono() < 1000000){
+            throw new BusinessLogicException("Numero de telefono inválido");
+        }
         return persistence.update(entity);
     }
     
@@ -100,7 +105,9 @@ public class PuntoDeVentaLogic {
      */
     public void deletePuntoDeVenta(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar un punto de venta ");
-        if(persistence.find(id) == null) throw new BusinessLogicException("El punto de venta ingresado no existe");
+        if(persistence.find(id) == null) {
+            throw new BusinessLogicException("El punto de venta ingresado no existe");
+        }
         persistence.delete(id);
     }
     
@@ -156,7 +163,7 @@ public class PuntoDeVentaLogic {
         return getPuntoDeVenta(id).getAutomoviles();
     }
     
-    //TODO hacer métodos para obtener un auto, vendedor, venta y compra especifico con 2do id como parametro
+   
     
     
     /**

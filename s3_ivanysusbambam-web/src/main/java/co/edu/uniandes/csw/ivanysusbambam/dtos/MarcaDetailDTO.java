@@ -48,29 +48,7 @@ public class MarcaDetailDTO extends MarcaDTO {
     private List<ModelDTO> modelos;
 
     
-
-    //-----------------------------------------------------------------------------------------------------------------
-    // Métodos Get
-    //-----------------------------------------------------------------------------------------------------------------
-    /**
-     * Retorna la lista de automoviles pertenecientes a la marca
-     *
-     * @return Lista con los automoviles
-     */
-    public List<AutomovilDTO> getAutomoviles() {
-        return automoviles;
-    }
-
-    /**
-     * Retorna una lista con los modelos de la marca
-     *
-     * @return Lista con los modelos
-     */
-    public List<ModelDTO> getModelos() {
-        return modelos;
-    }
-
-    public MarcaDetailDTO() {
+     public MarcaDetailDTO() {
         //Constructor utilizado por JAX
     }
 
@@ -101,6 +79,30 @@ public class MarcaDetailDTO extends MarcaDTO {
             }
         }
     }
+    
+
+    //-----------------------------------------------------------------------------------------------------------------
+    // Métodos Get
+    //-----------------------------------------------------------------------------------------------------------------
+    /**
+     * Retorna la lista de automoviles pertenecientes a la marca
+     *
+     * @return Lista con los automoviles
+     */
+    public List<AutomovilDTO> getAutomoviles() {
+        return automoviles;
+    }
+
+    /**
+     * Retorna una lista con los modelos de la marca
+     *
+     * @return Lista con los modelos
+     */
+    public List<ModelDTO> getModelos() {
+        return modelos;
+    }
+
+   
 
     /**
      * Transformar el DTO a una entidad

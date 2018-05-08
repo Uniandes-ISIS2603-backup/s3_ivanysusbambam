@@ -41,6 +41,11 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionCarroEntity;
 public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
 
     /**
+     * Representa la venta de la cual proviene la calificacion
+     */
+    private VentaDTO venta;
+    
+    /**
      * Constructor por defecto
      */
     public CalificacionCarroDetailDTO() {
@@ -49,16 +54,12 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
 
     public CalificacionCarroDetailDTO(CalificacionCarroEntity entity) {
         super(entity);
-        // TODO: qué pasa si entity es null
-        //TODO: this.venta = ....
+       
         if(entity != null){
-            if (entity.getVenta() != null) {
-                setVenta(new VentaDTO(entity.getVenta()));
-            }
+            venta = new VentaDTO(entity.getVenta());
         }
     }
     
-    //TODO: Falta en metodo toEntity (que debe tener @Override)
     @Override
     public CalificacionCarroEntity toEntity(){
         CalificacionCarroEntity ccEntity = super.toEntity();
@@ -67,10 +68,7 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
         }
         return ccEntity;
     }
-    /**
-     * Representa la venta de la cual proviene la calificacion
-     */
-    private VentaDTO venta;
+    
 
     /**
      * Asigna una venta a la calificacion

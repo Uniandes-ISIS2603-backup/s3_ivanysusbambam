@@ -50,48 +50,38 @@ public class VentaLogic {
     /**
      * Crea un prospecto de compra.
      *
-     * @param Ve prospecto de compra que se quiere añadir
+     * @param entity prospecto de compra que se quiere añadir
      * @return el prospecto de compra recién añadido.
      * @throws BusinessLogicException si el id, cliente, vendedor, o automóvil
      * del cliente no existe o es inválido.
      */
-    public VentaEntity createVenta(VentaEntity Ve) throws BusinessLogicException {
+    public VentaEntity createVenta(VentaEntity entity) throws BusinessLogicException {
        
           
         
-//        if (Ve.getVendedorEncargado() == null) {
-//            throw new BusinessLogicException("El vendedoer no puede ser null");
-//        }
 
-//        if (Ve.getVendedorEncargado().getCarnetVendedor() == null) {
-//            throw new BusinessLogicException("El carnet del vendedor no puede ser null");
-//        }
-
-        if (Ve.getCliente().getCedula() == null) {
+        if (entity.getCliente().getCedula() == null) {
             throw new BusinessLogicException("La cédula del cliente no puede ser null");
         }
 
-        if (Ve.getPuntoDeVenta().getId() == null) {
+        if (entity.getPuntoDeVenta().getId() == null) {
             throw new BusinessLogicException("El id del punto de venta no puede ser null");
         }
 
-//        if (vendedorPersistence.find(Ve.getVendedorEncargado().getCarnetVendedor()) == null) {
-//            throw new BusinessLogicException("El vendedor de la venta no esta registrado en la base de datos");
-//        }
-        if (clientePersistence.find(Ve.getCliente().getCedula()) == null) {
+        if (clientePersistence.find(entity.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente de la venta no está registrado en la base de datos");
         }
-        if (automovilPersistence.find(Ve.getAutomovil().getId()) == null) {
+        if (automovilPersistence.find(entity.getAutomovil().getId()) == null) {
             throw new BusinessLogicException("El automóvil de la venta no existe");
         }
-        if (puntoPersistence.find(Ve.getPuntoDeVenta().getId()) == null) {
+        if (puntoPersistence.find(entity.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El punto de venta de la venta no existe");
         }
 
-        if (medioPersistence.find(Ve.getMedioDePago().getNumero()) == null) {
+        if (medioPersistence.find(entity.getMedioDePago().getNumero()) == null) {
             throw new BusinessLogicException("El medio de pago de esta venta no existe ");
         }
-        return persistence.create(Ve);
+        return persistence.create(entity);
     }
 
     /**
@@ -106,41 +96,41 @@ public class VentaLogic {
     /**
      * Actualiza un prospecto de compra.
      *
-     * @param VE prospecto de compra con la información actualizada.
+     * @param entity prospecto de compra con la información actualizada.
      * @return prospecto de compra actualizado.
      * @throws BusinessLogicException si pc == null o no existe el prospecto de
      * compra buscado en la BD o se intentó modificar algo distinto al texto del
      * prospecto de compra.
      */
-    public VentaEntity updateVenta(VentaEntity VE) throws BusinessLogicException {
-        if (VE == null) {
+    public VentaEntity updateVenta(VentaEntity entity) throws BusinessLogicException {
+        if (entity == null) {
             throw new BusinessLogicException("La venta no debe ser null");
         }
-        if (VE.getId() == null || VE.getId() <= 0) {
+        if (entity.getId() == null || entity.getId() <= 0) {
             throw new BusinessLogicException("El id de la venta no es valido ");
         }
-        VentaEntity VEO = persistence.find(VE.getId());
+        VentaEntity newEntity = persistence.find(entity.getId());
 
-        if (VEO == null) {
+        if (newEntity == null) {
             throw new BusinessLogicException("La venta no existe");
         }
-        if (VE.getAutomovil() == null || !VEO.getAutomovil().equals(VE.getAutomovil())) {
-            throw new BusinessLogicException("Sólo se puede cambiar La calificacionCarro de la venta");
+        if (entity.getAutomovil() == null || !newEntity.getAutomovil().equals(entity.getAutomovil())) {
+            throw new BusinessLogicException("No se puede modificar el automovil asociado a la venta");
         }
-        if (VE.getCliente() == null || !VEO.getCliente().equals(VE.getCliente())) {
-            throw new BusinessLogicException("Sólo se puede cambiar La calificacionCarro de la venta");
+        if (entity.getCliente() == null || !newEntity.getCliente().equals(entity.getCliente())) {
+            throw new BusinessLogicException("No se puede modificar el cliente asociado a la venta");
         }
-        if (VE.getVendedorEncargado() == null || !VEO.getVendedorEncargado().equals(VE.getVendedorEncargado())) {
-            throw new BusinessLogicException("Sólo se puede cambiar La calificacionCarro de la venta");
+        if (entity.getVendedorEncargado() == null || !newEntity.getVendedorEncargado().equals(entity.getVendedorEncargado())) {
+            throw new BusinessLogicException("No se puede modificar el vendedor adociado a la  venta");
         }
-        if (VE.getPuntoDeVenta() == null || !VEO.getPuntoDeVenta().equals(VE.getPuntoDeVenta())) {
-            throw new BusinessLogicException("no se puede actualizar el punto de venta  de la venta");
+        if (entity.getPuntoDeVenta() == null || !newEntity.getPuntoDeVenta().equals(entity.getPuntoDeVenta())) {
+            throw new BusinessLogicException("No se puede modificar el punto de venta asociado a la  venta");
         }        
-        if (VE.getMedioDePago() == null || !VEO.getMedioDePago().equals(VE.getMedioDePago())) {
-            throw new BusinessLogicException("no se puede actualizar el medio de pago  de la venta");
+        if (entity.getMedioDePago() == null || !newEntity.getMedioDePago().equals(entity.getMedioDePago())) {
+            throw new BusinessLogicException("No se puede modificar el medio de pago asociado a la  venta");
         }
 
-        return persistence.update(VE);
+        return persistence.update(entity);
     }
 
     /**
@@ -156,8 +146,8 @@ public class VentaLogic {
         if (id == null) {
             throw new BusinessLogicException("el id no puede ser null");
         }
-        VentaEntity VE = persistence.find(id);
-        if (VE == null) {
+        VentaEntity entity = persistence.find(id);
+        if (entity == null) {
             throw new BusinessLogicException("No existe una venta el id dado.");
         }
         persistence.delete(id);
