@@ -24,7 +24,7 @@
             $rootScope.vendedor=false;
             $rootScope.administrador=false;
         }
-        $rootScope.esAdministrador = function()
+        $rootScope.esAdmin= function()
         {
             $rootScope.usuario=false;
             $rootScope.vendedor=false;
@@ -44,7 +44,7 @@
                         flag = true;
                         $scope.user = $scope.users[item];
                         /*
-                        Aca mirar a cual estado se envía99
+                        Aca mirar a cual estado se envía
                         */
                         $state.go('mainView', {}, {reload: true});
                         break;
@@ -57,7 +57,9 @@
                     sessionStorage.setItem("username", $scope.user.user);
                     sessionStorage.setItem("name", $scope.user.name);
                     sessionStorage.setItem("rol", $scope.user.rol);
-                    $rootScope.currentUser = $scope.user.name; 
+                    $rootScope.currentUser = $scope.user.name;
+                    /* Acá te estoy guardando la referencia al id */
+                    $rootScope.currentId = $scope.user.id;
                 }
                 });
             
