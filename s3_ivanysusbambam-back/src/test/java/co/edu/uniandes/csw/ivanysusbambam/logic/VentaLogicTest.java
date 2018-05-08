@@ -255,18 +255,21 @@ public class VentaLogicTest {
      */
     @Test
     public void updateVentaTest() throws BusinessLogicException{
+       
         VentaEntity entity = data.get(0);
+        entity.setMedioDePago(medioData.get(0));
+        entity.getMedioDePago().setCliente(entity.getCliente());
+        
         VentaEntity pojoEntity = factory.manufacturePojo(VentaEntity.class);
 
         pojoEntity.setId(entity.getId());
         pojoEntity.setCliente(entity.getCliente());
         pojoEntity.setVendedorEncargado(entity.getVendedorEncargado());
-        
-        System.out.println("MEDIO DE PAGO " + entity.getMedioDePago().getNumero());
-        
-        pojoEntity.setAutomovil(entity.getAutomovil());
+         pojoEntity.setAutomovil(entity.getAutomovil());
        pojoEntity.setPuntoDeVenta(entity.getPuntoDeVenta());
         pojoEntity.setMedioDePago(entity.getMedioDePago());
+      
+       
         ventaLogic.updateVenta(pojoEntity);
 
         
