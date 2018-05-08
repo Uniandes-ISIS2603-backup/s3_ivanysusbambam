@@ -5,10 +5,20 @@
     border: 0;
     font-size: 18px !important;
     line-height: 1.42857143 !important;
-
     border-radius: 0;
-    font-family: 'Open Sans', sans-serif;     margin-bottom: 0;
-
+    font-family: 'Open Sans', sans-serif;     
+    margin-bottom: 0;
+}
+#carta{
+    background-color: whitesmoke;
+    border-color: whitesmoke;
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+#navAutos: hover{
+    color: aqua;
 }
 #nombre{
     margin-left: 2em;
@@ -26,11 +36,9 @@
     background-color: rgba(169, 169, 169, 0.35);
     width: 900px;
     border-color: rgba(169, 169, 169, 0.35);
-    margin:0px;
-  
-    
-margin-right:0px;
-margin-left: 0px;
+    margin: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
 }
 #perCliente{
         background-color: rgba(169, 169, 169, 0.35);
@@ -62,7 +70,6 @@ margin-left: 0px;
     color:#9ACD32;
     text-decoration: none;
 }
-
 #centr{
     text-align: center;
     background-color: white;
@@ -73,11 +80,7 @@ margin-left: 0px;
 #prin{
     align-self: center;
 }
-.imagen2{
-    align-content: center;
-}
- /* The side navigation menu */
-.sidenav {
+.sidenav{
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
     position: fixed; /* Stay in place */
@@ -90,7 +93,6 @@ margin-left: 0px;
     padding-top: 60px; /* Place content 60px from the top */
     transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
 }
-
 /* Los links de navegación */
 .sidenav a {
     padding: 8px 8px 8px 32px;
@@ -100,14 +102,12 @@ margin-left: 0px;
     display: block;
     transition: 0.3s;
 }
-
 /* Cuando el mouse está encima, cambia de color */
 .sidenav a:hover {
     color: white;
     background-color: dimgray;
     text-decoration:none;
 }
-
 /* Esto es de la equis con la que cierro el menu */
 .sidenav .closebtn {
     position: absolute;
@@ -116,14 +116,11 @@ margin-left: 0px;
     font-size: 36px;
     margin-left: 50px;
 }
-
 /* Esto es lo que tengo que colocar si el main va a cambiar también*/
 #main {
     transition: margin-left .5s;
     padding: 20px;
 }
-
-
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
@@ -138,15 +135,6 @@ margin-left: 0px;
     text-decoration: none;
     color: darkred;
 }
-.imagen{
-    height: 100vh; 
-    background-image: url(../resources/auto-automobile-blur-769892.jpg); 
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    background-position: center; 
-    padding-top: 250px;
-    color:azure;
-}
 .imagen2{
     height: 100vh; 
     background-image: url(../resources/auto-automobile-blur-769892.jpg); 
@@ -154,7 +142,203 @@ margin-left: 0px;
     background-repeat: no-repeat; 
     margin: 0px;
     padding-top: 100px;
+    align-content: center;
 }
 .boton{
     color:antiquewhite;
+    border-color: aqua;
 }
+/* Carros famosos */
+img {
+	max-width: 100%;
+	height: auto;
+}
+ul li {
+	list-style: none
+}
+a, a:hover {
+	text-decoration: none;
+	box-shadow: none;
+	outline: none;
+	-moz-transition: all 0.2s ease-in;
+	-o-transition: all 0.2s ease-in;
+	-webkit-transition: all 0.2s ease-in;
+	transition: all 0.2s ease-in;
+}
+h1{ text-align:center; margin:30px 0; color:#fff;}
+.popu li {
+	width: 25%;
+	max-width: 100%;
+	display: inline-block;
+	float: left;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+	height: 523px
+}
+.popu li img {
+	height: 100%;
+}
+.popu ul {
+	padding: 0;
+	display: flow-root;
+}
+.popu li:hover img {
+	-moz-transform: scale(1.1);
+	-webkit-transform: scale(1.1);
+	-ms-transform: scale(1.1);
+	-o-transform: scale(1.1);
+	transform: scale(1.1);
+}
+.popu li img {
+	-webkit-transition: transform 0.5s ease;
+	-o-transition: transform 0.5s ease;
+	transition: transform 0.5s ease;
+}
+.popu .popuIm {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	top: 0;
+	transition: 0.3s ease-in-out;
+	background: rgba(0,0,0,0.28);
+	visibility: hidden
+}
+.popu ul li:hover .popuIm {
+	background: rgba(255,0,4,0.46);
+	transition: 0.3s ease-in-out;
+	visibility: visible
+}
+.hls_data {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	padding: 60px 20px;
+}
+.hls_data a {
+	display: block;
+}
+.hls_title {
+	text-align: right;
+	font-size: 22px;
+	border-bottom: 2px solid blue;
+	padding: 10px 0;
+	margin: 10px 0;
+	color: #fff;
+}
+.hls_title:hover {
+	color: #fff;
+}
+.popuIm h3 {
+	color: #fff;
+	transition: 0.5s
+}
+.popuIm:hover h3 {
+	transition: 0.5s ease;
+	margin-top: 100px;
+}
+.btn-pro {
+	border-radius: 0;
+	color: #222;
+	background: #fff;
+	display: inline-block !important;
+	float: right;
+}
+.btn-pro:hover {
+	color: #fff;
+	background: #222;
+}
+.sec_title {
+	text-align: center;
+	margin: 30px 0 30px;
+}
+.hls_data {
+	left: unset;
+	right: -310px;
+	transition: 1s ease
+}
+.popuIm:hover .hls_data {
+	left: 0;
+	right: 0;
+	transition: 1s ease
+}
+
+/* Carros famosos */
+/* Footer */
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+section {
+    padding: 60px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+#footer {
+    background: #1a1a1a !important;
+}
+#footer h5{
+	padding-left: 10px;
+    border-left: 3px solid #eeeeee;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color:#ffffff;
+}
+#footer a {
+    color: #ffffff;
+    text-decoration: none !important;
+    background-color: transparent;
+    -webkit-text-decoration-skip: objects;
+}
+#footer ul.social li{
+	padding: 3px 0;
+}
+#footer ul.social li a i {
+    margin-right: 5px;
+	font-size:25px;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.social li:hover a i {
+	font-size:30px;
+	margin-top:-10px;
+}
+#footer ul.social li a,
+#footer ul.quick-links li a{
+	color:#ffffff;
+}
+#footer ul.social li a:hover{
+	color:#eeeeee;
+}
+#footer ul.quick-links li{
+	padding: 3px 0;
+	-webkit-transition: .5s all ease;
+	-moz-transition: .5s all ease;
+	transition: .5s all ease;
+}
+#footer ul.quick-links li:hover{
+	padding: 3px 0;
+	margin-left:5px;
+	font-weight:700;
+}
+#footer ul.quick-links li a i{
+	margin-right: 5px;
+}
+#footer ul.quick-links li:hover a i {
+    font-weight: 700;
+}
+
+@media (max-width:767px){
+	#footer h5 {
+    padding-left: 0;
+    border-left: transparent;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+}
+/*Footer*/

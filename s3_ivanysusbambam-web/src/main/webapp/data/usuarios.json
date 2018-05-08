@@ -1,0 +1,154 @@
+[
+    {
+        "id": 1,
+        "name": "Ardyth Fontenot",
+        "user": "ardFon",
+        "password": "ard123",
+        "rol": "cliente",
+        "token": 123
+    }
+    ,
+    {
+        "id": 2,
+        "name": "Sharyl Clem",
+        "user": "sharClem",
+        "password": "shar123",
+        "rol": "cliente",
+        "token": 456
+    }
+    ,
+    {
+        "id": 3,
+        "name": "Bailie MacLeese",
+        "user": "baiMac",
+        "password": "bai123",
+        "rol": "cliente",
+        "token": 789
+    }
+    ,
+    {
+        "id": 4,
+        "name": "Helen McGarvie",
+        "user": "helMc",
+        "password": "hel123",
+        "rol": "cliente",
+        "token": 987
+    }
+    ,
+    {
+        "id": 5,
+        "name": "Felicdad Sefton",
+        "user": "felSef",
+        "password": "fel123",
+        "rol": "cliente",
+        "token": 765
+    }
+    ,
+    {
+        "id": 6,
+        "name": "Elmer Dunster",
+        "user": "elDuns",
+        "password": "el123",
+        "rol": "cliente",
+        "token": 543
+    }
+    ,
+    {
+        "id": 7,
+        "name": "Dennet Casseldine",
+        "user": "dennCass",
+        "password": "denn123",
+        "rol": "cliente",
+        "token": 321
+    }
+    ,
+    {
+        "id": 8,
+        "name": "Malory Lorimer",
+        "user": "malor",
+        "password": "mal123",
+        "rol": "cliente",
+        "token": 987
+    }
+    ,
+    {
+        "id": 9,
+        "name": "Tyler Thackston",
+        "user": "tyTh",
+        "password": "thy123",
+        "rol": "cliente",
+        "token": 987
+    }
+    ,
+    {
+        "id": 10,
+        "name": "Myron Edwin",
+        "user": "myEd",
+        "password": "my123",
+        "rol": "cliente",
+        "token": 987
+    }
+    ,
+    {
+        "id": 11,
+        "name": "Carla Simek",
+        "user": "carlSi",
+        "password": "car123",
+        "rol": "vendedor",
+        "token": 987
+    }
+     ,
+    {
+        "id": 12,
+        "name": "Hinze Redbourn",
+        "user": "hinRed",
+        "password": "hin123",
+        "rol": "vendedor",
+        "token": 987
+    }
+    ,
+    {
+        "id": 13,
+        "name": "Gregg Jammet",
+        "user": "greJam",
+        "password": "gre123",
+        "rol": "vendedor",
+        "token": 987
+    }
+    ,
+    {
+        "id": 14,
+        "name": "Pavlov Kirwood",
+        "user": "pavKir",
+        "password": "pav123",
+        "rol": "vendedor",
+        "token": 987
+    }
+    ,
+    {
+        "id": 15,
+        "name": "Gawain Canner",
+        "user": "gawCan",
+        "password": "gaw123",
+        "rol": "vendedor",
+        "token": 987
+    }
+    ,
+    {
+        "id": 16,
+        "name": "Juan Manuel Santos",
+        "user": "JuanMa",
+        "password": "juanMa8",
+        "rol": "administrador",
+        "token": 987
+    }
+    ,
+    {
+        "id": 16,
+        "name": "Álvaro Uribe",
+        "user": "UribeKing",
+        "password": "uribe8",
+        "rol": "administrador",
+        "token": 987
+    }
+]

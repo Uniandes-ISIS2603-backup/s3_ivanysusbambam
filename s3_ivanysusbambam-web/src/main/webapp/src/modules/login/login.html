@@ -1,55 +1,42 @@
-
 <div class="imagen2">
-
-
-    <div class="container" style="margin-top: 30px">
-        <div class="card" id="cartaLogin" >
+    <div class="container" style="margin-top: 30px;">
+        <div class="card" id="cartaLogin">
 
             <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-            <div class ="container-fluid">
-
-                <br>
-
-                <h1 id="Iniciar">Iniciar sesión</h1>
-                <div class ="card" style="margin: 40px; text-align: left">
-                    <div class ="card-body">
-
-                        <div class ="col-md-12">
-                            <form name ="cliente">
-                                <div class ="row" style = "margin: 10px">
-                                    <label class  = "col-md-12" for = "clienteNombre">Nombres y apellidos:</label>
+            <div class="container-fluid">
+            <div class="card">
+                        <article class="card-body">
+                            <h4 class="card-title">Iniciar Sesión</h4>
+                            <form name="cliente">
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input class="form-control" placeholder="Username" required ng-model="data.username">
                                 </div>
-                                <div class ="row" style = "margin: 10px">
-                                    <input class = "col-md-12" id ="clienteNombre" required ng-model ="data.nombre">
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input class="form-control" placeholder="******" type="password" required ng-model="data.password">
                                 </div>
-                                <div class =" row" style = "margin: 10px">
-                                    <label class ="col-md-12" for ="clienteCedula">Cédula:</label>
+                                <div class="form-group">
+                                    <select class="form-control">
+                                <option ng-model="data.rol" ng-click="esAdmin()">Administrador</option>
+                                <option ng-model="data.rol" ng-click="esCliente()">Cliente</option>
+                                <option ng-model="data.rol" ng-click="esVendedor()">Vendedor</option>
+                            </select>
                                 </div>
-                                <div class ="row " style = "margin: 10px" >
-                                    <input class ="col-md-12" id ="clienteCedula" type ="number" required ng-model = "data.cedula">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary btn-block" ng-click="autenticar()"> Iniciar</button>
                                 </div>
-                                <div class ="row " style = "margin: 10px; text-align: center" >
-                                    <div class="container col-md-12" style="text-align: center ;margin: 0px">
+                            </form>
+                            <div class="container col-md-12" style="text-align: center ;margin: 0px">
                                         <div ng-if="!cliente.$valid">
-
                                             <div class="alert alert-warning " >
                                                 <strong>Atención!</strong><p>Debe llenar todos los campos</p>
                                             </div> 
                                         </div> 
-                                    </div>
-                                    <div class ="row">
-                                        <input ng-show="cliente.$valid" ng-click="crearCliente()" value="Crear" class="btn btn-success"/>
-                                    </div>   
-                                </div> 
-                            </form>
-                        </div>
+                            </div>
+                        </article>
                     </div>
-                </div>
-
             </div>
-
         </div>
-
     </div>
 </div>
-
