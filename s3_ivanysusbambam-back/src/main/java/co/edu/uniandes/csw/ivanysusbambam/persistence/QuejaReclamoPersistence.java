@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -68,7 +69,9 @@ public class QuejaReclamoPersistence {
         LOGGER.log(Level.INFO, "Buscando quejasReclamos con tipo: ", tipo);
         TypedQuery tq  = em.createQuery("select v from QuejaReclamoEntity v where v.tipo = :tipo", QuejaReclamoEntity.class);
         tq.setParameter("tipo",tipo);
-        if(tq.getResultList().isEmpty()) return null;
+        if(tq.getResultList().isEmpty()){
+            return new ArrayList<>();
+        }
         else return tq.getResultList();
     }
     

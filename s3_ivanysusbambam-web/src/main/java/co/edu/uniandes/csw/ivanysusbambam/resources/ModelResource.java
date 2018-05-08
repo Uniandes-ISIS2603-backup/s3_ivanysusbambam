@@ -104,13 +104,13 @@ public class ModelResource {
      * 412 Precodition Failed: Ya existe el modelo
      * </code>
      * </pre>
-     * @param Nuevo {@link ModelDTO} - El modelo que se desea guardar
+     * @param nuevo {@link ModelDTO} - El modelo que se desea guardar
      * @return JSON {@link ModelDTO}  - El modelo que se creó
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error debido a la existencia del modelo que se deseaba crear.
      */
     @POST
-    public ModelDetailDTO postModelo(ModelDetailDTO Nuevo) throws BusinessLogicException{
-         return new ModelDetailDTO(logica.createModel(Nuevo.toEntity()));
+    public ModelDetailDTO postModelo(ModelDetailDTO nuevo) throws BusinessLogicException{
+         return new ModelDetailDTO(logica.createModel(nuevo.toEntity()));
     }
      /**
      * <h1>PUT /api/modelos/{id} : Actualizar el modelo con las especificaciones dadas.</h1>
@@ -126,21 +126,21 @@ public class ModelResource {
      * </code> 
      * </pre>
      * @param id del modelo que se quiere actualizar
-     * @param Nuevo {@link ModeloDTO} El modelo que se quiere guardar
+     * @param nuevo {@link ModeloDTO} El modelo que se quiere guardar
      * @return JSON {@link MarcaDTO} - El modelo guardado
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error porque no existe un modelo con ese nombre
      */
     @Path("{Id: \\d+}")
     @PUT
-    public ModelDetailDTO putModelo(@PathParam("Id") Long id, ModelDTO Nuevo) throws BusinessLogicException{
+    public ModelDetailDTO putModelo(@PathParam("Id") Long id, ModelDTO nuevo) throws BusinessLogicException{
         ModelEntity modelo = logica.findModel(id);
-        //TODO si no existe debe disparar WebApplicationException 
+        
         if(modelo == null)
         {
-            throw new BusinessLogicException("El recurso modelo:" +id+ "no existe");
+            throw new BusinessLogicException("El recurso modelo:" +id+ "no existe en la base de dtaos ");
         }
         
-        return new ModelDetailDTO(logica.updateModel(modelo));
+        return new ModelDetailDTO(logica.updateModel(nuevo.toEntity()));
     }
           /**
      * <h1>DELETE /api/modelos/{id} : Borrar un modelo por el id.</h1>
@@ -160,7 +160,7 @@ public class ModelResource {
     @Path("{Id: \\d+}")
      public void deleteModelo(@PathParam("Id") Long id) throws BusinessLogicException {
         ModelEntity modelo = logica.findModel(id);
-        //TODO si no existe debe disparar WebApplicationException 
+        
         if(modelo == null)
         {
             throw new BusinessLogicException("El recurso modelo:" +id+ "no existe");

@@ -95,15 +95,17 @@ public class ProspectoCompraLogic {
         }
         ProspectoCompraEntity pco = persistence.find(pc.getId());
         
-        if(pco == null) throw new BusinessLogicException("El prospecto de compra no existe");
+        if(pco == null) {
+            throw new BusinessLogicException("El prospecto de compra no existe");
+        }
         if(pc.getAutomovil() == null || !pco.getAutomovil().equals(pc.getAutomovil())){
-            throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+            throw new BusinessLogicException("No se puede modificar el automovil del prospecto");
         }
         if(pc.getCliente() == null || !pco.getCliente().equals(pc.getCliente())){
-            throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+            throw new BusinessLogicException("No se puede modificar el cliente del  prospecto");
         }
         if(pc.getVendedor() == null || !pco.getVendedor().equals(pc.getVendedor())) {
-            throw new BusinessLogicException("Sólo se puede cambiar el texto del prospecto");
+            throw new BusinessLogicException("No se puede modificar el vendedor          del prospecto");
         }
        
         return persistence.update(pc);

@@ -9,8 +9,10 @@ import co.edu.uniandes.csw.ivanysusbambam.dtos.AutomovilDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.AutomovilLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
+import co.edu.uniandes.csw.ivanysusbambam.persistence.AutomovilPersistence;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -47,6 +49,8 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class AutomovilResource {
 
+    
+    
     @Inject
     private AutomovilLogic autoLogic;
 
@@ -127,7 +131,7 @@ public class AutomovilResource {
         AutomovilEntity automovil = autoLogic.getAutomovil(id);
 
         if (automovil == null) {
-            throw new WebApplicationException("El recurso Automovil " + id + " no existe");
+            throw new WebApplicationException("El recurso Automovil " + id + " no esta en la base de datos");
         } else {
             return new AutomovilDetailDTO(automovil);
         }
@@ -157,7 +161,7 @@ public class AutomovilResource {
 
         List<AutomovilEntity> autos = autoLogic.findByMarca(marca);
 
-        if (autos == null) {
+        if (autos.isEmpty()) {
             throw new WebApplicationException("No se encontraron automóviles de marca " + marca);
         }
         return entityToDTOList(autos);
@@ -189,7 +193,7 @@ public class AutomovilResource {
         
         List<AutomovilEntity> autos = autoLogic.findByModelo(modelo);
         
-        if(autos == null){
+        if(autos.isEmpty()){
             throw new WebApplicationException("No se encontraron automóviles del modelo: " + modelo);
         }
         return entityToDTOList(autos);
@@ -220,7 +224,7 @@ public class AutomovilResource {
     public List<AutomovilDetailDTO> getAutomovilRangoAnios(@QueryParam("anioInicio") Integer anioInicio, @QueryParam("anioFin") Integer anioFin) throws BusinessLogicException{
         List<AutomovilEntity> autos = autoLogic.findByRangoAnios(anioInicio, anioFin);
         
-        if(autos == null){
+        if(autos.isEmpty()){
             throw new WebApplicationException("No se encontraron automóviles en el rango: [" + anioInicio + "," + anioFin +"]");
         }
         return entityToDTOList(autos);
@@ -252,7 +256,7 @@ public class AutomovilResource {
         
         List<AutomovilEntity> autos = autoLogic.findByRangoPrecios(precioMin, precioMax);
         
-        if(autos == null){
+        if(autos.isEmpty()){
             throw new WebApplicationException("No se encontraron automóviles en el rango: [" + precioMin + "," + precioMax +"]");
         }
         return entityToDTOList(autos);
@@ -282,7 +286,7 @@ public class AutomovilResource {
        
         List<AutomovilEntity> autos = autoLogic.findAutomovilByColor(color);
         
-        if(autos == null){
+        if(autos.isEmpty()){
             throw new WebApplicationException("No se encontraron automóviles del color: " + color);
         }
         return entityToDTOList(autos);
@@ -322,7 +326,7 @@ public class AutomovilResource {
         
         List<AutomovilEntity> autos = autoLogic.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
         
-        if(autos == null){
+        if(autos.isEmpty()){
             throw new WebApplicationException("No se encontraron automóviles ");
         }
         return entityToDTOList(autos);
@@ -346,7 +350,7 @@ public class AutomovilResource {
     public List<AutomovilEntity> listColores() throws BusinessLogicException{
         List<AutomovilEntity> list = autoLogic.listColores();
         
-        if(list == null){
+        if(list.isEmpty()){
             throw new BusinessLogicException("No hay automóviles con colores en la BD");
         }
        
@@ -378,10 +382,10 @@ public class AutomovilResource {
     @PUT
     @Path("{id: \\d+}")
     public AutomovilDetailDTO updateAutomovil(@PathParam("id") Long id, AutomovilDetailDTO auto) throws BusinessLogicException {
-        AutomovilEntity A = autoLogic.findAutomovil(id);
+        AutomovilEntity entity = autoLogic.findAutomovil(id);
 
-        if (A == null) {
-            throw new WebApplicationException("El recurso automovil " + id + " no existe");
+        if (entity == null) {
+            throw new WebApplicationException("El recurso automovil " + id + " no se encuentra en la base de datos");
         } else {
             return new AutomovilDetailDTO(autoLogic.updateAutomovil(auto.toEntity()));
         }
@@ -411,7 +415,7 @@ public class AutomovilResource {
         System.out.println("ENCONTRADO EL AUTOMOVIL: " + auto);
         if (auto == null) {
             System.out.println("Lanzando excepción");
-            throw new WebApplicationException("El recurso AUTOMOVIL " + id + " no existe");
+            throw new WebApplicationException("El recurso AUTOMOVIL " + id + " no se encuentra en la base de datos");
         } else {
             autoLogic.deleteAutomovil(id);
         }

@@ -11,7 +11,7 @@ import co.edu.uniandes.csw.ivanysusbambam.ejb.VentaLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 
-import co.edu.uniandes.csw.ivanysusbambam.mappers.WebApplicationExceptionMapper;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.RequestScoped;
@@ -158,9 +158,9 @@ public class VentaResource {
     @PUT
     @Path("{id: \\d+}")
     public VentaDetailDTO updateVenta(@PathParam("id") Long id, VentaDetailDTO venta) throws BusinessLogicException {
-        VentaEntity V = ventaLogic.findVenta(id);
+        VentaEntity entity = ventaLogic.findVenta(id);
         
-        if(V == null) throw new WebApplicationException("El recurso venta " + id + " no existe");
+        if(entity == null) throw new WebApplicationException("El recurso venta " + id + " no existe");
         
         else return new VentaDetailDTO(ventaLogic.updateVenta(venta.toEntity()));
         

@@ -84,7 +84,9 @@ public class PuntoDeVentaResource {
     @Path("{id: \\d+}")
     public PuntoDeVentaDetailDTO getPuntoDeVenta(@PathParam("id") Long id){
         PuntoDeVentaEntity pv = puntoDeVentaLogic.getPuntoDeVenta(id);
-        if(pv == null) throw new WebApplicationException("El recurso prospecto de compra " + id+ " no existe");
+        if(pv == null){
+            throw new WebApplicationException("El recurso prospecto de compra " + id+ " no existe");
+        }
         return new PuntoDeVentaDetailDTO(pv);
     }
     
@@ -113,10 +115,7 @@ public class PuntoDeVentaResource {
         if (oldEntity == null) {
             throw new WebApplicationException("El punto de venta no existe", 404);
         }
-//        entity.setAutomoviles(oldEntity.getAutomoviles());
-//        entity.setCompras(oldEntity.getCompras());
-//        entity.setVendedores(oldEntity.getVendedores());
-//        entity.setAutomoviles(oldEntity.getAutomoviles());
+
         return new PuntoDeVentaDetailDTO(puntoDeVentaLogic.updatePuntoDeVenta(entity));
     }
     

@@ -16,36 +16,35 @@ import uk.co.jemos.podam.common.PodamExclude;
 
 /**
  * Clase que representa una marca en la persistencia y permite su serialización
+ *
  * @author Joseph Ortíz Moreno
  */
 @Entity
-public class MarcaEntity extends BaseEntity implements Serializable{
-   
-    
+public class MarcaEntity extends BaseEntity implements Serializable {
+
     @PodamExclude
-     @OneToMany(mappedBy = "marca")
-     private  List<AutomovilEntity> automoviles = new ArrayList<>();
-    
-      @PodamExclude
+    @OneToMany(mappedBy = "marca")
+    private List<AutomovilEntity> automoviles = new ArrayList<>();
+
+    @PodamExclude
     @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
-    private  List<ModelEntity> modelos = new ArrayList<>();
- 
-      private String logo;
-  
-    
-    public List<AutomovilEntity> getAutomoviles(){
+    private List<ModelEntity> modelos = new ArrayList<>();
+
+    private String logo;
+
+    public List<AutomovilEntity> getAutomoviles() {
         return automoviles;
     }
-    
-    public List<ModelEntity> getModelos(){
+
+    public List<ModelEntity> getModelos() {
         return modelos;
     }
-    
-    public void setAutomoviles(List<AutomovilEntity> autos){
+
+    public void setAutomoviles(List<AutomovilEntity> autos) {
         this.automoviles = autos;
     }
-    
-    public void setModelos(List<ModelEntity> mods){
+
+    public void setModelos(List<ModelEntity> mods) {
         this.modelos = mods;
     }
 
@@ -55,12 +54,11 @@ public class MarcaEntity extends BaseEntity implements Serializable{
 
     public void setLogo(String logo) {
         this.logo = logo;
-    }     
+    }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        return hash;
+        return 3;
     }
 
     @Override
@@ -80,5 +78,5 @@ public class MarcaEntity extends BaseEntity implements Serializable{
         }
         return true;
     }
-    
+
 }

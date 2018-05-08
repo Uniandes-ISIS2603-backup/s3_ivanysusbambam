@@ -11,7 +11,7 @@ import co.edu.uniandes.csw.ivanysusbambam.dtos.ClienteDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.ClienteLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.ivanysusbambam.mappers.WebApplicationExceptionMapper;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +82,9 @@ public class ClienteResource {
     public ClienteDetailDTO getCliente(@PathParam("id")long id) throws BusinessLogicException{
        ClienteEntity cliente = clienteLogic.findCliente(id);
        
-       if(cliente == null) throw new WebApplicationException("El recurso cliente " + id + " no existe");
+       if(cliente == null){
+           throw new WebApplicationException("El cliente " + id + " no existe en la base de datos");
+       }
        
        else return new ClienteDetailDTO(cliente);
     }
@@ -128,7 +130,9 @@ public class ClienteResource {
     public ClienteDetailDTO putCliente(@PathParam("id") long id, ClienteDetailDTO cliente) throws BusinessLogicException{
         ClienteEntity c = clienteLogic.findCliente(id);
         
-        if(c == null) throw new WebApplicationException("El recurso cliente " + id + " no existe");
+        if(c == null){
+            throw new WebApplicationException("El recurso cliente " + id + " no existe");
+        }
         
         else return new ClienteDetailDTO(clienteLogic.updateCliente(cliente.toEntity()));
         

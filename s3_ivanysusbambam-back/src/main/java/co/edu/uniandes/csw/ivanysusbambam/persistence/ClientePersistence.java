@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.persistence;
 import java.util.logging.Logger;
 import javax.persistence.PersistenceContext;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import javax.ejb.Stateless;
@@ -94,7 +95,9 @@ public class ClientePersistence {
         LOGGER.log(Level.INFO, "Buscando clientes con nombre: ", name);
         TypedQuery tq  = em.createQuery("select v from ClienteEntity v where v.nombre = :nombre", ClienteEntity.class);
         tq.setParameter("nombre",name);
-        if(tq.getResultList().isEmpty()) return null;
+        if(tq.getResultList().isEmpty()){
+            return new ArrayList<>();
+        }
         else return tq.getResultList();
     }
     

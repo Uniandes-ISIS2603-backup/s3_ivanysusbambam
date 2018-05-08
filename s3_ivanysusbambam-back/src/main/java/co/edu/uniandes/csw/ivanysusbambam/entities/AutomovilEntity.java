@@ -30,275 +30,316 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
 public class AutomovilEntity extends BaseEntity implements Serializable {
 
     /**
-     * color del automovil
+     * color de la entidad automovil
      */
     private String color;
     /**
-     * anio del automovil
+     * anio de la entidad automovil
      */
     private Integer anio;
     /**
-     * Placa del automovil
+     * Placa de la entidad automovil
      */
     private String placa;
     /**
-     * chasis del automovil
+     * chasis de la entidad automovil
      */
     private Integer chasis;
     /**
-     * Prospectos de compra del automovil
+     * Prospectos de compra de la entidad automovil
      */
     @PodamExclude
     @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
 
+    /**
+     * Ventas de la entidad automovil
+     */
     @PodamExclude
     @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<VentaEntity> ventas;
-    
-    @PodamExclude
-    @OneToOne (mappedBy = "automovil")
-    private CompraEntity compra;
-    
+
     /**
-     * Punto de venta del automovil 
+     * Compra de la entidad automovil
      */
     @PodamExclude
-    @ManyToOne 
+    @OneToOne(mappedBy = "automovil")
+    private CompraEntity compra;
+
+    /**
+     * Punto de venta de la entidad
+     */
+    @PodamExclude
+    @ManyToOne
     private PuntoDeVentaEntity puntoDeVenta;
 
     /**
-     * Marca de este automovil 
+     * Marca de la entidad automovil
      */
     @PodamExclude
-    @ManyToOne 
+    @ManyToOne
     private MarcaEntity marca;
 
     /**
-     * Fecha de listado de este automovil
+     * Fecha de listado de la entidad automovil
      */
     @Temporal(TemporalType.DATE)
     @PodamStrategyValue(DateStrategy.class)
     private Date fechaListado;
 
-   /**
-    * modelo de este automovil
-    */
+    /**
+     * modelo de la entidad automovil
+     */
     @PodamExclude
-    @ManyToOne 
+    @ManyToOne
     private ModelEntity model;
 
     /**
-     * valorListado de este automovil 
+     * valorListado de la entidad automovil
      */
     private Double valorListado;
-    
+
     /**
-     * Imagen del automovil
+     * Imagen de la entidad automovil
      */
     @Lob
     private String imagen;
-/**
- * Tipo del automovil
- */
+    /**
+     * Tipo de la entidad xautomovil
+     */
     private String tipo;
     /**
-     * Kilometros del automovil
+     * Kilometros de la entidad automovil
      */
     private Double kilometros;
+
     /**
-     * @return color del auto
+     * @return color de la entidad automovil
      */
     public String getColor() {
         return color;
     }
 
     /**
-     * @return anio del auto
+     * @return anio de la entidad automovil
      */
     public Integer getAnio() {
         return anio;
     }
 
     /**
-     * @return placa del auto
+     * @return placa de la entidad automovil
      */
     public String getPlaca() {
         return placa;
     }
 
     /**
-     * @return chasis del auto
+     * @return chasis de la entidad automovil
      */
     public Integer getChasis() {
         return chasis;
     }
 
     /**
-     * @return fecha de listado del auto
+     * @return fecha de listado de la entidad automovil
      */
     public Date getFechaListado() {
         return fechaListado;
     }
 
     /**
-     * @return valor del listado del auto
+     * @return valor de la entidad automovil
      */
     public Double getValorListado() {
         return valorListado;
     }
 
     /**
-     * @param color color a setear
+     * @param pColor color a setear en la entidad automovil
      */
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(String pColor) {
+        this.color = pColor;
     }
 
     /**
-     * @param anio anio a setear
+     * @param pAnio anio a setear en la entidad automovil
      */
-    public void setAnio(Integer anio) {
-        this.anio = anio;
+    public void setAnio(Integer pAnio) {
+        this.anio = pAnio;
     }
 
     /**
-     * @param placa placa a setear
+     * @param pPlaca placa a setear en la entidad automovil
      */
-    public void setPlaca(String placa) {
-        this.placa = placa;
+    public void setPlaca(String pPlaca) {
+        this.placa = pPlaca;
     }
 
     /**
-     * @param chasis chasis a setear
+     * @param pChasis chasis a setear en la entidad automovil
      */
-    public void setChasis(Integer chasis) {
-        this.chasis = chasis;
+    public void setChasis(Integer pChasis) {
+        this.chasis = pChasis;
     }
 
     /**
-     * @param fechaListado fecha del listado a setear
+     * @param pFechaListado fecha del listado a setear en la entidad automovil
      */
-    public void setFechaListado(Date fechaListado) {
-        this.fechaListado = fechaListado;
+    public void setFechaListado(Date pFechaListado) {
+        this.fechaListado = pFechaListado;
     }
 
     /**
-     * @param valorListado valor del listado a setear
+     * @param pValorListado valor del listado a setear en la entidad automovil
      */
-    public void setValorListado(Double valorListado) {
-        this.valorListado = valorListado;
+    public void setValorListado(Double pValorListado) {
+        this.valorListado = pValorListado;
     }
 
+    /**
+     * @return La imagen de la entidad automovil
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param pImagen imagen a setear en la entidad automovil
+     */
+    public void setImagen(String pImagen) {
+        this.imagen = pImagen;
+    }
+
+    /**
+     * @return El tipo de la entidad automovil
+     */
+    public String getTipo() {
+        return tipo;
+    }
+
+    /**
+     * @param pTipo el tipo a setear en la entidad automovil
+     */
+    public void setTipo(String pTipo) {
+        this.tipo = pTipo;
+    }
+
+    /**
+     * @return el kilometrjae de la entidad automovil
+     */
+    public Double getKilometros() {
+        return kilometros;
+    }
+
+    /**
+     * @param pKilometraje kilometraje a setear en la entidad automovil
+     */
+    public void setKilometros(Double pKilometraje) {
+        this.kilometros = pKilometraje;
+    }
+
+    /**
+     * @return lista de los prospectos de compra de la entidad automovil
+     */
     public List<ProspectoCompraEntity> getProspectosCompra() {
         return prospectosCompra;
     }
 
+    /**
+     * @param prospectosCompra Lista de prospectos compra a setear en la entidad
+     * automovil
+     */
     public void setProspectosCompra(List<ProspectoCompraEntity> prospectosCompra) {
         this.prospectosCompra = prospectosCompra;
     }
 
+    /**
+     * @return el punto de venta de la entidad automovil
+     */
     public PuntoDeVentaEntity getPuntoDeVenta() {
         return puntoDeVenta;
     }
 
+    /**
+     * @param puntoDeVenta el punto de venta a setear en la entidad automovil
+     */
     public void setPuntoDeVenta(PuntoDeVentaEntity puntoDeVenta) {
         this.puntoDeVenta = puntoDeVenta;
     }
 
-
-
     /**
-     * @return the marca
+     * @return La marca de la entidad automovil
      */
     public MarcaEntity getMarca() {
         return marca;
     }
 
     /**
-     * @param marca the marca to set
+     * @param marca la marca a setear en la entidad automovil
      */
     public void setMarca(MarcaEntity marca) {
         this.marca = marca;
     }
 
     /**
-     * @return the model
+     * @return el modela de la entidad automovil
      */
     public ModelEntity getModel() {
         return model;
     }
 
     /**
-     * @param model the model to set
+     * @param model el modelo a setear en la entidad automovil
      */
     public void setModel(ModelEntity model) {
         this.model = model;
     }
 
     /**
-     * @return the ventas
+     * @return la lista de ventas de esta entidad automovil
      */
     public List<VentaEntity> getVentas() {
         return ventas;
     }
 
     /**
-     * @param ventas the ventas to set
+     * @param ventas la lista de ventas a setear en la entidad automovil
      */
     public void setVentas(List<VentaEntity> ventas) {
         this.ventas = ventas;
     }
 
     /**
-     * @return the compra
+     * @return la compra de la entidad automovil
      */
     public CompraEntity getCompra() {
         return compra;
     }
 
     /**
-     * @param compra the compra to set
+     * @param compra la compra a setear en la entidad automovil
      */
     public void setCompra(CompraEntity compra) {
         this.compra = compra;
     }
-    
-    public int compararCompra (CompraEntity compra){
-        if (this.compra.getIdCompra().equals(compra.getIdCompra())){
+
+    /**
+     *
+     * @param compra
+     * @return
+     */
+    public int compararCompra(CompraEntity compra) {
+        if (this.compra.getIdCompra().equals(compra.getIdCompra())) {
             return 0;
+        } else {
+            return 1;
         }
-        else return 1;
-    }
-
-    public String getImagen() {
-        return imagen;
-    }
-
-    public void setImagen(String imagen) {
-        this.imagen = imagen;
-    }
-
-    public String getTipo() {
-        return tipo;
-    }
-
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
-    }
-
-    public Double getKilometros() {
-        return kilometros;
-    }
-
-    public void setKilometros(Double kilometros) {
-        this.kilometros = kilometros;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        return hash;
+        return 3;
     }
 
     @Override
@@ -321,9 +362,5 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
         }
         return true;
     }
-    
-    
-    
-    
-    
+
 }

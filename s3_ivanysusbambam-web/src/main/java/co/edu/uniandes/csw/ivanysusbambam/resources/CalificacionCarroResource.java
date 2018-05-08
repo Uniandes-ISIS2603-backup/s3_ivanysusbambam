@@ -82,7 +82,9 @@ public class CalificacionCarroResource {
     @Path("{id: \\d+}")
     public CalificacionCarroDetailDTO getCalificacionCarro(@PathParam("id") Long id)throws BusinessLogicException{
         CalificacionCarroEntity cc = ccarroLogic.getCalificacionCarro(id);
-        if(cc == null) throw new WebApplicationException("El recurso prospecto de compra " + id + " no existe");
+        if(cc == null) {
+            throw new WebApplicationException("El recurso prospecto de compra " + id + " no existe");
+        }
 
         return new CalificacionCarroDetailDTO(cc);
     }
@@ -114,8 +116,7 @@ public class CalificacionCarroResource {
             throw new WebApplicationException("El punto de venta no existe", 404);
         }
         
-        //TODO
-        //cc.setVenta(oldEntity.getVenta());
+        
         return new CalificacionCarroDetailDTO(ccarroLogic.updateCalificacionCarro(cc));
     }
     

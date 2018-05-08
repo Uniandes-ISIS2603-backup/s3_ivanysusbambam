@@ -6,6 +6,8 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
+import com.gs.collections.impl.list.fixed.ArrayAdapter;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -90,7 +92,9 @@ public class AutomovilPersistence {
         TypedQuery tq  = em.createQuery("select v from AutomovilEntity v where v.color = :color", AutomovilEntity.class);
         tq.setParameter("color",color);
         
-        if(tq.getResultList().isEmpty()) return null;
+        if(tq.getResultList().isEmpty()){
+            return new ArrayList<>();
+        }
         else return tq.getResultList();
     }
     
@@ -139,7 +143,7 @@ public class AutomovilPersistence {
         List autos = tq.getResultList();
         
         if(autos.isEmpty()) 
-            return null;
+            return new ArrayList<>();
         else
             return autos;
     }
@@ -156,7 +160,7 @@ public class AutomovilPersistence {
         List autos = tq.getResultList();
         
         if(autos.isEmpty())
-            return null;
+            return new ArrayList<>();
         else 
             return autos;
     }
@@ -177,7 +181,7 @@ public class AutomovilPersistence {
         List autos = tq.getResultList();
         
         if(autos.isEmpty())
-            return null;
+            return new ArrayList<>();
         else 
             return autos;
     }
@@ -198,7 +202,7 @@ public class AutomovilPersistence {
         List autos = tq.getResultList();
         
         if(autos.isEmpty())
-            return null;
+            return new ArrayList<>();
         else 
             return autos;
     }
@@ -248,7 +252,7 @@ public class AutomovilPersistence {
         List autos = tq.getResultList();
         
         if(autos.isEmpty()){
-            return null;
+            return new ArrayList<>();
         }
         else{
             return autos;
@@ -266,7 +270,7 @@ public class AutomovilPersistence {
         List<String> ret = tq.getResultList();
         
         if(ret.isEmpty()){
-            return null;
+            return new ArrayList<>();
         }
         else{
             return ret;

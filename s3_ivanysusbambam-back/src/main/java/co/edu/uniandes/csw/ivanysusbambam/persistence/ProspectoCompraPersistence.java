@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ProspectoCompraEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,7 +99,9 @@ public class ProspectoCompraPersistence {
         
         TypedQuery tq = em.createQuery("select v from ProspectoCompraEntity v where v.vendedor = :ve", ProspectoCompraEntity.class);
         tq.setParameter("ve",ve);
-        if(tq.getResultList().isEmpty()) return null;
+        if(tq.getResultList().isEmpty()){
+            return new ArrayList<>();
+        }
         else return tq.getResultList();
     }
     
@@ -112,7 +115,9 @@ public class ProspectoCompraPersistence {
         
         TypedQuery tq = em.createQuery("select v from ProspectoCompraEntity v where v.cliente = :ce", ProspectoCompraEntity.class);
         tq.setParameter("ce",ce);
-        if(tq.getResultList().isEmpty()) return null;
+        if(tq.getResultList().isEmpty()){
+            return new ArrayList<>();
+        }
         else return tq.getResultList();
     }
     
@@ -123,11 +128,13 @@ public class ProspectoCompraPersistence {
      */
     public List<ProspectoCompraEntity> findByAutomovil(AutomovilEntity ae){
         
-        LOGGER.log(Level.INFO, "Buscando prospectos de compra relacionados con el cliente: ", ae.getChasis());
+        LOGGER.log(Level.INFO, "Buscando prospectos de compra relacionados con el cliente: ", ae.getPlaca());
         
         TypedQuery tq = em.createQuery("select v from ProspectoCompraEntity v where v.automovil=:ae", ProspectoCompraEntity.class);
         tq.setParameter("ae",ae);
-        if(tq.getResultList().isEmpty()) return null;
+        if(tq.getResultList().isEmpty()){
+            return new ArrayList<>();
+        }
         else return tq.getResultList();
     }
 }
