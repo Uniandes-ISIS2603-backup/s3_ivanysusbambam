@@ -77,15 +77,7 @@
                         return false;
                     }
                 };
-                
-                $rootScope.hasPermissions = function () {
-                    if (($rootScope.isAuthenticated) && (roles.indexOf(sessionStorage.getItem("rol")) > -1)) {
-                        return true;
-                    } else {
-                        return false;
-                    }
-                };
-
+            
 
                 if (requireLogin && (sessionStorage.getItem("username") === null)) {
                     event.preventDefault();

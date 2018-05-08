@@ -8,15 +8,20 @@
                                 
     function($scope, $http, $state,$rootScope){
       
-    $scope.user = {};
+    $scope.users = {};
     $scope.data = {};
         $http.get('data/usuarios.json').then(function (response)     {
                 $scope.users = response.data;
             });
         
+        /* Boolean que me ayudan con los permisos de cada usuario */
         $rootScope.usuario = false;
         $rootScope.vendedor = false; 
         $rootScope.administrador = false;
+        
+        /*Acá estoy guardando al objeto cliente y vendedor, para que sean asociados con los perfiles respectivos*/
+        $rootScope.pCliente = null;
+        $rootScope.pVendedor = null;
         
         $rootScope.esUsuario = function()
         {
@@ -38,11 +43,19 @@
         }
         $scope.autenticar = function () {
                 var flag = false;
-             $http.post('api/login',$scope.data).then(function(response){
+            /* Mirar si no me sirve y borrar esto */
                 for (var item in $scope.users) {
-                    if ($scope.users[item].user == $scope.data.username && $scope.users[item].password == $scope.data.password && $scope.users[item].rol == $scope.data.rol) {
+                    if ($scope.users[item].username == $scope.data.username && $scope.users[item].password == $scope.data.password && $scope.users[item].rol == $scope.data.rol) {
                         flag = true;
                         $scope.user = $scope.users[item];
+                        
+                         $http.get('http://localhost:8080/s3_ivanysusbambam-web/api/clientes/'+$scope.data.username).then(function (response){
+                        $rootScope.pCliente = response.data;
+                         });
+                        
+                        $http.get('http://localhost:8080/s3_ivanysusbambam-web/api/vendedores/'+$scope.data.username).then(function (response){
+                        $rootScope.pVendedor = response.data;
+                         });
                         /*
                         Aca mirar a cual estado se envía
                         */
@@ -54,14 +67,12 @@
                     $rootScope.alerts.push({type: "danger", msg: "Incorrect username or password."});
                 } else {
                     sessionStorage.token = $scope.user.token;
-                    sessionStorage.setItem("username", $scope.user.user);
+                    sessionStorage.setItem("username", $scope.user.username);
                     sessionStorage.setItem("name", $scope.user.name);
                     sessionStorage.setItem("rol", $scope.user.rol);
                     $rootScope.currentUser = $scope.user.name;
-                    /* Acá te estoy guardando la referencia al id */
-                    $rootScope.currentId = $scope.user.id;
                 }
-                });
+        );
             
             };
         }

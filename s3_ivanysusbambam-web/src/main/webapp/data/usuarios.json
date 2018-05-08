@@ -1,154 +1,85 @@
 [
     {
-        "id": 1,
-        "name": "Ardyth Fontenot",
-        "user": "ardFon",
+        "username": 1,
         "password": "ard123",
         "rol": "cliente",
-        "token": 123
+        "token": 111
     }
     ,
     {
-        "id": 2,
-        "name": "Sharyl Clem",
-        "user": "sharClem",
+        "username": 2,
         "password": "shar123",
         "rol": "cliente",
-        "token": 456
+        "token": 112
     }
     ,
     {
-        "id": 3,
-        "name": "Bailie MacLeese",
-        "user": "baiMac",
+        "username": 3,
         "password": "bai123",
         "rol": "cliente",
-        "token": 789
+        "token": 113
     }
     ,
     {
-        "id": 4,
-        "name": "Helen McGarvie",
-        "user": "helMc",
+        "username": 4,
         "password": "hel123",
         "rol": "cliente",
-        "token": 987
+        "token": 114
     }
     ,
     {
-        "id": 5,
-        "name": "Felicdad Sefton",
-        "user": "felSef",
+        "username": 5,
         "password": "fel123",
         "rol": "cliente",
-        "token": 765
+        "token": 115
     }
     ,
     {
-        "id": 6,
-        "name": "Elmer Dunster",
-        "user": "elDuns",
-        "password": "el123",
-        "rol": "cliente",
-        "token": 543
-    }
-    ,
-    {
-        "id": 7,
-        "name": "Dennet Casseldine",
-        "user": "dennCass",
-        "password": "denn123",
-        "rol": "cliente",
-        "token": 321
-    }
-    ,
-    {
-        "id": 8,
-        "name": "Malory Lorimer",
-        "user": "malor",
-        "password": "mal123",
-        "rol": "cliente",
-        "token": 987
-    }
-    ,
-    {
-        "id": 9,
-        "name": "Tyler Thackston",
-        "user": "tyTh",
-        "password": "thy123",
-        "rol": "cliente",
-        "token": 987
-    }
-    ,
-    {
-        "id": 10,
-        "name": "Myron Edwin",
-        "user": "myEd",
-        "password": "my123",
-        "rol": "cliente",
-        "token": 987
-    }
-    ,
-    {
-        "id": 11,
-        "name": "Carla Simek",
-        "user": "carlSi",
+        "username": 1007097750,
         "password": "car123",
         "rol": "vendedor",
-        "token": 987
+        "token": 116
     }
      ,
     {
-        "id": 12,
-        "name": "Hinze Redbourn",
-        "user": "hinRed",
+        "username": 3866353918,
         "password": "hin123",
         "rol": "vendedor",
-        "token": 987
+        "token": 117
     }
     ,
     {
-        "id": 13,
-        "name": "Gregg Jammet",
-        "user": "greJam",
+        "username": 2796466569,
         "password": "gre123",
         "rol": "vendedor",
-        "token": 987
+        "token": 118
     }
     ,
     {
-        "id": 14,
-        "name": "Pavlov Kirwood",
-        "user": "pavKir",
+        "username": 5342831412,
         "password": "pav123",
         "rol": "vendedor",
-        "token": 987
+        "token": 119
     }
     ,
     {
-        "id": 15,
-        "name": "Gawain Canner",
-        "user": "gawCan",
+        "username":9028000433,
         "password": "gaw123",
         "rol": "vendedor",
-        "token": 987
+        "token": 120
     }
     ,
     {
-        "id": 16,
-        "name": "Juan Manuel Santos",
-        "user": "JuanMa",
-        "password": "juanMa8",
+        "username":rubby,
+        "password":"rub123",
         "rol": "administrador",
-        "token": 987
+        "token": 121
     }
     ,
     {
-        "id": 16,
-        "name": "Álvaro Uribe",
-        "user": "UribeKing",
+        "username": "UribeKing",
         "password": "uribe8",
         "rol": "administrador",
-        "token": 987
+        "token": 122
     }
 ]
