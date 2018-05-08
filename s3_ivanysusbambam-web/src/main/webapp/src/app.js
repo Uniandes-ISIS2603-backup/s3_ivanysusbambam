@@ -65,7 +65,6 @@
             $transitions.onSuccess({to: '*'}, function (trans) {
 
                 var $state = trans.router.stateService;
-                var requireLogin = $state.current.data.requireLogin
                 var roles = $state.current.data.roles
                
                 $rootScope.isAuthenticated = function () {
@@ -78,8 +77,7 @@
                     }
                 };
             
-
-                if (requireLogin && (sessionStorage.getItem("username") === null)) {
+                if (sessionStorage.getItem("username") === null) {
                     event.preventDefault();
                     $state.go('login', $state.params);
                 }
