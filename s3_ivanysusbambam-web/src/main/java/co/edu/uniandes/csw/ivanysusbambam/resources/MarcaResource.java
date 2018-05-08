@@ -1,11 +1,10 @@
 package co.edu.uniandes.csw.ivanysusbambam.resources;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MarcaDTO;
 import co.edu.uniandes.csw.ivanysusbambam.dtos.MarcaDetailDTO;
-import co.edu.uniandes.csw.ivanysusbambam.dtos.ModelDTO;
-import co.edu.uniandes.csw.ivanysusbambam.dtos.ModelDetailDTO;
+
 import co.edu.uniandes.csw.ivanysusbambam.ejb.MarcaLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
-import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
+
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,7 +55,7 @@ public class MarcaResource {
      */
     @GET
     public List<MarcaDTO> getMarcas(){
-        List<MarcaDTO> marc = new ArrayList<MarcaDTO>();
+        List<MarcaDTO> marc = new ArrayList<>();
         for(MarcaEntity c: logica.findAllMarcas()){
             marc.add(new MarcaDetailDTO(c));
         }
@@ -82,10 +81,9 @@ public class MarcaResource {
     @GET
     public MarcaDetailDTO getMarca(@PathParam("Id")Long id) throws BusinessLogicException{
         MarcaEntity  mdl = logica.findMarca(id);
-        MarcaDetailDTO nueva = null;
-        //TODO si no existe debe disparar WebApplicationException
+       
         if(mdl == null){
-            throw new BusinessLogicException("El resource marca "+id+" no existe");
+            throw new BusinessLogicException("El resource marca "+id+" no existe en la persistencia ");
         }
         else
         {
@@ -107,13 +105,13 @@ public class MarcaResource {
      * 412 Precodition Failed: Ya existe la marca
      * </code>
      * </pre>
-     * @param Nueva {@link MarcaDTO} - La marca que se desea guardar
+     * @param nueva {@link MarcaDTO} - La marca que se desea guardar
      * @return JSON {@link MarcaDTO}  - La marca que se creó
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error debido a la existencia de la marca que se deseaba crear.
      */
     @POST
-    public MarcaDetailDTO postMarca(MarcaDetailDTO Nueva) throws BusinessLogicException{
-         return new MarcaDetailDTO(logica.createMarca(Nueva.toEntity()));
+    public MarcaDetailDTO postMarca(MarcaDetailDTO nueva) throws BusinessLogicException{
+         return new MarcaDetailDTO(logica.createMarca(nueva.toEntity()));
     }
      /**
      * <h1>PUT /api/marcas/{id} : Actualizar la marca con el id dado.</h1>
@@ -129,20 +127,20 @@ public class MarcaResource {
      * </code> 
      * </pre>
      * @param id de la marca que se quiere actualizar
-     * @param Nuevo {@link MarcaDTO} La marca que se quiere guardar
+     * @param nuevo {@link MarcaDTO} La marca que se quiere guardar
      * @return JSON {@link MarcaDTO} - La marca guardada
      * @throws BusinessLogicException {@link BusinessLogicExceptionMapper} - Error porque no existe una marca con ese id
      */
     @Path("{Id: \\d+}")
     @PUT
-    public MarcaDetailDTO putMarca(@PathParam("Id") Long id, MarcaDetailDTO Nuevo) throws BusinessLogicException{
+    public MarcaDetailDTO putMarca(@PathParam("Id") Long id, MarcaDetailDTO nuevo) throws BusinessLogicException{
       MarcaEntity mar = logica.findMarca(id);
-       //TODO si no existe debe disparar WebApplicationException
+       
       if(mar == null){
           throw new BusinessLogicException("El recurso marca" +id+ "no existe");
       }
       else{
-          return new MarcaDetailDTO(logica.updateMarca(mar));
+          return new MarcaDetailDTO(logica.updateMarca(nuevo.toEntity()));
       }
     }
       /**
@@ -157,15 +155,15 @@ public class MarcaResource {
      * 404 Not Found. No existe una marca, con el id asociado.
      * </code>
      * </pre>
-     * @param nombr Identificador de la marca que se desea borrar
+     * @param id Identificador de la marca que se desea borrar
      */
     @DELETE
     @Path("{Id: \\d+}")
      public void deleteMarca(@PathParam("Id") Long id) throws BusinessLogicException {
         MarcaEntity entity = logica.findMarca(id);
-         //TODO si no existe debe disparar WebApplicationException
+        
         if (entity == null) {
-            throw new BusinessLogicException("El recurso marca" + id + " no existe.");
+            throw new BusinessLogicException("El recurso marca" + id + " no esta en la basede datos  .");
         }
         logica.deleteMarca(id);
     }

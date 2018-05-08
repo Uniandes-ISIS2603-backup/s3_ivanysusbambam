@@ -77,9 +77,11 @@ public class CalificacionTiendaResource {
      */
     @GET
     @Path("{id: \\d+}")
-    public CalificacionTiendaDetailDTO getCalificacionTienda(@PathParam("id") Long id)throws WebApplicationException{
+    public CalificacionTiendaDetailDTO getCalificacionTienda(@PathParam("id") Long id)throws BusinessLogicException{
         CalificacionTiendaEntity cc = ctiendaLogic.getCalificacionTienda(id);
-        if(cc == null) throw new WebApplicationException("El recurso prospecto de compra " + id + " no existe");
+        if(cc == null) {
+            throw new WebApplicationException("El recurso prospecto de compra " + id + " no existe");
+        }
 
         return new CalificacionTiendaDetailDTO(cc);
     }

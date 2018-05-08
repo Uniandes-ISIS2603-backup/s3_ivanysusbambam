@@ -5,7 +5,7 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.podam;
 
-import java.util.Random;
+
 import uk.co.jemos.podam.common.AttributeStrategy;
 
 /**

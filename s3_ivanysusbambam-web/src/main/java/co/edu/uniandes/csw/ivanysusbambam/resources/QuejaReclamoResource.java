@@ -82,7 +82,7 @@ public class QuejaReclamoResource {
         QuejaReclamoEntity queja = quejaLogic.findQuejaReclamo(pid);
 
         if (queja == null) {
-            throw new WebApplicationException("El recurso Queja reclamo " + pid + " no existe");
+            throw new WebApplicationException("El recurso Queja reclamo " + pid + " no existe en la base de dtaos");
         } else {
             return new QuejaReclamoDetailDTO(queja);
         }
@@ -109,9 +109,11 @@ public class QuejaReclamoResource {
     @PUT
     @Path("{pid: \\d+}")
     public QuejaReclamoDetailDTO putQuejaReclamo(@PathParam("pid") Long pid, QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
-    QuejaReclamoEntity QR = quejaLogic.findQuejaReclamo(pid);
+    QuejaReclamoEntity entity = quejaLogic.findQuejaReclamo(pid);
         
-        if(QR == null) throw new WebApplicationException("El recurso QuejaReclamo " + pid + " no existe");
+        if(entity == null) {
+            throw new WebApplicationException("El recurso QuejaReclamo " + pid + " no esta persisitido");
+        }
         
         else return new QuejaReclamoDetailDTO(quejaLogic.updateQuejaReclamo(quejaReclamo.toEntity()));
         

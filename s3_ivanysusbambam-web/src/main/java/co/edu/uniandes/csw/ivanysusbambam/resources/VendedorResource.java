@@ -81,7 +81,9 @@ public class VendedorResource {
     public VendedorDetailDTO getVendedor(@PathParam("id") long id)throws BusinessLogicException{
         VendedorEntity ve = vendedorLogic.findVendedor(id);
         
-        if(ve == null) throw new WebApplicationException("El recurso vendedor " + id + " no existe");
+        if(ve == null){
+            throw new WebApplicationException("El vendedor " + id + " no existe");
+        }
         
         return new VendedorDetailDTO(ve);
     }                   
@@ -131,7 +133,9 @@ public class VendedorResource {
     public VendedorDetailDTO putVendedor(@PathParam("id") long id, VendedorDetailDTO vendedor) throws BusinessLogicException{
         VendedorEntity ve = vendedorLogic.findVendedor(id);
         
-        if(ve == null) throw new WebApplicationException("El recurso vendedor " + id + " no existe");
+        if(ve == null){
+            throw new WebApplicationException("El recurso vendedor " + id + " no existe");
+        }
         
         return new VendedorDetailDTO(vendedorLogic.updateVendedor(vendedor.toEntity()));
     }
@@ -156,7 +160,9 @@ public class VendedorResource {
     public VendedorDetailDTO deleteVendedor(@PathParam("id") long id) throws BusinessLogicException{
         VendedorEntity ve = vendedorLogic.findVendedor(id);
         
-        if(ve == null) throw new WebApplicationException("El recurso vendedor " + id + " no existe");
+        if(ve == null){
+            throw new WebApplicationException("El recurso vendedor " + id + " no existe en la base de datos ");
+        }
         
         return new VendedorDetailDTO(vendedorLogic.deleteVendedor(id));
     }

@@ -126,9 +126,9 @@ public class VentaLogic {
         if (entity.getPuntoDeVenta() == null || !newEntity.getPuntoDeVenta().equals(entity.getPuntoDeVenta())) {
             throw new BusinessLogicException("No se puede modificar el punto de venta asociado a la  venta");
         }        
-        if (entity.getMedioDePago() == null || !newEntity.getMedioDePago().equals(entity.getMedioDePago())) {
-            throw new BusinessLogicException("No se puede modificar el medio de pago asociado a la  venta");
-        }
+    //    if (entity.getMedioDePago() == null || !newEntity.getMedioDePago().equals(entity.getMedioDePago())) {
+      //      throw new BusinessLogicException("No se puede modificar el medio de pago asociado a la  venta");
+        //}
 
         return persistence.update(entity);
     }

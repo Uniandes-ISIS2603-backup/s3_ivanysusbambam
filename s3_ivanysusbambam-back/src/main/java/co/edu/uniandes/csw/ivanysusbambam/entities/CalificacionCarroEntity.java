@@ -53,8 +53,7 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        return hash;
+       return 3;
     }
 
     @Override

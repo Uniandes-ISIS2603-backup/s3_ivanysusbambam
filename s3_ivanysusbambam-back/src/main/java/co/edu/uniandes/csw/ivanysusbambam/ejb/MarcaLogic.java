@@ -40,7 +40,7 @@ public class MarcaLogic {
      */
     public MarcaEntity createMarca(MarcaEntity ne) throws BusinessLogicException {
       
-        if (persistence.findByNombre(ne.getName()) != null) {
+        if (persistence.find(ne.getId()) != null) {
             throw new BusinessLogicException("Ya existe una marca con el nombre dado");
         }
 

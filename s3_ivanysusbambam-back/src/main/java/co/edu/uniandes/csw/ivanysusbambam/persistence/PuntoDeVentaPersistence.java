@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +14,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
-import org.springframework.integration.handler.LoggingHandler;
+
 
 /**
  *
@@ -66,7 +67,9 @@ public class PuntoDeVentaPersistence {
         LOGGER.log(Level.INFO, "Buscando clientes con nombre: ", name);
         TypedQuery tq = em.createQuery("select v from PuntoDeVentaEntity v where v.nombre = :nombre", PuntoDeVentaEntity.class);
         tq.setParameter("nombre", name);
-        if(tq.getResultList().isEmpty()) return null;
+        if(tq.getResultList().isEmpty()){
+            return new ArrayList<>();
+        }
         else return tq.getResultList();
     }
     

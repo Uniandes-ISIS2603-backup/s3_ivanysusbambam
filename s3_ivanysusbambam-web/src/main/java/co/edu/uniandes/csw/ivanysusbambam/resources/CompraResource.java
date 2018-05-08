@@ -64,9 +64,9 @@ public class CompraResource {
     @POST
     public CompraDetailDTO crearCompra(CompraDetailDTO compra) throws BusinessLogicException {
         CompraEntity compraE = compra.toEntity();
-        CompraDetailDTO rpta = new CompraDetailDTO(compraLogic.crearCompra(compraE));
+       return new CompraDetailDTO(compraLogic.crearCompra(compraE));
 
-        return rpta;
+       
     }
 
     /**
@@ -119,7 +119,7 @@ public class CompraResource {
         CompraEntity entity = compraLogic.findCompra(id);
 
         if (entity == null) {
-            throw new WebApplicationException("El recurso /compras/" + id + " no existe.", 404);
+            throw new WebApplicationException("El recurso /compras/" + id + " no existe en labase de datos.", 404);
 
         }
 

@@ -34,8 +34,8 @@ public class MedioDePagoPersistence {
         LOGGER.info("Creando un medio de pago nuevo");
         em.persist(entity);
         LOGGER.info("Creando un medio de pago nuevo");
-        MedioDePagoEntity created = find(entity.getNumero());
-        return created;
+        
+        return find(entity.getNumero());
     }
 
     /**
@@ -46,13 +46,8 @@ public class MedioDePagoPersistence {
     public List<MedioDePagoEntity> findAll() {
         LOGGER.info("Consultando todas los medios de pagos");
         TypedQuery query = em.createQuery("select u from MedioDePagoEntity u", MedioDePagoEntity.class);
-         LOGGER.info(""+query.getResultList().size());
-          LOGGER.info(""+query.getResultList().size());
-           LOGGER.info(""+query.getResultList().size());
-            LOGGER.info(""+query.getResultList().size());
-             LOGGER.info(""+query.getResultList().size());
-         LOGGER.info(""+query.getResultList().size());
-        LOGGER.info(""+query.getResultList().size());
+         LOGGER.info(""+Integer.toString(query.getResultList().size()));
+        
         return query.getResultList();
     }
 

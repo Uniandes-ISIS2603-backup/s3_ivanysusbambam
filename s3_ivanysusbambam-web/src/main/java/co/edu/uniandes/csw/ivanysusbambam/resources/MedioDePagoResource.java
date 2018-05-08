@@ -142,7 +142,9 @@ public class MedioDePagoResource {
     public void deleteMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago) throws BusinessLogicException {
         MedioDePagoEntity ve = mdpLogic.findMedioDePago(numeroMedioDePago);
         
-        if(ve == null) throw new WebApplicationException("El recurso medio de pago " + numeroMedioDePago + " no existe");
+        if(ve == null){
+            throw new WebApplicationException("El recurso medio de pago " + numeroMedioDePago + " no existe");
+        }
         
         mdpLogic.deleteMedioDePago(numeroMedioDePago);
     }
