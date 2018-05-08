@@ -1,12 +1,12 @@
 <div class="imagen2">
-    <div class="container" style="margin-top: 30px;">
-        <div class="card" id="cartaLogin">
+    <div class="container" style="margin-top: 30px; width: 700px;">
+       
 
             <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
             <div class="container-fluid">
             <div class="card">
-                        <article class="card-body">
-                            <h4 class="card-title">Iniciar Sesión</h4>
+                <article class="card-body" style="padding: 40px; padding-bottom: 20px">
+                            <h1 id="headerInicio" >Iniciar Sesión</h1>
                             <form name="cliente">
                                 <div class="form-group">
                                     <label>Username</label>
@@ -24,7 +24,7 @@
                             </select>
                                 </div>
                                 <div class="form-group">
-                                    <button type="submit" class="btn btn-primary btn-block" ng-click="autenticar()"> Iniciar</button>
+                                    <button type="submit" class="btn btn-primary btn-block" id = "botonIniciar" ng-click="autenticar()"> Iniciar</button>
                                 </div>
                             </form>
                             <div class="container col-md-12" style="text-align: center ;margin: 0px">
@@ -37,6 +37,6 @@
                         </article>
                     </div>
             </div>
-        </div>
+        
     </div>
 </div>

@@ -53,6 +53,17 @@
     border-radius: 0;
     font-family: 'Open Sans', sans-serif;     margin-bottom: 0;
 }
+#headerInicio{
+    color:#1a237e; 
+    font-size: 40px ;
+    line-height: 1.42857143 !important;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left
+        
+}
+#botonIniciar{
+  background-color:  #9ACD32;color: white; border-color: #9ACD32
+}
 
 
 

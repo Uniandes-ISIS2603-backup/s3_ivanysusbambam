@@ -97,41 +97,7 @@ and open the template in the editor.
 
 
 
-<div>
-    <h1 id="h1" style="margin:10px">Automoviles</h1>
-    <div class="col-md-1 align-items-center">
-        <button class="btn btn-default" ui-sref="crearAutomovil" href="#!/automovil/crear"> Crear </button>
-    </div>
-    <div class="row">
-        <div class="col-md-5">
-            <div class="card">
 
-                <div class="card-body">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e">
-                            <thead class="thead" style="background-color: #1a237e; color: white">
-                                <tr>
-                                    <th>Id Automovil </th>
-                                    <th>Placa</th>
-                                    <th> Año</th>
-                                    <th>Valor Listado</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <!-- ngRepeat: automovil in automoviles -->
-
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-5">
-            <!-- uiView: automovilDetailView --><div ui-view="automovilDetailView({marca:BMW, color:$scope.color, fechaMin:$scope.fechaMin, fechaMax:$scope.fechaMax,modelo:$scope.modelo,precioMin:$scope.precio,precioMax:$scope.precioMax})" style="margin: 0px" class="ng-scope">
-            </div>   
-        </div>
-    </div>
 
 
 
