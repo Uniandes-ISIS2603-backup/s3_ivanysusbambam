@@ -16,7 +16,7 @@ public class CedulaStrategy implements AttributeStrategy<Long>{
 
     @Override
     public Long getValue() {
-        Random r = new Random();
+       Random r = new Random();
         
         Long l = null; 
         

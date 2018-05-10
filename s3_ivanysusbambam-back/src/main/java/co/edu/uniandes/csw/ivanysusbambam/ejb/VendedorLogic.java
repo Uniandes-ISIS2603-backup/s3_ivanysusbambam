@@ -51,7 +51,7 @@ public class VendedorLogic {
         LOG.log(Level.INFO, "Revisando si el vendedor: {0}cumple con los requisitos para ser persistido", carnet);
         Long cedula = ve.getCedula();
         cedulaValida(cedula);
-        if (persistence.findByCedula(cedula) != null) {
+        if (!persistence.findByCedula(cedula).isEmpty()) {
             throw new BusinessLogicException("Algún vendedor se encuentra registrado con la misma cédula");
         }
 
@@ -140,7 +140,7 @@ public class VendedorLogic {
         LOG.log(Level.INFO, "buscando vendedor con cédula: {0}", cedula);
         cedulaValida(cedula);
         List<VendedorEntity> lista = persistence.findByCedula(cedula);
-        if (lista == null) {
+        if (lista.isEmpty()) {
             return null;
         }
         if (lista.size() > 1) {
