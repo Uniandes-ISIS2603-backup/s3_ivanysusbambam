@@ -6,7 +6,7 @@
             if (sessionStorage.getItem("username")) {
                 sessionStorage.clear();
             } else {
-                $state.go('mainView', {}, {reload: true});
+                $state.go('buscarAuto', {}, {reload: true});
             }
         }
     ]);

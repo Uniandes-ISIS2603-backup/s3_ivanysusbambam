@@ -70,6 +70,21 @@
                 }
 
 
+            }).state('comprarAuto',{
+                
+                url: "/{idCompra: int}/detail",
+                /* Acá el parent debería ser el detail del carro */
+                parent: "AdminCompraGetAll",
+                params: {
+                    idCompra: null
+                },
+                views: {
+                    'compraDetailView': {
+                        templateUrl: basePath + "compra.delete.html",
+                        controller: "compraDeleteCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
             });
         }]);
 

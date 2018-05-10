@@ -13,6 +13,7 @@
 
             $stateProvider.state('listAutomoviles', {
                 url: '/automoviles/list',
+                
                 views: {
                     'mainView': {
                         templateUrl: basePath + 'automovil.list.html',

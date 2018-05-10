@@ -1,85 +1,85 @@
 [
     {
-        "username": 1,
+        "name":"",
+        "user": 1,
         "password": "ard123",
-        "rol": "cliente",
-        "token": 111
+        "rol": "cliente"
     }
     ,
     {
-        "username": 2,
+        "name":,
+        "user": 2,
         "password": "shar123",
-        "rol": "cliente",
-        "token": 112
+        "rol": "cliente"
     }
     ,
     {
-        "username": 3,
+        "name":,
+        "user": 3,
         "password": "bai123",
-        "rol": "cliente",
-        "token": 113
+        "rol": "cliente"
     }
     ,
     {
-        "username": 4,
+        "name":,
+        "user": 4,
         "password": "hel123",
-        "rol": "cliente",
-        "token": 114
+        "rol": "cliente"
     }
     ,
     {
-        "username": 5,
+        "name":,
+        "user": 5,
         "password": "fel123",
-        "rol": "cliente",
-        "token": 115
+        "rol": "cliente"
     }
     ,
     {
-        "username": 1007097750,
+        "name":
+        "user": 1007097750,
         "password": "car123",
-        "rol": "vendedor",
-        "token": 116
+        "rol": "vendedor"
     }
      ,
     {
-        "username": 3866353918,
+        "name":,
+        "user": 3866353918,
         "password": "hin123",
-        "rol": "vendedor",
-        "token": 117
+        "rol": "vendedor"
     }
     ,
     {
-        "username": 2796466569,
+        "name":
+        "user": 2796466569,
         "password": "gre123",
-        "rol": "vendedor",
-        "token": 118
+        "rol": "vendedor"
     }
     ,
     {
-        "username": 5342831412,
+        "name":,
+        "user": 5342831412,
         "password": "pav123",
-        "rol": "vendedor",
-        "token": 119
+        "rol": "vendedor"
     }
     ,
     {
-        "username":9028000433,
+        "name":,
+        "user":9028000433,
         "password": "gaw123",
-        "rol": "vendedor",
-        "token": 120
+        "rol": "vendedor"
     }
     ,
     {
-        "username":rubby,
+        "name":,
+        "user":rubby,
         "password":"rub123",
-        "rol": "administrador",
-        "token": 121
+        "rol": "administrador"
     }
     ,
     {
-        "username": "UribeKing",
+        "name":,
+        "user": "UribeKing",
         "password": "uribe8",
-        "rol": "administrador",
-        "token": 122
+        "rol": "administrador"
     }
 ]
