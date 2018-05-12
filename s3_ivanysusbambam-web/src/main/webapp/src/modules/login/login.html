@@ -17,10 +17,10 @@
                                     <input class="form-control" placeholder="******" type="password" required ng-model="data.password">
                                 </div>
                                 <div class="form-group">
-                                    <select class="form-control">
-                                <option ng-model="data.rol" ng-click="esAdmin()">Administrador</option>
-                                <option ng-model="data.rol" ng-click="esCliente()">Cliente</option>
-                                <option ng-model="data.rol" ng-click="esVendedor()">Vendedor</option>
+                                    <select ng-model="data.rol" class="form-control">
+                                <option  ng-click="esAdmin()">Administrador</option>
+                                <option ng-click="esCliente()">cliente</option>
+                                <option  ng-click="esVendedor()">Vendedor</option>
                             </select>
                                 </div>
                                 <div class="form-group">

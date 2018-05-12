@@ -121,6 +121,7 @@ public class VendedorLogicTest {
         }
         catch(BusinessLogicException e)
         {
+           
            Assert.fail();
         }
         

@@ -80,6 +80,88 @@
 #prin{
     align-self: center;
 }
+/* Acá comienzan los comentarios*/
+#cabComent { position: relative; }
+.reviews {
+    color: #555;    
+    font-weight: bold;
+    margin: 10px auto 20px;
+}
+.notes {
+    color: #999;
+    font-size: 12px;
+}
+.media .media-object { max-width: 120px; }
+.media-body { position: relative; }
+.media-date { 
+    position: absolute; 
+    right: 25px;
+    top: 25px;
+}
+.media-date li { padding: 0; }
+.media-date li:first-child:before { content: ''; }
+.media-date li:before { 
+    content: '.'; 
+    margin-left: -2px; 
+    margin-right: 2px;
+}
+.media-comment { margin-bottom: 20px; }
+.media-replied { margin: 0 0 20px 50px; }
+.media-replied .media-heading { padding-left: 6px; }
+
+.btn-circle {
+    font-weight: bold;
+    font-size: 12px;
+    padding: 6px 15px;
+    border-radius: 20px;
+}
+
+.btn-circle span { padding-right: 6px; }
+.embed-responsive { margin-bottom: 20px; }
+.tab-content {
+    padding: 50px 15px;
+    border: 1px solid #ddd;
+    border-top: 0;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+.custom-input-file {
+    overflow: hidden;
+    position: relative;
+    width: 120px;
+    height: 120px;
+    background-size: 120px;
+    border-radius: 120px;
+}
+input[type="file"]{
+    z-index: 999;
+    line-height: 0;
+    font-size: 0;
+    position: absolute;
+    opacity: 0;
+    filter: alpha(opacity = 0);-ms-filter: "alpha(opacity=0)";
+    margin: 0;
+    padding:0;
+    left:0;
+}
+.uploadPhoto {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    display: none;
+    width: 50%;
+    height: 50%;
+    color: #fff;    
+    text-align: center;
+    line-height: 60px;
+    text-transform: uppercase;    
+    background-color: rgba(0,0,0,.3);
+    border-radius: 50px;
+    cursor: pointer;
+}
+.custom-input-file:hover .uploadPhoto { display: block; }
+
+/* Acá terminan los comentarios */
 .sidenav{
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
@@ -144,10 +226,14 @@
     padding-top: 100px;
     align-content: center;
 }
+#popular{
+    height: 100vh;
+}
 .boton{
     color:antiquewhite;
     border-color: aqua;
 }
+
 /* Carros famosos */
 img {
 	max-width: 100%;
@@ -220,15 +306,15 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
 .hls_data a {
 	display: block;
 }
-.hls_title {
+.titP {
 	text-align: right;
 	font-size: 22px;
-	border-bottom: 2px solid blue;
+	border-bottom: 2px solid #9ACD32;
 	padding: 10px 0;
 	margin: 10px 0;
 	color: #fff;
 }
-.hls_title:hover {
+.titP:hover {
 	color: #fff;
 }
 .popuIm h3 {
@@ -241,8 +327,8 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
 }
 .btn-pro {
 	border-radius: 0;
-	color: #222;
-	background: #fff;
+	color: #fff;
+	background: rgba(154, 205, 50, 0.65);
 	display: inline-block !important;
 	float: right;
 }
@@ -264,8 +350,145 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
 	right: 0;
 	transition: 1s ease
 }
-
 /* Carros famosos */
+/* Comprando */
+.compraCard {
+  margin: 60px auto;
+  height: 740px;
+  width: 450px;
+  background: #fff;
+  box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.compraCard .top {
+  position: relative;
+  height: 570px;
+  width: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center center;
+  text-align: center;
+}
+.compraCard .top .wrapper {
+  padding: 30px;
+  position: relative;
+  z-index: 1;
+}
+.compraCard .top .wrapper .opCom {
+  height: 20px;
+}
+.compraCard .top .wrapper .opCom .lnr {
+  color: #fff;
+  font-size: 20px;
+}
+.compraCard .top .wrapper .opCom .atrasC {
+  display: inline-block;
+  float: left;
+}
+.compraCard .top .wrapper .opCom .cancelar {
+  display: inline-block;
+  float: right;
+}
+.compraCard .top .wrapper .cMarca {
+  margin-top: 20px;
+  font-size: 35px;
+  font-weight: 400;
+  color: #fff;
+}
+.compraCard .top .wrapper .cModelo {
+  margin-top: 20px;
+  font-size: 21px;
+  font-weight: 400;
+  color: #fff;
+}
+.compraCard .top .wrapper .temp {
+  margin-top: 20px;
+}
+.compraCard .top .wrapper .temp .precioC {
+  display: inline-block;
+  font-size: 85px;
+  font-weight: 600;
+  color: #fff;
+}
+.compraCard .top:after {
+  content: "";
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+.compraCard .bottom {
+  padding: 0 30px;
+  background: #fff;
+}
+/* Métodos de Pago */
+.paymentWrap {
+	padding: 50px;
+}
+.paymentWrap .paymentBtnGroup {
+	max-width: 800px;
+	margin: auto;
+}
+.paymentWrap .paymentBtnGroup .paymentMethod {
+	padding: 40px;
+	box-shadow: none;
+	position: relative;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active {
+	outline: none !important;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod.active .method {
+	border-color: #4cd264;
+	outline: none !important;
+	box-shadow: 0px 3px 22px 0px #7b7b7b;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method {
+	position: absolute;
+	right: 3px;
+	top: 3px;
+	bottom: 3px;
+	left: 3px;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+	border: 2px solid transparent;
+	transition: all 0.5s;
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.1 {
+	background-image: url("");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.2 {
+	background-image: url("");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.3 {
+	background-image: url("");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method.4 {
+	background-image: url("");
+}
+
+.paymentWrap .paymentBtnGroup .paymentMethod .5 {
+	background-image: url("");
+}
+
+
+.paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
+	border-color: #4cd264;
+	outline: none !important;
+}
+/* Métodos de Pago */
+/* Comprando */
+
 /* Footer */
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 section {
