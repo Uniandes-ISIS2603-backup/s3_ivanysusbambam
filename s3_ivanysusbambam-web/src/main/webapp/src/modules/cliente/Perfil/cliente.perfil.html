@@ -19,20 +19,20 @@
                     <thead>
                         <tr>
                             <th >
-                                <a ui-sref="ComprasCliente()" id="verCompras"> 
+                                <a ui-sref="ComprasCliente({clienteId: cliente.cedula})" id="verCompras"> 
                                     <i class="material-icons" >local_grocery_store</i>
                                     <p>Ver compras</p>
                                 </a>
                             </th>
                             <th >
-                                <a ui-sref="mediosDePagoCliente()" id="verPagos"> 
+                                <a ui-sref="mediosDePagoCliente({clienteId: cliente.cedula})" id="verPagos"> 
                                     <i class="fa fa-credit-card-alt" style="font-size:24px; margin: 7px"> </i>
                                     <p>Ver medios de pago</p>
                                 </a>
                             </th>
 
                             <th >
-                                <a ui-sref="VentasCliente()" id="verVentas"> 
+                                <a ui-sref="VentasCliente({clienteId: cliente.cedula})" id="verVentas"> 
                                     <i class="fa fa-automobile" style="font-size:26px; margin: 7px; hover {
                                            color: green;
                                            background-color: dimgray;
@@ -41,14 +41,14 @@
                                     </a>
                                 </th>
                                 <th >                       
-                                    <a ui-sref="ComentariosCliente()" id="verComs"> 
+                                    <a ui-sref="ComentariosCliente({clienteId: cliente.cedula})" id="verComs"> 
                                         <i class="fa fa-comment-o" style="font-size:26px; margin: 7px"></i>
                                             <p>Ver Comentarios</p>  
                                         </a>
 
                                     </th>
                                     <th > 
-                                        <a ui-sref="QyRCliente()" id="verQuejas"> 
+                                        <a ui-sref="QyRCliente({clienteId: cliente.cedula})" id="verQuejas"> 
                                             <i class="fa fa-edit" style="font-size:26px;text-align: center"></i>
                                             <p>Quejas y reclamos</p> 
                                         </a>
@@ -70,8 +70,7 @@
                     </div>
                 </div>
 
-            </div>
-        </div>
+           
 
 
 
