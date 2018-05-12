@@ -3,24 +3,31 @@
     <div class="card col-12"  style="padding:0px; margin: 10px; width:900px; ">
 
 
-        <div class="card-body">
+        <div class="card-body" style=" overflow: scroll; max-height: 500px">
             <h1 id="Iniciar">Comentarios</h1>
 
-            <div class="row" ng-repeat="ct in cliente.calificacionesTienda" style="color: white; font-size:12px">
-                <form>
-                    <div class="form-group">
-                        <label for="comment">Tipo: {{qr.tipo}}</label>
-                        <textarea class="form-control" rows="5" id="comment">{{qr.texto}}</textarea>
-                    </div>
-                </form>
-                <div class="col-md-12" id="elboton">
-                    <a ui-sref="perfilCliente">
-                        <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Regresar</button>
-                    </a>
-                </div>
+            <div class="row" rows="3" ng-repeat="ct in elCliente.calificacionesTienda" style=" text-align: left; font-size:16px">
+                <div class="card col-10" style="margin: 20px; margin-left: 70px">
+                    <form>
+                        <p>Id: {{ct.id}}</p>
+                        <p>Puntaje: {{ct.puntaje}}</p>
+                        <p>Nombre del punto de venta: {{ct.name}}</p>
+                        <div class="form-group">
+                           
+                            <textarea class="form-control" rows="3"  id="comment">{{ct.comentario}}</textarea>
+                        </div>
+                    </form>
+                     <div class="col-md-12" id="elboton">
+                <a ui-sref="perfilCliente({elCliente.cedula})">
+                    <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Editar</button>
+                </a>
             </div>
 
+                </div>
 
+
+
+            </div>
             <div class="col-md-12" id="elboton">
                 <a ui-sref="perfilCliente">
                     <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Regresar</button>
@@ -28,7 +35,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 

@@ -17,7 +17,7 @@
     align-content: center;
     align-self: center;
 }
-#navAutos: hover{
+#navAutos:hover{
     color: aqua;
 }
 #nombre{
@@ -209,6 +209,7 @@ input[type="file"]{
 } 
 #elboton{
     text-align: center;
+    margin: 5px
 }
 #cerrar:hover,
 #cerrar:active,
