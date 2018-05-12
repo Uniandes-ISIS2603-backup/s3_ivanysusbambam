@@ -370,6 +370,7 @@ public class AutomovilLogic {
      * Búsqueda maestra que incluye todos los parámetros disponibles en mi
      * automóvil
      *
+     * @param tipoAuto tipo del auto
      * @param precioMin cota inferior del rango de precios.
      * @param precioMax cota superior del rango de precios.
      * @param anioMin cota inferior del rango de años.
@@ -383,8 +384,9 @@ public class AutomovilLogic {
      * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin o
      * si todos los parámetros son null
      */
-    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
+    public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
 
+        
         if((kilometrajeMin == null) != (kilometrajeMax==null)){
              throw new BusinessLogicException("La pareja kilometrajeMin/kilometrajeMax debe ir junta");
         }
@@ -407,7 +409,7 @@ public class AutomovilLogic {
         if (anioMax != null && anioMin != null && anioMax < anioMin) {
             throw new BusinessLogicException("El año máximo debe ser mayor al año mínimo");
         }
-        return persistence.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
+        return persistence.masterSearch(tipoAuto, precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
     }
     
     public List<AutomovilEntity> listColores(){

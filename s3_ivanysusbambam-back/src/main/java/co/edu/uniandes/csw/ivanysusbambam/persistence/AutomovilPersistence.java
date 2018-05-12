@@ -6,7 +6,6 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
-import com.gs.collections.impl.list.fixed.ArrayAdapter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -210,6 +209,8 @@ public class AutomovilPersistence {
     /**
      * Búsqueda maestra que incluye todos los parámetros disponibles en mi
      * automóvil
+     * 
+     * @param tipoAuto el tipo del automóvil
      * @param precioMin cota inferior del rango de precios.
      * @param precioMax cota superior del rango de precios.
      * @param anioMin cota inferior del rango de años.
@@ -221,10 +222,15 @@ public class AutomovilPersistence {
      * @param kilometrajeMax cota superior del rango de kilometraje.
      * @return lista con todos los automóviles que cumplen los filtros.
      */
-    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax){
+    public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax){
     
         // 0 = 0 porque no deja poner WHERE TRUE
         String sentencia = "SELECT a FROM AutomovilEntity a JOIN a.model mo JOIN a.marca ma WHERE 0 = 0";
+        
+        if(tipoAuto !=null){
+            sentencia += " AND a.tipo = '" + tipoAuto + "'";
+        }
+        
         if(precioMin != null && precioMax != null){
             
             sentencia += " AND a.valorListado >= " + precioMin + " AND " + "a.valorListado <= " + precioMax;
