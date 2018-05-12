@@ -49,11 +49,8 @@ public class NombreStrategy implements AttributeStrategy<String>{
      */
    private static boolean esAlfabetica(char c){
        
-        //se asegura que c es un caracter de la A-Z o de la a-z o espacio o una vocal con tilde o una ü. 
-        if( !((c>=65 && c<= 90) || (c>= 97 && c<=122) || (c == 32) ||(c>=160 && c <=165) || (c==130) || (c==129) )){
-            return false;
-        }
-        else return true;
+        //se asegura que c es un caracter de la A-Z o de la a-z o espacio o una vocal con tilde o una ü.
+        return (c>=65 && c<= 90) || (c>= 97 && c<=122) || (c == 32) ||(c>=160 && c <=165) || (c==130) || (c==129);
         
     }
     

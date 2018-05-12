@@ -6,7 +6,6 @@
         
         var basePath = "src/modules/cliente/";
         
-        //TODO - Tal vez el otherwise debería enviar a index?
         $urlRouterProvider.otherwise("/cliente");
         
         $stateProvider.state("listCliente", {

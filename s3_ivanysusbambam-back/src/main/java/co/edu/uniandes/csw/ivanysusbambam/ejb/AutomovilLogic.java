@@ -370,6 +370,7 @@ public class AutomovilLogic {
      * Búsqueda maestra que incluye todos los parámetros disponibles en mi
      * automóvil
      *
+     * @param tipoAuto tipo del auto
      * @param precioMin cota inferior del rango de precios.
      * @param precioMax cota superior del rango de precios.
      * @param anioMin cota inferior del rango de años.
@@ -383,8 +384,9 @@ public class AutomovilLogic {
      * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin o
      * si todos los parámetros son null
      */
-    public List<AutomovilEntity> masterSearch(Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
+    public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
 
+        
         if((kilometrajeMin == null) != (kilometrajeMax==null)){
              throw new BusinessLogicException("La pareja kilometrajeMin/kilometrajeMax debe ir junta");
         }
@@ -401,13 +403,24 @@ public class AutomovilLogic {
             throw new BusinessLogicException("La pareja anioMin/anioMax debe ir junta");
         }
 
-        if (precioMax != null && precioMin != null && precioMax < precioMin) {
+        if (bothNotNull(precioMax, precioMin) && precioMax < precioMin) {
             throw new BusinessLogicException("El precio máximo debe ser mayor al precio mínimo");
         }
-        if (anioMax != null && anioMin != null && anioMax < anioMin) {
+        if (bothNotNull(anioMax, anioMin) && anioMax < anioMin) {
             throw new BusinessLogicException("El año máximo debe ser mayor al año mínimo");
         }
-        return persistence.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
+        return persistence.masterSearch(tipoAuto, precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
+    }
+    
+    
+    /**
+     * Método existente para evitar falsos positivos de sonar. Retorna si dos Integer no son null
+     * @param a integer 1 
+     * @param b integer 2
+     * @return integer 1 != null && integer 2 != null
+     */
+    private boolean bothNotNull(Integer a, Integer b){
+        return a != null && b != null;
     }
     
     public List<AutomovilEntity> listColores(){
@@ -423,4 +436,6 @@ public class AutomovilLogic {
         
         return ret;
     }
+    
+    
 }

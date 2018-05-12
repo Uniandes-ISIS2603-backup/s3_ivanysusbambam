@@ -9,10 +9,8 @@ import co.edu.uniandes.csw.ivanysusbambam.dtos.AutomovilDetailDTO;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.AutomovilLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.ivanysusbambam.persistence.AutomovilPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -305,6 +303,7 @@ public class AutomovilResource {
      * 404 Not Found No hay ningún automóvil que cumpla los filtros.
      * </code>
      *
+     * @param tipoAuto el tipo del automóvil, camioneta, sedan, etc...
      * @param precioMin cota inferior del precio
      * @param precioMax cota superior del precio
      * @param anioMin cota inferior de rango de años
@@ -321,10 +320,10 @@ public class AutomovilResource {
      */
     @GET
     @Path("/search")
-    public List<AutomovilDetailDTO> masterSearch(@QueryParam("precioMin") Integer precioMin, @QueryParam("precioMax") Integer precioMax, @QueryParam("anioMin") Integer anioMin, @QueryParam("anioMax") Integer anioMax, 
+    public List<AutomovilDetailDTO> masterSearch(@QueryParam("tipoAuto") String tipoAuto, @QueryParam("precioMin") Integer precioMin, @QueryParam("precioMax") Integer precioMax, @QueryParam("anioMin") Integer anioMin, @QueryParam("anioMax") Integer anioMax, 
             @QueryParam("marca")String marca, @QueryParam("modelo") String modelo, @QueryParam("color") String color, @QueryParam("kilometrajeMin") Integer kilometrajeMin, @QueryParam("kilometrajeMax") Integer kilometrajeMax) throws BusinessLogicException{
         
-        List<AutomovilEntity> autos = autoLogic.masterSearch(precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
+        List<AutomovilEntity> autos = autoLogic.masterSearch(tipoAuto, precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
         
         if(autos.isEmpty()){
             throw new WebApplicationException("No se encontraron automóviles ");
