@@ -120,6 +120,7 @@ public class VentaResource {
      * @param id Identificador de la venta que se esta buscando. Este debe ser
      * una cadena de dígitos.
      * @return JSON {@link VentaDetailDTO} - La venta buscada
+     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException si se incumple la precondición y no existe una venta con el id dado.
      */
     @GET
     @Path("{id: \\d+}")
@@ -127,7 +128,7 @@ public class VentaResource {
         VentaEntity venta = ventaLogic.findVenta(id);
 
         if (venta == null) {
-            throw new WebApplicationException("El recurso Queja reclamo " + id + " no existe");
+            throw new WebApplicationException("El recurso Queja reclamo " + id + " no encontrado");
         } else {
             return new VentaDetailDTO(venta);
         }
@@ -160,7 +161,9 @@ public class VentaResource {
     public VentaDetailDTO updateVenta(@PathParam("id") Long id, VentaDetailDTO venta) throws BusinessLogicException {
         VentaEntity entity = ventaLogic.findVenta(id);
         
-        if(entity == null) throw new WebApplicationException("El recurso venta " + id + " no existe");
+        if(entity == null){ 
+            throw new WebApplicationException("El recurso venta " + id + " no existe");
+        }
         
         else return new VentaDetailDTO(ventaLogic.updateVenta(venta.toEntity()));
         

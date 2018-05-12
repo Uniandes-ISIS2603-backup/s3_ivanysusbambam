@@ -109,7 +109,9 @@ public class ProspectoCompraResource {
     public ProspectoCompraDetailDTO putProspectoCompra(@PathParam("pid") long pid, ProspectoCompraDetailDTO prospecto) throws BusinessLogicException{
         ProspectoCompraEntity pc = pcLogic.findProspectoCompra(pid);
         
-        if(pc == null) throw new WebApplicationException("El rescurso prospecto de compra " + pid + " no existe");
+        if(pc == null){ 
+            throw new WebApplicationException("El rescurso prospecto de compra " + pid + " no existe");
+        }
         
         return new ProspectoCompraDetailDTO(pcLogic.updateProspectoCompra(prospecto.toEntity()));
     }
