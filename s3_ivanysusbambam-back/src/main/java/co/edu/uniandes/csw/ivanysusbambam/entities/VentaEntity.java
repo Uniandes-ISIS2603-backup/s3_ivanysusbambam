@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
@@ -17,67 +18,67 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author hd.castellanos
  */
 @Entity
-public class VentaEntity  implements Serializable {
+public class VentaEntity implements Serializable {
 
     /**
      * Id de la venta
      */
-      @Id
-     private Long idVenta;
-      /**
-       * Nombre de la venta 
-       */
+    
+    @Id
+    private Long idVenta;
+    /**
+     * Nombre de la venta
+     */
     private String name;
 
-  
-    
-    
     /**
-     * Atributo del cliente asociado a esta venta 
+     * Atributo del cliente asociado a esta venta
      */
     @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
-    
-    
+
     /**
-     * Atributo del Medio de pago asociado a esta venta 
+     * Atributo del Medio de pago asociado a esta venta
      */
     @PodamExclude
     @ManyToOne
     private MedioDePagoEntity medioDePago;
-    
-    
+
     /**
-     * Atributo del vendedor asociado a esta venta 
+     * Atributo que representa el vendedor encargado de la venta
      */
     @PodamExclude
     @ManyToOne
-    private VendedorEntity vendedorEncargado;
-    
-    
+     private  VendedorEntity vendedorEncargado;
+
     /**
-     * Atributo de la calificacion del carro asociado a esta venta 
+     * Atributo de la calificacion del carro asociado a esta venta
      */
     @PodamExclude
     @OneToOne
     private CalificacionCarroEntity calificacionCarro;
-    
-    
+
     /**
-     * Atributo del punto de venta asociado a esta venta 
+     * Atributo del punto de venta asociado a esta venta
      */
     @PodamExclude
     @ManyToOne
     private PuntoDeVentaEntity puntoDeVenta;
-    
-   
+
     /**
-     * Atributo del automovil asociado a esta venta 
+     * Atributo del automovil asociado a esta venta
      */
     @PodamExclude
-    @ManyToOne 
+    @ManyToOne
     private AutomovilEntity automovil;
+
+    /**
+     * Atributo para la queja/Reclamo asociado a esta venta
+     */
+    @PodamExclude
+    @ManyToOne
+    private QuejaReclamoEntity quejaReclamo;
 
     /**
      * @return the cliente
@@ -161,8 +162,18 @@ public class VentaEntity  implements Serializable {
      */
     public void setAutomovil(AutomovilEntity automovil) {
         this.automovil = automovil;
+
     }
-      public Long getId() {
+
+    public QuejaReclamoEntity getQuejaReclamo() {
+        return quejaReclamo;
+    }
+
+    public void setQuejaReclamo(QuejaReclamoEntity quejaReclamo) {
+        this.quejaReclamo = quejaReclamo;
+    }
+
+    public Long getId() {
         return idVenta;
     }
 
@@ -178,5 +189,4 @@ public class VentaEntity  implements Serializable {
         this.name = name;
     }
 
-    
 }

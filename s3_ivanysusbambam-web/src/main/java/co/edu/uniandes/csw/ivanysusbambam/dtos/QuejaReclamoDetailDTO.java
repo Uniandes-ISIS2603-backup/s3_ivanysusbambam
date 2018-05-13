@@ -47,6 +47,12 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
      * Cliente que realizo la queja o el reclamo 
      */
     private ClienteDTO cliente;
+    
+    /**
+     * Venta asociada a esta queja/reclamo
+     */
+    
+    private VentaDTO venta ;
 
     /**
     * Constructor por defecto
@@ -64,6 +70,7 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
         super(entity);
         if (entity != null){
             cliente = new ClienteDTO(entity.getCliente());
+            venta = new VentaDTO(entity.getVenta());
             
             
         }
@@ -79,6 +86,9 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
         if (cliente!=  null){
             entity.setCliente(cliente.toEntity());
         }
+         if (venta != null){
+             entity.setVenta(venta.toEntity());
+         }
         return entity;
     }
     
@@ -98,4 +108,13 @@ public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
+
+    public VentaDTO getVenta() {
+        return venta;
+    }
+
+    public void setVenta(VentaDTO venta) {
+        this.venta = venta;
+    }
+    
 }

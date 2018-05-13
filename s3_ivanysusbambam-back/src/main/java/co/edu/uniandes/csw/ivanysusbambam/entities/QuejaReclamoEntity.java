@@ -11,6 +11,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 /**
  *
@@ -22,6 +23,7 @@ public class QuejaReclamoEntity  implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    
     private String name;
     
     /**
@@ -40,6 +42,10 @@ public class QuejaReclamoEntity  implements Serializable{
      * Atributo del cliente asociado a esta QuejaReclamo 
      */
     private ClienteEntity cliente; 
+    
+    @PodamExclude
+    @OneToOne
+    private VentaEntity venta ;
 
     
 
@@ -114,6 +120,16 @@ public class QuejaReclamoEntity  implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
+
+    public VentaEntity getVenta() {
+        return venta;
+    }
+
+    public void setVenta(VentaEntity venta) {
+        this.venta = venta;
+    }
+    
+    
     
     
     

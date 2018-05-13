@@ -57,9 +57,7 @@ public class VentaLogic {
      */
     public VentaEntity createVenta(VentaEntity entity) throws BusinessLogicException {
        
-          
-        
-
+    
         if (entity.getCliente().getCedula() == null) {
             throw new BusinessLogicException("La cédula del cliente no puede ser null");
         }
@@ -81,6 +79,10 @@ public class VentaLogic {
         if (medioPersistence.find(entity.getMedioDePago().getNumero()) == null) {
             throw new BusinessLogicException("El medio de pago de esta venta no existe ");
         }
+        
+        
+        
+        
         return persistence.create(entity);
     }
 
