@@ -76,7 +76,7 @@
                  */
                 $rootScope.isAuthenticated = function () {
 
-                    if (sessionStorage.getItem("username") != null) {
+                    if (sessionStorage.getItem("username") !== null) {
                         $rootScope.currentUser = sessionStorage.getItem("name");
                         return true;
                     } else {

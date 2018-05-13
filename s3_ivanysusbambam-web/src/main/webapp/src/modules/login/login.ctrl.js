@@ -43,13 +43,14 @@
                     
                    
                    
-                    if ($scope.users[item].user === $scope.data.username && $scope.users[item].password === $scope.data.password && $scope.users[item].rol === $scope.data.rol) {
+                    if ($scope.users[item].user == $scope.data.username && $scope.users[item].password == $scope.data.password && $scope.users[item].rol == $scope.data.rol) {
                         
                         
                         
                         flag = true;
                         $scope.user = $scope.users[item];
                         $state.go('buscarAuto', {}, {reload: true});
+                         $rootScope.currentUser = $scope.user.user;
                         break;
                     }
                 }
@@ -61,7 +62,8 @@
                     sessionStorage.setItem("name", $scope.user.name);
                     sessionStorage.setItem("rol", $scope.user.rol);
                     /*Acá está el usuario guardado*/
-                    $rootScope.currentUser = $scope.user.user;
+                    $rootScope.currentUserId = $scope.user.user;
+                    
                 }
                 ;
             };
