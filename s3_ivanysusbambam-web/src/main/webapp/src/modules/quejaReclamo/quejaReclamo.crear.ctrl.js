@@ -12,8 +12,6 @@
     
     mod.controller("quejaReclamoCrearCtrl", ["$scope", "$http", "quejaReclamoContext","$rootScope","$state", function($scope, $http, quejaReclamoContext, $rootScope, $state){
             
-            //$rootScope.edit = false;
-            
             $scope.data = {};
             
             

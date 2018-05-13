@@ -16,7 +16,6 @@
         }
         
         $scope.subirInfoModelo = function(){
-            console.log("subiendo info");
             dataTransfer.set($scope.modelo);
         };
         

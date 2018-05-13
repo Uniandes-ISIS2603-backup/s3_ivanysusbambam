@@ -12,9 +12,6 @@
             
         $http.get("api/puntosDeVenta").then(function(response){
                
-            console.log("RESPONSE");
-            console.log(response);
-               
             $scope.puntosVenta = response.data;
                 
         });
@@ -32,13 +29,9 @@
         };
         
         $scope.cambioInfo = function(){
-         
-          console.log($scope.nuevoNombre);  
-            
+           
           $scope.vendedor.nombre = $scope.nuevoNombre;
           $scope.vendedor.puntoDeVenta = $scope.nuevoPv;
-          console.log($scope.idPV);
-          
           
         };
         

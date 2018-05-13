@@ -14,11 +14,6 @@
         
         $scope.nuevoTexto = $scope.pc.texto;
         
-        
-        console.log("--------------");
-        console.log($scope.nuevoTexto);
-        console.log("---------------")
-        
         $scope.editarProspecto = function(){
             $http.put(address, $scope.pc).then(function(response){
                 
@@ -28,8 +23,6 @@
         };
         
         $scope.cambioInfo = function(){
-         
-          console.log($scope.nuevoTexto);  
             
           $scope.pc.texto = $scope.nuevoTexto;
           

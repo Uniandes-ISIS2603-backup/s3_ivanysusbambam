@@ -21,9 +21,6 @@
         };
         
         $scope.cambioInfo = function(){
-         
-          console.log($scope.nuevoNombre);  
-          console.log($scope.vendedor.puntoDeVenta);
             
           $scope.vendedor.nombre = $scope.nuevoNombre;
           

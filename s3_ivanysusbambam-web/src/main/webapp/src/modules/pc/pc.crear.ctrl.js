@@ -29,8 +29,6 @@
             //Id que será reemplazado por el autogenerado
             $scope.data.id = Number.MAX_SAFE_INTEGER;
             
-            console.log($scope.data);
-            
             $http.post(pcContext, $scope.data).then(function(response){
                 $state.go("listPc",{} ,{reload:true});
             });

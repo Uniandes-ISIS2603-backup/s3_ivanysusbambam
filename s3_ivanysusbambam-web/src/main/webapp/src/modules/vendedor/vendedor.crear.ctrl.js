@@ -6,16 +6,11 @@
     
     mod.controller("vendedorCrearCtrl", ["$scope", "$http", "vendedorContext","$rootScope","$state", function($scope, $http, vendedorContext, $rootScope, $state){
             
-            //$rootScope.edit = false;
-            
             $scope.data = {};
             $scope.puntosVenta = [];
             
             $http.get("api/puntosDeVenta").then(function(response){
                
-                console.log("RESPONSE");
-                console.log(response);
-                
                 $scope.puntosVenta = response.data;
                 
             });
