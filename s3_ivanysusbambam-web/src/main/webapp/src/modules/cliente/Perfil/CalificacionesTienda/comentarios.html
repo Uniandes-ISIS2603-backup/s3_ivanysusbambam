@@ -18,8 +18,11 @@
                         </div>
                     </form>
                      <div class="col-md-12" id="elboton">
-                <a ui-sref="perfilCliente({elCliente.cedula})">
+                <a ui-sref="editarComentariosCliente({idComentario:ct.id})">
                     <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Editar</button>
+                </a>
+                <a ui-sref="perfilCliente({idCliente:elCliente.cedula})">
+                    <button type="button" class="btn btn-danger  align-items-center"  >Eliminar</button>
                 </a>
             </div>
 

@@ -1,0 +1,35 @@
+<div class="card" style="text-align: left; padding: 60px">
+
+  <h1 id="headerInicio" >Editar calificacion</h1>  
+    <form>
+       
+      
+        <div class="form-group">
+            <label for="usr">Nuevo Puntaje:</label>
+            <input type="text" ng-model ="nuevoPuntaje" class="form-control" id="usr">
+        </div>
+        <p>Nuevo Texto</p>
+        <div class="form-group">
+
+            <textarea class="form-control" rows="3" ng-model ="nuevoComentario"  id="comment"></textarea>
+        </div>
+    </form>
+    <div class="col-md-12" id="elboton">
+        <a ui-sref="ComentariosCliente({clienteId: currentUserId})">
+            <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Regresar</button>
+        </a>
+         <a >
+            <button type="button" ng-click = "editarCalificacion()" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Guardar Cambios</button>
+        </a>
+
+    </div>
+   </div>
+
+
+
+
+
+
+
+
+

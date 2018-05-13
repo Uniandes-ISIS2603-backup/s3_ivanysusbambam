@@ -1,33 +1,43 @@
 
-    <div class="row col-12" style="width: 900px">
-        <div class="card col-12"  style="padding:0px; margin: 10px; width:900px; ">
-           
-           
-            <div class="card-body">
-                <h1 id="Iniciar">Medios de Pago</h1>
-                <div class="table-responsive" style=" overflow: scroll; max-height: 500px">   
-                    <table class="table table-dark table-striped"  >
-                        <thead  class="thead" style=" color: white; font-size: 12px">
-                            <tr >
-                                <th>Número</th>
-                                <th>Tipo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="mp in elCliente.mediosDePago" style="color: white; font-size:12px">
-                                <td>{{mp.numero}}</td>
-                                <td>{{mp.tipo}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                   
-                </div>
-                 <div class="col-md-12" id="elboton">
-                        <a ui-sref="perfilCliente({clienteId: currentUserId})">
-                            <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Regresar</button>
-                        </a>
-                    </div>
+<div class="row col-12" style="width: 900px">
+    <div class="card col-12"  style="padding:0px; margin: 10px; width:900px; ">
+
+
+        <div class="card-body">
+            <h1 id="Iniciar">Medios de Pago</h1>
+            <div class="table-responsive" style=" overflow: scroll; max-height: 500px">   
+                <table class="table table-dark table-striped"  >
+                    <thead  class="thead" style=" color: white; font-size: 12px">
+                        <tr >
+                            <th>Número</th>
+                            <th>Tipo</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="mp in elCliente.mediosDePago" style="color: white; font-size:18px">
+                            <td>{{mp.numero}}</td>
+                            <td>{{mp.tipo}}</td>
+                            <td><a ui-sref="perfilCliente({elCliente.cedula})">
+                                    <button type="button" style="font-size:24px;width: 50px" class="btn btn-danger  align-items-center"><i class="material-icons">delete</i></button>
+                                </a>
+                            <a ui-sref="perfilCliente({elCliente.cedula})">
+                                    <button type="button" style="font-size:23px;width: 50px" class="btn btn-info  align-items-center"><i class="fa fa-edit"></i></button>
+                                </a>
+                            </td>
+                                
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+            <div class="col-md-12" id="elboton">
+                <a ui-sref="perfilCliente({clienteId: currentUserId})">
+                    <button type="button" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white" >Regresar</button>
+                </a>
+                
             </div>
         </div>
     </div>
+</div>
 

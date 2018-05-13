@@ -55,7 +55,7 @@
                },
                views: {
                    clienteDetailView: {
-                       templateUrl: basePath+"cliente.editar.html",
+                       templateUrl: basePath+"editarPerfil.html",
                        controller: "clienteEditarCtrl",
                        controllerAs: "ctrl"
                    }
@@ -112,8 +112,22 @@
             views: {
                
                     perfil:{
-                       templateUrl: basePath+"Perfil/comentarios.html",
+                       templateUrl: basePath+"Perfil/CalificacionesTienda/comentarios.html",
                         controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("editarComentariosCliente",{
+            url: "/perfil/Comentarios/editar",
+            parent:"perfilCliente",
+            params:{
+                idComentario: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/CalificacionesTienda/comentariosEditar.html",
+                        controller: "editarComentarioCtrl",
                         controllerAs: "ctrl"  
                     }
             }
@@ -156,6 +170,20 @@
                
                     perfil:{
                        templateUrl: basePath+"Perfil/mediosDePago.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("eliminarMediosDePagoCliente",{
+            url: "/perfil/{clienteId: int}/mediosDePago",
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/mediosDePago.detele.html",
                         controller: "clienteDetailCtrl",
                         controllerAs: "ctrl"  
                     }

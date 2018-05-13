@@ -12,9 +12,7 @@
         <link rel="stylesheet" type="text/css" href="css/estiloPrin.css">
         <link rel="stylesheet" type="text/css" href="css/estiloLogin.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <script src="js/barraPrin.js"></script>
 
@@ -58,7 +56,7 @@
         <script src="src/modules/quejaReclamo/quejaReclamo.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/quejaReclamo/quejaReclamo.detail.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/quejaReclamo/quejaReclamo.crear.ctrl.js" type="text/javascript"></script>
-        
+
         <!--Cliente-->
         <script src="src/modules/cliente/cliente.mod.js" type="text/javascript"></script>
         <script src="src/modules/cliente/cliente.ctrl.js" type="text/javascript"></script>
@@ -67,14 +65,14 @@
         <script src="src/modules/cliente/cliente.editar.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/cliente/cliente.perfil.editar.ctrl.js" type="text/javascript"></script>
         <script src="src/modules/cliente/cliente.registrar.ctrl.js" type="text/javascript"></script>
-        
-        
+
+
         <!--Comentario-->
         <script src="src/modules/Comentario/comentario.mod.js" type="text/javascript"></script>
         <script src="src/modules/Comentario/comentarioPerfCtrl.js" type="text/javascript"></script>
         <script src="src/modules/Comentario/comentariosCtrl.js" type="text/javascript"></script>
         <script src="src/modules/Comentario/aniadirComentCtrl.js" type="text/javascript"></script>
-
+        <script src="src/modules/cliente/Perfil/CalificacionesTienda/comentariosEditar.ctrl.js" type="text/javascript"></script>
 
 
         <!--Marca-->
@@ -83,7 +81,7 @@
         <script src="src/modules/marca/marcaDetailCtrl.js" type="text/javascript"></script>
         <script src="src/modules/marca/marcaCrearCtrl.js" type="text/javascript"></script>
         <script src="src/modules/marca/marcaEditarCtrl.js" type="text/javascript"></script>
-        
+
         <!--Modelo-->
         <script src="src/modules/modelo/modelo.mod.js" type="text/javascript"></script>
         <script src="src/modules/modelo/modeloListCtrl.js" type="text/javascript"></script>
@@ -147,11 +145,11 @@
                 height: 100%;
             }
         </style>
-        
-    <!--<link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-    <link rel="stylesheet" type="text/css" href="css/demo.css" />
-    <link rel="stylesheet" type="text/css" href="css/component.css" />-->
+
+        <!--<link rel="shortcut icon" href="../favicon.ico">
+        <link rel="stylesheet" type="text/css" href="css/normalize.css" />
+        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/component.css" />-->
 
     </head>
 
@@ -200,33 +198,33 @@
                     </li>
                     <!-- Esto aparecerá si no ha iniciado sesión -->
                     <ul class="navbar-nav navbar-right" style="text-align: left;">
-                    <div ng-if="!isAuthenticated()">
-                        <li class="nav-item">
-                            <a class="nav-link" ui-sref="registrar">Registrarse</a>
+                        <div ng-if="!isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref="registrar">Registrarse</a>
+                            </li>
+                        </div>
+                        <div ng-if="!isAuthenticated()">
+                            <li class="nav-item">
+                                <a class="nav-link" ui-sref="login">Iniciar Sesión</a>
+                            </li>
+                        </div>
+                        <li class="nav-item" ng-if="isAuthenticated()"> <!--&& cliente"-->
+                            <a class="nav-link" ui-sref="perfilCliente({clienteId: currentUserId})">Ver perfil</a>
                         </li>
-                    </div>
-                    <div ng-if="!isAuthenticated()">
-                        <li class="nav-item">
-                            <a class="nav-link" ui-sref="login">Iniciar Sesión</a>
+                        <li class="nav-item" ng-if="isAuthenticated()"> <!--&& vendedor-->
+                            <a class="nav-link" ui-sref="perfilVendedor">Ver perfil</a>
                         </li>
-                    </div>
-                    <li class="nav-item" ng-if="isAuthenticated()"> <!--&& cliente"-->
-                        <a class="nav-link" ui-sref="perfilCliente({clienteId: currentUserId})">Ver perfil</a>
-                    </li>
-                    <li class="nav-item" ng-if="isAuthenticated() "> <!--&& vendedor-->
-                        <a class="nav-link" ui-sref="perfilVendedor">Ver perfil</a>
-                    </li>
-                    <li class="nav-item" ng-if="isAuthenticated()">
-                        <a class="nav-link" ui-sref="logout">Cerrar Sesión</a>
-                    </li>
+                        <li class="nav-item" ng-if="isAuthenticated()">
+                            <a class="nav-link" ui-sref="logout">Cerrar Sesión</a>
+                        </li>
                     </ul>
                 </ul>
             </nav>
-          
+
         </div>
-        
-    
+
+
         <div ui-view="mainView"></div>
-    
+
     </body>
 </html>
