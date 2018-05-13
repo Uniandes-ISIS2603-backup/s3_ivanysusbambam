@@ -11,6 +11,7 @@ import co.edu.uniandes.csw.ivanysusbambam.ejb.QuejaReclamoLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.QuejaReclamoPersistence;
 import com.gs.collections.impl.list.fixed.ArrayAdapter;
@@ -30,13 +31,15 @@ import org.junit.Assert;
 import org.junit.runner.RunWith;
 import uk.co.jemos.podam.api.PodamFactory;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
+
 /**
  *
  * @author hd.castellanos
  */
 @RunWith(Arquillian.class)
 public class QuejaReclamoLogicTest {
-   private PodamFactory factory = new PodamFactoryImpl();
+
+    private PodamFactory factory = new PodamFactoryImpl();
 
     @Inject
     private QuejaReclamoLogic quejaLogic;
@@ -50,6 +53,8 @@ public class QuejaReclamoLogicTest {
     private List<QuejaReclamoEntity> data = new ArrayList<QuejaReclamoEntity>();
 
     private List<ClienteEntity> ClienteData = new ArrayList();
+
+    private List<VentaEntity> ventaData = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -91,6 +96,7 @@ public class QuejaReclamoLogicTest {
     private void clearData() {
         em.createQuery("delete from QuejaReclamoEntity").executeUpdate();
         em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from VentaEntity").executeUpdate();
     }
 
     /**
@@ -104,10 +110,15 @@ public class QuejaReclamoLogicTest {
             ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
             em.persist(cliente);
             ClienteData.add(cliente);
+
+            VentaEntity venta = factory.manufacturePojo(VentaEntity.class);
+            em.persist(venta);
+            ventaData.add(venta);
         }
         for (int i = 0; i < 3; i++) {
             QuejaReclamoEntity entity = factory.manufacturePojo(QuejaReclamoEntity.class);
             entity.setCliente(ClienteData.get(0));
+            entity.setVenta(ventaData.get(0));
 
             em.persist(entity);
             data.add(entity);
@@ -121,16 +132,16 @@ public class QuejaReclamoLogicTest {
      */
     @Test
     public void createQuejaReclamoTest() throws BusinessLogicException {
-          QuejaReclamoEntity newEntity = factory.manufacturePojo(QuejaReclamoEntity.class);
-          newEntity.setCliente(ClienteData.get(0));
-           
-          System.out.println("Cliente de la queja"+newEntity.getCliente());
+        QuejaReclamoEntity newEntity = factory.manufacturePojo(QuejaReclamoEntity.class);
+        newEntity.setCliente(ClienteData.get(0));
+        newEntity.setVenta(ventaData.get(0));
+
+        System.out.println("Cliente de la queja" + newEntity.getCliente());
         QuejaReclamoEntity result = quejaLogic.createQuejaReclamo(newEntity);
         Assert.assertNotNull(result);
         QuejaReclamoEntity entity = em.find(QuejaReclamoEntity.class, result.getId());
         Assert.assertEquals(newEntity.getId(), entity.getId());
-        
-     
+
     }
 
     /**
@@ -165,7 +176,7 @@ public class QuejaReclamoLogicTest {
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
-        
+
     }
 
     /**
@@ -193,13 +204,13 @@ public class QuejaReclamoLogicTest {
 
         pojoEntity.setId(entity.getId());
         pojoEntity.setCliente(entity.getCliente());
-        
-        quejaLogic.updateQuejaReclamo( pojoEntity);
+
+        quejaLogic.updateQuejaReclamo(pojoEntity);
 
         QuejaReclamoEntity resp = em.find(QuejaReclamoEntity.class, entity.getId());
 
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
-        
+
     }
-  
+
 }

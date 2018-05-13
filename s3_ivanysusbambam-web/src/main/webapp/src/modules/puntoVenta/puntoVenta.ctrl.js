@@ -2,9 +2,8 @@
     var mod = ng.module("puntoVentaModule");
     mod.constant("puntoVentaContext", "api/puntosDeVenta");
     mod.controller("puntosVentaMasterCtrl",
-        ["$scope", "$http",
-        "puntoVentaContext","$rootScope","$state",
-        function($scope, $http, puntoVentaContext, $state){
+        ["$scope", "$http", "puntoVentaContext",
+        function($scope, $http, puntoVentaContext){
             
             $http.get("data/puntoVenta.json").then(function(response){
                 $scope.puntosDeVenta = response.data;

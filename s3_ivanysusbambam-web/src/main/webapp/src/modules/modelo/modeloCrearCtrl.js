@@ -17,7 +17,6 @@
                     cilindraje:$scope.cilindraje
                 };
 
-                console.log(data);
                 $http.post(modeloContext, $scope.data).then(function (response) {
                     $state.go("listModelo", {
                         reload: true

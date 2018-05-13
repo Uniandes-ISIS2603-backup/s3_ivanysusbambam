@@ -16,7 +16,6 @@
         }
         
         $scope.subirInfoPc = function(){
-            console.log("subiendo info");
             dataTransfer.set($scope.pc);
         };
       

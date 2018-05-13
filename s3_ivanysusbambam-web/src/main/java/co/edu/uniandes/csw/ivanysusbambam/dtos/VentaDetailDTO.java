@@ -27,7 +27,7 @@ public class VentaDetailDTO extends VentaDTO {
     private MedioDePagoDTO medioDePago;
 
     /**
-     * Atributo para el vendedor encargado de la venta
+     * Atributo que representa el vendedor de la compra
      */
     private VendedorDTO vendedorEncargado;
 
@@ -45,6 +45,12 @@ public class VentaDetailDTO extends VentaDTO {
      * Atributo para el Automovil
      */
     protected AutomovilDTO automovil;
+    
+    /**
+     * Atributo para la venta 
+     */
+    
+    private QuejaReclamoDTO quejaReclamo; 
 
     /**
      * Constructor por defecto
@@ -79,7 +85,10 @@ public class VentaDetailDTO extends VentaDTO {
                 puntoDeVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
             }
             if (entity.getVendedorEncargado() != null) {
-                vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
+                this.vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
+            }
+            if (entity.getQuejaReclamo() != null){
+                quejaReclamo = new QuejaReclamoDTO (entity.getQuejaReclamo());
             }
 
        }
@@ -113,9 +122,12 @@ public class VentaDetailDTO extends VentaDTO {
             entity.setPuntoDeVenta(puntoDeVenta.toEntity());
         }
 
-        if (vendedorEncargado != null) {
+        if (getVendedorEncgardo() != null) {
             entity.setVendedorEncargado(vendedorEncargado.toEntity());
         }
+         if (quejaReclamo != null){
+             entity.setQuejaReclamo(quejaReclamo.toEntity());
+         }
         return entity;
     }
 
@@ -218,4 +230,14 @@ public class VentaDetailDTO extends VentaDTO {
     public void setAutomovil(AutomovilDTO pAuto) {
         this.automovil = pAuto;
     }
+
+    public QuejaReclamoDTO getQuejaReclamo() {
+        return quejaReclamo;
+    }
+
+    public void setQuejaReclamo(QuejaReclamoDTO quejaReclamo) {
+        this.quejaReclamo = quejaReclamo;
+    }
+    
+    
 }

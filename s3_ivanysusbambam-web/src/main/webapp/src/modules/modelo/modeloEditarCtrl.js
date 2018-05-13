@@ -4,11 +4,10 @@
 
     mod.constant("modeloContext", "api/modelos");
 
-    mod.controller("modeloEditarCtrl", ["$scope", "$http", "modeloContext", "$rootScope", "$state", "dataTransfer",
+    mod.controller("modeloEditarCtrl", ["$scope", "$http", "modeloContext", "$state", "dataTransfer",
 
-    function ($scope, $http, modeloContext, $rootScope, $state, dataTransfer, $route) {
+    function ($scope, $http, modeloContext, $state, dataTransfer) {
 
-            //$rootScope.edit = true;
             $scope.modelo = dataTransfer.get();
 
 

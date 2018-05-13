@@ -12,8 +12,6 @@
     
     mod.controller("ventaCrearCtrl", ["$scope", "$http", "ventaContext","$rootScope","$state", function($scope, $http, ventaContext, $rootScope, $state){
             
-            //$rootScope.edit = false;
-            
             $scope.data = {};
             
             
