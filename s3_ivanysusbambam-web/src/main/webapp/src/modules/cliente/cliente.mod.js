@@ -117,6 +117,20 @@
                         controllerAs: "ctrl"  
                     }
             }
+        }).state("elimanarComentariosCliente",{
+            url: "/perfil/Comentarios/eliminar",
+            parent:"perfilCliente",
+            params:{
+                idComentario: null
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/CalificacionesTienda/CalificacionTiendaDelete.html",
+                        controller: "calificacionDeleteCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
         }).state("editarComentariosCliente",{
             url: "/perfil/Comentarios/editar",
             parent:"perfilCliente",
@@ -169,22 +183,22 @@
             views: {
                
                     perfil:{
-                       templateUrl: basePath+"Perfil/mediosDePago.html",
+                       templateUrl: basePath+"Perfil/MediosDePago/mediosDePago.html",
                         controller: "clienteDetailCtrl",
                         controllerAs: "ctrl"  
                     }
             }
         }).state("eliminarMediosDePagoCliente",{
-            url: "/perfil/{clienteId: int}/mediosDePago",
+            url: "/perfil/{clienteId: int}/mediosDePago/delete/{numero:int}",
             parent:"perfilCliente",
             params:{
-                clienteId: null
+                numero: null
             },
             views: {
                
                     perfil:{
-                       templateUrl: basePath+"Perfil/mediosDePago.detele.html",
-                        controller: "clienteDetailCtrl",
+                       templateUrl: basePath+"Perfil/MediosDePago/mediosDePago.detele.html",
+                        controller: "medioDePagoClienteDeleteCtrl",
                         controllerAs: "ctrl"  
                     }
             }
