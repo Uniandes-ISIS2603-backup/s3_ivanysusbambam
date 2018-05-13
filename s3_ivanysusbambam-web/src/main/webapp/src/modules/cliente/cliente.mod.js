@@ -192,13 +192,31 @@
             url: "/perfil/{clienteId: int}/mediosDePago/delete/{numero:int}",
             parent:"perfilCliente",
             params:{
-                numero: null
+                numero: null,
+                clienteId:null
+                
             },
             views: {
                
                     perfil:{
-                       templateUrl: basePath+"Perfil/MediosDePago/mediosDePago.detele.html",
+                       templateUrl: basePath+"Perfil/MediosDePago/medioDePago.detele.html",
                         controller: "medioDePagoClienteDeleteCtrl",
+                        controllerAs: "ctrl"  
+                    }
+            }
+        }).state("AgregarMediosDePagoCliente",{
+            url: "/perfil/{clienteId: int}/mediosDePago/create",
+            parent:"perfilCliente",
+            params:{
+                
+                clienteId:null
+                
+            },
+            views: {
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/MediosDePago/medioDePago.crear.html",
+                        controller: "medioDePagoCreateClienteCtrl",
                         controllerAs: "ctrl"  
                     }
             }

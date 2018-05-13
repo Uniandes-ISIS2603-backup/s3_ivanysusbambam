@@ -17,7 +17,7 @@
              */
             $scope.deleteMdp = function () {
                 $http.delete(medioDePagoContext + '/' + numero, {}).then(function (response) {
-                    $state.go('mediosDePagoCliente({clienteId: currentUserId})', {numero: response.data.numero}, {reload: true});
+                    $state.go('mediosDePagoCliente({clienteId:$state.params.clienteId})', {numero: response.data.numero}, {reload: true});
                 });
             };
         }
