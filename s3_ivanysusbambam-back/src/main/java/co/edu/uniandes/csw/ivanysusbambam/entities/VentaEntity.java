@@ -23,7 +23,6 @@ public class VentaEntity implements Serializable {
     /**
      * Id de la venta
      */
-    
     @Id
     private Long idVenta;
     /**
@@ -50,7 +49,7 @@ public class VentaEntity implements Serializable {
      */
     @PodamExclude
     @ManyToOne
-     private  VendedorEntity vendedorEncargado;
+    private VendedorEntity vendedorEncargado;
 
     /**
      * Atributo de la calificacion del carro asociado a esta venta
@@ -165,26 +164,50 @@ public class VentaEntity implements Serializable {
 
     }
 
+    /**
+     * @return la queja/Reclamo de la venta
+     */
     public QuejaReclamoEntity getQuejaReclamo() {
         return quejaReclamo;
     }
 
+    /**
+     * Setea la queja/Reclamo de la venta a la dada por parametro
+     *
+     * @param quejaReclamo queja/Reclamo de la venta
+     */
     public void setQuejaReclamo(QuejaReclamoEntity quejaReclamo) {
         this.quejaReclamo = quejaReclamo;
     }
 
+    /**
+     * @return id de la venta
+     */
     public Long getId() {
         return idVenta;
     }
 
+    /**
+     * Setea el id de la venta a la dada por parametro
+     *
+     * @param id id de la venta
+     */
     public void setId(Long id) {
         this.idVenta = id;
     }
 
+    /**
+     * @return el nombre del punto de venta
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Setea el nombre de la venta al dado por parametro
+     *
+     * @param name nombre de la venta
+     */
     public void setName(String name) {
         this.name = name;
     }

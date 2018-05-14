@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 
@@ -22,45 +23,88 @@ import uk.co.jemos.podam.common.PodamExclude;
 @Entity
 public class MarcaEntity extends BaseEntity implements Serializable {
 
+    /**
+     * Automoviles de la marca
+     */
     @PodamExclude
     @OneToMany(mappedBy = "marca")
     private List<AutomovilEntity> automoviles = new ArrayList<>();
 
+    /**
+     * Modelos de la marca
+     */
     @PodamExclude
     @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
     private List<ModelEntity> modelos = new ArrayList<>();
 
+    /**
+     * Logo/imagen de la marca
+     */
+    @Lob
     private String logo;
 
+    /**
+     * @return Los automoviles de la marca
+     */
     public List<AutomovilEntity> getAutomoviles() {
         return automoviles;
     }
 
+    /**
+     * @return los modelos de la marca
+     */
     public List<ModelEntity> getModelos() {
         return modelos;
     }
 
+    /**
+     * Setea los automoviles de la marca a los dados por parametro
+     *
+     * @param autos autos de la marca
+     */
     public void setAutomoviles(List<AutomovilEntity> autos) {
         this.automoviles = autos;
     }
 
+    /**
+     * Setea los modelos de la marca a los dados por parametro
+     *
+     * @param mods modelos de la marca
+     */
     public void setModelos(List<ModelEntity> mods) {
         this.modelos = mods;
     }
 
+    /**
+     * @return el logo de la marca
+     */
     public String getLogo() {
         return logo;
     }
 
+    /**
+     * Setea el logo de la marca al dado por parametro
+     *
+     * @param logo logo de la marca
+     */
     public void setLogo(String logo) {
         this.logo = logo;
     }
 
+    /**
+     * Hash code
+     * @return 
+     */
     @Override
     public int hashCode() {
         return 3;
     }
 
+    /**
+     * Metodo equals
+     * @param obj objeto a compara
+     * @return 
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

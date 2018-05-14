@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
-
 import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
 import java.util.List;
 import java.util.logging.Level;
@@ -22,44 +21,83 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class MarcaPersistence {
+
+    /**
+     * Constante para el logger
+     */
     private static final Logger LOGGER = Logger.getLogger(ModelPersistence.class.getName());
-        
-        @PersistenceContext(unitName = "IvanysusbambamPU")
-        protected EntityManager em;
-      
-        
-        
-       public MarcaEntity find(Long id){
-            LOGGER.log(Level.INFO, "Buscando marca");
-            return em.find(MarcaEntity.class, id);
-        }
-       
-     public MarcaEntity findByNombre(String pNombre){
-            LOGGER.log(Level.INFO, "Buscando marca con nombre ={0}", pNombre);
-                 TypedQuery<MarcaEntity> q = em.createQuery("SELECT marca from MarcaEntity marca where marca.name = :pNombre", MarcaEntity.class);
-                  q.setParameter("name", pNombre);
-                  
-                 
-                  return q.getSingleResult();
-        }
-       
-       public List<MarcaEntity> findAll(){
+
+    /**
+     * Atributo para el entity manager
+     */
+    @PersistenceContext(unitName = "IvanysusbambamPU")
+    protected EntityManager em;
+
+    /**
+     * Busca una marca por su id
+     *
+     * @param id id de la marca a buscar
+     * @return marca con el id dado por parametro
+     */
+    public MarcaEntity find(Long id) {
+        LOGGER.log(Level.INFO, "Buscando marca");
+        return em.find(MarcaEntity.class, id);
+    }
+
+    /**
+     * Busca una marca por su nombre
+     *
+     * @param pNombre nombre de la marca a busacr
+     * @return La marca con el nombre dado por parametro
+     */
+    public MarcaEntity findByNombre(String pNombre) {
+        LOGGER.log(Level.INFO, "Buscando marca con nombre ={0}", pNombre);
+        TypedQuery<MarcaEntity> q = em.createQuery("SELECT marca from MarcaEntity marca where marca.name = :pNombre", MarcaEntity.class);
+        q.setParameter("name", pNombre);
+
+        return q.getSingleResult();
+    }
+
+    /**
+     * @return Todas las marcas en la base de datos
+     */
+    public List<MarcaEntity> findAll() {
         LOGGER.info("Consultando todas las marcas");
         Query q = em.createQuery("select u from MarcaEntity u");
         return q.getResultList();
-       }
-       
-       public MarcaEntity create(MarcaEntity entity) {
+    }
+
+    /**
+     * Crea una marca con la informacion de la entidad
+     *
+     * @param entity entidad a crear
+     * @return la entidad persistida
+     */
+    public MarcaEntity create(MarcaEntity entity) {
         LOGGER.info("Creando una nueva marca");
         em.persist(entity);
         LOGGER.info("Marca creada");
         return entity;
     }
-        public MarcaEntity update(MarcaEntity entity) {
+
+    /**
+     * Actualiza la informacion de una marca con la inforamcion de la entidad
+     * dada por parametro
+     *
+     * @param entity entidad con la nueva informacion
+     * @return la entidad dada por parametro
+     */
+    public MarcaEntity update(MarcaEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando marca con nombre=", entity.getName());
         return em.merge(entity);
     }
-        public void delete(Long id) {
+
+    /**
+     * Elimina una marca con el id dado por parametro
+     *
+     * @param id id de la marca a eliminar
+     */
+    public void delete(Long id) {
         LOGGER.log(Level.INFO, "Borrando marca con id=", id);
         MarcaEntity entity = em.find(MarcaEntity.class, id);
         em.remove(entity);

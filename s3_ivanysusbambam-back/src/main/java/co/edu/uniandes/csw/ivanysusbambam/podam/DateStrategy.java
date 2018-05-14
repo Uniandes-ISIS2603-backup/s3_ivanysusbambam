@@ -16,6 +16,9 @@ import uk.co.jemos.podam.common.AttributeStrategy;
  */
 public class DateStrategy implements AttributeStrategy<Date> {
 
+    /**
+     * @return valor de la cedula
+     */
     @Override
     public Date getValue() {
         Random r = new Random();
