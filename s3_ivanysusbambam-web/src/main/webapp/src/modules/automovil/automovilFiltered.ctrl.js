@@ -11,12 +11,8 @@
 
     mod.constant("newAutomovilContext", "api/automoviles/search?");
 
-    mod.controller("automovilFilteredCtrl", ["$scope", "$http", "newAutomovilContext","$state", function ($scope, $http, newAutomovilContext,$state) {
-
-
-
-
-            
+    mod.controller("automovilFilteredCtrl", ["$scope", "$http","$rootScope", "newAutomovilContext","$state", function ($scope,$rootScope,$http,newAutomovilContext,$state) {
+   
             var paramsBusq = "";
             
             if($state.params.precioMin !== null && $state.params.precioMax !== null){

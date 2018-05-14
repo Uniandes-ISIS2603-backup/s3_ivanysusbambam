@@ -11,8 +11,11 @@
     
     mod.constant("automovilContext", "api/automoviles");
     
-    mod.controller("automovilGetAllCtrl",["$scope","$http","automovilContext", function($scope, $http, automovilContext){
+    mod.controller("automovilGetAllCtrl",["$scope","$http","$rootScope","automovilContext", function($scope, $rootScope, $http, automovilContext){
       
+            console.log($rootScope.cliente);
+            
+            
             $http.get(automovilContext).then(function(response){
                $scope.automoviles = response.data; 
             });

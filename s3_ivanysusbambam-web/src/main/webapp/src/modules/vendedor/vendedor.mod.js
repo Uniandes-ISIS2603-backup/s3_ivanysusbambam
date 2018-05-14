@@ -9,7 +9,9 @@
                     
                     $stateProvider.state("listVendedor",{
                         
-                            
+                        params:{
+              requireLogin: true  
+            },
                         url: "/vendedor/list",
                         views:{
                             mainView:{
@@ -25,7 +27,8 @@
                        url:"/{vendedorId:int}/detail",
                        parent: "listVendedor",
                        params:{
-                           vendedorId: null
+                           vendedorId: null,
+                           requireLogin:true
                        },
                        views: {
                            vendedorDetailView:{
@@ -37,7 +40,9 @@
                        
                    }).state("crearVendedor",{
                        url: "/vendedor/crear",
-                       
+                       params:{
+              requireLogin: true  
+            },
                        views: {
                            mainView:{
                                templateUrl: basePath+"vendedor.crear.html",
@@ -51,7 +56,8 @@
                        url: "/{vendedorId:int}/editar",
                        parent: "listVendedor",
                        params:{
-                           vendedorId: null
+                           vendedorId: null,
+                           requireLogin:true
                        },
                        views: {
                            vendedorDetailView:{
@@ -64,7 +70,8 @@
                    }).state("perfilVendedor",{
                        url:"/perfilVendedor/{vendedorId:int}",
                        params:{
-                           vendedorId: null
+                           vendedorId: null,
+                           requireLogin:true
                        },
                        views:{
                            mainView:{
@@ -77,7 +84,8 @@
             
                         url: "/{vendedorId: int}/editarperfilvendedor",
                         params: {
-                            vendedorId: null
+                            vendedorId: null,
+                            requireLogin:true
                         },
                         views: {
                             mainView: {

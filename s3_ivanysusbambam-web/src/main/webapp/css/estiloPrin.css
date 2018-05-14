@@ -27,7 +27,7 @@
     margin-right: 2em;
 }
 #iconomenu{
-    color:aliceblue;
+    color:whitesmoke;
 }
 #tablaCliente{
     margin: 0px;
@@ -162,6 +162,7 @@ input[type="file"]{
 .custom-input-file:hover .uploadPhoto { display: block; }
 
 /* Acá terminan los comentarios */
+/*Acá comienza la barra lateral*/
 .sidenav{
     height: 100%; /* 100% Full-height */
     width: 0; /* 0 width - change this with JavaScript */
@@ -169,7 +170,7 @@ input[type="file"]{
     z-index: 1; /* Stay on top */
     top: 0; /* Stay at the top */
     left: 0;
-    background-color: rgba(245, 245, 245, 0.36); /* Black*/
+    background-color: whitesmoke; /* Black*/
     color:black;
     overflow-x: hidden; /* Disable horizontal scroll */
     padding-top: 60px; /* Place content 60px from the top */
@@ -198,15 +199,11 @@ input[type="file"]{
     font-size: 36px;
     margin-left: 50px;
 }
-/* Esto es lo que tengo que colocar si el main va a cambiar también*/
-#main {
-    transition: margin-left .5s;
-    padding: 20px;
-}
+
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
-} 
+}
 #elboton{
     text-align: center;
     margin: 5px
@@ -214,10 +211,12 @@ input[type="file"]{
 #cerrar:hover,
 #cerrar:active,
 #cerrar:default{
-    background-color: white;
+    background-color: whitesmoke;
     text-decoration: none;
     color: darkred;
 }
+/*Acá termina la side bar*/
+
 .imagen2{
     height: 100vh; 
     background-image: url(../resources/auto-automobile-blur-769892.jpg); 
@@ -355,11 +354,12 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
 /* Comprando */
 .compraCard {
   margin: 60px auto;
-  height: 740px;
   width: 450px;
   background: #fff;
+    background-attachment: scroll;
   box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
   overflow: hidden;
+    text-align: center;
 }
 .compraCard .top {
   position: relative;
@@ -422,12 +422,16 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
   background: rgba(0, 0, 0, 0.5);
 }
 .compraCard .bottom {
-  padding: 0 30px;
+  padding: 0 60px;
   background: #fff;
+  
 }
 /* Métodos de Pago */
 .paymentWrap {
-	padding: 50px;
+	margin-left: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    margin-top: 10;
 }
 .paymentWrap .paymentBtnGroup {
 	max-width: 800px;
@@ -447,6 +451,8 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
 	border-color: #4cd264;
 	outline: none !important;
 	box-shadow: 0px 3px 22px 0px #7b7b7b;
+    width: 100px;
+    height: 100px;
 }
 
 .paymentWrap .paymentBtnGroup .paymentMethod .method {
@@ -462,32 +468,6 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
 	transition: all 0.5s;
 }
 
-.paymentWrap .paymentBtnGroup .paymentMethod .method.1 {
-	background-image: url("");
-}
-
-.paymentWrap .paymentBtnGroup .paymentMethod .method.2 {
-	background-image: url("");
-}
-
-.paymentWrap .paymentBtnGroup .paymentMethod .method.3 {
-	background-image: url("");
-}
-
-.paymentWrap .paymentBtnGroup .paymentMethod .method.4 {
-	background-image: url("");
-}
-
-.paymentWrap .paymentBtnGroup .paymentMethod .5 {
-	background-image: url("");
-}
-
-
-.paymentWrap .paymentBtnGroup .paymentMethod .method:hover {
-	border-color: #4cd264;
-	outline: none !important;
-}
-/* Métodos de Pago */
 /* Comprando */
 
 /* Footer */
@@ -536,3 +516,204 @@ section .section-title {
         
 }
 
+<<<<<<< Updated upstream
+=======
+@media (max-width:767px){
+	#footer h5 {
+    padding-left: 0;
+    border-left: transparent;
+    padding-bottom: 0px;
+    margin-bottom: 10px;
+}
+}
+/*Footer*/
+
+.main {
+    
+}
+
+
+
+
+
+#fotoCom {
+    height: 150px;
+    width: 150px;
+}
+
+#immoneda {
+    width: 80px;
+    height: 80px;
+}
+
+#imMoney {
+    height: 80px;
+    width: 80px;
+}
+
+#mediosDePagoB {
+    margin: auto;
+    text-align: center;
+    align-content: center;
+    background: rgba(244, 238, 238, 0.35) !important;
+    height: auto;
+}
+
+#mdP {
+  font-size: 21px;
+  font-weight: 400;
+    align-self: center;
+}
+
+#formaPago {
+    width: auto;
+    margin-left: 170px;
+}
+
+#botonCompra:hover {
+    background-color: rgba(250, 235, 215, 0.17);
+    color: darkgreen;
+    font-weight: bold;
+    border-color: rgba(23, 114, 23, 0.88);
+}
+
+#map {
+    height: 400px;
+    width: 400px;
+}
+
+.backComprar {
+    height: auto; 
+    background-image: url(../resources/backCompra.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    margin: 0px;
+    padding-top: 100px;
+    align-content: center;
+    background-attachment: fixed;
+}
+
+#comentario {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+
+#comentariotxt {
+    width: 500px;
+    margin-left: 60px;
+}
+
+.comentCard {
+    margin: 60px auto;
+  width: 600px;
+  background: rgba(150, 148, 148, 0.64);
+    background-attachment: fixed;
+  box-shadow: 0 1px 38px rgba(0, 0, 0, 0.15), 0 5px 12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+    text-align: center;
+  font-size: 35px;
+  font-weight: 400;
+  color: #fff;
+}
+
+.backComment {
+    height: auto; 
+    background-image: url(../resources/backComment.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    margin: 0px;
+    background-color: aliceblue;
+    padding-top: 100px;
+    align-content: center;
+    background-attachment: fixed;
+}
+
+
+    .modal-confirm {		
+		color: #434e65;
+		width: 525px;
+	}
+	.modal-confirm .modal-content {
+		padding: 20px;
+		font-size: 16px;
+		border-radius: 5px;
+		border: none;
+	}
+	.modal-confirm .modal-header {
+		background: #47c9a2;
+		border-bottom: none;   
+        position: relative;
+		text-align: center;
+		margin: -20px -20px 0;
+		border-radius: 5px 5px 0 0;
+		padding: 35px;
+	}
+	.modal-confirm h4 {
+		text-align: center;
+		font-size: 36px;
+		margin: 10px 0;
+	}
+	.modal-confirm .form-control, .modal-confirm .btn {
+		min-height: 40px;
+		border-radius: 3px; 
+	}
+	.modal-confirm .close {
+        position: absolute;
+		top: 15px;
+		right: 15px;
+		color: #fff;
+		text-shadow: none;
+		opacity: 0.5;
+	}
+	.modal-confirm .close:hover {
+		opacity: 0.8;
+	}
+	.modal-confirm .icon-box {
+		color: #fff;		
+		width: 95px;
+		height: 95px;
+		display: inline-block;
+		border-radius: 50%;
+		z-index: 9;
+		border: 5px solid #fff;
+		padding: 15px;
+		text-align: center;
+	}
+	.modal-confirm .icon-box i {
+		font-size: 64px;
+		margin: -4px 0 0 -4px;
+	}
+	.modal-confirm.modal-dialog {
+		margin-top: 80px;
+	}
+    .modal-confirm .btn {
+        color: #fff;
+        border-radius: 4px;
+		background: #eeb711;
+		text-decoration: none;
+		transition: all 0.4s;
+        line-height: normal;
+		border-radius: 30px;
+		margin-top: 10px;
+		padding: 6px 20px;
+        border: none;
+    }
+	.modal-confirm .btn:hover, .modal-confirm .btn:focus {
+		background: #eda645;
+		outline: none;
+	}
+	.modal-confirm .btn span {
+		margin: 1px 3px 0;
+		float: left;
+	}
+	.modal-confirm .btn i {
+		margin-left: 1px;
+		font-size: 20px;
+		float: right;
+	}
+	.trigger-btn {
+		display: inline-block;
+		margin: 100px auto;
+	}
+
+>>>>>>> Stashed changes

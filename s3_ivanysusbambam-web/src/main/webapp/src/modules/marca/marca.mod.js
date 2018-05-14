@@ -10,6 +10,9 @@
         $stateProvider.state("listMarca", {
 
                 url: "/marcas/lista",
+                params:{
+              requireLogin: false  
+            },
                 views:{
                     mainView:{
                 templateUrl: basePath + "marca.list.html",
@@ -20,7 +23,8 @@
                 url: '/:MarcaId/detail',
                 parent: "listMarca",
                 params: {
-                    MarcaId: null
+                    MarcaId: null,
+                    requireLogin:false
                 },
                 views: {
                     marcaDetailView: {
@@ -34,6 +38,9 @@
             })
             .state('crearMarca', {
                 url: '/marca/crear',
+            params:{
+              requireLogin: true  
+            },
                 views: {
                     mainView: {
                         templateUrl: basePath + "marca.crear.html",
@@ -46,7 +53,8 @@
                 url: '/:marcaId/editar',
                 parent: "listMarca",
                 params: {
-                    marcaId: null
+                    marcaId: null,
+                    requireLogin:true
                 },
                 views: {
                     mainView: {

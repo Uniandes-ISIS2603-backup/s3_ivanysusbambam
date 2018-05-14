@@ -10,8 +10,11 @@
 
             $stateProvider.state('AdminCompraGetAll', {
                 url: '/compra/getall',
+                params:{
+              requireLogin: true  
+            },
                 views: {
-
+                    
                     'mainView': {
                         templateUrl: basePath + "compra.list.html",
                         controller: 'compraGetAllCtrl',
@@ -25,7 +28,8 @@
                 url: "/{idCompra: int}/detail",
                 parent: "AdminCompraGetAll",
                 params: {
-                    idCompra: null
+                    idCompra: null,
+                    requireLogin:true
                 },
                 views: {
                     'compraDetailView': {
@@ -42,7 +46,8 @@
                 url: "/create",
                 parent: "AdminCompraGetAll",
                 params: {
-                    idCompra: null
+                    idCompra: null,
+                    requireLogin:true
                 },
                 views: {
                     'compraDetailView': {
@@ -59,7 +64,8 @@
                 url: "/{idCompra: int}/detail",
                 parent: "AdminCompraGetAll",
                 params: {
-                    idCompra: null
+                    idCompra: null,
+                    requireLogin:true
                 },
                 views: {
                     'compraDetailView': {
@@ -71,20 +77,20 @@
 
 
             }).state('comprarAuto',{
-                
-                url: "/{idCompra: int}/detail",
-                /* Acá el parent debería ser el detail del carro */
-                parent: "AdminCompraGetAll",
-                params: {
-                    idCompra: null
-                },
+            
+                url: "/comprar/{idAuto: int}/",
+                params:{
+                      requireLogin: true,
+                      idAuto: null
+                    },    
                 views: {
-                    'compraDetailView': {
-                        templateUrl: basePath + "compra.delete.html",
-                        controller: "compraDeleteCtrl",
-                        controllerAs: "ctrl"
+                        mainView: {
+                            templateUrl: basePath + "comprar.html",
+                            controller: "automovilGetAllCtrl",
+                            controllerAs: "ctrl"
+                        },
                     }
-                }
+            
             });
         }]);
 

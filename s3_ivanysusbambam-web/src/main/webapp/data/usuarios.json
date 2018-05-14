@@ -70,14 +70,14 @@
     }
     ,
     {
-        "name":"",
+        "name":"Rubby",
         "user":"rubby",
         "password":"rub123",
         "rol": "administrador"
     }
     ,
     {
-        "name":"",
+        "name":"Alvaro",
         "user": "UribeKing",
         "password": "uribe8",
         "rol": "administrador"
