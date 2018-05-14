@@ -526,3 +526,13 @@ section .section-title {
     text-align: left;
     margin-left: 15px
 }
+#infoCarro2{
+      color:#b2b2b2; 
+    font-size: 18px ;
+    line-height: 1.42857143 !important;
+    font-family: 'Open Sans', sans-serif;
+    text-align: left;
+    margin: 5px
+        
+}
+
