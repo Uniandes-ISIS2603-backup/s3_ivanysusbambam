@@ -1,13 +1,14 @@
 (function(ng){
     
     var mod = ng.module("compraModule");
-    console.log("hola");
-    mod.constant("compraContext", "api/compras");
-    mod.controller("calificacionDeleteCtrl", ["$scope", "$http", "compraContext", "$state", "dataTransfer", 
+    mod.controller("calificacionDeleteCtrl", ["$scope", "$http", "$state", 
     
-      function ($scope, $http, compraContext, $state) {
-            var idCompra = $state.params.idCompra;
-            /**
+      function ($scope, $http, $state) {
+            
+            var dir = "api/calificacionesTienda/";
+            
+          
+           /**
              * @ngdoc function
              * @name deleteAuthor
              * @methodOf authors.controller:authorDeleteCtrl
@@ -16,8 +17,8 @@
              * @param {String} id El ID del autor a eliminar.
              */
             $scope.deleteCalificacion = function () {
-                $http.delete(compraContext + '/' + idCompra, {}).then(function (response) {
-                    $state.go('AdminCompraGetAll', {authorId: response.data.id}, {reload: true});
+                $http.delete(dir + $state.params.idComentario, {}).then(function (response) {
+                    $state.go('ComentariosCliente', {clienteId: $state.params.clienteId}, {reload: true});
                 });
             };
         }

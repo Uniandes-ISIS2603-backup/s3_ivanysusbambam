@@ -121,7 +121,8 @@
             url: "/perfil/Comentarios/eliminar",
             parent:"perfilCliente",
             params:{
-                idComentario: null
+                idComentario: null,
+                idCliente: null
             },
             views: {
                
