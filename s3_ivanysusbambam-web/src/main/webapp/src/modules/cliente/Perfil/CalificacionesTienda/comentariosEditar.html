@@ -6,12 +6,22 @@
       
         <div class="form-group">
             <label for="usr">Nuevo Puntaje:</label>
-            <input type="text" ng-model ="nuevoPuntaje" class="form-control" id="usr">
+            <select ng-change="cambioInfo()" ng-model ="nuevoPuntaje">
+                <option>1.0</option>
+                <option>1.5</option>
+                <option>2.0</option>
+                <option>2.5</option>
+                <option>3.0</option>
+                <option>3.5</option>
+                <option>4.0</option>
+                <option>4.5</option>
+                <option>5.0</option>
+            </select>
         </div>
         <p>Nuevo Texto</p>
         <div class="form-group">
 
-            <textarea class="form-control" rows="3" ng-model ="nuevoComentario"  id="comment"></textarea>
+            <textarea ng-change="cambioInfo()" class="form-control" rows="3" ng-model ="nuevoComentario"  id="comment"></textarea>
         </div>
     </form>
     <div class="col-md-12" id="elboton">
