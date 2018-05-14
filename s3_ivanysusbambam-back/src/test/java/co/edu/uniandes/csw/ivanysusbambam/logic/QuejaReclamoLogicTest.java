@@ -5,8 +5,7 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.logic;
 
-import org.jboss.arquillian.junit.Arquillian;
-import org.junit.runner.RunWith;
+
 import co.edu.uniandes.csw.ivanysusbambam.ejb.QuejaReclamoLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 
@@ -14,7 +13,7 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.QuejaReclamoPersistence;
-import com.gs.collections.impl.list.fixed.ArrayAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
 import javax.inject.Inject;
@@ -109,20 +108,27 @@ public class QuejaReclamoLogicTest {
         for (int i = 0; i < 3; i++) {
             ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
             em.persist(cliente);
+            Long id = i+2L;
+            
+            cliente.setCedula(id);
             ClienteData.add(cliente);
 
             VentaEntity venta = factory.manufacturePojo(VentaEntity.class);
             em.persist(venta);
+            venta.setId(id);
             ventaData.add(venta);
         }
         for (int i = 0; i < 3; i++) {
             QuejaReclamoEntity entity = factory.manufacturePojo(QuejaReclamoEntity.class);
             entity.setCliente(ClienteData.get(0));
             entity.setVenta(ventaData.get(0));
+            
+            
 
             em.persist(entity);
             data.add(entity);
         }
+        
     }
 
     /**
@@ -134,7 +140,9 @@ public class QuejaReclamoLogicTest {
     public void createQuejaReclamoTest() throws BusinessLogicException {
         QuejaReclamoEntity newEntity = factory.manufacturePojo(QuejaReclamoEntity.class);
         newEntity.setCliente(ClienteData.get(0));
+        
         newEntity.setVenta(ventaData.get(0));
+        System.out.print("tamanio" +" "+ data.size());
 
         System.out.println("Cliente de la queja" + newEntity.getCliente());
         QuejaReclamoEntity result = quejaLogic.createQuejaReclamo(newEntity);

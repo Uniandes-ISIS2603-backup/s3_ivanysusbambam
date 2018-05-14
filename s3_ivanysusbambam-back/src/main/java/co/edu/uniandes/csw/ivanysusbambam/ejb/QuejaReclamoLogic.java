@@ -30,8 +30,8 @@ public class QuejaReclamoLogic {
 
     @Inject
     private ClientePersistence clientePersistence;
-    
-    @Inject 
+
+    @Inject
     private VentaPersistence ventaPersistance;
 
     /**
@@ -53,15 +53,16 @@ public class QuejaReclamoLogic {
         if (persistence.find(entity.getId()) != null) {
             throw new BusinessLogicException("la QuejaReclamo ya existe en la base de datos");
         }
+        if (ventaPersistance.find(entity.getVenta().getId()) == null) {
+
+            throw new BusinessLogicException("La venta de la quejaReclamo no esta registrada en el sistema");
+        }
         if (clientePersistence.find(entity.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente de la quejaReclamo no está registrado en la base de datos");
         }
-        System.out.print(entity.getVenta().getId());
-        if (ventaPersistance.find(entity.getVenta().getId()) == null){
-            
-            throw new BusinessLogicException("La venta de la quejaReclamo no esta registrada en el sistema");
-        }
         
+        
+
         return persistence.create(entity);
     }
 
