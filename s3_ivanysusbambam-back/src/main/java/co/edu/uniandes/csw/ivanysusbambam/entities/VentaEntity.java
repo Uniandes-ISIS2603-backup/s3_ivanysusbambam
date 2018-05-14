@@ -73,7 +73,7 @@ public class VentaEntity implements Serializable {
     private AutomovilEntity automovil;
 
     /**
-     * Atributo para la queja/Reclamo asociado a esta venta
+     * Atributo de la queja/Reclamo de la venta
      */
     @PodamExclude
     @OneToOne

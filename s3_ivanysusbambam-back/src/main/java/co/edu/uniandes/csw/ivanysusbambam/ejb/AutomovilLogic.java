@@ -432,7 +432,7 @@ public class AutomovilLogic {
 
         for (String s : lista) {
             AutomovilEntity e = new AutomovilEntity();
-            e.setName(s);
+            e.setColor(s);
             ret.add(e);
         }
 

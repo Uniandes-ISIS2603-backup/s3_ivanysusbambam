@@ -15,7 +15,7 @@ import uk.co.jemos.podam.common.AttributeStrategy;
 public class TelefonoStrategy implements AttributeStrategy<Integer> {
 
     /**
-     * @return valo del telefono
+     * @return valor del telefono
      */
     @Override
     public Integer getValue() {

@@ -189,10 +189,11 @@ public class AutomovilPersistence {
      * Retorna todos los autos cuyo año se encuentra entre el rango de
      * fechas.<br>
      * <b>Pre: </b> anioIni <= anioFin
-     * @p
+     * 
      *
-     * aram anioIni cota inferior de la búsqueda
+     * @param anioIni cota inferior de la búsqueda
      * @param anioFin cota superior de la búsqueda
+     * 
      * @return todos los automóviles cuyo año se encuentra en el rango de
      * fechas, null si no hay ninguno.
      */

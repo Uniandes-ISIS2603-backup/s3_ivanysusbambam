@@ -46,11 +46,6 @@ public class VentaDetailDTO extends VentaDTO {
      */
     protected AutomovilDTO automovil;
     
-    /**
-     * Atributo para la venta 
-     */
-    
-    private QuejaReclamoDTO quejaReclamo; 
 
     /**
      * Constructor por defecto
@@ -87,9 +82,6 @@ public class VentaDetailDTO extends VentaDTO {
             if (entity.getVendedorEncargado() != null) {
                 this.vendedorEncargado = new VendedorDTO(entity.getVendedorEncargado());
             }
-            if (entity.getQuejaReclamo() != null){
-                quejaReclamo = new QuejaReclamoDTO (entity.getQuejaReclamo());
-            }
 
        }
 
@@ -125,9 +117,6 @@ public class VentaDetailDTO extends VentaDTO {
         if (getVendedorEncgardo() != null) {
             entity.setVendedorEncargado(vendedorEncargado.toEntity());
         }
-         if (quejaReclamo != null){
-             entity.setQuejaReclamo(quejaReclamo.toEntity());
-         }
         return entity;
     }
 
@@ -230,20 +219,5 @@ public class VentaDetailDTO extends VentaDTO {
     public void setAutomovil(AutomovilDTO pAuto) {
         this.automovil = pAuto;
     }
-/**
- * @return la queja/Reclamo de esta venta 
- */
-    public QuejaReclamoDTO getQuejaReclamo() {
-        return quejaReclamo;
-    }
-
-    /**
-     * Setea la venta de esta queja/Reclamo a la dada por parametro
-     * @param quejaReclamo queja/Reclamo de esta venta 
-     */
-    public void setQuejaReclamo(QuejaReclamoDTO quejaReclamo) {
-        this.quejaReclamo = quejaReclamo;
-    }
-    
-    
+  
 }
