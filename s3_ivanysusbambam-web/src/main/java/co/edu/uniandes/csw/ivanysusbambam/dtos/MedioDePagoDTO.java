@@ -35,8 +35,6 @@ public class MedioDePagoDTO {
     /**
      * Atributo que representa el numero del medio de pago
      */
-    
-    
     private Long numero;
 
     /**
@@ -51,21 +49,25 @@ public class MedioDePagoDTO {
         //Constructor utilizado por JAX
     }
 
+    /**
+     * Crea un nuevo DTO con la informacion de la entidad
+     * @param entity entidad con la informacion
+     */
     public MedioDePagoDTO(MedioDePagoEntity entity) {
-        if(entity != null) {
+        if (entity != null) {
             this.numero = entity.getNumero();
             this.tipo = entity.getTipo();
         }
     }
-    
+
     public MedioDePagoEntity toEntity() {
         MedioDePagoEntity entity = new MedioDePagoEntity();
         entity.setNumero(this.numero);
         entity.setTipo(this.tipo);
-        
+
         return entity;
     }
-    
+
     //-----------------------------GETTERS-----------------------------
     /**
      * @return El numero del medio de pago

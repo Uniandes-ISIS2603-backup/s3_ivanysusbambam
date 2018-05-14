@@ -10,12 +10,22 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
  * @author j.sierrac
  */
 public class MedioDePagoDetailDTO extends MedioDePagoDTO {
+    /**
+     * Cliente del medio de pago
+     */
     private ClienteDTO cliente;
     
+    /**
+     * Constructor por defecto
+     */
     public MedioDePagoDetailDTO() {
         super();
     }
     
+    /**
+     * Crea un nuevo detailDTO con lainformacion de la entidad
+     * @param entity entidad con la informacion
+     */
     public MedioDePagoDetailDTO(MedioDePagoEntity entity) {
         super(entity);
         if(entity != null) {
@@ -23,6 +33,10 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
         }
     }
 
+    /**
+     * Crea una nueva entidad con la informacion del detailDTO
+     * @return la nueva entidad
+     */
     @Override
     public MedioDePagoEntity toEntity() {
         MedioDePagoEntity entity = super.toEntity();
@@ -32,10 +46,17 @@ public class MedioDePagoDetailDTO extends MedioDePagoDTO {
         return entity;
     }
 
+    /**
+     * @return el cliente del medio de pago  
+     */
     public ClienteDTO getCliente() {
         return cliente;
     }
 
+    /**
+     * Setea el cliente del medio de pago al dado por parametro
+     * @param cliente cliente del medio de pago 
+     */
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }

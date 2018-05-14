@@ -51,6 +51,10 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
         //Constructor utilizado por JAX
     }
 
+    /**
+     * Asigna la informacion  del detailDTO a la informacion de la entidad
+     * @param entity entidad con la informacion
+     */
     public CalificacionTiendaDetailDTO(CalificacionTiendaEntity entity) {
         super(entity);
         
@@ -61,6 +65,10 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
     
 
      
+    /**
+     * crea una nueva entidad con la informacion del detail DTO
+     * @return La nueva entidad
+     */
     @Override
     public CalificacionTiendaEntity toEntity(){
         CalificacionTiendaEntity ctEntity = super.toEntity();

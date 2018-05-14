@@ -42,10 +42,8 @@ public class ClienteDTO {
     /**
      * Representa el número de cédula del cliente.
      */
-    
-        
     private Long cedula;
-    
+
     /**
      * Representa la imagen del cliente
      */
@@ -61,6 +59,7 @@ public class ClienteDTO {
 
     /**
      * Construye el DTO a partir de un entity correspondiente.
+     *
      * @param ce entity al partir de que se construirá el DTO.
      */
     public ClienteDTO(ClienteEntity ce) {
@@ -70,12 +69,13 @@ public class ClienteDTO {
             this.imagen = ce.getImagen();
         }
     }
-    
+
     /**
      * Contruye un Entity y le da la información del DTO.
+     *
      * @return Entity construido a partir del DTO.
      */
-    public ClienteEntity toEntity(){
+    public ClienteEntity toEntity() {
         ClienteEntity ce = new ClienteEntity();
         ce.setNombre(nombre);
         ce.setCedula(cedula);
@@ -115,13 +115,20 @@ public class ClienteDTO {
         this.cedula = cedula;
     }
 
+    /**
+     * @return retorna la imagen del cliente
+     */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+     * Setea la imagen del cliente a la imagen dada por parametro
+     *
+     * @param imagen imagen del cliente
+     */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
-    
 
 }

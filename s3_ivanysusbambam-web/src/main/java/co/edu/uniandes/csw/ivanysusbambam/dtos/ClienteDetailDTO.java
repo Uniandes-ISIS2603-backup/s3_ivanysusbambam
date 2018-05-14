@@ -89,10 +89,17 @@ public class ClienteDetailDTO extends ClienteDTO {
     private List<MedioDePagoDTO> mediosDePago;
 
     //-----------------------------CONSTRUCTOR---------------------------
-    public ClienteDetailDTO() {
+    /**
+     * Constructor por defecto
+     */
+     public ClienteDetailDTO() {
         //Constructor utilizado por JAX
     }
 
+     /**
+      * COnstructor de un nuevo detailDTO con la informacion de la entidad
+      * @param ce entidad con la informacion
+      */
     public ClienteDetailDTO(ClienteEntity ce) {
         super(ce);
         if (ce != null) {
@@ -135,6 +142,10 @@ public class ClienteDetailDTO extends ClienteDTO {
         }
     }
 
+    /**
+     * Crea una nueva entidad con la informaion del detailDTO
+     * @return 
+     */
     @Override
     public ClienteEntity toEntity() {
         ClienteEntity ce = super.toEntity();

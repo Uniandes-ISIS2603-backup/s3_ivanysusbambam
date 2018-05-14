@@ -48,6 +48,9 @@ public class MarcaDetailDTO extends MarcaDTO {
     private List<ModelDTO> modelos;
 
     
+    /**
+     * Constructor por defecto
+     */
      public MarcaDetailDTO() {
         //Constructor utilizado por JAX
     }

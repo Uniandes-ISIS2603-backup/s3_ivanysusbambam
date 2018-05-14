@@ -34,6 +34,9 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class QuejaReclamoResource {
 
+    /**
+     * atributo de la logia de la queja Reclamo
+     */
     @Inject
     private QuejaReclamoLogic quejaLogic;
 
@@ -109,14 +112,13 @@ public class QuejaReclamoResource {
     @PUT
     @Path("{pid: \\d+}")
     public QuejaReclamoDetailDTO putQuejaReclamo(@PathParam("pid") Long pid, QuejaReclamoDetailDTO quejaReclamo) throws BusinessLogicException {
-    QuejaReclamoEntity entity = quejaLogic.findQuejaReclamo(pid);
-        
-        if(entity == null) {
+        QuejaReclamoEntity entity = quejaLogic.findQuejaReclamo(pid);
+
+        if (entity == null) {
             throw new WebApplicationException("El recurso QuejaReclamo " + pid + " no esta persisitido");
+        } else {
+            return new QuejaReclamoDetailDTO(quejaLogic.updateQuejaReclamo(quejaReclamo.toEntity()));
         }
-        
-        else return new QuejaReclamoDetailDTO(quejaLogic.updateQuejaReclamo(quejaReclamo.toEntity()));
-        
 
     }
 

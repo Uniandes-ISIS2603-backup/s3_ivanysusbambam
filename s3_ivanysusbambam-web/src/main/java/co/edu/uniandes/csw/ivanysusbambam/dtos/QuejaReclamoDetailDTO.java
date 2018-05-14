@@ -44,77 +44,85 @@ import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
 public class QuejaReclamoDetailDTO extends QuejaReclamoDTO {
 
     /**
-     * Cliente que realizo la queja o el reclamo 
+     * Cliente que realizo la queja o el reclamo
      */
     private ClienteDTO cliente;
-    
+
     /**
      * Venta asociada a esta queja/reclamo
      */
-    
-    private VentaDTO venta ;
+    private VentaDTO venta;
 
     /**
-    * Constructor por defecto
-    */
-    public QuejaReclamoDetailDTO(){
-     super();
+     * Constructor por defecto
+     */
+    public QuejaReclamoDetailDTO() {
+        super();
     }
-    
+
     /**
      * Constructor para transformar un Entity a un DTO
      *
-     * @param entity La entidad de la QuejaReclamo a partir de la cual se construye el objeto
+     * @param entity La entidad de la QuejaReclamo a partir de la cual se
+     * construye el objeto
      */
-    public QuejaReclamoDetailDTO(QuejaReclamoEntity entity){
+    public QuejaReclamoDetailDTO(QuejaReclamoEntity entity) {
         super(entity);
-        if (entity != null){
+        if (entity != null) {
             cliente = new ClienteDTO(entity.getCliente());
             venta = new VentaDTO(entity.getVenta());
-            
-            
+
         }
     }
+
     /**
      * Transformar un DTO a un Entity
      *
-     * @return  La entidad construida a partir del DTO.
+     * @return La entidad construida a partir del DTO.
      */
     @Override
-    public QuejaReclamoEntity toEntity(){
+    public QuejaReclamoEntity toEntity() {
         QuejaReclamoEntity entity = super.toEntity();
-        if (cliente!=  null){
+        if (cliente != null) {
             entity.setCliente(cliente.toEntity());
         }
-         if (venta != null){
-             entity.setVenta(venta.toEntity());
-         }
+        if (venta != null) {
+            entity.setVenta(venta.toEntity());
+        }
         return entity;
     }
-    
-    
+
     /**
-     * @return el/la cliente/ta que realio la queja o el reclamo  
+     * @return el/la cliente/ta que realio la queja o el reclamo
      */
     public ClienteDTO getCliente() {
         return cliente;
     }
 
-    
     /**
-     * Asigna al clinete que realio la queja o el reclamo el cliente dado por parametro
+     * Asigna al clinete que realio la queja o el reclamo el cliente dado por
+     * parametro
+     *
      * @param cliente cliente que se va a signar a esta queja o reclamo
      */
     public void setCliente(ClienteDTO cliente) {
         this.cliente = cliente;
     }
 
+    /**
+     * @return la venta asociada a esta queja/Reclamo
+     */
     public VentaDTO getVenta() {
         return venta;
     }
 
+    /**
+     * Seta la venta de esta queja/Reclamo a la dada por parametro
+     *
+     * @param venta venta de esta queja/Reclamo
+     */
     public void setVenta(VentaDTO venta) {
         this.venta = venta;
     }
-    
+
 }

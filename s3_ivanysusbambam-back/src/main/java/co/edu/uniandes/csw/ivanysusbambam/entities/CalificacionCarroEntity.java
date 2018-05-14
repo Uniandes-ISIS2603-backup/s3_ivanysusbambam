@@ -12,50 +12,94 @@ import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
+
 /**
  *
  * @author if.garcia
  */
 @Entity
 public class CalificacionCarroEntity extends BaseEntity implements Serializable {
-    
+
+    /**
+     * Venta de la calificacion carro
+     */
     @PodamExclude
     @OneToOne(mappedBy = "calificacionCarro")
     private VentaEntity venta;
-    
+
+    /**
+     * Comentario de la calificacion Carro
+     */
     private String comentario;
-    
+
+    /**
+     * Puntaje de la queja Reclamo
+     */
     @PodamStrategyValue(PuntajeStrategy.class)
     private Double puntaje;
-    
+
+    /**
+     * @return comentario de la calificacion Carro
+     */
     public String getComentario() {
         return comentario;
     }
 
-    public Double getPuntaje(){
+    /**
+     * @return puntaje de la calificacion Carro
+     */
+    public Double getPuntaje() {
         return puntaje;
     }
-    
-    public VentaEntity getVenta(){
+
+    /**
+     * @return venta de la calificacion Carro
+     */
+    public VentaEntity getVenta() {
         return venta;
     }
-    
-    public void setPuntaje(Double puntaje){
+
+    /**
+     * Setea el puntaje de la calificacion carro al dado por parametro
+     *
+     * @param puntaje de la calificacionCarro
+     */
+    public void setPuntaje(Double puntaje) {
         this.puntaje = puntaje;
     }
+
+    /**
+     * Setea el copmentario de la califiacion Carro al dado por parametro
+     *
+     * @param comentario comentario de la calificacion Carro
+     */
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
-    
-    public void setVenta(VentaEntity venta){
+
+    /**
+     * Setea la venta de la calificacion Carro a la dada por parametro
+     *
+     * @param venta de la calificacion carro
+     */
+    public void setVenta(VentaEntity venta) {
         this.venta = venta;
     }
 
+    /**
+     * @return Hash code
+     */
     @Override
     public int hashCode() {
-       return 3;
+        return 3;
     }
 
+    /**
+     * Metodo Equals
+     *
+     * @param obj objeto a comparar
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -73,5 +117,5 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
         }
         return true;
     }
-    
+
 }

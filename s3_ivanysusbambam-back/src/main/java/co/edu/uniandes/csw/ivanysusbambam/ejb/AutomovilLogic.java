@@ -26,6 +26,9 @@ import javax.inject.Inject;
 @Stateless
 public class AutomovilLogic {
 
+    /**
+     * Constante para el Logger
+     */
     private static final Logger LOGGER = Logger.getLogger(AutomovilLogic.class.getName());
     /**
      * Variable para acceder a la persistencia de la aplicación. Es una
@@ -65,7 +68,6 @@ public class AutomovilLogic {
      * @throws BusinessLogicException si no se cumple las reglas de negocio
      * necesarias para crear el automovil
      */
-    
     public AutomovilEntity createAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
         LOGGER.info("Inicia proceso de creación de automovil");
 
@@ -104,24 +106,22 @@ public class AutomovilLogic {
             throw new BusinessLogicException("el id del punto de venta es null ");
         }
 
-        
         if (puntoPersistence.find(automovilEntity.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos");
         }
-        
+
         if (modeloPersistence.find(automovilEntity.getModel().getId()) == null) {
             throw new BusinessLogicException("El Modelo del automovil no está registrado en la base de datos");
         }
-        
+
         if (marcaPersistence.find(automovilEntity.getMarca().getId()) == null) {
             throw new BusinessLogicException("la marca del automovil no esta registrada en la base de datos ");
         }
-        
+
         if (compraPersistence.find(automovilEntity.getCompra().getIdCompra()) == null) {
             throw new BusinessLogicException("la compra asociada a este automovil no existe ");
         }
 
-        
         // Invoca la persistencia para crear el automovil 
         persistence.create(automovilEntity);
         LOGGER.info("Termina proceso de creación de automovil");
@@ -173,7 +173,6 @@ public class AutomovilLogic {
             throw new BusinessLogicException("No existe el automovil que se quiere actualizar");
         }
 
-
         if (automovilEntity.getModel() == null || !newAutoEntity.getModel().equals(automovilEntity.getModel())) {
             throw new BusinessLogicException("No se puede modificar el modelo");
         }
@@ -201,7 +200,7 @@ public class AutomovilLogic {
         if (id == null) {
             throw new BusinessLogicException("el id no puede ser null");
         }
-         
+
         AutomovilEntity automovilEntity = persistence.find(id);
         if (automovilEntity == null) {
             throw new BusinessLogicException("No existe un automovil con el id dada.");
@@ -280,7 +279,7 @@ public class AutomovilLogic {
 
         Boolean rta = true;
 
-        String []placa = pPlaca.split("-");
+        String[] placa = pPlaca.split("-");
         char[] chars = placa[0].toCharArray();
         char[] chars2 = placa[1].toCharArray();
         for (char c : chars) {
@@ -386,15 +385,14 @@ public class AutomovilLogic {
      */
     public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
 
-        
-        if((kilometrajeMin == null) != (kilometrajeMax==null)){
-             throw new BusinessLogicException("La pareja kilometrajeMin/kilometrajeMax debe ir junta");
+        if ((kilometrajeMin == null) != (kilometrajeMax == null)) {
+            throw new BusinessLogicException("La pareja kilometrajeMin/kilometrajeMax debe ir junta");
         }
-        
+
         if (precioMin == null && precioMax == null && anioMin == null && anioMax == null && marca == null && modelo == null && color == null) {
             throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
         }
-        
+
         if ((precioMax != null && precioMin == null) || (precioMin != null && precioMax == null)) {
             throw new BusinessLogicException("La pareja precioMin/precioMax debe ir junta");
         }
@@ -411,31 +409,34 @@ public class AutomovilLogic {
         }
         return persistence.masterSearch(tipoAuto, precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
     }
-    
-    
+
     /**
-     * Método existente para evitar falsos positivos de sonar. Retorna si dos Integer no son null
-     * @param a integer 1 
+     * Método existente para evitar falsos positivos de sonar. Retorna si dos
+     * Integer no son null
+     *
+     * @param a integer 1
      * @param b integer 2
      * @return integer 1 != null && integer 2 != null
      */
-    private boolean bothNotNull(Integer a, Integer b){
+    private boolean bothNotNull(Integer a, Integer b) {
         return a != null && b != null;
     }
-    
-    public List<AutomovilEntity> listColores(){
-        
+
+    /**
+     * @return Retorna la lista de colores de los automoviles
+     */
+    public List<AutomovilEntity> listColores() {
+
         List<String> lista = persistence.listColores();
         List<AutomovilEntity> ret = new ArrayList<>();
-        
-        for(String s : lista){
+
+        for (String s : lista) {
             AutomovilEntity e = new AutomovilEntity();
             e.setName(s);
             ret.add(e);
         }
-        
+
         return ret;
     }
-    
-    
+
 }

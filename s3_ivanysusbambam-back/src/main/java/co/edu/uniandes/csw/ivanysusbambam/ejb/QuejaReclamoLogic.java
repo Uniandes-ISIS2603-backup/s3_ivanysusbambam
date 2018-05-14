@@ -23,14 +23,26 @@ import javax.inject.Inject;
 @Stateless
 public class QuejaReclamoLogic {
 
+    /**
+     * Constante para el logger
+     */
     private static final Logger LOGGER = Logger.getLogger(QuejaReclamoLogic.class.getName());
 
+    /**
+     * Atributo para la persistencia de la queja/Reclamo
+     */
     @Inject
     private QuejaReclamoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
+    /**
+     * Atributo de la persistencia del cliente
+     */
     @Inject
     private ClientePersistence clientePersistence;
 
+    /**
+     * Atributo para la persitencia de la venta
+     */
     @Inject
     private VentaPersistence ventaPersistance;
 
@@ -60,8 +72,6 @@ public class QuejaReclamoLogic {
         if (clientePersistence.find(entity.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente de la quejaReclamo no está registrado en la base de datos");
         }
-        
-        
 
         return persistence.create(entity);
     }

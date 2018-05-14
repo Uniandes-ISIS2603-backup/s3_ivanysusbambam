@@ -49,6 +49,9 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class VentaResource {
 
+    /**
+     * Atributo de la logica de la venta 
+     */
     @Inject
     private VentaLogic ventaLogic;
 

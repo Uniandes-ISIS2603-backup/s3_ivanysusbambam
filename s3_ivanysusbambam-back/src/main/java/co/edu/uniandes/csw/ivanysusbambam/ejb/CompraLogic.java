@@ -22,18 +22,38 @@ import javax.inject.Inject;
 @Stateless
 public class CompraLogic {
 
+    /**
+     * Atributo para la persistencia de la compra
+     */
     @Inject
     private CompraPersistence compraPersistence;
 
+    /**
+     * Atributo para la persistencia del cliente
+     */
     @Inject
     private ClientePersistence clientePersistence;
 
+    /**
+     * Atributo para la persistencia del vendedor
+     */
     @Inject
     private VendedorPersistence vendedorPersistence;
-    
+
+    /**
+     * Atributo para la persistencia del punto de venta
+     */
     @Inject
     private PuntoDeVentaPersistence puntoDeVentaPersistence;
 
+    /**
+     * Crean una nueva compra
+     *
+     * @param compra entidad de la compra a crear
+     * @return retorna la compra creada
+     * @throws BusinessLogicException si la compra no cumple con las reglas de
+     * negocio
+     */
     public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
 
         if (compraPersistence.find(compra.getIdCompra()) != null) {
@@ -57,24 +77,28 @@ public class CompraLogic {
         if (vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor()) == null) {
             throw new BusinessLogicException("El vendedor encargado no es valido");
         }
-        if(compra.getPuntoDeVenta() == null){
-             throw new BusinessLogicException("El punto de venta no puede ser null");
+        if (compra.getPuntoDeVenta() == null) {
+            throw new BusinessLogicException("El punto de venta no puede ser null");
         }
-        if(compra.getPuntoDeVenta().getId() == null){
-             throw new BusinessLogicException("El id del punto de venta no puede ser null");
+        if (compra.getPuntoDeVenta().getId() == null) {
+            throw new BusinessLogicException("El id del punto de venta no puede ser null");
         }
-        if(puntoDeVentaPersistence.find(compra.getPuntoDeVenta().getId())==null)
-       {
-             throw new BusinessLogicException("El punto de venta no es valido"); 
-       }
+        if (puntoDeVentaPersistence.find(compra.getPuntoDeVenta().getId()) == null) {
+            throw new BusinessLogicException("El punto de venta no es valido");
+        }
 
         compraPersistence.create(compra);
         return compra;
     }
 
+    /**
+     * Elimina la compra con el id dado por parametro
+     *
+     * @param idCompra id de la compra a eliminar
+     * @throws BusinessLogicException si la compra no existe en la base de datos
+     */
     public void deleteCompra(Integer idCompra) throws BusinessLogicException {
-        
-        
+
         if (idCompra == null) {
             throw new BusinessLogicException("No exixte una compra con ese numero");
         }
@@ -85,19 +109,37 @@ public class CompraLogic {
         compraPersistence.delete(idCompra);
     }
 
+    /**
+     * Busca una compra por el id dado por parametro
+     *
+     * @param id id de la compra a buscar
+     * @return la compra con el id dado por parametro
+     * @throws BusinessLogicException si la compra no esta en la base de datos
+     */
     public CompraEntity findCompra(Integer id) throws BusinessLogicException {
-       CompraEntity compra = compraPersistence.find(id);
-        if(compra == null){
+        CompraEntity compra = compraPersistence.find(id);
+        if (compra == null) {
             throw new BusinessLogicException("la compra no puede ser null");
         }
-        
-   return compra;
+
+        return compra;
     }
 
+    /**
+     * @return todas las compras en la base de datos
+     */
     public List<CompraEntity> findAll() {
         return compraPersistence.findAll();
     }
 
+    /**
+     * Actualiza la informacion de una compra en la base de datos
+     *
+     * @param compra entidad con la nueva informacion de la comrpa
+     * @return la compra con la informacion actualizada
+     * @throws BusinessLogicException si la compra no exite o no cumple las
+     * reglas de negocio
+     */
     public CompraEntity updateCompra(CompraEntity compra) throws BusinessLogicException {
         if (compra == null) {
             throw new BusinessLogicException("No se pueden actualizar valores nulos");

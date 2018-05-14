@@ -34,6 +34,9 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class MedioDePagoResource {
 
+    /**
+     * Atributo para a logia del medio de pago
+     */
     @Inject
     MedioDePagoLogic mdpLogic;
 
@@ -70,7 +73,6 @@ public class MedioDePagoResource {
      * @return JSON el medio de pago buscado.
      * @throws BusinessLogicException si número == null
      */
-
     @GET
     @Path("{id: \\d+}")
     public MedioDePagoDetailDTO getMedioDePago(@PathParam("id") Long numero) throws BusinessLogicException {
@@ -110,8 +112,8 @@ public class MedioDePagoResource {
      */
     @PUT
     @Path("{numeroMedioDePago: \\d+}")
-    public MedioDePagoDetailDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDetailDTO mdp) throws BusinessLogicException{
-        
+    public MedioDePagoDetailDTO updateMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago, MedioDePagoDetailDTO mdp) throws BusinessLogicException {
+
         mdp.setNumero(numeroMedioDePago);
         MedioDePagoEntity nMdp = mdpLogic.updateMedioDePago(mdp.toEntity());
 
@@ -134,18 +136,21 @@ public class MedioDePagoResource {
      * </code>
      * </pre>
      *
-     * @param numeroMedioDePago identificador del medio de pago que se desea eliminar.
-     * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException si re romple alguna regla de negocio
+     * @param numeroMedioDePago identificador del medio de pago que se desea
+     * eliminar.
+     * @throws
+     * co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException si
+     * re romple alguna regla de negocio
      */
     @DELETE
     @Path("{numeroMedioDePago: \\d+}")
     public void deleteMedioDePago(@PathParam("numeroMedioDePago") Long numeroMedioDePago) throws BusinessLogicException {
         MedioDePagoEntity ve = mdpLogic.findMedioDePago(numeroMedioDePago);
-        
-        if(ve == null){
+
+        if (ve == null) {
             throw new WebApplicationException("El recurso medio de pago " + numeroMedioDePago + " no existe");
         }
-        
+
         mdpLogic.deleteMedioDePago(numeroMedioDePago);
     }
 

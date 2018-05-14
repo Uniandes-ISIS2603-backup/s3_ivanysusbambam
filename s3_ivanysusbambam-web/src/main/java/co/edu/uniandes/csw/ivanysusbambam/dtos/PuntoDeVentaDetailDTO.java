@@ -14,8 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Objeto de transferencia que contiene información detallada de un punto de venta.
- *  Al serializarse como JSON esta clase implementa el siguiente modelo:
+ * Objeto de transferencia que contiene información detallada de un punto de
+ * venta. Al serializarse como JSON esta clase implementa el siguiente modelo:
  * <br>
  * <pre>
  *   {
@@ -48,130 +48,150 @@ import java.util.List;
  *    }
  * </pre>
  *
-/**
+ * /**
  *
  * @author if.garcia
  */
-public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO{
-    
+public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO {
+
+    /**
+     * Automoviles del punto de venta
+     */
     private List<AutomovilDTO> automoviles;
-    
+
+    /**
+     * Vendedores del punto de venta
+     */
     private List<VendedorDTO> vendedores;
-    
+
+    /**
+     * Compras del punto de venta
+     */
     private List<CompraDTO> compras;
-    
+
+    /**
+     * Ventas del punto de venta
+     */
     private List<VentaDTO> ventas;
-    
+
     /**
      * Constructor por defecto
      */
-    public PuntoDeVentaDetailDTO(){
+    public PuntoDeVentaDetailDTO() {
         //Constructor utilizado por JAX
     }
-    
-    public PuntoDeVentaDetailDTO(PuntoDeVentaEntity entity){
+
+    /**
+     * Crean un nuevo detailDTO con la informacion de la entidad
+     *
+     * @param entity entidad con la informacion
+     */
+    public PuntoDeVentaDetailDTO(PuntoDeVentaEntity entity) {
         super(entity);
-        if(entity != null){
+        if (entity != null) {
             inicializarListas();
-            if(entity.getVentas() != null){
-                for(VentaEntity v : entity.getVentas()){
+            if (entity.getVentas() != null) {
+                for (VentaEntity v : entity.getVentas()) {
                     ventas.add(new VentaDTO(v));
                 }
             }
-            if(entity.getCompras() != null){
-                for(CompraEntity c: entity.getCompras()){
+            if (entity.getCompras() != null) {
+                for (CompraEntity c : entity.getCompras()) {
                     compras.add(new CompraDTO(c));
-                }   
+                }
             }
-           
-            if(entity.getVendedores() != null){
-                for(VendedorEntity ve : entity.getVendedores()){
+
+            if (entity.getVendedores() != null) {
+                for (VendedorEntity ve : entity.getVendedores()) {
                     vendedores.add(new VendedorDTO(ve));
                 }
             }
-            if(entity.getAutomoviles() != null){
-                for(AutomovilEntity at : entity.getAutomoviles()){
+            if (entity.getAutomoviles() != null) {
+                for (AutomovilEntity at : entity.getAutomoviles()) {
                     automoviles.add(new AutomovilDTO(at));
                 }
             }
         }
     }
-    
-    
+
+    /**
+     * Crea una nueva entidad con la informacion del detailDTO
+     *
+     * @return la nueva entidad
+     */
     @Override
-    public PuntoDeVentaEntity toEntity(){
+    public PuntoDeVentaEntity toEntity() {
         PuntoDeVentaEntity pvEntity = super.toEntity();
-        
-        if(automoviles != null){
+
+        if (automoviles != null) {
             List<AutomovilEntity> autos = new ArrayList<>();
-            for(AutomovilDTO auto: automoviles){
+            for (AutomovilDTO auto : automoviles) {
                 autos.add(auto.toEntity());
             }
             pvEntity.setAutomoviles(autos);
         }
-        if(compras != null){
+        if (compras != null) {
             List<CompraEntity> cps = new ArrayList<>();
-            for(CompraDTO cp : compras){
+            for (CompraDTO cp : compras) {
                 cps.add(cp.toEntity());
             }
             pvEntity.setCompras(cps);
         }
-        if(ventas != null){
+        if (ventas != null) {
             List<VentaEntity> vts = new ArrayList<>();
-            for(VentaDTO vt: ventas){
+            for (VentaDTO vt : ventas) {
                 vts.add(vt.toEntity());
             }
             pvEntity.setVentas(vts);
         }
-        if(vendedores != null){
+        if (vendedores != null) {
             List<VendedorEntity> vds = new ArrayList<>();
-            for(VendedorDTO vd : vendedores){
+            for (VendedorDTO vd : vendedores) {
                 vds.add(vd.toEntity());
             }
             pvEntity.setVendedores(vds);
         }
-        
+
         return pvEntity;
     }
-    
-    public void inicializarListas(){
+
+    public void inicializarListas() {
         automoviles = new ArrayList<>();
         vendedores = new ArrayList<>();
         compras = new ArrayList<>();
         ventas = new ArrayList<>();
     }
-    
-    public List<VendedorDTO> getVendedores(){
+
+    public List<VendedorDTO> getVendedores() {
         return vendedores;
     }
-    
-    public List<CompraDTO> getCompras(){
+
+    public List<CompraDTO> getCompras() {
         return compras;
     }
-    
-    public List<VentaDTO> getVentas(){
+
+    public List<VentaDTO> getVentas() {
         return ventas;
     }
-    
-    public List<AutomovilDTO> getAutomoviles(){
+
+    public List<AutomovilDTO> getAutomoviles() {
         return automoviles;
     }
-    
-    public void addVendedor(VendedorDTO nuevoVendedor){
+
+    public void addVendedor(VendedorDTO nuevoVendedor) {
         vendedores.add(nuevoVendedor);
     }
-    
-    public void addCompra(CompraDTO nuevaCompra){
+
+    public void addCompra(CompraDTO nuevaCompra) {
         compras.add(nuevaCompra);
     }
-    
-    public void addVenta(VentaDTO nuevaVenta){
+
+    public void addVenta(VentaDTO nuevaVenta) {
         ventas.add(nuevaVenta);
     }
-    
-    
-    public void addAutomovil(AutomovilDTO nuevoAuto){
+
+    public void addAutomovil(AutomovilDTO nuevoAuto) {
         automoviles.add(nuevoAuto);
     }
-    
+
 }
