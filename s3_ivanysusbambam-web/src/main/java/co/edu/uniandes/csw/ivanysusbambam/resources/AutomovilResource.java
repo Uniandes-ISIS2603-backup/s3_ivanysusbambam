@@ -49,6 +49,9 @@ public class AutomovilResource {
 
     
     
+    /**
+     * atributo para la logica del automovil
+     */
     @Inject
     private AutomovilLogic autoLogic;
 

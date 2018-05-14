@@ -14,9 +14,7 @@
                             puntaje: 0.0};
         
         $scope.editarCalificacion = function(){
-            console.log(calificacion);
             $http.put(address, calificacion).then(function(response){
-                console.log("Cliente id:" + $state.params.clienteId);
               $state.go("ComentariosCliente",{clienteId: $state.params.clienteId},{reload: true}); 
                 
             });

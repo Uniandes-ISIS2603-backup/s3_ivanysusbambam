@@ -22,12 +22,21 @@ import javax.inject.Inject;
 @Stateless
 public class ModelLogic {
 
+    /**
+     * Atributo de la persistencia del modelo
+     */
     @Inject
     private ModelPersistence persistence;
 
+    /**
+     * Atributo de la persistencia del automovil
+     */
     @Inject
     private AutomovilLogic automovilLogic;
 
+    /**
+     * COnstante para el logger 
+     */
     private static final Logger LOG = Logger.getLogger(ModelLogic.class.getName());
 
     /**

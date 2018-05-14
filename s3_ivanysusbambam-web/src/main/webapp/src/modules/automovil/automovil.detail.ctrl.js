@@ -10,8 +10,8 @@
    var mod = ng.module("automovilModule");
    
    mod.constant("automovilContext", "api/automoviles");
-   mod.controller("automovilDetailCtrl", ["$scope", "$http", "automovilContext", "$state", 
-    function($scope, $http, automovilContext, $state){
+   mod.controller("automovilDetailCtrl", ["$scope", "$rootScope","$http", "automovilContext", "$state", 
+    function($scope,$rootScope, $http, automovilContext, $state){
                
         if($state.params.automovilId !== undefined && $state.params.automovilId !==null){
             var address = automovilContext + "/"+$state.params.automovilId;

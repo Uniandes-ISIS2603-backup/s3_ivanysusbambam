@@ -337,11 +337,20 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
         }
     }
 
+    /**
+     * @return hashCode
+     */
     @Override
     public int hashCode() {
         return 3;
     }
 
+    /**
+     * Metodo equals
+     *
+     * @param obj objeto a comparar
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {

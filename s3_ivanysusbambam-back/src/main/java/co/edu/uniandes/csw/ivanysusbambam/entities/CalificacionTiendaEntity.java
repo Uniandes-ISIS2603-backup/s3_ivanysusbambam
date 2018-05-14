@@ -12,51 +12,94 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
+
 /**
  *
  * @author if.garcia
  */
 @Entity
-public class CalificacionTiendaEntity extends BaseEntity implements Serializable{
-    
-    
+public class CalificacionTiendaEntity extends BaseEntity implements Serializable {
+
+    /**
+     * Comentario de la calificacionTienda
+     */
     private String comentario;
 
+    /**
+     * Puntaje de la calificacionTienda
+     */
     @PodamStrategyValue(PuntajeStrategy.class)
     private Double puntaje;
-   
+
+    /**
+     * Cliente de la calificacionTienda
+     */
     @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
-    
+
+    /**
+     * @return comentario de la calififcacionTienda
+     */
     public String getComentario() {
         return comentario;
     }
 
-    public Double getPuntaje(){
+    /**
+     * @return puntaje de la calificacionTienda
+     */
+    public Double getPuntaje() {
         return puntaje;
     }
-    
-    public ClienteEntity getCliente(){
+
+    /**
+     * @return cliente de la calififacionTienda
+     */
+    public ClienteEntity getCliente() {
         return cliente;
     }
-    
-    public void setCliente(ClienteEntity cliente){
+
+    /**
+     * Setea el cliente de la calififacionTienda al dado por parametro
+     *
+     * @param cliente cliente de la calififacionTienda
+     */
+    public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
-    
-    public void setPuntaje(Double puntaje){
+
+    /**
+     * Setea el puntaje de la calificacionTienda al dadpo por parametro
+     *
+     * @param puntaje puntaje de la calificacionTienda
+     */
+    public void setPuntaje(Double puntaje) {
         this.puntaje = puntaje;
     }
+
+    /**
+     * Setea el comentario de la calificacionTienda al dado por parametro
+     *
+     * @param comentario comentario de la calificacionTienda
+     */
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
 
+    /**
+     * @return hash code
+     */
     @Override
     public int hashCode() {
-       return 5;
+        return 5;
     }
 
+    /**
+     * Metodo equals
+     *
+     * @param obj objeto a comparar
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -74,5 +117,5 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
         }
         return true;
     }
-    
+
 }

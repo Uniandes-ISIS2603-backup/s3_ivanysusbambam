@@ -43,10 +43,16 @@ import java.util.Date;
  */
 public class AutomovilDTO {
 
-    private Long id; 
-    
+    /**
+     * Atributo para el id del automovil
+     */
+    private Long id;
+
+    /**
+     * Atributo para el nombre del automovil
+     */
     private String name;
-    
+
     /**
      * Color del automovil
      */
@@ -71,26 +77,26 @@ public class AutomovilDTO {
      * Valor listado del automovil
      */
     private Double valorListado;
-    
+
     /**
      * Imagen del automovil
      */
-    private String imagen ;
+    private String imagen;
     /**
      * Tipo del automovil
      */
     private String tipo;
-/**
- * Kilometraje del automovil
- */
+    /**
+     * Kilometraje del automovil
+     */
     private Double kilometros;
+
     /**
      * Constructor por defecto
      */
     public AutomovilDTO() {
-        
+
         //Método vacío utilizado únicamente por JAX
-        
     }
 
     /**
@@ -100,19 +106,19 @@ public class AutomovilDTO {
      * @param auto: Es la entidad que se va a convertir a DTO
      */
     public AutomovilDTO(AutomovilEntity auto) {
-      if(auto != null){
-        this.color = auto.getColor();
-        this.anio = auto.getAnio();
-        this.placa = auto.getPlaca();
-        this.chasis = auto.getChasis();
-        this.fechaListado = auto.getFechaListado();
-        this.valorListado = auto.getValorListado();
-        this.id = auto.getId();
-        this.name = auto.getName();
-        this.imagen = auto.getImagen();
-        this.kilometros = auto.getKilometros();
-        this.tipo = auto.getTipo();
-      }
+        if (auto != null) {
+            this.color = auto.getColor();
+            this.anio = auto.getAnio();
+            this.placa = auto.getPlaca();
+            this.chasis = auto.getChasis();
+            this.fechaListado = auto.getFechaListado();
+            this.valorListado = auto.getValorListado();
+            this.id = auto.getId();
+            this.name = auto.getName();
+            this.imagen = auto.getImagen();
+            this.kilometros = auto.getKilometros();
+            this.tipo = auto.getTipo();
+        }
     }
 
     /**
@@ -199,6 +205,11 @@ public class AutomovilDTO {
         this.valorListado = valorListado;
     }
 
+    /**
+     * Constuye una nueva entidad y le da la informacion del DTO
+     *
+     * @return la nueva entidad del automovil
+     */
     public AutomovilEntity toEntity() {
         AutomovilEntity entity = new AutomovilEntity();
         entity.setColor(this.color);
@@ -215,45 +226,84 @@ public class AutomovilDTO {
         return entity;
     }
 
+    /**
+     * @return el id del autmovil
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * @return El nombre del automovil
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Setea el id del automovil por el dado por parametro
+     *
+     * @param id id a setear en el automovil
+     */
     public void setId(Long id) {
         this.id = id;
     }
 
+    /**
+     * Setea el nombre del automovil por el dado por parametro
+     *
+     * @param name nombre a setear en el automovil
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * @return a imagen del automovil
+     */
     public String getImagen() {
         return imagen;
     }
 
+    /**
+     * Setea la imagen del automovil por el dado porparametro
+     *
+     * @param imagen imagen a setear en el automovil
+     */
     public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
+    /**
+     * @return el tipo del automovil
+     */
     public String getTipo() {
         return tipo;
     }
 
+    /**
+     * Setea el tipo del automvil al dado por parametro
+     *
+     * @param tipo tipo a setear al automovil
+     */
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
+    /**
+     * @return el kilometraje del automovil
+     */
     public Double getKilometros() {
         return kilometros;
     }
 
+    /**
+     * Setea el kilometraje del automovil al dado por parametro
+     *
+     * @param kilometros Kilometraje a setear al automovil
+     */
     public void setKilometros(Double kilometros) {
         this.kilometros = kilometros;
     }
-       
-    
+
 }

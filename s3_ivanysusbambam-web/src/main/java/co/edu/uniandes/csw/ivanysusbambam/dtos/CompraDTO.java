@@ -74,6 +74,9 @@ public class CompraDTO {
     }
    
      
+    /**
+     * @return la entidad con la informacion del DTO 
+     */
       public CompraEntity toEntity()
       {
           CompraEntity entity = new CompraEntity();

@@ -47,6 +47,9 @@ public class ModelDetailDTO extends ModelDTO {
      */
     private List<AutomovilDTO> automoviles;
 
+    /**
+     * Constructor por defecto
+     */
     public ModelDetailDTO() {
         super();
     }
@@ -59,7 +62,7 @@ public class ModelDetailDTO extends ModelDTO {
     public ModelDetailDTO(ModelEntity entity) {
         super(entity);
 
-        //Revisar bien esta parte 
+        
         if (entity.getAutomoviles() != null) {
             automoviles = new ArrayList<>();
             for (AutomovilEntity entityAuto : entity.getAutomoviles()) {

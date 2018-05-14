@@ -21,12 +21,14 @@ import javax.inject.Inject;
 @Stateless
 public class MarcaLogic {
 
+    /**
+     * Atributo para la persistencia de la marca
+     */
     @Inject
     private MarcaPersistence persistence;
 
     /**
-     * @Inject private AutomovilPersitence persistencea; // TO DO: FALTA LA
-     * PERSISTENCIA DEL AUTOMOVIL.
+     * Constante para el logger
      */
     private static final Logger LOG = Logger.getLogger(MarcaLogic.class.getName());
 

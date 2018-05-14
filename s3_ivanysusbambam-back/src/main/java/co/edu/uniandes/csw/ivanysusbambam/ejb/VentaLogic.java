@@ -27,28 +27,49 @@ import javax.inject.Inject;
 @Stateless
 public class VentaLogic {
 
+    /**
+     * Constante para el logger
+     */
     private static final Logger LOGGER = Logger.getLogger(VentaLogic.class.getName());
 
+    /**
+     * Atributo para la persistencia de la venta
+     */
     @Inject
     private VentaPersistence persistence;
 
+    /**
+     * Atriburo para la persistencia del vendedor
+     */
     @Inject
     private VendedorPersistence vendedorPersistence;
 
+    /**
+     * Atributo para la persisitencia del cliente
+     */
     @Inject
     private ClientePersistence clientePersistence;
 
+    /**
+     * Atributo para la persistencia del automovil
+     */
     @Inject
     private AutomovilPersistence automovilPersistence;
 
+    /**
+     * Atributo para la persistencia del punto de venta
+     */
     @Inject
     private PuntoDeVentaPersistence puntoPersistence;
 
+    /**
+     * Atributo para la persistencia del medio de pago
+     */
     @Inject
     private MedioDePagoPersistence medioPersistence;
 
     /**
-     * Crea un prospecto de compra.
+     * Crea una venta.
      *
      * @param entity prospecto de compra que se quiere añadir
      * @return el prospecto de compra recién añadido.
@@ -56,8 +77,7 @@ public class VentaLogic {
      * del cliente no existe o es inválido.
      */
     public VentaEntity createVenta(VentaEntity entity) throws BusinessLogicException {
-       
-    
+
         if (entity.getCliente().getCedula() == null) {
             throw new BusinessLogicException("La cédula del cliente no puede ser null");
         }
@@ -79,10 +99,7 @@ public class VentaLogic {
         if (medioPersistence.find(entity.getMedioDePago().getNumero()) == null) {
             throw new BusinessLogicException("El medio de pago de esta venta no existe ");
         }
-        
-        
-        
-        
+
         return persistence.create(entity);
     }
 
@@ -127,9 +144,9 @@ public class VentaLogic {
         }
         if (entity.getPuntoDeVenta() == null || !newEntity.getPuntoDeVenta().equals(entity.getPuntoDeVenta())) {
             throw new BusinessLogicException("No se puede modificar el punto de venta asociado a la  venta");
-        }        
-    //    if (entity.getMedioDePago() == null || !newEntity.getMedioDePago().equals(entity.getMedioDePago())) {
-      //      throw new BusinessLogicException("No se puede modificar el medio de pago asociado a la  venta");
+        }
+        //    if (entity.getMedioDePago() == null || !newEntity.getMedioDePago().equals(entity.getMedioDePago())) {
+        //      throw new BusinessLogicException("No se puede modificar el medio de pago asociado a la  venta");
         //}
 
         return persistence.update(entity);

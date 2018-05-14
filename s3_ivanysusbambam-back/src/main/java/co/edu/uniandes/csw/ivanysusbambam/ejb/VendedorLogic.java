@@ -22,11 +22,20 @@ import javax.inject.Inject;
 @Stateless
 public class VendedorLogic {
 
+    /**
+     * Constante del logger
+     */
     private static final Logger LOG = Logger.getLogger(VendedorLogic.class.getName());
 
+    /**
+     * Atributo para la persistencia del vendedor
+     */
     @Inject
     private VendedorPersistence persistence;
 
+    /**
+     * Atributo para la persistencia del punto de venta
+     */
     @Inject
     private PuntoDeVentaPersistence persistencePuntoVenta;
 
@@ -85,7 +94,7 @@ public class VendedorLogic {
      * @param id carnet del vendedor que se quiere borrar
      * @return el vendedor que se borró.
      * @throws BusinessLogicException si el cedula que se pasó es null o si el
- vendedor no existe.
+     * vendedor no existe.
      */
     public VendedorEntity deleteVendedor(Long id) throws BusinessLogicException {
         LOG.log(Level.INFO, "Borrando al vendedor: {0}", id);

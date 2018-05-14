@@ -57,6 +57,11 @@ public class BusinessLogicExceptionMapper implements ExceptionMapper<BusinessLog
                 .build(); //To change body of generated methods, choose Tools | Templates.
     }
 
+    /**
+     * Metodo getInitCause
+     * @param e 
+     * @return 
+     */
     private Throwable getInitCause(Throwable e) {
         if (e.getCause() != null) {
             return getInitCause(e.getCause());

@@ -1,13 +1,13 @@
-<div class="container">
-    <div class="row">
+<div class="backComprar">
+    <div class="row col-12">
         <div class="col">
             <div class="compraCard one">
                 <!-- colocar la imagen del carro-->
-                <div class="top" style="background: url("")">
+                <div class="top" style="background: url(../../../resources/usuarioback.jpg)">
                     <div class="wrapper">
                         <div class="opCom">
-                            <a href="javascript:;"><span class="lnr atrasC"></span></a>
-                            <a href="javascript:;"><span class="lnr cancelar"></span></a>
+                            <a ui-sref="automovilGetAll"><span class="lnr atrasC"><i class="fa fa-angle-left fa-2x"></i></span></a>
+                            <a href="buscarAuto"><span class="lnr cancelar"><i class="fa fa-times"></i></span></a>
                         </div>
                         <h1 class="cMarca">Ferrari</h1>
                         <h3 class="cModelo">Testarrosa</h3>
@@ -16,35 +16,47 @@
                         </p>
                     </div>
                 </div>
-                <div class="bottom">
-                    <div class="paymentWrap">
-                        <div class="btn-group paymentBtnGroup btn-group-justified" data-toggle="buttons">
-                            <label class="btn paymentMethod active">
-					            	<div class="method 1"></div>
-					                <input type="radio" name="options" checked> 
-					            </label>
-                            <label class="btn paymentMethod">
-					            	<div class="method 2"></div>
-					                <input type="radio" name="options"> 
-					            </label>
-                            <label class="btn paymentMethod">
-				            		<div class="method 3"></div>
-					                <input type="radio" name="options">
-					            </label>
-                            <label class="btn paymentMethod">
-				             		<div class="method 4"></div>
-					                <input type="radio" name="options"> 
-					            </label>
-                            <label class="btn paymentMethod">
-				            		<div class="method 5"></div>
-					                <input type="radio" name="options"> 
-					            </label>
-
-                        </div>
-                    </div>
+                <br>
+                <div id="mediosDePagoB">
+                    <label id="mdP">Selecciona tu medio de pago</label>
+                    <br>
+                    <select class="form-control" id="formaPago">
+<option>Tarjeta</option>
+<option>PayPal</option>
+<option>Efectivo</option>
+        </select>
+                    <label id="mdP">Selecciona una ubicación</label>
+                    <br>
+                    <select class="form-control" id="formaPago">
+<option>Calle 63</option>
+<option>Calle 45</option>
+<option>Calle 28</option>
+        </select>
+                    <br>
+                    <button type="button" class="btn btn-success" id="botonCompra" ui-sref="ccCrear" data-toggle="modal" data-target="#myModal">Continuar</button> 
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE876;</i>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body text-center">
+				<h4>Correcto!</h4>	
+				<p>Se ha procesado tu solicitud</p>
+                <!-- No entiendo por qué no me lleva al estado y ya me estresé -->
+				<button class="btn btn-success" data-dismiss="modal" ui-sref="ccCrear"><span>Continuar</span> <i class="material-icons">&#xE5C8;</i></button>
+			</div>
+		</div>
+	</div>
+</div>

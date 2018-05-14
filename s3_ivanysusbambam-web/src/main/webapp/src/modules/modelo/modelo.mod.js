@@ -6,23 +6,33 @@
 
     mod.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
         var basePath = "src/modules/modelo/";
+<<<<<<< Updated upstream
         
          $urlRouterProvider.otherwise("/modelo");
         
+=======
+
+>>>>>>> Stashed changes
         $stateProvider.state("listModelo", {
 
                 url: "/modelos/lista",
-                views:{
-                    mainView:{
-                templateUrl: basePath + "modelo.list.html",
-                controller: "modeloListCtrl",
-                controllerAs: "ctrl"}}
+                params: {
+                    requireLogin: false
+                },
+                views: {
+                    mainView: {
+                        templateUrl: basePath + "modelo.list.html",
+                        controller: "modeloListCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
             })
             .state('modeloDetail', {
                 url: '/:ModeloId/detail',
                 parent: "listModelo",
                 params: {
-                    ModeloId: null
+                    ModeloId: null,
+                    requireLogin: false
                 },
                 views: {
                     modelDetailView: {
@@ -36,6 +46,9 @@
             })
             .state('crearModelo', {
                 url: '/modelo/crear',
+                params: {
+                    requireLogin: true
+                },
                 views: {
                     mainView: {
                         templateUrl: basePath + "modelo.crear.html",
@@ -48,7 +61,8 @@
                 url: '/:ModeloId/editar',
                 parent: "listModelo",
                 params: {
-                    ModeloId: null
+                    ModeloId: null,
+                    requireLogin: true
                 },
                 views: {
                     mainView: {

@@ -23,15 +23,27 @@ import javax.inject.Inject;
 @Stateless
 public class QuejaReclamoLogic {
 
+    /**
+     * Constante para el logger
+     */
     private static final Logger LOGGER = Logger.getLogger(QuejaReclamoLogic.class.getName());
 
+    /**
+     * Atributo para la persistencia de la queja/Reclamo
+     */
     @Inject
     private QuejaReclamoPersistence persistence; // Variable para acceder a la persistencia de la aplicación. Es una inyección de dependencias.
 
+    /**
+     * Atributo de la persistencia del cliente
+     */
     @Inject
     private ClientePersistence clientePersistence;
-    
-    @Inject 
+
+    /**
+     * Atributo para la persitencia de la venta
+     */
+    @Inject
     private VentaPersistence ventaPersistance;
 
     /**
@@ -53,15 +65,14 @@ public class QuejaReclamoLogic {
         if (persistence.find(entity.getId()) != null) {
             throw new BusinessLogicException("la QuejaReclamo ya existe en la base de datos");
         }
+        if (ventaPersistance.find(entity.getVenta().getId()) == null) {
+
+            throw new BusinessLogicException("La venta de la quejaReclamo no esta registrada en el sistema");
+        }
         if (clientePersistence.find(entity.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente de la quejaReclamo no está registrado en la base de datos");
         }
-        System.out.print(entity.getVenta().getId());
-        if (ventaPersistance.find(entity.getVenta().getId()) == null){
-            
-            throw new BusinessLogicException("La venta de la quejaReclamo no esta registrada en el sistema");
-        }
-        
+
         return persistence.create(entity);
     }
 

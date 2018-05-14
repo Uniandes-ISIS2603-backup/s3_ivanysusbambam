@@ -52,6 +52,10 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
         //Constructor utilizado por JAX
     }
 
+    /**
+     * Asigna la informaion de la entidad al detailDTO
+     * @param entity entidad con la informacion 
+     */
     public CalificacionCarroDetailDTO(CalificacionCarroEntity entity) {
         super(entity);
        
@@ -59,7 +63,12 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
             venta = new VentaDTO(entity.getVenta());
         }
     }
+
     
+    /**
+     * Crea una nueva entidad con la informacion del detailDTO
+     * @return La nueva entidad 
+     */
     @Override
     public CalificacionCarroEntity toEntity(){
         CalificacionCarroEntity ccEntity = super.toEntity();

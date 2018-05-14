@@ -34,6 +34,9 @@ import javax.ws.rs.WebApplicationException;
 @RequestScoped
 public class CompraResource {
 
+    /**
+     * Atributo para la logica de la compra
+     */
     @Inject
     CompraLogic compraLogic;
 
@@ -64,9 +67,8 @@ public class CompraResource {
     @POST
     public CompraDetailDTO crearCompra(CompraDetailDTO compra) throws BusinessLogicException {
         CompraEntity compraE = compra.toEntity();
-       return new CompraDetailDTO(compraLogic.crearCompra(compraE));
+        return new CompraDetailDTO(compraLogic.crearCompra(compraE));
 
-       
     }
 
     /**

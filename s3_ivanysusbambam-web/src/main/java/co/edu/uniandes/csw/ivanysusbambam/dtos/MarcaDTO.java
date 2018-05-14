@@ -18,9 +18,19 @@ public class MarcaDTO {
      */
     private String name;
     
+    /**
+     * Id de la marca
+     */
     private Long id;
     
+    /**
+     * Logo/imagen de la marca
+     */
     private String logo;
+    
+    /**
+     * Constructor por defecto
+     */
      public MarcaDTO() {
         //Constructor utilizado por JAX
     }
@@ -40,10 +50,17 @@ public class MarcaDTO {
 
     }
 
+    /**
+     * @return el id de la marca 
+     */
     public Long getId() {
         return id;
     }
 
+    /**
+     * Setea el id de la marca al dado por parametro
+     * @param id id de la marca
+     */
     public void setId(Long id) {
         this.id = id;
     }
@@ -81,10 +98,17 @@ public class MarcaDTO {
         this.name = nuevo;
     }
 
+    /**
+     * @return el logo/imagen de la marca 
+     */
     public String getLogo() {
         return logo;
     }
 
+    /**
+     * Setea el logo de la marca al dado por parametro
+     * @param logo logo de la marca
+     */
     public void setLogo(String logo) {
         this.logo = logo;
     }

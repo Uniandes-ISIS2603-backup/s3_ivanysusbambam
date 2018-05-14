@@ -6,27 +6,35 @@
 
 
 (function (ng) {
+
     var mod = ng.module("automovilModule", ['ui.router']);
-    mod.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
+
+    mod.config(['$stateProvider', '$urlRouterProvider',
+                function ($stateProvider, $urlRouterProvider) {
+
             var basePath = 'src/modules/automovil/';
             $urlRouterProvider.otherwise("/listAutomoviles");
 
-            $stateProvider.state('listAutomoviles', {
-                url: '/automoviles/list',
-                
-                views: {
-                    'mainView': {
-                        templateUrl: basePath + 'automovil.list.html',
-                        controller: 'automovilGetAllCtrl',
-                        controllerAs: 'ctrl'
+            $stateProvider
+                .state('listAutomoviles', {
+                    url: '/automoviles/list',
+                    params: {
+                        requireLogin: false
                     },
-                    automovilList: {
-                        templateUrl: basePath + 'automovilGetAll.html',
-                        controller: 'automovilGetAllCtrl',
-                        controllerAs: 'ctrl'
+                    views: {
+                        'mainView': {
+                            templateUrl: basePath + 'automovil.list.html',
+                            controller: 'automovilGetAllCtrl',
+                            controllerAs: 'ctrl'
+                        },
+                        automovilList: {
+                            templateUrl: basePath + 'automovilGetAll.html',
+                            controller: 'automovilGetAllCtrl',
+                            controllerAs: 'ctrl'
+                        }
                     }
-                }
 
+<<<<<<< Updated upstream
             }).state("automovilDetail", {
                 url: "/{automovilId: int}/detail ",
                
@@ -80,45 +88,110 @@
                         templateUrl: basePath + 'automovil.list.html',
                         controller: 'automovilGetAllCtrl',
                         controllerAs: 'ctrl'
+=======
+                })
+
+                .state("automovilDetail", {
+                    url: "/{automovilId: int}/detail ",
+                    parent: "listAutomoviles",
+                    params: {
+                        automovilId: null,
+                        requireLogin: false
+>>>>>>> Stashed changes
                     },
-                    automovilList: {
-                        templateUrl: basePath + 'automovilGetAll.html',
-                        controller: 'automovilFilteredCtrl',
-                        controllerAs: 'ctrl'
+                    views: {
+                        'automovilDetailView': {
+                            templateUrl: basePath + "automovil.detail.html",
+                            controller: "automovilDetailCtrl",
+                            controllerAs: "ctrl"
+                        }
                     }
-                }
-            }).state("automovilGetAll", {
-                url: "/getAll ",
-                parent: "listAutomoviles",
-                
-                views: {
-                    'automovilList': {
-                        templateUrl: basePath + "automovilGetAll.html",
-                        controller: "automovilGetAllCtrl",
-                        controllerAs: "ctrl"
-                    }
-                }
-            }).state("crearAutomovil", {
-                url: "/automovil/crear",
+                })
 
-                views: {
-                    mainView: {
-                        templateUrl: basePath + "automovil.crear.html",
-                        controller: "automovilCrearCtrl",
-                        controllerAs: "ctrl"
-                    }
-                }}).state("buscarAuto", {
-                url: "/automovil/buscar",
+                .state("automovilListFiltros", {
+                    url: "/automovilListFiltered",
+                    parent: "listAutomoviles",
+                    params: {
+                        requireLogin: false,
+                        fechaMin: null,
+                        fechaMax: null,
+                        marca: null,
+                        modelo: null,
+                        color: null,
+                        precioMin: null,
+                        precioMax: null
+                    },
+                    views: {
 
-                views: {
-                    mainView: {
-                        templateUrl: basePath + "buscarAuto.html",
-                        controller: "automovilGetAllCtrl",
-                        controllerAs: "ctrl"
+                        'mainView': {
+                            templateUrl: basePath + 'automovil.list.html',
+                            controller: 'automovilGetAllCtrl',
+                            controllerAs: 'ctrl'
+                        },
+                        automovilList: {
+                            templateUrl: basePath + 'automovilGetAll.html',
+                            controller: 'automovilFilteredCtrl',
+                            controllerAs: 'ctrl'
+                        }
                     }
-                }});
+                })
+
+                .state("automovilGetAll", {
+                    url: "/getAll ",
+                    parent: "listAutomoviles",
+                    params:{
+                        requireLogin: false
+                    },
+                    views: {
+                        'automovilList': {
+                            templateUrl: basePath + "automovilGetAll.html",
+                            controller: "automovilGetAllCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                })
+
+                .state("crearAutomovil", {
+                    url: "/automovil/crear",
+                    params:{
+                        requireLogin: true
+                    },
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "automovil.crear.html",
+                            controller: "automovilCrearCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                })
+.state("latabla", {
+                    url: "/automovil/buscar",
+                    params:{
+                      requireLogin: false  
+                    },
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "tabla.html",
+                            controller: "automovilGetAllCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                })
+                .state("buscarAuto", {
+                    url: "/automovil/buscar",
+                    params:{
+                      requireLogin: false  
+                    },
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "buscarAuto.html",
+                            controller: "automovilGetAllCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                })
+            ;
         }
     ]);
 
 })(window.angular);
-           

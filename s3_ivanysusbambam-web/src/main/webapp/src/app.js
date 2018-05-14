@@ -23,7 +23,6 @@
 
         // Modulo de las calificaciones de tienda
         'calificacionTiendaModule',
-        'comentarioModule',
         //Módulo del cliente
         'clienteModule',
         //Modulo del vendedor
@@ -62,9 +61,13 @@
             $transitions.onSuccess({to: '*'}, function (trans) {
 
                 var $state = trans.router.stateService;
-                var requireLogin = $state.current.data.requireLogin
-                var roles = $state.current.data.roles
-               
+                var requireLogin = $state.current.data.requireLogin;
+                var roles = $state.current.data.roles;
+                
+                /* Sólo me falta esto, necesito guardar esta variable para poder llamarla con ng if */
+               $rootScope.vendedor = false;
+                $rootScope.cliente=false;
+                $rootScope.admin=false;
 
                 /**
                  * @ngdoc function
@@ -100,7 +103,26 @@
                     }
                 };
 
-
+                $rootScope.esCliente=function(){
+                    $rootScope.cliente=true;
+                    console.log($rootScope.cliente);
+                    $rootScope.admin=false;
+                    $rootScope.vendedor=false;
+                };
+                $rootScope.esAdmin=function(){
+                    $rootScope.admin=true;
+                    console.log($rootScope.cliente);
+                    $rootScope.vendedor=false;
+                    $rootScope.cliente=false;
+                    
+                };
+                $rootScope.esVendedor=function(){
+                    $rootScope.vendedor=true;
+                    console.log($rootScope.vendedor);
+                    $rootScope.cliente=false;
+                    $rootScope.admin=false;
+                };
+                
                 if (requireLogin && (sessionStorage.getItem("username") === null)) {
                     event.preventDefault();
                     $state.go('login', $state.params);

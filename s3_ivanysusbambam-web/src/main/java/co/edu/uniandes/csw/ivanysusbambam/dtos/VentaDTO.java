@@ -39,6 +39,9 @@ public class VentaDTO {
      */
     private Long idVenta;
     
+    /**
+     * Atributo para el nombre de la venta
+     */
     private String name;
 
     /**

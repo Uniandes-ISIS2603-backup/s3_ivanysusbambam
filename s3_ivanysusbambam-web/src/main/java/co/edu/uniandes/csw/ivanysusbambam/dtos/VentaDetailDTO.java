@@ -230,11 +230,17 @@ public class VentaDetailDTO extends VentaDTO {
     public void setAutomovil(AutomovilDTO pAuto) {
         this.automovil = pAuto;
     }
-
+/**
+ * @return la queja/Reclamo de esta venta 
+ */
     public QuejaReclamoDTO getQuejaReclamo() {
         return quejaReclamo;
     }
 
+    /**
+     * Setea la venta de esta queja/Reclamo a la dada por parametro
+     * @param quejaReclamo queja/Reclamo de esta venta 
+     */
     public void setQuejaReclamo(QuejaReclamoDTO quejaReclamo) {
         this.quejaReclamo = quejaReclamo;
     }

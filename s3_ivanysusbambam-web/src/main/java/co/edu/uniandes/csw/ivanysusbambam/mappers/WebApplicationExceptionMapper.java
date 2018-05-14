@@ -58,6 +58,11 @@ public class WebApplicationExceptionMapper implements ExceptionMapper<WebApplica
 
     }
 
+    /**
+     * Metodo getInitCause
+     * @param e
+     * @return 
+     */
     private Throwable getInitCause(Throwable e) {
         if (e.getCause() != null) {
             return getInitCause(e.getCause());
