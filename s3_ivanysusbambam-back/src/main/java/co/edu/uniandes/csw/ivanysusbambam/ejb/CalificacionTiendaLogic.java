@@ -7,6 +7,7 @@ package co.edu.uniandes.csw.ivanysusbambam.ejb;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.CalificacionTiendaPersistence;
 import java.util.List;
@@ -111,7 +112,7 @@ public class CalificacionTiendaLogic {
         }
         persistence.delete(id);
     }
-
+        
     /**
      * Retorna el cliente de la califiacion tienda
      *
@@ -122,5 +123,16 @@ public class CalificacionTiendaLogic {
         LOGGER.log(Level.INFO, "Inicia proceso de consultar el cliente de la calificacion de tienda con id = {0}", calificacionTiendaId);
         return getCalificacionTienda(calificacionTiendaId).getCliente();
     }
-
+    
+    /**
+     * Retorna el punto de venta de la califiacion tienda
+     *
+     * @param calificacionTiendaId id de la calificacion tienda
+     * @return punto de venta de la calificacion tienda con el id dado por parametro
+     */
+    public PuntoDeVentaEntity getPuntoVenta(Long calificacionTiendaId){
+        LOGGER.log(Level.INFO, "Inicia el proceso de consultar el punto de venta de la calificacion tienda con id = {0}", calificacionTiendaId);
+        return getCalificacionTienda(calificacionTiendaId).getPuntoDeVenta();
+    }
+    
 }

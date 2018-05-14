@@ -44,6 +44,13 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
      * Representa el cliente que ha puesto la calificacion
      */
     private ClienteDTO cliente;
+    
+     /**
+     * Representa el punto de venta al que correponde  la calificacion
+     */
+    private PuntoDeVentaDTO puntoVenta;
+    
+    
     /**
      * Constructor por defecto
      */
@@ -59,7 +66,13 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
         super(entity);
         
         if (entity != null) {
-            cliente = new ClienteDTO(entity.getCliente());
+            
+            if(entity.getCliente() != null){
+                cliente = new ClienteDTO(entity.getCliente());
+            }
+            if(entity.getPuntoDeVenta() != null){
+                puntoVenta = new PuntoDeVentaDTO(entity.getPuntoDeVenta());
+            }
         }
     }
     
@@ -75,6 +88,9 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
         
         if(cliente != null){
             ctEntity.setCliente(cliente.toEntity());
+        }
+        if(getPuntoVenta() != null){
+            ctEntity.setPuntoDeVenta(getPuntoVenta().toEntity());
         }
         
         return ctEntity;
@@ -96,4 +112,22 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
     public ClienteDTO getCliente() {
         return cliente;
     }
+
+    /**
+     * Retorna el punto de venta respectivo a la calificacion
+     * @return the puntoVenta
+     */
+    public PuntoDeVentaDTO getPuntoVenta() {
+        return puntoVenta;
+    }
+
+    /**
+     * Establece un punto de venta respectivo a la calificacion
+     * @param puntoVenta the puntoVenta to set
+     */
+    public void setPuntoVenta(PuntoDeVentaDTO puntoVenta) {
+        this.puntoVenta = puntoVenta;
+    }
+    
+    
 }
