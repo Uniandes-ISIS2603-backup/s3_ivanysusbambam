@@ -104,7 +104,7 @@
                     }
             }
         }).state("ComentariosCliente",{
-            url: "/perfil/{clienteId: int}/Comentarios",
+            url: "/Comentarios",
             parent:"perfilCliente",
             params:{
                 clienteId: null
@@ -135,7 +135,8 @@
             url: "/perfil/Comentarios/editar",
             parent:"perfilCliente",
             params:{
-                idComentario: null
+                idComentario: null,
+                idCliente: null
             },
             views: {
                

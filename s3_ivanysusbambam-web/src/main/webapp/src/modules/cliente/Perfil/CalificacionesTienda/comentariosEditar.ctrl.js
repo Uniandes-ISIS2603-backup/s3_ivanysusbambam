@@ -3,36 +3,28 @@
     var mod = ng.module("clienteModule");
     mod.constant("calificacionTiendaContext", "api/calificacionesTienda");
     
-    mod.controller("editarComentarioCtrl", ["$scope", "$http", "calificacionTiendaContext", "$state", "dataTransfer", 
-    function ($scope, $http, calificacionTiendaContext, $state, dataTransfer){
+    mod.controller("editarComentarioCtrl", ["$scope", "$http", "calificacionTiendaContext", "$state", 
+    function ($scope, $http, calificacionTiendaContext, $state){
      
-        $scope.pc = dataTransfer.get();
-                
-        var address = calificacionTiendaContext + "/" + $state.params.idComentario;
+        var address = calificacionTiendaContext;
         
-        
-        
-        $scope.nuevoTexto = $scope.pc.texto;
-       
-        
-        
-        console.log("--------------");
-        console.log($scope.nuevoTexto);
-        console.log("---------------")
+         var calificacion = {
+                            id: $state.params.idComentario,
+                            comentario: "",
+                            puntaje: 0.0};
         
         $scope.editarCalificacion = function(){
-            $http.put(address, $scope.pc).then(function(response){
-                
-              
+            console.log(calificacion);
+            $http.put(address, calificacion).then(function(response){
+                console.log("Cliente id:" + $state.params.clienteId);
+              $state.go("ComentariosCliente",{clienteId: $state.params.clienteId},{reload: true}); 
                 
             });
         };
         
         $scope.cambioInfo = function(){
-         
-          console.log($scope.nuevoTexto);  
-            
-          $scope.pc.texto = $scope.nuevoTexto;
+          calificacion.comentario = $scope.nuevoComentario;
+          calificacion.puntaje = $scope.nuevoPuntaje;
           
           
         };

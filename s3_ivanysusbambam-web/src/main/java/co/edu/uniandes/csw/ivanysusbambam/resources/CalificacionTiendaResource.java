@@ -106,6 +106,7 @@ public class CalificacionTiendaResource {
      */
     @PUT
     public CalificacionTiendaDetailDTO putCalificacionCarro(CalificacionTiendaDetailDTO calificacion) throws BusinessLogicException{
+        System.out.println("CAL: " + calificacion);
         CalificacionTiendaEntity cc = calificacion.toEntity();
         
         CalificacionTiendaEntity oldEntity = ctiendaLogic.getCalificacionTienda(calificacion.getId());
