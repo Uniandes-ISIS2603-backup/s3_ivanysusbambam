@@ -224,8 +224,7 @@ public class AutomovilPersistence {
      */
     public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax){
     
-        // 0 = 0 porque no deja poner WHERE TRUE
-        String sentencia = "SELECT a FROM AutomovilEntity a JOIN a.model mo JOIN a.marca ma WHERE 0 = 0";
+        String sentencia = "SELECT a FROM AutomovilEntity a JOIN a.model mo JOIN a.marca ma WHERE a.chasis NOT IN (SELECT v.automovil.chasis FROM VentaEntity v)";
         
         if(tipoAuto !=null){
             sentencia += " AND a.tipo = '" + tipoAuto + "'";
