@@ -1,189 +1,41 @@
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
-            <div class="row" id="gradient">
-                <div class="col-md-4">
-                    <img src="http://www.prepbootstrap.com/Content/images/shared/misc/s7e.png" class="img-fluid">
+<div class="imagen2" style="text-align: center">
+
+    <div class="card" id="cartaLogin2" >
+
+        <div class="container" style=" background-color: white">
+            <div class="row" style=" margin: 40px; text-align: left">
+                <div class="column col-md-7" >
+                    <a> <img  src="{{automovil.imagen}}" style="width: 500%" class="float-left" alt="imagencarro"></a>   
                 </div>
-                <div class="col-md-8" id="overview">
-                    <div class="row">
-                        <div class="col-xs-6 col-md-6">
-                            <ul class="pb-product-details-ul">
-                                <li><span class="fa fa-calendar">&nbsp;Released 2016, March</span></li>
-                                <li><span class="fa fa-phone">&nbsp;157g, 7.7mm thickness</span></li>
-                                <li><span class="fa fa-bluetooth-b">&nbsp;Android OS, v6.0, up to 7.0</span></li>
-                                <li><span class="fa fa-microchip">&nbsp;32/64/128GB Storage</span></li>
-                            </ul>
-                        </div>
-                        <div class="col-xs-3 col-md-3 text-xs-center" id="hits">
-                            <span class="fa fa-bar-chart">&nbsp;24%</span>
-                            <p>22,010,155 HITS</p>
-                        </div>
-                        <div class="col-xs-3 col-md-3 text-xs-center" id="fan">
-                            <a href="#"><span class="fa fa-heart">&nbsp;1904</span></a>
-                            <p>BECOME A FAN</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-3 col-md-3 pb-product-details-fa">
-                            <span class="fa fa-mobile fa-lg"></span>
-                            <h3><strong>5.5"</strong></h3>
-                            <p>1440x2560 pixels</p>
-                        </div>
-                        <div class="col-xs-3 col-md-3 pb-product-details-fa">
-                            <span class="fa fa-camera fa-lg"></span>
-                            <h3><strong>12 MP</strong></h3>
-                            <p>2160p</p>
-                        </div>
-                        <div class="col-xs-3 col-md-3 pb-product-details-fa">
-                            <span class="fa fa-microchip fa-lg"></span>
-                            <h3><strong>4GB RAM</strong></h3>
-                            <p>Exynos 8890</p>
-                        </div>
-                        <div class="col-xs-3 col-md-3 pb-product-details-fa">
-                            <span class="fa fa-battery-4 fa-lg"></span>
-                            <h3><strong>3600mAH</strong></h3>
-                            <p>Li-ion</p>
-                        </div>
-                    </div>
+                <div class="column col-md-5">
+                    <h1 id="headerInicio">{{automovil.modelo.name}}</h1>
+                    <p id="infoCarro">Precio: {{automovil.valorListado|currency}}</p>
+                    <p id="infoCarro">Año: {{automovil.anio}}</p>
+                    <p id="infoCarro">Placa: {{automovil.placa}}</p>
+                    <p id="infoCarro">Color: {{automovil.color}}</p>
+                    <a ui-sref="automovilGetAll" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white; width: 100%; font-size: 25px"><i class="material-icons" style="font-size:26px;margin-right:20px ">shopping_cart</i>Comprar </a>
                 </div>
             </div>
-            <div class="row">
-                <div class="tabs_div">
-                    <ul>
-                        <li>Display</li>
-                        <li>Camera</li>
-                        <li>Hardware</li>
-                        <li>Battery</li>
-                        <li>Phone features</li>
+            <div class="row" >
+
+                <nav class="navbar navbar-expand-sm bg-dark navbar-dark" style="width: 100%">
+                    <!-- Brand/logo -->
+                    <a class="navbar-brand" ui-sref="automovilGetAll">Regresar</a>
+
+                    <!-- Links -->
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" ui-sref="automovilDetailInfo({automovilId:automovil.id})">Más Informacion</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" ui-sref="automovilDetailPV({automovilId:automovil.id})">Punto de Venta</a>
+                        </li>
+                        
                     </ul>
-                    <div>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="success">Physical size: </td>
-                                    <td>5.5 inches</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Resolution: </td>
-                                    <td>1440x2560 pixels</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Pixel density: </td>
-                                    <td>534 dpi</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Technology: </td>
-                                    <td>Super AMOLED</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Screen-to-body-ratio: </td>
-                                    <td>76.09%</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Features: </td>
-                                    <td>Scratch-resistant glass (Corning Gorilla Glass 4), Light sensor, Proximity sensor</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="success">Camera: </td>
-                                    <td>12 megapixels</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Flash: </td>
-                                    <td>LED</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Aperture size: </td>
-                                    <td>F1.7</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Camera sensor size: </td>
-                                    <td>1/2.5"</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Pixel size: </td>
-                                    <td>1.4 um</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Hardware Features: </td>
-                                    <td>Optical image stabilization, Autofocus (Phase detection)</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="success">System chip: </td>
-                                    <td>Qualcomm Snapdragon 820 MSM8996</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Processor: </td>
-                                    <td>Quad-core, 2200 MHz, Kryo, 64-bit</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">GPU: </td>
-                                    <td>Adreno 530</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">System memory: </td>
-                                    <td>4GB memory</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Built-in storage: </td>
-                                    <td>32GB</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Storage Expansion: </td>
-                                    <td>microSD, microSDHC, microSDXC up to 200 GB</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="success">Capacity: </td>
-                                    <td>3600mah</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Type: </td>
-                                    <td>Not user replaceable, Li - Ion</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Wireless charging: </td>
-                                    <td>Optional</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div>
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td class="success">Sensors: </td>
-                                    <td>Accelerometer, Gyroscope, Compass, Hall, Barometer</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Notifications: </td>
-                                    <td>Haptic feedback, Music ringtones (MP3), Polyphonic ringtones, Vibration, Flight mode, Silent mode, Speakerphone</td>
-                                </tr>
-                                <tr>
-                                    <td class="success">Other: </td>
-                                    <td>Voice dialing, Voice commands, Voice recording, TTY/TDD</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+                </nav>
+            </div>
+            <div class="row" >
+                <div ui-view="info"></div>
             </div>
         </div>
     </div>
@@ -197,61 +49,62 @@
 
 
 
+
 <h1 id="h1" style="margin:20px" >Detail Automovil</h1>
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 <div class ="row">
-     <div class ="col-md-6">
+    <div class ="col-md-6">
         <div class="card" style="margin: 5px; width: 300px">
             <div class ="card-body">
                 <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> id automovil:</div>{{automovil.id}}
                 <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> placa:</div>{{automovil.placa}}
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> año:  </div> {{automovil.anio}}
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> valor Listado:</div>{{automovil.valorListado| currency}}
-              <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Chasis:</div> {{automovil.chasis}}
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> color:</div> {{automovil.color}}
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Marca:</div> {{automovil.marca.id}}
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Modelo:</div> {{automovil.modelo.id}}
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Punto de venta:</div> {{automovil.puntoDeVenta.name}}
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Tipo:</div> {{automovil.tipo}}  
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> año:  </div> {{automovil.anio}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> valor Listado:</div>{{automovil.valorListado| currency}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Chasis:</div> {{automovil.chasis}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> color:</div> {{automovil.color}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Marca:</div> {{automovil.marca.id}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Modelo:</div> {{automovil.modelo.id}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Punto de venta:</div> {{automovil.puntoDeVenta.name}}
+                <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Tipo:</div> {{automovil.tipo}}  
                 <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e"> Kilometros:</div> {{automovil.kilometros}}
-            
-            
-            <div class="card-body">
+
+
+                <div class="card-body">
                     <div class="table-responsive">   
                         <table class="table table-bordered" style="color: #1a237e" >
                             <thead  class="thead" style="background-color: #1a237e; color: white">
                                 <tr >
-                                    
+
                                     <th>Prospectos de compra</th>
                                     <th>Ventas</th>
-                                    
+
                                     <th>Compras </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="pc in automovil.prospectosCompra" style="color: black">
                                     <td>
-                                    {{pc.id}}    
+                                        {{pc.id}}    
                                     </td>
                                     <td>
                                         {{automovil.venta.idVenta}}
-                                        </td>
-                                        <td>
-                                            {{automovil.compra.id}}
-                                            </td>
+                                    </td>
+                                    <td>
+                                        {{automovil.compra.id}}
+                                    </td>
 
                                 </tr>
 
                             </tbody>
                         </table>
-            
+
+                    </div>
+                </div>
+
+
             </div>
-                 </div>
-            
-            
-            </div>
-            
-            
-            
+
+
+
         </div>
     </div>

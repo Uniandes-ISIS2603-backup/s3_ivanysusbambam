@@ -40,6 +40,28 @@
                         controllerAs: "ctrl"
                     }
                 }
+            }).state("automovilDetailInfo", {
+                url: "/info ",
+              
+                parent: "automovilDetail",
+                views: {
+                    'info': {
+                        templateUrl: basePath + "automovil.detail.info.html",
+                        controller: "automovilDetailCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+            }).state("automovilDetailPV", {
+                url: "/info ",
+              
+                parent: "automovilDetail",
+                views: {
+                    'info': {
+                        templateUrl: basePath + "automovil.detail.Pv.html",
+                        controller: "automovilDetailCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
             }).state("automovilListFiltros", {
                 url: "/automovilListFiltered",
                  parent: "listAutomoviles",
