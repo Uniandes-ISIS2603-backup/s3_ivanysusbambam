@@ -26,8 +26,14 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class VendedorPersistence {
 
+    /**
+     * COnstante para el logger
+     */
     private static final Logger LOGGER = Logger.getLogger(VendedorPersistence.class.getName());
 
+    /**
+     * Atributo para el entity manager
+     */
     @PersistenceContext(unitName = "IvanysusbambamPU")
     protected EntityManager em;
 
@@ -104,8 +110,10 @@ public class VendedorPersistence {
         tq.setParameter("nombre", name);
         if (tq.getResultList().isEmpty()) {
             return new ArrayList<>();
-        } else return tq.getResultList();
-        
+        } else {
+            return tq.getResultList();
+        }
+
     }
 
     /**

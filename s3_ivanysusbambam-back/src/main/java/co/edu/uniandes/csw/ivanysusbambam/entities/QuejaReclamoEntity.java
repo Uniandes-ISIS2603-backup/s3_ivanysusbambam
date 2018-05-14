@@ -13,41 +13,49 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
+
 /**
  *
  * @author if.garcia y hd.castellanos
  */
 @Entity
-public class QuejaReclamoEntity  implements Serializable{
-    
+public class QuejaReclamoEntity implements Serializable {
+
+    /**
+     * Id de la queja/Reclamo
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    private String name;
-    
+
     /**
-     * indica si es queja o reclamo 
+     * Nombre de la queja/Reclamo
+     */
+    private String name;
+
+    /**
+     * indica si es queja o reclamo
      */
     private String tipo;
-    
+
     /**
-     * Indica la descripci[on de la queja o el reclamo 
+     * Indica la descripci[on de la queja o el reclamo
      */
     private String texto;
-    
+
     @PodamExclude
     @ManyToOne
     /**
-     * Atributo del cliente asociado a esta QuejaReclamo 
+     * Atributo del cliente asociado a esta QuejaReclamo
      */
-    private ClienteEntity cliente; 
-    
+    private ClienteEntity cliente;
+
+    /**
+     * Venta de la queja/Reclamo
+     */
     @PodamExclude
     @OneToOne
-    private VentaEntity venta ;
-
-    
+    private VentaEntity venta;
 
     /**
      * @return the texto
@@ -76,8 +84,6 @@ public class QuejaReclamoEntity  implements Serializable{
     public void setCliente(ClienteEntity cliente) {
         this.cliente = cliente;
     }
-    
-    
 
     /**
      * @return the tipo
@@ -121,18 +127,20 @@ public class QuejaReclamoEntity  implements Serializable{
         this.name = name;
     }
 
+    /**
+     * @return venta de la queja/Reclamo
+     */
     public VentaEntity getVenta() {
         return venta;
     }
 
+    /**
+     * Seta la venta de la queja/Reclamo
+     *
+     * @param venta venta de la queja/Reclamo
+     */
     public void setVenta(VentaEntity venta) {
         this.venta = venta;
     }
-    
-    
-    
-    
-    
-    
-    
+
 }

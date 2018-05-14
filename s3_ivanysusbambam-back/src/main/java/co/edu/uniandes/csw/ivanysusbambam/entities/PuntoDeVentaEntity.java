@@ -15,51 +15,94 @@ import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
+
 /**
  *
  * @author if.garcia
  */
 @Entity
-public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
-    
+public class PuntoDeVentaEntity extends BaseEntity implements Serializable {
+
+    /**
+     * Direcion del punto de venta
+     */
     private String direccion;
-    
+
+    /**
+     * Imagen del punto de venta
+     */
     @Lob
     private String imagen;
-    
+
+    /**
+     * Telefono del punto de venta
+     */
     @PodamStrategyValue(TelefonoStrategy.class)
     private Integer telefono;
-        
+
+    /**
+     * Vendedores del punto de venta
+     */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<VendedorEntity> vendedores;
-    
+
+    /**
+     * Compras del punto de venta
+     */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<CompraEntity> compras;
-    
+
+    /**
+     * Ventas del punto de venta
+     */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<VentaEntity> ventas;
-    
+
+    /**
+     * Automoviles del punto de venta
+     */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta",cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
     private List<AutomovilEntity> automoviles;
-    
-    public String getDireccion(){
+
+    /**
+     * @return Direccion del punto de venta
+     */
+    public String getDireccion() {
         return direccion;
     }
-    public void setDireccion(String direccion){
+
+    /**
+     * Setea la direccion del punto de venta a la dada por parametro
+     *
+     * @param direccion direccion del punto de venta
+     */
+    public void setDireccion(String direccion) {
         this.direccion = direccion;
     }
-    public Integer getTelefono(){
+
+    /**
+     * @return el telefono del punto de venta
+     */
+    public Integer getTelefono() {
         return telefono;
     }
-    
-    public void setTelefono(Integer telefono){
+
+    /**
+     * Setea el telefono del punto de venta al dado por parametro
+     *
+     * @param telefono telefono del punto de venta
+     */
+    public void setTelefono(Integer telefono) {
         this.telefono = telefono;
     }
-    
+
+    /**
+     * @return imagen del punto de venta
+     */
     public String getImagen() {
         return imagen;
     }
@@ -70,21 +113,21 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
     public void setImagen(String pImagen) {
         this.imagen = pImagen;
     }
-  
+
     /**
      * @return the vendedores
      */
-    public List<VendedorEntity> getVendedores(){
+    public List<VendedorEntity> getVendedores() {
         return vendedores;
     }
-    
-     /**
+
+    /**
      * @return the compras
      */
-    public List<CompraEntity> getCompras(){
+    public List<CompraEntity> getCompras() {
         return compras;
     }
- 
+
     /**
      * @return the ventas
      */
@@ -127,11 +170,22 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
         this.automoviles = automoviles;
     }
 
+    /**
+     * Hash code
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
-       return 7;
+        return 7;
     }
 
+    /**
+     * Metodo equals
+     *
+     * @param obj objeto a comparar
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -149,5 +203,5 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable{
         }
         return true;
     }
-    
+
 }

@@ -15,14 +15,20 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 
 /**
- *  
+ *
  * @author hd.castellanos
  */
 @Stateless
 public class VentaPersistence {
 
+    /**
+     * Constante para el logger
+     */
     private static final Logger LOGGER = Logger.getLogger(VentaPersistence.class.getName());
 
+    /**
+     * Atributo para el entity manager
+     */
     @PersistenceContext(unitName = "IvanysusbambamPU")
     protected EntityManager em;
 
@@ -59,19 +65,21 @@ public class VentaPersistence {
     }
 
     /**
-     * busca y actualiza la entidad de la venta dada por parametro 
+     * busca y actualiza la entidad de la venta dada por parametro
+     *
      * @param entity venta con la informacion que se desea actualizar
      * @return la venta actualizada
-     */ 
+     */
     public VentaEntity update(VentaEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando venta con id={0}", entity.getId());
         return em.merge(entity);
     }
 
     /**
-     * busca y elimina la entidad de la venta con el id dado por parametro
-     * dado por parametro
-     * @param id id de la venta que se desea eliminar 
+     * busca y elimina la entidad de la venta con el id dado por parametro dado
+     * por parametro
+     *
+     * @param id id de la venta que se desea eliminar
      */
     public void delete(Long id) {
         LOGGER.log(Level.INFO, "Borrando venta con id={0}", id);

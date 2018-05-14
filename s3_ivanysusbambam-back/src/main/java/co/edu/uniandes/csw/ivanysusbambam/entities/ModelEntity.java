@@ -14,15 +14,15 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 /**
  * Clase que representa un modelo en la persistencia y permite su serialización
+ *
  * @author Joseph Ortíz Moreno
  */
 @Entity
 public class ModelEntity extends BaseEntity implements Serializable {
-    
-      /**
+
+    /**
      * Representa el numero de puertas del vehículo
      */
     private Integer numeroPuertas;
@@ -35,95 +35,128 @@ public class ModelEntity extends BaseEntity implements Serializable {
      */
     private Integer cilindraje;
     /**
-     * Representa los centímetros cúbicos 
+     * Representa los centímetros cúbicos
      */
     private Double centCubicos;
-    
-    
-    @OneToMany(mappedBy = "model",cascade = CascadeType.ALL )
-    
+
+    /**
+     * Automoviles del modelo
+     */
+    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
     private List<AutomovilEntity> automoviles = new ArrayList<>();
-    
+
+    /**
+     * Marca del modelo
+     */
     @ManyToOne
     private MarcaEntity marca;
-    
+
     /**
      * Obtiene el número de puertas
+     *
      * @return Numero de puertas
      */
     public Integer getNumeroPuertas() {
         return numeroPuertas;
     }
+
     /**
-    * Actualiza el valor del número de puertas
-    * @param numeroPuertas nuevo valor 
-    */
+     * Actualiza el valor del número de puertas
+     *
+     * @param numeroPuertas nuevo valor
+     */
     public void setNumeroPuertas(Integer numeroPuertas) {
         this.numeroPuertas = numeroPuertas;
     }
-       /**
+
+    /**
      * Obtiene la transmision
+     *
      * @return Transmision
      */
     public String getTransmision() {
         return transmision;
     }
+
     /**
      * Actualiza el tipo de transmisión
+     *
      * @param transmision nuevo valor
      */
     public void setTransmision(String transmision) {
         this.transmision = transmision;
     }
-      /**
+
+    /**
      * Obtiene el cilindraje
+     *
      * @return Cilindraje
      */
     public Integer getCilindraje() {
         return cilindraje;
     }
+
     /**
      * Actualiza el valor del cilindraje
+     *
      * @param cilindraje nuevo valor
      */
     public void setCilindraje(Integer cilindraje) {
         this.cilindraje = cilindraje;
     }
+
     /**
      * Obtiene los centrimetros cubicos
+     *
      * @return Centimetros Cubicos
      */
     public Double getCentCubicos() {
         return centCubicos;
     }
+
     /**
      * Actualiza el valor de los centimetros cubicos
+     *
      * @param centCubicos nuevo valor
      */
     public void setCentCubicos(Double centCubicos) {
         this.centCubicos = centCubicos;
     }
-        /**
+
+    /**
      * Obtiene los automoviles
+     *
      * @return Automoviles
      */
     public List<AutomovilEntity> getAutomoviles() {
         return automoviles;
     }
-    
+
     /**
      * Actualiza el valor de los automoviles
+     *
      * @param nuevoAuto nueva lista de autos
      */
     public void setAutomoviles(List<AutomovilEntity> nuevoAuto) {
         this.automoviles = nuevoAuto;
     }
 
+    /**
+     * Hash code
+     *
+     * @return
+     */
     @Override
     public int hashCode() {
-       return 3;
+        return 3;
     }
 
+    /**
+     * Equals M
+     *
+     * @param obj objeto a comparar
+     * @return
+     */
     @Override
     public boolean equals(Object obj) {
         if (this == obj) {
@@ -141,8 +174,5 @@ public class ModelEntity extends BaseEntity implements Serializable {
         }
         return true;
     }
-   
-    
-    
-    
+
 }
