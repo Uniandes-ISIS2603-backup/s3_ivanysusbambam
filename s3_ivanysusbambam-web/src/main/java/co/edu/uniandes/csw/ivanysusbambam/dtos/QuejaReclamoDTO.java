@@ -156,7 +156,7 @@ public class QuejaReclamoDTO {
         entity.setName(this.name);
         entity.setTexto(this.texto);
         entity.setTipo(this.tipo);
-        entity.setCliente(entity.getCliente());
+        
 
         return entity;
     }

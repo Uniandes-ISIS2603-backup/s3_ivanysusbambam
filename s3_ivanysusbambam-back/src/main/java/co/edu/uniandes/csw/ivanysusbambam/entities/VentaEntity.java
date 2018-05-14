@@ -77,7 +77,7 @@ public class VentaEntity implements Serializable {
      * Atributo para la queja/Reclamo asociado a esta venta
      */
     @PodamExclude
-    @ManyToOne
+    @OneToOne
     private QuejaReclamoEntity quejaReclamo;
 
     /**
