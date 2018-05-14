@@ -96,6 +96,65 @@ public class ClienteDetailDTO extends ClienteDTO {
         //Constructor utilizado por JAX
     }
 
+     private void convertirProspectosDeCompra(ClienteEntity ce){
+         if (ce.getProspectosCompra() != null) {
+            prospectosCompra = new ArrayList<>();
+            for (ProspectoCompraEntity pc : ce.getProspectosCompra()) {
+                prospectosCompra.add(new ProspectoCompraDTO(pc));
+            }
+         }
+     }
+     
+     private void convertirCalificacionesTienda(ClienteEntity ce){
+         
+        if (ce.getCalificacionesTienda() != null) {
+            calificacionesTienda = new ArrayList<>();
+            for (CalificacionTiendaEntity ct : ce.getCalificacionesTienda()) {
+                calificacionesTienda.add(new CalificacionTiendaDTO(ct));
+            }
+        } 
+     }
+     
+     private void convertirQuejasReclamo(ClienteEntity ce){
+     
+        if (ce.getQuejasReclamos() != null) {
+            quejasReclamos = new ArrayList<>();
+            for (QuejaReclamoEntity qr : ce.getQuejasReclamos()) {
+                quejasReclamos.add(new QuejaReclamoDTO(qr));
+            }
+        }
+         
+     }
+     
+     private void convertirCompras(ClienteEntity ce){
+     
+        if (ce.getCompras() != null) {
+            compras = new ArrayList<>();
+            for (CompraEntity compe : ce.getCompras()) {
+                compras.add(new CompraDTO(compe));
+            }
+        }
+     }
+     
+     private void convertirVentas(ClienteEntity ce){
+        if (ce.getVentas() != null) {
+            ventas = new ArrayList<>();
+            for (VentaEntity ve : ce.getVentas()) {
+                ventas.add(new VentaDTO(ve));
+            }    
+        }
+     }
+     
+     private void convertirMediosDePago(ClienteEntity ce){
+     
+        if (ce.getMediosDePago() != null) {
+            mediosDePago = new ArrayList<>();
+            for (MedioDePagoEntity me : ce.getMediosDePago()) {
+                mediosDePago.add(new MedioDePagoDTO(me));
+            }
+        }
+     }
+     
      /**
       * COnstructor de un nuevo detailDTO con la informacion de la entidad
       * @param ce entidad con la informacion
@@ -103,42 +162,18 @@ public class ClienteDetailDTO extends ClienteDTO {
     public ClienteDetailDTO(ClienteEntity ce) {
         super(ce);
         if (ce != null) {
-            if (ce.getProspectosCompra() != null) {
-                prospectosCompra = new ArrayList<>();
-                for (ProspectoCompraEntity pc : ce.getProspectosCompra()) {
-                    prospectosCompra.add(new ProspectoCompraDTO(pc));
-                }}
+            
+            convertirProspectosDeCompra(ce);
 
-            if (ce.getCalificacionesTienda() != null) {
-                calificacionesTienda = new ArrayList<>();
-                for (CalificacionTiendaEntity ct : ce.getCalificacionesTienda()) {
-                    calificacionesTienda.add(new CalificacionTiendaDTO(ct));
-                }}
+            convertirCalificacionesTienda(ce);
 
-            if (ce.getQuejasReclamos() != null) {
-                quejasReclamos = new ArrayList<>();
-                for (QuejaReclamoEntity qr : ce.getQuejasReclamos()) {
-                    quejasReclamos.add(new QuejaReclamoDTO(qr));
-                }}
+            convertirQuejasReclamo(ce);
+            
+            convertirCompras(ce);
 
-            if (ce.getCompras() != null) {
-                compras = new ArrayList<>();
-                for (CompraEntity compe : ce.getCompras()) {
-                    compras.add(new CompraDTO(compe));
-                }}
+            convertirVentas(ce);
 
-            if (ce.getVentas() != null) {
-                ventas = new ArrayList<>();
-                for (VentaEntity ve : ce.getVentas()) {
-                    ventas.add(new VentaDTO(ve));
-                }    }
-
-            if (ce.getMediosDePago() != null) {
-                mediosDePago = new ArrayList<>();
-                for (MedioDePagoEntity me : ce.getMediosDePago()) {
-                    mediosDePago.add(new MedioDePagoDTO(me));
-                }
-            }
+            convertirMediosDePago(ce);
         }
     }
 
