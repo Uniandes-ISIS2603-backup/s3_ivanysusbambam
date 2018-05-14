@@ -2,12 +2,12 @@
  * Author:  if.garcia
  * Created: 3/05/2018
  */
+delete from quejaReclamoEntity;
 delete from ventaEntity;
 delete from compraEntity;
 delete from prospectoCompraEntity;
 delete from automovilEntity;
 delete from calificacionTiendaEntity;
-delete from quejaReclamoEntity;
 delete from vendedorEntity;
 delete from medioDePagoEntity;
 delete from modelEntity;
@@ -44,14 +44,17 @@ insert into PuntoDeVentaEntity(id, direccion, name, telefono) values (23, 'Cr 68
 insert into PuntoDeVentaEntity(id, direccion, name, telefono) values (24, 'Cr 7 - 132 -14', 'Michigan', 5544397);
 
 --calificaciones carro-
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (31, 'aaa', 'Pedro Pedraza', 4.5);
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (32, 'bbb', 'Isabella Izasa', 4.1);
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (33, 'ccc', 'Thomas Thombson', 4.7);
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (34, 'ddd', 'Camilo Cabrera', 4.3);
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (35, 'eee', 'Julia Jones', 4.4);
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (36, 'fff', 'Nathaly Norton', 3.9);
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (37, 'ggg', 'Nicolas Navarro', 4.7);
-insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (38, 'hhh', 'Alejandro Alzate', 4.5);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (30, 'abac', 'Pablo Robles', 4.8);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (31, 'abac', 'Pedro Pedraza', 4.5);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (32, 'abac', 'Isabella Izasa', 4.1);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (33, 'abac', 'Thomas Thombson', 4.7);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (34, 'abac', 'Camilo Cabrera', 4.3);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (35, 'abac', 'Julia Jones', 4.4);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (36, 'abac', 'Nathaly Norton', 3.9);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (37, 'abac', 'Nicolas Navarro', 4.7);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (38, 'abac', 'Alejandro Alzate', 4.5);
+insert into CalificacionCarroEntity(id, comentario, name, puntaje) values (39, 'abac', 'Pietro Cagliaghi', 5.0);
+
 
 --modelos--
 insert into ModelEntity(id, centcubicos, cilindraje, name, numeroPuertas, transmision, marca_id) values(411, 3200, 150, 'BMW 507', 2, 'mecanica', 11);
@@ -100,26 +103,26 @@ insert into VendedorEntity (nombre, carnetVendedor, cedula, imagen, puntoDeVenta
 insert into VendedorEntity (nombre, carnetVendedor, cedula, imagen, puntoDeVenta_id) values ('Arthur Conan Doyle', 2782, 7220671879, 'http://tnews.com.pe/wp-content/uploads/2016/12/entrevista231216_f2.jpg',24);
 
 --medios de pago--
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (1, 'CREDITO', 1);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (2, 'PAY_PAL', 2);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (3, 'CREDITO', 3);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (4, 'PSE', 4);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (5, 'PSE', 5);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (6, 'PSE', 6);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (7, 'PAY_PAL', 7);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (8, 'PSE', 8);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (9, 'PSE', 9);
-insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (10, 'PSE', 10);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (1012, 'CREDITO', 1);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (2013, 'PAY_PAL', 2);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (3014, 'CREDITO', 3);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (4015, 'PSE', 4);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (5016, 'PSE', 5);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (6017, 'PSE', 6);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (7018, 'PAY_PAL', 7);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (8019, 'PSE', 8);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (9111, 'PSE', 9);
+insert into MedioDePagoEntity (numero, tipo, cliente_cedula) values (1021, 'PSE', 10);
 
 --calificaciones tienda--
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (331, 'aaa', 'Michigan', 4.5, 1);
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (332, 'bbb', 'Florida', 4.1, 1);
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (333, 'ccc', 'Florida', 4.7, 2);
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (334, 'ddd', 'Los Ángeles', 4.3, 2);
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (335, 'eee', 'Michigan', 4.4, 2);
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (336, 'fff', 'Washington', 3.9, 2);
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (337, 'ggg', 'Michigano', 4.7, 2);
-insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (338, 'hhh', 'Alejandro Alzate', 4.5, 2);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (331, 'zxyz', 'Michigan', 4.5, 1);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (332, 'zxyz', 'Florida', 4.1, 1);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (333, 'zxyz', 'Florida', 4.7, 2);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (334, 'zxyz', 'Los Ángeles', 4.3, 2);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (335, 'zxyz', 'Michigan', 4.4, 2);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (336, 'zxyz', 'Washington', 3.9, 2);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (337, 'zxyz', 'Michigano', 4.7, 2);
+insert into CalificacionTiendaEntity(id, comentario, name, puntaje, cliente_cedula) values (338, 'zxyz', 'Alejandro Alzate', 4.5, 2);
 
 --automoviles--
 insert into AutomovilEntity (id, anio, chasis, kilometros, tipo, color, fechaListado, name, placa, valorListado, marca_id, model_id, puntoDeVenta_id, imagen) values (501, 1976, 1234, 100000, 'auto','Plateado', '11/06/2010', 'BMW 507 1', '861-PDI', 160000000, 11, 411, 21, 'https://1.bp.blogspot.com/-vzt9wxbU-tY/Wq0UPgzwQCI/AAAAAAABo5U/pgLggGmND1QraS6wSIeCcL8inQ1oCEHfACLcBGAs/s1600/AP3T3146.JPG');
@@ -188,16 +191,38 @@ insert into AutomovilEntity (id, anio, chasis, kilometros, tipo, color, fechaLis
 
 --prospectos de compra--
 insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(611, 'aaa', 543, 1, 1538);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(612, 'aaa', 563, 1, 5776);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(613, 'aaa', 521, 3, 2782);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(614, 'aaa', 508, 3, 6123);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(615, 'aaa', 541, 5, 6473);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(616, 'aaa', 529, 5, 9035);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(617, 'aaa', 554, 5, 1538);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(618, 'aaa', 544, 7, 5788);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(619, 'aaa', 528, 8, 5788);
-insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(610, 'aaa', 503, 10, 6813);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(612, 'bbb', 563, 1, 5776);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(613, 'ccc', 521, 3, 2782);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(614, 'ddd', 508, 3, 6123);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(615, 'eee', 541, 5, 6473);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(616, 'fff', 529, 5, 9035);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(617, 'ggg', 554, 5, 1538);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(618, 'hhh', 544, 7, 5788);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(619, 'iii', 528, 8, 5788);
+insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(610, 'jjj', 503, 10, 6813);
+
 
 --ventas--
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(711, 'abcd', 528, 2, 6017, 21, 1538, 31);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(712, 'abcd', 503, 3, 3014, 22, 9487, 32);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(713, 'abcd', 514, 4, 2013, 23, 5788, 33);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(714, 'abcd', 530, 6, 3014, 24, 5515, 34);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(715, 'abcd', 545, 7, 1012, 21, 5776, 35);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(716, 'abcd', 552, 7, 1012, 22, 4343, 36);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(717, 'abcd', 563, 8, 2013, 24, 2782, 37);
+
+--quejasReclamo--
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (811, 'dcba', 'uno de los rines del auto estaba dañado y nunca me lo notificaron', 'RECLAMO', 2, 711);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (812, 'dcba', 'el vendedor que me atendió me regó un cafe encima y nunca volvió', 'QUEJA', 6, 714);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (813, 'dcba', 'en el maletero del carro que compré apareció una bolsa con 50 g de cocaína', 'RECLAMO', 8, 717);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (814, 'dcba', 'el automovil que compré me fue entregado 15 dias después de la fecha en otro punto de venta', 'QUEJA', 7, 716);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (815, 'dcba', 'me fue confiscado el automovil por la policía local, debido a que era un carro robado', 'RECLAMO', 3, 712);
 
 --compras--
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(911, 1, 22, 9487, 537);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(912, 9, 23, 9433, 505);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(913, 5, 24, 6123, 548);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(914, 8, 21, 1538, 536);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(915, 7, 22, 6473, 541);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(916, 1, 23, 9487, 520);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(917, 2, 24, 9487, 539);

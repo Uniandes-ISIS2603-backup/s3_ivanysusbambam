@@ -73,12 +73,6 @@ public class VentaEntity implements Serializable {
     @ManyToOne
     private AutomovilEntity automovil;
 
-    /**
-     * Atributo para la queja/Reclamo asociado a esta venta
-     */
-    @PodamExclude
-    @OneToOne
-    private QuejaReclamoEntity quejaReclamo;
 
     /**
      * @return the cliente
@@ -163,14 +157,6 @@ public class VentaEntity implements Serializable {
     public void setAutomovil(AutomovilEntity automovil) {
         this.automovil = automovil;
 
-    }
-
-    public QuejaReclamoEntity getQuejaReclamo() {
-        return quejaReclamo;
-    }
-
-    public void setQuejaReclamo(QuejaReclamoEntity quejaReclamo) {
-        this.quejaReclamo = quejaReclamo;
     }
 
     public Long getId() {
