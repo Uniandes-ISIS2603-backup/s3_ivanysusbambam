@@ -6,6 +6,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,20 +43,6 @@ public class MarcaPersistence {
     public MarcaEntity find(Long id) {
         LOGGER.log(Level.INFO, "Buscando marca");
         return em.find(MarcaEntity.class, id);
-    }
-
-    /**
-     * Busca una marca por su nombre
-     *
-     * @param pNombre nombre de la marca a busacr
-     * @return La marca con el nombre dado por parametro
-     */
-    public MarcaEntity findByNombre(String pNombre) {
-        LOGGER.log(Level.INFO, "Buscando marca con nombre ={0}", pNombre);
-        TypedQuery<MarcaEntity> q = em.createQuery("SELECT marca from MarcaEntity marca where marca.name = :pNombre", MarcaEntity.class);
-        q.setParameter("name", pNombre);
-
-        return q.getSingleResult();
     }
 
     /**

@@ -6,9 +6,12 @@
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.MarcaEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
+
 import java.util.ArrayList;
 import java.util.List;
-import org.jboss.arquillian.container.test.api.Deployment;
+
 import org.jboss.arquillian.junit.Arquillian;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
@@ -31,7 +34,6 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class AutomovilPersistenceTest {
 
-    
     /**
      *
      * @return Devuelve el jar que Arquillian va a desplegar en el Glassfish
@@ -47,10 +49,10 @@ public class AutomovilPersistenceTest {
                 .addAsManifestResource("META-INF/persistence.xml", "persistence.xml")
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
-    
+
     /**
-     * Inyeccion de la dependencia a la clase AutomovilPersistence cuyos
-     * metodos se van a probar.
+     * Inyeccion de la dependencia a la clase AutomovilPersistence cuyos metodos
+     * se van a probar.
      */
     @Inject
     private AutomovilPersistence automovilPersistence;
@@ -68,7 +70,7 @@ public class AutomovilPersistenceTest {
      */
     @Inject
     UserTransaction utx;
-    
+
     /**
      * Configuracion inicial de la prueba.
      *
@@ -91,21 +93,34 @@ public class AutomovilPersistenceTest {
             }
         }
     }
-/**
+
+    /**
      * Limpia las tablas que estan implicadas en la prueba.
      *
      *
      */
     private void clearData() {
+        em.createQuery("delete from MarcaEntity").executeUpdate();
+        em.createQuery("delete from ModelEntity").executeUpdate();
         em.createQuery("delete from AutomovilEntity").executeUpdate();
     }
 
     /**
-     *
+     * lista de datos de automoviles
      */
     private List<AutomovilEntity> data = new ArrayList<AutomovilEntity>();
 
-     /**
+    /**
+     * data de la marca
+     */
+    private List<MarcaEntity> marcaData = new ArrayList<MarcaEntity>();
+
+    /**
+     * Data del modelo
+     */
+    private List<ModelEntity> modelData = new ArrayList<ModelEntity>();
+
+    /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
      *
@@ -115,11 +130,17 @@ public class AutomovilPersistenceTest {
         PodamFactory factory = new PodamFactoryImpl();
         for (int i = 0; i < 3; i++) {
             AutomovilEntity entity = factory.manufacturePojo(AutomovilEntity.class);
-
+            MarcaEntity marca = factory.manufacturePojo(MarcaEntity.class);
+            ModelEntity model = factory.manufacturePojo(ModelEntity.class);
             em.persist(entity);
+            em.persist(marca);
+
             data.add(entity);
+            marcaData.add(marca);
+            modelData.add(model);
         }
     }
+
     /**
      * Prueba para crear un automovil.
      *
@@ -136,10 +157,9 @@ public class AutomovilPersistenceTest {
         AutomovilEntity entity = em.find(AutomovilEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getPlaca(), entity.getPlaca());
-        
+
     }
-    
-    
+
     /**
      * Prueba para consultar la lista de automoviles.
      *
@@ -159,8 +179,8 @@ public class AutomovilPersistenceTest {
             Assert.assertTrue(found);
         }
     }
-    
-     /**
+
+    /**
      * Prueba para consultar un automovil.
      *
      *
@@ -175,7 +195,123 @@ public class AutomovilPersistenceTest {
 
         Assert.assertEquals(entity.getChasis(), newEntity.getChasis());
     }
-    
+
+    /**
+     * Prueba para consultar automoviles por marca
+     */
+    @Test
+    public void getAutomovilMarcaTest() {
+        AutomovilEntity entity = data.get(0);
+        entity.setMarca(marcaData.get(0));
+        entity.getMarca().setName("marca");
+
+        List<AutomovilEntity> newEntity = automovilPersistence.findByMarca(entity.getMarca().getName());
+        Assert.assertNotNull(newEntity);
+
+    }
+
+    /**
+     * Prueba para consultar automoviles por modelo
+     */
+    @Test
+    public void getAutomovilModelTest() {
+        AutomovilEntity entity = data.get(0);
+        entity.setModel(modelData.get(0));
+        entity.getModel().setName("model");
+
+        List<AutomovilEntity> newEntity = automovilPersistence.findByModelo(entity.getModel().getName());
+        Assert.assertNotNull(newEntity);
+
+    }
+
+    /**
+     * Prueba para consultar automoviles por Color
+     */
+    @Test
+    public void getAutomovilColorTest() {
+        AutomovilEntity entity = data.get(0);
+        entity.setColor("Amarillo");
+
+        List<AutomovilEntity> newEntity = automovilPersistence.findByModelo(entity.getColor());
+        Assert.assertNotNull(newEntity);
+
+    }
+
+    /**
+     * Prueba para consultar los colores de los automoviles
+     */
+    @Test
+    public void getAutomovilColoresTest() {
+        AutomovilEntity entity = data.get(0);
+        entity.setColor("Amarillo");
+
+        List<String> colores = automovilPersistence.listColores();
+
+        Assert.assertNotNull(colores);
+
+    }
+
+    /**
+     * Prueba para consultar los automoviles con cierta placa
+     */
+    @Test
+    public void getAutomovilPlacaTest() {
+        AutomovilEntity entity = data.get(0);
+        entity.setPlaca("ABC-123");
+
+        AutomovilEntity auto = automovilPersistence.findByPlate(entity.getPlaca());
+
+        Assert.assertNull(auto);
+
+    }
+
+    /**
+     * Prueba para consultar los automoviles con cierto numero de chasis
+     */
+    @Test
+    public void getAutomovilChasisTest() {
+        AutomovilEntity entity = data.get(0);
+        entity.setChasis(2546498);
+
+        AutomovilEntity auto = automovilPersistence.findBychasis(entity.getChasis());
+
+        Assert.assertNull(auto);
+
+    }
+
+    /**
+     * Prueba para consultar los automoviles en cierto rango de anios
+     */
+    @Test
+    public void getAutomovilRangoAniosTest() {
+        AutomovilEntity entity = data.get(0);
+        AutomovilEntity entity2 = data.get(1);
+        entity.setAnio(1);
+        entity2.setAnio(2);
+        List<AutomovilEntity> autos = automovilPersistence.findRangoAnios(entity.getAnio(), entity2.getAnio());
+
+        Assert.assertNotNull(autos);
+
+    }
+
+    /**
+     * Prueba para consultar los automoviles en cierto rango de precios
+     */
+    @Test
+    public void getAutomovilRangoPreciosTest() {
+        AutomovilEntity entity = data.get(0);
+        AutomovilEntity entity2 = data.get(1);
+        entity.setValorListado(20.0);
+        entity2.setValorListado(40.0);
+        Integer precio = entity.getValorListado().intValue();
+        Integer precio2 = entity2.getValorListado().intValue();
+        List<AutomovilEntity> autos = automovilPersistence.findRangoPrecios(precio, precio2);
+
+        Assert.assertNotNull(autos);
+
+    }
+
+   
     /**
      * Prueba para eliminar un automovil.
      *
@@ -188,9 +324,7 @@ public class AutomovilPersistenceTest {
         AutomovilEntity deleted = em.find(AutomovilEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    
-    
-    
+
     /**
      * Prueba para actualizar un automovil.
      *
@@ -211,9 +345,6 @@ public class AutomovilPersistenceTest {
         Assert.assertEquals(newEntity.getPlaca(), resp.getPlaca());
         Assert.assertEquals(newEntity.getColor(), resp.getColor());
         Assert.assertEquals(newEntity.getChasis(), resp.getChasis());
-        }
+    }
 
-
-
-    
 }

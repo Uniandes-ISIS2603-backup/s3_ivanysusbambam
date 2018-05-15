@@ -10,18 +10,16 @@ import co.edu.uniandes.csw.ivanysusbambam.ejb.MedioDePagoLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
-import co.edu.uniandes.csw.ivanysusbambam.persistence.ClientePersistence;
+
 import co.edu.uniandes.csw.ivanysusbambam.persistence.MedioDePagoPersistence;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.UserTransaction;
-import javax.validation.constraints.AssertFalse;
-import org.hibernate.validator.cfg.defs.AssertTrueDef;
+
 import org.jboss.arquillian.container.test.api.Deployment;
 import org.jboss.arquillian.junit.Arquillian;
 import org.jboss.shrinkwrap.api.ShrinkWrap;
@@ -40,6 +38,9 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class MedioDePagoLogicTest {
 
+    /**
+     * Atributo para el podam factory
+     */
     private PodamFactory factory = new PodamFactoryImpl();
 
     /**
@@ -59,18 +60,31 @@ public class MedioDePagoLogicTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
+    /**
+     * Atributo para la logica de medio de pago
+     */
     @Inject
     private MedioDePagoLogic mdpl;
+    /**
+     * Atributo para el entityManager
+     */
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Atributo para el userTransaction
+     */
     @Inject
     private UserTransaction utx;
 
+    /**
+     * Atributo para la entidad de cliente
+     */
     private ClienteEntity cliente;
-    
-    
 
+    /**
+     * Configura el escenario de prueba
+     */
     @Before
     public void configTest() {
         try {
@@ -89,28 +103,37 @@ public class MedioDePagoLogicTest {
         }
     }
 
+    /**
+     * Metodo para clear data
+     */
     private void clearData() {
         em.createQuery("delete from MedioDePagoEntity").executeUpdate();
     }
 
+    /**
+     * Data del medio de pago
+     */
     private List<MedioDePagoEntity> data = new ArrayList<>();
 
+    /**
+     * Metodo para insertar data
+     */
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-
+            
             System.out.println("INSERTING DATA");
             MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
-
+            
             try {
-
+                
                 entity.setNumero((long) i + 1);
                 cliente = factory.manufacturePojo(ClienteEntity.class);
                 em.persist(cliente);
                 entity.setCliente(cliente);
                 mdpl.createMedioDePago(entity);
-
+                
                 data.add(entity);
-
+                
                 System.out.println("DATA INSERTED");
             } catch (Exception e) {
                 i--;
@@ -120,6 +143,9 @@ public class MedioDePagoLogicTest {
         System.out.println("DATA SIZE AFT INS: " + data.size());
     }
 
+    /**
+     * Metodo para probar el metodo create de medio de pago
+     */
     @Test
     public void createMedioDePagoTest() {
         MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
@@ -127,52 +153,50 @@ public class MedioDePagoLogicTest {
         try {
             entity.setCliente(cliente);
             MedioDePagoEntity result = mdpl.createMedioDePago(entity);
-             Assert.assertNotNull(result);
-             
+            Assert.assertNotNull(result);
             
-        } 
-        catch (BusinessLogicException exepcion) {
-            ex=true;
+        } catch (BusinessLogicException exepcion) {
+            ex = true;
         }
-        if(em.find(ClienteEntity.class, cliente.getCedula())!=null && entity.validarTipoMedioDePago())
-        {
-            Assert.assertFalse(ex);
-        }
-        else
-        {
+        if (!entity.validarTipoMedioDePago()) {
             Assert.assertTrue(ex);
         }
+        if (em.find(ClienteEntity.class, cliente.getCedula()) != null && entity.validarTipoMedioDePago()) {
+            Assert.assertFalse(ex);
+        } else {
+            Assert.assertTrue(ex);
+        }
+        
+    }
 
-    }
+    /**
+     * Metodo para probar el Get de medios de pago
+     */
     @Test
-    public void getMedioDePagoTest()
-    {
-          MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
-         
-            boolean ex = false;
-            try
-            {
-                 entity.setCliente(cliente);
-             mdpl.createMedioDePago(entity);
-             MedioDePagoEntity result= mdpl.findMedioDePago(entity.getNumero());
-             Assert.assertNotNull(result);
-             
-            }
-            catch(BusinessLogicException excep)
-            {
-                ex=true;
-            }
-            if(entity.getNumero()==null)
-            {
-                Assert.assertTrue(ex);
-            }
-            else
-            {
-                Assert.assertFalse(ex);
-            }
+    public void getMedioDePagoTest() {
+        MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
+        
+        boolean ex = false;
+        try {
+            entity.setCliente(cliente);
+            mdpl.createMedioDePago(entity);
+            MedioDePagoEntity result = mdpl.findMedioDePago(entity.getNumero());
+            Assert.assertNotNull(result);
             
+        } catch (BusinessLogicException excep) {
+            ex = true;
+        }
+        if (entity.getNumero() == null) {
+            Assert.assertTrue(ex);
+        } else {
+            Assert.assertFalse(ex);
+        }
+        
     }
-    
+
+    /**
+     * Metodo para probar el delete de medio de pago
+     */
     @Test
     public void deleteMedioDePagoTest() {
         MedioDePagoEntity entity = data.get(0);
@@ -185,22 +209,28 @@ public class MedioDePagoLogicTest {
             Assert.fail();
         }
     }
-    
+
+    /**
+     * Metodo para probar el getAll de medios de pagos
+     */
     @Test
     public void getMediosDePagoTest() {
         List<MedioDePagoEntity> list = mdpl.findAll();
         Assert.assertEquals(data.size(), list.size());
-        for(MedioDePagoEntity entity : list) {
+        for (MedioDePagoEntity entity : list) {
             boolean found = false;
-            for(MedioDePagoEntity storedEntity : data) {
-                if(entity.getNumero().equals(storedEntity.getNumero())) {
+            for (MedioDePagoEntity storedEntity : data) {
+                if (entity.getNumero().equals(storedEntity.getNumero())) {
                     found = true;
                 }
             }
             Assert.assertTrue(found);
         }
     }
-    
+
+    /**
+     * metodo para probar el actualizar de medio de pago
+     */
     @Test
     public void updateMedioDePagoTest() {
         MedioDePagoEntity entity = data.get(0);
@@ -217,8 +247,16 @@ public class MedioDePagoLogicTest {
         } catch (BusinessLogicException ex) {
             Assert.fail();
         }
-                
+        
+    }
+    
+    @Test    
+    public void compararMedioDePago() {
+        
+        MedioDePagoEntity entity = data.get(0);
+        MedioDePagoEntity entity1 = data.get(0);
+        boolean resp = entity.compararMedioDePago(entity1);
+        Assert.assertTrue(resp);
+        
     }
 }
-
-
