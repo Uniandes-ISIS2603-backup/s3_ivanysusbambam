@@ -8,7 +8,6 @@ package co.edu.uniandes.csw.ivanysusbambam.entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -199,6 +198,28 @@ public class ModelEntity  implements Serializable {
             return this.getId().hashCode();
         }
         return super.hashCode();
+    }
+    
+    
+    /**
+     * Equals
+     * @param obj objeto con el que se compara
+     * @return true si son equivalentes
+     */
+    @Override
+    public boolean equals(Object obj){
+        
+        if (obj == null) {
+            return false;
+        }
+        if (!(obj instanceof ModelEntity)) {
+            return false;
+        }
+
+        if (this.getId() != null && ((ModelEntity) obj).getId() != null) {
+            return this.getId().equals(((ModelEntity) obj).getId());
+        }
+        return super.equals(obj);
     }
 
     

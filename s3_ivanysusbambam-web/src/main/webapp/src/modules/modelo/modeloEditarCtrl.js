@@ -15,7 +15,6 @@
 
 
             $scope.editarModelo = function () {
-                console.log($scope.modelo.referencia);
                 $http.put(address, $scope.modelo).then(function (response) {
 
                     $state.go("listModelo", {}, {

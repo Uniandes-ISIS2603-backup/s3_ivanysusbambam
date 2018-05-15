@@ -24,9 +24,6 @@
         
          $scope.crearCompra = function(){
    
-            
-            console.log($scope.data);
-            
             $http.post(compraContext, $scope.data).then(function(response){
                 $state.go("AdminCompraGetAll",{} ,{reload:true});
             });
