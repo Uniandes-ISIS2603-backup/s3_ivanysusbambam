@@ -61,16 +61,11 @@ public class AutomovilLogic {
     private CompraPersistence compraPersistence;
 
     /**
-     * Crea una nueva entidad del automovil y verifica las reglas de negocio
-     *
-     * @param automovilEntity entidad de automovil que se quiere crear
-     * @return la entidad del automovil que se creo
-     * @throws BusinessLogicException si no se cumple las reglas de negocio
-     * necesarias para crear el automovil
+     * Método privado para reducir complejidad ciclomática e createAutomovil
+     * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
+     * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
      */
-    public AutomovilEntity createAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
-        LOGGER.info("Inicia proceso de creación de automovil");
-
+    private void verificacionesAuto1(AutomovilEntity automovilEntity) throws BusinessLogicException{
         if (!verificarPlaca(automovilEntity.getPlaca())) {
             throw new BusinessLogicException("El formato de a placa del automovil no es valido");
         }
@@ -98,6 +93,16 @@ public class AutomovilLogic {
         if (automovilEntity.getMarca().getId() == null) {
             throw new BusinessLogicException("el id de la marca es null ");
         }
+    }
+    
+    /**
+     * Método privado para reducir complejidad ciclomática e createAutomovil
+     * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
+     * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
+     */
+    private void verificacionesAuto2(AutomovilEntity automovilEntity)throws BusinessLogicException{
+    
+        
         // revisa que el punto de venta y su id no sea null
         if (automovilEntity.getPuntoDeVenta() == null) {
             throw new BusinessLogicException("el punto de venta es nulo");
@@ -105,7 +110,7 @@ public class AutomovilLogic {
         if (automovilEntity.getPuntoDeVenta().getId() == null) {
             throw new BusinessLogicException("el id del punto de venta es null ");
         }
-
+        
         if (puntoPersistence.find(automovilEntity.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos");
         }
@@ -121,6 +126,25 @@ public class AutomovilLogic {
         if (compraPersistence.find(automovilEntity.getCompra().getIdCompra()) == null) {
             throw new BusinessLogicException("la compra asociada a este automovil no existe ");
         }
+        
+    }
+        
+        
+    
+    /**
+     * Crea una nueva entidad del automovil y verifica las reglas de negocio
+     *
+     * @param automovilEntity entidad de automovil que se quiere crear
+     * @return la entidad del automovil que se creo
+     * @throws BusinessLogicException si no se cumple las reglas de negocio
+     * necesarias para crear el automovil
+     */
+    public AutomovilEntity createAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
+        LOGGER.info("Inicia proceso de creación de automovil");
+
+        verificacionesAuto1(automovilEntity);
+
+        verificacionesAuto2(automovilEntity);
 
         // Invoca la persistencia para crear el automovil 
         persistence.create(automovilEntity);
@@ -155,19 +179,10 @@ public class AutomovilLogic {
     }
 
     /**
-     * Actualiza un automovil que ya existe en la persistencia de automovil, y
-     * verifica que se sigan cumpliendo las reglas de negocio
-     *
-     * @param automovilEntity entidad con la informacion para actualizar
-     * @return la entidad del automovil actualizada
-     * @throws BusinessLogicException si se incumple alguna regla de negocio
+     * Método privado para reducir complejidad ciclomática de updateAutomovil
+     * @param automovilEntity automovil sobre el cuál se harán las verificaciones
      */
-    public AutomovilEntity updateAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
-
-        if (automovilEntity == null) {
-            throw new BusinessLogicException("El Automovil a actualizar  no debe ser null");
-        }
-
+    private void verificacionInfoConsistente(AutomovilEntity automovilEntity) throws BusinessLogicException{
         AutomovilEntity newAutoEntity = persistence.find(automovilEntity.getId());
         if (newAutoEntity == null) {
             throw new BusinessLogicException("No existe el automovil que se quiere actualizar");
@@ -186,6 +201,25 @@ public class AutomovilLogic {
         if (automovilEntity.getCompra() == null || newAutoEntity.compararCompra(automovilEntity.getCompra()) != 0) {
             throw new BusinessLogicException("no se puede cambiar la compra ");
         }
+    }
+    
+    
+    /**
+     * Actualiza un automovil que ya existe en la persistencia de automovil, y
+     * verifica que se sigan cumpliendo las reglas de negocio
+     *
+     * @param automovilEntity entidad con la informacion para actualizar
+     * @return la entidad del automovil actualizada
+     * @throws BusinessLogicException si se incumple alguna regla de negocio
+     */
+    public AutomovilEntity updateAutomovil(AutomovilEntity automovilEntity) throws BusinessLogicException {
+
+        if (automovilEntity == null) {
+            throw new BusinessLogicException("El Automovil a actualizar  no debe ser null");
+        }
+
+        verificacionInfoConsistente(automovilEntity);
+        
         return persistence.update(automovilEntity);
     }
 
@@ -365,6 +399,58 @@ public class AutomovilLogic {
         }
     }
 
+    
+    /**
+     * Método auxiliar para reducir complejidad ciclomática. 
+     * Verifica que las parejas de la búsqueda vengan o ambas null o ambas not null
+     * @param kilometrajeMin cota inferior del rango de kilometraje
+     * @param kilometrajeMax cota superior del rango de kilometraje.
+     * @param precioMin cota inferior del rango de precios.
+     * @param precioMax cota superior del rango de precios.
+     * @param anioMin cota inferior del rango de años.
+     * @param anioMax cota superior del rango de años.
+     * @throws BusinessLogicException si en alguna de las parejas (x,y) uno de los valores (x==null) no es igual a (y==null)
+     */
+    private void verificarConsistenciaParejas(Integer kilometrajeMin, Integer kilometrajeMax, Integer precioMax, Integer precioMin, Integer anioMax, Integer anioMin) throws BusinessLogicException{
+        
+        if ((kilometrajeMin == null) != (kilometrajeMax == null)) {
+            throw new BusinessLogicException("Para la pareja kilometrajeMin/kilometrajeMax ambos valores deben ser null o ambos deben no serlo.");
+        }
+        
+        if ((precioMin == null )!= (precioMax == null)) {
+            throw new BusinessLogicException("Para la pareja precioMin/precioMax ambos valores deben ser null o ambos deben no serlo.");
+        }
+
+        if ((anioMax == null) != (anioMin == null)) {
+            throw new BusinessLogicException("Para la pareja anioMin/anioMax ambos valores deben ser null o ambos deben no serlo.");
+        }
+        
+    }
+    
+    /**
+     * Método auxiliar para reducir complejidad ciclomática 
+     * @param kilometrajeMin cota inferior del rango de kilometraje
+     * @param kilometrajeMax cota superior del rango de kilometraje.
+     * @param precioMin cota inferior del rango de precios.
+     * @param precioMax cota superior del rango de precios.
+     * @param anioMin cota inferior del rango de años.
+     * @param anioMax cota superior del rango de años.
+     * @throws BusinessLogicException si la cota superior de alguno de los rangos es menor a la cota inferior del mismo. 
+     */
+    private void verificarConsistenciaRangos(Integer precioMax, Integer precioMin, Integer anioMax, Integer anioMin, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException{
+    
+        if (bothNotNull(precioMax, precioMin) && precioMax < precioMin) {
+            throw new BusinessLogicException("El precio máximo debe ser mayor al precio mínimo");
+        }
+        if (bothNotNull(anioMax, anioMin) && anioMax < anioMin) {
+            throw new BusinessLogicException("El año máximo debe ser mayor al año mínimo");
+        }
+        
+        if(bothNotNull(kilometrajeMin, kilometrajeMax) && kilometrajeMax < kilometrajeMin){
+            throw new BusinessLogicException("El kilometraje máximo debe ser mayor al kilometraje mínimo");
+        }
+    }
+    
     /**
      * Búsqueda maestra que incluye todos los parámetros disponibles en mi
      * automóvil
@@ -385,28 +471,18 @@ public class AutomovilLogic {
      */
     public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
 
-        if ((kilometrajeMin == null) != (kilometrajeMax == null)) {
-            throw new BusinessLogicException("La pareja kilometrajeMin/kilometrajeMax debe ir junta");
-        }
-
-        if (precioMin == null && precioMax == null && anioMin == null && anioMax == null && marca == null && modelo == null && color == null) {
+        //Para que sonar no moleste con número de operadores lógicos.
+        boolean left = precioMin == null && precioMax == null && anioMin == null;
+        boolean right = anioMax == null && marca == null && modelo == null;
+        
+        if ( left && right && color == null) {
             throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
         }
-
-        if ((precioMax != null && precioMin == null) || (precioMin != null && precioMax == null)) {
-            throw new BusinessLogicException("La pareja precioMin/precioMax debe ir junta");
-        }
-
-        if ((anioMin != null && anioMax == null) || (anioMax != null && anioMin == null)) {
-            throw new BusinessLogicException("La pareja anioMin/anioMax debe ir junta");
-        }
-
-        if (bothNotNull(precioMax, precioMin) && precioMax < precioMin) {
-            throw new BusinessLogicException("El precio máximo debe ser mayor al precio mínimo");
-        }
-        if (bothNotNull(anioMax, anioMin) && anioMax < anioMin) {
-            throw new BusinessLogicException("El año máximo debe ser mayor al año mínimo");
-        }
+        
+        verificarConsistenciaParejas(kilometrajeMin, kilometrajeMax, precioMax, precioMin, anioMax, anioMin);
+        
+        verificarConsistenciaRangos(precioMax, precioMin, anioMax, anioMin, kilometrajeMin, kilometrajeMax);
+        
         return persistence.masterSearch(tipoAuto, precioMin, precioMax, anioMin, anioMax, marca, modelo, color, kilometrajeMin, kilometrajeMax);
     }
 

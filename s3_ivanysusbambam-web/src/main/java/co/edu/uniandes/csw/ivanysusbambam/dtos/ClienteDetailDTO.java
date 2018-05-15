@@ -96,6 +96,11 @@ public class ClienteDetailDTO extends ClienteDTO {
         //Constructor utilizado por JAX
     }
 
+     
+     /**
+      * Método privado para reducir complejidad ciclomática del constructor.
+      * @param ce cliente entity del que se extraen los prospectos de compra.
+      */
      private void convertirProspectosDeCompra(ClienteEntity ce){
          if (ce.getProspectosCompra() != null) {
             prospectosCompra = new ArrayList<>();
@@ -105,6 +110,11 @@ public class ClienteDetailDTO extends ClienteDTO {
          }
      }
      
+     
+     /**
+      * Método privado para reducir complejidad ciclomática del constructor.
+      * @param ce cliente entity del que se extraen las calificaciones de la tienda.
+      */
      private void convertirCalificacionesTienda(ClienteEntity ce){
          
         if (ce.getCalificacionesTienda() != null) {
@@ -115,6 +125,12 @@ public class ClienteDetailDTO extends ClienteDTO {
         } 
      }
      
+     
+     
+     /**
+      * Método privado para reducir complejidad ciclomática del constructor.
+      * @param ce cliente entity del que se extraen las quejasReclamos.
+      */
      private void convertirQuejasReclamo(ClienteEntity ce){
      
         if (ce.getQuejasReclamos() != null) {
@@ -126,6 +142,12 @@ public class ClienteDetailDTO extends ClienteDTO {
          
      }
      
+     
+     
+     /**
+      * Método privado para reducir complejidad ciclomática del constructor.
+      * @param ce cliente entity del que se extraen las compras.
+      */
      private void convertirCompras(ClienteEntity ce){
      
         if (ce.getCompras() != null) {
@@ -136,6 +158,11 @@ public class ClienteDetailDTO extends ClienteDTO {
         }
      }
      
+     
+     /**
+      * Método privado para reducir complejidad ciclomática del constructor.
+      * @param ce cliente entity del que se extraen las ventas.
+      */
      private void convertirVentas(ClienteEntity ce){
         if (ce.getVentas() != null) {
             ventas = new ArrayList<>();
@@ -145,6 +172,11 @@ public class ClienteDetailDTO extends ClienteDTO {
         }
      }
      
+     
+     /**
+      * Método privado para reducir complejidad ciclomática del constructor.
+      * @param ce cliente entity del que se extraen los métodos de pago.
+      */
      private void convertirMediosDePago(ClienteEntity ce){
      
         if (ce.getMediosDePago() != null) {
@@ -177,14 +209,13 @@ public class ClienteDetailDTO extends ClienteDTO {
         }
     }
 
+    
+    
     /**
-     * Crea una nueva entidad con la informaion del detailDTO
-     * @return 
+     * Método auxiliar del toEntity para reducir complejidad ciclomática
+     * @param ce cliente entity al que se le asignarán los prospectos de compra.
      */
-    @Override
-    public ClienteEntity toEntity() {
-        ClienteEntity ce = super.toEntity();
-
+    private void asignarProspectosDeCompra(ClienteEntity ce){
         if (this.getProspectosCompra() != null) {
             List<ProspectoCompraEntity> list = new ArrayList<>();
             for (ProspectoCompraDTO pc : prospectosCompra) {
@@ -192,7 +223,15 @@ public class ClienteDetailDTO extends ClienteDTO {
             }
             ce.setProspectosCompra(list);
         }
+    }
 
+    
+    /**
+     * Método auxiliar del toEntity para reducir complejidad ciclomática
+     * @param ce cliente entity al que se le asignarán las calificaciones de la tienda.
+     */
+    private void asignarCalificacionesTienda(ClienteEntity ce){
+        
         if (this.getCalificacionesTienda() != null) {
             List<CalificacionTiendaEntity> list = new ArrayList<>();
             for (CalificacionTiendaDTO ct : calificacionesTienda) {
@@ -200,6 +239,14 @@ public class ClienteDetailDTO extends ClienteDTO {
             }
             ce.setCalificacionesTienda(list);
         }
+    }
+    
+    
+    /**
+     * Método auxiliar del toEntity para reducir complejidad ciclomática
+     * @param ce cliente entity al que se le asignarán las quejasReclamos.
+     */
+    private void asignarQuejasReclamos(ClienteEntity ce){
         
         if(this.getQuejasReclamos() != null){
             List<QuejaReclamoEntity> list = new ArrayList<>();
@@ -208,7 +255,14 @@ public class ClienteDetailDTO extends ClienteDTO {
             }
             ce.setQuejasReclamos(list);
         }
-        
+    }
+    
+    
+    /**
+     * Método auxiliar del toEntity para reducir complejidad ciclomática
+     * @param ce cliente entity al que se le asignarán las compras.
+     */
+    private void asignarCompras(ClienteEntity ce){
         if(this.getCompras() != null){
             List<CompraEntity> list = new ArrayList<>();
             for(CompraDTO ct : compras){
@@ -216,7 +270,13 @@ public class ClienteDetailDTO extends ClienteDTO {
             }
             ce.setCompras(list);
         }
-        
+    }
+    
+    /**
+     * Método auxiliar del toEntity para reducir complejidad ciclomática
+     * @param ce cliente entity al que se le asignarán las ventas.
+     */
+    private void asignarVentas(ClienteEntity ce){
         if (this.getVentas() != null) {
             List<VentaEntity> list = new ArrayList<>();
             for (VentaDTO ct : ventas) {
@@ -224,7 +284,14 @@ public class ClienteDetailDTO extends ClienteDTO {
             }
             ce.setVentas(list);
         }
-
+    }
+    
+    /**
+     * Método auxiliar del toEntity para reducir complejidad ciclomática
+     * @param ce cliente entity al que se le asignarán los medios de pago.
+     */
+    private void asignarMediosDePago(ClienteEntity ce){
+    
         if(this.getMediosDePago() != null){
             List<MedioDePagoEntity> list = new ArrayList<>();
             for(MedioDePagoDTO ct : mediosDePago){
@@ -232,6 +299,27 @@ public class ClienteDetailDTO extends ClienteDTO {
             }
             ce.setMediosDePago(list);
         }
+    }
+    
+    /**
+     * Crea una nueva entidad con la informaion del detailDTO
+     * @return 
+     */
+    @Override
+    public ClienteEntity toEntity() {
+        ClienteEntity ce = super.toEntity();
+
+        asignarProspectosDeCompra(ce);
+
+        asignarCalificacionesTienda(ce);
+        
+        asignarQuejasReclamos(ce);
+        
+        asignarCompras(ce);
+        
+        asignarVentas(ce);
+
+        asignarMediosDePago(ce);
         
         return ce;
     }
