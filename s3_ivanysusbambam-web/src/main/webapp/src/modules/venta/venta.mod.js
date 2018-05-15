@@ -34,15 +34,17 @@
                     controllerAs: "ctrl"
                 }
             }
-        }).state("crearVenta", {
-            url: "/venta/crear",
+        }).state("vender", {
+            url: "/comprar/{idAuto: int}/",
             params: {
-                requireLogin: true
+                requireLogin: true,
+                idAuto: null,
+                clienteId:null
             },
             views: {
                 mainView: {
-                    templateUrl: basePath + "venta.crear.html",
-                    controller: "ventaCrearCtrl",
+                    templateUrl: basePath + "vender.html",
+                    controller: "venderCtrl",
                     controllerAs: "ctrl"
                 }
             }

@@ -55,7 +55,7 @@
             return savedData;
         };
     });
-
+   
    app.run(['$rootScope', '$transitions', function ($rootScope, $transitions) {
 
             $transitions.onSuccess({to: '*'}, function (trans) {

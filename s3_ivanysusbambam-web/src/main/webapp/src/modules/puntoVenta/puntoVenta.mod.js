@@ -102,6 +102,18 @@
                         controllerAs: 'ctrl'
                     }
                 }
+            }).state('puntosDeVentaMapa',{
+                url: '/concesionarios',
+                params: {
+                    requireLogin: false
+                },
+                views: {
+                    mainView: {
+                        templateUrl: basePath + 'puntoVentaMap.html',
+                        controller: 'puntoVentaMapCtrl',
+                        controllerAs: 'ctrl'
+                    }
+                }  
             });
         }
     ]);

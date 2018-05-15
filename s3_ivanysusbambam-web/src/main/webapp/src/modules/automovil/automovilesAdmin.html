@@ -1,0 +1,69 @@
+<div class="imagen2">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Lista automóviles</h2>
+                </div>
+                <div class="col-sm-6">
+                    <!--Acá te envía al estado crear auto-->
+                    <a ui-sref="crearAutomovil" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Auto</span></a>
+                </div>
+            </div>
+        </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+                    </th>
+                    <th>Id</th>
+                    <th>Placa</th>
+                    <th>Año</th>
+                    <th>Precio</th>
+                    <th>Chasis</th>
+                    <th>Color</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Punto</th>
+                    <th>Tipo</th>
+                    <th>Kilometraje</th>
+                    
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+                    </td>
+                    <td>1</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>
+                        <!--Acá al de editar un auto-->
+                        <a ui-sref="editarAuto" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!--Acá eliminar un auto-->
+                        <!--El eliminar no necesita una vista, podemos implementarlo-->
+                        <a ui-sref="eliminarAuto" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    </td>
+                </tr>
+                
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="backMap">
+    <div class="row col-12">
+        <div class="col">
+            <div class="mapCard one">
+                <!-- colocar la imagen del carro-->
+                <div class="top">
+                    <div class="wrapper">
+                        <h1>Puntos de Venta</h1>
+
+                        <div id="googleMap" style="width:500px;height:500px;"></div>
+
+                        <script>
+                            function myMap() {
+                                var mapProp = {
+                                    center: new google.maps.LatLng(4.7211175, -74.065232, 12),
+                                    zoom: 12,
+                                };
+                                var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+
+                                var punto1 = new google.maps.LatLng(4.7020384, -74.0314159);
+                                var marc1 = new google.maps.Marker({
+                                    position: punto1
+                                });
+                                marc1.setMap(map);
+                                google.maps.event.addListener(marc1, 'click', function() {
+                                    var infowindow = new google.maps.InfoWindow({
+                                        content: "Concesionario Los Ángeles Cr 127 # 7 - 21"
+                                    });
+                                    infowindow.open(map, marc1);
+                                });
+
+                                var punto2 = new google.maps.LatLng(4.643553, -74.079278);
+                                var marc2 = new google.maps.Marker({
+                                    position: punto2
+                                });
+                                marc2.setMap(map);
+                                google.maps.event.addListener(marc2, 'click', function() {
+                                    var infowindow = new google.maps.InfoWindow({
+                                        content: "Concesionario Florida Cll 53 # 30 - 14"
+                                    });
+                                    infowindow.open(map, marc2);
+                                });
+
+                                var punto3 = new google.maps.LatLng(4.674585, -74.0900335, 17);
+                                var marc3 = new google.maps.Marker({
+                                    position: punto3
+                                });
+                                marc3.setMap(map);
+                                google.maps.event.addListener(marc3, 'click', function() {
+                                    var infowindow = new google.maps.InfoWindow({
+                                        content: "Concesionario Washington Cr 68 # 68 - 18"
+                                    });
+                                    infowindow.open(map, marc3);
+                                });
+
+                                var punto4 = new google.maps.LatLng(4.7696381, -74.029269, 17);
+                                var marc4 = new google.maps.Marker({
+                                    position: punto4
+                                });
+                                marc4.setMap(map);
+                                google.maps.event.addListener(marc4, 'click', function() {
+                                    var infowindow = new google.maps.InfoWindow({
+                                        content: "Concesionario Michigan Cr 7 - 132 -14"
+                                    });
+                                    infowindow.open(map, marc4);
+                                });
+
+                            }
+
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDtQ7nWdXDFR5Gkm6Mq4HKTllJE-_b9weA &callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
