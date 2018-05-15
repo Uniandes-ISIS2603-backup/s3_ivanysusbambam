@@ -47,7 +47,7 @@ public class CalificacionTiendaLogicTest {
     @Inject 
     private UserTransaction utx;
     
-    private List<CalificacionTiendaEntity> data = new ArrayList<CalificacionTiendaEntity>();
+    private List<CalificacionTiendaEntity> data = new ArrayList<>();
     
     private List<ClienteEntity> clienteData = new ArrayList<>();
     
@@ -104,6 +104,7 @@ public class CalificacionTiendaLogicTest {
         }
         for(i = 0; i < 3; i++ ){
             ClienteEntity clienteEntity = factory.manufacturePojo(ClienteEntity.class);
+            
             em.persist(clienteEntity);
             clienteData.add(clienteEntity);
             System.out.println("cliente " + clienteEntity.getNombre());

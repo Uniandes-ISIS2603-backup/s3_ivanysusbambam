@@ -73,8 +73,8 @@ public class PuntoDeVentaPersistence {
      * @return la lista de los puntos de venta con el nombre dado por parametro
      */
     public List<PuntoDeVentaEntity> findByName(String name) {
-        LOGGER.log(Level.INFO, "Buscando clientes con nombre: ", name);
-        TypedQuery tq = em.createQuery("select v from PuntoDeVentaEntity v where v.nombre = :nombre", PuntoDeVentaEntity.class);
+        LOGGER.log(Level.INFO, "Buscando puntos de venta con nombre: ", name);
+        TypedQuery tq = em.createQuery("select v from PuntoDeVentaEntity v where v.name = :nombre", PuntoDeVentaEntity.class);
         tq.setParameter("nombre", name);
         if (tq.getResultList().isEmpty()) {
             return new ArrayList<>();

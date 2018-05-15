@@ -151,6 +151,27 @@ public class PuntoDeVentaPersistenceTest {
     }
     
     /**
+     * Prueba el caso de consulta de un punto de venta por nombre
+     * 
+     */
+    @Test
+    public void getPuntoDeVentaByName(){
+        boolean found = false;
+        for(PuntoDeVentaEntity pv: data){
+            found = false;
+            for(PuntoDeVentaEntity var: puntoDeVentaPersistence.findByName(pv.getName())){
+                if(var.equals(pv)){
+                    Assert.assertEquals(pv.getId(), var.getId());
+                    Assert.assertEquals(pv.getDireccion(), var.getDireccion());
+                    Assert.assertEquals(pv.getTelefono(), var.getTelefono());
+                    found = true;
+                }
+            }
+        }
+        Assert.assertTrue(found);
+    }
+    
+    /**
      * Prueba para eliminar un PuntoDeVenta.
      *
      * 
