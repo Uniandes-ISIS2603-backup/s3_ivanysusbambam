@@ -6,13 +6,10 @@
 
     mod.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
         var basePath = "src/modules/modelo/";
-<<<<<<< Updated upstream
         
          $urlRouterProvider.otherwise("/modelo");
         
-=======
 
->>>>>>> Stashed changes
         $stateProvider.state("listModelo", {
 
                 url: "/modelos/lista",
