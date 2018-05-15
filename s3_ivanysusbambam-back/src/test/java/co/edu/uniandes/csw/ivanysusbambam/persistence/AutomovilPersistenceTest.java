@@ -259,9 +259,14 @@ public class AutomovilPersistenceTest {
         AutomovilEntity entity = data.get(0);
         entity.setPlaca("ABC-123");
 
-        AutomovilEntity auto = automovilPersistence.findByPlate(entity.getPlaca());
+       List<AutomovilEntity> auto = automovilPersistence.findByPlate(entity.getPlaca());
 
-        Assert.assertNull(auto);
+       if (auto.isEmpty()){
+           Assert.assertNotNull(auto);
+       }
+        else {
+        Assert.assertEquals(entity.getPlaca(), auto.get(0).getPlaca());
+    }
 
     }
 
@@ -273,10 +278,14 @@ public class AutomovilPersistenceTest {
         AutomovilEntity entity = data.get(0);
         entity.setChasis(2546498);
 
-        AutomovilEntity auto = automovilPersistence.findBychasis(entity.getChasis());
+       List< AutomovilEntity> auto = automovilPersistence.findBychasis(entity.getChasis());
 
-        Assert.assertNull(auto);
-
+       if (auto.isEmpty()){
+           Assert.assertNotNull(auto);
+       }
+       else {
+        Assert.assertEquals(entity.getChasis(),auto.get(0).getChasis());
+       }
     }
 
     /**

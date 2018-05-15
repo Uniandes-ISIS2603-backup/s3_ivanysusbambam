@@ -104,11 +104,8 @@ public class AutomovilPersistence {
         TypedQuery tq = em.createQuery("select v from AutomovilEntity v where v.color = :color", AutomovilEntity.class);
         tq.setParameter("color", color);
 
-        if (tq.getResultList().isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return tq.getResultList();
-        }
+        return tq.getResultList();
+
     }
 
     /**
@@ -117,15 +114,13 @@ public class AutomovilPersistence {
      * @param placa del automovil que se desea buscar
      * @return un autimovil si ya existe con la placa dada por parametro
      */
-    public AutomovilEntity findByPlate(String placa) {
+    public List<AutomovilEntity> findByPlate(String placa) {
         LOGGER.log(Level.INFO, "Buscando automovil con placa ={0}", placa);
         TypedQuery<AutomovilEntity> q = em.createQuery("select u from AutomovilEntity u where u.placa = :placa", AutomovilEntity.class);
         q = q.setParameter("placa", placa);
-        if (q.getResultList().isEmpty()) {
-            return null;
-        } else {
-            return q.getSingleResult();
-        }
+
+        return q.getResultList();
+
     }
 
     /**
@@ -134,15 +129,13 @@ public class AutomovilPersistence {
      * @param chasis del automovil que se desea buscar
      * @return un autimovil si ya existe con la placa dada por parametro
      */
-    public AutomovilEntity findBychasis(Integer chasis) {
+    public List<AutomovilEntity> findBychasis(Integer chasis) {
         LOGGER.log(Level.INFO, "Buscando automovil con chasis ={0}", chasis);
         TypedQuery<AutomovilEntity> q = em.createQuery("select u from AutomovilEntity u where u.chasis = :chasis", AutomovilEntity.class);
         q = q.setParameter("chasis", chasis);
-        if (q.getResultList().isEmpty()) {
-            return null;
-        } else {
-            return q.getSingleResult();
-        }
+
+        return q.getResultList();
+
     }
 
     /**
@@ -159,11 +152,8 @@ public class AutomovilPersistence {
         tq.setParameter("marca", marca);
         List autos = tq.getResultList();
 
-        if (autos.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return autos;
-        }
+        return autos;
+
     }
 
     /**
@@ -174,49 +164,45 @@ public class AutomovilPersistence {
      */
     public List<AutomovilEntity> findByModelo(String modelo) {
         LOGGER.log(Level.INFO, "buscando automóviles modelo: ", modelo);
-        TypedQuery tq = em.createQuery("select a from AutomovilEntity a JOIN a.model m where m.name = :modelo", AutomovilEntity.class);
+        TypedQuery tq = em.createQuery("select a from AutomovilEntity a JOIN a.model m where m.name = :modelo", AutomovilEntity.class
+        );
         tq.setParameter("modelo", modelo);
         List autos = tq.getResultList();
 
-        if (autos.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return autos;
-        }
+        return autos;
+
     }
 
     /**
      * Retorna todos los autos cuyo año se encuentra entre el rango de
      * fechas.<br>
      * <b>Pre: </b> anioIni <= anioFin
-     * 
+     *
      *
      * @param anioIni cota inferior de la búsqueda
      * @param anioFin cota superior de la búsqueda
-     * 
+     *
      * @return todos los automóviles cuyo año se encuentra en el rango de
      * fechas, null si no hay ninguno.
      */
     public List<AutomovilEntity> findRangoAnios(Integer anioIni, Integer anioFin) {
         LOGGER.log(Level.INFO, "buscando automoviles entre los a\u00f1os {0} y {1}", new Object[]{anioIni, anioFin});
-        TypedQuery tq = em.createQuery("select a from AutomovilEntity a where a.anio >= :anioI and a.anio <= :anioF", AutomovilEntity.class);
+        TypedQuery tq = em.createQuery("select a from AutomovilEntity a where a.anio >= :anioI and a.anio <= :anioF", AutomovilEntity.class
+        );
         tq.setParameter("anioI", anioIni);
         tq.setParameter("anioF", anioFin);
 
         List autos = tq.getResultList();
 
-        if (autos.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return autos;
-        }
+        return autos;
+
     }
 
     /**
      * Retorna todos los autos cuyo precio listado se encuentra en un rango de
      * precios.<br>
-     * <b>Pre: </b> precioMin<= precioMax
-     * @par
+     * <b>Pre: </b> precioMin<= precioMax @par
+     *
      *
      * @param precioMin cota inferior de la búsqueda
      * @param precioMax cota superior de la búsqueda
@@ -225,17 +211,15 @@ public class AutomovilPersistence {
      */
     public List<AutomovilEntity> findRangoPrecios(Integer precioMin, Integer precioMax) {
         LOGGER.log(Level.INFO, "buscando automoviles entre los a\u00f1os {0} y {1}", new Object[]{precioMin, precioMax});
-        TypedQuery tq = em.createQuery("select a from AutomovilEntity a where a.valorListado >= :precioI and a.valorListado <= :precioF", AutomovilEntity.class);
+        TypedQuery tq = em.createQuery("select a from AutomovilEntity a where a.valorListado >= :precioI and a.valorListado <= :precioF", AutomovilEntity.class
+        );
         tq.setParameter("precioI", precioMin);
         tq.setParameter("precioF", precioMax);
 
         List autos = tq.getResultList();
 
-        if (autos.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return autos;
-        }
+        return autos;
+
     }
 
     /**
@@ -284,7 +268,8 @@ public class AutomovilPersistence {
 
         LOGGER.log(Level.INFO, "Buscando autom\u00f3viles utilizando la sentencia {0}", sentencia);
 
-        TypedQuery tq = em.createQuery(sentencia, AutomovilEntity.class);
+        TypedQuery tq = em.createQuery(sentencia, AutomovilEntity.class
+        );
 
         List autos = tq.getResultList();
 
@@ -302,14 +287,12 @@ public class AutomovilPersistence {
      */
     public List<String> listColores() {
         LOGGER.log(Level.INFO, "buscando todos los colores de autos");
-        TypedQuery tq = em.createQuery("SELECT DISTINCT(a.color) FROM AutomovilEntity a", String.class);
+        TypedQuery tq = em.createQuery("SELECT DISTINCT(a.color) FROM AutomovilEntity a", String.class
+        );
 
         List<String> ret = tq.getResultList();
 
-        if (ret.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return ret;
-        }
+        return ret;
+
     }
 }

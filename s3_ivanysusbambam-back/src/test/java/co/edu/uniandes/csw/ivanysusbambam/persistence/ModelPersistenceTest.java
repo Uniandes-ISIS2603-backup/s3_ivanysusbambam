@@ -99,7 +99,7 @@ public class ModelPersistenceTest {
      */
     @Test
     public void createModelTest() {
-        
+
         PodamFactory factory = new PodamFactoryImpl();
         ModelEntity newEntity = factory.manufacturePojo(ModelEntity.class);
         ModelEntity result = modelPersistence.create(newEntity);
@@ -109,6 +109,48 @@ public class ModelPersistenceTest {
         ModelEntity entity = em.find(ModelEntity.class, result.getId());
 
         Assert.assertEquals(newEntity.getId(), entity.getId());
+    }
+
+    /**
+     * Test para probar el get por numero de puertas de model
+     */
+    @Test
+    public void getByNumPuertasTest() {
+        ModelEntity model = data.get(0);
+        model.setNumeroPuertas(4);
+        List<ModelEntity> modelos = modelPersistence.findByPuertas(model.getNumeroPuertas());
+        if (modelos.isEmpty()) {
+            Assert.assertNotNull(model);
+        } else {
+            Assert.assertEquals(model.getNumeroPuertas(), modelos.get(0).getNumeroPuertas());
+        }
+    }
+
+    @Test
+    public void getByTransTest() {
+        ModelEntity model = data.get(0);
+        model.setTransmision("Automatico");
+        List<ModelEntity> modelos = modelPersistence.findByTransm(model.getTransmision());
+        if (modelos.isEmpty()) {
+            Assert.assertNotNull(model);
+        } else {
+            Assert.assertEquals(model.getTransmision(), modelos.get(0).getTransmision());
+        }
+    }
+
+    /**
+     * Test para probar el get por cilindraje de model
+     */
+    @Test
+    public void getByCilindrajeTest() {
+        ModelEntity model = data.get(0);
+        model.setCilindraje(4);
+        List<ModelEntity> modelos = modelPersistence.findByCilindraje(model.getCilindraje());
+        if (modelos.isEmpty()) {
+            Assert.assertNotNull(model);
+        } else {
+            Assert.assertEquals(model.getCilindraje(), modelos.get(0).getCilindraje());
+        }
     }
 
     /**
@@ -141,39 +183,31 @@ public class ModelPersistenceTest {
         Assert.assertEquals(entity.getCentCubicos(), newEntity.getCentCubicos());
         Assert.assertEquals(entity.getCilindraje(), newEntity.getCilindraje());
         Assert.assertEquals(entity.getTransmision(), newEntity.getTransmision());
-       
+
     }
-    
-       /**
+
+    /**
      * Prueba para consultar la lista de Modelos segun el numero de puertas
-    
-    @Test
-    public void getModelsPuertasTest() {
-        List<ModelEntity> list = modelPersistence.findByPuertas(Integer.SIZE);
-        Assert.assertEquals(data.size(), list.size());
-        for (ModelEntity ent : list) {
-            boolean found = false;
-            for (ModelEntity entity : data) {
-                if (ent.getId().equals(entity.getId())) {
-                    found = true;
-                }
-            }
-            Assert.assertTrue(found);
-        }
-    }
-    *  */
-    
-     /**
+     *
+     * @Test public void getModelsPuertasTest() { List<ModelEntity> list =
+     * modelPersistence.findByPuertas(Integer.SIZE);
+     * Assert.assertEquals(data.size(), list.size()); for (ModelEntity ent :
+     * list) { boolean found = false; for (ModelEntity entity : data) { if
+     * (ent.getId().equals(entity.getId())) { found = true; } }
+     * Assert.assertTrue(found); } }
+     *
+     */
+    /**
      * Prueba para eliminar un Modelo
      */
     @Test
     public void deleteModelTest() {
-        
+
         ModelEntity entity = data.get(0);
         modelPersistence.delete(entity.getId());
         ModelEntity deleted = em.find(ModelEntity.class, entity.getId());
         Assert.assertNull(deleted);
-        
+
     }
 
     /**
@@ -191,8 +225,7 @@ public class ModelPersistenceTest {
 
         ModelEntity resp = em.find(ModelEntity.class, entity.getId());
 
-        Assert.assertEquals(newEntity.getId(),entity.getId());
+        Assert.assertEquals(newEntity.getId(), entity.getId());
     }
-    
-    
+
 }

@@ -120,20 +120,20 @@ public class MedioDePagoLogicTest {
      */
     private void insertData() {
         for (int i = 0; i < 3; i++) {
-            
+
             System.out.println("INSERTING DATA");
             MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
-            
+
             try {
-                
+
                 entity.setNumero((long) i + 1);
                 cliente = factory.manufacturePojo(ClienteEntity.class);
                 em.persist(cliente);
                 entity.setCliente(cliente);
                 mdpl.createMedioDePago(entity);
-                
+
                 data.add(entity);
-                
+
                 System.out.println("DATA INSERTED");
             } catch (Exception e) {
                 i--;
@@ -154,19 +154,17 @@ public class MedioDePagoLogicTest {
             entity.setCliente(cliente);
             MedioDePagoEntity result = mdpl.createMedioDePago(entity);
             Assert.assertNotNull(result);
-            
+
         } catch (BusinessLogicException exepcion) {
             ex = true;
         }
-        if (!entity.validarTipoMedioDePago()) {
-            Assert.assertTrue(ex);
-        }
-        if (em.find(ClienteEntity.class, cliente.getCedula()) != null && entity.validarTipoMedioDePago()) {
+        if (!entity.validarTipoMedioDePago() || entity.getCliente() == null || em.find(ClienteEntity.class, cliente.getCedula()) == null || em.find(MedioDePagoEntity.class, entity.getNumero()) != null) {
             Assert.assertFalse(ex);
-        } else {
-            Assert.assertTrue(ex);
         }
-        
+        if (entity.getCliente() != null && em.find(ClienteEntity.class, cliente.getCedula()) != null && entity.validarTipoMedioDePago() && em.find(MedioDePagoEntity.class, entity.getNumero()) == null) {
+            Assert.assertFalse(ex);
+        }
+
     }
 
     /**
@@ -175,14 +173,14 @@ public class MedioDePagoLogicTest {
     @Test
     public void getMedioDePagoTest() {
         MedioDePagoEntity entity = factory.manufacturePojo(MedioDePagoEntity.class);
-        
+
         boolean ex = false;
         try {
             entity.setCliente(cliente);
             mdpl.createMedioDePago(entity);
             MedioDePagoEntity result = mdpl.findMedioDePago(entity.getNumero());
             Assert.assertNotNull(result);
-            
+
         } catch (BusinessLogicException excep) {
             ex = true;
         }
@@ -191,7 +189,7 @@ public class MedioDePagoLogicTest {
         } else {
             Assert.assertFalse(ex);
         }
-        
+
     }
 
     /**
@@ -200,7 +198,7 @@ public class MedioDePagoLogicTest {
     @Test
     public void deleteMedioDePagoTest() {
         MedioDePagoEntity entity = data.get(0);
-        
+
         try {
             mdpl.deleteMedioDePago(entity.getNumero());
             MedioDePagoEntity deleted = em.find(MedioDePagoEntity.class, entity.getNumero());
@@ -235,28 +233,30 @@ public class MedioDePagoLogicTest {
     public void updateMedioDePagoTest() {
         MedioDePagoEntity entity = data.get(0);
         MedioDePagoEntity pojoEntity = factory.manufacturePojo(MedioDePagoEntity.class);
-        
+
         pojoEntity.setNumero(entity.getNumero());
-        
+
         try {
             mdpl.updateMedioDePago(pojoEntity);
-            
+
             MedioDePagoEntity resp = em.find(MedioDePagoEntity.class, entity.getNumero());
             Assert.assertEquals(pojoEntity.getNumero(), resp.getNumero());
             Assert.assertEquals(pojoEntity.getTipo(), resp.getTipo());
         } catch (BusinessLogicException ex) {
             Assert.fail();
         }
-        
+
     }
-    
-    @Test    
+
+    @Test
     public void compararMedioDePago() {
-        
+
         MedioDePagoEntity entity = data.get(0);
         MedioDePagoEntity entity1 = data.get(0);
+
         boolean resp = entity.compararMedioDePago(entity1);
+
         Assert.assertTrue(resp);
-        
+
     }
 }

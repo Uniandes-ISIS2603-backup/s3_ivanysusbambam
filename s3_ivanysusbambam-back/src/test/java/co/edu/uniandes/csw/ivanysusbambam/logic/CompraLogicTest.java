@@ -9,7 +9,7 @@ import co.edu.uniandes.csw.ivanysusbambam.ejb.CompraLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.CompraEntity;
-import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
+
 import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.VendedorEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
@@ -59,20 +59,44 @@ public class CompraLogicTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
+    /**
+     * Atributo para la logica de la compra
+     */
     @Inject
     private CompraLogic compraLogic;
 
+    /**
+     * Atributo para el entity manager
+     */
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Atributo para el user transaction
+     */
     @Inject
     private UserTransaction utx;
 
+    /**
+     * Data del automovil
+     */
     private AutomovilEntity automovil = factory.manufacturePojo(AutomovilEntity.class);
+    /**
+     * Data del vendedor
+     */
     private VendedorEntity vendedor = factory.manufacturePojo(VendedorEntity.class);
+    /**
+     * data del punto de venta
+     */
     private PuntoDeVentaEntity puntoDeVenta = factory.manufacturePojo(PuntoDeVentaEntity.class);
+    /**
+     * Data del cliente
+     */
     private ClienteEntity cliente = factory.manufacturePojo(ClienteEntity.class);
 
+    /**
+     * Metodo para configurar el escenario de pruebas
+     */
     @Before
     public void configTest() {
         try {
@@ -91,12 +115,21 @@ public class CompraLogicTest {
         }
     }
 
+    /**
+     * Metodo para eliminar la dara de las entidades
+     */
     private void clearData() {
         em.createQuery("delete from CompraEntity").executeUpdate();
     }
 
+    /**
+     * Data de la compra
+     */
     private List<CompraEntity> data = new ArrayList<>();
 
+    /**
+     * metodo para insertar la data de las pruebas
+     */
     private void insertData() {
         for (int i = 0; i < 3; i++) {
 
@@ -131,7 +164,11 @@ public class CompraLogicTest {
         compra.setVendedorEncargado(vendedor);
 
         try {
+            if (compra.getCliente() == null || compra.getAutomovil() == null || compra.getVendedorEncargado() == null || compra.getPuntoDeVenta() == null) {
+                Assert.fail();
+            }
             compraLogic.crearCompra(compra);
+
         } catch (BusinessLogicException excepcion) {
             Logger.getLogger(CompraLogicTest.class.getName()).log(Level.SEVERE, null, excepcion);
             Assert.fail();
@@ -143,6 +180,9 @@ public class CompraLogicTest {
     public void deleteCompraTest() {
         CompraEntity borrar = data.get(0);
         try {
+            if (borrar.getIdCompra() == null) {
+                Assert.fail();
+            }
             compraLogic.deleteCompra(borrar.getIdCompra());
             Assert.assertNull(em.find(CompraEntity.class, borrar.getIdCompra()));
         } catch (BusinessLogicException ex) {
@@ -171,6 +211,9 @@ public class CompraLogicTest {
     @Test
     public void findByIdTest() {
         try {
+            if (data.get(0) == null) {
+                Assert.fail();
+            }
             CompraEntity rpta = compraLogic.findCompra(data.get(0).getIdCompra());
             Assert.assertNotNull(rpta);
             Assert.assertEquals(data.get(0).getIdCompra(), rpta.getIdCompra());
@@ -188,6 +231,9 @@ public class CompraLogicTest {
 
             pojoEntity.setIdCompra(rpta.getIdCompra());
 
+            if (pojoEntity == null || pojoEntity.getIdCompra() == null) {
+                Assert.fail();
+            }
             compraLogic.updateCompra(pojoEntity);
 
             CompraEntity nuevo = compraLogic.findCompra(pojoEntity.getIdCompra());

@@ -181,6 +181,10 @@ public class AutomovilLogic {
         verificacionesAuto3(automovilEntity);
         
         verificacionesAuto4(automovilEntity);
+        
+        if (!persistence.findByPlate(automovilEntity.getPlaca()).isEmpty()){
+            throw new BusinessLogicException("Ya existe un automovil con esa placa ");
+        }
 
         // Invoca la persistencia para crear el automovil 
         persistence.create(automovilEntity);
@@ -325,7 +329,7 @@ public class AutomovilLogic {
      * @return el automovil con la placa dado.
      * @throws BusinessLogicException Si placa == null
      */
-    public AutomovilEntity findAutomovilByPlate(String placa) throws BusinessLogicException {
+    public List<AutomovilEntity> findAutomovilByPlate(String placa) throws BusinessLogicException {
         if (placa == null) {
             throw new BusinessLogicException("la placa no puede ser null");
         }
@@ -340,7 +344,7 @@ public class AutomovilLogic {
      * @return el automovil con el chasis dado.
      * @throws BusinessLogicException Si chasis == null
      */
-    public AutomovilEntity findAutomovilByChasis(Integer chasis) throws BusinessLogicException {
+    public List<AutomovilEntity> findAutomovilByChasis(Integer chasis) throws BusinessLogicException {
         if (chasis == null) {
             throw new BusinessLogicException("el chasis no puede ser null");
         }

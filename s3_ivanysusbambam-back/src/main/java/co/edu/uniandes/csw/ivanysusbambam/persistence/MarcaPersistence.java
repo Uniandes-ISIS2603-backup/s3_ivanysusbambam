@@ -55,6 +55,19 @@ public class MarcaPersistence {
     }
 
     /**
+     * Busca una marca con el nombre dado
+     *
+     * @param name nombre de la marca a buscar
+     * @return la entidad de la marca con el nombre dado
+     */
+    public List<MarcaEntity> findByName(String name) {
+        LOGGER.log(Level.INFO, "Buscando marca con nombre", name);
+        TypedQuery<MarcaEntity> q = em.createQuery("select u from MarcaEntity u where u.name = :name", MarcaEntity.class);
+        q = q.setParameter("name", name);
+        return q.getResultList();
+    }
+
+    /**
      * Crea una marca con la informacion de la entidad
      *
      * @param entity entidad a crear

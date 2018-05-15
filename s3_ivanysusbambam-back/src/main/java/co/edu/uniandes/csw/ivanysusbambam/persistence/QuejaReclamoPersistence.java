@@ -76,11 +76,7 @@ public class QuejaReclamoPersistence {
         LOGGER.log(Level.INFO, "Buscando quejasReclamos con tipo: ", tipo);
         TypedQuery tq = em.createQuery("select v from QuejaReclamoEntity v where v.tipo = :tipo", QuejaReclamoEntity.class);
         tq.setParameter("tipo", tipo);
-        if (tq.getResultList().isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return tq.getResultList();
-        }
+        return tq.getResultList();
     }
 
     /**

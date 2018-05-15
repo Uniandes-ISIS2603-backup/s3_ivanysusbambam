@@ -219,7 +219,11 @@ public class QuejaReclamoPersistenceTest {
         QuejaReclamoEntity queja = data.get(0);
         queja.setTipo("Queja");
         List<QuejaReclamoEntity> quejas = quejaReclamoPersistence.findByType(queja.getTipo());
-        Assert.assertNotNull(quejas);
+        if (quejas.isEmpty()) {
+            Assert.assertNotNull(quejas);
+        } else {
+            Assert.assertEquals(quejas.get(0).getTipo(), queja.getTipo());
+        }
 
     }
 }

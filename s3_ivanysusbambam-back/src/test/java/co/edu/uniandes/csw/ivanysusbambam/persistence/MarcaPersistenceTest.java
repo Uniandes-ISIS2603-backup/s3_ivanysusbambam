@@ -186,4 +186,20 @@ public class MarcaPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
     }
 
+    /**
+     * Test para probar el getByName de marca
+     */
+    @Test
+    public void getByNameTest() {
+        MarcaEntity marca = data.get(0);
+        marca.setName("BMW");
+        List<MarcaEntity> respuesta = marcaPersistence.findByName(marca.getName());
+        if (respuesta.isEmpty()) {
+            Assert.assertNotNull(respuesta);
+        } else {
+            Assert.assertEquals(marca.getName(), respuesta.get(0).getName());
+        }
+
+    }
+
 }

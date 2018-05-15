@@ -109,6 +109,16 @@ public class ModelLogicTest {
     }
 
     /**
+     * Metodo para probar el hashCode de la marca
+     */
+    @Test
+    public void HashCodeTest() {
+        ModelEntity model = data.get(0);
+        ModelEntity model1 = data.get(1);
+        Assert.assertEquals(model.hashCode(), model1.hashCode());
+    }
+
+    /**
      * Prueba para crear un Modelo
      *
      *
@@ -117,6 +127,7 @@ public class ModelLogicTest {
     public void createModelTest() {
         try {
             ModelEntity newEntity = factory.manufacturePojo(ModelEntity.class);
+            newEntity.setAutomoviles(new ArrayList<>());
             ModelEntity result = modelLogic.createModel(newEntity);
             Assert.assertNotNull(result);
             ModelEntity entity = em.find(ModelEntity.class, result.getId());
@@ -125,7 +136,7 @@ public class ModelLogicTest {
             Assert.assertEquals(newEntity.getCilindraje(), entity.getCilindraje());
             Assert.assertEquals(newEntity.getTransmision(), entity.getTransmision());
             Assert.assertEquals(newEntity.getNumeroPuertas(), entity.getNumeroPuertas());
-           // Assert.assertTrue(verificarLista(newEntity.getAutomoviles(), entity.getAutomoviles()));
+            Assert.assertEquals(newEntity.getAutomoviles(), entity.getAutomoviles());
 
         } catch (BusinessLogicException ex) {
             Logger.getLogger(ModelLogicTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -169,7 +180,7 @@ public class ModelLogicTest {
             Assert.assertEquals(entity.getNumeroPuertas(), resultEntity.getNumeroPuertas());
             Assert.assertEquals(entity.getTransmision(), resultEntity.getTransmision());
             Assert.assertEquals(entity.getCentCubicos(), resultEntity.getCentCubicos());
-           // Assert.assertTrue(entity.getAutomoviles( )== resultEntity.getAutomoviles());
+            // Assert.assertTrue(entity.getAutomoviles( )== resultEntity.getAutomoviles());
         } catch (BusinessLogicException ex) {
             Logger.getLogger(ModelLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -212,13 +223,15 @@ public class ModelLogicTest {
             Assert.assertEquals(pojoEntity.getCentCubicos(), resp.getCentCubicos());
             Assert.assertEquals(pojoEntity.getCilindraje(), resp.getCilindraje());
             Assert.assertEquals(pojoEntity.getNumeroPuertas(), resp.getNumeroPuertas());
-           // Assert.assertTrue(verificarLista(pojoEntity.getAutomoviles(), resp.getAutomoviles()));
+            // Assert.assertTrue(verificarLista(pojoEntity.getAutomoviles(), resp.getAutomoviles()));
         } catch (BusinessLogicException ex) {
             Logger.getLogger(ModelLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     /**
      * Metodo que verifica que dos listas tengan los mismos objetos
+     *
      * @param luno Lista uno de la que se quieren verificar los objetos
      * @param ldos Lista dos de la que se quieren verificar los objetos
      * @return True si las dos listas contienen los mismos objetos
@@ -228,14 +241,14 @@ public class ModelLogicTest {
         if (luno.size() == ldos.size()) {
             ase = true;
             //while (ase = true) {
-              //  for (Integer i = 0; i < luno.size(); i++) {
-                //    Object a = luno.get(i);
-                  //  Object b = ldos.get(i);
-                   // if(a!=b){
-                     //   ase = false;
-                    //}
-               // }
-                
+            //  for (Integer i = 0; i < luno.size(); i++) {
+            //    Object a = luno.get(i);
+            //  Object b = ldos.get(i);
+            // if(a!=b){
+            //   ase = false;
+            //}
+            // }
+
             //}
         }
         return ase;

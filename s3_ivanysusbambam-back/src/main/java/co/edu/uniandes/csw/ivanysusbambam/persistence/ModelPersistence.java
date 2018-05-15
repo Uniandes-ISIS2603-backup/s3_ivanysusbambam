@@ -53,7 +53,7 @@ public class ModelPersistence {
     public List<ModelEntity> findByPuertas(Integer numPuer) {
         LOGGER.log(Level.INFO, "Buscando modelo con número de puertas={0}", numPuer);
         TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.numeroPuertas = :numPuer", ModelEntity.class);
-        q = q.setParameter("numeroPuertas", numPuer);
+        q = q.setParameter("numPuer", numPuer);
         return q.getResultList();
     }
 
@@ -66,7 +66,7 @@ public class ModelPersistence {
     public List<ModelEntity> findByTransm(String trans) {
         LOGGER.log(Level.INFO, "Buscando modelo con transmisión=", trans);
         TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.transmision = :trans", ModelEntity.class);
-        q = q.setParameter("transmision", trans);
+        q = q.setParameter("trans", trans);
         return q.getResultList();
     }
 
@@ -79,7 +79,7 @@ public class ModelPersistence {
     public List<ModelEntity> findByCilindraje(Integer cil) {
         LOGGER.log(Level.INFO, "Buscando modelo con cilindraje=", cil);
         TypedQuery<ModelEntity> q = em.createQuery("select u from ModelEntity u where u.cilindraje = :cil", ModelEntity.class);
-        q = q.setParameter("cilindraje", cil);
+        q = q.setParameter("cil", cil);
         return q.getResultList();
     }
 

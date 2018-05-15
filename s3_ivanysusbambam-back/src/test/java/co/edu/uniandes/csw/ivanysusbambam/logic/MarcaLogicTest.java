@@ -35,19 +35,39 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class MarcaLogicTest {
 
+    /**
+     * Atributo para el podamFactory
+     */
     private PodamFactory factory = new PodamFactoryImpl();
 
+    /**
+     * Atributo para la logica de marca
+     */
     @Inject
     private MarcaLogic marcaLogic;
 
+    /**
+     * Atributo para el entity manager
+     */
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Atributo para UserTransaction
+     */
     @Inject
     private UserTransaction utx;
 
+    /**
+     * Data de la marca
+     */
     private List<MarcaEntity> data = new ArrayList<MarcaEntity>();
 
+    /**
+     * Metodo para el create deployment
+     *
+     * @return
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -113,17 +133,27 @@ public class MarcaLogicTest {
      *
      */
     @Test
-    public void createMarcaTest() throws BusinessLogicException {
+    public void createMarcaTest() {
         MarcaEntity newEntity = factory.manufacturePojo(MarcaEntity.class);
-        MarcaEntity result = marcaLogic.createMarca(newEntity);
-        
-        Assert.assertNotNull(result);
-        MarcaEntity entity = em.find(MarcaEntity.class, result.getId());
-        
-        Assert.assertEquals(newEntity.getId(), entity.getId());
-        Assert.assertEquals(newEntity.getName(), entity.getName());
-        Assert.assertEquals(newEntity.getAutomoviles(), entity.getAutomoviles());
-        Assert.assertEquals(newEntity.getModelos(), entity.getModelos());
+        try {
+            newEntity.setId(Long.MIN_VALUE);
+            newEntity.setName("BMW");
+            newEntity.setLogo("Logo");
+            newEntity.setModelos(new ArrayList<>());
+            newEntity.setAutomoviles(new ArrayList<>());
+            MarcaEntity result = marcaLogic.createMarca(newEntity);
+            Assert.assertNotNull(result);
+            MarcaEntity entity = em.find(MarcaEntity.class, result.getId());
+
+            Assert.assertEquals(newEntity.getId(), entity.getId());
+            Assert.assertEquals(newEntity.getName(), entity.getName());
+            Assert.assertEquals(newEntity.getAutomoviles(), entity.getAutomoviles());
+            Assert.assertEquals(newEntity.getModelos(), entity.getModelos());
+        } catch (BusinessLogicException e) {
+            Assert.fail();
+
+        }
+
     }
 
     /**
@@ -155,14 +185,18 @@ public class MarcaLogicTest {
     public void findMarcaTest() {
         try {
             MarcaEntity entity = data.get(0);
-            
-            MarcaEntity resultEntity;
-            resultEntity = marcaLogic.findMarca(entity.getId());
-            Assert.assertNotNull(resultEntity);
-            Assert.assertEquals(entity.getId(), resultEntity.getId());
-            Assert.assertEquals(entity.getName(), resultEntity.getName());
-            Assert.assertEquals(entity.getAutomoviles(), resultEntity.getAutomoviles());
-            Assert.assertEquals(entity.getModelos(), resultEntity.getModelos());
+
+            if (entity.getId() == null) {
+                Assert.fail();
+            } else {
+                MarcaEntity resultEntity;
+                resultEntity = marcaLogic.findMarca(entity.getId());
+                Assert.assertNotNull(resultEntity);
+                Assert.assertEquals(entity.getId(), resultEntity.getId());
+                Assert.assertEquals(entity.getName(), resultEntity.getName());
+                Assert.assertEquals(entity.getAutomoviles(), resultEntity.getAutomoviles());
+                Assert.assertEquals(entity.getModelos(), resultEntity.getModelos());
+            }
         } catch (BusinessLogicException ex) {
             Logger.getLogger(MarcaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -195,20 +229,30 @@ public class MarcaLogicTest {
         try {
             MarcaEntity entity = data.get(0);
             MarcaEntity pojoEntity = factory.manufacturePojo(MarcaEntity.class);
-            
+
             pojoEntity.setId(entity.getId());
-            
+
             marcaLogic.updateMarca(pojoEntity);
-            
+
             MarcaEntity resp = em.find(MarcaEntity.class, entity.getId());
-            
+
             Assert.assertEquals(pojoEntity.getId(), resp.getId());
             Assert.assertEquals(pojoEntity.getName(), resp.getName());
             Assert.assertEquals(pojoEntity.getModelos(), resp.getModelos());
-             Assert.assertEquals(pojoEntity.getAutomoviles(), resp.getAutomoviles());
+            Assert.assertEquals(pojoEntity.getAutomoviles(), resp.getAutomoviles());
         } catch (BusinessLogicException ex) {
-            Logger.getLogger(MarcaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
+            Assert.fail();
         }
+    }
+
+    /**
+     * Metodo para probar el hashCode de la marca 
+     */
+    @Test
+    public void HasCodeTest() {
+        MarcaEntity marca = data.get(0);
+        MarcaEntity marca1 = data.get(1);
+        Assert.assertEquals(marca1.hashCode(), marca.hashCode());
     }
 
 }
