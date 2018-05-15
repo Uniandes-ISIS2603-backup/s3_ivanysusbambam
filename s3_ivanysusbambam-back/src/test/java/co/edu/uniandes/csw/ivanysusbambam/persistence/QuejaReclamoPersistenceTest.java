@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.persistence;
 
-import org.junit.runner.RunWith;
 import co.edu.uniandes.csw.ivanysusbambam.entities.QuejaReclamoEntity;
 import java.util.ArrayList;
 import java.util.List;
@@ -176,7 +175,7 @@ public class QuejaReclamoPersistenceTest {
 
         Assert.assertEquals(entity.getTipo(), newEntity.getTipo());
     }
-    
+
     /**
      * Prueba para eliminar una QuejaReclamo.
      *
@@ -189,8 +188,8 @@ public class QuejaReclamoPersistenceTest {
         QuejaReclamoEntity deleted = em.find(QuejaReclamoEntity.class, entity.getId());
         Assert.assertNull(deleted);
     }
-    
-     /**
+
+    /**
      * Prueba para actualizar una QuejaReclamo.
      *
      *
@@ -210,9 +209,17 @@ public class QuejaReclamoPersistenceTest {
         Assert.assertEquals(newEntity.getName(), resp.getName());
         Assert.assertEquals(newEntity.getTexto(), resp.getTexto());
         Assert.assertEquals(newEntity.getTipo(), resp.getTipo());
-        }
+    }
 
-    
-    
-    
+    /**
+     * Metodo para probar el buscar por tipo de la persistencia de queja/reclamo
+     */
+    @Test
+    public void buscarPorTipoTest() {
+        QuejaReclamoEntity queja = data.get(0);
+        queja.setTipo("Queja");
+        List<QuejaReclamoEntity> quejas = quejaReclamoPersistence.findByType(queja.getTipo());
+        Assert.assertNotNull(quejas);
+
+    }
 }

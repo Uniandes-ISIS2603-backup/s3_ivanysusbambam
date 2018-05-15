@@ -218,7 +218,7 @@ public class AutomovilPersistence {
      * <b>Pre: </b> precioMin<= precioMax
      * @par
      *
-     * am precioMin cota inferior de la búsqueda
+     * @param precioMin cota inferior de la búsqueda
      * @param precioMax cota superior de la búsqueda
      * @return todos los automóviles cuyo precio en el rango de precios, null si
      * no hay ninguno.

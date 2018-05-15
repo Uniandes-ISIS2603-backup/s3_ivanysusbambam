@@ -30,6 +30,11 @@ import uk.co.jemos.podam.api.PodamFactoryImpl;
 @RunWith(Arquillian.class)
 public class MarcaPersistenceTest {
 
+    /**
+     * Metodo deplyment
+     *
+     * @return
+     */
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -39,12 +44,21 @@ public class MarcaPersistenceTest {
                 .addAsManifestResource("META-INF/beans.xml", "beans.xml");
     }
 
+    /**
+     * Atributo para la persistencia de marca
+     */
     @Inject
     private MarcaPersistence marcaPersistence;
 
+    /**
+     * Atributo para el entity manager
+     */
     @PersistenceContext
     private EntityManager em;
 
+    /**
+     * Atributo para el userTransaction
+     */
     @Inject
     UserTransaction utx;
 
@@ -77,7 +91,7 @@ public class MarcaPersistenceTest {
     }
 
     /**
-     *
+     * data de la marca
      */
     private List<MarcaEntity> data = new ArrayList<MarcaEntity>();
 
@@ -159,7 +173,7 @@ public class MarcaPersistenceTest {
      */
     @Test
     public void updateMarcaTest() {
-       MarcaEntity entity = data.get(0);
+        MarcaEntity entity = data.get(0);
         PodamFactory factory = new PodamFactoryImpl();
         MarcaEntity newEntity = factory.manufacturePojo(MarcaEntity.class);
 

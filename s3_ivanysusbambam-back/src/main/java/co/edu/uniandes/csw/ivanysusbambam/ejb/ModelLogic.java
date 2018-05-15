@@ -40,15 +40,12 @@ public class ModelLogic {
     private static final Logger LOG = Logger.getLogger(ModelLogic.class.getName());
 
     /**
-     * Persiste un modelo en la base de datos.
-     *
-     * @param mdl el model entity que se busca persistir
-     * @return el modelo ya persistido
-     * @throws BusinessLogicException Si el modelo tiene datos null o el número
-     * de puertas es inferior a 2.
+     * Método para reducir complejidad ciclomática de createModel
+     * @param mdl ModelEntity sobre el que se harán las verificaciones
+     * @throws BusinessLogicException si se incumple alguna de las reglas de negocio verificadas.
      */
-    public ModelEntity createModel(ModelEntity mdl) throws BusinessLogicException {
-      if (persistence.find(mdl.getId()) != null) {
+    private void verificacionCreateModel1(ModelEntity mdl) throws BusinessLogicException{
+        if (persistence.find(mdl.getId()) != null) {
             throw new BusinessLogicException("Ya existe un modelo igual al que se quiere agregar");
         }
         if (mdl.getTransmision() == null) {
@@ -57,12 +54,37 @@ public class ModelLogic {
         if (mdl.getCentCubicos() == null) {
             throw new BusinessLogicException("Los centimetros cúbicos no pueden ser null");
         }
+    }
+    
+    /**
+     * Método para reducir complejidad ciclomática de createModel
+     * @param mdl ModelEntity sobre el que se harán las verificaciones
+     * @throws BusinessLogicException si se incumple alguna de las reglas de negocio verificadas.
+     */
+    private void verificacionCreateModel2(ModelEntity mdl) throws BusinessLogicException{
+        
         if (mdl.getNumeroPuertas() == null) {
             throw new BusinessLogicException("El número de puertas no puede ser null");
         }
         if (mdl.getNumeroPuertas() < 2) {
             throw new BusinessLogicException("El número de puertas no puede ser inferior a 2");
         }
+    }
+    
+    /**
+     * Persiste un modelo en la base de datos.
+     *
+     * @param mdl el model entity que se busca persistir
+     * @return el modelo ya persistido
+     * @throws BusinessLogicException Si el modelo tiene datos null o el número
+     * de puertas es inferior a 2.
+     */
+    public ModelEntity createModel(ModelEntity mdl) throws BusinessLogicException {
+      
+        verificacionCreateModel1(mdl);
+        
+        verificacionCreateModel2(mdl);
+        
         return persistence.create(mdl);
     }
 

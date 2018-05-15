@@ -81,10 +81,41 @@ public class AutomovilLogic {
         if (automovilEntity.getModel() == null) {
             throw new BusinessLogicException("El modelo es nulo");
         }
-
+        
         if (automovilEntity.getModel().getId() == null) {
             throw new BusinessLogicException("El id del modelo es nulo");
         }
+    }
+    
+    /**
+     * Método privado para reducir complejidad ciclomática e createAutomovil<br>
+     * <b>pre: </b> automovilEntity.gettModel() != null
+     * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
+     * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
+     */
+    private void verificacionesAuto2(AutomovilEntity automovilEntity)throws BusinessLogicException{
+        
+        // revisa que la marca ni su id sean null
+        if (automovilEntity.getMarca() == null) {
+            throw new BusinessLogicException("la marca es nulo");
+        }
+
+        if (automovilEntity.getMarca().getId() == null) {
+            throw new BusinessLogicException("el id de la marca es null ");
+        
+        }
+        if (automovilEntity.getModel().getId() == null) {
+            throw new BusinessLogicException("El id del modelo es nulo");
+        }
+    }
+    
+     /* Método privado para reducir complejidad ciclomática e createAutomovil
+     * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
+     * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
+     */
+    private void verificacionesAuto3(AutomovilEntity automovilEntity)throws BusinessLogicException{
+        
+        
         // revisa que la marca ni su id sean null
         if (automovilEntity.getMarca() == null) {
             throw new BusinessLogicException("la marca es nulo");
@@ -93,15 +124,6 @@ public class AutomovilLogic {
         if (automovilEntity.getMarca().getId() == null) {
             throw new BusinessLogicException("el id de la marca es null ");
         }
-    }
-    
-    /**
-     * Método privado para reducir complejidad ciclomática e createAutomovil
-     * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
-     * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
-     */
-    private void verificacionesAuto2(AutomovilEntity automovilEntity)throws BusinessLogicException{
-    
         
         // revisa que el punto de venta y su id no sea null
         if (automovilEntity.getPuntoDeVenta() == null) {
@@ -111,6 +133,16 @@ public class AutomovilLogic {
             throw new BusinessLogicException("el id del punto de venta es null ");
         }
         
+        
+    }
+    
+    /**
+     * Método privado para reducir complejidad ciclomática e createAutomovil
+     * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
+     * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
+     */
+    private void verificacionesAuto4(AutomovilEntity automovilEntity)throws BusinessLogicException{
+    
         if (puntoPersistence.find(automovilEntity.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos");
         }
@@ -145,6 +177,10 @@ public class AutomovilLogic {
         verificacionesAuto1(automovilEntity);
 
         verificacionesAuto2(automovilEntity);
+        
+        verificacionesAuto3(automovilEntity);
+        
+        verificacionesAuto4(automovilEntity);
 
         // Invoca la persistencia para crear el automovil 
         persistence.create(automovilEntity);
@@ -194,11 +230,21 @@ public class AutomovilLogic {
         if (automovilEntity.getMarca() == null || !newAutoEntity.getMarca().equals(automovilEntity.getMarca())) {
             throw new BusinessLogicException("No se puede verificar la marca");
         }
+        
+        verificacionCompraPvConsistente(automovilEntity, newAutoEntity);
+    }
+    
+    /**
+     * Método privado para reducir complejidad ciclomática de updateAutomovil
+     * @param automovilEntity automovil sobre el cuál se harán las verificaciones
+     */
+    private void verificacionCompraPvConsistente(AutomovilEntity automovilEntity, AutomovilEntity newAutoEntity)throws BusinessLogicException{
+        
         if (automovilEntity.getPuntoDeVenta() == null || !newAutoEntity.getPuntoDeVenta().equals(automovilEntity.getPuntoDeVenta())) {
             throw new BusinessLogicException("No se puede modificar el punto de venta ");
         }
 
-        if (automovilEntity.getCompra() == null || newAutoEntity.compararCompra(automovilEntity.getCompra()) != 0) {
+        if (automovilEntity.getCompra() == null) {
             throw new BusinessLogicException("no se puede cambiar la compra ");
         }
     }
@@ -466,18 +512,9 @@ public class AutomovilLogic {
      * @param kilometrajeMin cota inferior del rango de kilometraje
      * @param kilometrajeMax cota superior del rango de kilometraje.
      * @return lista con todos los automóviles que cumplen los filtros.
-     * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin o
-     * si todos los parámetros son null
+     * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin
      */
     public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
-
-        //Para que sonar no moleste con número de operadores lógicos.
-        boolean left = precioMin == null && precioMax == null && anioMin == null;
-        boolean right = anioMax == null && marca == null && modelo == null;
-        
-        if ( left && right && color == null) {
-            throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
-        }
         
         verificarConsistenciaParejas(kilometrajeMin, kilometrajeMax, precioMax, precioMin, anioMax, anioMin);
         
