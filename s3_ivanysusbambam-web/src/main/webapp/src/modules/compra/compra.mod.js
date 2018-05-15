@@ -81,14 +81,15 @@
                 url: "/comprar/{idAuto: int}/",
                 params:{
                       requireLogin: true,
-                      idAuto: null
+                      idAuto: null,
+                      clienteId:null
                     },    
                 views: {
                         mainView: {
                             templateUrl: basePath + "comprar.html",
-                            controller: "automovilGetAllCtrl",
+                            controller: "comprarCtrl",
                             controllerAs: "ctrl"
-                        },
+                        }
                     }
             
             });

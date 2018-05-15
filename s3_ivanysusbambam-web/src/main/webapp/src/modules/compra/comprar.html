@@ -9,31 +9,25 @@
                             <a ui-sref="automovilGetAll"><span class="lnr atrasC"><i class="fa fa-angle-left fa-2x"></i></span></a>
                             <a href="buscarAuto"><span class="lnr cancelar"><i class="fa fa-times"></i></span></a>
                         </div>
-                        <h1 class="cMarca">Ferrari</h1>
-                        <h3 class="cModelo">Testarrosa</h3>
+                        <h1 class="cMarca">{{automovil.marca.name}}</h1>
+                        <h3 class="cModelo">{{automovil.modelo.name}}</h3>
+                        <a> <img  src="{{automovil.imagen}}" style="width: 500%" class="float-left" alt="imagencarro"></a> 
                         <p class="temp">
-                            <span class="precioC">$230000</span>
+                            <span class="precioC">{{automovil.valorListado|currency}}</span>
                         </p>
+                          
                     </div>
                 </div>
                 <br>
                 <div id="mediosDePagoB">
                     <label id="mdP">Selecciona tu medio de pago</label>
                     <br>
-                    <select class="form-control" id="formaPago">
-<option>Tarjeta</option>
-<option>PayPal</option>
-<option>Efectivo</option>
-        </select>
-                    <label id="mdP">Selecciona una ubicación</label>
+                    
+                        <select class ="col-md-8"  type ="number" required ng-model = "data.medioDePago" ng-options="x.numero + ' | ' + x.tipo for x in elCliente.mediosDePago">
+                        </select>
                     <br>
-                    <select class="form-control" id="formaPago">
-<option>Calle 63</option>
-<option>Calle 45</option>
-<option>Calle 28</option>
-        </select>
                     <br>
-                    <button type="button" class="btn btn-success" id="botonCompra" ui-sref="ccCrear" data-toggle="modal" data-target="#myModal">Continuar</button> 
+                    <button type="button" class="btn btn-success" ng-click="crearVenta()" id="botonCompra" ui-sref="ccCrear" data-toggle="modal" data-target="#myModal">Continuar</button> 
                     <br>
                     <br>
                 </div>

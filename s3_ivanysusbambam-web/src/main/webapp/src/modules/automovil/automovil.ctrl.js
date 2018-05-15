@@ -1,17 +1,13 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 
 (function(ng){
 
     var mod = ng.module("automovilModule");
     
-    mod.constant("automovilContext", "api/automoviles");
+    mod.constant("automovilContext", "api/automoviles/search?");
     
-    mod.controller("automovilGetAllCtrl",["$scope","$http","$rootScope","automovilContext", function($scope, $rootScope, $http, automovilContext){
+    mod.controller("automovilGetAllCtrl",["$scope","$http","$rootScope","automovilContext", function($scope,  $http, $rootScope,automovilContext){
       
             console.log($rootScope.cliente);
             

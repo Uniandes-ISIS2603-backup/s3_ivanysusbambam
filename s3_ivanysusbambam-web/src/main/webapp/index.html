@@ -37,6 +37,7 @@
     <script src="src/modules/compra/compra.detail.ctrl.js" type="text/javascript"></script>
     <script src="src/modules/compra/compra.crear.crtl.js" type="text/javascript"></script>
     <script src="src/modules/compra/compra.delete.ctrl.js" type="text/javascript"></script>
+    <script src="src/modules/compra/comprar.ctrl.js" type="text/javascript"></script>
 
     <!--Medio de Pago-->
     <script src="src/modules/medioDePago/medioDePago.mod.js" type="text/javascript"></script>
@@ -205,37 +206,32 @@
                 <!-- Esto aparecerá si no ha iniciado sesión -->
                 <ul class="navbar-nav navbar-right">
                     <li class="nav-item" ng-if="!isAuthenticated()">
-                        <a class="nav-link" ui-sref="registrar">Registrarse</a>
+                        <a class="nav-link" ui-sref="registrar" id="navAutos">Registrarse</a>
                     </li>
                     <li class="nav-item" ng-if="!isAuthenticated()">
-                        <a class="nav-link" ui-sref="login">Iniciar Sesión</a>
+                        <a class="nav-link" ui-sref="login"id="navAutos">Iniciar Sesión</a>
                     </li>
                     <li class="nav-item" ng-if="isAuthenticated()">
                         <!--&& vendedor-->
-                        <a class="nav-link" ui-sref="perfilVendedor">Ver perfil</a>
+                        <a class="nav-link" ui-sref="perfilVendedor" id="navAutos">Ver perfil</a>
                     </li>
                     <li class="nav-item" ng-if="isAuthenticated()">
-                        <a class="nav-link" ui-sref="logout">Cerrar Sesión</a>
+                        <a class="nav-link" ui-sref="logout" id="navAutos">Cerrar Sesión</a>
                     </li>
                     <li class="nav-item" ng-if="isAuthenticated() ">
                         <!--&& cliente-->
-                        <a class="nav-link" ui-sref="perfilCliente({clienteId: currentUserId})">Ver perfil</a>
+                        <a class="nav-link" ui-sref="perfilCliente({clienteId: currentUserId})" id="navAutos">Ver perfil</a>
                     </li>
                     <li class="nav-item" ng-if="isAuthenticated() && vendedor">
                         <!--Arreglar la referencia al perfil del vendedor-->
-                        <a class="nav-link" ui-sref="perfilVendedor">Ver perfil</a>
+                        <a class="nav-link" ui-sref="perfilVendedor" id="navAutos">Ver perfil</a>
                     </li>
                     <li class="nav-item" ng-if="isAuthenticated()">
-                        <a class="nav-link" ui-sref="logout">Cerrar Sesión</a>
+                        <a class="nav-link" ui-sref="logout" id="navAutos">Cerrar Sesión</a>
                     </li>
+                  
                     <li class="nav-item">
-                        <a class="nav-link" ui-sref="comprarAuto">Comprar</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="ccCrear">CrearComentario</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="latabla">Tabla CRUD</a>
+                        <a class="nav-link" ui-sref="latabla" id="navAutos">Tabla CRUD</a>
                     </li>
                 </ul>
             </ul>

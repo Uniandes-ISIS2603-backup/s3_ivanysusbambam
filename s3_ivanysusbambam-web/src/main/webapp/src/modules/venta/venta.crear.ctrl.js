@@ -17,7 +17,8 @@
             
             $scope.crearVenta = function(){
                $http.post(ventaContext, $scope.data).then(function(response){
-                  $state.go("adminVentaGetAll", {reload: true}); 
+                 console.log(response);
+                   $state.go("adminVentaGetAll", {reload: true}); 
                });  
             };
             
