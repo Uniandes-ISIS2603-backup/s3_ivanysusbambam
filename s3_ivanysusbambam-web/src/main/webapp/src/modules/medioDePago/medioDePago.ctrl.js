@@ -1,7 +1,6 @@
 (function(ng){
 
     var mod = ng.module("medioDePagoModule");
-    console.log("hola");
     mod.constant("medioDePagoContext", "api/mediosDePago");
     
     mod.controller("medioDePagoGetAllCtrl",["$scope","$http","medioDePagoContext", function($scope, $http, medioDePagoContext){

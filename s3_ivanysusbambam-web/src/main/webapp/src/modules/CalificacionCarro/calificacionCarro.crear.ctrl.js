@@ -7,7 +7,6 @@
                         
             $scope.info = {};
             $scope.crearCalificacionCarro = function(){
-                console.log($scope.info);
                $http.post(calificacionCarroContext, $scope.info).then(function(response){
                   $state.go("adminCalificacionesCarroGetAll", {}, {reload: true}); 
                });  

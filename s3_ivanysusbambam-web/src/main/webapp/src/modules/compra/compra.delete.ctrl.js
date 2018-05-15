@@ -1,7 +1,6 @@
 (function(ng){
     
     var mod = ng.module("compraModule");
-    console.log("hola");
     mod.constant("compraContext", "api/compras");
     mod.controller("compraDeleteCtrl", ["$scope", "$http", "compraContext", "$state", "dataTransfer", 
     
