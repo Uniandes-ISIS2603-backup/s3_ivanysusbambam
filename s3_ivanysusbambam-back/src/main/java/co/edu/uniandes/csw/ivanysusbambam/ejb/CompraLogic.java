@@ -64,25 +64,36 @@ public class CompraLogic {
         if (clientePersistence.find(compra.getCliente().getCedula()) == null) {
             throw new BusinessLogicException("El cliente no esta registrado en el sistema");
         }
-        if (compra.getVendedorEncargado() == null) {
-            throw new BusinessLogicException("El vendedoer no puede ser null");
+        
+        if (vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor()) == null) {
+            throw new BusinessLogicException("El vendedor encargado no es valido");
         }
     }
     
+    /**
+     * Método auxiliar para reducir complejidad ciclomática de crearCompra.
+     * @param compra CompraEntity sobre el que se hacen las verificaciones
+     * @throws BusinessLogicException si se incumple alguna de las reglas del negocio verificadas
+     */
+    private void verificacionesCrearCompra2(CompraEntity compra) throws BusinessLogicException{
+        
+        
+        if (compra.getVendedorEncargado() == null) {
+            throw new BusinessLogicException("El vendedoer no puede ser null");
+        }
+        
+        if (compra.getVendedorEncargado().getCarnetVendedor() == null) {
+            throw new BusinessLogicException("El carnet del vendedor no puede ser null");
+        }
+    }
     /**
      * Método auxiliar para reducir complejidad ciclomática de crearCompra.<br>
      * <b>pre:</b> compra.getVendedorEncargado != null 
      * @param compra CompraEntity sobre el que se hacen las verificaciones
      * @throws BusinessLogicException si se incumple alguna de las reglas del negocio verificadas
      */
-    private void verificacionesCrearCompra2(CompraEntity compra) throws BusinessLogicException{
+    private void verificacionesCrearCompra3(CompraEntity compra) throws BusinessLogicException{
         
-        if (compra.getVendedorEncargado().getCarnetVendedor() == null) {
-            throw new BusinessLogicException("El carnet del vendedor no puede ser null");
-        }
-        if (vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor()) == null) {
-            throw new BusinessLogicException("El vendedor encargado no es valido");
-        }
         if (compra.getPuntoDeVenta() == null) {
             throw new BusinessLogicException("El punto de venta no puede ser null");
         }
@@ -107,6 +118,8 @@ public class CompraLogic {
         verificacionesCrearCompra1(compra);
         
         verificacionesCrearCompra2(compra);
+        
+        verificacionesCrearCompra3(compra);
         
         compraPersistence.create(compra);
         return compra;

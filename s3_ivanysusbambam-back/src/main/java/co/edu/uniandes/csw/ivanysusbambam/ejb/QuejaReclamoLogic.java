@@ -47,6 +47,14 @@ public class QuejaReclamoLogic {
     private VentaPersistence ventaPersistance;
 
     /**
+     * Método auxiliar usado para reducir complejidad
+     * @param entity 
+     */
+    private void verificarCreateQr1(QuejaReclamoEntity entity){
+        
+    }
+    
+    /**
      * Crea un prospecto de compra.
      *
      * @param entity prospecto de compra que se quiere añadir

@@ -63,6 +63,15 @@ public class ProspectoCompraLogic {
             throw new BusinessLogicException("Ninguno de los atributos del prospecto de compra puede ser null");
         }
 
+    }
+    
+    /**
+     * Metodo auxiliar para reducir complejidad ciclomática de createProspectoCompra.
+     * @param pc ProspectoCompraEntity sobre el que se llevarán a cabo verificaciones
+     * @throws BusinessLogicException si se incumple alguna de las reglas del negocio verificadas       
+     */
+    private void verificacionCrearPc2(ProspectoCompraEntity pc) throws BusinessLogicException{
+        
         if (pc.getId() <= 0) {
             throw new BusinessLogicException("EL id no debería ser <= 0");
         }
@@ -76,7 +85,7 @@ public class ProspectoCompraLogic {
      * @param pc ProspectoCompraEntity sobre el que se llevarán a cabo verificaciones
      * @throws BusinessLogicException si se incumple alguna de las reglas del negocio verificadas       
      */
-    private void verificacionCrearPc2(ProspectoCompraEntity pc) throws BusinessLogicException{
+    private void verificacionCrearPc3(ProspectoCompraEntity pc) throws BusinessLogicException{
         if (pc.getVendedor().getCarnetVendedor() == null || vendedorPersistence.find(pc.getVendedor().getCarnetVendedor()) == null) {
             throw new BusinessLogicException("El vendedor del prospecto de compra no esta registrado en la base de datos o es null");
         }
@@ -102,6 +111,9 @@ public class ProspectoCompraLogic {
         verificacionCrearPc1(pc);
         
         verificacionCrearPc2(pc);
+        
+        
+        verificacionCrearPc3(pc);
         
         return persistence.create(pc);
     }
@@ -129,22 +141,25 @@ public class ProspectoCompraLogic {
         if (pc.getId() == null || pc.getId() <= 0) {
             throw new BusinessLogicException("El id del prospecto de compra ");
         }
-    }
-    
-     /**
-     * Metodo privado utilizado para reducir complejidad ciclomática de updateProspectoCompra
-     * @param pc ProspectoCompraEntity sobre el que se hará la verificación.
-     * @throws BusinessLogicException si se incumple alguna de las reglas de negocio verificada.
-     */
-    private void verificarParaUpdate2(ProspectoCompraEntity pc) throws BusinessLogicException{
-        
-        
         
         ProspectoCompraEntity pco = persistence.find(pc.getId());
 
         if (pco == null) {
             throw new BusinessLogicException("El prospecto de compra no existe");
         }
+        
+        
+        verificarParaUpdate2(pc, pco);
+    }
+    
+     /**
+     * Metodo privado utilizado para reducir complejidad ciclomática de updateProspectoCompra<br>
+     * <b>pre: </b> pco != null
+     * @param pc ProspectoCompraEntity sobre el que se hará la verificación.
+     * @throws BusinessLogicException si se incumple alguna de las reglas de negocio verificada.
+     */
+    private void verificarParaUpdate2(ProspectoCompraEntity pc, ProspectoCompraEntity pco) throws BusinessLogicException{
+        
         if (pc.getAutomovil() == null || !pco.getAutomovil().equals(pc.getAutomovil())) {
             throw new BusinessLogicException("No se puede modificar el automovil del prospecto");
         }
@@ -169,7 +184,6 @@ public class ProspectoCompraLogic {
     public ProspectoCompraEntity updateProspectoCompra(ProspectoCompraEntity pc) throws BusinessLogicException {
         
         verificarParaUpdate1(pc);
-        verificarParaUpdate2(pc);
 
         return persistence.update(pc);
     }

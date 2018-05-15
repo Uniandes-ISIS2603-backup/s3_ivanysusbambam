@@ -512,18 +512,9 @@ public class AutomovilLogic {
      * @param kilometrajeMin cota inferior del rango de kilometraje
      * @param kilometrajeMax cota superior del rango de kilometraje.
      * @return lista con todos los automóviles que cumplen los filtros.
-     * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin o
-     * si todos los parámetros son null
+     * @throws BusinessLogicException si precioMin<precioMax o anioMax<anioMin
      */
     public List<AutomovilEntity> masterSearch(String tipoAuto, Integer precioMin, Integer precioMax, Integer anioMin, Integer anioMax, String marca, String modelo, String color, Integer kilometrajeMin, Integer kilometrajeMax) throws BusinessLogicException {
-
-        //Para que sonar no moleste con número de operadores lógicos.
-        boolean left = precioMin == null && precioMax == null && anioMin == null;
-        boolean right = anioMax == null && marca == null && modelo == null;
-        
-        if ( left && right && color == null) {
-            throw new BusinessLogicException("Los parámetros de búsqueda no pueden estar todos vacíos");
-        }
         
         verificarConsistenciaParejas(kilometrajeMin, kilometrajeMax, precioMax, precioMin, anioMax, anioMin);
         
