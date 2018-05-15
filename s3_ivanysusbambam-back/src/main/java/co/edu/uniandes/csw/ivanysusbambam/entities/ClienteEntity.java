@@ -43,7 +43,7 @@ public class ClienteEntity implements Serializable {
     private String nombre;
 
     /**
-     * porspectos de compra del cliente
+     * prospectos de compra del cliente
      */
     @PodamExclude
     @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)

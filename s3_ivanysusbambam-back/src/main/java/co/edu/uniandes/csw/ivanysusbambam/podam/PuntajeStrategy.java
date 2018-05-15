@@ -5,28 +5,27 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.podam;
 
-
 import uk.co.jemos.podam.common.AttributeStrategy;
 
 /**
  *
  * @author if.garcia
  */
-public class PuntajeStrategy implements  AttributeStrategy<Double>{
-    
-    
+public class PuntajeStrategy implements AttributeStrategy<Double> {
+
+    /**
+     * @return valor del puntaje
+     */
     @Override
     public Double getValue() {
-        
-        
-        Double l = null; 
-        
+
+        Double l = null;
+
         do {
-            l =  (Math.random() * 4) + 1;
-        }
-        while( l <= 0 );
-                
+            l = (Math.random() * 4) + 1;
+        } while (l <= 0);
+
         return l;
     }
-    
+
 }

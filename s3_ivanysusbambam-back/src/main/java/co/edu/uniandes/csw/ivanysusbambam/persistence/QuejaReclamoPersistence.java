@@ -21,15 +21,21 @@ import javax.persistence.TypedQuery;
  */
 @Stateless
 public class QuejaReclamoPersistence {
- 
+
+    /**
+     * Constante para el punto de venta
+     */
     private static final Logger LOGGER = Logger.getLogger(QuejaReclamoPersistence.class.getName());
 
+    /**
+     * Atributo para el entity manager
+     */
     @PersistenceContext(unitName = "IvanysusbambamPU")
     protected EntityManager em;
-    
+
     /**
      *
-     * @param entity objeto queja o reclamo  que se creará en la base de datos
+     * @param entity objeto queja o reclamo que se creará en la base de datos
      * @return devuelve la entidad creada con un id dado por la base de datos.
      */
     public QuejaReclamoEntity create(QuejaReclamoEntity entity) {
@@ -38,65 +44,66 @@ public class QuejaReclamoPersistence {
         LOGGER.info("Creando una queja o reclamo  nueva");
         return entity;
     }
-    
+
     /**
-     * @return devuelve toda la lista de entidades quejaReclamo en la base de datos  
-     */ 
+     * @return devuelve toda la lista de entidades quejaReclamo en la base de
+     * datos
+     */
     public List<QuejaReclamoEntity> findAll() {
         LOGGER.info("Consultando todas las quejas y reclamos");
-         TypedQuery query = em.createQuery("select u from QuejaReclamoEntity u", QuejaReclamoEntity.class);
+        TypedQuery query = em.createQuery("select u from QuejaReclamoEntity u", QuejaReclamoEntity.class);
         return query.getResultList();
     }
 
-    
     /**
      * busca y retorna la queja o reclamo con el id dado por parametro
      *
-     * @param id id de la queja o reclamo  que se desea buscar
-     * @return la queja o reclamo  con el id dado por parametro
+     * @param id id de la queja o reclamo que se desea buscar
+     * @return la queja o reclamo con el id dado por parametro
      */
     public QuejaReclamoEntity find(Long id) {
         LOGGER.log(Level.INFO, "Consultando queja o reclamo con id={0}", id);
         return em.find(QuejaReclamoEntity.class, id);
     }
 
-       /**
+    /**
      * Encuentra una serie de QuejaReclamoEntity según el tipo de QuejaReclamo.
-     * @param tipo  el tipo que se busca
+     *
+     * @param tipo el tipo que se busca
      * @return lista de QuejaReclamoEntity con el tipo dado por parámetro.
      */
-    public List<QuejaReclamoEntity> findByType(tiposDeQueja tipo){
+    public List<QuejaReclamoEntity> findByType(String tipo) {
         LOGGER.log(Level.INFO, "Buscando quejasReclamos con tipo: ", tipo);
-        TypedQuery tq  = em.createQuery("select v from QuejaReclamoEntity v where v.tipo = :tipo", QuejaReclamoEntity.class);
-        tq.setParameter("tipo",tipo);
-        if(tq.getResultList().isEmpty()){
+        TypedQuery tq = em.createQuery("select v from QuejaReclamoEntity v where v.tipo = :tipo", QuejaReclamoEntity.class);
+        tq.setParameter("tipo", tipo);
+        if (tq.getResultList().isEmpty()) {
             return new ArrayList<>();
+        } else {
+            return tq.getResultList();
         }
-        else return tq.getResultList();
     }
-    
+
     /**
-     * busca y actualiza la entidad de la queja o reclamo  dada por parametro 
-     * @param entity queja o reclamo  con la informacion que se desea actualizar
-     * @return la queja o reclamo  actualizada
-     */ 
+     * busca y actualiza la entidad de la queja o reclamo dada por parametro
+     *
+     * @param entity queja o reclamo con la informacion que se desea actualizar
+     * @return la queja o reclamo actualizada
+     */
     public QuejaReclamoEntity update(QuejaReclamoEntity entity) {
         LOGGER.log(Level.INFO, "Actualizando Queja o reclamo  con id={0}", entity.getId());
         return em.merge(entity);
     }
 
     /**
-     * busca y elimina de la base de datos la entidad de la queja o reclamo 
-     * con el id dado por parametro
-     * @param id id de la queja o reclamo  que se desea eliminar 
+     * busca y elimina de la base de datos la entidad de la queja o reclamo con
+     * el id dado por parametro
+     *
+     * @param id id de la queja o reclamo que se desea eliminar
      */
     public void delete(Long id) {
         LOGGER.log(Level.INFO, "Borrando quejaReclamo con id={0}", id);
         QuejaReclamoEntity entity = em.find(QuejaReclamoEntity.class, id);
         em.remove(entity);
     }
-   public enum tiposDeQueja {
-    ESTADO_VEHICULO, PROBLEMA_TRANSACCION, DEMORA_ENTREGA;
-}
-    
+
 }

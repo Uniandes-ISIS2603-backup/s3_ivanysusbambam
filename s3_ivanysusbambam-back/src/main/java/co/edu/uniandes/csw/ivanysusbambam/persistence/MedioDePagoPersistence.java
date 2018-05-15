@@ -20,8 +20,14 @@ import javax.persistence.TypedQuery;
 @Stateless
 public class MedioDePagoPersistence {
 
+    /**
+     * COntante para el logger
+     */
     private static final Logger LOGGER = Logger.getLogger(MedioDePagoPersistence.class.getName());
 
+    /**
+     * Atributo para el entity manager
+     */
     @PersistenceContext(unitName = "IvanysusbambamPU")
     protected EntityManager em;
 
@@ -34,7 +40,7 @@ public class MedioDePagoPersistence {
         LOGGER.info("Creando un medio de pago nuevo");
         em.persist(entity);
         LOGGER.info("Creando un medio de pago nuevo");
-        
+
         return find(entity.getNumero());
     }
 
@@ -46,8 +52,8 @@ public class MedioDePagoPersistence {
     public List<MedioDePagoEntity> findAll() {
         LOGGER.info("Consultando todas los medios de pagos");
         TypedQuery query = em.createQuery("select u from MedioDePagoEntity u", MedioDePagoEntity.class);
-         LOGGER.info(""+Integer.toString(query.getResultList().size()));
-        
+        LOGGER.info("" + Integer.toString(query.getResultList().size()));
+
         return query.getResultList();
     }
 
@@ -80,5 +86,5 @@ public class MedioDePagoPersistence {
         MedioDePagoEntity entity = em.find(MedioDePagoEntity.class, id);
         em.remove(entity);
     }
-    
+
 }

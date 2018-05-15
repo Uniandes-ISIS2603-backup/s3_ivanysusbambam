@@ -37,6 +37,13 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
     @PodamExclude
     @ManyToOne
     private ClienteEntity cliente;
+    
+    /**
+     * Punto de venta al que hace referencia la calificacionTienda
+     */
+    @PodamExclude
+    @ManyToOne
+    private PuntoDeVentaEntity puntoDeVenta;
 
     /**
      * @return comentario de la calififcacionTienda
@@ -85,13 +92,29 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
     public void setComentario(String comentario) {
         this.comentario = comentario;
     }
+    
+     /**
+     * @return the puntoDeVenta
+     */
+    public PuntoDeVentaEntity getPuntoDeVenta() {
+        return puntoDeVenta;
+    }
+
+    /**
+     * @param puntoDeVenta the puntoDeVenta to set
+     */
+    public void setPuntoDeVenta(PuntoDeVentaEntity puntoDeVenta) {
+        this.puntoDeVenta = puntoDeVenta;
+    }
+
+    
 
     /**
      * @return hash code
      */
     @Override
     public int hashCode() {
-        return 5;
+        return comentario.hashCode();
     }
 
     /**
@@ -117,5 +140,4 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
         }
         return true;
     }
-
 }
