@@ -83,14 +83,11 @@ public class VendedorDetailDTO extends VendedorDTO {
     }
 
     /**
-     * Construye un dto según un entity.
-     *
-     * @param ve entity.
+     * Metodo auxiliar par reducir complejidad ciclomática del constructor
+     * @param ve entity el que se convertirán los prospecto de compra.
      */
-    public VendedorDetailDTO(VendedorEntity ve) {
-        super(ve);
-        if (ve != null) {
-            if (ve.getProspectosCompra() != null) {
+    private void convertirProspectosDeCompra(VendedorEntity ve){
+        if (ve.getProspectosCompra() != null) {
                 if (prospectosCompra == null) {
                     prospectosCompra = new ArrayList();
                 }
@@ -98,7 +95,14 @@ public class VendedorDetailDTO extends VendedorDTO {
                     prospectosCompra.add(new ProspectoCompraDTO(ent));
                 }
             }
-            if (ve.getVentas() != null) {
+    }
+    
+    /**
+     * Metodo auxiliar par reducir complejidad ciclomática del constructor
+     * @param ve entity el que se convertirán las compras.
+     */
+    private void convertirVentas(VendedorEntity ve){
+        if (ve.getVentas() != null) {
                 if (ventas == null) {
                     ventas = new ArrayList();
                 }
@@ -106,14 +110,39 @@ public class VendedorDetailDTO extends VendedorDTO {
                     ventas.add(new VentaDTO(ent));
                 }
             }
-            if (ve.getCompras() != null) {
-                if (compras == null) {
-                    compras = new ArrayList();
-                }
-                for (CompraEntity ent : ve.getCompras()) {
-                    compras.add(new CompraDTO(ent));
-                }
+    }
+    
+    /**
+     * Metodo auxiliar par reducir complejidad ciclomática del constructor
+     * @param ve entity el que se convertirán las compras.
+     */
+    private void convertirCompras(VendedorEntity ve){
+    
+        if (ve.getCompras() != null) {
+            if (compras == null) {
+                compras = new ArrayList();
             }
+            for (CompraEntity ent : ve.getCompras()) {
+                compras.add(new CompraDTO(ent));
+            }
+        }
+    }
+    
+    /**
+     * Construye un dto según un entity.
+     *
+     * @param ve entity.
+     */
+    public VendedorDetailDTO(VendedorEntity ve) {
+        super(ve);
+        if (ve != null) {
+            
+            convertirProspectosDeCompra(ve);
+            
+            convertirVentas(ve);
+            
+            convertirCompras(ve);
+            
             this.puntoDeVenta = new PuntoDeVentaDTO(ve.getPuntoDeVenta());
         }
     }

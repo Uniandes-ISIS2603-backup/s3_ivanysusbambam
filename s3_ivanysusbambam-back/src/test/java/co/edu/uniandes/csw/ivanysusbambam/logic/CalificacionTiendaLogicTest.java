@@ -8,6 +8,7 @@ package co.edu.uniandes.csw.ivanysusbambam.logic;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.CalificacionTiendaLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.CalificacionTiendaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
+import co.edu.uniandes.csw.ivanysusbambam.entities.PuntoDeVentaEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.CalificacionTiendaPersistence;
 import java.util.ArrayList;
@@ -49,6 +50,8 @@ public class CalificacionTiendaLogicTest {
     private List<CalificacionTiendaEntity> data = new ArrayList<CalificacionTiendaEntity>();
     
     private List<ClienteEntity> clienteData = new ArrayList<>();
+    
+    private List<PuntoDeVentaEntity> puntoVentaData = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -86,22 +89,30 @@ public class CalificacionTiendaLogicTest {
     private void clearData() {
         em.createQuery("delete from CalificacionTiendaEntity").executeUpdate();
         em.createQuery("delete from ClienteEntity").executeUpdate();
+        em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
     }
     
     private void insertData() {
         System.out.println("-INSERT- ");
 
-        
-        for(int i = 0; i < 3; i++ ){
+        int i;
+        for(i = 0; i < 3; i++){
+            PuntoDeVentaEntity puntoVentaEntity = factory.manufacturePojo(PuntoDeVentaEntity.class);
+            em.persist (puntoVentaEntity);
+            puntoVentaData.add(puntoVentaEntity);
+            System.out.println("puntoVenta " + puntoVentaEntity.getName());
+        }
+        for(i = 0; i < 3; i++ ){
             ClienteEntity clienteEntity = factory.manufacturePojo(ClienteEntity.class);
             em.persist(clienteEntity);
             clienteData.add(clienteEntity);
-            System.out.println("venta " + clienteEntity.getNombre());
+            System.out.println("cliente " + clienteEntity.getNombre());
 
         }
-        for (int i = 0; i < 3; i++) {
+        for (i = 0; i < 3; i++) {
             CalificacionTiendaEntity entity = factory.manufacturePojo(CalificacionTiendaEntity.class);
-            entity.setCliente(clienteData.get(0));
+            entity.setCliente(clienteData.get(i));
+            entity.setPuntoDeVenta(puntoVentaData.get(i));
             
             em.persist(entity);
             data.add(entity);
@@ -197,13 +208,15 @@ public class CalificacionTiendaLogicTest {
         
         pojoEntity.setId(entity.getId());
         pojoEntity.setCliente(entity.getCliente());
+        pojoEntity.setPuntoDeVenta(entity.getPuntoDeVenta());
         
 
         System.out.println(ctiendaLogic.updateCalificacionTienda(pojoEntity).getCliente().getCedula());
         CalificacionTiendaEntity resp = em.find(CalificacionTiendaEntity.class, entity.getId());
-        System.out.println(resp.getCliente());
+        System.out.println(resp.getCliente().getCedula() + "----");
         
-        //Assert.assertNotNull(resp.getCliente());
+        Assert.assertNotNull(resp.getPuntoDeVenta());
+        Assert.assertNotNull(resp.getCliente());
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getPuntaje(), resp.getPuntaje());

@@ -93,11 +93,7 @@ public class PuntoDeVentaLogicTest {
      *
      */
     private void insertData() {
-//        for (int i = 0; i < 3; i++) {
-//            BookEntity books = factory.manufacturePojo(BookEntity.class);
-//            em.persist(books);
-//            booksData.add(books);
-//        }
+
         for (int i = 0; i < 3; i++) {
             PuntoDeVentaEntity entity = factory.manufacturePojo(PuntoDeVentaEntity.class);
             em.persist(entity);
