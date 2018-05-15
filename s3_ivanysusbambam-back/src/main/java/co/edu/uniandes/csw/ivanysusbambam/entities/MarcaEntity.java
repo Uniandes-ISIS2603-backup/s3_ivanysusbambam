@@ -11,6 +11,9 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -21,7 +24,7 @@ import uk.co.jemos.podam.common.PodamExclude;
  * @author Joseph Ortíz Moreno
  */
 @Entity
-public class MarcaEntity extends BaseEntity implements Serializable {
+public class MarcaEntity implements Serializable {
 
     /**
      * Automoviles de la marca
@@ -42,6 +45,50 @@ public class MarcaEntity extends BaseEntity implements Serializable {
      */
     @Lob
     private String logo;
+    
+     /**
+     * Id de la entidad
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    /**
+     * Nombre de la entidad
+     */
+    private String name;
+
+    /**
+     * @return Id de la entidad
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Seta el id de la entidad al dado por parametro
+     *
+     * @param id id de la entidad
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return nombre de la enitdad
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Setea el nombre de la entidad al dado por parametro
+     *
+     * @param name nombre de la entidad
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * @return Los automoviles de la marca
@@ -95,32 +142,12 @@ public class MarcaEntity extends BaseEntity implements Serializable {
      * Hash code
      * @return 
      */
-    @Override
     public int hashCode() {
-        return 3;
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
     }
 
-    /**
-     * Metodo equals
-     * @param obj objeto a compara
-     * @return 
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final MarcaEntity other = (MarcaEntity) obj;
-        if (!Objects.equals(this.logo, other.logo)) {
-            return false;
-        }
-        return true;
-    }
-
+    
 }

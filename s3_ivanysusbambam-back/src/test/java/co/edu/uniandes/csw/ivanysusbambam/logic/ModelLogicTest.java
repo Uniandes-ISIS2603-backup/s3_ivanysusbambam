@@ -115,6 +115,7 @@ public class ModelLogicTest {
     public void HashCodeTest() {
         ModelEntity model = data.get(0);
         ModelEntity model1 = data.get(1);
+        model1.setId(model.getId());
         Assert.assertEquals(model.hashCode(), model1.hashCode());
     }
 
@@ -213,6 +214,7 @@ public class ModelLogicTest {
             ModelEntity pojoEntity = factory.manufacturePojo(ModelEntity.class);
 
             pojoEntity.setId(entity.getId());
+            pojoEntity.setAutomoviles(entity.getAutomoviles());
 
             modelLogic.updateModel(pojoEntity);
 

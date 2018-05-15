@@ -149,6 +149,7 @@ public class MarcaLogicTest {
             Assert.assertEquals(newEntity.getName(), entity.getName());
             Assert.assertEquals(newEntity.getAutomoviles(), entity.getAutomoviles());
             Assert.assertEquals(newEntity.getModelos(), entity.getModelos());
+            Assert.assertEquals(newEntity.getLogo(), entity.getLogo());
         } catch (BusinessLogicException e) {
             Assert.fail();
 
@@ -240,13 +241,14 @@ public class MarcaLogicTest {
             Assert.assertEquals(pojoEntity.getName(), resp.getName());
             Assert.assertEquals(pojoEntity.getModelos(), resp.getModelos());
             Assert.assertEquals(pojoEntity.getAutomoviles(), resp.getAutomoviles());
+            Assert.assertEquals(entity.getLogo(), resp.getLogo());
         } catch (BusinessLogicException ex) {
             Assert.fail();
         }
     }
 
     /**
-     * Metodo para probar el hashCode de la marca 
+     * Metodo para probar el hashCode de la marca
      */
     @Test
     public void HasCodeTest() {
