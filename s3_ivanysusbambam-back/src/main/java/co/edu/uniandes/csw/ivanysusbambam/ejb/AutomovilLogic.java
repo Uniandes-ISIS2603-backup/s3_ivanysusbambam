@@ -244,7 +244,7 @@ public class AutomovilLogic {
             throw new BusinessLogicException("No se puede modificar el punto de venta ");
         }
 
-        if (automovilEntity.getCompra() == null || newAutoEntity.compararCompra(automovilEntity.getCompra()) != 0) {
+        if (automovilEntity.getCompra() == null) {
             throw new BusinessLogicException("no se puede cambiar la compra ");
         }
     }

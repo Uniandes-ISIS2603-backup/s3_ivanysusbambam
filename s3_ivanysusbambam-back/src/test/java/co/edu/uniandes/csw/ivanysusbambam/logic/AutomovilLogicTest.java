@@ -200,11 +200,19 @@ public class AutomovilLogicTest {
             Assert.assertNotNull(result);
             AutomovilEntity entity = em.find(AutomovilEntity.class, result.getId());
             Assert.assertEquals(newEntity.getId(), entity.getId());
+            Assert.assertEquals(newEntity.getName(), entity.getName());
             Assert.assertEquals(newEntity.getPlaca(), entity.getPlaca());
             Assert.assertEquals(newEntity.getPuntoDeVenta(), entity.getPuntoDeVenta());
             Assert.assertEquals(newEntity.getCompra(), entity.getCompra());
             Assert.assertEquals(newEntity.getMarca(), entity.getMarca());
             Assert.assertEquals(newEntity.getModel(), entity.getModel());
+            Assert.assertEquals(newEntity.getChasis(), entity.getChasis());
+            Assert.assertEquals(newEntity.getColor(), entity.getColor());
+            Assert.assertEquals(newEntity.getTipo(), entity.getTipo());
+            Assert.assertEquals(newEntity.getFechaListado(), entity.getFechaListado());
+            Assert.assertEquals(newEntity.getValorListado(), entity.getValorListado());
+            Assert.assertEquals(newEntity.getVentas(), entity.getVentas());
+
         } catch (BusinessLogicException e) {
             ex = true;
         }
@@ -245,7 +253,9 @@ public class AutomovilLogicTest {
     @Test
     public void getAutomovilTest() throws BusinessLogicException {
         AutomovilEntity entity = data.get(0);
-
+        if (entity.getId() == null || entity.getId() <= 0) {
+            Assert.fail();
+        }
         AutomovilEntity resultEntity = autoLogic.findAutomovil(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());

@@ -325,19 +325,6 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
     }
 
     /**
-     *
-     * @param compra
-     * @return
-     */
-    public int compararCompra(CompraEntity compra) {
-        if (this.compra.getIdCompra().equals(compra.getIdCompra())) {
-            return 0;
-        } else {
-            return 1;
-        }
-    }
-
-    /**
      * @return hashCode
      */
     @Override
