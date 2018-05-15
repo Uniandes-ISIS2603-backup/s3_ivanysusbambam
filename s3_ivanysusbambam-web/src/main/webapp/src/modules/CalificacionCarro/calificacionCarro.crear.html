@@ -1,7 +1,5 @@
 <div class="backComment">
     <div class="row col-12">
-
-
         <div class="comentCard one">
             <div style="text-align: left; color: white">
                 <a href="comprarAuto"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
@@ -13,13 +11,13 @@
                 <br>
                 <label id="comentario">Comentario</label>
                 <br>
-                <textarea class="form-control" id="comentariotxt" rows="2"></textarea>
+                <textarea class="form-control" id="comentariotxt" rows="2" ng-model="data.comentario"></textarea>
             </form>
             <br>
             <label id="comentario">Puntuación</label>
             <input class="form-control" type="number" id="comentariotxt">
             <br>
-            <button type="button" class="btn btn-success" id="botonCompra" ui-sref="ccCrear">Finalizar</button>
+            <button type="button" class="btn btn-success" id="botonCrud" ui-sref="ccCrear">Finalizar</button>
             <br>
             <br>
         </div>

@@ -18,9 +18,6 @@
           
             //Id que será reemplazado por el autogenerado
             
-            
-            console.log($scope.data);
-            
             $http.post(medioDePagoContext, $scope.data).then(function(response){
                 $state.go("AdminMedioDePagoGetAll",{} ,{reload:true});
             });

@@ -7,7 +7,6 @@
                         
             $scope.info = {};
             $scope.crearCalificacionTienda = function(){
-                console.log($scope.info);
                $http.post(calificacionTiendaContext, $scope.info).then(function(response){
                   $state.go("adminCalificacionesTiendaGetAll", {}, {reload: true}); 
                });  

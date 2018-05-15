@@ -35,7 +35,9 @@
                     }
 
 
-            }).state("automovilDetail", {
+            })
+            
+            .state("automovilDetail", {
                 url: "/{automovilId: int}/detail ",
                
                 params: {
@@ -71,7 +73,6 @@
                     }
                 }
             })
-
                 .state("automovilListFiltros", {
                     url: "/automovilListFiltered",
                     parent: "listAutomoviles",
@@ -114,33 +115,6 @@
                         }
                     }
                 })
-
-                .state("crearAutomovil", {
-                    url: "/automovil/crear",
-                    params:{
-                        requireLogin: true
-                    },
-                    views: {
-                        mainView: {
-                            templateUrl: basePath + "automovil.crear.html",
-                            controller: "automovilCrearCtrl",
-                            controllerAs: "ctrl"
-                        }
-                    }
-                })
-.state("latabla", {
-                    url: "/automovil/buscar",
-                    params:{
-                      requireLogin: false  
-                    },
-                    views: {
-                        mainView: {
-                            templateUrl: basePath + "tabla.html",
-                            controller: "automovilGetAllCtrl",
-                            controllerAs: "ctrl"
-                        }
-                    }
-                })
                 .state("buscarAuto", {
                     url: "/automovil/buscar",
                     params:{
@@ -153,8 +127,63 @@
                             controllerAs: "ctrl"
                         }
                     }
+                })   
+                .state("adminAutos", {
+                    url: "/autos",
+                    params:{
+                      requireLogin: false  
+                    },
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "automovilesAdmin.html",
+                            /*No sé si este es el ctrl*/
+                            controller: "automovilGetAllCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
                 })
-            ;
+                .state("crearAutomovil", {
+                    url: "/automovil/crear",
+                    params:{
+                        requireLogin: true
+                    },
+                    parent:"adminAutos",
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "automovil.crear.html",
+                            controller: "automovilCrearCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                })
+                    
+                .state("editarAutomovil", {
+                    url: "/automovil/editar",
+                    params:{
+                        requireLogin: true
+                    },
+                    parent:"adminAutos",
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "automovil.editar.html",
+                            controller: "automovilCrearCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                })
+                .state("latabla", {
+                    url: "/automovil/buscar",
+                    params:{
+                      requireLogin: false  
+                    },
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "automovil.editar.html",
+                            controller: "automovilGetAllCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                });
         }
     ]);
 

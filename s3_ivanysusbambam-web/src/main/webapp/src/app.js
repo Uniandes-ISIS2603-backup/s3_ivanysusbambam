@@ -55,7 +55,7 @@
             return savedData;
         };
     });
-
+   
    app.run(['$rootScope', '$transitions', function ($rootScope, $transitions) {
 
             $transitions.onSuccess({to: '*'}, function (trans) {
@@ -105,20 +105,17 @@
 
                 $rootScope.esCliente=function(){
                     $rootScope.cliente=true;
-                    console.log($rootScope.cliente);
                     $rootScope.admin=false;
                     $rootScope.vendedor=false;
                 };
                 $rootScope.esAdmin=function(){
                     $rootScope.admin=true;
-                    console.log($rootScope.cliente);
                     $rootScope.vendedor=false;
                     $rootScope.cliente=false;
                     
                 };
                 $rootScope.esVendedor=function(){
                     $rootScope.vendedor=true;
-                    console.log($rootScope.vendedor);
                     $rootScope.cliente=false;
                     $rootScope.admin=false;
                 };

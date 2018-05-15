@@ -14,7 +14,6 @@
                     nombre: $scope.nombre,
                 };
 
-                console.log(data);
                 $http.post(marcaContext, $scope.data).then(function (response) {
                     $state.go("listMarca", {
                         reload: true

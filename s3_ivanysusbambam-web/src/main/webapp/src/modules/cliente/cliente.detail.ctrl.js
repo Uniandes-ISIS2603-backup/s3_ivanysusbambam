@@ -17,7 +17,6 @@
            
             $http.get(address).then(function(response){
                 $scope.elCliente = response.data;
-                console.log($scope.elCliente);
             });
         }
         
@@ -25,7 +24,6 @@
         
         
         $scope.subirInfoCliente = function(){
-            console.log("subiendo info");
             dataTransfer.set($scope.cliente);
         };
         

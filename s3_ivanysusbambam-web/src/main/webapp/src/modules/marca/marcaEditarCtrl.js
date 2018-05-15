@@ -8,7 +8,6 @@
     
     function($scope, $http, marcaContext,$rootScope, $state, dataTransfer, $route){
         
-        //$rootScope.edit = true;
         $scope.marca = dataTransfer.get();
         $scope.nuevoNombre = $scope.marca.nombre;    
         
@@ -16,7 +15,6 @@
         
         
         $scope.editarMarca = function(){
-            console.log($scope.marca.nombre);
             $http.put(address, $scope.marca).then(function(response){
                 
                 $state.go("listMarca",{},{reload: true}); 

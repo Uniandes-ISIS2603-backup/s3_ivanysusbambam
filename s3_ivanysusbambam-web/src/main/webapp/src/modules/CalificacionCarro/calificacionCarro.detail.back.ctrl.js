@@ -12,7 +12,6 @@
                 $scope.currentCalificacionCarroBack = response.data;
                 $scope.coment = $scope.currentCalificacionCarroBack.comentario.split(":::")[0];
                 $scope.rutaImagen = $scope.currentCalificacionCarroBack.comentario.split(":::")[1];
-                console.log($scope.rutaImagen);
             });
         }
         
