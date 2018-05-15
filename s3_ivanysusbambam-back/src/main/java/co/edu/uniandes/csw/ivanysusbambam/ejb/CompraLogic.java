@@ -47,15 +47,11 @@ public class CompraLogic {
     private PuntoDeVentaPersistence puntoDeVentaPersistence;
 
     /**
-     * Crean una nueva compra
-     *
-     * @param compra entidad de la compra a crear
-     * @return retorna la compra creada
-     * @throws BusinessLogicException si la compra no cumple con las reglas de
-     * negocio
+     * Método auxiliar para reducir complejidad ciclomática de crearCompra.
+     * @param compra CompraEntity sobre el que se hacen las verificaciones
+     * @throws BusinessLogicException si se incumple alguna de las reglas del negocio verificadas
      */
-    public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
-
+    private void verificacionesCrearCompra1(CompraEntity compra) throws BusinessLogicException{
         if (compraPersistence.find(compra.getIdCompra()) != null) {
             throw new BusinessLogicException("Ya existe una compra con ese id");
         }
@@ -71,6 +67,16 @@ public class CompraLogic {
         if (compra.getVendedorEncargado() == null) {
             throw new BusinessLogicException("El vendedoer no puede ser null");
         }
+    }
+    
+    /**
+     * Método auxiliar para reducir complejidad ciclomática de crearCompra.<br>
+     * <b>pre:</b> compra.getVendedorEncargado != null 
+     * @param compra CompraEntity sobre el que se hacen las verificaciones
+     * @throws BusinessLogicException si se incumple alguna de las reglas del negocio verificadas
+     */
+    private void verificacionesCrearCompra2(CompraEntity compra) throws BusinessLogicException{
+        
         if (compra.getVendedorEncargado().getCarnetVendedor() == null) {
             throw new BusinessLogicException("El carnet del vendedor no puede ser null");
         }
@@ -86,7 +92,22 @@ public class CompraLogic {
         if (puntoDeVentaPersistence.find(compra.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El punto de venta no es valido");
         }
+    }
+    
+    /**
+     * Crean una nueva compra
+     *
+     * @param compra entidad de la compra a crear
+     * @return retorna la compra creada
+     * @throws BusinessLogicException si la compra no cumple con las reglas de
+     * negocio
+     */
+    public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
 
+        verificacionesCrearCompra1(compra);
+        
+        verificacionesCrearCompra2(compra);
+        
         compraPersistence.create(compra);
         return compra;
     }
