@@ -213,6 +213,10 @@ public class PuntoDeVentaLogicTest {
         }
     }
 
+    /**
+     * Prueba el caso de error para crear un punto de  venta
+     * Excepcion: telefono inválido
+     */
     @Test
     public void createPuntoDeVentaExceptionTest(){
         PuntoDeVentaEntity pv = new PuntoDeVentaEntity();
@@ -232,10 +236,9 @@ public class PuntoDeVentaLogicTest {
         Assert.assertTrue(exc);
     
     }
+    
     /**
      * Prueba para consultar la lista de puntos de venta
-     *
-     *
      */
     @Test
     public void getPuntosDeVentaTest() {
