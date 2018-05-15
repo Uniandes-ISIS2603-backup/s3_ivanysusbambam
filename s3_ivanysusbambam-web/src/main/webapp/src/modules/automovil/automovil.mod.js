@@ -34,7 +34,7 @@
                         }
                     }
 
-<<<<<<< Updated upstream
+
             }).state("automovilDetail", {
                 url: "/{automovilId: int}/detail ",
                
@@ -70,43 +70,7 @@
                         controllerAs: "ctrl"
                     }
                 }
-            }).state("automovilListFiltros", {
-                url: "/automovilListFiltered",
-                 parent: "listAutomoviles",
-                 params:{
-                  fechaMin:null,
-                  fechaMax:null,
-                  marca:null,
-                  modelo:null,
-                  color:null,
-                  precioMin:null,
-                  precioMax:null
-                 },
-               views: {
-                  
-                    'mainView': {
-                        templateUrl: basePath + 'automovil.list.html',
-                        controller: 'automovilGetAllCtrl',
-                        controllerAs: 'ctrl'
-=======
-                })
-
-                .state("automovilDetail", {
-                    url: "/{automovilId: int}/detail ",
-                    parent: "listAutomoviles",
-                    params: {
-                        automovilId: null,
-                        requireLogin: false
->>>>>>> Stashed changes
-                    },
-                    views: {
-                        'automovilDetailView': {
-                            templateUrl: basePath + "automovil.detail.html",
-                            controller: "automovilDetailCtrl",
-                            controllerAs: "ctrl"
-                        }
-                    }
-                })
+            })
 
                 .state("automovilListFiltros", {
                     url: "/automovilListFiltered",

@@ -1,63 +1,54 @@
-(function (ng) {
+(function(ng){
 
     var mod = ng.module("clienteModule", ["ui.router"]);
-
-    mod.config(["$stateProvider", "$urlRouterProvider", function ($stateProvider, $urlRouterProvider) {
-
+    
+    mod.config(["$stateProvider","$urlRouterProvider", function($stateProvider, $urlRouterProvider){
+        
         var basePath = "src/modules/cliente/";
-
-
-        //TODO - Tal vez el otherwise debería enviar a index?
-
+        
         $urlRouterProvider.otherwise("/cliente");
-
+        
         $stateProvider.state("listCliente", {
-
+            
             url: "/cliente/list",
-            params: {
-                requireLogin: true
-            },
+            
             views: {
-                mainView: {
+                mainView:{
                     templateUrl: basePath + "cliente.list.html",
                     controller: "clienteListCtrl",
-                    controllerAs: "ctrl"
+                    controllerAs:"ctrl"
                 }
             }
+            
+        }).state("clienteDetail",{
+           
+               url: "/{clienteId: int}/detail",
+               parent: "listCliente",
+               params: {
+                   clienteId: null
+               },
+               views: {
+                   clienteDetailView: {
+                       templateUrl: basePath+"cliente.detail.html",
+                       controller: "clienteDetailCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+               
+                
+        }).state("crearCliente",{
+                url: "/cliente/crear",
 
-        }).state("clienteDetail", {
-
-            url: "/{clienteId: int}/detail",
-            parent: "listCliente",
-            params: {
-                clienteId: null,
-                requireLogin: true,
-            },
-            views: {
-                clienteDetailView: {
-                    templateUrl: basePath + "cliente.detail.html",
-                    controller: "clienteDetailCtrl",
-                    controllerAs: "ctrl"
+                views:{
+                    mainView:{
+                        templateUrl: basePath + "cliente.crear.html",
+                        controller: "clienteCrearCtrl",
+                        controllerAs: "ctrl"
+                    }
                 }
-            }
-
-
-        }).state("crearCliente", {
-            url: "/cliente/crear",
-            params: {
-                requireLogin: true
-            },
-            views: {
-                mainView: {
-                    templateUrl: basePath + "cliente.crear.html",
-                    controller: "clienteCrearCtrl",
-                    controllerAs: "ctrl"
-                }
-            }
-        }).state("editarCliente", {
-
+        }).state("editarCliente",{
+            
             url: "/{clienteId: int}/editar",
-
                parent: "listCliente",
                params: {
                    clienteId: null
@@ -71,51 +62,47 @@
                }
             
         }).state("perfilCliente",{
-
-            parent: "listCliente",
-            params: {
-                clienteId: null,
-                requireLogin: true
+            url: "/perfil/{clienteId: int}",
+            
+            params:{
+                clienteId: null
             },
             views: {
-                clienteDetailView: {
-                    templateUrl: basePath + "cliente.editar.html",
-                    controller: "clienteEditarCtrl",
-                    controllerAs: "ctrl"
-                }
+                mainView: {
+                        templateUrl: basePath+"/Perfil/cliente.perfil.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"
+                    }
+                 
             }
-
-        }.state("ComprasCliente", {
+        }).state("ComprasCliente",{
             url: "/perfil/{clienteId: int}/Compras",
-            parent: "perfilCliente",
-            params: {
-                clienteId: null,
-                requireLogin: true
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
             },
             views: {
-
-                perfil: {
-                    templateUrl: basePath + "Perfil/compras.html",
-                    controller: "clienteDetailCtrl",
-                    controllerAs: "ctrl"
-                }
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/compras.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
             }
-        }).state("VentasCliente", {
+        }).state("VentasCliente",{
             url: "/perfil/{clienteId: int}/Ventas",
-            parent: "perfilCliente",
-            params: {
-                clienteId: null,
-                requireLogin: true
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
             },
             views: {
-
-                perfil: {
-                    templateUrl: basePath + "Perfil/ventas.html",
-                    controller: "clienteDetailCtrl",
-                    controllerAs: "ctrl"
-                }
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/ventas.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
             }
-
         }).state("ComentariosCliente",{
             url: "/Comentarios",
             parent:"perfilCliente",
@@ -134,8 +121,7 @@
             url: "/perfil/Comentarios/eliminar",
             parent:"perfilCliente",
             params:{
-                idComentario: null,
-                idCliente: null
+                idComentario: null
             },
             views: {
                
@@ -160,47 +146,42 @@
                         controllerAs: "ctrl"  
                     }
             }
-        }).state("QyRCliente", {
-
+        }).state("QyRCliente",{
             url: "/perfil/{clienteId: int}/Quejas",
-            parent: "perfilCliente",
-            params: {
-                clienteId: null,
-                requireLogin: true
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
             },
             views: {
-
-                perfil: {
-                    templateUrl: basePath + "Perfil/quejas.html",
-                    controller: "clienteDetailCtrl",
-                    controllerAs: "ctrl"
-                }
+               
+                    perfil:{
+                       templateUrl: basePath+"Perfil/quejas.html",
+                        controller: "clienteDetailCtrl",
+                        controllerAs: "ctrl"  
+                    }
             }
-        }).state("editarPerfilCliente", {
-
+        }).state("editarPerfilCliente",{
+            
             url: "/{clienteId: int}/editarperfil",
-            parent: "perfilCliente",
-            params: {
-                clienteId: null,
-                requireLogin: true
-            },
-            views: {
-                perfil: {
-                    templateUrl: basePath + "cliente.perfil.editar.html",
-                    controller: "clienteEditarPerfilCtrl",
-                    controllerAs: "ctrl"
-                }
-            }
-
-        }).state("mediosDePagoCliente", {
+            parent:"perfilCliente",
+               params: {
+                   clienteId: null
+               },
+               views: {
+                   perfil: {
+                       templateUrl: basePath+"cliente.perfil.editar.html",
+                       controller: "clienteEditarPerfilCtrl",
+                       controllerAs: "ctrl"
+                   }
+               }
+            
+        }).state("mediosDePagoCliente",{
             url: "/perfil/{clienteId: int}/mediosDePago",
-            parent: "perfilCliente",
-            params: {
-                clienteId: null,
-                requireLogin: true
+            parent:"perfilCliente",
+            params:{
+                clienteId: null
             },
             views: {
-
                
                     perfil:{
                        templateUrl: basePath+"Perfil/MediosDePago/mediosDePago.html",
@@ -248,16 +229,9 @@
                         templateUrl: basePath + "cliente.registrar.html",
                         controller: "clienteRegistrarCtrl",
                         controllerAs: "ctrl"
-                    },
-
-
-                perfil: {
-                    templateUrl: basePath + "Perfil/mediosDePago.html",
-                    controller: "clienteDetailCtrl",
-                    controllerAs: "ctrl"
+                    }
                 }
-            }
-        }));
+        });
     }]);
 
 })(window.angular);
