@@ -431,7 +431,7 @@ public class AutomovilResource {
      * @return lista de DTO's convertida
      */
     private List<AutomovilDetailDTO> entityToDTOList(List<AutomovilEntity> lista) {
-
+        System.out.println("CONVIRTIÓ");
         List<AutomovilDetailDTO> ret = new ArrayList();
         for (AutomovilEntity ae : lista) {
             ret.add(new AutomovilDetailDTO(ae));
