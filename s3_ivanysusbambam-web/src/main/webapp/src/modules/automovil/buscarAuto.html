@@ -5,6 +5,7 @@
             <br>
         </div>
         <div class="row centered" id="panelBusqueda">
+            
             <div class="col-sm-4"></div>
 
             <div class="col-sm-4">
@@ -100,7 +101,7 @@
         <br>
         <ul>
             <li>
-                <a><img src="{{automovil1.imagen}}" alt=""></a>
+                <a><img src="{{automovil1.imagen}}" style=" object-fit: cover;" alt=""></a>
                 <div class="popuIm">
                     <h3>{{automomovil1.marca.name}}</h3>
                     <div class="hls_data">
@@ -111,18 +112,18 @@
 
             </li>
             <li>
-                <img src="{{automovil2.imagen}}" alt="">
+                <img src="{{automovil2.imagen}}" style=" object-fit: cover; " alt="">
                 <div class="popuIm">
                     <h3>{{automomovil2.marca.name}}</h3>
                     <div class="hls_data">
-                        <a target="_blank" class="titP">{{automovil2.modelo.name}}</a>
+                        <a target="_blank" class="titP" >{{automovil2.modelo.name}}</a>
                         <a class="btn btn-pro" ui-sref="automovilDetail({automovilId: automovil2.id})"> Ver</a>
                     </div>
                 </div>
             </li>
             <li>
                 
-                <img src="{{automovil3.imagen}}" style=" object-fit: contain;" alt="">
+                <img src="{{automovil3.imagen}}" style=" object-fit: cover;" alt="">
                 
                 <div class="popuIm">
                     <h3>{{automomovil3.marca.name}}</h3>
@@ -133,7 +134,7 @@
                 </div>
             </li>
             <li>
-                <img src="{{automovil4.imagen}}" alt="">
+                <img src="{{automovil4.imagen}}" style=" object-fit: cover;" alt="">
                 <div class="popuIm">
                     <h3>{{automomovil4.marca.name}}</h3>
                     <div class="hls_data">
