@@ -232,7 +232,7 @@ public class MarcaLogicTest {
             MarcaEntity pojoEntity = factory.manufacturePojo(MarcaEntity.class);
 
             pojoEntity.setId(entity.getId());
-
+            pojoEntity.setLogo(entity.getLogo());
             marcaLogic.updateMarca(pojoEntity);
 
             MarcaEntity resp = em.find(MarcaEntity.class, entity.getId());
@@ -254,6 +254,8 @@ public class MarcaLogicTest {
     public void HasCodeTest() {
         MarcaEntity marca = data.get(0);
         MarcaEntity marca1 = data.get(1);
+        marca1.setId(marca.getId());
+        
         Assert.assertEquals(marca1.hashCode(), marca.hashCode());
     }
 
