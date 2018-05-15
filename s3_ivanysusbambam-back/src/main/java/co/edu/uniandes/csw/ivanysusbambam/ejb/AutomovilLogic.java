@@ -81,6 +81,10 @@ public class AutomovilLogic {
         if (automovilEntity.getModel() == null) {
             throw new BusinessLogicException("El modelo es nulo");
         }
+        
+        if (automovilEntity.getModel().getId() == null) {
+            throw new BusinessLogicException("El id del modelo es nulo");
+        }
     }
     
     /**
@@ -91,9 +95,6 @@ public class AutomovilLogic {
      */
     private void verificacionesAuto2(AutomovilEntity automovilEntity)throws BusinessLogicException{
         
-        if (automovilEntity.getModel().getId() == null) {
-            throw new BusinessLogicException("El id del modelo es nulo");
-        }
         // revisa que la marca ni su id sean null
         if (automovilEntity.getMarca() == null) {
             throw new BusinessLogicException("la marca es nulo");
@@ -106,6 +107,15 @@ public class AutomovilLogic {
         if (automovilEntity.getModel().getId() == null) {
             throw new BusinessLogicException("El id del modelo es nulo");
         }
+    }
+    
+     /* Método privado para reducir complejidad ciclomática e createAutomovil
+     * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
+     * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
+     */
+    private void verificacionesAuto3(AutomovilEntity automovilEntity)throws BusinessLogicException{
+        
+        
         // revisa que la marca ni su id sean null
         if (automovilEntity.getMarca() == null) {
             throw new BusinessLogicException("la marca es nulo");
@@ -122,6 +132,8 @@ public class AutomovilLogic {
         if (automovilEntity.getPuntoDeVenta().getId() == null) {
             throw new BusinessLogicException("el id del punto de venta es null ");
         }
+        
+        
     }
     
     /**
@@ -129,11 +141,8 @@ public class AutomovilLogic {
      * @param automovilEntity AutomovilEntity sobre el que se harán verificaciones de lógica.
      * @throws BusinessLogicException  si se incumple alguna de las reglas de lógica verificadas.
      */
-    private void verificacionesAuto3(AutomovilEntity automovilEntity)throws BusinessLogicException{
+    private void verificacionesAuto4(AutomovilEntity automovilEntity)throws BusinessLogicException{
     
-        
-        
-        
         if (puntoPersistence.find(automovilEntity.getPuntoDeVenta().getId()) == null) {
             throw new BusinessLogicException("El Punto de venta del automovil no esta registrado en la base de datos");
         }
@@ -170,6 +179,8 @@ public class AutomovilLogic {
         verificacionesAuto2(automovilEntity);
         
         verificacionesAuto3(automovilEntity);
+        
+        verificacionesAuto4(automovilEntity);
 
         // Invoca la persistencia para crear el automovil 
         persistence.create(automovilEntity);
