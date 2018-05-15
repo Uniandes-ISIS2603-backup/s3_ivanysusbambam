@@ -41,8 +41,8 @@
 
                 for (var item in $scope.users) {
                     
-                   
-                   
+                   console.log(typeof  $scope.users[item].user +"holis" );
+                   console.log( typeof  $scope.data.username +"holas");
                     if ($scope.users[item].user === $scope.data.username && $scope.users[item].password === $scope.data.password && $scope.users[item].rol === $scope.data.rol) {
                         
                         
