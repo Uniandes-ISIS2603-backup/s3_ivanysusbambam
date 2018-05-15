@@ -40,35 +40,34 @@ public class VendedorLogic {
     private PuntoDeVentaPersistence persistencePuntoVenta;
 
     /**
-     * Revisa que se cumplan las reglas del negocio antes de añadir un vendedor.
-     *
-     * @param ve el VendedorEntity que se busca persistir.
-     * @return el VendedorEntity que se persistió
-     * @throws BusinessLogicException si se incumple alguna de las reglas del
-     * negocio, es decir si se incumple alguna de las siguientes reglas:<pre>
-     *          -La cédula es un número entero positivo único de hasta 10 dígitos y es única
-     *          -El nombre es una cadena alfabética. Sólo contiene letras y espacios.
-     *          -El vendedor debe estar asignado a un punto de venta que ya se encuentre registrado en la base de datos.
-     *          -El carnet del vendedor es un entero positivo auto-asignado y único.
+     * Método auxiliar para reducir complejidad ciclomática de createVendedor. Verificar las RN respectivas a la cédula del parámetro.
+     * @param ve VendedorEntity de que se verificarán las RN.
      */
-    public VendedorEntity createVendedor(VendedorEntity ve) throws BusinessLogicException {
-        if (ve == null) {
-            throw new BusinessLogicException("EL VENDEDOR NO PUEDE SER NULL");
-        }
-
-        Long carnet = ve.getCarnetVendedor();
-        LOG.log(Level.INFO, "Revisando si el vendedor: {0}cumple con los requisitos para ser persistido", carnet);
+    private void verificarCedula(VendedorEntity ve) throws BusinessLogicException{
         Long cedula = ve.getCedula();
         cedulaValida(cedula);
         if (!persistence.findByCedula(cedula).isEmpty()) {
             throw new BusinessLogicException("Algún vendedor se encuentra registrado con la misma cédula");
         }
-
+    }
+    
+    /**
+     * Método auxiliar para reducir complejidad ciclomática de createVendedor. Verificar las RN respectivas al nombre del vendedor.
+     * @param ve VendedorEntity de que se verificarán las RN.
+     */
+    private void verificarNombre(VendedorEntity ve) throws BusinessLogicException{
         String name = ve.getNombre();
         if (name == null || !esAlfabetica(name)) {
             throw new BusinessLogicException("Para el nombre sólo se aceptan cadenas alfabéticas con vocales con tildes o u con diéresis");
         }
-
+    }
+    
+    /**
+     * Método auxiliar para reducir complejidad ciclomática de createVendedor. Verificar las RN respectivas al punto de veenta del vendedor.
+     * @param ve VendedorEntity de que se verificarán las RN.
+     */
+    private void verificarPuntoDeVenta(VendedorEntity ve)throws BusinessLogicException{
+        
         if (ve.getPuntoDeVenta() == null) {
             throw new BusinessLogicException("El punto de venta no puede ser null");
         }
@@ -76,13 +75,53 @@ public class VendedorLogic {
         if (idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) {
             throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
         }
-
+        
+    }
+    
+    /**
+     * Método auxiliar para reducir complejidad ciclomática de createVendedor. Verificar las RN respectivas al carnet del vendedor.
+     * @param ve VendedorEntity de que se verificarán las RN.
+     */
+    private void verificarCarnet(VendedorEntity ve) throws BusinessLogicException{
+        Long carnet = ve.getCarnetVendedor();
+        
         if (carnet == null || carnet <= 0) {
             throw new BusinessLogicException("El carnet del vendedor no puede ser negativo ni 0");
         }
         if (persistence.find(carnet) != null) {
             throw new BusinessLogicException("Ya existe un vendedor con el mismo número de carnet");
         }
+        
+    }
+    
+    /**
+     * Revisa que se cumplan las reglas del negocio antes de añadir un vendedor.
+     *
+     * @param ve el VendedorEntity que se busca persistir.
+     * @return el VendedorEntity que se persistió
+     * @throws BusinessLogicException si se incumple alguna de las reglas del
+     * negocio, es decir si se incumple alguna de las siguientes reglas:
+     *          -La cédula es un número entero positivo único de hasta 10 dígitos y es única
+     *          -El nombre es una cadena alfabética. Sólo contiene letras y espacios.
+     *          -El vendedor debe estar asignado a un punto de venta que ya se encuentre registrado en la base de datos.
+     *          -El carnet del vendedor es un entero positivo auto-asignado y único.
+     */
+    public VendedorEntity createVendedor(VendedorEntity ve) throws BusinessLogicException {
+        if (ve == null) {
+            throw new BusinessLogicException("El vendedor no puede ser null");
+        }
+
+        Long carnet = ve.getCarnetVendedor();
+        LOG.log(Level.INFO, "Revisando si el vendedor: {0}cumple con los requisitos para ser persistido", carnet);
+        
+        verificarCedula(ve);
+        
+        verificarNombre(ve);
+        
+        verificarPuntoDeVenta(ve);
+        
+        verificarCarnet(ve);
+        
         LOG.log(Level.INFO, "El vendedor: {0}cumple con los requisitos para ser persistido", carnet);
 
         return persistence.create(ve);
@@ -202,16 +241,11 @@ public class VendedorLogic {
         if (!(ve.getCedula().equals(veo.getCedula()))) {
             throw new BusinessLogicException("No se puede cambiar la cedula de un vendedor.");
         }
-        if (ve.getNombre() == null) {
-            throw new BusinessLogicException("El nombre no puede ser null");
-        }
-        if (!esAlfabetica(ve.getNombre())) {
-            throw new BusinessLogicException("El nuevo nombre debe ser una cadena alfabética");
-        }
-        Long idPuntoVenta = ve.getPuntoDeVenta().getId();
-        if (idPuntoVenta == null || persistencePuntoVenta.find(idPuntoVenta) == null) {
-            throw new BusinessLogicException("No existe el punto de venta al que se quiere registrar el vendedor.");
-        }
+        
+        verificarNombre(ve);
+        
+        verificarPuntoDeVenta(ve);
+        
         return persistence.update(ve);
     }
 
