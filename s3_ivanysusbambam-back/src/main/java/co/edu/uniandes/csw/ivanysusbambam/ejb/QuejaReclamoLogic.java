@@ -47,11 +47,17 @@ public class QuejaReclamoLogic {
     private VentaPersistence ventaPersistance;
 
     /**
-     * Método auxiliar usado para reducir complejidad
+     * Método auxiliar usado para reducir complejidad ciclomática.
      * @param entity 
      */
-    private void verificarCreateQr1(QuejaReclamoEntity entity){
-        
+    private void verificarIdQr(QuejaReclamoEntity entity) throws BusinessLogicException{
+        if (entity == null) {
+            throw new BusinessLogicException("La quejaReclamo no debe ser null");
+        }
+
+        if (entity.getId() == null || entity.getId() <= 0) {
+            throw new BusinessLogicException("EL id no debería ser <= 0");
+        }
     }
     
     /**
@@ -63,13 +69,9 @@ public class QuejaReclamoLogic {
      * del cliente no existe o es inválido.
      */
     public QuejaReclamoEntity createQuejaReclamo(QuejaReclamoEntity entity) throws BusinessLogicException {
-        if (entity == null) {
-            throw new BusinessLogicException("La quejaReclamo no debe ser null");
-        }
-
-        if (entity.getId() <= 0) {
-            throw new BusinessLogicException("EL id no debería ser <= 0");
-        }
+        
+        verificarIdQr(entity);
+        
         if (persistence.find(entity.getId()) != null) {
             throw new BusinessLogicException("la QuejaReclamo ya existe en la base de datos");
         }
@@ -103,12 +105,8 @@ public class QuejaReclamoLogic {
      * prospecto de compra.
      */
     public QuejaReclamoEntity updateQuejaReclamo(QuejaReclamoEntity entity) throws BusinessLogicException {
-        if (entity == null) {
-            throw new BusinessLogicException("La quejaReclamo no debe ser null");
-        }
-        if (entity.getId() == null || entity.getId() <= 0) {
-            throw new BusinessLogicException("El id de la quejaREclamo no es valido ");
-        }
+        verificarIdQr(entity);
+        
         QuejaReclamoEntity newEntity = persistence.find(entity.getId());
 
         if (newEntity == null) {
