@@ -16,10 +16,10 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>123123123123</td>
-                    <td>Juan Esteban Vega Matamoros</td>
-                    <td>PayPal</td>
+                <tr ng-repeat="mdp in mediosDePago">
+                    <td>{{mdp.numero}}</td>
+                    <td>{{mdp.cliente.nombre}}</td>
+                    <td>{{mdp.tipo}}</td>
                 </tr>
 
             </tbody>

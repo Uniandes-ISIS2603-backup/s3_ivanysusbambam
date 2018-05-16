@@ -32,16 +32,16 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat=" ven in vendedorRecords">
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>1</td>
-                    <td>123</td>
-                    <td>Joaquín Téllez</td>
+                    <td>{{ven.carnet}}</td>
+                    <td>{{ven.cedula}}</td>
+                    <td>{{ven.name}}</td>
                     <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
                     <th><a ui-sref="comprasPorVendedor({vendedorId: venta.idVenta})">Ver</a></th>
                     <th><a ui-sref="prospectos({ventaId: venta.idVenta})">Ver</a></th>

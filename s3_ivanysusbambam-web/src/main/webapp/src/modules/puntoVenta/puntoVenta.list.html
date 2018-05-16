@@ -33,17 +33,17 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat="pv in puntosDeVentaBack" >
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>1</td>
-                    <td>Calle 44</td>
-                    <td>Los ángeles</td>
-                    <td>4550909</td>
+                    <td></td>
+                    <td>{{pv.direccion}}/td>
+                    <td>{{pv.name}}</td>
+                    <td>{{pv.telefono}}</td>
                     <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
                     <td><a ui-sref="automovilPorPuntoVenta({clienteId: cliente.id})">Ver</a></td>
                     <td><a ui-sref="comprasPorPuntoVenta({vendedorId: vendedor.id})">Ver</a></td>

@@ -28,21 +28,21 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat=" pc in pcRecords">
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>1</td>
-                    <td>Esto es un prospecto</td>
+                    <td>{{pc.id}}</td>
+                    <td>{{pc.texto}}</td>
                     <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
-                    <td><a ui-sref="clienteDetail({clienteId: cliente.id})">12345</a></td>
-                    <td><a ui-sref="vendedorDetail({vendedorId: vendedor.id})">54321</a></td>
-                    <td><a ui-sref="automovilDetail({automovilId: auto.id})">1</a></td>
-                    <td>VFE653</td>
-                    <td>123000</td>
+                    <td><a ui-sref="clienteDetail({clienteId: cliente.id})">{{pc.cliente.cedula}}</a></td>
+                    <td><a ui-sref="vendedorDetail({vendedorId: vendedor.id})">{{pc.vendedor.carnet}}</a></td>
+                    <td><a ui-sref="automovilDetail({automovilId: auto.id})">{{pc.automovil.id}}</a></td>
+                    <td>{{pc.automovil.placa}}</td>
+                    <td>{{pc.automovil.valor}}</td>
                     <td>
                         <!--Acá al de editar un auto-->
                         <a ui-sref="editarProspectoCompra" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

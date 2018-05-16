@@ -28,15 +28,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat="marca in darMarcas">
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>1</td>
-                    <td>Ferrari</td>
+                    <td>{{marca.id}}</td>
+                    <td>{{marca.name}}</td>
                     <td><a ui-sref="autosPorMarca({marca: marca.Nombre})">Ver</a></td>
                     <td><a ui-sref="modelosPorMarca({marca: marca.Nombre})">Ver</a></td>
                     <td>

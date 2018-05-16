@@ -20,12 +20,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>123123123123</td>
-                    <td>Queja</td>
-                    <td>No sé</td>
-                    <td>Esto está largo</td>
-                    <td>232123</td>
+                <tr ng-repeat="queja in quejasReclamos">
+                    <td>{{queja.id}}</td>
+                    <td>{{queja.tipo}}</td>
+                    <td>{{queja.name}}</td>
+                    <td>{{queja.texto}}</td>
+                    <td>{{queja.cliente.cedula}}</td>
                 </tr>
 
             </tbody>
