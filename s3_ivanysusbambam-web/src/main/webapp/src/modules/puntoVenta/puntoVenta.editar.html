@@ -1,0 +1,29 @@
+<div class="imagenCRUD">
+    <div class="row col-12">
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="adminPuntosVentaGetAll"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Editar Punto de Venta acá va el id</h2>
+            <form name="puntos" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="direccion">Dirección</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.direccion">
+                <br>
+                <br>
+                <label class="col-md-6" for="nombre">Nombre</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.nombre">
+                <br>
+                <br>
+                <label class="col-md-6" for="vendedor">Teléfono</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.telefono">
+                <br>
+                <br>
+                <input ng-show="puntos.$valid" id="botonCrud" ng-click="editarPc()" value="Guardar" class="btn btn-success" />
+            </form>
+            <br>
+        </div>
+    </div>
+</div>

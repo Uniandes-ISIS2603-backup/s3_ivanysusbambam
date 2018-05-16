@@ -1,0 +1,73 @@
+<div class="imagenCRUD">
+    <div class="row col-12">
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="listPc"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Vender Auto</h2>
+            <form name="prospecto" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="idCliente">Id Cliente</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.idCliente">
+                <br>
+                <br>
+                <input ng-show="prospecto.$valid" id="botonCrud" ng-click="darMediosdePago()" value="Buscar" class="btn btn-success" />
+                <br>
+                <br>
+                <!--Escoger los medios de pago del cliente-->
+                <label for="exampleFormControlSelect1">Medio De Pago</label>
+                <br>
+                <select class="form-control" id="crudtxt" style="margin-left: 275px">
+      <option>1</option>
+      <option>2</option>
+    </select>
+                <br>
+                <br>
+                <label for="exampleFormControlSelect1">Medio De Pago</label>
+                <br>
+                <input ng-show="prospecto.$valid" id="botonCrud" ng-click="comentar()" value="Comentar" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                <br>
+                <br>
+                <div ng-if="!prospecto.$valid">
+                    <div class="alert alert-warning">
+                        <strong>Atención!</strong>
+                        <p>Debe llenar todos los campos</p>
+                    </div>
+                </div>
+                <br>
+                <input ng-show="prospecto.$valid" id="botonCrud" ng-click="crearVenta()" value="Crear" class="btn btn-success" />
+                <br>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+
+<div id="myModal" class="modal fade">
+	<div class="modal-dialog modal-confirm">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE876;</i>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body text-center">
+				<h1>Califica tu Compra</h1>
+            <br>
+            <form name="comentarios">
+                <br>
+                <label id="comentario">Comentario</label>
+                <br>
+                <textarea class="form-control" style="width: auto; margin-left: 50px" rows="2" ng-model="calif.comentario"></textarea>
+            </form>
+            <br>
+            <label id="comentario">Puntuación</label>
+            <input class="form-control" type="number" style="width: auto; margin-left: 50px" ng-model="calif.puntuacion">
+            <br>
+                <!-- Tiene que guardar el comentario y seguir con la compra -->
+				<button class="btn btn-success" data-dismiss="modal" ui-sref="ccCrear"><span>Continuar</span> <i class="material-icons">&#xE5C8;</i></button>
+			</div>
+		</div>
+	</div>
+</div>

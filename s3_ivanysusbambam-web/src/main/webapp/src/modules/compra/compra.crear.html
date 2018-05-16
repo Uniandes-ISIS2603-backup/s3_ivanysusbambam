@@ -1,11 +1,11 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div class="imagenCRUD">
+<div class="imagenMarca" style="height: auto">
     <div class="row col-12">
         <div class="creaCard one">
             <div style="text-align: left; color: white">
                 <a ui-sref="adminClientes"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
             <h2>Registrar Compra</h2>
-            <form name="compra" style="text-align: center">
+            <form name="comprarAuto" style="text-align: center">
                 <br>
                 <label class="col-md-6" for="nombre">Cliente</label>
                 <br>
@@ -22,14 +22,84 @@
                 <input class="col-md-12" id="crudtxt" required ng-model="data.puntoDeVenta">
                 <br>
                 <br>
-                <div ng-if="!compra.$valid">
+                <label class="col-md-6" for="automovilId">Id:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.id">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilAnio">Año:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.anio">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilColor">Color:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.color">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilPlaca">Placa: (XXX-111)</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.placa">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilChasis">Chasis</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.chasis">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilFecha">Fecha Actual: (AAAA-MM-DD)</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.fechaListado">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilValor">Valor:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.valorListado">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilModelo">Modelo:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.modelo.id">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilMarca">Marca:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.marca.id">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilCompra">Compra:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.compra.idCompra">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilImagen">Imagen:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.imagen">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilKilometros">Kilometraje:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.kilometros">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilTipo">Tipo:</label>
+                <br>
+                <select class="col-md-12" id="crudtxt" required ng-model="data.tipo">
+                            <option value="Camioneta">Camioneta</option>
+                            <option value="4x4">4x4</option>
+                             <option value="Sedan">sedan</option>
+                             <option value="deportivo">deportivo  </option>
+  
+                </select>
+                <br>
+                <div ng-if="!comprarAuto.$valid">
                     <div class="alert alert-warning">
                         <strong>Atención!</strong>
                         <p>Debe llenar todos los campos</p>
                     </div>
                 </div>
                 <br>
-                <input ng-show="compra.$valid" id="botonCrud" ng-click="crearCliente()" value="Crear" class="btn btn-success" />
+                <input ng-show="comprarAuto.$valid" id="botonCrud" ng-click="crearCliente()" value="Crear" class="btn btn-success" />
                 <br>
             </form>
             <br>

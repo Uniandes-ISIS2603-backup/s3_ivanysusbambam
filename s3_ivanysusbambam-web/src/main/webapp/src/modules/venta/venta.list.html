@@ -1,40 +1,58 @@
-<div>
-    <h1 id="h1" style="margin:10px" >Consultar ventas</h1>
-    <div class="col-md-1 align-items-center">
-        <button class = "btn btn-default" ui-sref ="crearVenta"> Crear </button>
-        </div>
-    <div class="row" >
-        <div class="col-md-5">
-            <div class="card" style="margin: 100px">
-
-                <div class="card-body">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white">
-                                <tr >
-                                    <th>Id de Venta </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="venta in ventas" style="color: black">
-                                    <td>
-                                        <a ui-sref="ventaDetail({ventaId: venta.id})">{{venta.name}}</a>
-                                    </td>
-
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
+<div class="imagen2">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Ventas</h2>
                 </div>
             </div>
         </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+                    </th>
+                    <th>Id</th>
+                    <th>Cédula Cliente</th>
+                    <th>Id Medio de Pago</th>
+                    <th>Carnet Vendedor</th>
+                    <th>Calificacion Carro</th>
+                    <th>Punto de venta</th>
+                    <th>Placas</th>
 
-        <div class="col-md-5">
-            <div ui-view = "ventaDetailView" style = "margin: 0px">
-            </div>   
-        </div>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+                    </td>
+                    <td>1</td>
+                    <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
+                    <td><a ui-sref="clienteDetail({clienteId: cliente.id})">Ver</a></td>
+                    <td><a ui-sref="medioDePagoDetail({vendedorId: vendedor.id})">Ver</a></td>
+                    <td><a ui-sref="vendedorDetail({automovilId: auto.id})">Ver</a></td>
+                    <td><a ui-sref="calificacionDetail({automovilId: auto.id})">Ver</a></td>
+                    <td><a ui-sref="puntoDeVentaDetail({automovilId: auto.id})">Ver</a></td>
+                    <td>KSU890</td>
+                    <td>
+                        <!--Acá al de editar un auto-->
+                        <a ui-sref="editarVenta" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!--Acá eliminar un auto-->
+                        <!--El eliminar no necesita una vista, podemos implementarlo-->
+                        <a ui-sref="eliminarVenta" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    </td>
+                </tr>
 
-
+            </tbody>
+        </table>
     </div>
 </div>

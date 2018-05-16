@@ -32,7 +32,7 @@
                 },
                 views: {
                     pcDetailView: {
-                        templateUrl: basePath + "pc.detail.html",
+                        templateUrl: basePath + "pc.editar.html",
                         controller: "pcDetailCtrl",
                         controllerAs: "ctrl"
                     }

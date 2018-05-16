@@ -170,6 +170,18 @@
                             controllerAs: "ctrl"
                         }
                     }
+                }).state("vendedorAutos", {
+                    url: "/automoviles",
+                    params:{
+                      requireLogin: false  
+                    },
+                    views: {
+                        mainView: {
+                            templateUrl:  basePath+"automovilesVendedor.html",
+                            controller: "automovilGetAllCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
                 })
                 .state("latabla", {
                     url: "/automovil/buscar",
@@ -178,7 +190,7 @@
                     },
                     views: {
                         mainView: {
-                            templateUrl:  "src/modules/compra/compra.editar.html",
+                            templateUrl:  "src/modules/compra/compra.crear.html",
                             controller: "automovilGetAllCtrl",
                             controllerAs: "ctrl"
                         }
