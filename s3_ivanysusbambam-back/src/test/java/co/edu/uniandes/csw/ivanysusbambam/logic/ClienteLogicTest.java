@@ -103,6 +103,12 @@ public class ClienteLogicTest {
     public void createClienteTest() {
         ClienteEntity newEntity = factory.manufacturePojo(ClienteEntity.class);
 
+        newEntity.setCalificacionesTienda(new ArrayList<>());
+        newEntity.setCompras(new ArrayList<>());
+        newEntity.setMediosDePago(new ArrayList<>());
+        newEntity.setQuejasReclamos(new ArrayList<>());
+        newEntity.setVentas(new ArrayList<>());
+
         try {
             ClienteEntity result = clienteLogic.createCliente(newEntity);
 
@@ -110,6 +116,13 @@ public class ClienteLogicTest {
             ClienteEntity entity = em.find(ClienteEntity.class, result.getCedula());
             Assert.assertEquals(newEntity.getCedula(), entity.getCedula());
             Assert.assertEquals(newEntity.getNombre(), entity.getNombre());
+            Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
+            Assert.assertEquals(newEntity.getCalificacionesTienda(), entity.getCalificacionesTienda());
+            Assert.assertEquals(newEntity.getCompras(), entity.getCompras());
+            Assert.assertEquals(newEntity.getMediosDePago(), entity.getMediosDePago());
+            Assert.assertEquals(newEntity.getQuejasReclamos(), entity.getQuejasReclamos());
+            Assert.assertEquals(newEntity.getVentas(), entity.getVentas());
+
         } catch (BusinessLogicException e) {
             Assert.fail();
         }
@@ -188,7 +201,7 @@ public class ClienteLogicTest {
         System.out.println("DATASIZE: " + data.size());
         ClienteEntity entity = data.get(0);
         ClienteEntity pojoEntity = factory.manufacturePojo(ClienteEntity.class);
-        
+
         pojoEntity.setCedula(entity.getCedula());
 
         try {
@@ -200,5 +213,17 @@ public class ClienteLogicTest {
         } catch (BusinessLogicException e) {
             Assert.fail();
         }
+    }
+
+    /**
+     * Prueba para el metodo hash
+     */
+    @Test
+    public void hashCodeTest() {
+        ClienteEntity cliente = data.get(0);
+        cliente.setCedula(Long.MIN_VALUE);
+        ClienteEntity cliente2 = data.get(0);
+        cliente2.setCedula(cliente.getCedula());
+        Assert.assertEquals(cliente2.hashCode(), cliente.hashCode());
     }
 }
