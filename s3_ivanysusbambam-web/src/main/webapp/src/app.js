@@ -64,10 +64,7 @@
                 var requireLogin = $state.current.params.requireLogin;
                 var roles = $state.current.params.roles;
                 
-                /* Sólo me falta esto, necesito guardar esta variable para poder llamarla con ng if */
-               $rootScope.vendedor = false;
-                $rootScope.cliente=false;
-                $rootScope.admin=false;
+                
 
                 /**
                  * @ngdoc function
@@ -103,22 +100,7 @@
                     }
                 };
 
-                $rootScope.esCliente=function(){
-                    $rootScope.cliente=true;
-                    $rootScope.admin=false;
-                    $rootScope.vendedor=false;
-                };
-                $rootScope.esAdmin=function(){
-                    $rootScope.admin=true;
-                    $rootScope.vendedor=false;
-                    $rootScope.cliente=false;
-                    
-                };
-                $rootScope.esVendedor=function(){
-                    $rootScope.vendedor=true;
-                    $rootScope.cliente=false;
-                    $rootScope.admin=false;
-                };
+                
                 
                 if (requireLogin && (sessionStorage.getItem("username") === null)) {
                     event.preventDefault();

@@ -136,7 +136,7 @@
             views: {
 
                 mainView: {
-                    templateUrl: basePath + "src/modules/venta/venta.list.html",
+                    templateUrl:  "src/modules/venta/venta.list.html",
                     controller: "clienteDetailCtrl",
                     controllerAs: "ctrl"
                 }
@@ -274,21 +274,6 @@
 
                 perfil: {
                     templateUrl: basePath + "Perfil/MediosDePago/mediosDePago.html",
-                    controller: "clienteDetailCtrl",
-                    controllerAs: "ctrl"
-                }
-            }
-        }).state("mediosDePagoClienteAdmin", {
-            url: "/perfil/{clienteId: int}/mediosDePagoAmin",
-            
-            params: {
-                clienteId: null,
-                requireLogin: true
-            },
-            views: {
-
-                mainView: {
-                    templateUrl:  "src/modules/medioDePago/medioDePago.list.html",
                     controller: "clienteDetailCtrl",
                     controllerAs: "ctrl"
                 }

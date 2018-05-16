@@ -23,7 +23,7 @@
             
             $scope.crearAutomovil = function(){
                $http.post(automovilContext, $scope.data).then(function(response){
-                  $state.go("listAutomoviles", {reload: true}); 
+                  $state.go("AdminCompraGetAll", {reload: true}); 
                });  
             };
             

@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
@@ -46,42 +47,42 @@ public class ClienteEntity implements Serializable {
      * prospectos de compra del cliente
      */
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY,orphanRemoval = true)
     private List<ProspectoCompraEntity> prospectosCompra;
 
     /**
      * Calificaciones tienda del cliente
      */
     @PodamExclude
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente", fetch = FetchType.LAZY)
     private List<CalificacionTiendaEntity> calificacionesTienda;
 
     /**
      * quejas/Reclamos del cliente
      */
     @PodamExclude
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente",  fetch = FetchType.LAZY)
     private List<QuejaReclamoEntity> quejasReclamos;
 
     /**
      * Compras del cliente
      */
     @PodamExclude
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "cliente",  fetch = FetchType.LAZY)
     private List<CompraEntity> compras;
 
     /**
      * Ventas del cliente
      */
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente",  fetch = FetchType.LAZY)
     private List<VentaEntity> ventas;
 
     /**
      * Medios de pago del cliente
      */
     @PodamExclude
-    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.PERSIST,fetch = FetchType.LAZY)
     private List<MedioDePagoEntity> mediosDePago;
 
     /**

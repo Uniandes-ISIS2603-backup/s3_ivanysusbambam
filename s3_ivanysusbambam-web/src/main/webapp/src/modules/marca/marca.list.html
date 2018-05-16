@@ -37,8 +37,8 @@
                     </td>
                     <td>{{marca.id}}</td>
                     <td>{{marca.name}}</td>
-                    <td><a ui-sref="autosPorMarca({marca: marca.Nombre})">Ver</a></td>
-                    <td><a ui-sref="modelosPorMarca({marca: marca.Nombre})">Ver</a></td>
+                    <td><a ui-sref="autosPorMarca({marcaId: marca.id})">Ver</a></td>
+                    <td><a ui-sref="modelosPorMarca({marcaid: marca.id})">Ver</a></td>
                     <td>
                         <!--Acá al de editar una compra-->
                         <a ui-sref="editarMarca" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

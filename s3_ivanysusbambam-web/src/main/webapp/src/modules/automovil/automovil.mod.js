@@ -24,7 +24,7 @@
                     views: {
                         'mainView': {
                             templateUrl: basePath + 'automovil.list.html',
-                            controller: 'automovilGetAllCtrl',
+                            controller: 'automovilGetAlzlCtrl',
                             controllerAs: 'ctrl'
                         },
                         automovilList: {
@@ -136,7 +136,6 @@
                     views: {
                         mainView: {
                             templateUrl: basePath + "automovilesAdmin.html",
-                            /*No sé si este es el ctrl*/
                             controller: "automovilGetAllCtrl",
                             controllerAs: "ctrl"
                         }
@@ -145,9 +144,11 @@
                 .state("crearAutomovil", {
                     url: "/automovil/crear",
                     params:{
-                        requireLogin: true
+                        requireLogin: false,
+                        compra:null
+                       
                     },
-                    parent:"adminAutos",
+                   
                     views: {
                         mainView: {
                             templateUrl: basePath + "automovil.crear.html",
