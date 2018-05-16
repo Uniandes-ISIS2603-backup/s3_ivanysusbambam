@@ -181,7 +181,7 @@ public class CalificacionCarroResource {
         if (entity == null) {
             throw new WebApplicationException("El author no existe", 404);
         }
-        ccarroLogic.deleteCalificacionTienda(id);
+        ccarroLogic.deleteCalificacionCarro(id);
     }
 
 }
