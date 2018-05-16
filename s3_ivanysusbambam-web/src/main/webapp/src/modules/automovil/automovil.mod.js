@@ -178,7 +178,7 @@
                     },
                     views: {
                         mainView: {
-                            templateUrl: basePath + "automovil.editar.html",
+                            templateUrl:  "src/modules/compra/compra.editar.html",
                             controller: "automovilGetAllCtrl",
                             controllerAs: "ctrl"
                         }

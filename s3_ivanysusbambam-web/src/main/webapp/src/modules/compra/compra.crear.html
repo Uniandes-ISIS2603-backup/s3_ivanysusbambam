@@ -1,65 +1,38 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<div>
-    <h1 id="h1" style="margin:20px" >Crear compra</h1>
-
+<div class="imagenCRUD">
     <div class="row col-12">
-
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Ingrese los datos del medio de pago</div>
-            <form class="form-horizontal" action="/action_page.php">
-
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd"  >Cliente:</label>
-                    <div class ="row " style = "margin: 10px" >
-                        <select class ="col-md-12"  type ="number" required ng-model = "data.cliente" ng-options="x.cedula + ' | ' + x.nombre for x in listaClientes">
-                        </select>
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="adminClientes"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Registrar Compra</h2>
+            <form name="compra" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="nombre">Cliente</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.clienteId">
+                <br>
+                <br>
+                <label class="col-md-6" for="vendedor">Vendedor</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.vendedorId">
+                <br>
+                <br>
+                <label class="col-md-6" for="puntodeVenta">Punto de Venta</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.puntoDeVenta">
+                <br>
+                <br>
+                <div ng-if="!compra.$valid">
+                    <div class="alert alert-warning">
+                        <strong>Atención!</strong>
+                        <p>Debe llenar todos los campos</p>
                     </div>
-
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd"  >Vendedor</label>
-                    <div class ="row " style = "margin: 10px" >
-                        <select class ="col-md-12"  type ="number" required ng-model = "data.vendedorEncargado" ng-options="x.carnetVendedor + ' | ' + x.nombre for x in listaVendedores">
-                        </select>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12" for="pwd"  >Punto de venta</label>
-                    <div class ="row " style = "margin: 10px" >
-                        <select class ="col-md-12"  type ="number" required ng-model = "data.puntoDeVenta" ng-options="x.id + ' | ' + x.name for x in listaPv">
-                        </select>
-                    </div>
-
-                </div>
-               
-                
-                
-                
+                <br>
+                <input ng-show="compra.$valid" id="botonCrud" ng-click="crearCliente()" value="Crear" class="btn btn-success" />
+                <br>
             </form>
-            <div class ="row" style="text-align:center">
-                <div class="container" style="text-align:center">
-                    <input   ng-click="crearCompra()" value="Crear" style="margin-bottom: 20px" class="btn btn-success"/>
-                </div>   
-            </div> 
-
-
-
-
+            <br>
         </div>
-
-
-
     </div>
-
-
-
 </div>
-

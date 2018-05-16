@@ -1,38 +1,27 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-
-<form name ="clienteForm">
-<h3 style="margin:20px" >Consultar cliente</h3>
-
+<div class="imagenCRUD">
     <div class="row col-12">
-
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Información básica:</div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Cédula:</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static">{{cliente.cedula}}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Nombre:</label>
-                    <div class="col-md-10">
-                        <input id="clienteNombre" required ng-model = "nuevoNombre" ng-change="cambioInfo()" ng-value = "cliente.nombre">
-                    </div>
-
-                </div>
-                <div class ="form-group" style = "margin: 10px">
-                     <button class = "btn btn-default" ng-show="clienteForm.$valid" ng-click = "editarCliente()"> Guardar cambios </button>
-                </div>
-            <div class = "form-group" style = "margin: 10px" ng-if="!clienteForm.$valid"> 
-                    <div class="alert alert-warning" >
-                        <strong>Atención!</strong><p>Debe llenar todos los campos</p>
-                    </div> 
-                </div> 
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="automovilesAdmin"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Editar Cliente acá va el id</h2>
+            <form name="automovil" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="nombre">Nombre</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.nombre">
+                <br>
+                <br>
+                <label class="col-md-6" for="automovilColor">Cédula:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.cedula">
+                <br>
+                <br>
+                <input ng-show="automovil.$valid" id="botonCrud" ng-click="editarCliente()" value="Guardar" class="btn btn-success" />
+            </form>
+            <br>
         </div>
     </div>
-
-
-   
-</form>
+</div>
 
 
