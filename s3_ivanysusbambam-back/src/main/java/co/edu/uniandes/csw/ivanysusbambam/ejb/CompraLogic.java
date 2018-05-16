@@ -52,9 +52,7 @@ public class CompraLogic {
      * @throws BusinessLogicException si se incumple alguna de las reglas del negocio verificadas
      */
     private void verificacionesCrearCompra1(CompraEntity compra) throws BusinessLogicException{
-        if (compraPersistence.find(compra.getIdCompra()) != null) {
-            throw new BusinessLogicException("Ya existe una compra con ese id");
-        }
+      
         if (compra.getCliente() == null) {
             throw new BusinessLogicException("El cliente no puede ser null");
         }

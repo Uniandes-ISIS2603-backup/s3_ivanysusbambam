@@ -8,24 +8,35 @@
     function($scope, $http, compraContext, $state){
         
         $scope.data={};
+       
         
-        
-     $http.get("api/clientes").then(function(response){
-            $scope.listaClientes = response.data;
-        });
-           
-     $http.get("api/puntosDeVenta").then(function(response){
-            $scope.listaPv = response.data;
-        });
-           
-     $http.get("api/vendedores").then(function(response){
-            $scope.listaVendedores = response.data;
-        });
+     
         
          $scope.crearCompra = function(){
+             
+             console.log("api/clientes/"+$scope.clienteId);
+            
+             $http.get("api/clientes/"+$scope.clienteId).then(function(response){
+            $scope.data.cliente = response.data;
+            
+           
+            
+        });
+           
+     $http.get("api/puntosDeVenta/"+$scope.puntoDeVentaId).then(function(response){
+            $scope.data.puntoDeVenta = response.data;
+        });
+           
+     $http.get("api/vendedores/"+$scope.vendedorId).then(function(response){
+            $scope.data.vendedorEncargado = response.data;
+        });
+      console.log($scope.data);
    
             $http.post(compraContext, $scope.data).then(function(response){
-                $state.go("AdminCompraGetAll",{} ,{reload:true});
+                
+                console.log(response.data);
+                
+                $state.go("crearAutomovil({cliente: $scope.data.cliente, puntoDeVenta:$scope.data.puntoDeVenta, compra: response.data})",{} ,{reload:true});
             });
         };
         

@@ -44,13 +44,12 @@
             ).state('compraCreate', {
 
                 url: "/create",
-                parent: "AdminCompraGetAll",
                 params: {
                     idCompra: null,
-                    requireLogin:true
+                    requireLogin:false
                 },
                 views: {
-                    'compraDetailView': {
+                    'mainView': {
                         templateUrl: basePath + "compra.crear.html",
                         controller: "compraCrearCtrl",
                         controllerAs: "ctrl"
