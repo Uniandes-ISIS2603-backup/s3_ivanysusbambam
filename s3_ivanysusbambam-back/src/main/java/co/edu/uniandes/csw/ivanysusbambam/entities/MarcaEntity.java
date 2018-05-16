@@ -44,8 +44,8 @@ public class MarcaEntity implements Serializable {
      */
     @Lob
     private String logo;
-    
-     /**
+
+    /**
      * Id de la entidad
      */
     @Id
@@ -139,35 +139,32 @@ public class MarcaEntity implements Serializable {
 
     /**
      * Hash code
-     * @return 
+     *
+     * @return
      */
     @Override
+
     public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
+        return 3;
     }
-    
+
     /**
      * Equals
+     *
      * @param obj objeto con el que se compara
      * @return true si son equivalentes
      */
     @Override
-    public boolean equals(Object obj){
-        
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof MarcaEntity)) {
-            return false;
-        }
 
-        if (this.getId() != null && ((MarcaEntity) obj).getId() != null) {
-            return this.getId().equals(((MarcaEntity) obj).getId());
-        }
-        return super.equals(obj);
+        return true;
     }
-    
+
 }
