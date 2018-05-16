@@ -211,23 +211,21 @@ public class PuntoDeVentaLogicTest {
             System.out.println("no debería arrojar excepcion");
             Logger.getLogger(PuntoDeVentaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-
-    /**
-     * Prueba el caso de error para crear un punto de  venta
-     * Excepcion: telefono inválido
-     */
-    @Test
-    public void createPuntoDeVentaExceptionTest(){
+        
+        
+        /**
+         * Prueba el caso de error para crear un punto de  venta
+         * Excepcion: telefono inválido
+         */
         PuntoDeVentaEntity pv = new PuntoDeVentaEntity();
         //Datos cableados para generar error a la hora de crearlo
         pv.setDireccion("cll 12 # 23 - 4");
         pv.setName("Missouri");
         pv.setTelefono(12);
-        PuntoDeVentaEntity result;
+        PuntoDeVentaEntity resultB;
         boolean exc = false;
         try{
-            result = puntoVentaLogic.createPuntoDeVenta(pv);
+            resultB = puntoVentaLogic.createPuntoDeVenta(pv);
         }
         catch(BusinessLogicException ex){
             exc = true;
@@ -257,8 +255,6 @@ public class PuntoDeVentaLogicTest {
 
     /**
      * Prueba para consultar un punto de venta
-     *
-     *
      */
     @Test
     public void getPuntoDeVentaTest() {
@@ -284,14 +280,11 @@ public class PuntoDeVentaLogicTest {
         } catch (BusinessLogicException ex) {
             Logger.getLogger(PuntoDeVentaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    /**
-     * Prueba la eliminacion de un punto de venta con
-     * Caso de excepcion: id inexistente
-     */
-    @Test
-    public void deletePuntoDeVentaExceptionTest(){
+        
+       /**
+        * Prueba la eliminacion de un punto de venta con
+        * Caso de excepcion: id inexistente
+        */
         boolean exc = false;
         try{
             puntoVentaLogic.deletePuntoDeVenta(Long.MIN_VALUE);
@@ -302,6 +295,7 @@ public class PuntoDeVentaLogicTest {
         
         Assert.assertTrue(exc);
     }
+    
     /**
      * Prueba para actualizar un punto de venta
      *
@@ -319,15 +313,11 @@ public class PuntoDeVentaLogicTest {
         } catch (BusinessLogicException ex) {
             Logger.getLogger(PuntoDeVentaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }
-    
-    /**
-     * Prueba la actualizacion de un punto de venta con casos
-     * de Excepcion: telefono, id no existente
-     */
-    @Test
-    public void updatePuntoDeVentaExceptionTest(){
         
+       /**
+        * Prueba la actualizacion de un punto de venta con casos
+        * de Excepcion: telefono, id no existente
+        */
         boolean exc = false;
         PuntoDeVentaEntity pv = data.get(0);
         PuntoDeVentaEntity var = new PuntoDeVentaEntity();
@@ -348,7 +338,7 @@ public class PuntoDeVentaLogicTest {
      * Prueba la solicitud de todos los autos de un punto de venta
      */
     @Test
-    public void PuntoDeVentaGetAutosTest(){
+    public void listAutosTest(){
         for(int i = 0; i < data.size(); i++){
             for(int j = 0; j < data.get(i).getAutomoviles().size(); j++){
                 AutomovilEntity org = dataAutos.get(i).get(j);
@@ -362,7 +352,7 @@ public class PuntoDeVentaLogicTest {
      * Prueba la solicitud de todas las compras de un punto de venta
      */
     @Test
-    public void PuntoDeVentaGetComprasTest(){
+    public void listComprasTest(){
         for(int i = 0; i < data.size(); i++){
             for(int j = 0; j < data.get(i).getCompras().size(); j++){
                 CompraEntity org = dataCompras.get(i).get(j);
@@ -376,7 +366,7 @@ public class PuntoDeVentaLogicTest {
      * Prueba la solicitud de todos los vendedores de un punto de venta
      */
     @Test
-    public void PuntoDeVentaGetVendedoresTest(){
+    public void listVendedoresTest(){
         for(int i = 0; i < data.size(); i++){
             for(int j = 0; j < data.get(i).getVendedores().size(); j++){
                 VendedorEntity org = dataVendedores.get(i).get(j);

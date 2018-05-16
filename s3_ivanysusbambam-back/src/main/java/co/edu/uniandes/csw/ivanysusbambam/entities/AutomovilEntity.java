@@ -12,6 +12,9 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -27,7 +30,7 @@ import uk.co.jemos.podam.common.PodamStrategyValue;
  * @author h.castellanos
  */
 @Entity
-public class AutomovilEntity extends BaseEntity implements Serializable {
+public class AutomovilEntity  implements Serializable {
 
     /**
      * color de la entidad automovil
@@ -112,6 +115,50 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
      * Kilometros de la entidad automovil
      */
     private Double kilometros;
+    
+     /**
+     * Id de la entidad
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    /**
+     * Nombre de la entidad
+     */
+    private String name;
+
+    /**
+     * @return Id de la entidad
+     */
+    public Long getId() {
+        return id;
+    }
+
+    /**
+     * Seta el id de la entidad al dado por parametro
+     *
+     * @param id id de la entidad
+     */
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return nombre de la enitdad
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Setea el nombre de la entidad al dado por parametro
+     *
+     * @param name nombre de la entidad
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
     /**
      * @return color de la entidad automovil
@@ -346,16 +393,7 @@ public class AutomovilEntity extends BaseEntity implements Serializable {
         if (obj == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final AutomovilEntity other = (AutomovilEntity) obj;
-        if (!Objects.equals(this.placa, other.placa)) {
-            return false;
-        }
-        if (!Objects.equals(this.chasis, other.chasis)) {
-            return false;
-        }
+        
         return true;
     }
 

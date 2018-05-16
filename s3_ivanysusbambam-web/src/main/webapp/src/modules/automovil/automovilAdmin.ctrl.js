@@ -5,7 +5,7 @@
 
     var mod = ng.module("automovilModule");
     
-    mod.constant("automovilContext", "api/automoviles/search?");
+    mod.constant("automovilContext", "api/automoviles");
     
     mod.controller("automovilGetAllCtrl",["$scope","$http","$rootScope","automovilContext", function($scope,  $http, $rootScope,automovilContext){
                   
@@ -46,8 +46,6 @@
                $scope.automovil4 = response.data; 
                
             });
-          
-           
             
             
     }]);

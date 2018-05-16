@@ -83,7 +83,7 @@ public class AutomovilLogicTest {
      * Lista de los datos de modelo
      */
     private List<ModelEntity> modelodata = new ArrayList<ModelEntity>();
-    
+
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
@@ -101,7 +101,7 @@ public class AutomovilLogicTest {
      */
     @Before
     public void configTest() {
-        
+
         try {
             utx.begin();
             clearData();
@@ -128,7 +128,7 @@ public class AutomovilLogicTest {
         em.createQuery("delete from MarcaEntity").executeUpdate();
         em.createQuery("delete from ModelEntity").executeUpdate();
         em.createQuery("delete from AutomovilEntity").executeUpdate();
-        
+
     }
 
     /**
@@ -138,31 +138,31 @@ public class AutomovilLogicTest {
      *
      */
     private void insertData() {
-        
+
         for (int i = 0; i < 3; i++) {
             PuntoDeVentaEntity PV = factory.manufacturePojo(PuntoDeVentaEntity.class);
-            
+
             em.persist(PV);
-            
+
             pvData.add(PV);
         }
         for (int i = 0; i < 3; i++) {
             CompraEntity compra = factory.manufacturePojo(CompraEntity.class);
-            
+
             em.persist(compra);
-            
+
             compraData.add(compra);
         }
         for (int i = 0; i < 3; i++) {
             AutomovilEntity auto = factory.manufacturePojo(AutomovilEntity.class);
-            
+
             em.persist(auto);
-            
+
             data.add(auto);
         }
-        
+
         System.out.println("tamanio" + autoLogic.getAutomoviles().size());
-        
+
     }
 
     /**
@@ -197,7 +197,8 @@ public class AutomovilLogicTest {
         newEntity.setProspectosCompra(prospectos);
         newEntity.setCompra(compraData.get(0));
         newEntity.setPuntoDeVenta(pvData.get(0));
-        
+        newEntity.setImagen("");
+
         boolean ex = false;
         try {
             AutomovilEntity result = autoLogic.createAutomovil(newEntity);
@@ -217,17 +218,18 @@ public class AutomovilLogicTest {
             Assert.assertEquals(newEntity.getFechaListado(), entity.getFechaListado());
             Assert.assertEquals(newEntity.getValorListado(), entity.getValorListado());
             Assert.assertEquals(newEntity.getVentas(), entity.getVentas());
-            
+            Assert.assertEquals(newEntity.getImagen(), entity.getImagen());
+
         } catch (BusinessLogicException e) {
             ex = true;
         }
-        
+
         if ((newEntity.getModel() != null) && (newEntity.getMarca() != null) && (newEntity.getPuntoDeVenta() != null) && (newEntity.getCompra() != null)) {
             Assert.assertTrue(ex);
         } else {
             Assert.assertTrue(ex);
         }
-        
+
     }
 
     /**
@@ -265,7 +267,7 @@ public class AutomovilLogicTest {
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
         Assert.assertEquals(entity.getChasis(), resultEntity.getChasis());
-        
+
     }
 
     /**
@@ -279,19 +281,19 @@ public class AutomovilLogicTest {
         MarcaEntity marca = factory.manufacturePojo(MarcaEntity.class);
         marca.setName("marca");
         entity.setMarca(marca);
-        
+
         if (entity.getMarca() == null) {
             Assert.fail();
         }
-        
+
         List<AutomovilEntity> resultEntity = autoLogic.findByMarca(entity.getMarca().getName());
         if (resultEntity.isEmpty()) {
-            
+
         } else {
             Assert.assertNotNull(resultEntity);
             Assert.assertEquals(entity.getMarca().getName(), resultEntity.get(0).getMarca().getName());
         }
-        
+
     }
 
     /**
@@ -305,19 +307,19 @@ public class AutomovilLogicTest {
         ModelEntity model = factory.manufacturePojo(ModelEntity.class);
         model.setName("model");
         entity.setModel(model);
-        
+
         if (entity.getModel() == null) {
             Assert.fail();
         }
-        
+
         List<AutomovilEntity> resultEntity = autoLogic.findByModelo(entity.getModel().getName());
         if (resultEntity.isEmpty()) {
-            
+
         } else {
             Assert.assertNotNull(resultEntity);
             Assert.assertEquals(entity.getModel().getName(), resultEntity.get(0).getModel().getName());
         }
-        
+
     }
 
     /**
@@ -327,22 +329,22 @@ public class AutomovilLogicTest {
      */
     @Test
     public void getAutomovilRangoAniosTest() throws BusinessLogicException {
-        
+
         Integer inicio = (data.get(0).getValorListado()).intValue();
         Integer aFinal = (data.get(1).getValorListado()).intValue();;
-        
+
         if (inicio > aFinal) {
             Assert.fail();
         }
-        
+
         List<AutomovilEntity> resultEntity = autoLogic.findByRangoAnios(1, 2);
         if (resultEntity.isEmpty()) {
             Assert.assertNotNull("No se encontraron autos", resultEntity);
         } else {
             Assert.assertNotNull(resultEntity.get(0));
-            
+
         }
-        
+
     }
 
     /**
@@ -355,19 +357,19 @@ public class AutomovilLogicTest {
         AutomovilEntity entity = data.get(0);
         Integer inicio = 1;
         Integer pFinal = 2;
-        
+
         if (pFinal < inicio) {
             Assert.fail();
         }
-        
+
         List<AutomovilEntity> resultEntity = autoLogic.findByRangoPrecios(1, 2);
         if (resultEntity.isEmpty()) {
             Assert.assertNotNull("No se encontraron autos", resultEntity);
         } else {
             Assert.assertNotNull(resultEntity.get(0));
-            
+
         }
-        
+
     }
 
     /**
@@ -390,10 +392,10 @@ public class AutomovilLogicTest {
      */
     @Test
     public void updateAutomovilTest() {
-        
+
         AutomovilEntity entity = data.get(0);
         AutomovilEntity pojoEntity = factory.manufacturePojo(AutomovilEntity.class);
-        
+
         pojoEntity.setId(entity.getId());
         pojoEntity.setModel(entity.getModel());
         pojoEntity.setMarca(entity.getMarca());
@@ -407,14 +409,14 @@ public class AutomovilLogicTest {
         pojoEntity.setProspectosCompra(entity.getProspectosCompra());
         pojoEntity.setVentas(entity.getVentas());
         boolean ex = false;
-        
+
         try {
             autoLogic.updateAutomovil(pojoEntity);
             System.out.println(pojoEntity.getPlaca());
             AutomovilEntity resp = em.find(AutomovilEntity.class, entity.getId());
-            
+
             System.out.println(resp.getPlaca());
-            
+
         } catch (BusinessLogicException e) {
             System.out.println(e);
             ex = true;
@@ -424,7 +426,7 @@ public class AutomovilLogicTest {
         } else {
             Assert.assertFalse(ex);
         }
-        
+
     }
 
     /**
@@ -434,8 +436,26 @@ public class AutomovilLogicTest {
     public void hashTest() {
         AutomovilEntity auto = data.get(0);
         AutomovilEntity auto1 = data.get(1);
-        
+
         Assert.assertEquals(auto.hashCode(), auto1.hashCode());
     }
-    
+
+    /**
+     * Metodo de prueba para el metodod equals
+     */
+    @Test
+    public void equalsTest() {
+
+        AutomovilEntity auto = data.get(0);
+
+        AutomovilEntity auto1 = data.get(0);
+        boolean respuesta = auto.equals(auto1);
+        if (auto1 != null){
+            Assert.assertTrue(respuesta);
+        }
+        else{
+            Assert.assertFalse(respuesta);
+        }
+    }
+
 }

@@ -143,22 +143,19 @@ public class CalificacionTiendaLogicTest {
         Assert.assertEquals(newEntity.getName(), entity.getName());
         Assert.assertEquals(newEntity.getPuntaje(), entity.getPuntaje());
         
-    }
-    
-    /**
-     * Prueba el caso de error para crear una calificacion tienda
-     * Excepcion: calificacion inválida
-     */
-    @Test
-    public void createCalificacionTiendaExceptionTest(){
+        
+        /**
+         * Prueba el caso de error para crear una calificacion tienda
+         * Excepcion: calificacion inválida
+         */        
         CalificacionTiendaEntity ct = new CalificacionTiendaEntity();
         //Datos cableados para generar error a la hora de crearlo
         ct.setComentario("abcdhijk");
         ct.setPuntaje(0.2);
-        CalificacionTiendaEntity result;
+        CalificacionTiendaEntity resultB;
         boolean exc = false;
         try{
-            result = ctiendaLogic.createCalificacionTienda(ct);
+            resultB = ctiendaLogic.createCalificacionTienda(ct);
         }
         catch(BusinessLogicException ex){
             exc = true;
@@ -169,7 +166,6 @@ public class CalificacionTiendaLogicTest {
     
     /**
      * Prueba para consultar la lista de CalificacionTienda
-     *
      *
      */
     @Test
@@ -213,14 +209,11 @@ public class CalificacionTiendaLogicTest {
         CalificacionTiendaEntity deleted = em.find(CalificacionTiendaEntity.class, entity.getId());
         Assert.assertNull(deleted);
        
-    }
-    
-     /**
-     * Prueba la eliminacion de una calificacion tienda con
-     * Caso de excepcion: id inexistente
-     */
-    @Test
-    public void deleteCalificacionTiendaExceptionTest(){
+        
+        /**
+         * Prueba la eliminacion de una calificacion tienda con
+         * Caso de excepcion: id inexistente
+         */
         boolean exc = false;
         try{
             ctiendaLogic.deleteCalificacionTienda(Long.MIN_VALUE);
@@ -232,9 +225,9 @@ public class CalificacionTiendaLogicTest {
         Assert.assertTrue(exc);
     }
     
+   
     /**
      * Prueba para actualizar un CalificacionTienda
-     *
      *
      * @throws co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
@@ -257,16 +250,11 @@ public class CalificacionTiendaLogicTest {
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
         Assert.assertEquals(pojoEntity.getPuntaje(), resp.getPuntaje());
-    }
     
-    
-    /**
-     * Prueba la actualizacion de una calificacion tienda con casos
-     * de Excepcion: telefono, id no existente
-     */
-    @Test
-    public void updateCalificacionTiendaExceptionTest(){
-        
+        /**
+         * Prueba la actualizacion de una calificacion tienda con casos
+         * de Excepcion: telefono, id no existente
+         */
         boolean exc = false;
         CalificacionTiendaEntity ct = data.get(0);
         CalificacionTiendaEntity var = new CalificacionTiendaEntity();
@@ -282,10 +270,11 @@ public class CalificacionTiendaLogicTest {
     }
     
     /**
-     * Prueba de la obtención de todos
+     * Prueba de la obtención del cliente correspondiente a una calificacion
+     * tienda
      */
     @Test
-    public void CalificacionCarroGetClienteTest(){
+    public void getClienteTest(){
         for(int i= 0; i < data.size(); i++){
             ClienteEntity ce = data.get(i).getCliente();
             Assert.assertEquals(ce, clienteData.get(i));
@@ -293,10 +282,11 @@ public class CalificacionTiendaLogicTest {
     }
     
     /**
-     * Prueba de la obtención de todos
+     * Prueba de la obtención del punto de venta correspondiente a una 
+     * calificacion tienda
      */
     @Test
-    public void CalificacionCarroGetPuntoDeVentaTest(){
+    public void getPuntoDeVentaTest(){
         for(int i= 0; i < data.size(); i++){
             PuntoDeVentaEntity ce = data.get(i).getPuntoDeVenta();
             Assert.assertEquals(ce, puntoVentaData.get(i));

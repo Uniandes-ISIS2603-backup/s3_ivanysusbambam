@@ -22,7 +22,7 @@ import javax.persistence.OneToMany;
  * @author Joseph Ortíz Moreno
  */
 @Entity
-public class ModelEntity  implements Serializable {
+public class ModelEntity implements Serializable {
 
     /**
      * Representa el numero de puertas del vehículo
@@ -192,36 +192,27 @@ public class ModelEntity  implements Serializable {
      *
      * @return
      */
-    
     public int hashCode() {
-        if (this.getId() != null) {
-            return this.getId().hashCode();
-        }
-        return super.hashCode();
+        return 3;
     }
-    
-    
+
     /**
      * Equals
+     *
      * @param obj objeto con el que se compara
      * @return true si son equivalentes
      */
     @Override
-    public boolean equals(Object obj){
-        
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof ModelEntity)) {
-            return false;
-        }
 
-        if (this.getId() != null && ((ModelEntity) obj).getId() != null) {
-            return this.getId().equals(((ModelEntity) obj).getId());
-        }
-        return super.equals(obj);
+        return true;
     }
-
-    
 
 }

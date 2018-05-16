@@ -5,7 +5,6 @@
  */
 package co.edu.uniandes.csw.ivanysusbambam.logic;
 
-import co.edu.uniandes.csw.ivanysusbambam.ejb.ClienteLogic;
 import co.edu.uniandes.csw.ivanysusbambam.ejb.MedioDePagoLogic;
 import co.edu.uniandes.csw.ivanysusbambam.entities.ClienteEntity;
 import co.edu.uniandes.csw.ivanysusbambam.entities.MedioDePagoEntity;
@@ -248,6 +247,9 @@ public class MedioDePagoLogicTest {
 
     }
 
+    /**
+     * Prueba para comprara un medio de pago
+     */
     @Test
     public void compararMedioDePago() {
 
@@ -255,8 +257,24 @@ public class MedioDePagoLogicTest {
         MedioDePagoEntity entity1 = data.get(0);
 
         boolean resp = entity.compararMedioDePago(entity1);
+        if (entity1 == null) {
+            Assert.assertFalse(resp);
+        } else {
+            Assert.assertTrue(resp);
+        }
+    }
 
-        Assert.assertTrue(resp);
+    /**
+     * Prueba para validar el tipo de pago
+     */
+    @Test
+    public void ValidarTipoMedioDePagoTest() {
+        MedioDePagoEntity entity = data.get(0);
+        entity.setTipo(MedioDePagoEntity.TipoMedioDePago.CREDITO);
+
+        boolean respuesta = entity.validarTipoMedioDePago();
+        Assert.assertTrue(respuesta);
 
     }
+
 }
