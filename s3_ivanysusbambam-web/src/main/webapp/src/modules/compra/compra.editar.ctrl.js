@@ -10,11 +10,13 @@
 
             $scope.compra = dataTransfer.get();
 
-            var address = clienteContext + "/" + $state.params.clienteId;
+            var address = compraContext + "/" + $state.params.clienteId;
 
 
             $scope.editarCompra = function () {
-                $http.put(address, $scope.compra).then(function (response) {});
+                $http.put(address, $scope.compra).then(function (response) {
+                       $state.go("AdminCompraGetAll",{},{reload: true});
+                });
             };
     }
     ]);
