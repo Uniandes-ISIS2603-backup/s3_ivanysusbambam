@@ -35,8 +35,7 @@ public class CompraEntity implements Serializable {
      * El automovil de la compra
      */
     @PodamExclude
-    @OneToOne()
-    @JoinColumn()
+    @OneToOne
     private AutomovilEntity automovil;
 
     /**
