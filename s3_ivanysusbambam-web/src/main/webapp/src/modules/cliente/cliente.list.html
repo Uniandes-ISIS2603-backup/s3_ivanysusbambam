@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <!--Acá te envía al estado crear auto-->
-                    <a ui-sref="crearCliente" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Cliente</span></a>
+                    <a ui-sref="crearCliente" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Añadir Cliente</span></a>
                 </div>
             </div>
         </div>
@@ -55,7 +55,7 @@
                         <a ui-sref="editarCliente" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar un auto-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarCliente" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="adminDeleteClientes({id: cliente.cedula})" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 

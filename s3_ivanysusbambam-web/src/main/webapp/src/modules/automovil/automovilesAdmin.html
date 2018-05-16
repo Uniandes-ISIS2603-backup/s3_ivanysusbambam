@@ -53,10 +53,10 @@
                     <td>{{auto.kilometros}}</td>
                     <td>
                         <!--Acá al de editar un auto-->
-                        <a ui-sref="editarAuto" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a ui-sref="editarAutomovil({idAuto:auto.id})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar un auto-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarAuto" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="adminAutosDelete({idAuto:auto.id})" class="delete" ><i class="material-icons"  title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
                 

@@ -60,15 +60,14 @@
             }
             ).state('compraDelete', {
 
-                url: "/{idCompra: int}/detail",
-                parent: "AdminCompraGetAll",
+                url: "compradelete/{idCompra: int}",
                 params: {
                     idCompra: null,
                     requireLogin:true
                 },
                 views: {
-                    'compraDetailView': {
-                        templateUrl: basePath + "compra.delete.html",
+                    'mainView': {
+                        templateUrl: basePath + "compra.list.html",
                         controller: "compraDeleteCtrl",
                         controllerAs: "ctrl"
                     }

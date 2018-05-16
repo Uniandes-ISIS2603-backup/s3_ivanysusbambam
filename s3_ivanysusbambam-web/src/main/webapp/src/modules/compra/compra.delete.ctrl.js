@@ -6,19 +6,15 @@
     
       function ($scope, $http, compraContext, $state) {
             var idCompra = $state.params.idCompra;
-            /**
-             * @ngdoc function
-             * @name deleteAuthor
-             * @methodOf authors.controller:authorDeleteCtrl
-             * @description
-             * Esta función utiliza el protocolo HTTP para eliminar el autor.
-             * @param {String} id El ID del autor a eliminar.
-             */
-            $scope.deleteCompra = function () {
+            $http.get(compraContext).then(function(response){
+               $scope.compras = response.data; 
+            });
+            
+           console.log("entro?");
                 $http.delete(compraContext + '/' + idCompra, {}).then(function (response) {
-                    $state.go('AdminCompraGetAll', {authorId: response.data.id}, {reload: true});
+                    $state.go('AdminCompraGetAll', {}, {reload: true});
                 });
-            };
+            
         }
         
     ]);

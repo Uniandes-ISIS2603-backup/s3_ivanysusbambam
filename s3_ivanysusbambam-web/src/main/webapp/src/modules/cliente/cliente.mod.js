@@ -22,6 +22,21 @@
                 }
             }
 
+        }).state("adminDeleteClientes", {
+
+            url: "/clientes",
+            params: {
+                requireLogin: true,
+                id:null
+            },
+            views: {
+                mainView: {
+                    templateUrl: basePath + "cliente.list.html",
+                    controller: "clienteDeleteCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
+
         }).state("clienteDetail", {
 
             url: "/{clienteId: int}/detail",
