@@ -155,7 +155,7 @@ public class PuntoDeVentaPersistenceTest {
      * 
      */
     @Test
-    public void getPuntoDeVentaByName(){
+    public void findByNameTest(){
         boolean found = false;
         for(PuntoDeVentaEntity pv: data){
             found = false;
@@ -169,6 +169,9 @@ public class PuntoDeVentaPersistenceTest {
             }
         }
         Assert.assertTrue(found);
+        
+        //Caso para un punto de venta que no existe
+        Assert.assertTrue(puntoDeVentaPersistence.findByName("loquesea").isEmpty());
     }
     
     /**

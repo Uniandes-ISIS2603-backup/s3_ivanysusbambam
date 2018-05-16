@@ -76,11 +76,7 @@ public class PuntoDeVentaPersistence {
         LOGGER.log(Level.INFO, "Buscando puntos de venta con nombre: ", name);
         TypedQuery tq = em.createQuery("select v from PuntoDeVentaEntity v where v.name = :nombre", PuntoDeVentaEntity.class);
         tq.setParameter("nombre", name);
-        if (tq.getResultList().isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return tq.getResultList();
-        }
+        return tq.getResultList();
     }
 
     /**

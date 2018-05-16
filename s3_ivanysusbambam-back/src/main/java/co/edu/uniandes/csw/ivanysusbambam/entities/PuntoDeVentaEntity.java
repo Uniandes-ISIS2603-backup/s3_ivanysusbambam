@@ -177,7 +177,7 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable {
      */
     @Override
     public int hashCode() {
-        return 7;
+        return direccion.hashCode();
     }
 
     /**

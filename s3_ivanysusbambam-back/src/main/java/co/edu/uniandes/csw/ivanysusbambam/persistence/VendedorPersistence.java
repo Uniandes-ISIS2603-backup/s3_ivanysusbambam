@@ -108,12 +108,7 @@ public class VendedorPersistence {
         LOGGER.log(Level.INFO, "buscando vendedores con nombre: ", name);
         TypedQuery tq = em.createQuery("select v from VendedorEntity v where v.nombre = :nombre", VendedorEntity.class);
         tq.setParameter("nombre", name);
-        if (tq.getResultList().isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return tq.getResultList();
-        }
-
+        return tq.getResultList();
     }
 
     /**

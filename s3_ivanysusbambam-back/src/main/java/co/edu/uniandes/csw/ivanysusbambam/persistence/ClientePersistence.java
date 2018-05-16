@@ -107,11 +107,7 @@ public class ClientePersistence {
         LOGGER.log(Level.INFO, "Buscando clientes con nombre: ", name);
         TypedQuery tq = em.createQuery("select v from ClienteEntity v where v.nombre = :nombre", ClienteEntity.class);
         tq.setParameter("nombre", name);
-        if (tq.getResultList().isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return tq.getResultList();
-        }
+        return tq.getResultList();
     }
 
 }
