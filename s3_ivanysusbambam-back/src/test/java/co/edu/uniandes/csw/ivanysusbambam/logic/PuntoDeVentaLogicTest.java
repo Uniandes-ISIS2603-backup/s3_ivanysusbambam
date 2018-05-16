@@ -52,10 +52,10 @@ public class PuntoDeVentaLogicTest {
 
     private List<PuntoDeVentaEntity> data = new ArrayList<>();
     
-    private List<ArrayList<VentaEntity>> dataVentas = new ArrayList<ArrayList<VentaEntity>>();
-    private List<ArrayList<CompraEntity>> dataCompras = new ArrayList<ArrayList<CompraEntity>>();
-    private List<AutomovilEntity> dataAutos = new ArrayList<AutomovilEntity>();
-    private List<ArrayList<VendedorEntity>> dataVendedores = new ArrayList<ArrayList<VendedorEntity>>();
+    private List<VentaEntity> dataVentas = new ArrayList<>();
+    private List<CompraEntity> dataCompras = new ArrayList<>();
+    private List<AutomovilEntity> dataAutos = new ArrayList<>();
+    private List<VendedorEntity> dataVendedores = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -93,59 +93,14 @@ public class PuntoDeVentaLogicTest {
      *
      */
     private void clearData() {
+        em.createQuery("delete from VendedorEntity").executeUpdate();        
+//        em.createQuery("delete from VentaEntity").executeUpdate();       
+        em.createQuery("delete from CompraEntity").executeUpdate();        
         em.createQuery("delete from AutomovilEntity").executeUpdate();
         em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
-//        em.createQuery("delete from VentaEntity").executeUpdate();
-//        em.createQuery("delete from CompraEntity").executeUpdate();
-//        em.createQuery("delete from VendedorEntity").executeUpdate();
+
     }
 
-    
-//    /**
-//     * Metodo auxiliar que crea un ArrayList de compras para un punto de venta
-//     * 
-//     */
-//    private ArrayList<CompraEntity> generarCompras(){
-//        ArrayList<CompraEntity> compras = new ArrayList<>();
-//        
-//        for(int i = 0; i < 3; i++){
-//            CompraEntity ce = factory.manufacturePojo(CompraEntity.class);
-//            em.persist(ce);
-//            compras.add(ce);
-//        }
-//        return compras;
-//    }
-//    
-//    /**
-//     * Metodo auxiliar que crea un ArrayList de ventas para un punto de venta
-//     * 
-//     */
-//    private ArrayList<VentaEntity> generarVentas(){
-//        ArrayList<VentaEntity> ventas = new ArrayList<>();
-//        
-//        for(int i = 0; i < 3; i++){
-//            VentaEntity ve = factory.manufacturePojo(VentaEntity.class);
-//            em.persist(ve);
-//            ventas.add(ve);
-//        }
-//        return ventas;
-//    }
-//    
-//    /**
-//     * Metodo auxiliar que crea un ArrayList de vendedores para un punto de venta
-//     * 
-//     */
-//    private ArrayList<VendedorEntity> generarVendedores(){
-//        ArrayList<VendedorEntity> vendedores = new ArrayList<>();
-//        
-//        for(int i = 0; i < 3; i++){
-//            VendedorEntity vse = factory.manufacturePojo(VendedorEntity.class);
-//            em.persist(vse);
-//            vendedores.add(vse);
-//        }
-//        return vendedores;
-//    }
-    
     /**
      * Inserta los datos iniciales para el correcto funcionamiento de las
      * pruebas.
@@ -157,6 +112,24 @@ public class PuntoDeVentaLogicTest {
             em.persist(autos);
             dataAutos.add(autos);
         }
+        for(int i = 0; i < 9; i++){
+            VendedorEntity vendedores = factory.manufacturePojo(VendedorEntity.class);
+            em.persist(vendedores);
+            dataVendedores.add(vendedores);
+        }
+
+//        for(int i = 0; i < 9; i++){
+//            VentaEntity ventas = factory.manufacturePojo(VentaEntity.class);
+//            em.persist(ventas);
+//            dataVentas.add(ventas);
+//        }
+                
+        for(int i = 0; i < 9; i++){
+            CompraEntity compras = factory.manufacturePojo(CompraEntity.class);
+            em.persist(compras);
+            dataCompras.add(compras);
+        }
+        
         for (int i = 0; i < 3; i++) {
             PuntoDeVentaEntity entity = factory.manufacturePojo(PuntoDeVentaEntity.class);
      
@@ -166,14 +139,23 @@ public class PuntoDeVentaLogicTest {
                 case 0:
                     for(int j = 0; j < 3; j++){
                         dataAutos.get(j).setPuntoDeVenta(entity);
+                        dataVendedores.get(j).setPuntoDeVenta(entity);
+                        dataCompras.get(j).setPuntoDeVenta(entity);
+//                        dataVentas.get(j).setPuntoDeVenta(entity);
                     }   break;
                 case 1:
                     for(int j = 3; j < 6; j++){
                         dataAutos.get(j).setPuntoDeVenta(entity);
+                        dataVendedores.get(j).setPuntoDeVenta(entity);
+                        dataCompras.get(j).setPuntoDeVenta(entity);
+//                        dataVentas.get(j).setPuntoDeVenta(entity);
                     }   break;
                 case 2:
                     for(int j = 3; j < 6; j++){
                         dataAutos.get(j).setPuntoDeVenta(entity);
+                        dataVendedores.get(j).setPuntoDeVenta(entity);
+                        dataCompras.get(j).setPuntoDeVenta(entity);
+//                        dataVentas.get(j).setPuntoDeVenta(entity);
                     }   break;
                 default:
                     break;
@@ -332,6 +314,33 @@ public class PuntoDeVentaLogicTest {
     @Test
     public void listAutosTest(){
         List<AutomovilEntity> list = puntoVentaLogic.listAutos(data.get(0).getId());
+        Assert.assertEquals(3, list.size());
+    }
+    
+//    /**
+//     * Prueba la solicitud de todas las ventas de un punto de venta
+//     */
+//    @Test
+//    public void listVentasTest(){
+//        List<VentaEntity> list = puntoVentaLogic.listVentas(data.get(0).getId());
+//        Assert.assertEquals(3, list.size());
+//    }
+    
+    /**
+     * Prueba la solicitud de todos los vendedores de un punto de venta
+     */
+    @Test
+    public void listVendedoresTest(){
+        List<VendedorEntity> list = puntoVentaLogic.listVendedores(data.get(0).getId());
+        Assert.assertEquals(3, list.size());
+    }
+    
+    /**
+     * Prueba la solicitud de todas las compras de un punto de venta
+     */
+    @Test
+    public void listComprasTest(){
+        List<CompraEntity> list = puntoVentaLogic.listCompras(data.get(0).getId());
         Assert.assertEquals(3, list.size());
     }
     
