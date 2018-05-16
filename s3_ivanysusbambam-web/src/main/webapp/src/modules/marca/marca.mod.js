@@ -27,8 +27,8 @@
                     requireLogin:false
                 },
                 views: {
-                    marcaDetailView: {
-                        templateUrl: basePath + "marca.detail.html",
+                    mainView: {
+                        templateUrl: basePath + "marca.list.html",
                         controller: "marcaDetailCtrl",
                         controllerAs: "ctrl"
 
@@ -51,6 +51,20 @@
             })
             .state('editarMarca', {
                 url: '/:marcaId/editar',
+                parent: "listMarca",
+                params: {
+                    marcaId: null,
+                    requireLogin:true
+                },
+                views: {
+                    mainView: {
+                        templateUrl: basePath + "marca.editar.html",
+                        controller: "marcaEditarCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+            }).state('eliminarMarca', {
+                url: '/:marcaId/eliminar',
                 parent: "listMarca",
                 params: {
                     marcaId: null,

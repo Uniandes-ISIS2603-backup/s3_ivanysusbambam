@@ -12,6 +12,11 @@
             $scope.data = {};
             
             $scope.editarAutomovil = function(){  
+                 $http.put("api/automoviles", $scope.pc).then(function(response){
+                
+                
+                
+            });
             };
             
             

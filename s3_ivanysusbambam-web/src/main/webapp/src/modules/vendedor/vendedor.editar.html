@@ -1,118 +1,30 @@
 <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-
-<form name ="vendedorForm">
-<h3 style="margin:20px" >Consultar vendedor</h3>
-
+<div class="imagenCRUD">
     <div class="row col-12">
-
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Información básica:</div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Carnet:</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static">{{vendedor.carnetVendedor}}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Cedula:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{vendedor.cedula}}</p>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Nombre:</label>
-                    <div class="col-md-10">
-                        <input id="vendedorNombre" required ng-model = "nuevoNombre" ng-change = "cambioInfo()" ng-value = "vendedor.nombre">
-                    </div>
-                </div>
-                <div class="form-group" style = "margin: 10px">
-                    <button class = "btn btn-default" ng-show="vendedorForm.$valid" ng-click = "editarVendedor()"> Guardar cambios </button>
-                </div>
-                <div class = "form-group" style = "margin: 10px" ng-if="!vendedorForm.$valid"> 
-                    <div class="alert alert-warning" >
-                        <strong>Atención!</strong><p>Debe llenar todos los campos</p>
-                    </div> 
-                </div> 
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="listVendedor"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Editar Vendedor acá va el id</h2>
+            <form name="vendedor" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="carnet">Carnet</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.nombre">
+                <br>
+                <br>
+                <label class="col-md-6" for="cedula">Cédula:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.cedula">
+                <br>
+                <br>
+                <label class="col-md-6" for="nombre">Nombre:</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.cedula">
+                <br>
+                <br>
+                <input ng-show="vendedor.$valid" id="botonCrud" ng-click="editarVendedor()" value="Guardar" class="btn btn-success" />
+            </form>
+            <br>
         </div>
     </div>
-
-
-    <div class="row col-12 " id="carta2"  >
-        <div class="card col-12  " style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Compras: </div>
-            <div class="form-group">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
-                                <tr >
-                                    <th> Id </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="vendedor in vendedor.compras" style="color: black; font-size:12px">
-                                    <td><a ui-sref = "compraDetail({compraId: compra.id})">{{compra.idCompra}}</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="row col-12">
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Punto de venta:</div>
-                <select type ="number" id="vendedorPV" required ng-model="nuevoPv" ng-change = "cambioInfo()" ng-init= "vendedor.puntoDeVenta" ng-options="x.id + ' | ' + x.name for x in puntosVenta">
-                </select>
-        </div>
-    </div>
-
-    <div class="row col-12 ">
-        <div class="card col-12  " style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Prospectos de compra: </div>
-            <div class="form-group">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
-                                <tr >
-                                    <th>Id</th>
-                                    <th>Texto</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="pc in vendedor.prospectosCompra" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="pcDetail({pcId: pc.id})">{{pc.id}}</a></td>
-                                    <td>{{pc.texto}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row col-12 ">
-        <div class="card col-12  " style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Ventas: </div>
-            <div class="form-group">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
-                                <tr >
-                                    <th>Id</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="ventas in vendedor.venta" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="ventaDetail({ventaId: compra.id})">{{venta.id}}</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-            </div>
-        </div>
-    </div>
-</form>
-
+</div>

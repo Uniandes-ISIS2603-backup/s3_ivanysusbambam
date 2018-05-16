@@ -97,6 +97,21 @@
                     controllerAs: "ctrl"
                 }
             }
+        }).state("ComprasClienteAdmin", {
+            url: "/perfil/{clienteId: int}/ComprasAdmin",
+            
+            params: {
+                clienteId: null,
+                requireLogin: true
+            },
+            views: {
+
+                mainView: {
+                    templateUrl: "src/modules/compra/compra.list.html",
+                    controller: "clienteDetailCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
         }).state("VentasCliente", {
             url: "/perfil/{clienteId: int}/Ventas",
             parent: "perfilCliente",
@@ -112,6 +127,20 @@
                     controllerAs: "ctrl"
                 }
             }
+        }).state("VentasClienteAdmin", {
+            url: "/perfil/{clienteId: int}/VentasAdmin",
+            params: {
+                clienteId: null,
+                requireLogin: true
+            },
+            views: {
+
+                mainView: {
+                    templateUrl: basePath + "src/modules/venta/venta.list.html",
+                    controller: "clienteDetailCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
         }).state("ComentariosCliente", {
             url: "/Comentarios",
             parent: "perfilCliente",
@@ -123,6 +152,21 @@
 
                 perfil: {
                     templateUrl: basePath + "Perfil/CalificacionesTienda/comentarios.html",
+                    controller: "clienteDetailCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
+        }).state("ComentariosClienteAdmin", {
+            url: "/ComentariosAdmin",
+         
+            params: {
+                clienteId: null,
+                requireLogin: true
+            },
+            views: {
+
+               mainView: {
+                    templateUrl: basePath + "src/modules/CalificacionTienda/calificacionesTienda.list.html",
                     controller: "clienteDetailCtrl",
                     controllerAs: "ctrl"
                 }
@@ -173,6 +217,36 @@
                     controllerAs: "ctrl"
                 }
             }
+        }).state("QyRClienteAdmin", {
+            url: "/perfil/{clienteId: int}/QuejasAmin",
+            
+            params: {
+                clienteId: null,
+                requireLogin: true
+            },
+            views: {
+
+                mainView: {
+                    templateUrl: "src/modules/quejaReclamo/quejaReclamo.list.html",
+                    controller: "clienteDetailCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
+        }).state("calificacionesCarroAdmin", {
+            url: "/perfil/{clienteId: int}/CalificacionesAdmin",
+            
+            params: {
+                clienteId: null,
+                requireLogin: true
+            },
+            views: {
+
+                mainView: {
+                    templateUrl: "src/modules/CalificacionCarro/calificacionesCarro.list.html",
+                    controller: "clienteDetailCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
         }).state("editarPerfilCliente", {
 
             url: "/{clienteId: int}/editarperfil",
@@ -204,20 +278,49 @@
                     controllerAs: "ctrl"
                 }
             }
-        }).state("eliminarMediosDePagoCliente", {
-            url: "/perfil/{clienteId: int}/mediosDePago/delete/{numero:int}",
-            parent: "perfilCliente",
+        }).state("mediosDePagoClienteAdmin", {
+            url: "/perfil/{clienteId: int}/mediosDePagoAmin",
+            
             params: {
-                numero: null,
+                clienteId: null,
+                requireLogin: true
+            },
+            views: {
+
+                mainView: {
+                    templateUrl:  "src/modules/medioDePago/medioDePago.list.html",
+                    controller: "clienteDetailCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
+        }).state("mediosDePagoClienteAdmin", {
+            url: "/perfil/{clienteId: int}/mediosDePagoAmin",
+            
+            params: {
+                clienteId: null,
+                requireLogin: true
+            },
+            views: {
+
+                mainView: {
+                    templateUrl:  "src/modules/medioDePago/medioDePago.list.html",
+                    controller: "clienteDetailCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
+        }).state("prospectoDeCompraAdmin", {
+            url: "/perfil/{clienteId: int}/prospectosDeCompraAdmin",
+            
+            params: {
                 clienteId: null,
                 requireLogin: true
 
             },
             views: {
 
-                perfil: {
-                    templateUrl: basePath + "Perfil/MediosDePago/medioDePago.detele.html",
-                    controller: "medioDePagoClienteDeleteCtrl",
+               mainView: {
+                    templateUrl: basePath + "src/modules/medioDePago/pc.list.html",
+                    controller: "clienteDetailCtrl",
                     controllerAs: "ctrl"
                 }
             }

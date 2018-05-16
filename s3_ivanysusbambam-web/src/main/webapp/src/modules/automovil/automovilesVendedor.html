@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <!--Acá te envía al estado crear auto-->
-                    <a ui-sref="crearAutomovil" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Auto</span></a>
+                    <a ui-sref="crearAutomovil" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Comprar Auto</span></a>
                 </div>
             </div>
         </div>
@@ -31,38 +31,38 @@
                     <th>Punto</th>
                     <th>Tipo</th>
                     <th>Kilometraje</th>
-                    
+
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="auto in automoviles">
+                <tr>
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>{{auto.id}}</td>
-                    <td>{{auto.placa}}</td>
-                    <td>{{auto.anio}}</td>
-                    <td>{{auto.valorlistado}}</td>
-                    <td>{{auto.modelo.chasis}}</td>
-                    <td>{{auto.color}}</td>
-                    <td>{{auto.marca.name}}</td>
-                    <td>{{auto.modelo.name}}</td>
-                    <td>{{auto.puntoDeVenta.name}}</td>
-                    <td>{{auto.tipo}}</td>
-                    <td>{{auto.kilometraje}}</td>
+                    <td>1</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
+                    <td>123</td>
                     <td>
-                        <!--Acá al de editar un auto-->
-                        <a ui-sref="editarAuto" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!--Acá crea un prospecto de venta-->
+                        <a ui-sref="crearPc" class="edit" data-toggle="modal"><i class="material-icons">touch_app</i></a>
                         <!--Acá eliminar un auto-->
-                        <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarAuto" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <!--Acá mando al estado vender en punto-->
+                        <a ui-sref="venderPunto"><i class="material-icons">attach_money</i></a>
                     </td>
                 </tr>
-                
+
             </tbody>
         </table>
     </div>

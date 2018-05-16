@@ -988,3 +988,18 @@ section .section-title {
     width: auto;
     background-color: rgba(245, 245, 245, 0.69);
 }
+
+.imagenMarca {
+    height: 100vh; 
+    background-image: url(../resources/auto-automobile-blur-769892.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    margin: 0px;
+    padding-top: 100px;
+    align-content: center;
+}
+
+#tablaMdP {
+    width: auto;
+}

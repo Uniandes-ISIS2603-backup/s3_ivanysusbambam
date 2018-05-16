@@ -33,22 +33,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat="cliente in clientes">
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>Juan Casas</td>
-                    <td>123</td>
+                    <td>{{cliente.nombre}}</td>
+                    <td>{{cliente.cedula}}</td>
                     <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
-                    <th><a ui-sref="ventaDetail({ventaId: venta.idVenta})">Ver</a></th>
-                    <th><a ui-sref="ventaDetail({ventaId: venta.idVenta})">Ver</a></th>
-                    <th><a ui-sref="ventaDetail({ventaId: venta.idVenta})">Ver</a></th>
-                    <th><a ui-sref="ventaDetail({ventaId: venta.idVenta})">Ver</a></th>
-                    <th><a ui-sref="ventaDetail({ventaId: venta.idVenta})">Ver</a></th>
-                    <th><a ui-sref="ventaDetail({ventaId: venta.idVenta})">Ver</a></th>
+                    <th><a ui-sref="VentasClienteAdmin({clienteId: cliente.cedula})">Ver</a></th>
+                    <th><a ui-sref="ComprasClienteAdmin({clienteId: cliente.cedula})">Ver</a></th>
+                    <th><a ui-sref="calificacionesCarroAdmin({clienteId: cliente.cedula})">Ver</a></th>
+                    <th><a ui-sref="mediosDePagoClienteAdmin({clienteId: cliente.cedula})">Ver</a></th>
+                    <th><a ui-sref="prospectoDeCompraAdmin({clienteId: cliente.cedula})">Ver</a></th>
+                    <th><a ui-sref="QyRClienteAdmin({clienteId: cliente.cedula})">Ver</a></th>
 
                     <td>
                         <!--Acá al de editar un auto-->

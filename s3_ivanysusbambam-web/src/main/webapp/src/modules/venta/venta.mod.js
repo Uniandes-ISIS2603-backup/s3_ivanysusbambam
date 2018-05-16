@@ -34,6 +34,20 @@
                     controllerAs: "ctrl"
                 }
             }
+        }).state("venderPunto", {
+            url: "/vender/{idAuto: int}/",
+            params: {
+                requireLogin: true,
+                idAuto: null,
+                clienteId:null
+            },
+            views: {
+                mainView: {
+                    templateUrl: basePath + "venderPunto.html",
+                    controller: "venderCrearCtrl",
+                    controllerAs: "ctrl"
+                }
+            }
         }).state("vender", {
             url: "/comprar/{idAuto: int}/",
             params: {

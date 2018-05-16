@@ -29,13 +29,14 @@
                 
                 
             });
-            console.log("holaaaa");
-                console.log($scope.data);
+            
+                
          
             
         }
         $scope.crearVenta = function(){
-               $http.post("api/ventas", $scope.data).then(function(response){
+               $http.post("api/ventas", $scope.data).then(function(){
+                   //esto tenia un response, si se quiere mandar excepcion se deberia incluir en la function del then
                   $state.go("adminVentaGetAll", {reload: true}); 
                });  
             };

@@ -232,7 +232,7 @@ public class AutomovilPersistenceTest {
         AutomovilEntity entity = data.get(0);
         entity.setColor("Amarillo");
 
-        List<AutomovilEntity> newEntity = automovilPersistence.findByModelo(entity.getColor());
+        List<AutomovilEntity> newEntity = automovilPersistence.findByColor(entity.getColor());
         Assert.assertNotNull(newEntity);
 
     }
@@ -259,14 +259,13 @@ public class AutomovilPersistenceTest {
         AutomovilEntity entity = data.get(0);
         entity.setPlaca("ABC-123");
 
-       List<AutomovilEntity> auto = automovilPersistence.findByPlate(entity.getPlaca());
+        List<AutomovilEntity> auto = automovilPersistence.findByPlate(entity.getPlaca());
 
-       if (auto.isEmpty()){
-           Assert.assertNotNull(auto);
-       }
-        else {
-        Assert.assertEquals(entity.getPlaca(), auto.get(0).getPlaca());
-    }
+        if (auto.isEmpty()) {
+            Assert.assertNotNull(auto);
+        } else {
+            Assert.assertEquals(entity.getPlaca(), auto.get(0).getPlaca());
+        }
 
     }
 
@@ -278,14 +277,13 @@ public class AutomovilPersistenceTest {
         AutomovilEntity entity = data.get(0);
         entity.setChasis(2546498);
 
-       List< AutomovilEntity> auto = automovilPersistence.findBychasis(entity.getChasis());
+        List< AutomovilEntity> auto = automovilPersistence.findBychasis(entity.getChasis());
 
-       if (auto.isEmpty()){
-           Assert.assertNotNull(auto);
-       }
-       else {
-        Assert.assertEquals(entity.getChasis(),auto.get(0).getChasis());
-       }
+        if (auto.isEmpty()) {
+            Assert.assertNotNull(auto);
+        } else {
+            Assert.assertEquals(entity.getChasis(), auto.get(0).getChasis());
+        }
     }
 
     /**
@@ -320,7 +318,6 @@ public class AutomovilPersistenceTest {
 
     }
 
-   
     /**
      * Prueba para eliminar un automovil.
      *

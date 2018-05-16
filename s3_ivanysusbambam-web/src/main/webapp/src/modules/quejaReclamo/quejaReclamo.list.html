@@ -1,45 +1,35 @@
-<div>
-    <h1 id="h1" style="margin:10px" >Consultar Quejas/Reclamos</h1>
-    <div class="col-md-1 align-items-center">
-        <button class = "btn btn-default" ui-sref ="crearQuejaReclamo"> Crear </button>
-        </div>
-    <div class="row" >
-        <div class="col-md-5">
-            <div class="card" style="margin: 100px">
-
-                <div class="card-body">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white">
-                                <tr >
-                                    <th>Id Queja/Reclamo </th>
-                                    <th>Tipo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="quejaReclamo in quejasReclamos" style="color: black">
-                                    <td>
-                                        <a ui-sref="quejaReclamoDetail({quejaReclamoId: quejaReclamo.id})">{{quejaReclamo.id}}</a>
-                                    </td>
-                                    <td>
-                                        {{quejaReclamo.tipo}}
-                                        </td>
-
-                                </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
+<div class="imagen2">
+    <div class="table-wrapper" id="tablaMdP">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Lista Quejas Reclamos</h2>
                 </div>
             </div>
         </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Tipo</th>
+                    <th>Nombre</th>
+                    <th>Texto</th>
+                    <th>Cédula Cliente</th>
 
-        <div class="col-md-5">
-            <div ui-view = "quejaReclamoDetailView" style = "margin: 0px">
-            </div>   
-        </div>
 
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="queja in quejasReclamos">
+                    <td>{{queja.id}}</td>
+                    <td>{{queja.tipo}}</td>
+                    <td>{{queja.name}}</td>
+                    <td>{{queja.texto}}</td>
+                    <td>{{queja.cliente.cedula}}</td>
+                </tr>
 
+            </tbody>
+        </table>
     </div>
 </div>
 

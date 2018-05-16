@@ -36,13 +36,12 @@
                 
                 
             });
-            console.log("holaaaa");
-                console.log($scope.data);
+            
          
             
         }
         $scope.crearVenta = function(){
-               $http.post("api/ventas", $scope.data).then(function(response){
+               $http.post("api/ventas", $scope.data).then(function(){
                   $state.go("adminVentaGetAll", {reload: true}); 
                });  
             };

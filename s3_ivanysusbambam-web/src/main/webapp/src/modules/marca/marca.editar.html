@@ -1,50 +1,19 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<form name="marcaForm">
-    <div class="row">
-        
-         <div class ="col-md-6"> 
-        <div class="card" style="margin: 5px; width: 300px">
-            <div class ="card-body" >
-                <h5> ID: </h5> {{marca.id}}
-            </div>
+<div class="imagenMarca">
+    <div class="row col-12">
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="listMarca"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Editar Marca acá va el id</h2>
+            <form name="marca" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="nombre">Nombre</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.nombre">
+                <br>
+                <br>
+                <input ng-show="marca.$valid" id="botonCrud" ng-click="editarMarca()" value="Guardar" class="btn btn-success" />
+            </form>
+            <br>
         </div>
     </div>
-        <div class="col-md-6">
-            <div class="card" style="margin: 5px; width: 300px">
-                <div class="card-body">
-                    <h5> Nombre: </h5>
-                    <input id="marcaNombre" required ng-model="marcaNombre" ng-change="cambioInfo()" ng-value="marca.nombre">
-                </div>
-            </div>
-        </div>
-
-    </div>
-    <div class="row " style="margin: 10px">
-
-        <div ng-if="!marcaForm.$valid">
-
-            <div class="alert alert-warning">
-                <strong>Atención!</strong>
-                <p>Debe llenar todos los campos</p>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card" style="margin: 5px; width:300px">
-                <div class="card-body">
-                    <button class="btn btn-default" ng-show="marcaForm.$valid" ng-click="editarMarca()"> Guardar cambios </button>
-                </div>
-                <div class="card-body">
-                    <!--Me falta asociarlo con el estado crear auto-->
-                    <button class="btn btn-default" ui-sref="#"> Agregar Autos </button>
-                </div>
-                <div class="card-body">
-                    <!--Me falta asociarlo con el estado crear modelo-->
-                    <button class="btn btn-default" ui-sref="crearModelo"> Agregar Modelos </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</form>
+</div>
