@@ -86,36 +86,4 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
         this.venta = venta;
     }
 
-    /**
-     * @return Hash code
-     */
-    @Override
-    public int hashCode() {
-        return 3;
-    }
-
-    /**
-     * Metodo Equals
-     *
-     * @param obj objeto a comparar
-     * @return
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final CalificacionCarroEntity other = (CalificacionCarroEntity) obj;
-        if (!Objects.equals(this.venta, other.venta)) {
-            return false;
-        }
-        return true;
-    }
-
 }

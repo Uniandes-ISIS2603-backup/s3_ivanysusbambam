@@ -184,7 +184,7 @@
     <div ui-view="navView">
         <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top" id="barraPrincipal" style="background-color: rgba(0, 0, 0, 0.56)">
             <!-- Brand -->
-            <div>
+            <div ng-if="rolVendedorB || rolAdminB">
                 <span id="navAutos" class="fa fa-bars" onclick="openNav()" style="color: whitesmoke">
                     </span>
             </div>
@@ -195,56 +195,48 @@
             <div id="mySidenav" class="sidenav">
                 <a id="cerrar" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <!-- Este es el menú lateral que le saldrá al admin -->
-                <div ><!--ng-if="admin"-->
-                    <a class="dropdown-item" ui-sref="adminAutos">Autos Adm</a>
-                    <a class="dropdown-item" ui-sref="adminClientes">Clientes Adm</a>
-                    <a class="dropdown-item" ui-sref="AdminCompraGetAll">Compras Adm</a>
-                    <a class="dropdown-item" ui-sref="listMarca">Marcas Adm</a>
-                    <a class="dropdown-item" ui-sref="AdminMedioDePagoGetAll">MdPago Adm</a>
-                    <a class="dropdown-item" ui-sref="listModelo">Modelos Adm</a>
-                    <a class="dropdown-item" ui-sref="listPc">ProspC Adm</a>
-                    <a class="dropdown-item" ui-sref="adminPuntosVentaGetAll">Puntos Adm</a>
-                    <a class="dropdown-item" ui-sref="adminQuejaReclamoGetAll">QyR Adm</a>
-                    <a class="dropdown-item" ui-sref="listVendedor">Vendedores Adm</a>
-                    <a class="dropdown-item" ui-sref="adminVentaGetAll">Ventas Adm</a>
+                <div ng-if="rolAdminB"><!---->
+                    <a class="dropdown-item" ui-sref="adminAutos">Autos</a>
+                    <a class="dropdown-item" ui-sref="adminClientes">Clientes</a>
+                    <a class="dropdown-item" ui-sref="AdminCompraGetAll">Compras</a>
+                    <a class="dropdown-item" ui-sref="listMarca">Marcas</a>
+                    <a class="dropdown-item" ui-sref="AdminMedioDePagoGetAll">MdPago</a>
+                    <a class="dropdown-item" ui-sref="listModelo">Modelos</a>
+                    <a class="dropdown-item" ui-sref="listPc">ProspC</a>
+                    <a class="dropdown-item" ui-sref="adminPuntosVentaGetAll">Puntos</a>
+                    <a class="dropdown-item" ui-sref="adminQuejaReclamoGetAll">QyR</a>
+                    <a class="dropdown-item" ui-sref="listVendedor">Vendedores</a>
+                    <a class="dropdown-item" ui-sref="adminVentaGetAll">Ventas</a>
                     
 
                 </div>
                 <!-- Este es el menú lateral que le saldrá al vendedor -->
-                <div> <!--ng-if="vendedor"-->
+                <div ng-if="rolVendedorB"> <!---->
                     <a class="dropdown-item" ui-sref="vendedorAutos">Autos Vend</a>
                 </div>
             </div>
             <!-- Links -->
             <ul class="navbar-nav" data-toggle="collapse" data-target="#demo">
-                <li class="nav-item">
+                <li class="nav-item" ng-if="rolClienteB">
                     <a class="nav-link" ui-sref="automovilGetAll" id="navAutos">Ver más autos</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item" ng-if="rolClienteB">
                         <a class="nav-link" ui-sref="puntosDeVentaMapa" id="navAutos">Concesionarios</a>
                     </li>
                 <!-- Esto aparecerá si no ha iniciado sesión -->
                 <ul class="navbar-nav navbar-right">
-                    <li class="nav-item" ng-if="!isAuthenticated()">
+                    <li class="nav-item" ng-if="!isAuthenticated() && rolClienteB">
                         <a class="nav-link" ui-sref="registrar" id="navAutos">Registrarse</a>
                     </li>
                     <li class="nav-item" ng-if="!isAuthenticated()">
                         <a class="nav-link" ui-sref="login" id="navAutos">Iniciar Sesión</a>
                     </li>
-                    <li class="nav-item" ng-if="isAuthenticated()">
+                    <li class="nav-item" ng-if="isAuthenticated() && rolVendedorB">
                         <!--&& vendedor-->
                         <a class="nav-link" ui-sref="perfilVendedor" id="navAutos">Ver perfil</a>
                     </li>
-                    <li class="nav-item" ng-if="isAuthenticated()">
-                        <a class="nav-link" ui-sref="logout" id="navAutos">Cerrar Sesión</a>
-                    </li>
-                    <li class="nav-item" ng-if="isAuthenticated() ">
-                        <!--&& cliente-->
+                    <li class="nav-item" ng-if="isAuthenticated() && rolClienteB">
                         <a class="nav-link" ui-sref="perfilCliente({clienteId: currentUserId})" id="navAutos">Ver perfil</a>
-                    </li>
-                    <li class="nav-item" ng-if="isAuthenticated() && vendedor">
-                        <!--Arreglar la referencia al perfil del vendedor-->
-                        <a class="nav-link" ui-sref="perfilVendedor" id="navAutos">Ver perfil</a>
                     </li>
                     <li class="nav-item" ng-if="isAuthenticated()">
                         <a class="nav-link" ui-sref="logout" id="navAutos">Cerrar Sesión</a>
