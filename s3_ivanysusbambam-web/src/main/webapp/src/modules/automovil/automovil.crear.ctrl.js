@@ -17,6 +17,10 @@
             $scope.data = {};
             
             
+            $http.get("api/clientes"+$scope.data.clienteId).then(function(response){
+            $scope.listaClientes = response.data;
+        });
+            
             $scope.crearAutomovil = function(){
                $http.post(automovilContext, $scope.data).then(function(response){
                   $state.go("listAutomoviles", {reload: true}); 
