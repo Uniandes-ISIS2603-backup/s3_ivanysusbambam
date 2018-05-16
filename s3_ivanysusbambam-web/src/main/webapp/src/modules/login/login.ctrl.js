@@ -23,10 +23,30 @@
 
             $scope.user = {};
             $scope.data = {};
-            
+
             $http.get('data/usuarios.json').then(function (response) {
                 $scope.users = response.data;
             });
+            $rootScope.rolClienteB = false;
+            $rootScope.rolVendedorB = false;
+            $rootScope.rolAdminB = false;
+
+            $rootScope.esCliente = function () {
+                $rootScope.rolClienteB = true;
+                $rootScope.rolAdminB = false;
+                $rootScope.rolVendedorB = false;
+            };
+            $rootScope.esAdmin = function () {
+                $rootScope.rolAdminB = true;
+                $rootScope.rolVendedorB = false;
+                $rootScope.rolClienteB = false;
+
+            };
+            $rootScope.esVendedor = function () {
+                $rootScope.rolVendedorB = true;
+                $rootScope.rolClienteB = false;
+                $rootScope.rolAdminB = false;
+            };
 
             /**
              * @ngdoc function
@@ -40,21 +60,33 @@
                 var flag = false;
 
                 for (var item in $scope.users) {
-                    
-                   
+
+
                     if ($scope.users[item].user === $scope.data.username && $scope.users[item].password === $scope.data.password && $scope.users[item].rol === $scope.data.rol) {
-                        
-                        
-                        
+
                         flag = true;
                         $scope.user = $scope.users[item];
-                        $state.go('buscarAuto', {}, {reload: true});
-                         $rootScope.currentUser = $scope.user.user;
+                        $state.go('buscarAuto', {}, {
+                            reload: true
+                        });
+                        $rootScope.currentUser = $scope.user.user;
+                        if($scope.data.rol==='cliente'){
+                            $rootScope.rolClienteB=true;
+                        }
+                        if($scope.data.rol==='vendedor'){
+                            $rootScope.rolVendedorB=true;
+                        }
+                        if($scope.data.rol==='administrador'){
+                            $rootScope.rolAdminB=true;
+                        }
                         break;
                     }
                 }
                 if (!flag) {
-                    $rootScope.alerts.push({type: "danger", msg: "Incorrect username or password."});
+                    $rootScope.alerts.push({
+                        type: "danger",
+                        msg: "Incorrect username or password."
+                    });
                 } else {
                     sessionStorage.token = $scope.user.token;
                     sessionStorage.setItem("username", $scope.user.user);
@@ -62,12 +94,9 @@
                     sessionStorage.setItem("rol", $scope.user.rol);
                     /*Acá está el usuario guardado*/
                     $rootScope.currentUserId = $scope.user.user;
-                    
-                }
-                ;
+
+                };
             };
         }
     ]);
-}
-)(window.angular);
-
+})(window.angular);
