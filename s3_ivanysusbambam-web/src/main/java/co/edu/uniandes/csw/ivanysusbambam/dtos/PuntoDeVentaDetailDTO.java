@@ -178,20 +178,20 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO {
         return automoviles;
     }
 
-    public void addVendedor(VendedorDTO nuevoVendedor) {
-        vendedores.add(nuevoVendedor);
-    }
-
-    public void addCompra(CompraDTO nuevaCompra) {
-        compras.add(nuevaCompra);
-    }
-
-    public void addVenta(VentaDTO nuevaVenta) {
-        ventas.add(nuevaVenta);
-    }
-
-    public void addAutomovil(AutomovilDTO nuevoAuto) {
-        automoviles.add(nuevoAuto);
-    }
+//    public void addVendedor(VendedorDTO nuevoVendedor) {
+//        vendedores.add(nuevoVendedor);
+//    }
+//
+//    public void addCompra(CompraDTO nuevaCompra) {
+//        compras.add(nuevaCompra);
+//    }
+//
+//    public void addVenta(VentaDTO nuevaVenta) {
+//        ventas.add(nuevaVenta);
+//    }
+//
+//    public void addAutomovil(AutomovilDTO nuevoAuto) {
+//        automoviles.add(nuevoAuto);
+//    }
 
 }
