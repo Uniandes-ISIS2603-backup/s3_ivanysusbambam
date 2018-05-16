@@ -145,9 +145,7 @@
                     url: "/automovil/crear",
                     params:{
                         requireLogin: false,
-                        compra:null,
-                        cliente:null,
-                        puntoDeVenta:null
+                        compra:null
                        
                     },
                    

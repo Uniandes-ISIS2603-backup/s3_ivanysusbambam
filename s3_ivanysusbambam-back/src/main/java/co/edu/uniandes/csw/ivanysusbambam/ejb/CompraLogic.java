@@ -53,6 +53,8 @@ public class CompraLogic {
      */
     private void verificacionesCrearCompra1(CompraEntity compra) throws BusinessLogicException{
       
+        
+        System.out.println(compra.getCliente());
         if (compra.getCliente() == null) {
             throw new BusinessLogicException("El cliente no puede ser null");
         }

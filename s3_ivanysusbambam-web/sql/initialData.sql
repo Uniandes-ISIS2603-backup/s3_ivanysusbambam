@@ -202,3 +202,27 @@ insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vend
 insert into ProspectoCompraEntity (id, texto, automovil_id, cliente_cedula, vendedor_carnetvendedor) values(610, 'jjj', 503, 10, 6813);
 
 
+--ventas--
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(711, 'abcd', 528, 2, 6017, 21, 1538, 31);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(712, 'abcd', 503, 3, 3014, 22, 9487, 32);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(713, 'abcd', 514, 4, 2013, 23, 5788, 33);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(714, 'abcd', 530, 6, 3014, 24, 5515, 34);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(715, 'abcd', 545, 7, 1012, 21, 5776, 35);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(716, 'abcd', 552, 7, 1012, 22, 4343, 36);
+insert into VentaEntity(idVenta, name, automovil_Id, cliente_cedula, medioDePago_numero, puntoDeVenta_id, vendedorEncargado_carnetVendedor, calificacionCarro_id) values(717, 'abcd', 563, 8, 2013, 24, 2782, 37);
+
+--quejasReclamo--
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (811, 'dcba', 'uno de los rines del auto estaba dañado y nunca me lo notificaron', 'RECLAMO', 2, 711);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (812, 'dcba', 'el vendedor que me atendió me regó un cafe encima y nunca volvió', 'QUEJA', 6, 714);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (813, 'dcba', 'en el maletero del carro que compré apareció una bolsa con 50 g de cocaína', 'RECLAMO', 8, 717);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (814, 'dcba', 'el automovil que compré me fue entregado 15 dias después de la fecha en otro punto de venta', 'QUEJA', 7, 716);
+insert into QuejaReclamoEntity(id, name, texto, tipo, cliente_cedula, venta_idVenta) values (815, 'dcba', 'me fue confiscado el automovil por la policía local, debido a que era un carro robado', 'RECLAMO', 3, 712);
+
+--compras--
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(911, 1, 22, 9487, 537);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(912, 9, 23, 9433, 505);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(913, 5, 24, 6123, 548);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(914, 8, 21, 1538, 536);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(915, 7, 22, 6473, 541);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(916, 1, 23, 9487, 520);
+insert into CompraEntity(idCompra, cliente_cedula, puntoDeVenta_id, vendedorEncargado_carnetVendedor, automovil_id ) values(917, 2, 24, 9487, 539);
