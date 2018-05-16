@@ -63,9 +63,7 @@ public class CompraLogic {
             throw new BusinessLogicException("El cliente no esta registrado en el sistema");
         }
         
-        if (vendedorPersistence.find(compra.getVendedorEncargado().getCarnetVendedor()) == null) {
-            throw new BusinessLogicException("El vendedor encargado no es valido");
-        }
+        
     }
     
     /**
@@ -113,11 +111,11 @@ public class CompraLogic {
      */
     public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
 
-        verificacionesCrearCompra1(compra);
+    //    verificacionesCrearCompra1(compra);
         
-        verificacionesCrearCompra2(compra);
+      //   verificacionesCrearCompra2(compra);
         
-        verificacionesCrearCompra3(compra);
+     //    verificacionesCrearCompra3(compra);
         
         compraPersistence.create(compra);
         return compra;
