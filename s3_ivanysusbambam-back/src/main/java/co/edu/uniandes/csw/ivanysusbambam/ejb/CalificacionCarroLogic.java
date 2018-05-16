@@ -100,13 +100,13 @@ public class CalificacionCarroLogic {
     }
 
     /**
-     * Elimina una instancia de CalificacionTienda de la base de datos.
+     * Elimina una instancia de CalificacionCarro de la base de datos.
      *
      * @param id Identificador de la instancia a eliminar.
      * @throws
      * co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
      */
-    public void deleteCalificacionTienda(Long id) throws BusinessLogicException {
+    public void deleteCalificacionCarro(Long id) throws BusinessLogicException {
         LOGGER.log(Level.INFO, "Inicia proceso de borrar una calificacion de carro ");
         if (id == null) {
             throw new BusinessLogicException("El id no puede ser null");

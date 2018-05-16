@@ -60,7 +60,9 @@ public class CalificacionCarroDetailDTO extends CalificacionCarroDTO {
         super(entity);
        
         if(entity != null){
-            venta = new VentaDTO(entity.getVenta());
+            if(entity.getVenta() != null){
+                venta = new VentaDTO(entity.getVenta());
+            }
         }
     }
 

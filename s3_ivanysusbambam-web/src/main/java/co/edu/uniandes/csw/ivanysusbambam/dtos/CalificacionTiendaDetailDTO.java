@@ -89,7 +89,7 @@ public class CalificacionTiendaDetailDTO extends CalificacionTiendaDTO {
         if(cliente != null){
             ctEntity.setCliente(cliente.toEntity());
         }
-        if(getPuntoVenta() != null){
+        if(puntoVenta != null){
             ctEntity.setPuntoDeVenta(getPuntoVenta().toEntity());
         }
         
