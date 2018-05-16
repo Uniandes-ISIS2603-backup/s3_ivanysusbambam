@@ -1,46 +1,58 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
-<br>
-<div class ="row">
-        <div class ="col-md-1"></div>
-        <div class ="col-md-9">
-            <h1>Consulta de prospectos de compra</h1>
-        </div>
-        <div class="col-md-1 align-items-center">
-            <button class = "btn btn-default" ui-sref ="crearPc"> Crear </button>
-        </div>
-        <div class ="col-md-1"></div>
-    </div>
-<div>
-    <div class="row" >
-        <div class="col-md-5">
-            <div class="card" style="margin: 100px">
-
-                <div class="card-body">
-                    <div class="table-responsive">   
-                        <table class="table table-bordered" style="color: #1a237e" >
-                            <thead  class="thead" style="background-color: #1a237e; color: white; font-size: 12px">
-                                <tr >
-                                    <th>  Id </th>
-                                    <th> Texto </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="pc in pcRecords" style="color: black; font-size:12px">
-                                    <td><a ui-sref ="pcDetail({pcId: pc.id})">{{pc.id}}</a></td>
-                                    <td>{{pc.texto}}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+<div class="imagen2">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Prospectos de Compra</h2>
                 </div>
             </div>
         </div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+                    </th>
+                    <th>Id</th>
+                    <th>Texto</th>
+                    <th>Cédula Cliente</th>
+                    <th>Cédula Vendedor</th>
+                    <th>Automóvil Id</th>
+                    <th>Placa</th>
+                    <th>Valor</th>
 
-        <div class="col-md-5">
-            <div ui-view = "pcDetailView" style = "margin: 0px">
-            </div>   
-        </div>
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+                    </td>
+                    <td>1</td>
+                    <td>Esto es un prospecto</td>
+                    <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
+                    <td><a ui-sref="clienteDetail({clienteId: cliente.id})">12345</a></td>
+                    <td><a ui-sref="vendedorDetail({vendedorId: vendedor.id})">54321</a></td>
+                    <td><a ui-sref="automovilDetail({automovilId: auto.id})">1</a></td>
+                    <td>VFE653</td>
+                    <td>123000</td>
+                    <td>
+                        <!--Acá al de editar un auto-->
+                        <a ui-sref="editarProspectoCompra" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!--Acá eliminar un auto-->
+                        <!--El eliminar no necesita una vista, podemos implementarlo-->
+                        <a ui-sref="eliminarProspectoCompra" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    </td>
+                </tr>
 
-
+            </tbody>
+        </table>
     </div>
 </div>

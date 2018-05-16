@@ -1,0 +1,44 @@
+<div class="imagenCRUD">
+    <div class="row col-12">
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="adminVentaGetAll"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Editar Venta acá va el id</h2>
+            <form name="puntos" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="cedula">Cédula Cliente</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.cedula">
+                <br>
+                <br>
+                <label class="col-md-6" for="medioPago">ID Medio de Pago</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.medioDePago">
+                <br>
+                <br>
+                <label class="col-md-6" for="vendedor">Carnet de Vendedor</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.vendedor">
+                <br>
+                <br>
+                <label class="col-md-6" for="calificacion">ID Calificacion Carro</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.idCalificacion">
+                <br>
+                <br>
+                <label class="col-md-6" for="punto">ID Punto de Venta</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.puntoDeVenta">
+                <br>
+                <br>
+                <label class="col-md-6" for="placa">Placa</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.placa">
+                <br>
+                <br>
+                <input ng-show="puntos.$valid" id="botonCrud" ng-click="editarPc()" value="Guardar" class="btn btn-success" />
+            </form>
+            <br>
+        </div>
+    </div>
+</div>

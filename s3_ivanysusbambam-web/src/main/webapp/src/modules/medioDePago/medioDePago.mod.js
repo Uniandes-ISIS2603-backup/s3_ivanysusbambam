@@ -31,7 +31,7 @@
             },
             views: {
                 'medioDePagoDetailView': {
-                    templateUrl: basePath + "medioDePago.detail.html",
+                    templateUrl: basePath + "medioDePago.list.html",
                     controller: "medioDePagoDetailCtrl",
                     controllerAs: "ctrl"
                 }

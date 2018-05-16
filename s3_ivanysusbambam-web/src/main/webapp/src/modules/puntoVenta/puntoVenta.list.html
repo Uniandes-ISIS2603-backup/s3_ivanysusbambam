@@ -1,90 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Puntos de Venta</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcSdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
-  <style>
-      .classyClass{
-           background-image: url("https://i.pinimg.com/originals/35/ab/e2/35abe2bad4fd1d7635b4974c7140bd2f.jpg");
-           height: 300px;
-           width: 100%;
-           background-position: center;
-           background-repeat: no-repeat;
-           background-size: cover;
-           text-align: right;
-           
-      }
-    .ironClass {
-        margin-bottom: 30px;
-    }
-    .goldClass {
-        background: #aaa;
-    }
-    .container {
-        position: relative;
-    }
-    .textBeast {
-        margin-left: 600px;
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-    .fakeimg {
-        height: 200px;
-        background: #aaa;
-    }
-  </style>
-</head>
-<body ng-app="puntoVentaList">
-   
-<div class="classyClass" style="margin-bottom: 0">
-    <div class="textBeast align-items-center">
-        <h1 class="display-2 text-light">Puntos de Venta</h1>
-    </div>
-</div>
-<div class="container-fluid" style="padding: 0px">
-  <div class="row">
-    <div class="col-sm-4 col-md-4">
-        <div class="row" style="margin-top: 10px">
-            <div class="col-sm-2" style="margin-left: 15px"><button type="button" class="btn btn-success" ui-sref="puntoVentaCrear" style="margin: 15px"> CREAR NUEVO </button></div>
-        </div>
-        <div class="ironClass" ng-repeat="x in puntosDeVenta">
-            <div>
-                <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529; height: 30px">{{ x.name }}</h4>    
-                <img class="img-fluid" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" style="margin:10px;" ng-src="{{x.image}}" alt="{{x.name}}" width="340" height="240">                
-                <div class="row" style="margin-left: 15px">
-                    <button type="button" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Autos</button>
-                    <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailVentas({puntoVentaId: x.id})" style="margin: 5px;">Ventas</button>
-                    <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailCompras({puntoVentaId: x.id})" style="margin: 5px;">Compras</button>
-                    <button type="button" ui-sref="puntoVentaDetailVendedores({puntoVentaId: x.id})"  class="btn btn-info" style="margin: 5px;">Vendedores</button>
-                    <button type="button" ui-sref="puntoVentaDetailInformacion({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Informacion</button>
+<div class="imagen2">
+    <div class="table-wrapper">
+        <div class="table-title">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h2>Puntos de Venta</h2>
+                </div>
+                <div class="col-sm-6">
+                    
+                    <a ui-sref="puntoVentaCrear" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Punto</span></a>
                 </div>
             </div>
         </div>
-        <div class="ironClass" ng-repeat="puntoDeVenta in puntosDeVentaBack">
-            <h4 class="text-light text-center" style="margin-bottom: 0px; border-radius: 25px; background-color: #212529; height: 30px">{{ puntoDeVenta.name }}</h4>
-            <div class="row" style="margin-left: 15px">
-                <button type="button" ui-sref="puntoDeVentaDetailAutos({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Autos</button>
-                <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailVentas({puntoVentaId: x.id})" style="margin: 5px;">Ventas</button>
-                <button type="button" class="btn btn-info" ui-sref="puntoVentaDetailCompras({puntoVentaId: x.id})" style="margin: 5px;">Compras</button>
-                <button type="button" ui-sref="puntoVentaDetailVendedores({puntoVentaId: x.id})"  class="btn btn-info" style="margin: 5px;">Vendedores</button>
-                <button type="button" ui-sref="puntoVentaDetailInformacion({puntoVentaId: x.id})" class="btn btn-info" style="margin: 5px;">Informacion</button>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-8" style="border-radius: 25px;">
-        <div class="goldClass" ui-view="listAutosView"></div>
-        <div class="goldClass" ui-view="listVentasView"></div>
-        <div class="goldClass" ui-view="listComprasView"></div>
-        <div class="goldClass" ui-view="listVendedoresView"></div>
-        <div class="goldClass" ui-view="listInformacionView"></div>
-        <div class="goldClass" ui-view="mainCrearView"></div>
-    </div>
-  </div>
-</div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="selectAll">
+								<label for="selectAll"></label>
+							</span>
+                    </th>
+                    <th>Id</th>
+                    <th>Dirección</th>
+                    <th>Nombre</th>
+                    <th>Teléfono</th>
+                    <th>Automóviles</th>
+                    <th>Compras</th>
+                    <th>Vendedores</th>
+                    <th>Ventas</th>
+                    
+                    <th>Opciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="custom-checkbox">
+								<input type="checkbox" id="checkbox1" name="options[]" value="1">
+								<label for="checkbox1"></label>
+							</span>
+                    </td>
+                    <td>1</td>
+                    <td>Calle 44</td>
+                    <td>Los ángeles</td>
+                    <td>4550909</td>
+                    <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
+                    <td><a ui-sref="automovilPorPuntoVenta({clienteId: cliente.id})">Ver</a></td>
+                    <td><a ui-sref="comprasPorPuntoVenta({vendedorId: vendedor.id})">Ver</a></td>
+                    <td><a ui-sref="vendedoresPorPuntoVenta({automovilId: auto.id})">Ver</a></td>
+                    <td><a ui-sref="ventasPorPuntoVenta({automovilId: auto.id})">Ver</a></td>
+                    <td>
+                        <!--Acá al de editar un auto-->
+                        <a ui-sref="editarProspectoCompra" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!--Acá eliminar un auto-->
+                        <!--El eliminar no necesita una vista, podemos implementarlo-->
+                        <a ui-sref="eliminarProspectoCompra" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                    </td>
+                </tr>
 
-<div class="jumbotron text-center"></div>
-</body>
-</html>
+            </tbody>
+        </table>
+    </div>
+</div>

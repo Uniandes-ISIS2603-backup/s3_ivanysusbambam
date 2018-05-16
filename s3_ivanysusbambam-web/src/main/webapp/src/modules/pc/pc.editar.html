@@ -1,134 +1,36 @@
-<alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert()">{{alert.msg}} </alert>
 
 
-<h3 style="margin:20px" >Consultar prospecto de compra</h3>
-<form name="prospecto">
+<div class="imagenCRUD">
     <div class="row col-12">
-
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Información básica:</div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Id:</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static">{{pc.id}}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Texto:</label>
-                    <div class="col-md-10">
-                        <input id="pcTexto" required ng-model = "nuevoTexto" ng-change = "cambioInfo()" ng-value = "nuevoTexto">
-                    </div>
-
-                </div>
-                <div ng-if="!prospecto.$valid"> 
-                    <div class="alert alert-warning" >
-                        <strong>Atención!</strong><p>Debe llenar todos los campos</p>
-                    </div> 
-                </div> 
-                <div class ="form-group" style = "margin:10px">
-                   <button class = "btn btn-default" ng-show="prospecto.$valid" ng-click = "editarProspecto()"> Guardar cambios </button>
-                </div>
+        <div class="creaCard one">
+            <div style="text-align: left; color: white">
+                <a ui-sref="listPc"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Editar Prospecto de Compra acá va el id</h2>
+            <form name="vendedor" style="text-align: center">
+                <br>
+                <label class="col-md-6" for="texto">Texto</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.texto">
+                <br>
+                <br>
+                <label class="col-md-6" for="cliente">Cliente</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.cliente">
+                <br>
+                <br>
+                <label class="col-md-6" for="vendedor">Vendedor</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.vendedor">
+                <br>
+                <br>
+                <label class="col-md-6" for="auto">Automóvil</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" ng-model="data.auto">
+                <br>
+                <br>
+                <input ng-show="vendedor.$valid" id="botonCrud" ng-click="editarPc()" value="Guardar" class="btn btn-success" />
+            </form>
+            <br>
         </div>
     </div>
-
-    <div class="row col-12">
-
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Cliente:</div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Cedula:</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static"><a ui-sref = "clienteDetail({clienteId: pc.cliente.cedula})">{{pc.cliente.cedula}}</a></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Nombre:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{pc.cliente.nombre}}</p>
-                    </div>
-
-                </div>
-        </div>
-    </div>
-
-    <div class="row col-12">
-
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Vendedor:</div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Carnet vendedor</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static"><a ui-sref = "vendedorDetail({vendedorId: pc.vendedor.carnetVendedor})">{{pc.vendedor.carnetVendedor}}</a></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Cedula:</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static">{{pc.vendedor.cedula}}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Nombre:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{pc.vendedor.nombre}}</p>
-                    </div>
-
-                </div>
-        </div>
-    </div>
-
-    <div class="row col-12">
-
-        <div class="card col-12" style="padding:0px; margin: 10px ">
-            <div class="card-header  " style="margin-bottom:20px; color: white; background-color: #1a237e">Automóvil:</div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Id:</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static"><a ui-sref = "automovilDetail({automovilId: pc.automovil.id})">{{pc.automovil.id}}</a></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-12">Chasis:</label>
-                    <div class="col-sm-12">
-                        <p class="form-control-static">{{pc.automovil.chasis}}</p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Nombre:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{pc.automovil.name}}</p>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Año:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{pc.automovil.anio}}</p>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Color:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{pc.automovil.color}}</p>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Placa:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{pc.automovil.placa}}</p>
-                    </div>
-
-                </div>
-                <div class="form-group">
-                    <label class="control-label col-md-12">Valor Listado:</label>
-                    <div class="col-md-10">
-                        <p class="form-control-static">{{pc.automovil.valorListado | currency}}</p>
-                    </div>
-
-                </div>
-        </div>
-    </div>
-</form>
-
+</div>
