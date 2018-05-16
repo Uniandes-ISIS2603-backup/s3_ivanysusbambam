@@ -61,8 +61,8 @@
             $transitions.onSuccess({to: '*'}, function (trans) {
 
                 var $state = trans.router.stateService;
-                var requireLogin = $state.current.data.requireLogin;
-                var roles = $state.current.data.roles;
+                var requireLogin = $state.current.params.requireLogin;
+                var roles = $state.current.params.roles;
                 
                 /* Sólo me falta esto, necesito guardar esta variable para poder llamarla con ng if */
                $rootScope.vendedor = false;

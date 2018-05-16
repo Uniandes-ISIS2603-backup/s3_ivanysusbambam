@@ -28,7 +28,7 @@
 
             $stateProvider.state('login', {
                 url: '/login',
-                data: {
+                params: {
                     requireLogin: false
                 },
                 views: {
@@ -39,8 +39,8 @@
                 }
             }).state('logout', {
                 url: '/logout',
-                data: {
-                    requireLogin: false,
+                params: {
+                    requireLogin: true,
                     roles: []
                 }
                 ,

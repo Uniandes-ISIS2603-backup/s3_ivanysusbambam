@@ -33,7 +33,7 @@
                 },
                 views: {
                     'compraDetailView': {
-                        templateUrl: basePath + "compra.detail.html",
+                        templateUrl: basePath + "compra.list.html",
                         controller: "compraDetailCtrl",
                         controllerAs: "ctrl"
                     }
@@ -76,6 +76,21 @@
                 }
 
 
+            }).state('editarCompra',{
+            
+                url: "/compra/editar/{idCompra: int}/",
+                params:{
+                      requireLogin: true,
+                      idCompra: null
+                    },    
+                views: {
+                        mainView: {
+                            templateUrl: basePath + "comprar.editar.html",
+                            controller: "compraEditarCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+            
             }).state('comprarAuto',{
             
                 url: "/comprar/{idAuto: int}/",
