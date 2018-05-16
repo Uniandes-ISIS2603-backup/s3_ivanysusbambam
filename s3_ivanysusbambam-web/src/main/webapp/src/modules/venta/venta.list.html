@@ -28,7 +28,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                <tr ng-repeat=" venta in ventas">
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
@@ -37,12 +37,12 @@
                     </td>
                     <td>1</td>
                     <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
-                    <td><a ui-sref="clienteDetail({clienteId: cliente.id})">Ver</a></td>
-                    <td><a ui-sref="medioDePagoDetail({vendedorId: vendedor.id})">Ver</a></td>
-                    <td><a ui-sref="vendedorDetail({automovilId: auto.id})">Ver</a></td>
+                    <td>{{venta.cliente.cedula}}</td>
+                    <td>{{venta.medioDePago.id}}</td>
+                    <td>{{venta.vendedor.carnet}}</td>
                     <td><a ui-sref="calificacionDetail({automovilId: auto.id})">Ver</a></td>
-                    <td><a ui-sref="puntoDeVentaDetail({automovilId: auto.id})">Ver</a></td>
-                    <td>KSU890</td>
+                    <td>{{venta.puntoDeVenta.id}}</td>
+                    <td>{{venta.automovil.placa}}</td>
                     <td>
                         <!--Acá al de editar un auto-->
                         <a ui-sref="editarVenta" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>

@@ -18,8 +18,39 @@
                 templateUrl: basePath + "marca.list.html",
                 controller: "marcaListCtrl",
                 controllerAs: "ctrl"}}
-            })
-            .state('marcaDetail', {
+            }) .state('autosPorMarca', {
+                url: '/:MarcaId/detail',
+                parent: "listMarca",
+                params: {
+                    MarcaId: null,
+                    requireLogin:false
+                },
+                views: {
+                    mainView: {
+                        templateUrl: "src/modules/automovil/automovilesAdmin.html",
+                        controller: "autosPorMarca",
+                        controllerAs: "ctrl"
+
+                    }
+                }
+
+            }).state('modelosPorMarca', {
+                url: '/:MarcaId/detail',
+                parent: "listMarca",
+                params: {
+                    MarcaId: null,
+                    requireLogin:false
+                },
+                views: {
+                    mainView: {
+                        templateUrl:"src/modules/modelo/modelo.list.html",
+                        controller: "modelosPorMarca",
+                        controllerAs: "ctrl"
+
+                    }
+                }
+
+            }).state('marcaDetail', {
                 url: '/:MarcaId/detail',
                 parent: "listMarca",
                 params: {
