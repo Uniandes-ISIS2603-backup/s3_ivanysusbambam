@@ -254,9 +254,24 @@ public class MarcaLogicTest {
     public void HasCodeTest() {
         MarcaEntity marca = data.get(0);
         MarcaEntity marca1 = data.get(1);
-        marca1.setId(marca.getId());
-        
+
         Assert.assertEquals(marca1.hashCode(), marca.hashCode());
+    }
+
+    /**
+     * prueba para el metodo equals de la entidad marca
+     */
+    @Test
+    public void equalsTest() {
+        MarcaEntity marca = data.get(0);
+
+        MarcaEntity marca1 = data.get(0);
+        boolean respuesta = marca.equals(marca1);
+        if (marca1 != null) {
+            Assert.assertTrue(respuesta);
+        } else {
+            Assert.assertFalse(respuesta);
+        }
     }
 
 }

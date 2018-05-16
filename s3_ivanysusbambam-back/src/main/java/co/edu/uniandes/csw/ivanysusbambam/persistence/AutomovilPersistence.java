@@ -150,9 +150,8 @@ public class AutomovilPersistence {
         LOGGER.log(Level.INFO, "buscando automóviles de la marca: ", marca);
         TypedQuery tq = em.createQuery("select a from AutomovilEntity a  JOIN a.marca m where m.name = :marca", AutomovilEntity.class);
         tq.setParameter("marca", marca);
-        List autos = tq.getResultList();
 
-        return autos;
+        return tq.getResultList();
 
     }
 
@@ -167,9 +166,8 @@ public class AutomovilPersistence {
         TypedQuery tq = em.createQuery("select a from AutomovilEntity a JOIN a.model m where m.name = :modelo", AutomovilEntity.class
         );
         tq.setParameter("modelo", modelo);
-        List autos = tq.getResultList();
 
-        return autos;
+        return tq.getResultList();
 
     }
 
@@ -192,9 +190,7 @@ public class AutomovilPersistence {
         tq.setParameter("anioI", anioIni);
         tq.setParameter("anioF", anioFin);
 
-        List autos = tq.getResultList();
-
-        return autos;
+        return tq.getResultList();
 
     }
 
@@ -216,9 +212,7 @@ public class AutomovilPersistence {
         tq.setParameter("precioI", precioMin);
         tq.setParameter("precioF", precioMax);
 
-        List autos = tq.getResultList();
-
-        return autos;
+        return tq.getResultList();
 
     }
 
@@ -271,13 +265,7 @@ public class AutomovilPersistence {
         TypedQuery tq = em.createQuery(sentencia, AutomovilEntity.class
         );
 
-        List autos = tq.getResultList();
-
-        if (autos.isEmpty()) {
-            return new ArrayList<>();
-        } else {
-            return autos;
-        }
+        return tq.getResultList();
     }
 
     /**
@@ -290,9 +278,7 @@ public class AutomovilPersistence {
         TypedQuery tq = em.createQuery("SELECT DISTINCT(a.color) FROM AutomovilEntity a", String.class
         );
 
-        List<String> ret = tq.getResultList();
-
-        return ret;
+        return tq.getResultList();
 
     }
 }

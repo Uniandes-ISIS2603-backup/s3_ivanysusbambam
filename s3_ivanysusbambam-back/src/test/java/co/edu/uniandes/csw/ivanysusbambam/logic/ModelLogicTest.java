@@ -6,7 +6,7 @@
 package co.edu.uniandes.csw.ivanysusbambam.logic;
 
 import co.edu.uniandes.csw.ivanysusbambam.ejb.ModelLogic;
-import co.edu.uniandes.csw.ivanysusbambam.entities.AutomovilEntity;
+
 import co.edu.uniandes.csw.ivanysusbambam.entities.ModelEntity;
 import co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException;
 import co.edu.uniandes.csw.ivanysusbambam.persistence.ModelPersistence;
@@ -254,5 +254,32 @@ public class ModelLogicTest {
             //}
         }
         return ase;
+    }
+
+    /**
+     * Metodo para probar el hashCode de la marca
+     */
+    @Test
+    public void HasCodeTest() {
+        ModelEntity model = data.get(0);
+        ModelEntity model1 = data.get(1);
+
+        Assert.assertEquals(model1.hashCode(), model.hashCode());
+    }
+
+    /**
+     * prueba para el metodo equals de la entidad marca
+     */
+    @Test
+    public void equalsTest() {
+        ModelEntity model = data.get(0);
+
+        ModelEntity model1 = data.get(0);
+        boolean respuesta = model.equals(model1);
+        if (model1 != null) {
+            Assert.assertTrue(respuesta);
+        } else {
+            Assert.assertFalse(respuesta);
+        }
     }
 }
