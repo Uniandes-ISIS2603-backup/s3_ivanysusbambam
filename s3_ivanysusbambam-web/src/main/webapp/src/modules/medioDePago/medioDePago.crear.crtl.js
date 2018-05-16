@@ -10,7 +10,7 @@
         $scope.data={};
         
          $http.get("api/clientes").then(function(response){
-            
+            $scope.data.cliente = response.data;
         });
      
         
