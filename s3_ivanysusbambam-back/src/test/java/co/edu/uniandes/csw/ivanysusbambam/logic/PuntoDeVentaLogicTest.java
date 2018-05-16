@@ -51,7 +51,7 @@ public class PuntoDeVentaLogicTest {
     private UserTransaction utx;
 
     private List<PuntoDeVentaEntity> data = new ArrayList<>();
-    
+
     private List<VentaEntity> dataVentas = new ArrayList<>();
     private List<CompraEntity> dataCompras = new ArrayList<>();
     private List<AutomovilEntity> dataAutos = new ArrayList<>();
@@ -93,9 +93,9 @@ public class PuntoDeVentaLogicTest {
      *
      */
     private void clearData() {
-        em.createQuery("delete from VendedorEntity").executeUpdate();        
+        em.createQuery("delete from VendedorEntity").executeUpdate();
 //        em.createQuery("delete from VentaEntity").executeUpdate();       
-        em.createQuery("delete from CompraEntity").executeUpdate();        
+        em.createQuery("delete from CompraEntity").executeUpdate();
         em.createQuery("delete from AutomovilEntity").executeUpdate();
         em.createQuery("delete from PuntoDeVentaEntity").executeUpdate();
 
@@ -106,13 +106,13 @@ public class PuntoDeVentaLogicTest {
      * pruebas.
      *
      */
-    private void insertData(){
-        for(int i = 0; i < 9; i++){
+    private void insertData() {
+        for (int i = 0; i < 9; i++) {
             AutomovilEntity autos = factory.manufacturePojo(AutomovilEntity.class);
             em.persist(autos);
             dataAutos.add(autos);
         }
-        for(int i = 0; i < 9; i++){
+        for (int i = 0; i < 9; i++) {
             VendedorEntity vendedores = factory.manufacturePojo(VendedorEntity.class);
             em.persist(vendedores);
             dataVendedores.add(vendedores);
@@ -123,40 +123,42 @@ public class PuntoDeVentaLogicTest {
 //            em.persist(ventas);
 //            dataVentas.add(ventas);
 //        }
-                
-        for(int i = 0; i < 9; i++){
+        for (int i = 0; i < 9; i++) {
             CompraEntity compras = factory.manufacturePojo(CompraEntity.class);
             em.persist(compras);
             dataCompras.add(compras);
         }
-        
+
         for (int i = 0; i < 3; i++) {
             PuntoDeVentaEntity entity = factory.manufacturePojo(PuntoDeVentaEntity.class);
-     
+
             em.persist(entity);
             data.add(entity);
             switch (i) {
                 case 0:
-                    for(int j = 0; j < 3; j++){
+                    for (int j = 0; j < 3; j++) {
                         dataAutos.get(j).setPuntoDeVenta(entity);
                         dataVendedores.get(j).setPuntoDeVenta(entity);
                         dataCompras.get(j).setPuntoDeVenta(entity);
 //                        dataVentas.get(j).setPuntoDeVenta(entity);
-                    }   break;
+                    }
+                    break;
                 case 1:
-                    for(int j = 3; j < 6; j++){
+                    for (int j = 3; j < 6; j++) {
                         dataAutos.get(j).setPuntoDeVenta(entity);
                         dataVendedores.get(j).setPuntoDeVenta(entity);
                         dataCompras.get(j).setPuntoDeVenta(entity);
 //                        dataVentas.get(j).setPuntoDeVenta(entity);
-                    }   break;
+                    }
+                    break;
                 case 2:
-                    for(int j = 3; j < 6; j++){
+                    for (int j = 3; j < 6; j++) {
                         dataAutos.get(j).setPuntoDeVenta(entity);
                         dataVendedores.get(j).setPuntoDeVenta(entity);
                         dataCompras.get(j).setPuntoDeVenta(entity);
 //                        dataVentas.get(j).setPuntoDeVenta(entity);
-                    }   break;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -166,11 +168,17 @@ public class PuntoDeVentaLogicTest {
     /**
      * Prueba para crear un punto de venta
      *
-     * @throws co.edu.uniandes.csw.bookstore.exceptions.BusinessLogicException
+     *
      */
     @Test
-    public void createPuntoDeVentaTest(){
+    public void createPuntoDeVentaTest() {
         PuntoDeVentaEntity newEntity = factory.manufacturePojo(PuntoDeVentaEntity.class);
+        newEntity.setImagen("");
+        newEntity.setAutomoviles(new ArrayList<>());
+        newEntity.setCompras(new ArrayList<>());
+        newEntity.setVentas(new ArrayList<>());
+        newEntity.setVendedores(new ArrayList<>());
+
         PuntoDeVentaEntity result;
         try {
             result = puntoVentaLogic.createPuntoDeVenta(newEntity);
@@ -178,15 +186,18 @@ public class PuntoDeVentaLogicTest {
             PuntoDeVentaEntity entity = em.find(PuntoDeVentaEntity.class, result.getId());
             Assert.assertEquals(newEntity.getId(), entity.getId());
             Assert.assertEquals(newEntity.getName(), entity.getName());
+            Assert.assertEquals(newEntity.getCompras(), entity.getCompras());
+            Assert.assertEquals(newEntity.getAutomoviles(), entity.getAutomoviles());
+            Assert.assertEquals(newEntity.getVentas(), entity.getVentas());
+            Assert.assertEquals(newEntity.getVendedores(), entity.getVendedores());
         } catch (BusinessLogicException ex) {
             System.out.println("no debería arrojar excepcion");
             Logger.getLogger(PuntoDeVentaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
+
         /**
-         * Prueba el caso de error para crear un punto de  venta
-         * Excepcion: telefono inválido
+         * Prueba el caso de error para crear un punto de venta Excepcion:
+         * telefono inválido
          */
         PuntoDeVentaEntity pv = new PuntoDeVentaEntity();
         //Datos cableados para generar error a la hora de crearlo
@@ -195,17 +206,16 @@ public class PuntoDeVentaLogicTest {
         pv.setTelefono(12);
         PuntoDeVentaEntity resultB;
         boolean exc = false;
-        try{
+        try {
             resultB = puntoVentaLogic.createPuntoDeVenta(pv);
-        }
-        catch(BusinessLogicException ex){
+        } catch (BusinessLogicException ex) {
             exc = true;
         }
-        
+
         Assert.assertTrue(exc);
-    
+
     }
-    
+
     /**
      * Prueba para consultar la lista de puntos de venta
      */
@@ -231,7 +241,7 @@ public class PuntoDeVentaLogicTest {
     public void getPuntoDeVentaTest() {
         PuntoDeVentaEntity entity = data.get(0);
         PuntoDeVentaEntity resultEntity = puntoVentaLogic.getPuntoDeVenta(entity.getId());
-        
+
         Assert.assertNotNull(resultEntity.getAutomoviles());
         Assert.assertNotNull(resultEntity.getAutomoviles().get(0));
         Assert.assertNotNull(resultEntity);
@@ -245,7 +255,7 @@ public class PuntoDeVentaLogicTest {
      *
      */
     @Test
-    public void deletePuntoDeVentaTest(){
+    public void deletePuntoDeVentaTest() {
         PuntoDeVentaEntity entity = data.get(0);
         try {
             puntoVentaLogic.deletePuntoDeVenta(entity.getId());
@@ -254,28 +264,27 @@ public class PuntoDeVentaLogicTest {
         } catch (BusinessLogicException ex) {
             Logger.getLogger(PuntoDeVentaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       /**
-        * Prueba la eliminacion de un punto de venta con
-        * Caso de excepcion: id inexistente
-        */
+
+        /**
+         * Prueba la eliminacion de un punto de venta con Caso de excepcion: id
+         * inexistente
+         */
         boolean exc = false;
-        try{
+        try {
             puntoVentaLogic.deletePuntoDeVenta(Long.MIN_VALUE);
-        }
-        catch(BusinessLogicException ex){
+        } catch (BusinessLogicException ex) {
             exc = true;
         }
-        
+
         Assert.assertTrue(exc);
     }
-    
+
     /**
      * Prueba para actualizar un punto de venta
      *
      */
     @Test
-    public void updatePuntoDeVentaTest(){
+    public void updatePuntoDeVentaTest() {
         PuntoDeVentaEntity entity = data.get(0);
         PuntoDeVentaEntity pojoEntity = factory.manufacturePojo(PuntoDeVentaEntity.class);
         pojoEntity.setId(entity.getId());
@@ -287,11 +296,11 @@ public class PuntoDeVentaLogicTest {
         } catch (BusinessLogicException ex) {
             Logger.getLogger(PuntoDeVentaLogicTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-       /**
-        * Prueba la actualizacion de un punto de venta con casos
-        * de Excepcion: telefono, id no existente
-        */
+
+        /**
+         * Prueba la actualizacion de un punto de venta con casos de Excepcion:
+         * telefono, id no existente
+         */
         boolean exc = false;
         PuntoDeVentaEntity pv = data.get(0);
         PuntoDeVentaEntity var = new PuntoDeVentaEntity();
@@ -299,24 +308,23 @@ public class PuntoDeVentaLogicTest {
         var.setTelefono(12);
         var.setName("Missouri");
         var.setTelefono(12);
-        try{
+        try {
             puntoVentaLogic.updatePuntoDeVenta(var);
-        }
-        catch(BusinessLogicException ex){
+        } catch (BusinessLogicException ex) {
             exc = true;
         }
         Assert.assertTrue(exc);
     }
-    
+
     /**
      * Prueba la solicitud de todos los autos de un punto de venta
      */
     @Test
-    public void listAutosTest(){
+    public void listAutosTest() {
         List<AutomovilEntity> list = puntoVentaLogic.listAutos(data.get(0).getId());
         Assert.assertEquals(3, list.size());
     }
-    
+
 //    /**
 //     * Prueba la solicitud de todas las ventas de un punto de venta
 //     */
@@ -325,23 +333,22 @@ public class PuntoDeVentaLogicTest {
 //        List<VentaEntity> list = puntoVentaLogic.listVentas(data.get(0).getId());
 //        Assert.assertEquals(3, list.size());
 //    }
-    
     /**
      * Prueba la solicitud de todos los vendedores de un punto de venta
      */
     @Test
-    public void listVendedoresTest(){
+    public void listVendedoresTest() {
         List<VendedorEntity> list = puntoVentaLogic.listVendedores(data.get(0).getId());
         Assert.assertEquals(3, list.size());
     }
-    
+
     /**
      * Prueba la solicitud de todas las compras de un punto de venta
      */
     @Test
-    public void listComprasTest(){
+    public void listComprasTest() {
         List<CompraEntity> list = puntoVentaLogic.listCompras(data.get(0).getId());
         Assert.assertEquals(3, list.size());
     }
-    
+
 }
