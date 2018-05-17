@@ -41,7 +41,7 @@
                     <td><a ui-sref="modelosPorMarca({marcaid: marca.id})">Ver</a></td>
                     <td>
                         <!--Acá al de editar una compra-->
-                        <a ui-sref="editarMarca({marcaId:marca.id})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a ui-sref="editarMarca({marcaId:marca.id, marcaName: marca.name})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar una compra-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
                         <a ui-sref="eliminarMarca({idMarca: marca.id})" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

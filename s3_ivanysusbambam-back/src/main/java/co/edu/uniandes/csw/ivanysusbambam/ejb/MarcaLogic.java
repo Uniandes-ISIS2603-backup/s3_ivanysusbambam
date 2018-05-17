@@ -70,6 +70,7 @@ public class MarcaLogic {
      */
     public MarcaEntity updateMarca(MarcaEntity ma) throws BusinessLogicException {
         LOG.log(Level.INFO, "Actualizando marca con nombre: {0}", ma.getName());
+        System.out.println("GET ID " + ma.getId());
         MarcaEntity mar = persistence.find(ma.getId());
         if (mar == null) {
             throw new BusinessLogicException("La marca no existe en la base de datos");
