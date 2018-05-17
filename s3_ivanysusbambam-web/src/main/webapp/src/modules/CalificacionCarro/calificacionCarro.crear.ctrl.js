@@ -4,11 +4,19 @@
     mod.controller("calificacionCarroCrearCtrl", ["$scope", "$http",
         "calificacionCarroContext","$rootScope","$state", 
         function($scope, $http, calificacionCarroContext, $rootScope, $state){
-                        
+                     
+          
             $scope.info = {};
+            
+            
             $scope.crearCalificacionCarro = function(){
-               $http.post(calificacionCarroContext, $scope.info).then(function(response){
-                  $state.go("adminCalificacionesCarroGetAll", {}, {reload: true}); 
+                
+                $scope.info.puntoDeVenta=$state.params.venta;
+                $scope.info.comentario=$scope.comentario;
+                 $scope.info.puntaje=$scope.puntaje;
+               console.log($scope.info);
+                $http.post(calificacionCarroContext, $scope.info).then(function(response){
+                  $state.go("buscarAuto", {}, {reload: true}); 
                });  
             };                   
     }]);

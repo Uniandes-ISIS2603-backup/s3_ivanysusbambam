@@ -70,7 +70,7 @@
             },
             views: {
                 mainView: {
-                    templateUrl: basePath + "vender.html",
+                    templateUrl: "src/modules/compra/comprar.html",
                     controller: "venderCtrl",
                     controllerAs: "ctrl"
                 }

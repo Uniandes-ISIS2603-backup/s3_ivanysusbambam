@@ -1,0 +1,43 @@
+<div class="backComprar">
+    <div class="row col-12">
+        <div class="col">
+            <div class="compraCard one">
+                <!-- colocar la imagen del carro-->
+                <div class="top" style="background: url(../../../resources/usuarioback.jpg)">
+                    <div class="wrapper">
+                        <div class="opCom">
+                            <a ui-sref="comprasPorVendedor({vendedorId:currentUserId})"><span class="lnr atrasC"><i class="fa fa-angle-left fa-2x"></i></span></a>
+
+                        </div>
+                        <form name="vendedor" style="text-align: center">
+                            <br>
+                            <label class="col-md-12" style="font-size: 30px;  font-family: 'Open Sans', sans-serif; color: white" for="carnet">Cliente</label>
+                            <br>
+                            <select class ="col-md-12" style="max-height: 70px" type ="number" required ng-model = "cliente" ng-options="x.cedula + ' | ' + x.nombre for x in listaClientes"></select>
+                            <br>
+                            <br>
+                            <label class="col-md-12" style="font-size: 30px;  font-family: 'Open Sans', sans-serif; color: white" for="cedula">Automovil:</label>
+                            <br>
+                            <select class ="col-md-12" style="max-height: 70px" type ="number" required ng-model = "automovil" ng-options=" x.id+ ' | ' + x.modelo.name  for x  in listaAutomoviles"></select>
+                             <br>
+                              <br>
+                               <label class="col-md-12" style="font-size: 30px;  font-family: 'Open Sans', sans-serif; color: white" for="cedula">Numero del Medio de pago:</label>
+                            <br>
+                            <input class="col-md-12" style="height: 40px" id="crudtxt" required ng-model="medioDePago">
+                           
+                             <br>
+                            
+                            <br>
+                               <a ng-click="comprarAuto()" class="btn  align-items-center" style=" background-color:  #9ACD32;color: white">Comprar</a>
+                         <br>
+                        </form>
+                    </div>
+                </div>
+                <br>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

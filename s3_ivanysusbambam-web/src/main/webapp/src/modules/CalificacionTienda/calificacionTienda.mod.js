@@ -52,12 +52,12 @@
                     }
                 }).state('ctCrear', {
                     url: '/calificacionTienda/principal/crear',
-                    parent: 'adminCalificacionesTiendaGetAll',
                     params: {
-                        requireLogin: true
+                        requireLogin: true,
+                        puntoDeVenta:null
                     },
                     views: {
-                        mainCrearView: {
+                        mainView: {
                             templateUrl: basePath + 'calificacionTienda.crear.html',
                             controller: 'calificacionTiendaCrearCtrl',
                             controllerAs: 'ctrl'

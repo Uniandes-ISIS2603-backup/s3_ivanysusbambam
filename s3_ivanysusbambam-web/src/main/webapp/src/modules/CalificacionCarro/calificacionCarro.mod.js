@@ -51,7 +51,8 @@
             }).state('ccCrear', {
                 url: '/calificacionCarro/principal/crear',
                 params: {
-                    requireLogin: true
+                    requireLogin: true,
+                    venta:null
                 },
                 views: {
                     mainView: {
