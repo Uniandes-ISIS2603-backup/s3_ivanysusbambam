@@ -46,7 +46,7 @@
                 url: "/create",
                 params: {
                     idCompra: null,
-                    requireLogin:false
+                    requireLogin:true
                 },
                 views: {
                     'mainView': {

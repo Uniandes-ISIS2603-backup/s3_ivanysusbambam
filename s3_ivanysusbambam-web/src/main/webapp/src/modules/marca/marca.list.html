@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     
-                    <a ui-sref="crearCompra" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Marca</span></a>
+                    <a ui-sref="crearMarca" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Añadir Marca</span></a>
                 </div>
             </div>
         </div>
@@ -41,10 +41,10 @@
                     <td><a ui-sref="modelosPorMarca({marcaid: marca.id})">Ver</a></td>
                     <td>
                         <!--Acá al de editar una compra-->
-                        <a ui-sref="editarMarca" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a ui-sref="editarMarca({marcaId:marca.id})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar una compra-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarMarca" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="eliminarMarca({idMarca: marca.id})" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 

@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     
-                    <a ui-sref="crearCompra" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Modelo</span></a>
+                    <a ui-sref="crearModelo" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Añadir Modelo</span></a>
                 </div>
             </div>
         </div>
@@ -24,7 +24,6 @@
                     <th>Número Puertas</th>
                     <th>Transmisión</th>
                     <th>Cilindraje</th>
-                    <th>Automóviles</th>
                     <th>Centimetros Cubicos</th>
                     <th>Opciones</th>
                 </tr>
@@ -41,14 +40,12 @@
                     <td>{{modelo.numeroPuertas}}</td>
                     <td>{{modelo.transmision}}</td>
                     <td>{{modelo.cilindraje}}</td>
-                    <td><a ui-sref="autosPorModelo({modelo: modelo.Referencia})">Ver</a></td>
                     <td>{{modelo.centCubicos}}</td>
                     <td>
                         <!--Acá al de editar una compra-->
-                        <a ui-sref="editarModelo" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                        <!--Acá eliminar una compra-->
-                        <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarModelo" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="editarModelo({modelo.id})" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                       
+                        <a ui-sref="eliminarModelo({idModelo:modelo.id})" class="delete" ><i class="material-icons" data-toggle="tooltip"  title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 

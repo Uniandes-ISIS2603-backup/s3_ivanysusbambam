@@ -22,6 +22,22 @@
                            }
                     }
                             
+                   ).state("eliminarVendedor",{
+                        
+                        params:{
+              requireLogin: true ,
+      id:null
+            },
+                        url: "/vendedor/list",
+                        views:{
+                            mainView:{
+                                templateUrl: basePath + "vendedor.list.html",
+                                controller: "vendedorListCtrl",
+                                controllerAs: "ctrl"
+                            }
+                           }
+                    }
+                            
                    ).state("vendedorDetail",{
                        
                        url:"/{vendedorId:int}/detail",
@@ -95,7 +111,55 @@
                             }
                         }
             
-        });;
+        }).state("comprasPorVendedor",{
+                       
+                       url:"/{vendedorId:int}/compras",
+                      
+                       params:{
+                           vendedorId: null,
+                           requireLogin:true
+                       },
+                       views: {
+                           mainView:{
+                               templateUrl: "src/modules/compra/compra.list.html",
+                               controller: "vendedorDetailCtrl",
+                               controllerAs: "ctrl"
+                           }
+                       }
+                       
+                   }).state("ventas",{
+                       
+                       url:"/{vendedorId:int}/ventas",
+                      
+                       params:{
+                           vendedorId: null,
+                           requireLogin:true
+                       },
+                       views: {
+                            mainView:{
+                               templateUrl: "src/modules/venta/venta.list.html",
+                               controller: "vendedorDetailCtrl",
+                               controllerAs: "ctrl"
+                           }
+                       }
+                       
+                   }).state("prospectos",{
+                       
+                       url:"/{vendedorId:int}/ProspectosDeCompra",
+                      
+                       params:{
+                           vendedorId: null,
+                           requireLogin:true
+                       },
+                       views: {
+                           mainView:{
+                               templateUrl: "src/modules/pc/pc.list.html",
+                               controller: "vendedorDetailCtrl",
+                               controllerAs: "ctrl"
+                           }
+                       }
+                       
+                   });
             
             }]);
     

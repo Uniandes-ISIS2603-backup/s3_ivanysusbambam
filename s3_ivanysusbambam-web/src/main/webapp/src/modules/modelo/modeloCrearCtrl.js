@@ -7,15 +7,10 @@
     mod.controller("modeloCrearCtrl", ["$scope", "$http", "modeloContext", "$state",
 
                                       function ($scope, $http, modeloContext, $state) {
-
+$scope.data = {};
             $scope.crearModelo = function () {
 
-                $scope.data = {
-                    referencia: $scope.nombre,
-                    numeroPuertas:$scope.numeroPuertas,
-                    transmision:$scope.transmision,
-                    cilindraje:$scope.cilindraje
-                };
+               
 
                 $http.post(modeloContext, $scope.data).then(function (response) {
                     $state.go("listModelo", {
