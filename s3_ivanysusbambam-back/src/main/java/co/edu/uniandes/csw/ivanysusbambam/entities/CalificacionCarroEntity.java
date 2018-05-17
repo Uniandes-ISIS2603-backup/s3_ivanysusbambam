@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.ivanysusbambam.podam.PuntajeStrategy;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
@@ -24,9 +25,8 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
      * Venta de la calificacion carro
      */
     @PodamExclude
-    @OneToOne(mappedBy = "calificacionCarro")
+    @OneToOne(mappedBy = "calificacionCarro", fetch = FetchType.LAZY)
     private VentaEntity venta;
-
     /**
      * Comentario de la calificacion Carro
      */
@@ -111,11 +111,8 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final CalificacionCarroEntity other = (CalificacionCarroEntity) obj;
-        if (!Objects.equals(this.venta, other.venta)) {
-            return false;
-        }
-        return true;
+        CalificacionCarroEntity ce = (CalificacionCarroEntity) obj;
+        return this.getId().equals(ce.getId());
     }
 
 }

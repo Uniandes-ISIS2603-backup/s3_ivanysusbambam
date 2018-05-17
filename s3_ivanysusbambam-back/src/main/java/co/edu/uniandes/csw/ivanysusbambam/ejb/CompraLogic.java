@@ -113,11 +113,11 @@ public class CompraLogic {
      */
     public CompraEntity crearCompra(CompraEntity compra) throws BusinessLogicException {
 
-    //    verificacionesCrearCompra1(compra);
+        verificacionesCrearCompra1(compra);
         
-      //   verificacionesCrearCompra2(compra);
+        verificacionesCrearCompra2(compra);
         
-     //    verificacionesCrearCompra3(compra);
+        verificacionesCrearCompra3(compra);
         
         compraPersistence.create(compra);
         return compra;

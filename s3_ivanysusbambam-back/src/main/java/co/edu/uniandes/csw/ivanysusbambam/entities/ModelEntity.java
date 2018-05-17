@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ public class ModelEntity implements Serializable {
     /**
      * Automoviles del modelo
      */
-    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "model", cascade = CascadeType.PERSIST,  fetch = FetchType.LAZY)
     private List<AutomovilEntity> automoviles = new ArrayList<>();
 
     /**
