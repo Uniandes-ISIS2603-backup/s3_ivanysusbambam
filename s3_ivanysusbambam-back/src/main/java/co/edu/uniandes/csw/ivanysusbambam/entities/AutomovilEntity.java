@@ -391,9 +391,6 @@ public class AutomovilEntity  implements Serializable {
         if (this == obj) {
             return true;
         }
-        if (obj == null) {
-            return false;
-        }
         
         return true;
     }
