@@ -70,13 +70,6 @@ public class AutomovilLogic {
             throw new BusinessLogicException("El formato de a placa del automovil no es valido");
         }
 
-        if (automovilEntity.getCompra() == null) {
-            throw new BusinessLogicException("La compra es nula");
-        }
-        if (automovilEntity.getCompra().getIdCompra() == null) {
-            throw new BusinessLogicException("el id de la compra es nula");
-        }
-
         // verifica que el modelo y su id no sean nulos
         if (automovilEntity.getModel() == null) {
             throw new BusinessLogicException("El modelo es nulo");
@@ -153,10 +146,6 @@ public class AutomovilLogic {
 
         if (marcaPersistence.find(automovilEntity.getMarca().getId()) == null) {
             throw new BusinessLogicException("la marca del automovil no esta registrada en la base de datos ");
-        }
-
-        if (compraPersistence.find(automovilEntity.getCompra().getIdCompra()) == null) {
-            throw new BusinessLogicException("la compra asociada a este automovil no existe ");
         }
         
     }

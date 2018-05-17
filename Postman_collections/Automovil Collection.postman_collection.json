@@ -1,8 +1,7 @@
 {
 	"info": {
+		"_postman_id": "e1d956e2-497f-4109-a672-e2a19673d489",
 		"name": "Automovil Collection",
-		"_postman_id": "d148e71e-2e48-7665-db8c-6ffc77892a34",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -30,7 +29,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n     \"id\":1, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABC123\",\r\n    \"chasis\":5874,\r\n    \"fechaListado\":\"2018-04-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"marca\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1},\r\n    \"compra\":{\"idCompra\":1}\r\n    \r\n    \r\n    \r\n\r\n    \r\n}"
+					"raw": "{\r\n    \"id\":1, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABC123\",\r\n    \"chasis\":5874,\r\n    \"fechaListado\":\"2018-04-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"marca\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1}\r\n    \r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/1",
@@ -158,7 +157,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n \"id\":2, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABE234\",\r\n    \"chasis\":5875,\r\n    \"fechaListado\":\"2018-05-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1},\r\n    \"marca\":{\"id\":1},\r\n    \"compra\":{\"idCompra\":1}\r\n    \r\n    \r\n    \r\n\r\n    \r\n}"
+					"raw": "{\r\n\t\"id\":2, \r\n    \"name\":\"\",\r\n    \"color\":\"azul\",\r\n    \"anio\":2007,\r\n    \"placa\":\"ABE-234\",\r\n    \"chasis\":5875,\r\n    \"fechaListado\":\"2018-05-24\",\r\n    \"valorListado\":505000,\r\n    \"modelo\":{\"id\":1},\r\n    \"puntoDeVenta\":{\"id\":1},\r\n    \"marca\":{\"id\":1}\r\n    \r\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles",
@@ -181,7 +180,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortmarca?marca=Chevrolet",
 					"protocol": "http",
@@ -198,12 +200,10 @@
 					"query": [
 						{
 							"key": "marca",
-							"value": "Chevrolet",
-							"equals": true
+							"value": "Chevrolet"
 						}
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -212,9 +212,12 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortmodelo?modelo=Camaro",
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortmodelo?modelo=Chevrolet Camaro ss",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -229,12 +232,10 @@
 					"query": [
 						{
 							"key": "modelo",
-							"value": "Camaro",
-							"equals": true
+							"value": "Chevrolet Camaro ss"
 						}
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -243,7 +244,10 @@
 			"request": {
 				"method": "GET",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/automoviles/sortanios?anioInicio=1995&anioFin=2007",
 					"protocol": "http",
@@ -260,17 +264,14 @@
 					"query": [
 						{
 							"key": "anioInicio",
-							"value": "1995",
-							"equals": true
+							"value": "1995"
 						},
 						{
 							"key": "anioFin",
-							"value": "2007",
-							"equals": true
+							"value": "2007"
 						}
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}

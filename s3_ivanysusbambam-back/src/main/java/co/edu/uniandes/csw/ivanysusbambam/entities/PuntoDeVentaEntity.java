@@ -171,6 +171,15 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable {
         this.automoviles = automoviles;
     }
 
+    /**
+     * Hash code
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return direccion.hashCode();
+    }
 
     /**
      * Metodo equals
@@ -182,7 +191,7 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable {
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
-        }
+    }
         if (obj == null) {
             return false;
         }
