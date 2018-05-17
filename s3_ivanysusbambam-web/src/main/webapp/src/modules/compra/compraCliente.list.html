@@ -3,11 +3,11 @@
         <div class="table-title">
             <div class="row">
                 <div class="col-sm-6">
-                    <h2>Lista Modelos</h2>
+                    <h2>Lista Compras</h2>
                 </div>
                 <div class="col-sm-6">
                     
-                    <a ui-sref="crearModelo" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Añadir Modelo</span></a>
+                    <a ui-sref="compraCreate" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Añadir Compra</span></a>
                 </div>
             </div>
         </div>
@@ -20,32 +20,31 @@
 								<label for="selectAll"></label>
 							</span>
                     </th>
-                    <th>Referencia</th>
-                    <th>Número Puertas</th>
-                    <th>Transmisión</th>
-                    <th>Cilindraje</th>
-                    <th>Centimetros Cubicos</th>
+                    <th>Id</th>
+                    <th>Cliente</th>
+                    <th>Punto de Venta</th>
+                    <th>Vendedor</th>
                     <th>Opciones</th>
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="modelo in darModelos">
+                <tr ng-repeat="cliente in clientes">
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>{{modelo.name}}</td>
-                    <td>{{modelo.numeroPuertas}}</td>
-                    <td>{{modelo.transmision}}</td>
-                    <td>{{modelo.cilindraje}}</td>
-                    <td>{{modelo.centCubicos}}</td>
+                    <td>{{cliente.cedula}}</td>
+                    <td>{{compra.cliente.nombre}}</td>
+                    <td>{{compra.puntoDeVenta.nombre}}</td>
+                    <td>{{compra.vendedor.nombre}}</td>
                     <td>
                         <!--Acá al de editar una compra-->
-                        <a ui-sref="editarModelo({modelo.id})" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                       
-                        <a ui-sref="eliminarModelo({idModelo:modelo.id})" class="delete" ><i class="material-icons" data-toggle="tooltip"  title="Delete">&#xE872;</i></a>
+                        <a ui-sref="editarCompra" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!--Acá eliminar una compra-->
+                        <!--El eliminar no necesita una vista, podemos implementarlo-->
+                        <a ui-sref="eliminarCompra"  ng-click="deleteCompra()" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 

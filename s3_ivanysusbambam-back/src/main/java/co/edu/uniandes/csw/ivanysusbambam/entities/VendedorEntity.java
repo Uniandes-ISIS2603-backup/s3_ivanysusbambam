@@ -11,6 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -62,21 +63,21 @@ public class VendedorEntity implements Serializable {
      * prospectos de compra del vendedor
      */
     @PodamExclude
-    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "vendedor", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<ProspectoCompraEntity> prospectosCompra;
 
     /**
      * Ventas del vendedor
      */
     @PodamExclude
-    @OneToMany(mappedBy = "vendedorEncargado")
+    @OneToMany(mappedBy = "vendedorEncargado", fetch = FetchType.LAZY)
     private List<VentaEntity> ventas;
 
     /**
      * Compras del vendedor
      */
     @PodamExclude
-    @OneToMany(mappedBy = "vendedorEncargado")
+    @OneToMany(mappedBy = "vendedorEncargado", fetch = FetchType.LAZY)
     private List<CompraEntity> compras;
 
     /**
@@ -213,39 +214,4 @@ public class VendedorEntity implements Serializable {
         this.imagen = imagen;
     }
 
-    /**
-     * metodo equals
-     *
-     * @param obj objeto a compara
-     * @return
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (obj == null) {
-            return false;
-        }
-
-        if (!(obj instanceof VendedorEntity)) {
-            return false;
-        }
-
-        if (this.getCarnetVendedor() != null && ((VendedorEntity) obj).getCarnetVendedor() != null) {
-            return this.getCarnetVendedor().equals(((VendedorEntity) obj).getCarnetVendedor());
-        }
-        return super.equals(obj);
-    }
-
-    /**
-     * Hash code
-     *
-     * @return
-     */
-    @Override
-    public int hashCode() {
-        if (this.getCarnetVendedor() != null) {
-            return this.getCarnetVendedor().hashCode();
-        }
-        return super.hashCode();
-
-    }
 }

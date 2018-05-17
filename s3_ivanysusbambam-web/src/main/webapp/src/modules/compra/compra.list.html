@@ -28,23 +28,22 @@
                 </tr>
             </thead>
             <tbody>
-                <tr ng-repeat="cliente in clientes">
+                <tr ng-repeat="compra in compras">
                     <td>
                         <span class="custom-checkbox">
 								<input type="checkbox" id="checkbox1" name="options[]" value="1">
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>{{cliente.cedula}}</td>
+                    <td>{{compra.idCompra}}</td>
                     <td>{{compra.cliente.nombre}}</td>
-                    <td>{{compra.puntoDeVenta.nombre}}</td>
-                    <td>{{compra.vendedor.nombre}}</td>
+                    <td>{{compra.puntoDeVenta.name}}</td>
+                    <td>{{compra.vendedorEncargado.nombre}}</td>
                     <td>
-                        <!--Acá al de editar una compra-->
-                        <a ui-sref="editarCompra" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        
                         <!--Acá eliminar una compra-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarCompra"  ng-click="deleteCompra()" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="compraDelete({idCompra: compra.idCompra})"  class="delete"  ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 

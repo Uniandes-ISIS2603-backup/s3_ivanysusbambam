@@ -53,14 +53,14 @@ public class AutomovilEntity  implements Serializable {
      * Prospectos de compra de la entidad automovil
      */
     @PodamExclude
-    @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true,fetch = FetchType.LAZY)
     private List<ProspectoCompraEntity> prospectosCompra;
 
     /**
      * Ventas de la entidad automovil
      */
     @PodamExclude
-    @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "automovil", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<VentaEntity> ventas;
 
     /**
@@ -390,9 +390,6 @@ public class AutomovilEntity  implements Serializable {
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
-        }
-        if (obj == null) {
-            return false;
         }
         
         return true;

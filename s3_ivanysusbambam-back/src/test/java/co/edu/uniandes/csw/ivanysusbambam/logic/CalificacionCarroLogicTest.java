@@ -51,7 +51,6 @@ public class CalificacionCarroLogicTest {
     
     private List<CalificacionCarroEntity> data = new ArrayList<CalificacionCarroEntity>();
     
-    private List<VentaEntity> ventaData = new ArrayList<>();
 
     @Deployment
     public static JavaArchive createDeployment() {
@@ -88,30 +87,17 @@ public class CalificacionCarroLogicTest {
     
     private void clearData() {
         em.createQuery("delete from CalificacionCarroEntity").executeUpdate();
-        em.createQuery("delete from VentaEntity").executeUpdate();
     }
     
     private void insertData() {
         System.out.println("-INSERT- ");
 
-        
-        for(int i = 0; i < 3; i++ ){
-            VentaEntity ventaEntity = factory.manufacturePojo(VentaEntity.class);
-            Long id = i+2L;
-            ventaEntity.setId(id);
-            em.persist(ventaEntity);
-            ventaData.add(ventaEntity);
-            System.out.println("venta " + ventaEntity.getName());
-
-        }
         for (int i = 0; i < 3; i++) {
             CalificacionCarroEntity entity = factory.manufacturePojo(CalificacionCarroEntity.class);
-            entity.setVenta(ventaData.get(i));
             
             em.persist(entity);
             data.add(entity);
             System.out.println("cc " + entity.getName());
-           
         }
     }
     
@@ -125,13 +111,12 @@ public class CalificacionCarroLogicTest {
         
         try {
             CalificacionCarroEntity newEntity = factory.manufacturePojo(CalificacionCarroEntity.class);
-            newEntity.setVenta(ventaData.get(0));
             CalificacionCarroEntity result = ccarroLogic.createCalificacionCarro(newEntity);
             Assert.assertNotNull(result);
-            Assert.assertNotNull(result.getVenta());
             CalificacionCarroEntity entity = em.find(CalificacionCarroEntity.class, result.getId());
             Assert.assertEquals(newEntity.getId(), entity.getId());
             Assert.assertEquals(newEntity.getName(), entity.getName());
+            Assert.assertEquals(newEntity.getComentario(), entity.getComentario());
             Assert.assertEquals(newEntity.getPuntaje(), entity.getPuntaje());
         } catch (BusinessLogicException ex) {
             Logger.getLogger(CalificacionCarroLogicTest.class.getName()).log(Level.SEVERE, null, ex);
@@ -189,6 +174,7 @@ public class CalificacionCarroLogicTest {
         CalificacionCarroEntity resultEntity = ccarroLogic.getCalificacionCarro(entity.getId());
         Assert.assertNotNull(resultEntity);
         Assert.assertEquals(entity.getId(), resultEntity.getId());
+        Assert.assertEquals(entity.getComentario(), resultEntity.getComentario());
         Assert.assertEquals(entity.getName(), resultEntity.getName());
         Assert.assertEquals(entity.getPuntaje(), resultEntity.getPuntaje());
     }
@@ -233,49 +219,65 @@ public class CalificacionCarroLogicTest {
     @Test
     public void updateCalificacionCarroTest() throws BusinessLogicException {
         CalificacionCarroEntity entity = data.get(0);
-        System.out.println("VENTA ENTITY " + entity.getVenta().getName());
         CalificacionCarroEntity pojoEntity = factory.manufacturePojo(CalificacionCarroEntity.class);
         
         pojoEntity.setId(entity.getId());
-        pojoEntity.setVenta(entity.getVenta());
         
-        System.out.println("VENTA ENTITY-2 " + pojoEntity.getVenta().getName());
-        System.out.println(ccarroLogic.updateCalificacionCarro(pojoEntity).getVenta().getId());
+        ccarroLogic.updateCalificacionCarro(pojoEntity);
         CalificacionCarroEntity resp = em.find(CalificacionCarroEntity.class, entity.getId());
-        System.out.println(resp.getVenta());
         
         Assert.assertEquals(pojoEntity.getId(), resp.getId());
         Assert.assertEquals(pojoEntity.getName(), resp.getName());
+        Assert.assertEquals(pojoEntity.getComentario(), resp.getComentario());
         Assert.assertEquals(pojoEntity.getPuntaje(), resp.getPuntaje());
 
         /**
          * Prueba la actualizacion de una calificacion carro con casos
-         * de Excepcion: telefono, id no existente
+         * de Excepcion: id no existente
          */            
         boolean exc = false;
-        CalificacionCarroEntity ct = data.get(0);
         CalificacionCarroEntity var = new CalificacionCarroEntity();
         var.setId(Long.MIN_VALUE);
-        var.setPuntaje(12.0);
         try{
             ccarroLogic.updateCalificacionCarro(var);
         }
-        catch(BusinessLogicException ex){
+        catch(BusinessLogicException e){
             exc = true;
         }
         Assert.assertTrue(exc);
-    }
-    
-    /**
-     * Prueba de la obtención de la venta correspondiente a una calificacion
-     * carro
-     */
-    @Test
-    public void getVentaTest(){
-        for(int i= 0; i < data.size(); i++){
-            VentaEntity ve = data.get(i).getVenta();
-            Assert.assertNotNull(ve);
-            Assert.assertEquals(ve, ventaData.get(i));
+        
+        
+        /**
+         * Prueba la actualizacion de una calificacion carro con casos
+         * de Excepcion: puntaje invalido arriba
+         */            
+        boolean excep = false;
+        CalificacionCarroEntity varEx = data.get(1);
+        var.setPuntaje(12.0);
+        try{
+            ccarroLogic.updateCalificacionCarro(varEx);
         }
+        catch(BusinessLogicException e){
+            excep = true;
+        }
+        Assert.assertTrue(exc);
+        
+        /**
+         * Prueba la actualizacion de una calificacion carro con casos
+         * de Excepcion: puntaje invalido arriba
+         */            
+        boolean excepcion = false;
+        CalificacionCarroEntity varExcep = data.get(1);
+        var.setPuntaje(0.1);
+        try{
+            ccarroLogic.updateCalificacionCarro(varEx);
+        }
+        catch(BusinessLogicException e){
+            excepcion = true;
+        }
+        Assert.assertTrue(exc);
+        
+        
     }
+   
 }

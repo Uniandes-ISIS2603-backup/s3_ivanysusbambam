@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +45,7 @@ public class ModelEntity implements Serializable {
     /**
      * Automoviles del modelo
      */
-    @OneToMany(mappedBy = "model", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "model", cascade = CascadeType.PERSIST,  fetch = FetchType.LAZY)
     private List<AutomovilEntity> automoviles = new ArrayList<>();
 
     /**
@@ -185,34 +186,6 @@ public class ModelEntity implements Serializable {
      */
     public void setAutomoviles(List<AutomovilEntity> nuevoAuto) {
         this.automoviles = nuevoAuto;
-    }
-
-    /**
-     * Hash code
-     *
-     * @return
-     */
-    public int hashCode() {
-        return 3;
-    }
-
-    /**
-     * Equals
-     *
-     * @param obj objeto con el que se compara
-     * @return true si son equivalentes
-     */
-    @Override
-    public boolean equals(Object obj) {
-
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-
-        return true;
     }
 
 }

@@ -9,6 +9,7 @@ import co.edu.uniandes.csw.ivanysusbambam.podam.PuntajeStrategy;
 import java.io.Serializable;
 import java.util.Objects;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import uk.co.jemos.podam.common.PodamExclude;
 import uk.co.jemos.podam.common.PodamStrategyValue;
@@ -24,9 +25,8 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
      * Venta de la calificacion carro
      */
     @PodamExclude
-    @OneToOne(mappedBy = "calificacionCarro")
+    @OneToOne(mappedBy = "calificacionCarro", fetch = FetchType.LAZY)
     private VentaEntity venta;
-
     /**
      * Comentario de la calificacion Carro
      */
@@ -84,38 +84,6 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
      */
     public void setVenta(VentaEntity venta) {
         this.venta = venta;
-    }
-
-    /**
-     * @return Hash code
-     */
-    @Override
-    public int hashCode() {
-        return 3;
-    }
-
-    /**
-     * Metodo Equals
-     *
-     * @param obj objeto a comparar
-     * @return
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final CalificacionCarroEntity other = (CalificacionCarroEntity) obj;
-        if (!Objects.equals(this.venta, other.venta)) {
-            return false;
-        }
-        return true;
     }
 
 }

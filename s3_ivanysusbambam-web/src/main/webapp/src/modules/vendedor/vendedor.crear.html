@@ -5,11 +5,11 @@
             <div style="text-align: left; color: white">
                 <a ui-sref="listVendedor"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
             <h2>Registrar Vendedor</h2>
-            <form name="cliente" style="text-align: center">
+            <form name="vendedor" style="text-align: center">
                 <br>
-                <label class="col-md-6" for="nombre">Carnet</label>
+                <label class="col-md-6" for="carnet">Carnet</label>
                 <br>
-                <input class="col-md-12" id="crudtxt" required ng-model="data.nombre">
+                <input class="col-md-12" id="crudtxt" required ng-model="data.carnetVendedor">
                 <br>
                 <br>
                 <label class="col-md-6" for="cedula">Cédula</label>
@@ -17,19 +17,24 @@
                 <input class="col-md-12" id="crudtxt" required ng-model="data.cedula">
                 <br>
                 <br>
-                <label class="col-md-6" for="cedula">Nombre</label>
+                <label class="col-md-6" for="nombre">Nombre</label>
                 <br>
-                <input class="col-md-12" id="crudtxt" required ng-model="data.cedula">
+                <input class="col-md-12" id="crudtxt" required ng-model="data.nombre">
                 <br>
                 <br>
-                <div ng-if="!cliente.$valid">
+                <label class="col-md-6" for="puntoDeVentaId">Id del punto de venta</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.puntoDeVentaId">
+                <br>
+                <br>
+                <div ng-if="!vendedor.$valid">
                     <div class="alert alert-warning">
                         <strong>Atención!</strong>
                         <p>Debe llenar todos los campos</p>
                     </div>
                 </div>
                 <br>
-                <input ng-show="cliente.$valid" id="botonCrud" ng-click="crearCliente()" value="Crear" class="btn btn-success" />
+                <input ng-show="vendedor.$valid" id="botonCrud" ng-click="crearVendedor()" value="Crear" class="btn btn-success" />
                 <br>
             </form>
             <br>
