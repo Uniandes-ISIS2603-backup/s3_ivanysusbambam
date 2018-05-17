@@ -127,8 +127,20 @@
                             controllerAs: "ctrl"
                         }
                     }
-                })   
-                .state("adminAutos", {
+                }) .state("adminAutosDelete", {
+                    url: "/autos",
+                    params:{
+                      requireLogin: false , 
+                      idAuto:null
+                    },
+                    views: {
+                        mainView: {
+                            templateUrl: basePath + "automovilesAdmin.html",
+                            controller: "automovilAdminDeleteCtrl",
+                            controllerAs: "ctrl"
+                        }
+                    }
+                }).state("adminAutos", {
                     url: "/autos",
                     params:{
                       requireLogin: false  
@@ -161,13 +173,14 @@
                 .state("editarAutomovil", {
                     url: "/automovil/editar",
                     params:{
-                        requireLogin: true
+                        requireLogin: true,
+                        idAuto:null
                     },
-                    parent:"adminAutos",
+                    
                     views: {
                         mainView: {
                             templateUrl: basePath + "automovil.editar.html",
-                            controller: "automovilCrearCtrl",
+                            controller: "automovilEditarCtrl",
                             controllerAs: "ctrl"
                         }
                     }

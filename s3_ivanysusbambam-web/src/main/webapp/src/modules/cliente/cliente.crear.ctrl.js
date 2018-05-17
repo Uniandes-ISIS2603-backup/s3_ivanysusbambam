@@ -13,7 +13,7 @@
             
             $scope.crearCliente = function(){
                $http.post(clienteContext, $scope.data).then(function(response){
-                  $state.go("listCliente", {reload: true}); 
+                  $state.go("adminClientes", {reload: true}); 
                });  
             };
             

@@ -86,6 +86,7 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
         this.venta = venta;
     }
 
+    
     /**
      * @return Hash code
      */
@@ -114,5 +115,4 @@ public class CalificacionCarroEntity extends BaseEntity implements Serializable 
         CalificacionCarroEntity ce = (CalificacionCarroEntity) obj;
         return this.getId().equals(ce.getId());
     }
-
 }

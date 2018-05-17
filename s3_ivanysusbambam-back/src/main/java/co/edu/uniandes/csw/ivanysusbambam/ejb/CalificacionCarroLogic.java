@@ -116,23 +116,4 @@ public class CalificacionCarroLogic {
         }
         persistence.delete(id);
     }
-
-    /**
-     * Obtiene la venta de una CalificacionTienda de la base de datos.
-     *
-     * @param id Identificador de la instancia a eliminar.
-     * @return
-     * @throws
-     * co.edu.uniandes.csw.ivanysusbambam.exceptions.BusinessLogicException
-     */
-    public VentaEntity getVenta(Long id) throws BusinessLogicException {
-        LOGGER.log(Level.INFO, "Inicia proceso de consultar la venta de la calificacion de carro con id = {0}", id);
-        if (id == null) {
-            throw new BusinessLogicException("El id no puede ser null");
-        }
-        if (getCalificacionCarro(id) == null) {
-            throw new BusinessLogicException("No se registra una calificación con id = {0}");
-        }
-        return getCalificacionCarro(id).getVenta();
-    }
 }

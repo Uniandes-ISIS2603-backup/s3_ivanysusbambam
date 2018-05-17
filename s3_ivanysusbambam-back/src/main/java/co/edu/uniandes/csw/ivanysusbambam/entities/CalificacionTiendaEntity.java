@@ -106,38 +106,4 @@ public class CalificacionTiendaEntity extends BaseEntity implements Serializable
     public void setPuntoDeVenta(PuntoDeVentaEntity puntoDeVenta) {
         this.puntoDeVenta = puntoDeVenta;
     }
-
-    
-
-    /**
-     * @return hash code
-     */
-    @Override
-    public int hashCode() {
-        return comentario.hashCode();
-    }
-
-    /**
-     * Metodo equals
-     *
-     * @param obj objeto a comparar
-     * @return
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final CalificacionTiendaEntity other = (CalificacionTiendaEntity) obj;
-        if (!Objects.equals(this.cliente, other.cliente)) {
-            return false;
-        }
-        return true;
-    }
 }
