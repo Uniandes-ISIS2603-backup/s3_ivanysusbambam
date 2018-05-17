@@ -14,7 +14,6 @@
                 $scope.info.puntoDeVenta=$state.params.venta;
                 $scope.info.comentario=$scope.comentario;
                  $scope.info.puntaje=$scope.puntaje;
-               console.log($scope.info);
                 $http.post(calificacionCarroContext, $scope.info).then(function(response){
                   $state.go("buscarAuto", {}, {reload: true}); 
                });  

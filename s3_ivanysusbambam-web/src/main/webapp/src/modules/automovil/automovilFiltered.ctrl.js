@@ -35,13 +35,11 @@
             {
                 paramsBusq=paramsBusq.substring(0,paramsBusq.length-1);
             }
-            console.log(newAutomovilContext +paramsBusq);
            
             $http.get(newAutomovilContext + paramsBusq).then(function (response) {
               
                 $scope.automoviles = response.data;
                 
-                console.log(response.data);
             },function errorCallback(response){
              $scope.error=true;
              $scope.mensaje=response;

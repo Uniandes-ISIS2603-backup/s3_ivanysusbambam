@@ -8,9 +8,6 @@
 
     function ($scope, $http, modeloContext, $state, dataTransfer) {
 
-            
-            console.log("DML");
-
             $scope.modelo = dataTransfer.get();
 
 

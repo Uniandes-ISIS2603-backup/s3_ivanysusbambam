@@ -37,14 +37,11 @@
                 $scope.data.medioDePago = response.data;
                
             });
-            console.log("api/mediosDePago/"+$scope.medioDePago);
-            
              $scope.data.automovil=$scope.automovil;
                $scope.data.vendedorEncargado=$scope.vendedor;
                $scope.data.cliente=$scope.cliente;
                $scope.data.puntoDeVenta=$scope.vendedor.puntoDeVenta;
                $scope.data.idVenta=$scope.automovil.id;
-             console.log( $scope.data);
              
              $http.post("api/ventas", $scope.data).then(function(response){
               
