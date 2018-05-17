@@ -8,7 +8,11 @@
             
         $scope.data = {};
         
-        if($state.params.idAuto !== undefined && $state.params.idAuto !==null){
+        
+        $scope.crearVenta = function(){
+            
+            
+            if($state.params.idAuto !== undefined && $state.params.idAuto !==null){
             var address = automovilContext + "/"+$state.params.idAuto;
             
             $http.get(address).then(function(response){
@@ -29,15 +33,13 @@
                 
                 
             });
-            
-                
-         
-            
+        
         }
-        $scope.crearVenta = function(){
+        
+        
                $http.post("api/ventas", $scope.data).then(function(){
                    //esto tenia un response, si se quiere mandar excepcion se deberia incluir en la function del then
-                  $state.go("adminVentaGetAll", {reload: true}); 
+                  
                });  
             };
         
