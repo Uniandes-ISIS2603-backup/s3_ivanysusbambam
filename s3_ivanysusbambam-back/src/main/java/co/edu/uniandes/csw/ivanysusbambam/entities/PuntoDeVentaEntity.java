@@ -181,28 +181,4 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable {
         return direccion.hashCode();
     }
 
-    /**
-     * Metodo equals
-     *
-     * @param obj objeto a comparar
-     * @return
-     */
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final PuntoDeVentaEntity other = (PuntoDeVentaEntity) obj;
-        if (!Objects.equals(this.direccion, other.direccion)) {
-            return false;
-        }
-        return true;
-    }
-
 }

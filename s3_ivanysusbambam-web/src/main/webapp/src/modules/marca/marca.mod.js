@@ -11,7 +11,7 @@
 
                 url: "/marcas/lista",
                 params:{
-              requireLogin: false  
+              requireLogin: true  
             },
                 views:{
                     mainView:{
@@ -34,7 +34,20 @@
                     }
                 }
 
-            }).state('modelosPorMarca', {
+            }).state("eliminarMarca", {
+
+                url: "/marcas/lista",
+                params:{
+              requireLogin: true  ,
+              idMarca:null
+            },
+                views:{
+                    mainView:{
+                templateUrl: basePath + "marca.list.html",
+                controller: "marcaDeleteCtrl",
+                controllerAs: "ctrl"}
+        }
+            }) .state('modelosPorMarca', {
                 url: '/:MarcaId/detail',
                 parent: "listMarca",
                 params: {
@@ -82,21 +95,6 @@
             })
             .state('editarMarca', {
                 url: '/:marcaId/editar',
-                parent: "listMarca",
-                params: {
-                    marcaId: null,
-                    requireLogin:true
-                },
-                views: {
-                    mainView: {
-                        templateUrl: basePath + "marca.editar.html",
-                        controller: "marcaEditarCtrl",
-                        controllerAs: "ctrl"
-                    }
-                }
-            }).state('eliminarMarca', {
-                url: '/:marcaId/eliminar',
-                parent: "listMarca",
                 params: {
                     marcaId: null,
                     requireLogin:true

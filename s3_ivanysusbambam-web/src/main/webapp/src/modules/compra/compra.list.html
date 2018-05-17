@@ -40,8 +40,7 @@
                     <td>{{compra.puntoDeVenta.name}}</td>
                     <td>{{compra.vendedorEncargado.nombre}}</td>
                     <td>
-                        <!--Acá al de editar una compra-->
-                        <a ui-sref="editarCompra" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        
                         <!--Acá eliminar una compra-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
                         <a ui-sref="compraDelete({idCompra: compra.idCompra})"  class="delete"  ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

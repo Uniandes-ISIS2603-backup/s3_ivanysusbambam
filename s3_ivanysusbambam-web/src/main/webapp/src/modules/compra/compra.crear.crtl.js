@@ -14,7 +14,7 @@
         
          $scope.crearCompra = function(){
              
-             console.log("api/clientes/"+$scope.clienteId);
+             
             
              $http.get("api/clientes/"+$scope.clienteId).then(function(response){
             $scope.data.cliente = response.data;
@@ -28,12 +28,12 @@
      $http.get("api/vendedores/"+$scope.vendedorId).then(function(response){
             $scope.data.vendedorEncargado = response.data;
         });
-      console.log($scope.data+"hola");
+     
    
             $http.post(compraContext, $scope.data).then(function(response){
               
               $scope.data.compra=response.data;
-              $state.go("crearAutomovil({compra: $scope.data.compra})",{} ,{reload:true});
+              $state.go("AdminCompraGetAll",{} ,{reload:true});
           
             });
         };

@@ -37,7 +37,7 @@
                     </td>
                     <td>1</td>
                     <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
-                    <td>{{venta.cliente.cedula}}</td>
+                    <td>{{venta.id}}</td>
                     <td>{{venta.medioDePago.id}}</td>
                     <td>{{venta.vendedor.carnet}}</td>
                     <td><a ui-sref="calificacionDetail({automovilId: auto.id})">Ver</a></td>
@@ -48,7 +48,7 @@
                         <a ui-sref="editarVenta" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar un auto-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarVenta" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="eliminarVenta({idVenta:venta.id})" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 

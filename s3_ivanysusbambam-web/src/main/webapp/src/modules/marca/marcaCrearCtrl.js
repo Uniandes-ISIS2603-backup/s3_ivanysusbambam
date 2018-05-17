@@ -4,15 +4,14 @@
 
     mod.constant("marcaContext", "api/marcas");
 
-    mod.controller("marcaCrearCtrl", ["$scope", "$http", "marcaContext", "$rootScope","$state",
+    mod.controller("marcaCrearCtrl", ["$scope", "$http", "marcaContext", "$rootScope", "$state",
 
-    function ($scope, $http, marcaContext,$rootScope, $state) {
+        function ($scope, $http, marcaContext, $rootScope, $state) {
 
+            $scope.data = {};
             $scope.crearMarca = function () {
 
-                $scope.data = {
-                    nombre: $scope.nombre,
-                };
+
 
                 $http.post(marcaContext, $scope.data).then(function (response) {
                     $state.go("listMarca", {
@@ -21,6 +20,6 @@
                 });
             };
 
-    }]);
+        }]);
 
 })(window.angular);

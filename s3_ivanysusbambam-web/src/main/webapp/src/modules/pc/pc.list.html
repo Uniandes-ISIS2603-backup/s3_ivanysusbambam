@@ -39,16 +39,16 @@
                     <td>{{pc.texto}}</td>
                     <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
                     <td>{{pc.cliente.cedula}}</td>
-                    <td>{{pc.vendedor.carnet}}</td>
+                    <td>{{pc.vendedor.carnetVendedor}}</td>
                     <td>{{pc.automovil.id}}</td>
                     <td>{{pc.automovil.placa}}</td>
-                    <td>{{pc.automovil.valor}}</td>
+                    <td>{{pc.automovil.valorListado}}</td>
                     <td>
                         <!--Acá al de editar un auto-->
-                        <a ui-sref="editarProspectoCompra" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                       
                         <!--Acá eliminar un auto-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarProspectoCompra" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="eliminarProspectoCompra({id:pc.id})" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872</i></a>
                     </td>
                 </tr>
 

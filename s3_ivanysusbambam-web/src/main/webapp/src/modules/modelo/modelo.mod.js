@@ -23,6 +23,21 @@
                         controllerAs: "ctrl"
                     }
                 }
+            }).state("eliminarModelo", {
+
+                url: "/modelos/lista",
+                params: {
+                    requireLogin: false,
+                    idModelo:null
+                    
+                },
+                views: {
+                    mainView: {
+                        templateUrl: basePath + "modelo.list.html",
+                        controller: "modeloListCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
             })
             .state('modeloDetail', {
                 url: '/:ModeloId/detail',

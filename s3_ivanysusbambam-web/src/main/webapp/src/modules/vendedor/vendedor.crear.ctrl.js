@@ -8,14 +8,18 @@
             
             $scope.data = {};
             $scope.puntosVenta = [];
-            
-            $http.get("api/puntosDeVenta").then(function(response){
-               
-                $scope.puntosVenta = response.data;
-                
-            });
+             
+             ;
+           
             
             $scope.crearVendedor = function(){
+                
+                
+            $http.get("api/puntosDeVenta/"+$scope.data.puntoDeVentaId).then(function(response){
+          
+                $scope.data.puntoDeVenta = response.data;
+            
+        });
                 
                 //Carnet cualquiera que será reemplazado por el autogenerado
                $scope.data.carnetVendedor = Number.MAX_SAFE_INTEGER;

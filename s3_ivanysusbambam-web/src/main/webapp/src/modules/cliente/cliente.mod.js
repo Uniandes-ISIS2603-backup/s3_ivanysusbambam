@@ -319,7 +319,7 @@
             views: {
 
                mainView: {
-                    templateUrl: basePath + "src/modules/medioDePago/pc.list.html",
+                    templateUrl: "src/modules/medioDePago/pc.list.html",
                     controller: "clienteDetailCtrl",
                     controllerAs: "ctrl"
                 }

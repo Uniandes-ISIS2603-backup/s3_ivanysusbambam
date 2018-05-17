@@ -24,7 +24,7 @@
                     views: {
                         'mainView': {
                             templateUrl: basePath + 'automovil.list.html',
-                            controller: 'automovilGetAlzlCtrl',
+                            controller: 'automovilGetAllCtrl',
                             controllerAs: 'ctrl'
                         },
                         automovilList: {

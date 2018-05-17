@@ -9,7 +9,8 @@
     function($scope, $http, clienteContext,$rootScope, $state, dataTransfer, $route){
                 
         $scope.cliente = dataTransfer.get();
-        $scope.nuevoNombre = $scope.cliente.nombre;    
+        $scope.nuevoNombre = $scope.cliente.nombre; 
+        $scope.nuevaCedula = $scope.cliente.cedula;
         
         var address = clienteContext + "/" + $state.params.clienteId;
         
@@ -26,6 +27,7 @@
      
         $scope.cambioInfo= function(){
             $scope.cliente.nombre = $scope.nuevoNombre;
+            $scope.cliente.cedula=$scope.nuevaCedula;
         
         };
         
