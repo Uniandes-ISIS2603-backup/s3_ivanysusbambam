@@ -1,7 +1,7 @@
 {
 	"info": {
+		"_postman_id": "ccdbb579-0b96-4621-8b47-0e8e33acb3d3",
 		"name": "Marca",
-		"_postman_id": "af5d7754-7114-f426-5a32-6b6506cc95b1",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -122,6 +122,36 @@
 						"api",
 						"marcas",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET marca (id)",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"id\":10,\n\t\"transmision\": \"Nuevo modelo\",\n\t\"numeroPuertas\":4,\n\t\"centCubicos\":3500,\n\t\"cilindraje\":3500\n},\n{\n\t\"id\":13,\n\t\"transmision\": \"Modelo dos\",\n\t\"numeroPuertas\":2,\n\t\"centCubicos\":2000,\n\t\"cilindraje\":2000\n},\n{\n\t\"id\":14,\n\t\"transmision\": \"Modelo tres\",\n\t\"numeroPuertas\":4,\n\t\"centCubicos\":4000,\n\t\"cilindraje\":4000\n}\n]"
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/marcas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"marcas"
 					]
 				}
 			},

@@ -1,7 +1,7 @@
 {
 	"info": {
+		"_postman_id": "f2b9ba27-140e-4df1-8fed-1d9f1a30f7fa",
 		"name": "Modelo",
-		"_postman_id": "9b8428cf-df94-5b7c-f332-f50a99e1d2f8",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -118,6 +118,32 @@
 						"api",
 						"modelos",
 						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET modelo (id)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/modelos/411",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"s3_ivanysusbambam-web",
+						"api",
+						"modelos",
+						"411"
 					]
 				}
 			},

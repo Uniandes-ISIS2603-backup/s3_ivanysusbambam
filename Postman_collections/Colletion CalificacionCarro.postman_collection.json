@@ -1,8 +1,7 @@
 {
 	"info": {
+		"_postman_id": "1a40684a-36cd-4e37-9c9a-daee48f74583",
 		"name": "Colletion CalificacionCarro",
-		"_postman_id": "a31f6811-95f5-2499-6647-b7e7806cdd90",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -38,8 +37,7 @@
 						"calificacionesCarro",
 						"3"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -74,8 +72,7 @@
 						"api",
 						"calificacionesCarro"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -111,8 +108,7 @@
 						"calificacionesCarro",
 						"2"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -147,8 +143,7 @@
 						"api",
 						"calificacionesCarro"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -183,8 +178,7 @@
 						"api",
 						"calificacionesCarro"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}

@@ -1,8 +1,7 @@
 {
 	"info": {
+		"_postman_id": "8b598e8e-02f7-486c-996a-e4b4a295becf",
 		"name": "Collection PuntoDeVenta",
-		"_postman_id": "ec77a40c-5a69-75be-bb30-728d309d12da",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -32,8 +31,7 @@
 						"api",
 						"puntosDeVenta"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -63,8 +61,7 @@
 						"api",
 						"puntosDeVenta"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -95,8 +92,7 @@
 						"puntosDeVenta",
 						"1"
 					]
-				},
-				"description": null
+				}
 			},
 			"response": []
 		},
@@ -127,8 +123,7 @@
 						"puntosDeVenta",
 						"1"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -158,8 +153,7 @@
 						"api",
 						"puntosDeVenta"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}
