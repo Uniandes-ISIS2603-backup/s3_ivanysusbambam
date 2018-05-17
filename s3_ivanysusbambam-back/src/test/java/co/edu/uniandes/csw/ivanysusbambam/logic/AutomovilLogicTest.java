@@ -437,7 +437,7 @@ public class AutomovilLogicTest {
         AutomovilEntity auto = data.get(0);
         AutomovilEntity auto1 = data.get(1);
 
-        Assert.assertEquals(auto.hashCode(), auto1.hashCode());
+        Assert.assertNotEquals(auto.hashCode(), auto1.hashCode());
     }
 
     /**
