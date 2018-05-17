@@ -71,7 +71,6 @@
             })
             .state('editarModelo', {
                 url: '/:ModeloId/editar',
-                parent: "listModelo",
                 params: {
                     ModeloId: null,
                     requireLogin: true
