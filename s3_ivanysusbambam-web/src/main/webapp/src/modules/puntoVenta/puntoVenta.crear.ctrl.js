@@ -8,7 +8,7 @@
             $scope.info = {};
             $scope.crearPuntoVenta = function(){
                $http.post(puntoVentaContext, $scope.info).then(function(response){
-                  $state.go("adminPuntosVentaGetAll", {}, {reload: true}); 
+                  $state.go("puntosDeVentaMapa", {}, {reload: true}); 
                });  
             };                   
     }]);

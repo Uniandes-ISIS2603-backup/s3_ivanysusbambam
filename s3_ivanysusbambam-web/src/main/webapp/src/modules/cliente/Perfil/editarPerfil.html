@@ -4,7 +4,7 @@
                             <label for="avatar" class="col-sm-2 control-label">Avatar</label>
                             <div class="col-sm-10">
                                 <!-- Acá se cambia la imagen segun el usuario -->
-                                <div class="custom-input-file" style="background: url('')">
+                                <div class="custom-input-file" style="background: url('http://www.sibrom.com.br/wp-content/uploads/2016/08/13.jpg')">
                                     <label class="uploadPhoto">
                                         Edit
                                         <input type="file" class="change-avatar" name="avatar" id="avatar">
@@ -15,30 +15,18 @@
                         <div class="form-group">
                             <label for="name" class="col-sm-2 control-label">Nombre</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" name="name" id="name" placeholder="Tu nombre">
+                              <input type="text" class="form-control" name="name" id="name" placeholder="Tu nombre" ng-model="cliente.nombre">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="nickName" class="col-sm-2 control-label">Username</label>
+                            <label for="nickName" class="col-sm-2 control-label">Cédula</label>
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" name="nickName" id="nickName" placeholder="Vilma">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="newPassword" class="col-sm-2 control-label">New password</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" name="newPassword" id="newPassword">
-                            </div>
-                        </div> 
-                        <div class="form-group">
-                            <label for="confirmPassword" class="col-sm-2 control-label">Confirm password</label>
-                            <div class="col-sm-10">
-                              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword">
+                              <input type="text" class="form-control" name="nickName" id="nickName" placeholder="Tu cédula" ng-model="cliente.cedula">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">                    
-                                <button class="btn btn-primary btn-circle text-uppercase" type="submit" id="submit">Guardar cambios</button>
+                                <button class="btn btn-primary btn-circle text-uppercase" type="submit" id="submit" ng-click="subirInfoCliente()">Guardar cambios</button>
                             </div>
                         </div>            
                     </form>

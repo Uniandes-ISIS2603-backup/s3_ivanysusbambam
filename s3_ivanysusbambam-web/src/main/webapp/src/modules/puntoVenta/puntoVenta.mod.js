@@ -28,7 +28,7 @@
                 },
                 views: {
                     'listAutosView': {
-                        templateUrl: basePath + 'puntoVentaDetail.autos.list.html',
+                        templateUrl: basePath + 'autosPuntoDeV.html',
                         controller: 'puntoVentaDetailCtrl',
                         controllerAs: 'ctrl'
                     }
@@ -109,8 +109,8 @@
                 },
                 views: {
                     mainView: {
-                        templateUrl: basePath + 'puntoVentaMap.html',
-                        controller: 'puntoVentaMapCtrl',
+                        templateUrl: basePath + 'puntosVentaUsuario.html',
+                        controller: 'puntoVentaUsuarioCtrl',
                         controllerAs: 'ctrl'
                     }
                 }  

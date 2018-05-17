@@ -184,9 +184,9 @@
                 <span id="navAutos" class="fa fa-bars" onclick="openNav()" style="color: whitesmoke">
                     </span>
             </div>
-
+            <div ng-if="isAuthenticated()">
             <a id="iconPrin" class="navbar-brand" ui-sref="buscarAuto"><img src="resources/carlogo.svg" style="width: 35px;"></a>
-
+                </div>
             <!-- Esto es el menú de la izquierda -->
             <div id="mySidenav" class="sidenav">
                 <a id="cerrar" href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
@@ -236,10 +236,6 @@
                     </li>
                     <li class="nav-item" ng-if="isAuthenticated()">
                         <a class="nav-link" ui-sref="logout" id="navAutos">Cerrar Sesión</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="latabla" id="navAutos">Tabla CRUD</a>
                     </li>
                 </ul>
             </ul>

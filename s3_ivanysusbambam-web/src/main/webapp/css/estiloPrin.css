@@ -370,11 +370,11 @@ h1{ text-align:center; margin:30px 0; color:#fff;}
 }
 .compraCard .top {
   position: relative;
-  height: 570px;
+  height: 500px;
   width: 100%;
   overflow: hidden;
   background-size: cover;
-  background-position: center center;
+  background-position: center;
   text-align: center;
 }
 .compraCard .top .wrapper {
@@ -1002,4 +1002,16 @@ section .section-title {
 
 #tablaMdP {
     width: auto;
+}
+
+.imagenExit {
+    
+    height: 100vh; 
+    background-image: url(../resources/exitBack.jpg); 
+    background-size: cover; 
+    background-repeat: no-repeat; 
+    margin: 0px;
+    padding-top: 100px;
+    font-size: 30px;
+    align-content: center;
 }
