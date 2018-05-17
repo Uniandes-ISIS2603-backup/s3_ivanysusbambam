@@ -11,6 +11,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -46,7 +47,7 @@ public class MedioDePagoEntity implements Serializable {
      * Ventas del medio de pago
      */
     @PodamExclude
-    @OneToMany(mappedBy = "medioDePago", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "medioDePago", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<VentaEntity> ventas;
 
     /**

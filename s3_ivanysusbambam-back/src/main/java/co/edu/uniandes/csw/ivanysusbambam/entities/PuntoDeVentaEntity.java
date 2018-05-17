@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Objects;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import uk.co.jemos.podam.common.PodamExclude;
@@ -44,28 +45,28 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable {
      * Vendedores del punto de venta
      */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<VendedorEntity> vendedores;
 
     /**
      * Compras del punto de venta
      */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<CompraEntity> compras;
 
     /**
      * Ventas del punto de venta
      */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<VentaEntity> ventas;
 
     /**
      * Automoviles del punto de venta
      */
     @PodamExclude
-    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @OneToMany(mappedBy = "puntoDeVenta", cascade = CascadeType.PERSIST, orphanRemoval = true, fetch = FetchType.LAZY)
     private List<AutomovilEntity> automoviles;
 
     /**

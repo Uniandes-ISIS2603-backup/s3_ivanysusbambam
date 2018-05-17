@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,14 +30,14 @@ public class MarcaEntity implements Serializable {
      * Automoviles de la marca
      */
     @PodamExclude
-    @OneToMany(mappedBy = "marca")
+    @OneToMany(mappedBy = "marca", fetch = FetchType.LAZY)
     private List<AutomovilEntity> automoviles = new ArrayList<>();
 
     /**
      * Modelos de la marca
      */
     @PodamExclude
-    @OneToMany(mappedBy = "marca", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "marca", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
     private List<ModelEntity> modelos = new ArrayList<>();
 
     /**
