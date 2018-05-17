@@ -96,6 +96,7 @@
             .state('editarMarca', {
                 url: '/:marcaId/editar',
                 params: {
+                    marcaName: null,
                     marcaId: null,
                     requireLogin:true
                 },

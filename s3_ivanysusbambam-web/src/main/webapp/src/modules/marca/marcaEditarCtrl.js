@@ -8,14 +8,25 @@
     
     function($scope, $http, marcaContext,$rootScope, $state, dataTransfer, $route){
         
-        $scope.marca = dataTransfer.get();
-        $scope.nuevoNombre = $scope.marca.nombre;    
-        
         var address = marcaContext + "/" + $state.params.marcaId;
         
+        $scope.nomOrg = $state.params.marcaName;
+        
+        var marca = {
+            name: $state.params.marcaName,
+            id: parseInt($state.params.marcaId)
+        };
+        
+        
+        $scope.cambioInfo= function(){
+            
+            marca.name = $scope.nuevoNombre;
+        };
         
         $scope.editarMarca = function(){
-            $http.put(address, $scope.marca).then(function(response){
+            $scope.cambioInfo();
+            
+            $http.put(address, marca).then(function(response){
                 
                 $state.go("listMarca",{},{reload: true}); 
                 
@@ -24,9 +35,6 @@
             
         };
      
-        $scope.cambioInfo= function(){
-            $scope.marca.nombre = $scope.nuevoNombre;
-        };
         
         
     }
