@@ -188,14 +188,11 @@ public class ModelEntity implements Serializable {
         this.automoviles = nuevoAuto;
     }
 
-    /**
-     * Hash code
-     *
-     * @return
-     */
-    @Override
     public int hashCode() {
-        return this.cilindraje.hashCode();
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
     }
 
     /**

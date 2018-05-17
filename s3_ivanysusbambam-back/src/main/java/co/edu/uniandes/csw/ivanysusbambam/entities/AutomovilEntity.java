@@ -387,4 +387,14 @@ public class AutomovilEntity  implements Serializable {
         return true;
     }
 
+    /**
+     * @return Hash Code
+     */
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
 }

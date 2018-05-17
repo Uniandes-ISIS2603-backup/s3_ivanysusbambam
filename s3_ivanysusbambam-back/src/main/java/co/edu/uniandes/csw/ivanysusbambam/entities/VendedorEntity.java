@@ -235,5 +235,16 @@ public class VendedorEntity implements Serializable {
         }
         return super.equals(obj);
     }
+    
+    /**
+     * @return Hash Code
+     */
+    @Override
+    public int hashCode() {
+        if (this.getCarnetVendedor() != null) {
+            return this.getCarnetVendedor().hashCode();
+        }
+        return super.hashCode();
+    }
 
 }
