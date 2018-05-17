@@ -373,14 +373,6 @@ public class AutomovilEntity  implements Serializable {
     }
 
     /**
-     * @return hashCode
-     */
-    @Override
-    public int hashCode() {
-        return 3;
-    }
-
-    /**
      * Metodo equals
      *
      * @param obj objeto a comparar
