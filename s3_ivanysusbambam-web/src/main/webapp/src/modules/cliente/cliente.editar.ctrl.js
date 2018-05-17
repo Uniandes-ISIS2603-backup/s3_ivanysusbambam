@@ -12,6 +12,7 @@
         $scope.nuevoNombre = $scope.cliente.nombre; 
         $scope.nuevaCedula = $scope.cliente.cedula;
         
+        
         var address = clienteContext + "/" + $state.params.clienteId;
         
         

@@ -3,18 +3,18 @@
     <div class="row col-12">
         <div class="creaCard one">
             <div style="text-align: left; color: white">
-                <a ui-sref="automovilesAdmin"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
-            <h2>Editar Cliente acá va el id</h2>
+                <a ui-sref="perfilCliente({clienteId: clienteId})"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
+            <h2>Editar Perfil</h2>
             <form name="automovil" style="text-align: center">
                 <br>
                 <label class="col-md-6" for="nombre">Nombre</label>
                 <br>
-                <input class="col-md-12" id="crudtxt" ng-model="data.nombre">
+                <input class="col-md-12" id="crudtxt" ng-model="nombre">
                 <br>
                 <br>
                 <label class="col-md-6" for="automovilColor">Cédula:</label>
                 <br>
-                <input class="col-md-12" id="crudtxt" ng-model="data.cedula">
+                <input class="col-md-12" id="crudtxt" ng-model="cedula">
                 <br>
                 <br>
                 <input ng-show="automovil.$valid" id="botonCrud" ng-click="editarCliente()" value="Guardar" class="btn btn-success" />
