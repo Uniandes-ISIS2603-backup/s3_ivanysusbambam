@@ -48,7 +48,7 @@
 
                     <td>
                         <!--Acá al de editar un auto-->
-                        <a ui-sref="editarVendedor" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a ui-sref="editarVendedor({vendedorId: ven.carnetVendedor})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar un auto-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
                         <a ui-sref="eliminarVendedor({id:ven.carnetVendedor})" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>

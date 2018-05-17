@@ -171,14 +171,16 @@ public class PuntoDeVentaEntity extends BaseEntity implements Serializable {
         this.automoviles = automoviles;
     }
 
+    
     /**
-     * Hash code
-     *
-     * @return
+     * @return Hash Code
      */
     @Override
     public int hashCode() {
-        return direccion.hashCode();
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
     }
 
     /**

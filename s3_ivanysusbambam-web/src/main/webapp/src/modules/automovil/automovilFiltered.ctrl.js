@@ -11,7 +11,7 @@
 
     mod.constant("newAutomovilContext", "api/automoviles/search?");
 
-    mod.controller("automovilFilteredCtrl", ["$scope", "$http","$rootScope", "newAutomovilContext","$state", function ($scope,$rootScope,$http,newAutomovilContext,$state) {
+    mod.controller("automovilFilteredCtrl", ["$scope", "$http", "newAutomovilContext","$state", function ($scope,$http,newAutomovilContext,$state) {
    
             var paramsBusq = "";
             
@@ -30,14 +30,16 @@
              if($state.params.marca!==null){
                 paramsBusq+="marca="+$state.params.marca.name+"&";
             }
-            
+             
             if(paramsBusq.endsWith('&'))
             {
                 paramsBusq=paramsBusq.substring(0,paramsBusq.length-1);
             }
            
             $http.get(newAutomovilContext + paramsBusq).then(function (response) {
+              
                 $scope.automoviles = response.data;
+                
             },function errorCallback(response){
              $scope.error=true;
              $scope.mensaje=response;

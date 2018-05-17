@@ -373,14 +373,6 @@ public class AutomovilEntity  implements Serializable {
     }
 
     /**
-     * @return hashCode
-     */
-    @Override
-    public int hashCode() {
-        return 3;
-    }
-
-    /**
      * Metodo equals
      *
      * @param obj objeto a comparar
@@ -395,4 +387,14 @@ public class AutomovilEntity  implements Serializable {
         return true;
     }
 
+    /**
+     * @return Hash Code
+     */
+    @Override
+    public int hashCode() {
+        if (this.getId() != null) {
+            return this.getId().hashCode();
+        }
+        return super.hashCode();
+    }
 }

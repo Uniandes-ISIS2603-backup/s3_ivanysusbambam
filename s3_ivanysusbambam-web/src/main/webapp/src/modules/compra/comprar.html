@@ -23,11 +23,11 @@
                     <label id="mdP">Selecciona tu medio de pago</label>
                     <br>
                     
-                        <select class ="col-md-8"  type ="number" required ng-model = "data.medioDePago" ng-options="x.numero + ' | ' + x.tipo for x in elCliente.mediosDePago">
+                        <select class ="col-md-8"  type ="number" required ng-model = "medioDePago" ng-options="x.numero + ' | ' + x.tipo for x in elCliente.mediosDePago">
                         </select>
                     <br>
                     <br>
-                    <button type="button" class="btn btn-success" ng-click="crearVenta()" id="botonCompra" ui-sref="ccCrear" data-toggle="modal" data-target="#myModal">Continuar</button> 
+                    <button type="button" class="btn btn-success" ng-click="crearVenta()" id="botonCompra" >Continuar</button> 
                     <br>
                     <br>
                 </div>
@@ -49,7 +49,7 @@
 				<h4>Correcto!</h4>	
 				<p>Se ha procesado tu solicitud</p>
                 <!-- No entiendo por qué no me lleva al estado y ya me estresé -->
-				<button class="btn btn-success" data-dismiss="modal" ui-sref="ccCrear"><span>Continuar</span> <i class="material-icons">&#xE5C8;</i></button>
+                <button class="btn btn-success" data-dismiss="modal" ng-click="crearVenta()"><span>Continuar</span> <i class="material-icons">&#xE5C8;</i></button>
 			</div>
 		</div>
 	</div>

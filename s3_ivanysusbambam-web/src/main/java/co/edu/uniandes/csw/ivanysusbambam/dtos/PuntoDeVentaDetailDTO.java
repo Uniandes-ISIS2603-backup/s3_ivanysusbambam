@@ -155,7 +155,7 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO {
         return pvEntity;
     }
 
-    public void inicializarListas() {
+    public void inicializarListas(){
         automoviles = new ArrayList<>();
         vendedores = new ArrayList<>();
         compras = new ArrayList<>();
@@ -177,21 +177,5 @@ public class PuntoDeVentaDetailDTO extends PuntoDeVentaDTO {
     public List<AutomovilDTO> getAutomoviles() {
         return automoviles;
     }
-
-//    public void addVendedor(VendedorDTO nuevoVendedor) {
-//        vendedores.add(nuevoVendedor);
-//    }
-//
-//    public void addCompra(CompraDTO nuevaCompra) {
-//        compras.add(nuevaCompra);
-//    }
-//
-//    public void addVenta(VentaDTO nuevaVenta) {
-//        ventas.add(nuevaVenta);
-//    }
-//
-//    public void addAutomovil(AutomovilDTO nuevoAuto) {
-//        automoviles.add(nuevoAuto);
-//    }
 
 }

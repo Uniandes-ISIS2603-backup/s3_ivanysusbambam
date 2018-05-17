@@ -7,8 +7,11 @@
                         
             $scope.info = {};
             $scope.crearCalificacionTienda = function(){
+                $scope.info.venta=$state.params.venta;
+                $scope.info.comentario=$scope.comentario;
+                 $scope.info.puntaje=$scope.puntaje;
                $http.post(calificacionTiendaContext, $scope.info).then(function(response){
-                  $state.go("adminCalificacionesTiendaGetAll", {}, {reload: true}); 
+                  $state.go("buscarAuto", {}, {reload: true}); 
                });  
             };                   
     }]);

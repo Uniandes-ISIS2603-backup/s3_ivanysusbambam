@@ -7,37 +7,55 @@
     function($scope,$rootScope, $http, automovilContext, $state){
             
         $scope.data = {};
+       
         
-        if($state.params.idAuto !== undefined && $state.params.idAuto !==null){
-            var address = automovilContext + "/"+$state.params.idAuto;
+        var address = automovilContext + "/"+$state.params.idAuto;
+        $http.get(address).then(function(response){
+                $scope.automovil = response.data;
+              
+            });
+            var address2 = "api/clientes" + "/"+$state.params.clienteId;
+             $http.get(address2).then(function(response){
+                $scope.elCliente = response.data;
+               
+                
+                
+            });
+        
+        $scope.crearVenta = function(){
+           
+            
+            
+            if($state.params.idAuto !== undefined && $state.params.idAuto !==null){
+            
             
             $http.get(address).then(function(response){
-                $scope.automovil = response.data;
+                
                 $scope.data.automovil=response.data;
                 $scope.data.puntoDeVenta=$scope.automovil.puntoDeVenta;
                 $scope.data.idVenta=$scope.automovil.id;
+                
             });
         }
         
         if($state.params.clienteId !== undefined && $state.params.clienteId !==null){
-            var address2 = "api/clientes" + "/"+$state.params.clienteId;
+            
             
            
             $http.get(address2).then(function(response){
-                $scope.elCliente = response.data;
+               
                 $scope.data.cliente=response.data;
-                
-                
+
             });
-            
-                
-         
-            
+        
         }
-        $scope.crearVenta = function(){
-               $http.post("api/ventas", $scope.data).then(function(){
+        
+       $scope.data.medioDePago = $scope.medioDePago;
+        
+               $http.post("api/ventas", $scope.data).then(function(response){
                    //esto tenia un response, si se quiere mandar excepcion se deberia incluir en la function del then
-                  $state.go("adminVentaGetAll", {reload: true}); 
+                   
+                  $state.go('ccCrear', {venta:response.data}, {reload: true});
                });  
             };
         

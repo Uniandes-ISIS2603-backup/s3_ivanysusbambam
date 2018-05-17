@@ -20,10 +20,7 @@
          $scope.crearMdp = function(){
           
             //Id que será reemplazado por el autogenerado
-            
-            
-            console.log($scope.data);
-            
+                        
             $http.post(medioDePagoContext, $scope.data).then(function(response){
                 $state.go("mediosDePagoCliente("+$state.params.clienteId+")",{} ,{reload:true});
             });

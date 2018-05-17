@@ -264,7 +264,7 @@ public class ModelLogicTest {
         ModelEntity model = data.get(0);
         ModelEntity model1 = data.get(1);
 
-        Assert.assertEquals(model1.hashCode(), model.hashCode());
+        Assert.assertNotEquals(model1.hashCode(), model.hashCode());
     }
 
     /**

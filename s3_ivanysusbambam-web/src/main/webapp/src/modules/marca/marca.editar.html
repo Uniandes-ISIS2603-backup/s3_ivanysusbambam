@@ -3,12 +3,12 @@
         <div class="creaCard one">
             <div style="text-align: left; color: white">
                 <a ui-sref="listMarca"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
-            <h2>Editar Marca acá va el id</h2>
+            <h2>Editar Marca: {{nomOrg}}</h2>
             <form name="marca" style="text-align: center">
                 <br>
-                <label class="col-md-6" for="nombre">Nombre</label>
+                <label class="col-md-6" for="nombre">Nuevo nombre</label>
                 <br>
-                <input class="col-md-12" id="crudtxt" ng-model="data.nombre">
+                <input class="col-md-12" id="crudtxt" ng-model="nuevoNombre">
                 <br>
                 <br>
                 <input ng-show="marca.$valid" id="botonCrud" ng-click="editarMarca()" value="Guardar" class="btn btn-success" />

@@ -27,3 +27,5 @@ hs_err_pid*
 /src/main/webapp/bower_components/
 /s3_ivanysusbambam-back/nbproject/
 /s3_ivanysusbambam-web/src/main/webapp/bower_components/
+/s3_ivanysusbambam-web/bower_components/jquery/nbproject/private/
+/s3_ivanysusbambam-web/bower_components/bootstrap/nbproject/private/

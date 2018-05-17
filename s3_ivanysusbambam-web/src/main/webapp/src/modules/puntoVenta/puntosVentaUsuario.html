@@ -3,7 +3,7 @@
         <div class="col">
             <div class="compraCard one">
                 <!-- colocar la imagen del carro-->
-                <div class="top" style="background: url(../../../resources/mapa.JPG)">
+                <div class="top" id="topMapa">
                     <div class="wrapper">
                         <div class="opCom">
                             <a ui-sref="automovilGetAll"><span class="lnr atrasC"><i class="fa fa-angle-left fa-2x"></i></span></a>
@@ -14,52 +14,18 @@
                     </div>
                 </div>
                 <br>
-                <div id="mediosDePagoB" ng-repeat="pv in puntosDeVentaBack">
+                <div id="mediosDePagoB" >
                     <label id="mdP">Selecciona el punto de Venta</label>
                     <br>
-                    <label>{{pv.nombre}}</label>
+                    <select class ="col-md-12"   required ng-model = "puntoDeVenta" ng-options=" x.name for x in puntosDeVentaBack"> </select>
                     <br>
-                    <a class="nav-link" ui-sref="agregarComentario()">Más Informacion</a>
-
+  <br>
+                    <button type="button" class="btn btn-success" id="botonCrud" ui-sref="ctCrear({puntoDeVenta:puntoDeVenta})" >Añadir Comentario</button>
+                 <br>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row col-12">
-        <div class="col">
-            <div class="comentCard one">
 
-                <div style="text-align: left; color: white">
-                    <a href="buscarAuto"><span class="atras"><i class="fa fa-angle-left fa-2x" style="color: aliceblue"></i></span></a></div>
-                <form name="crear"> 
-                <h1>Crea un Comentario</h1>
-                <br>
-                <br>
-                <label id="comentario">Punto de Venta</label>
-                <input class="form-control" id="comentariotxt" required ng-model="data.name">
-                <br>
-                <br>
-                    <label id="comentario">Comentario</label>
-                    <br>
-                    <textarea class="form-control" id="comentariotxt" rows="2" required ng-model="data.comentario"></textarea>
-                    <br>
-                    <label id="comentario">Puntuación</label>
-                    <input class="form-control" type="number" id="comentariotxt" required ng-model="data.puntaje">
-                </form>
-                <div class="row" style="margin-top: 10px">
-                    <div ng-if="!crear.$valid">
-                        <div class="alert alert-danger">
-                            <strong>Atención!</strong>
-                            <p>!Por favor completa todos los campos!</p>
-                        </div>
-                    </div>
-                </div>
-                <br>
-                <button ng-show="crear.$valid" type="button" class="btn btn-success" id="botonCrud" ng-click="crearCalificacionTienda()">Finalizar</button>
-                <br>
-                <br>
-            </div>
-        </div>
-    </div>
 
 </div>
