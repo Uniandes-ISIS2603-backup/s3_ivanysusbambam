@@ -11,6 +11,9 @@
             
             $http.get(address).then(function(response){
                 $scope.vendedor = response.data;
+                $scope.pcRecords=$scope.vendedor.prospectosCompra;
+                $scope.compras=$scope.vendedor.compras;
+                $scope.compras=$scope.vendedor.ventas;
             });
         }
         

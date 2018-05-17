@@ -7,6 +7,7 @@ mod.controller("modeloListCtrl", ["$scope", "$http", "modeloContext",  function(
         $http.get(modeloContext).then(function(Response){
             $scope.darModelos = Response.data;
         });
+        
 }]);
 
 

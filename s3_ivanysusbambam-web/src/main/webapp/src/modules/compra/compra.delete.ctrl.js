@@ -10,7 +10,7 @@
                $scope.compras = response.data; 
             });
             
-           console.log("entro?");
+           
                 $http.delete(compraContext + '/' + idCompra, {}).then(function (response) {
                     $state.go('AdminCompraGetAll', {}, {reload: true});
                 });

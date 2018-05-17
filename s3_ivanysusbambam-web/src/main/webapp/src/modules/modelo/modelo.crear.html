@@ -7,14 +7,19 @@
             <h2>Registrar Modelo</h2>
             <form name="modelo" style="text-align: center">
                 <br>
+                <label class="col-md-6" for="id">Id</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.id">
+                <br>
+                <br>
                 <label class="col-md-6" for="nombre">Referencia</label>
                 <br>
-                <input class="col-md-12" id="crudtxt" required ng-model="data.referencia">
+                <input class="col-md-12" id="crudtxt" required ng-model="data.name">
                 <br>
                 <br>
                 <label class="col-md-6" for="numeroPuertas">Número Puertas</label>
                 <br>
-                <input class="col-md-12" id="crudtxt" required ng-model="data.numPuertas">
+                <input class="col-md-12" id="crudtxt" required ng-model="data.numeroPuertas">
                 <br>
                 <br>
                 <label class="col-md-6" for="transmision">Transmisión</label>
@@ -27,6 +32,11 @@
                 <input class="col-md-12" id="crudtxt" required ng-model="data.cilindraje">
                 <br>
                 <br>
+                <label class="col-md-6" for="centimetrosCubicos">Centimetros Cubicos</label>
+                <br>
+                <input class="col-md-12" id="crudtxt" required ng-model="data.centCubicos">
+                <br>
+                <br>
                 <div ng-if="!modelo.$valid">
                     <div class="alert alert-warning">
                         <strong>Atención!</strong>
@@ -34,7 +44,7 @@
                     </div>
                 </div>
                 <br>
-                <input ng-show="modelo.$valid" id="botonCrud" ng-click="crearMarca()" value="Crear" class="btn btn-success" />
+                <input ng-show="modelo.$valid" id="botonCrud" ng-click="crearModelo()" value="Crear" class="btn btn-success" />
                 <br>
             </form>
             <br>

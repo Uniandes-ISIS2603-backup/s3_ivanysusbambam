@@ -20,6 +20,19 @@
                     controllerAs: "ctrl"
                 }
             }
+        }).state('adminVentaDeleteGetAll', {
+            url: '/venta/getall',
+            views: {
+                params: {
+                    requireLogin: true,
+                    idVenta:null
+                },
+                'mainView': {
+                    templateUrl: basePath + "venta.list.html",
+                    controller: 'ventaDeleteCtrl',
+                    controllerAs: "ctrl"
+                }
+            }
         }).state("ventaDetail", {
             url: "/{ventaId: int}/detail ",
             parent: "adminVentaGetAll",

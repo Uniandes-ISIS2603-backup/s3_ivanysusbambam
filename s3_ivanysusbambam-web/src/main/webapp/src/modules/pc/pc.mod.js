@@ -22,6 +22,22 @@
                     }
                 }
 
+            }).state("eliminarProspectoCompra", {
+
+
+                url: "/pc/list",
+                params: {
+                    requireLogin: true,
+                    id:null
+                },
+                views: {
+                    mainView: {
+                        templateUrl: basePath + "pc.list.html",
+                        controller: "pcListCtrl",
+                        controllerAs: "ctrl"
+                    }
+                }
+
             }).state("pcDetail", {
 
                 url: "/{pcId:int}/detail",

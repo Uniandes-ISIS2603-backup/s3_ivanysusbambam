@@ -7,7 +7,7 @@
                 </div>
                 <div class="col-sm-6">
                     <!--Acá te envía al estado crear auto-->
-                    <a ui-sref="crearVendedor" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Añadir Vendedor</span></a>
+                    <a ui-sref="crearVendedor" class="btn btn-success" ><i class="material-icons">&#xE147;</i> <span>Añadir Vendedor</span></a>
                 </div>
             </div>
         </div>
@@ -39,10 +39,9 @@
 								<label for="checkbox1"></label>
 							</span>
                     </td>
-                    <td>{{ven.carnet}}</td>
+                    <td>{{ven.carnetVendedor}}</td>
                     <td>{{ven.cedula}}</td>
-                    <td>{{ven.name}}</td>
-                    <!--Algo así tienes que ponerlo, mira el ejemplo de cliente detail de felipe-->
+                    <td>{{ven.nombre}}</td>
                     <th><a ui-sref="comprasPorVendedor({vendedorId: venta.idVenta})">Ver</a></th>
                     <th><a ui-sref="prospectos({ventaId: venta.idVenta})">Ver</a></th>
                     <th><a ui-sref="ventas({ventaId: venta.idVenta})">Ver</a></th>
@@ -52,7 +51,7 @@
                         <a ui-sref="editarVendedor" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar un auto-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarVendedor" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="eliminarVendedor({id:ven.carnetVendedor})" class="delete" ><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 
