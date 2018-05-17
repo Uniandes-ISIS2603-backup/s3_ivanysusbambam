@@ -43,9 +43,18 @@
                     <td>{{modelo.centCubicos}}</td>
                     <td>
                         <!--Acá al de editar una compra-->
+
                         <a ui-sref="editarModelo({modelo.id})" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                        
                         <a ui-sref="eliminarModelo({idModelo:modelo.id})" class="delete" ><i class="material-icons" data-toggle="modal"  title="Delete" href="#myModal" >&#xE872;</i></a>
+
+
+                        <a ui-sref="editarModelo({ModeloId: modelo.id, requireLogin: true})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <!--Acá eliminar una compra-->
+                        <!--El eliminar no necesita una vista, podemos implementarlo-->
+  
+                        <a ui-sref="eliminarModelo({idModelo:modelo.id})" class="delete" ><i class="material-icons" data-toggle="tooltip"  title="Delete">&#xE872;</i></a>
+
                     </td>
                 </tr>
                 

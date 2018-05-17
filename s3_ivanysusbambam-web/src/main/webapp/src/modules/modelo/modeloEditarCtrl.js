@@ -8,11 +8,13 @@
 
     function ($scope, $http, modeloContext, $state, dataTransfer) {
 
+            
+            console.log("DML");
+
             $scope.modelo = dataTransfer.get();
 
 
             var address = modeloContext + "/" + $state.params.ModeloId;
-
 
             $scope.editarModelo = function () {
                 $http.put(address, $scope.modelo).then(function (response) {
