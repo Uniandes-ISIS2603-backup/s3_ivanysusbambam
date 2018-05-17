@@ -1,8 +1,7 @@
 {
 	"info": {
+		"_postman_id": "1adacba6-bffc-4946-b28b-35e721888e2d",
 		"name": "Venta Collection",
-		"_postman_id": "da02b766-d075-1367-a2a4-e7a5f377d07b",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -32,8 +31,7 @@
 						"api",
 						"ventas"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -63,8 +61,7 @@
 						"api",
 						"ventas"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -95,8 +92,7 @@
 						"ventas",
 						"1"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -127,8 +123,7 @@
 						"ventas",
 						"2"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -158,8 +153,7 @@
 						"api",
 						"ventas"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}

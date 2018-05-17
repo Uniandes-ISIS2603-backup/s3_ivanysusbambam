@@ -1,8 +1,7 @@
 {
 	"info": {
+		"_postman_id": "16de2595-0811-4d71-9d78-429bd817c850",
 		"name": "Collection Compra",
-		"_postman_id": "c29fc833-5dfd-acd4-dd59-854e6e8d2836",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [

@@ -1,8 +1,7 @@
 {
 	"info": {
+		"_postman_id": "5e97d15a-845d-4da1-a361-9bc04cafbc0c",
 		"name": "QuejaReclamo",
-		"_postman_id": "00f523f7-17dc-d948-1a5a-7ad64cbe9f79",
-		"description": "",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
@@ -21,7 +20,7 @@
 					"raw": "{\n\n\"id\": 2,\n    \"name\": \"Queja de auto\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/1",
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -31,10 +30,9 @@
 						"s3_ivanysusbambam-web",
 						"api",
 						"quejasReclamos",
-						"1"
+						"3"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -65,8 +63,7 @@
 						"quejasReclamos",
 						"2"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -85,7 +82,7 @@
 					"raw": "{\n\n\"id\": 78,\n    \"name\": \"Queja de atencion\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
 				},
 				"url": {
-					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/3",
+					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos/2",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -95,10 +92,9 @@
 						"s3_ivanysusbambam-web",
 						"api",
 						"quejasReclamos",
-						"3"
+						"2"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -114,7 +110,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n\n     \"id\": 4,\n    \"name\": \"Queja de atencion\",\n    \"texto\": \"No estoy satisfecho con la atencion del consecionario.\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
+					"raw": "{\n\n\"id\": 78,\n    \"name\": \"Queja de atencion\",\n    \"texto\": \"No estoy satisfecho con la atencion\",\n    \"tipo\": \"Queja\",\n    \"cliente\": {\n        \"cedula\": 104230633,\n        \"nombre\": \"Felipe VelÃ¡squez\"\n    }\n}"
 				},
 				"url": {
 					"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/quejasReclamos",
@@ -128,8 +124,7 @@
 						"api",
 						"quejasReclamos"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		},
@@ -159,8 +154,7 @@
 						"api",
 						"quejasReclamos"
 					]
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}

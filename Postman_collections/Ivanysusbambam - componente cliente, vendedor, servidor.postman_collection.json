@@ -1,12 +1,13 @@
 {
 	"info": {
+		"_postman_id": "1b890ed1-afb1-496a-a803-8d3d6da5a8d3",
 		"name": "Ivanysusbambam - componente cliente, vendedor, servidor",
-		"_postman_id": "7e8c3a4e-ac82-8113-7c53-34bb2bed6042",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Cliente",
+			"description": null,
 			"item": [
 				{
 					"name": "GET clientes",
@@ -91,7 +92,7 @@
 							"raw": "{\n\t\"nombre\" : \"David\"\n\t\"cedula\" : 1015326745\n}"
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/7",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1016609032",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -101,7 +102,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"clientes",
-								"7"
+								"1016609032"
 							]
 						}
 					},
@@ -136,7 +137,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\": 7\n}"
+							"raw": "{\n\t\"nombre\": \"Felipe Velásquez\",\n\t\"cedula\": 10\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/7",
@@ -187,7 +188,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nombre\": \"Juan José Rondón\",\n\t\"cedula\": 1016609031\n}"
+							"raw": "{\n\t\"nombre\": \"Jose Arcadio Rondón\",\n\t\"cedula\": 1016609032\n}"
 						},
 						"url": {
 							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes",
@@ -237,7 +238,7 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/8",
+							"raw": "http://localhost:8080/s3_ivanysusbambam-web/api/clientes/1016609032",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -247,7 +248,7 @@
 								"s3_ivanysusbambam-web",
 								"api",
 								"clientes",
-								"8"
+								"1016609032"
 							]
 						}
 					},
@@ -257,6 +258,7 @@
 		},
 		{
 			"name": "Vendedor",
+			"description": null,
 			"item": [
 				{
 					"name": "GET vendedores",
@@ -467,6 +469,7 @@
 		},
 		{
 			"name": "ProspectoCompra",
+			"description": null,
 			"item": [
 				{
 					"name": "GET prospectoscompra",
