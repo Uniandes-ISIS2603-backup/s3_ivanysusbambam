@@ -7,7 +7,7 @@
         
         $http.get(modeloContext).then(function (Response) {
             $scope.darModelos = Response.data;
-            if(Response.status==500){
+            if(parseInt(Response.status)===500){
                 $rootScope.errorDelMd=true;
             }
             else{
@@ -15,7 +15,7 @@
             }
         });
         $http.delete(modeloContext + '/' + $state.params.idModelo, {}).then(function (response) {
-            if(response.status==500){
+            if(parseInt(response.status)===500){
                 $rootScope.errorDelMd=true;
             }
             else{
