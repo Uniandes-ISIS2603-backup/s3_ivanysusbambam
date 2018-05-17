@@ -70,13 +70,12 @@
                    }).state("editarVendedor", {
                        
                        url: "/{vendedorId:int}/editar",
-                       parent: "listVendedor",
                        params:{
                            vendedorId: null,
                            requireLogin:true
                        },
                        views: {
-                           vendedorDetailView:{
+                           mainView:{
                                templateUrl: basePath + "vendedor.editar.html",
                                controller: "vendedorEditarCtrl",
                                controllerAs: "ctrl"

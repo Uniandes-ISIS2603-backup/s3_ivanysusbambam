@@ -69,14 +69,13 @@
         }).state("editarCliente", {
 
             url: "/{clienteId: int}/editar",
-            parent: "adminClientes",
             params: {
                 clienteId: null,
                 requireLogin: true
             },
             views: {
-                clienteDetailView: {
-                    templateUrl: basePath + "editarPerfil.html",
+                mainView: {
+                    templateUrl: basePath + "cliente.editar.html",
                     controller: "clienteEditarCtrl",
                     controllerAs: "ctrl"
                 }

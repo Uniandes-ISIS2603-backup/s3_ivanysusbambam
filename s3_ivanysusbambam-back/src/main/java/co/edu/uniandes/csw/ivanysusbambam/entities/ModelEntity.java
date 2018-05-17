@@ -188,4 +188,33 @@ public class ModelEntity implements Serializable {
         this.automoviles = nuevoAuto;
     }
 
+    /**
+     * Hash code
+     *
+     * @return
+     */
+    @Override
+    public int hashCode() {
+        return this.cilindraje.hashCode();
+    }
+
+    /**
+     * Equals
+     *
+     * @param obj objeto con el que se compara
+     * @return true si son equivalentes
+     */
+    @Override
+    public boolean equals(Object obj) {
+
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+
+        return true;
+    }
+
 }

@@ -26,7 +26,7 @@
 
                         <div class="form-group">
 
-                            <button type="submit" class="btn btn-primary btn-block" id="botonIniciar" ng-click="autenticar()"> Iniciar</button>
+                            <button type="submit" class="btn btn-primary btn-block" id="botonIniciar" ng-click="autenticar()" href="#myModal" class="trigger-btn" data-toggle="modal"> Iniciar</button>
                         </div>
                     </form>
                     <div class="container col-md-12" style="text-align: center ;margin: 0px">
@@ -43,3 +43,20 @@
 
     </div>
 </div>
+<div id="myModal" class="modal fade" ng-if="tieneError">
+	<div class="modal-dialog modal-fail">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body text-center">
+				<h4>Oops</h4>	
+				<p>Tienes un error de Password - Username</p>
+				<button class="btn btn-success" data-dismiss="modal">Reintentar</button>
+			</div>
+		</div>
+	</div>
+</div>     
