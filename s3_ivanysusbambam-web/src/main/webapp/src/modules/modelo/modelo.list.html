@@ -44,7 +44,12 @@
                     <td>
                         <!--Acá al de editar una compra-->
 
-                        <a ui-sref="editarModelo({ModeloId: modelo.id})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a ui-sref="editarModelo({modelo.id})" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                       
+                        <a ui-sref="eliminarModelo({idModelo:modelo.id})" class="delete" ><i class="material-icons" data-toggle="modal"  title="Delete" href="#myModal" >&#xE872;</i></a>
+
+
+                        <a ui-sref="editarModelo({ModeloId: modelo.id, requireLogin: true})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar una compra-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
   
@@ -52,8 +57,26 @@
 
                     </td>
                 </tr>
+                
 
             </tbody>
         </table>
     </div>
+</div>
+<div id="myModal" class="modal fade" ng-if="errorDelMd">
+	<div class="modal-dialog modal-fail">
+		<div class="modal-content">
+			<div class="modal-header">
+				<div class="icon-box">
+					<i class="material-icons">&#xE5CD;</i>
+				</div>
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+			</div>
+			<div class="modal-body text-center">
+				<h4>Oops</h4>	
+				<p>No puedes borrar el modelo, porque tiene autos asociados</p>
+				<button class="btn btn-success" data-dismiss="modal">Reintentar</button>
+			</div>
+		</div>
+	</div>
 </div>

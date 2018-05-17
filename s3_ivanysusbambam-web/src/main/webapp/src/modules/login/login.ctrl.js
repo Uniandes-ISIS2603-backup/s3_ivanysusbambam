@@ -83,15 +83,13 @@
                     }
                 }
                 if (!flag) {
-                    $rootScope.alerts.push({
-                        type: "danger",
-                        msg: "Incorrect username or password."
-                    });
+                    $rootScope.tieneError = true;
                 } else {
                     sessionStorage.token = $scope.user.token;
                     sessionStorage.setItem("username", $scope.user.user);
                     sessionStorage.setItem("name", $scope.user.name);
                     sessionStorage.setItem("rol", $scope.user.rol);
+                    $rootScope.tieneError=false;
                     /*Acá está el usuario guardado*/
                     $rootScope.currentUserId = $scope.user.user;
 
