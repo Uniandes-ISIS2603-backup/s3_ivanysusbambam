@@ -45,10 +45,10 @@
                     <td>{{modelo.centCubicos}}</td>
                     <td>
                         <!--Acá al de editar una compra-->
-                        <a ui-sref="editarModelo" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                        <a ui-sref="editarModelo({ModeloId: modelo.id, requireLogin: true})" class="edit" ><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                         <!--Acá eliminar una compra-->
                         <!--El eliminar no necesita una vista, podemos implementarlo-->
-                        <a ui-sref="eliminarModelo" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                        <a ui-sref="eliminarModelo" class="delete"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                     </td>
                 </tr>
 
